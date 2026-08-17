@@ -14,7 +14,13 @@ export default function Navbar() {
         </Link>
         <nav className="flex items-center gap-4 text-sm text-mist-300">
           <Link href="/#tools" className="focus-ring rounded hover:text-mist-50">
-            All tools
+            JSON tools
+          </Link>
+          <Link href="/image-converter" className="focus-ring rounded hover:text-mist-50">
+            Image Converter
+          </Link>
+          <Link href="/pdf-tools" className="focus-ring rounded hover:text-mist-50">
+            PDF Tools
           </Link>
           <a
             href="https://github.com"
