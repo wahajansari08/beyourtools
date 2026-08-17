@@ -40,7 +40,7 @@ export const tools: ToolDef[] = [
   { slug: "json-sorter", name: "JSON Sorter", short: "Sort", description: "Sort object keys alphabetically, recursively.", category: "Compare & Manipulate", live: true },
   { slug: "json-merge", name: "JSON Merge", short: "Merge", description: "Deep-merge two JSON objects into one.", category: "Compare & Manipulate", live: true },
   { slug: "json-flatten", name: "JSON Flatten / Unflatten", short: "Flatten", description: "Flatten nested JSON to dot paths, or rebuild it.", category: "Compare & Manipulate", live: true },
-  { slug: "jsonpath-tester", name: "JSONPath Tester", short: "Query", description: "Run JSONPath expressions against your JSON.", category: "Compare & Manipulate", live: false },
+  { slug: "jsonpath-tester", name: "JSONPath Tester", short: "Query", description: "Run JSONPath expressions against your JSON.", category: "Compare & Manipulate", live: true },
 
   // Convert
   { slug: "json-to-csv", name: "JSON → CSV", short: "To CSV", description: "Turn a JSON array into a CSV file.", category: "Convert", live: true },
@@ -49,15 +49,15 @@ export const tools: ToolDef[] = [
   { slug: "yaml-to-json", name: "YAML → JSON", short: "From YAML", description: "Convert YAML documents into JSON.", category: "Convert", live: true },
   { slug: "json-to-xml", name: "JSON → XML", short: "To XML", description: "Convert JSON objects into XML markup.", category: "Convert", live: true },
   { slug: "xml-to-json", name: "XML → JSON", short: "From XML", description: "Convert XML documents into JSON.", category: "Convert", live: true },
-  { slug: "json-to-typescript", name: "JSON → TypeScript", short: "To TS", description: "Generate TypeScript interfaces from JSON.", category: "Convert", live: false },
-  { slug: "json-to-python", name: "JSON → Python", short: "To Python", description: "Generate Python dataclasses from JSON.", category: "Convert", live: false },
-  { slug: "json-to-sql", name: "JSON → SQL", short: "To SQL", description: "Generate SQL CREATE TABLE + INSERT statements.", category: "Convert", live: false },
-  { slug: "json-to-excel", name: "JSON → Excel", short: "To Excel", description: "Export a JSON array as an .xlsx workbook.", category: "Convert", live: false },
+  { slug: "json-to-typescript", name: "JSON → TypeScript", short: "To TS", description: "Generate TypeScript interfaces from JSON.", category: "Convert", live: true },
+  { slug: "json-to-python", name: "JSON → Python", short: "To Python", description: "Generate Python dataclasses from JSON.", category: "Convert", live: true },
+  { slug: "json-to-sql", name: "JSON → SQL", short: "To SQL", description: "Generate SQL CREATE TABLE + INSERT statements.", category: "Convert", live: true },
+  { slug: "json-to-excel", name: "JSON → Excel", short: "To Excel", description: "Export a JSON array as an .xlsx workbook.", category: "Convert", live: true },
 
   // Generate & Schema
-  { slug: "json-schema-generator", name: "JSON Schema Generator", short: "Schema", description: "Infer a JSON Schema from sample data.", category: "Generate & Schema", live: false },
-  { slug: "json-schema-validator", name: "JSON Schema Validator", short: "Validate", description: "Validate JSON against a JSON Schema.", category: "Generate & Schema", live: false },
-  { slug: "json-generator", name: "JSON Generator", short: "Generate", description: "Generate mock JSON data from a template.", category: "Generate & Schema", live: false },
+  { slug: "json-schema-generator", name: "JSON Schema Generator", short: "Schema", description: "Infer a JSON Schema from sample data.", category: "Generate & Schema", live: true },
+  { slug: "json-schema-validator", name: "JSON Schema Validator", short: "Validate", description: "Validate JSON against a JSON Schema.", category: "Generate & Schema", live: true },
+  { slug: "json-generator", name: "JSON Generator", short: "Generate", description: "Generate mock JSON data from a template.", category: "Generate & Schema", live: true },
 
   // Encode & Inspect
   { slug: "base64", name: "Base64 Encode/Decode", short: "Base64", description: "Encode or decode Base64 text.", category: "Encode & Inspect", live: true },

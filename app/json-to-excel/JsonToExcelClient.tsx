@@ -20,7 +20,7 @@ export default function JsonToExcelClient() {
 
   function handleDownload() {
     if (!result.blob) return;
-    const blob = new Blob([result.blob], {
+    const blob = new Blob([result.blob as unknown as ArrayBuffer], {
       type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     });
     const url = URL.createObjectURL(blob);

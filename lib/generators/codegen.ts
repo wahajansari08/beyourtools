@@ -1,6 +1,7 @@
 // ─── Shared helpers ──────────────────────────────────────────────────────────
 
-type JsonValue = string | number | boolean | null | JsonValue[] | Record<string, JsonValue>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type JsonValue = any;
 
 function inferType(value: unknown): string {
   if (value === null) return "null";

@@ -15,40 +15,24 @@ export default function Home() {
                 <span className="text-xs text-mist-400">{items.length} tools</span>
               </div>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                {items.map((tool) =>
-                  tool.live ? (
-                    <Link
-                      key={tool.slug}
-                      href={`/${tool.slug}`}
-                      className="focus-ring group flex flex-col justify-between rounded-lg border border-ink-700 bg-ink-900 p-4 transition hover:-translate-y-0.5 hover:border-amber-400/40 hover:shadow-[0_0_0_1px_rgba(242,184,75,0.15)]"
-                    >
-                      <div>
-                        <div className="mb-1.5 flex items-center gap-2">
-                          <span className="font-mono text-[11px] text-teal-400">{"{ }"}</span>
-                          <h3 className="text-sm font-semibold text-mist-50">{tool.name}</h3>
-                        </div>
-                        <p className="text-xs leading-relaxed text-mist-300">{tool.description}</p>
+                {items.map((tool) => (
+                  <Link
+                    key={tool.slug}
+                    href={`/${tool.slug}`}
+                    className="focus-ring group flex flex-col justify-between rounded-lg border border-ink-700 bg-ink-900 p-4 transition hover:-translate-y-0.5 hover:border-amber-400/40 hover:shadow-[0_0_0_1px_rgba(242,184,75,0.15)]"
+                  >
+                    <div>
+                      <div className="mb-1.5 flex items-center gap-2">
+                        <span className="font-mono text-[11px] text-teal-400">{"{ }"}</span>
+                        <h3 className="text-sm font-semibold text-mist-50">{tool.name}</h3>
                       </div>
-                      <span className="mt-3 text-xs font-medium text-amber-400 opacity-0 transition group-hover:opacity-100">
-                        Open tool →
-                      </span>
-                    </Link>
-                  ) : (
-                    <div
-                      key={tool.slug}
-                      className="flex flex-col justify-between rounded-lg border border-dashed border-ink-700 p-4 opacity-60"
-                    >
-                      <div>
-                        <div className="mb-1.5 flex items-center gap-2">
-                          <span className="font-mono text-[11px] text-mist-400">{"{ }"}</span>
-                          <h3 className="text-sm font-semibold text-mist-200">{tool.name}</h3>
-                        </div>
-                        <p className="text-xs leading-relaxed text-mist-400">{tool.description}</p>
-                      </div>
-                      <span className="mt-3 text-xs font-medium text-mist-400">Coming soon</span>
+                      <p className="text-xs leading-relaxed text-mist-300">{tool.description}</p>
                     </div>
-                  )
-                )}
+                    <span className="mt-3 text-xs font-medium text-amber-400 opacity-0 transition group-hover:opacity-100">
+                      Open tool →
+                    </span>
+                  </Link>
+                ))}
               </div>
             </div>
           );
