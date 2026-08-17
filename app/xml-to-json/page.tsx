@@ -1,0 +1,22 @@
+import type { Metadata } from "next";
+import ToolLayout from "@/components/ToolLayout";
+import XmlToJsonClient from "./XmlToJsonClient";
+
+export const metadata: Metadata = {
+  title: "XML to JSON — Jsonifyr",
+  description: "Convert XML documents into JSON.",
+};
+
+export default function Page() {
+  return (
+    <ToolLayout
+      eyebrow="XML → JSON"
+      title="XML to JSON"
+      description="Paste XML markup and convert it into JSON."
+      category="Convert"
+      currentSlug="xml-to-json"
+    >
+      <XmlToJsonClient />
+    </ToolLayout>
+  );
+}
