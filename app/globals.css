@@ -79,6 +79,22 @@ body {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+/* ─── Form placeholders ─────────────────────────────────────────────────────
+   Keep placeholder text readable in both light and dark themes.
+──────────────────────────────────────────────────────────────────────────── */
+input::placeholder,
+textarea::placeholder,
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder,
+input::-moz-placeholder,
+textarea::-moz-placeholder,
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: var(--text-subtle) !important;
+  opacity: 1 !important;
+  -webkit-text-fill-color: var(--text-subtle) !important;
+}
+
 /* ─── Themed utility classes ────────────────────────────────────────────────
    These map CSS vars → classes so components stay readable.
 ──────────────────────────────────────────────────────────────────────────── */

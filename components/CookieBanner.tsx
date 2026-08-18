@@ -36,10 +36,10 @@ export default function CookieBanner() {
       role="dialog"
       aria-modal="false"
       aria-label="Cookie consent"
-      className="fixed bottom-0 left-0 right-0 z-[200] animate-slide-up px-4 pb-4 sm:px-6"
+      className="fixed inset-x-0 bottom-0 z-[200] animate-slide-up hidden"
     >
       <div
-        className="mx-auto flex max-w-5xl flex-col gap-4 rounded-2xl border p-5 shadow-2xl sm:flex-row sm:items-center"
+        className="flex w-full flex-col gap-4 border-t p-5 shadow-2xl sm:flex-row sm:items-center"
         style={{
           backgroundColor: "var(--bg-surface)",
           borderColor: "var(--border-strong)",

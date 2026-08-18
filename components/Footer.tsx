@@ -69,8 +69,7 @@ export default function Footer() {
             <p className="mt-3 text-xs leading-relaxed" style={{ color: "var(--text-subtle)" }}>
               Free, private, browser-based tools for developers and designers. Nothing is uploaded to a server.
             </p>
-            {/* Quick policy links under brand */}
-            <div className="mt-4 flex flex-wrap gap-x-3 gap-y-1">
+            {/* <div className="mt-4 flex flex-wrap gap-x-3 gap-y-1">
               {POLICY_LINKS.map(({ href, label }) => (
                 <Link
                   key={href}
@@ -81,7 +80,7 @@ export default function Footer() {
                   {label}
                 </Link>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Tool link columns */}
