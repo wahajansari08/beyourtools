@@ -43,21 +43,22 @@ export default function DeletePages() {
       onReset={reset}
       resetLabel="Delete from another PDF"
       toolbar={
-        <div className="flex items-center gap-3 rounded-lg border border-ink-700 bg-ink-900 px-4 py-3 w-full">
-          <label htmlFor="del-pages" className="shrink-0 text-xs text-mist-400">Pages to delete</label>
+        <div className="flex items-center gap-3 rounded-lg border px-4 py-3 w-full" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+          <label htmlFor="del-pages" className="shrink-0 text-xs" style={{ color: "var(--text-muted)" }}>Pages to delete</label>
           <input
             id="del-pages"
             type="text"
             value={state.pages}
             onChange={(e) => setState((s) => ({ ...s, pages: e.target.value }))}
             placeholder="e.g. 2, 4-6"
-            className="code-surface focus-ring flex-1 rounded border-0 px-2 py-1 font-mono text-[13px] text-mist-100 placeholder:text-mist-500"
+            className="code-surface focus-ring flex-1 rounded border-0 px-2 py-1 font-mono text-[13px] placeholder:opacity-40"
+            style={{ color: "var(--text-primary)", backgroundColor: "transparent" }}
           />
         </div>
       }
       dropzone={<PdfDropzone onFiles={handleFiles} label="Drop a PDF here" sublabel="Enter pages to delete above, then drop the PDF" />}
       actions={state.url ? <DownloadBtn href={state.url} filename={`${base}-edited.pdf`} label={`Download (${formatBytes(state.size)})`} /> : null}
-      result={<div className="rounded-lg border border-ink-700 bg-ink-900 p-5 text-center text-sm text-mist-200">{state.info}</div>}
+      result={<div className="rounded-lg border p-5 text-center text-sm" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-secondary)" }}>{state.info}</div>}
     />
   );
 }

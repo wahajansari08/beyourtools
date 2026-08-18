@@ -34,21 +34,21 @@ export default async function Page({ params }: Props) {
   return (
     <div className="mx-auto w-full max-w-4xl px-4 py-8 sm:px-6 sm:py-12">
       {/* Breadcrumb */}
-      <div className="mb-5 flex items-center gap-1.5 text-xs text-mist-400">
-        <Link href="/" className="focus-ring rounded hover:text-mist-100">Jsonifyr</Link>
+      <div className="mb-5 flex items-center gap-1.5 text-xs" style={{ color: "var(--text-subtle)" }}>
+        <Link href="/" className="focus-ring rounded" style={{ color: "var(--text-muted)" }}>BeYourTools</Link>
         <span>/</span>
-        <Link href="/pdf-tools" className="focus-ring rounded hover:text-mist-100">PDF Tools</Link>
+        <Link href="/pdf-tools" className="focus-ring rounded" style={{ color: "var(--text-muted)" }}>PDF Tools</Link>
         <span>/</span>
-        <span className="text-mist-300">{def.name}</span>
+        <span style={{ color: "var(--text-secondary)" }}>{def.name}</span>
       </div>
 
       {/* Header */}
       <div className="mb-8">
         <div className="mb-2 flex items-center gap-2">
           <span className="text-2xl" aria-hidden="true">{def.icon}</span>
-          <h1 className="font-display text-2xl font-semibold text-mist-50 sm:text-3xl">{def.name}</h1>
+          <h1 className="font-display text-2xl font-semibold sm:text-3xl" style={{ color: "var(--text-primary)" }}>{def.name}</h1>
         </div>
-        <p className="text-sm text-mist-300">{def.description}</p>
+        <p className="text-sm" style={{ color: "var(--text-muted)" }}>{def.description}</p>
       </div>
 
       {/* Tool UI */}
@@ -56,8 +56,8 @@ export default async function Page({ params }: Props) {
 
       {/* Related */}
       {related.length > 0 && (
-        <div className="mt-10 border-t border-ink-700 pt-6">
-          <h2 className="mb-3 text-xs font-semibold uppercase tracking-wide text-mist-400">
+        <div className="mt-10 border-t pt-6" style={{ borderColor: "var(--border)" }}>
+          <h2 className="mb-3 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>
             More {def.category} tools
           </h2>
           <div className="flex flex-wrap gap-2">
@@ -65,7 +65,8 @@ export default async function Page({ params }: Props) {
               <Link
                 key={t.slug}
                 href={`/pdf-tools/${t.slug}`}
-                className="focus-ring rounded-md border border-ink-700 bg-ink-900 px-3 py-1.5 text-xs text-mist-300 transition hover:border-ink-500 hover:text-mist-50"
+                className="focus-ring rounded-md border px-3 py-1.5 text-xs transition"
+                style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-muted)" }}
               >
                 {t.icon} {t.name}
               </Link>

@@ -1,7 +1,5 @@
 "use client";
 
-import clsx from "clsx";
-
 export default function SegmentedControl<T extends string>({
   label,
   value,
@@ -15,21 +13,32 @@ export default function SegmentedControl<T extends string>({
 }) {
   return (
     <div className="flex items-center gap-2">
-      {label && <span className="text-xs text-mist-400">{label}</span>}
-      <div className="inline-flex rounded-md border border-ink-600 bg-ink-900 p-0.5">
-        {options.map((opt) => (
-          <button
-            key={opt.value}
-            type="button"
-            onClick={() => onChange(opt.value)}
-            className={clsx(
-              "focus-ring rounded px-2.5 py-1 text-xs font-medium transition",
-              value === opt.value ? "bg-amber-400 text-ink-950" : "text-mist-300 hover:text-mist-50"
-            )}
-          >
-            {opt.label}
-          </button>
-        ))}
+      {label && (
+        <span className="text-xs" style={{ color: "var(--text-subtle)" }}>
+          {label}
+        </span>
+      )}
+      <div
+        className="inline-flex rounded-md border p-0.5"
+        style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)" }}
+      >
+        {options.map((opt) => {
+          const isActive = value === opt.value;
+          return (
+            <button
+              key={opt.value}
+              type="button"
+              onClick={() => onChange(opt.value)}
+              className="focus-ring rounded px-2.5 py-1 text-xs font-medium transition"
+              style={{
+                backgroundColor: isActive ? "var(--accent)" : "transparent",
+                color: isActive ? "var(--accent-fg)" : "var(--text-muted)",
+              }}
+            >
+              {opt.label}
+            </button>
+          );
+        })}
       </div>
     </div>
   );

@@ -44,7 +44,7 @@ export default function PdfToJsonTool() {
       actions={url ? <><DownloadBtn href={url} filename={outName} label="Download .json" /><CopyButton text={state.output} /></> : null}
       result={
         <PdfResultPanel label="JSON Output">
-          <pre className="max-h-96 overflow-auto whitespace-pre-wrap break-words font-mono text-[12px] leading-relaxed text-mist-200">
+          <pre className="max-h-96 overflow-auto whitespace-pre-wrap break-words font-mono text-[12px] leading-relaxed" style={{ color: "var(--text-secondary)" }}>
             {state.output}
           </pre>
         </PdfResultPanel>

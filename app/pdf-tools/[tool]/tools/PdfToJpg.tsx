@@ -58,10 +58,10 @@ export default function PdfToJpg() {
       result={
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           {state.pages.map((p, i) => (
-            <div key={i} className="overflow-hidden rounded-lg border border-ink-700 bg-ink-900">
-              <div className="flex items-center justify-between border-b border-ink-700 px-3 py-1.5">
-                <span className="text-[11px] font-medium text-mist-400">Page {p.page}</span>
-                <span className="text-[11px] text-mist-500">{formatBytes(p.blob.size)}</span>
+            <div key={i} className="overflow-hidden rounded-lg border" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+              <div className="flex items-center justify-between border-b px-3 py-1.5" style={{ borderColor: "var(--border)" }}>
+                <span className="text-[11px] font-medium" style={{ color: "var(--text-muted)" }}>Page {p.page}</span>
+                <span className="text-[11px]" style={{ color: "var(--text-subtle)" }}>{formatBytes(p.blob.size)}</span>
               </div>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={state.urls[i]} alt={`Page ${p.page}`} className="w-full object-contain" />

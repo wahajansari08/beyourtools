@@ -30,12 +30,18 @@ export default function JsonlValidatorClient() {
         />
         <ToolOutput label="Line-by-line results" placeholder="Results will appear here.">
           {results.length > 0 && (
-            <div className="divide-y divide-ink-700 font-mono text-[13px]">
+            <div className="font-mono text-[13px]">
               {results.map((r) => (
-                <div key={r.line} className="flex items-start gap-2 px-3.5 py-2">
-                  <span className={r.valid ? "text-teal-400" : "text-coral-400"}>{r.valid ? "✓" : "✕"}</span>
-                  <span className="text-mist-400">Line {r.line}</span>
-                  {!r.valid && <span className="break-words text-coral-400">{r.error}</span>}
+                <div
+                  key={r.line}
+                  className="flex items-start gap-2 border-b px-3.5 py-2 last:border-0"
+                  style={{ borderColor: "var(--border)" }}
+                >
+                  <span style={{ color: r.valid ? "var(--teal)" : "var(--coral)" }}>
+                    {r.valid ? "✓" : "✕"}
+                  </span>
+                  <span style={{ color: "var(--text-muted)" }}>Line {r.line}</span>
+                  {!r.valid && <span className="break-words" style={{ color: "var(--coral)" }}>{r.error}</span>}
                 </div>
               ))}
             </div>
@@ -45,11 +51,7 @@ export default function JsonlValidatorClient() {
       {input.trim() && results.length > 0 && (
         <StatusBanner
           type={invalidCount === 0 ? "success" : "error"}
-          message={
-            invalidCount === 0
-              ? `All ${results.length} lines are valid JSON.`
-              : `${invalidCount} of ${results.length} lines are invalid.`
-          }
+          message={invalidCount === 0 ? `All ${results.length} lines are valid JSON.` : `${invalidCount} of ${results.length} lines are invalid.`}
         />
       )}
     </div>

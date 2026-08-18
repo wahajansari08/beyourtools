@@ -40,7 +40,7 @@ function RelatedConversions({ route }: { route: ConversionRoute }) {
     <div className="mt-10 space-y-6">
       {sameFrom.length > 0 && (
         <div>
-          <h2 className="mb-2 text-xs font-semibold uppercase tracking-wide text-mist-400">
+          <h2 className="mb-2 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>
             More {getFormat(route.from)!.label} conversions
           </h2>
           <div className="flex flex-wrap gap-2">
@@ -48,7 +48,8 @@ function RelatedConversions({ route }: { route: ConversionRoute }) {
               <Link
                 key={r.slug}
                 href={`/image-converter/${r.slug}`}
-                className="focus-ring rounded-md border border-ink-700 bg-ink-900 px-3 py-1.5 text-xs text-mist-300 transition hover:border-ink-500 hover:text-mist-50"
+                className="focus-ring rounded-md border px-3 py-1.5 text-xs transition"
+                style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-muted)" }}
               >
                 {conversionTitle(r)}
               </Link>
@@ -58,7 +59,7 @@ function RelatedConversions({ route }: { route: ConversionRoute }) {
       )}
       {sameTo.length > 0 && (
         <div>
-          <h2 className="mb-2 text-xs font-semibold uppercase tracking-wide text-mist-400">
+          <h2 className="mb-2 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>
             Other converters to {getFormat(route.to)!.label}
           </h2>
           <div className="flex flex-wrap gap-2">
@@ -66,7 +67,8 @@ function RelatedConversions({ route }: { route: ConversionRoute }) {
               <Link
                 key={r.slug}
                 href={`/image-converter/${r.slug}`}
-                className="focus-ring rounded-md border border-ink-700 bg-ink-900 px-3 py-1.5 text-xs text-mist-300 transition hover:border-ink-500 hover:text-mist-50"
+                className="focus-ring rounded-md border px-3 py-1.5 text-xs transition"
+                style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-muted)" }}
               >
                 {conversionTitle(r)}
               </Link>
@@ -90,20 +92,20 @@ export default async function Page({ params }: Props) {
   return (
     <div className="mx-auto w-full max-w-4xl px-4 py-8 sm:px-6 sm:py-12">
       {/* Breadcrumb */}
-      <div className="mb-5 flex items-center gap-1.5 text-xs text-mist-400">
-        <Link href="/" className="focus-ring rounded hover:text-mist-100">Jsonifyr</Link>
+      <div className="mb-5 flex items-center gap-1.5 text-xs" style={{ color: "var(--text-subtle)" }}>
+        <Link href="/" className="focus-ring rounded" style={{ color: "var(--text-muted)" }}>BeYourTools</Link>
         <span>/</span>
-        <Link href="/image-converter" className="focus-ring rounded hover:text-mist-100">Image Converter</Link>
+        <Link href="/image-converter" className="focus-ring rounded" style={{ color: "var(--text-muted)" }}>Image Converter</Link>
         <span>/</span>
-        <span className="text-mist-300">{title}</span>
+        <span style={{ color: "var(--text-secondary)" }}>{title}</span>
       </div>
 
       {/* Header */}
       <div className="mb-8">
-        <h1 className="font-display text-2xl font-semibold text-mist-50 sm:text-3xl">
+        <h1 className="font-display text-2xl font-semibold sm:text-3xl" style={{ color: "var(--text-primary)" }}>
           {from.label} to {to.label} Converter
         </h1>
-        <p className="mt-2 text-sm text-mist-300">
+        <p className="mt-2 text-sm" style={{ color: "var(--text-muted)" }}>
           Convert {from.label} images to {to.label} format directly in your browser.
           No file upload, no account required.
         </p>

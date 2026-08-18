@@ -1,58 +1,49 @@
 "use client";
 
 import { useState } from "react";
-import clsx from "clsx";
 
-export default function CopyButton({ text, className }: { text: string; className?: string }) {
+export default function CopyButton({ text }: { text: string }) {
   const [copied, setCopied] = useState(false);
 
-  async function handleCopy() {
+  const handleCopy = async () => {
     if (!text) return;
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);
-      setTimeout(() => setCopied(false), 1600);
+      setTimeout(() => setCopied(false), 2000);
     } catch {
-      // clipboard unavailable; silently ignore
+      // fallback
     }
-  }
+  };
 
   return (
     <button
       type="button"
       onClick={handleCopy}
-      disabled={!text}
-      className={clsx(
-        "focus-ring inline-flex items-center gap-1.5 rounded-md border border-ink-600 bg-ink-800 px-2.5 py-1.5 text-xs font-medium text-mist-200 transition hover:border-ink-500 hover:text-mist-50 disabled:cursor-not-allowed disabled:opacity-40",
-        className
-      )}
+      className="focus-ring flex items-center gap-1.5 rounded border px-2 py-1 text-xs font-medium transition"
+      style={{
+        borderColor: "var(--border-strong)",
+        backgroundColor: "var(--bg-elevated)",
+        color: copied ? "var(--teal)" : "var(--text-muted)",
+      }}
+      aria-label={copied ? "Copied!" : "Copy to clipboard"}
     >
       {copied ? (
         <>
-          <CheckIcon className="text-teal-400" /> Copied
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="h-3.5 w-3.5" aria-hidden="true">
+            <path fillRule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" clipRule="evenodd" />
+          </svg>
+          Copied
         </>
       ) : (
         <>
-          <CopyIcon /> Copy
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="h-3.5 w-3.5" aria-hidden="true">
+            <path fillRule="evenodd" d="M11.986 3H12a2 2 0 0 1 2 2v6a2 2 0 0 1-1.5 1.937V7A2.5 2.5 0 0 0 10 4.5H4.063A2 2 0 0 1 6 3h.014A2.25 2.25 0 0 1 8.25 1h1.5a2.25 2.25 0 0 1 2.236 2ZM10.5 4v-.175a.75.75 0 0 0-.75-.75h-1.5a.75.75 0 0 0-.75.75V4h3Z" clipRule="evenodd" />
+            <path d="M3 6a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H3Z" />
+          </svg>
+          Copy
         </>
       )}
     </button>
-  );
-}
-
-function CopyIcon() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <rect x="9" y="9" width="12" height="12" rx="2" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  );
-}
-
-function CheckIcon({ className }: { className?: string }) {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className={className}>
-      <path d="M20 6 9 17l-5-5" />
-    </svg>
   );
 }

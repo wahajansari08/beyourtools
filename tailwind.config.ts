@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "class",
   content: [
     "./app/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
@@ -8,6 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Dark palette (unchanged — used directly in dark mode)
         ink: {
           950: "#0a0d13",
           900: "#0e1218",
@@ -21,8 +23,22 @@ const config: Config = {
           300: "#8b96ab",
           200: "#b7c0d1",
           100: "#dde2ec",
-          50: "#f0f3f8",
+          50:  "#f0f3f8",
         },
+        // Light palette
+        slate: {
+          50:  "#f8fafc",
+          100: "#f1f5f9",
+          200: "#e2e8f0",
+          300: "#cbd5e1",
+          400: "#94a3b8",
+          500: "#64748b",
+          600: "#475569",
+          700: "#334155",
+          800: "#1e293b",
+          900: "#0f172a",
+        },
+        // Accent — same in both modes
         amber: {
           400: "#f2b84b",
           500: "#e8a52f",
@@ -37,12 +53,12 @@ const config: Config = {
       },
       fontFamily: {
         display: ["var(--font-display)"],
-        body: ["var(--font-body)"],
-        mono: ["var(--font-mono)"],
+        body:    ["var(--font-body)"],
+        mono:    ["var(--font-mono)"],
       },
       backgroundImage: {
         "grid-fade":
-          "linear-gradient(to bottom, transparent, rgba(10,13,19,1)), repeating-linear-gradient(0deg, rgba(139,150,171,0.06) 0px, rgba(139,150,171,0.06) 1px, transparent 1px, transparent 40px), repeating-linear-gradient(90deg, rgba(139,150,171,0.06) 0px, rgba(139,150,171,0.06) 1px, transparent 1px, transparent 40px)",
+          "linear-gradient(to bottom, transparent, var(--bg-page)), repeating-linear-gradient(0deg, rgba(139,150,171,0.06) 0px, rgba(139,150,171,0.06) 1px, transparent 1px, transparent 40px), repeating-linear-gradient(90deg, rgba(139,150,171,0.06) 0px, rgba(139,150,171,0.06) 1px, transparent 1px, transparent 40px)",
       },
     },
   },

@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import clsx from "clsx";
 import ImageDropzone, { type DroppedFile } from "@/components/ImageDropzone";
 import StatusBanner from "@/components/StatusBanner";
 import { convertImage, suggestFilename } from "@/lib/converters/image";
@@ -65,45 +64,16 @@ export default function ConverterClient({
 
   const handleFile = useCallback(
     async ({ file, previewUrl }: DroppedFile) => {
-      // Clean up previous output
       if (state.outputUrl) URL.revokeObjectURL(state.outputUrl);
-
-      setState((s) => ({
-        ...s,
-        status: "converting",
-        inputName: file.name,
-        inputPreview: previewUrl,
-        outputUrl: "",
-        error: null,
-        warning: null,
-      }));
-
+      setState((s) => ({ ...s, status: "converting", inputName: file.name, inputPreview: previewUrl, outputUrl: "", error: null, warning: null }));
       const result = await convertImage(file, toFormat, quality / 100);
-
       if (result.error || !result.blob) {
-        setState((s) => ({
-          ...s,
-          status: "error",
-          error: result.error ?? "Conversion failed.",
-          warning: null,
-        }));
+        setState((s) => ({ ...s, status: "error", error: result.error ?? "Conversion failed.", warning: null }));
         return;
       }
-
       const outputUrl = URL.createObjectURL(result.blob);
       const outputFilename = suggestFilename(file.name, result.ext);
-
-      setState((s) => ({
-        ...s,
-        status: "done",
-        outputUrl,
-        outputFilename,
-        outputMime: result.mime,
-        outputExt: result.ext,
-        outputSize: result.blob!.size,
-        error: null,
-        warning: result.warning,
-      }));
+      setState((s) => ({ ...s, status: "done", outputUrl, outputFilename, outputMime: result.mime, outputExt: result.ext, outputSize: result.blob!.size, error: null, warning: result.warning }));
     },
     [toFormat, quality, state.outputUrl]
   );
@@ -114,110 +84,108 @@ export default function ConverterClient({
 
   return (
     <div className="space-y-4">
-      {/* Quality slider — only for lossy formats */}
+      {/* Quality slider */}
       {showQuality && (
-        <div className="flex items-center gap-3 rounded-lg border border-ink-700 bg-ink-900 px-4 py-3">
-          <label htmlFor="quality-slider" className="text-xs text-mist-400 shrink-0">
+        <div
+          className="flex items-center gap-3 rounded-lg border px-4 py-3"
+          style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}
+        >
+          <label htmlFor="quality-slider" className="shrink-0 text-xs" style={{ color: "var(--text-muted)" }}>
             Quality
           </label>
           <input
             id="quality-slider"
-            type="range"
-            min={10}
-            max={100}
-            step={1}
-            value={quality}
+            type="range" min={10} max={100} step={1} value={quality}
             onChange={(e) => setQuality(Number(e.target.value))}
             className="h-1.5 w-full cursor-pointer accent-amber-400"
           />
-          <span className="w-8 shrink-0 text-right text-xs font-mono text-amber-400">{quality}%</span>
+          <span className="w-8 shrink-0 text-right font-mono text-xs" style={{ color: "var(--accent)" }}>
+            {quality}%
+          </span>
         </div>
       )}
 
+      {/* Idle — dropzone */}
       {state.status === "idle" && (
-        <ImageDropzone
-          accept={accept}
-          onFile={handleFile}
-          label={`Drop a ${fromLabel} file here`}
-        />
+        <ImageDropzone accept={accept} onFile={handleFile} label={`Drop a ${fromLabel} file here`} />
       )}
 
+      {/* Converting */}
       {state.status === "converting" && (
-        <div className="flex flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-ink-600 bg-ink-900 p-14 text-center">
-          <svg
-            className="h-8 w-8 animate-spin text-amber-400"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
+        <div
+          className="flex flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed p-14 text-center"
+          style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-surface)" }}
+        >
+          <svg className="h-8 w-8 animate-spin" style={{ color: "var(--accent)" }}
+            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
           </svg>
-          <p className="text-sm text-mist-300">Converting to {toLabel}…</p>
+          <p className="text-sm" style={{ color: "var(--text-muted)" }}>Converting to {toLabel}…</p>
         </div>
       )}
 
+      {/* Result panels */}
       {(state.status === "done" || state.status === "error") && (
         <div className="grid gap-4 sm:grid-cols-2">
-          {/* Input preview */}
-          <div className="overflow-hidden rounded-lg border border-ink-700 bg-ink-900">
-            <div className="flex items-center justify-between border-b border-ink-700 px-3 py-2">
+          {/* Input */}
+          <div className="overflow-hidden rounded-lg border" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+            <div className="flex items-center justify-between border-b px-3 py-2" style={{ borderColor: "var(--border)" }}>
               <div className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-mist-400" />
-                <span className="text-xs font-semibold uppercase tracking-wide text-mist-300">
+                <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: "var(--text-subtle)" }} />
+                <span className="text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-muted)" }}>
                   Input ({fromLabel})
                 </span>
               </div>
-              <span className="truncate text-right text-[11px] text-mist-500 max-w-[140px]" title={state.inputName}>
+              <span className="max-w-[140px] truncate text-right text-[11px]" style={{ color: "var(--text-subtle)" }} title={state.inputName}>
                 {state.inputName}
               </span>
             </div>
-            <div className="flex items-center justify-center bg-[#080b10] p-3" style={{ minHeight: "200px" }}>
+            <div
+              className="flex items-center justify-center p-3"
+              style={{ minHeight: "200px", backgroundColor: "var(--bg-page)" }}
+            >
               {state.inputPreview ? (
-                /* eslint-disable-next-line @next/next/no-img-element */
-                <img
-                  src={state.inputPreview}
-                  alt="Input preview"
-                  className="max-h-64 max-w-full rounded object-contain"
-                />
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={state.inputPreview} alt="Input preview" className="max-h-64 max-w-full rounded object-contain" />
               ) : (
-                <span className="text-xs text-mist-500">No preview</span>
+                <span className="text-xs" style={{ color: "var(--text-subtle)" }}>No preview</span>
               )}
             </div>
           </div>
 
           {/* Output */}
-          <div className="overflow-hidden rounded-lg border border-ink-700 bg-ink-900">
-            <div className="flex items-center justify-between border-b border-ink-700 px-3 py-2">
+          <div className="overflow-hidden rounded-lg border" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+            <div className="flex items-center justify-between border-b px-3 py-2" style={{ borderColor: "var(--border)" }}>
               <div className="flex items-center gap-2">
-                <span className={clsx("h-1.5 w-1.5 rounded-full", state.status === "done" ? "bg-teal-400" : "bg-coral-400")} />
-                <span className="text-xs font-semibold uppercase tracking-wide text-mist-300">
+                <span
+                  className="h-1.5 w-1.5 rounded-full"
+                  style={{ backgroundColor: state.status === "done" ? "var(--teal)" : "var(--coral)" }}
+                />
+                <span className="text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-muted)" }}>
                   Output ({toLabel})
                 </span>
               </div>
               {state.status === "done" && (
-                <span className="text-[11px] text-mist-500">{formatBytes(state.outputSize)}</span>
+                <span className="text-[11px]" style={{ color: "var(--text-subtle)" }}>{formatBytes(state.outputSize)}</span>
               )}
             </div>
-
-            <div className="flex items-center justify-center bg-[#080b10] p-3" style={{ minHeight: "200px" }}>
+            <div
+              className="flex items-center justify-center p-3"
+              style={{ minHeight: "200px", backgroundColor: "var(--bg-page)" }}
+            >
               {state.status === "done" && state.outputUrl && isRasterOutput ? (
-                /* eslint-disable-next-line @next/next/no-img-element */
-                <img
-                  src={state.outputUrl}
-                  alt="Converted output"
-                  className="max-h-64 max-w-full rounded object-contain"
-                />
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={state.outputUrl} alt="Converted output" className="max-h-64 max-w-full rounded object-contain" />
               ) : state.status === "done" ? (
                 <div className="flex flex-col items-center gap-2 text-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-12 w-12 text-teal-400" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-12 w-12" style={{ color: "var(--teal)" }} aria-hidden="true">
                     <path fillRule="evenodd" d="M5.625 1.5H9a3.75 3.75 0 0 1 3.75 3.75v1.875c0 1.036.84 1.875 1.875 1.875H16.5a3.75 3.75 0 0 1 3.75 3.75v7.875c0 1.035-.84 1.875-1.875 1.875H5.625a1.875 1.875 0 0 1-1.875-1.875V3.375c0-1.036.84-1.875 1.875-1.875Zm6.905 9.97a.75.75 0 0 0-1.06 0l-3 3a.75.75 0 1 0 1.06 1.06l1.72-1.72V18a.75.75 0 0 0 1.5 0v-4.19l1.72 1.72a.75.75 0 1 0 1.06-1.06l-3-3Z" clipRule="evenodd" />
                   </svg>
-                  <p className="text-xs text-mist-300">Ready to download</p>
+                  <p className="text-xs" style={{ color: "var(--text-muted)" }}>Ready to download</p>
                 </div>
               ) : (
-                <span className="text-xs text-mist-500">Conversion failed</span>
+                <span className="text-xs" style={{ color: "var(--text-subtle)" }}>Conversion failed</span>
               )}
             </div>
           </div>
@@ -225,17 +193,18 @@ export default function ConverterClient({
       )}
 
       {/* Banners */}
-      {state.warning && <StatusBanner type="info" message={state.warning} />}
-      {state.error   && <StatusBanner type="error" message={state.error} />}
+      {state.warning && <StatusBanner type="info"  message={state.warning} />}
+      {state.error   && <StatusBanner type="error" message={state.error}   />}
 
-      {/* Action buttons */}
+      {/* Actions */}
       {(state.status === "done" || state.status === "error") && (
         <div className="flex flex-wrap gap-3">
           {state.status === "done" && state.outputUrl && (
             <a
               href={state.outputUrl}
               download={state.outputFilename}
-              className="focus-ring inline-flex items-center gap-2 rounded-md bg-amber-400 px-5 py-2.5 text-sm font-semibold text-ink-950 transition hover:bg-amber-500"
+              className="focus-ring inline-flex items-center gap-2 rounded-md px-5 py-2.5 text-sm font-semibold transition hover:opacity-90"
+              style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}
             >
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4" aria-hidden="true">
                 <path d="M10.75 2.75a.75.75 0 0 0-1.5 0v8.614L6.295 8.235a.75.75 0 1 0-1.09 1.03l4.25 4.5a.75.75 0 0 0 1.09 0l4.25-4.5a.75.75 0 0 0-1.09-1.03l-2.955 3.129V2.75Z" />
@@ -247,7 +216,8 @@ export default function ConverterClient({
           <button
             type="button"
             onClick={reset}
-            className="focus-ring inline-flex items-center gap-2 rounded-md border border-ink-600 px-5 py-2.5 text-sm font-medium text-mist-200 transition hover:border-ink-500 hover:text-mist-50"
+            className="focus-ring inline-flex items-center gap-2 rounded-md border px-5 py-2.5 text-sm font-medium transition"
+            style={{ borderColor: "var(--border-strong)", color: "var(--text-secondary)", backgroundColor: "var(--bg-elevated)" }}
           >
             Convert another file
           </button>
@@ -258,15 +228,15 @@ export default function ConverterClient({
       <div className="grid gap-3 pt-2 sm:grid-cols-3">
         {[
           { icon: "🔒", title: "Private", body: "Files never leave your device. Conversion happens entirely in your browser." },
-          { icon: "⚡", title: "Instant",  body: "No upload wait. Conversion starts the moment you drop or select a file." },
-          { icon: "🆓", title: "Free",     body: "No account, no limits, no watermarks. Always free." },
+          { icon: "⚡", title: "Instant",  body: "No upload wait. Conversion starts the moment you select a file."            },
+          { icon: "🆓", title: "Free",     body: "No account, no limits, no watermarks. Always free."                        },
         ].map(({ icon, title, body }) => (
-          <div key={title} className="rounded-lg border border-ink-700 bg-ink-900 p-4">
+          <div key={title} className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
             <div className="mb-1.5 flex items-center gap-2">
               <span aria-hidden="true">{icon}</span>
-              <span className="text-xs font-semibold text-mist-200">{title}</span>
+              <span className="text-xs font-semibold" style={{ color: "var(--text-secondary)" }}>{title}</span>
             </div>
-            <p className="text-xs leading-relaxed text-mist-400">{body}</p>
+            <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>{body}</p>
           </div>
         ))}
       </div>

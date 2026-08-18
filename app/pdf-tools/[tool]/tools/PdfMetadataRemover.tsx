@@ -40,7 +40,7 @@ export default function PdfMetadataRemover() {
       resetLabel="Remove from another PDF"
       dropzone={<PdfDropzone onFiles={handleFiles} label="Drop a PDF here" />}
       actions={state.url ? <DownloadBtn href={state.url} filename={`${base}-clean.pdf`} label={`Download (${formatBytes(state.size)})`} /> : null}
-      result={<div className="rounded-lg border border-ink-700 bg-ink-900 p-5 text-center text-sm text-mist-200">{state.info}</div>}
+      result={<div className="rounded-lg border p-5 text-center text-sm" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-secondary)" }}>{state.info}</div>}
     />
   );
 }

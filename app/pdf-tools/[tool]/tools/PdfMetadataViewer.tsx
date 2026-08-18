@@ -53,9 +53,11 @@ export default function PdfMetadataViewer() {
           <table className="w-full text-[13px]">
             <tbody>
               {rows.map(([key, val]) => (
-                <tr key={key} className="border-b border-ink-800 last:border-0">
-                  <td className="py-1.5 pr-4 font-semibold text-mist-400 whitespace-nowrap">{key}</td>
-                  <td className="py-1.5 font-mono text-mist-200 break-all">{val !== null && val !== undefined && val !== "" ? String(val) : <span className="text-mist-500">—</span>}</td>
+                <tr key={key} className="border-b last:border-0" style={{ borderColor: "var(--border)" }}>
+                  <td className="py-1.5 pr-4 font-semibold whitespace-nowrap" style={{ color: "var(--text-muted)" }}>{key}</td>
+                  <td className="py-1.5 font-mono break-all" style={{ color: "var(--text-secondary)" }}>
+                    {val !== null && val !== undefined && val !== "" ? String(val) : <span style={{ color: "var(--text-subtle)" }}>—</span>}
+                  </td>
                 </tr>
               ))}
             </tbody>

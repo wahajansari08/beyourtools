@@ -68,7 +68,8 @@ export default function JsonToExcelClient() {
               <button
                 type="button"
                 onClick={handleDownload}
-                className="focus-ring flex items-center gap-1.5 rounded border border-ink-600 bg-ink-800 px-2.5 py-1 text-xs font-medium text-mist-300 transition hover:border-teal-500 hover:text-teal-300"
+                className="focus-ring flex items-center gap-1.5 rounded border px-2.5 py-1 text-xs font-medium transition"
+                style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +94,8 @@ export default function JsonToExcelClient() {
                     {preview.headers.map((h) => (
                       <th
                         key={h}
-                        className="whitespace-nowrap border-b border-ink-700 pb-1.5 pr-4 font-semibold text-amber-400"
+                        className="whitespace-nowrap border-b pb-1.5 pr-4 font-semibold"
+                        style={{ borderColor: "var(--border)", color: "var(--accent)" }}
                       >
                         {h}
                       </th>
@@ -102,15 +104,15 @@ export default function JsonToExcelClient() {
                 </thead>
                 <tbody>
                   {preview.rows.map((row, i) => (
-                    <tr key={i} className="border-b border-ink-800 last:border-0">
+                    <tr key={i} className="border-b last:border-0" style={{ borderColor: "var(--border)" }}>
                       {preview.headers.map((h) => {
                         const v = row[h];
                         return (
-                          <td key={h} className="whitespace-nowrap py-1.5 pr-4 font-mono text-mist-300">
+                          <td key={h} className="whitespace-nowrap py-1.5 pr-4 font-mono" style={{ color: "var(--text-muted)" }}>
                             {v === null || v === undefined
-                              ? <span className="text-mist-500">—</span>
+                              ? <span style={{ color: "var(--text-subtle)" }}>—</span>
                               : typeof v === "object"
-                              ? <span className="text-mist-500">{JSON.stringify(v)}</span>
+                              ? <span style={{ color: "var(--text-subtle)" }}>{JSON.stringify(v)}</span>
                               : String(v)}
                           </td>
                         );
@@ -120,7 +122,7 @@ export default function JsonToExcelClient() {
                 </tbody>
               </table>
               {preview.total > 10 && (
-                <p className="mt-2 text-[11px] text-mist-500">
+                <p className="mt-2 text-[11px]" style={{ color: "var(--text-subtle)" }}>
                   Showing 10 of {preview.total} rows — all rows are included in the download.
                 </p>
               )}

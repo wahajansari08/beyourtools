@@ -43,7 +43,7 @@ export default function PdfToHtml() {
       actions={url ? <><DownloadBtn href={url} filename={outName} label="Download .html" /><CopyButton text={state.output} /></> : null}
       result={
         <PdfResultPanel label="HTML Output">
-          <pre className="max-h-80 overflow-auto whitespace-pre-wrap break-words font-mono text-[12px] leading-relaxed text-mist-200">
+          <pre className="max-h-80 overflow-auto whitespace-pre-wrap break-words font-mono text-[12px] leading-relaxed" style={{ color: "var(--text-secondary)" }}>
             {state.output}
           </pre>
         </PdfResultPanel>

@@ -42,7 +42,10 @@ const tools: Record<string, React.ComponentType> = {
 export default function PdfToolClient({ slug }: { slug: string }) {
   const Tool = tools[slug];
   if (!Tool) return (
-    <div className="rounded-lg border border-ink-700 bg-ink-900 p-8 text-center text-sm text-mist-400">
+    <div
+      className="rounded-lg border p-8 text-center text-sm"
+      style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-muted)" }}
+    >
       Tool not found.
     </div>
   );
