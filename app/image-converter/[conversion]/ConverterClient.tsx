@@ -105,7 +105,7 @@ export default function ConverterClient({
         </div>
       )}
 
-      {/* Idle — dropzone */}
+      {/* Idle - dropzone */}
       {state.status === "idle" && (
         <ImageDropzone accept={accept} onFile={handleFile} label={`Drop a ${fromLabel} file here`} />
       )}

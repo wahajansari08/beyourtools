@@ -110,7 +110,7 @@ export default function JsonToExcelClient() {
                         return (
                           <td key={h} className="whitespace-nowrap py-1.5 pr-4 font-mono" style={{ color: "var(--text-muted)" }}>
                             {v === null || v === undefined
-                              ? <span style={{ color: "var(--text-subtle)" }}>—</span>
+                              ? <span style={{ color: "var(--text-subtle)" }}>-</span>
                               : typeof v === "object"
                               ? <span style={{ color: "var(--text-subtle)" }}>{JSON.stringify(v)}</span>
                               : String(v)}
@@ -123,7 +123,7 @@ export default function JsonToExcelClient() {
               </table>
               {preview.total > 10 && (
                 <p className="mt-2 text-[11px]" style={{ color: "var(--text-subtle)" }}>
-                  Showing 10 of {preview.total} rows — all rows are included in the download.
+                  Showing 10 of {preview.total} rows - all rows are included in the download.
                 </p>
               )}
             </div>
@@ -135,7 +135,7 @@ export default function JsonToExcelClient() {
       {result.blob && !result.error && (
         <StatusBanner
           type="success"
-          message={`Ready to download — ${result.blob.length.toLocaleString()} bytes.`}
+          message={`Ready to download - ${result.blob.length.toLocaleString()} bytes.`}
         />
       )}
     </div>

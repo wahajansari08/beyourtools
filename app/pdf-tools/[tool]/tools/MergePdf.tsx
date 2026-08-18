@@ -73,14 +73,14 @@ export default function MergePdf() {
       }
       dropzone={
         <div className="space-y-3">
-          <PdfDropzone accept=".pdf,application/pdf" multiple onFiles={addFiles} label="Drop PDF files here" sublabel="Add multiple PDFs — reorder below then click Merge" />
+          <PdfDropzone accept=".pdf,application/pdf" multiple onFiles={addFiles} label="Drop PDF files here" sublabel="Add multiple PDFs - reorder below then click Merge" />
           {state.files.length > 0 && (
             <div
               className="rounded-lg border divide-y"
               style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}
             >
               <div className="px-3 py-2 text-[11px] font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>
-                {state.files.length} file{state.files.length !== 1 ? "s" : ""} — drag rows to reorder
+                {state.files.length} file{state.files.length !== 1 ? "s" : ""} - drag rows to reorder
               </div>
               {state.files.map((f, i) => (
                 <div key={i} className="flex items-center gap-2 border-b px-3 py-2 text-sm last:border-0" style={{ borderColor: "var(--border)", color: "var(--text-muted)" }}>

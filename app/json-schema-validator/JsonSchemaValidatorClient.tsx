@@ -45,11 +45,11 @@ export default function JsonSchemaValidatorClient() {
       {!result.error && (json.trim() || schema.trim()) && (
         <>
           {result.valid ? (
-            <StatusBanner type="success" message="Valid — JSON matches the schema." />
+            <StatusBanner type="success" message="Valid - JSON matches the schema." />
           ) : (
             result.issues.length > 0 && (
               <>
-                <StatusBanner type="error" message={`Invalid — ${result.issues.length} violation${result.issues.length !== 1 ? "s" : ""} found.`} />
+                <StatusBanner type="error" message={`Invalid - ${result.issues.length} violation${result.issues.length !== 1 ? "s" : ""} found.`} />
                 <ToolOutput label="Violations" value={issueText} actions={<CopyButton text={issueText} />}>
                   <div>
                     {result.issues.map((issue, i) => (

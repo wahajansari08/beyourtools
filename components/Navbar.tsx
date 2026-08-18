@@ -12,6 +12,7 @@ const NAV_LINKS = [
   { href: "/image-converter", label: "Image Converter" },
   { href: "/pdf-tools",       label: "PDF Tools"       },
   { href: "/blog",            label: "Blog"            },
+  { href: "/about",           label: "About"           },
 ];
 
 const SearchIcon = () => (
@@ -79,11 +80,11 @@ export default function Navbar() {
           {/*
               Layout (desktop, left→right):
                 [Search icon + "Search" text + ⌘K hint] [Moon/Sun icon] [Hamburger mobile-only]
-              All items are plain icon/text buttons — no border boxes.
+              All items are plain icon/text buttons - no border boxes.
           */}
           <div className="flex items-center gap-0.5">
 
-            {/* Search — desktop: icon + label + kbd hint, no box */}
+            {/* Search - desktop: icon + label + kbd hint, no box */}
             <button
               type="button"
               onClick={openSearch}
@@ -105,7 +106,7 @@ export default function Navbar() {
               </kbd>
             </button>
 
-            {/* Search — mobile: icon only, no box */}
+            {/* Search - mobile: icon only, no box */}
             <button
               type="button"
               onClick={openSearch}
@@ -119,13 +120,13 @@ export default function Navbar() {
             {/* Divider */}
             <div className="mx-1 hidden h-4 w-px md:block" style={{ backgroundColor: "var(--border-strong)" }} aria-hidden="true" />
 
-            {/* Theme toggle — moon/sun icon that opens dropdown */}
+            {/* Theme toggle - moon/sun icon that opens dropdown */}
             <ThemeToggle />
 
-            {/* Divider — mobile only (between theme and hamburger) */}
+            {/* Divider - mobile only (between theme and hamburger) */}
             <div className="mx-1 h-4 w-px md:hidden" style={{ backgroundColor: "var(--border-strong)" }} aria-hidden="true" />
 
-            {/* Hamburger — mobile only */}
+            {/* Hamburger - mobile only */}
             <button
               type="button"
               onClick={() => setMenuOpen((o) => !o)}

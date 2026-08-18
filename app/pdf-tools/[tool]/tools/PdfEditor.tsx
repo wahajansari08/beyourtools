@@ -143,7 +143,7 @@ export default function PdfEditor() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={sel.url} alt={`Page ${sel.page}`} className="max-h-[560px] max-w-full object-contain shadow-xl" />
                   <p className="mt-2 text-xs" style={{ color: "var(--text-subtle)" }}>
-                    Page {sel.page} — {sel.width}×{sel.height}px
+                    Page {sel.page} - {sel.width}×{sel.height}px
                   </p>
                 </div>
               ) : (

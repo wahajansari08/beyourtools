@@ -1,11 +1,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { pdfTools, pdfToolCategories, pdfToolsByCategory } from "@/lib/pdf-tools-config";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "PDF Tools — BeYourTools",
-  description:
-    "Free browser-based PDF tools. Merge, split, compress, rotate, watermark, protect, convert PDF to JPG/PNG/Word/Excel and more — no upload, no sign-up.",
+  title: "PDF Tools - Free Online PDF Editor, Converter & Compressor",
+  description: "Free browser-based PDF tools. Merge, split, compress, rotate, watermark, protect, convert PDF to JPG/PNG/text - no upload, no sign-up, 100% private.",
+  keywords: "merge PDF, split PDF, compress PDF, PDF to JPG, PDF to text, PDF watermark, protect PDF, free PDF tools, online PDF editor",
+  alternates: { canonical: `${SITE.url}/pdf-tools` },
+  openGraph: {
+    type: "website", url: `${SITE.url}/pdf-tools`,
+    title: "Free Online PDF Tools - BeYourTools",
+    description: "30 PDF tools in your browser - merge, split, compress, convert and more. No upload required.",
+    images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "PDF Tools" }],
+  },
 };
 
 const ENGINE_BADGE: Record<string, { label: string; bg: string; text: string }> = {
@@ -19,8 +28,29 @@ export default function PdfToolsHub() {
   const total = pdfTools.length;
   const browserCount = pdfTools.filter((t) => t.engine !== "limited").length;
 
+  const schemas = [
+    breadcrumbSchema([
+      { name: "BeYourTools", url: SITE.url },
+      { name: "PDF Tools", url: canonical("/pdf-tools") },
+    ]),
+    softwareApplicationSchema({
+      name: "BeYourTools PDF Tools",
+      description: `${total} free browser-based PDF tools. Merge, split, compress, protect, watermark, and convert PDFs.`,
+      url: canonical("/pdf-tools"),
+      category: "DeveloperApplication",
+    }),
+    faqSchema([
+      { question: "How do I merge PDF files for free?", answer: "Use our free PDF Merge tool - upload multiple PDFs, reorder them, and download the merged file. No account needed and files never leave your browser." },
+      { question: "How do I compress a PDF?", answer: "Our PDF Compressor re-serialises the PDF's internal object streams, typically reducing size by 10–40% for standard PDFs without quality loss." },
+      { question: "How do I password-protect a PDF?", answer: "Our PDF Protect tool adds AES-256 encryption. Enter a user password, upload your PDF, and download the protected version instantly." },
+      { question: "Is it safe to use online PDF tools?", answer: "With BeYourTools, your PDF files never leave your device. All processing happens locally in JavaScript - nothing is uploaded to any server." },
+    ]),
+  ];
+
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
+    <>
+      <JsonLd data={schemas} />
+      <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
       {/* Breadcrumb */}
       <div className="mb-4 flex items-center gap-1.5 text-xs" style={{ color: "var(--text-subtle)" }}>
         <Link href="/" className="focus-ring rounded" style={{ color: "var(--text-muted)" }}>BeYourTools</Link>
@@ -34,7 +64,7 @@ export default function PdfToolsHub() {
           PDF Tools
         </h1>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-          Everything you need to work with PDFs — convert, edit, compress, protect and more.
+          Everything you need to work with PDFs - convert, edit, compress, protect and more.
           Most tools run entirely in your browser with no file upload required.
         </p>
         <div className="mt-5 flex flex-wrap gap-4 text-xs" style={{ color: "var(--text-subtle)" }}>
@@ -133,5 +163,6 @@ export default function PdfToolsHub() {
         Those tools display a clear explanation and suggest free desktop alternatives.
       </div>
     </div>
+    </>
   );
 }

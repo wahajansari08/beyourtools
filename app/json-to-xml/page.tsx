@@ -3,7 +3,7 @@ import ToolLayout from "@/components/ToolLayout";
 import JsonToXmlClient from "./JsonToXmlClient";
 
 export const metadata: Metadata = {
-  title: "JSON to XML — Jsonifyr",
+  title: "JSON to XML - BeYourTools",
   description: "Convert JSON objects into XML markup.",
 };
 

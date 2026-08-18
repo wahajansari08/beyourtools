@@ -36,7 +36,7 @@ export default function ValidatorClient() {
           </>
         }
       />
-      {input.trim() && result.valid && <StatusBanner type="success" message={`Valid JSON — ${describe(result.parsed)}.`} />}
+      {input.trim() && result.valid && <StatusBanner type="success" message={`Valid JSON - ${describe(result.parsed)}.`} />}
       {input.trim() && !result.valid && result.error && <StatusBanner type="error" message={result.error} />}
     </div>
   );

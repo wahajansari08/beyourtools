@@ -3,7 +3,7 @@ import ToolLayout from "@/components/ToolLayout";
 import JsonToExcelClient from "./JsonToExcelClient";
 
 export const metadata: Metadata = {
-  title: "JSON to Excel — Jsonifyr",
+  title: "JSON to Excel - BeYourTools",
   description: "Export a JSON array as a downloadable .xlsx spreadsheet directly in your browser.",
 };
 
@@ -12,7 +12,7 @@ export default function Page() {
     <ToolLayout
       eyebrow="JSON → Excel"
       title="JSON to Excel"
-      description="Paste a JSON array of objects and download a fully-formatted .xlsx spreadsheet — no server, no sign-up."
+      description="Paste a JSON array of objects and download a fully-formatted .xlsx spreadsheet - no server, no sign-up."
       category="Convert"
       currentSlug="json-to-excel"
     >

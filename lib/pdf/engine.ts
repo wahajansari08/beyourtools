@@ -355,7 +355,7 @@ export async function compressPdf(bytes: Uint8Array): Promise<PdfResult & { orig
       error: null,
       info: saved > 0
         ? `Reduced by ${formatBytes(saved)} (${pct}%).`
-        : "File is already optimally compressed — no further reduction possible.",
+        : "File is already optimally compressed - no further reduction possible.",
       originalSize: bytes.length,
       compressedSize: out.length,
     };
@@ -453,7 +453,7 @@ export function extractTextFromBytes(bytes: Uint8Array): { text: string; error: 
       }
     }
     const text = lines.join("\n");
-    return { text: text.trim() || "(No extractable text found — this may be a scanned PDF.)", error: null };
+    return { text: text.trim() || "(No extractable text found - this may be a scanned PDF.)", error: null };
   } catch (e) {
     return { text: "", error: e instanceof Error ? e.message : "Text extraction failed" };
   }
@@ -538,7 +538,7 @@ export async function pdfToHtml(bytes: Uint8Array): Promise<{ output: string; er
 <body>
   <header>
     <h1>${title}</h1>
-    <p><small>${pageCount} page(s) — Converted by Jsonifyr</small></p>
+    <p><small>${pageCount} page(s) - Converted by BeYourTools</small></p>
   </header>
   <main>
     <pre>${escaped}</pre>

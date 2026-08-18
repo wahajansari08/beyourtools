@@ -159,9 +159,9 @@ export default function JsonPathClient() {
             ["[start:end]",       "Array slice"],
             ["[a,b]",             "Union of indices/keys"],
             ["[*]",               "All array elements"],
-            ["[?(@.key)]",        "Filter — key exists"],
-            ["[?(@.key == val)]", "Filter — equality"],
-            ["[?(@.num > val)]",  "Filter — comparison"],
+            ["[?(@.key)]",        "Filter - key exists"],
+            ["[?(@.key == val)]", "Filter - equality"],
+            ["[?(@.num > val)]",  "Filter - comparison"],
           ].map(([expr, desc]) => (
             <div key={expr} className="flex gap-2 py-0.5">
               <code className="w-36 shrink-0 font-mono" style={{ color: "var(--accent)" }}>{expr}</code>

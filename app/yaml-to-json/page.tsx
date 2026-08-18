@@ -3,7 +3,7 @@ import ToolLayout from "@/components/ToolLayout";
 import YamlToJsonClient from "./YamlToJsonClient";
 
 export const metadata: Metadata = {
-  title: "YAML to JSON — Jsonifyr",
+  title: "YAML to JSON - BeYourTools",
   description: "Convert YAML documents into JSON.",
 };
 

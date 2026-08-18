@@ -56,7 +56,7 @@ export default function PdfMetadataViewer() {
                 <tr key={key} className="border-b last:border-0" style={{ borderColor: "var(--border)" }}>
                   <td className="py-1.5 pr-4 font-semibold whitespace-nowrap" style={{ color: "var(--text-muted)" }}>{key}</td>
                   <td className="py-1.5 font-mono break-all" style={{ color: "var(--text-secondary)" }}>
-                    {val !== null && val !== undefined && val !== "" ? String(val) : <span style={{ color: "var(--text-subtle)" }}>—</span>}
+                    {val !== null && val !== undefined && val !== "" ? String(val) : <span style={{ color: "var(--text-subtle)" }}>-</span>}
                   </td>
                 </tr>
               ))}

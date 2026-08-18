@@ -123,7 +123,7 @@ export default function HtmlToPdf() {
                 />
               </svg>
               <p className="mt-2 text-sm font-medium" style={{ color: "var(--text-secondary)" }}>
-                PDF ready — {formatBytes(state.size)}
+                PDF ready - {formatBytes(state.size)}
               </p>
             </div>
           )}

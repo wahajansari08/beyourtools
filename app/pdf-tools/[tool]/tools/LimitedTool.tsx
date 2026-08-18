@@ -14,7 +14,7 @@ const ALTERNATIVES: Record<string, { name: string; url: string }[]> = {
 };
 
 const REASONS: Record<string, string> = {
-  "pdf-to-word":       "Converting PDF to Word requires parsing complex layout, fonts, and formatting — this needs server-side processing that browsers cannot perform reliably.",
+  "pdf-to-word":       "Converting PDF to Word requires parsing complex layout, fonts, and formatting - this needs server-side processing that browsers cannot perform reliably.",
   "word-to-pdf":       "Word documents use OS-level rendering (Microsoft Office or LibreOffice). Browsers cannot accurately replicate this without a server.",
   "pdf-to-excel":      "Extracting tabular data from PDFs requires layout analysis and cell-boundary detection, which needs a full server-side pipeline.",
   "excel-to-pdf":      "Excel renders using OS-level spreadsheet engines. Accurate PDF output requires server-side processing.",
@@ -81,7 +81,7 @@ export default function LimitedTool() {
         <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
           Try <strong style={{ color: "var(--text-secondary)" }}>PDF to Text</strong> or{" "}
           <strong style={{ color: "var(--text-secondary)" }}>PDF to JSON</strong> to extract
-          plain text content from your PDF entirely in the browser — no upload needed.
+          plain text content from your PDF entirely in the browser - no upload needed.
         </p>
       </div>
     </div>

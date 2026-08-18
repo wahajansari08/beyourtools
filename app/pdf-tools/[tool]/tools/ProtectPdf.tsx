@@ -45,8 +45,8 @@ export default function ProtectPdf() {
       toolbar={
         <div className="flex flex-wrap gap-3 w-full">
           {[
-            { id: "user-pw", label: "User password *", value: password, set: setPassword, placeholder: "Required — to open the PDF" },
-            { id: "owner-pw", label: "Owner password", value: owner, set: setOwner, placeholder: "Optional — to edit/print" },
+            { id: "user-pw", label: "User password *", value: password, set: setPassword, placeholder: "Required - to open the PDF" },
+            { id: "owner-pw", label: "Owner password", value: owner, set: setOwner, placeholder: "Optional - to edit/print" },
           ].map(({ id, label, value, set, placeholder }) => (
             <div key={id} className="flex items-center gap-2 rounded-lg border px-3 py-2" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
               <label htmlFor={id} className="shrink-0 text-xs" style={{ color: "var(--text-muted)" }}>{label}</label>

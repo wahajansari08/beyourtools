@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const from = getFormat(route.from)!;
   const to   = getFormat(route.to)!;
   return {
-    title: `${from.label} to ${to.label} Converter — Free Online Tool`,
+    title: `${from.label} to ${to.label} Converter - Free Online Tool`,
     description: `Convert ${from.label} images to ${to.label} format instantly in your browser. No upload, no sign-up, completely free.`,
   };
 }

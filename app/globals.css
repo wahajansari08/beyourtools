@@ -277,3 +277,107 @@ body {
   font-weight: 600;
   color: var(--text-primary);
 }
+
+/* ─── Cookie banner slide-up animation ──────────────────────────────────────── */
+
+@keyframes slide-up {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out;
+}
+
+/* ─── Policy / legal pages (terms, privacy, cookie, disclaimer, about) ──────── */
+
+.policy-content {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+.policy-content section { padding-top: 0.25rem; }
+
+.policy-content h2 {
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.policy-content h3 {
+  margin-top: 1.25rem;
+  margin-bottom: 0.4rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.policy-content p { margin-bottom: 0.75rem; }
+
+.policy-content ul,
+.policy-content ol {
+  margin: 0.5rem 0 0.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.policy-content ul { list-style-type: disc; }
+.policy-content ol { list-style-type: decimal; }
+.policy-content li { color: var(--text-secondary); }
+
+.policy-content a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.policy-content strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.policy-content code {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--accent);
+}
+
+.policy-content table {
+  width: 100%;
+  margin: 0.75rem 0 1rem;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  overflow-x: auto;
+  display: block;
+}
+
+.policy-content th {
+  text-align: left;
+  padding: 0.45rem 0.75rem;
+  background-color: var(--bg-elevated);
+  color: var(--text-primary);
+  font-weight: 600;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.policy-content td {
+  padding: 0.45rem 0.75rem;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.policy-content tr:nth-child(even) td {
+  background-color: color-mix(in srgb, var(--bg-elevated) 50%, transparent);
+}

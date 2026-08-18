@@ -9,7 +9,7 @@ import CopyButton from "@/components/CopyButton";
 import { diffJson, summarizeDiff, type DiffEntry } from "@/lib/json/diff";
 
 function formatValue(v: unknown): string {
-  if (v === undefined) return "—";
+  if (v === undefined) return "-";
   return typeof v === "string" ? `"${v}"` : JSON.stringify(v);
 }
 

@@ -39,7 +39,7 @@ export default function TokenCounterClient() {
         <StatCard label="Bytes"        value={stats.bytes.toLocaleString()} />
       </div>
       <p className="text-xs" style={{ color: "var(--text-muted)" }}>
-        This is a character-based approximation, not an exact tokenizer count — actual usage varies by model.
+        This is a character-based approximation, not an exact tokenizer count - actual usage varies by model.
       </p>
     </div>
   );

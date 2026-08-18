@@ -61,7 +61,7 @@ export default function ThemeToggle() {
 
   return (
     <div ref={ref} className="relative">
-      {/* Trigger — just an icon button, no box */}
+      {/* Trigger - just an icon button, no box */}
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}

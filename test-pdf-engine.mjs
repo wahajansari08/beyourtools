@@ -1,6 +1,6 @@
 /**
  * Comprehensive end-to-end tests for all PDF tool engine functions.
- * Uses real pdf-lib (npm) — not the CDN version — so all operations
+ * Uses real pdf-lib (npm) - not the CDN version - so all operations
  * run against actual PDF bytes with no DOM or browser needed.
  *
  * Run: node test-pdf-engine.mjs
@@ -28,7 +28,7 @@ const section = (n) => console.log(`\n── ${n} ${"─".repeat(Math.max(0, 56 
 // a mock `window.PDFLib` and patch the loadPdfLib promise.
 const PDFLib = { PDFDocument, rgb, StandardFonts, degrees, EncryptionAlgorithm };
 
-// Override window-dependent helpers inline — we re-implement all engine
+// Override window-dependent helpers inline - we re-implement all engine
 // functions here using the real pdf-lib directly, so tests exercise real logic.
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -70,7 +70,7 @@ function extractTextFromBytes(bytes) {
     }
   }
   const text = lines.join("\n");
-  return { text: text.trim() || "(No extractable text found — this may be a scanned PDF.)", error: null };
+  return { text: text.trim() || "(No extractable text found - this may be a scanned PDF.)", error: null };
 }
 
 function bytesToBlob(bytes, type) {
@@ -436,7 +436,7 @@ const sub = new Uint8Array([0,1,2,3,4]).subarray(2,4);
 assert("subarray size=2", bytesToBlob(sub,"text/plain").size === 2);
 
 // ══════════════════════════════════════════════════════════════════════════════
-// 5. readMetadata — real PDF
+// 5. readMetadata - real PDF
 // ══════════════════════════════════════════════════════════════════════════════
 section("readMetadata");
 
@@ -835,9 +835,9 @@ section("pdfToHtml");
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
-// 20. htmlToPdf — pure logic (browser-side only, test input validation)
+// 20. htmlToPdf - pure logic (browser-side only, test input validation)
 // ══════════════════════════════════════════════════════════════════════════════
-section("htmlToPdf — input validation (browser-only function)");
+section("htmlToPdf - input validation (browser-only function)");
 
 // htmlToPdf uses DOM (jsPDF + document), so we only test the guard clauses
 async function htmlToPdfGuard(html) {
@@ -852,7 +852,7 @@ assert("valid HTML skips (browser-only)", (await htmlToPdfGuard("<h1>Hi</h1>")).
 // ══════════════════════════════════════════════════════════════════════════════
 // 21. mergePdfs error guards
 // ══════════════════════════════════════════════════════════════════════════════
-section("mergePdfs — edge cases");
+section("mergePdfs - edge cases");
 
 {
   // Exactly 2 is minimum

@@ -45,7 +45,7 @@ export default function ImagesToPdf() {
       status={state.status}
       processingLabel="Building PDF…"
       error={state.error}
-      info={state.status === "done" ? `PDF created with ${state.pageCount} page(s) — ${formatBytes(state.size)}.` : null}
+      info={state.status === "done" ? `PDF created with ${state.pageCount} page(s) - ${formatBytes(state.size)}.` : null}
       onReset={reset}
       resetLabel="Convert more images"
       dropzone={

@@ -9,7 +9,7 @@ export default function RepairClient() {
     const result = repairJson(input);
     let info: string | null = null;
     if (!result.error) {
-      if (result.wasAlreadyValid) info = "This JSON was already valid — no fixes needed.";
+      if (result.wasAlreadyValid) info = "This JSON was already valid - no fixes needed.";
       else if (result.fixes.length > 0) info = `Fixed: ${result.fixes.join(", ")}.`;
     }
     return { output: result.output, error: result.error, info };

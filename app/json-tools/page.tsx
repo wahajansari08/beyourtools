@@ -1,18 +1,47 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { tools, categories, toolsByCategory } from "@/lib/tools-config";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "JSON Tools — BeYourTools",
-  description:
-    "Free browser-based JSON tools. Format, validate, diff, convert, generate, and inspect JSON — no upload, no sign-up.",
+  title: "JSON Tools - Free Online JSON Formatter, Validator & Converter",
+  description: "Free browser-based JSON tools. Format, validate, diff, convert, generate, and inspect JSON - no upload, no sign-up, 100% private.",
+  keywords: "JSON formatter, JSON validator, JSON diff, JSON to CSV, JSON schema, JSONPath, JWT decoder, online JSON tools",
+  alternates: { canonical: `${SITE.url}/json-tools` },
+  openGraph: {
+    type: "website", url: `${SITE.url}/json-tools`,
+    title: "Free Online JSON Tools - BeYourTools",
+    description: "30+ JSON tools in your browser - format, validate, convert, diff, and more.",
+    images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "JSON Tools" }],
+  },
 };
 
 export default function JsonToolsPage() {
   const total = tools.length;
 
+  const schemas = [
+    breadcrumbSchema([
+      { name: "BeYourTools", url: SITE.url },
+      { name: "JSON Tools", url: canonical("/json-tools") },
+    ]),
+    softwareApplicationSchema({
+      name: "BeYourTools JSON Tools",
+      description: `${total} free browser-based JSON tools including formatter, validator, diff, converter, and more.`,
+      url: canonical("/json-tools"),
+      category: "DeveloperApplication",
+    }),
+    faqSchema([
+      { question: "How do I format JSON online?", answer: "Use our free JSON Formatter - paste your JSON, choose indent style (2 spaces, 4 spaces, or tab), and get formatted output instantly." },
+      { question: "How do I validate JSON?", answer: "Our JSON Validator checks syntax and reports the exact line and column of any error. It supports both JSON and JSONL formats." },
+      { question: "What is JSONPath?", answer: "JSONPath is a query language for JSON, like XPath for XML. Use our JSONPath Tester to run expressions like $.users[*].email against any JSON document." },
+    ]),
+  ];
+
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
+    <>
+      <JsonLd data={schemas} />
+      <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
       {/* Breadcrumb */}
       <div className="mb-4 flex items-center gap-1.5 text-xs" style={{ color: "var(--text-subtle)" }}>
         <Link href="/" className="focus-ring rounded hover:underline" style={{ color: "var(--text-muted)" }}>
@@ -28,7 +57,7 @@ export default function JsonToolsPage() {
           JSON Tools
         </h1>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-          Everything you need to work with JSON — format, validate, compare, convert, transform and generate.
+          Everything you need to work with JSON - format, validate, compare, convert, transform and generate.
           All tools run entirely in your browser with no file upload required.
         </p>
         <div className="mt-5 flex flex-wrap gap-4 text-xs" style={{ color: "var(--text-subtle)" }}>
@@ -131,5 +160,6 @@ export default function JsonToolsPage() {
         })}
       </div>
     </div>
+    </>
   );
 }

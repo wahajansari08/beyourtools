@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const def = getPdfTool(tool);
   if (!def) return { title: "Not Found" };
   return {
-    title: `${def.name} — Free Online PDF Tool — Jsonifyr`,
+    title: `${def.name} - Free Online PDF Tool - BeYourTools`,
     description: `${def.description} No upload required, runs entirely in your browser.`,
   };
 }

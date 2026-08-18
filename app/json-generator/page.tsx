@@ -3,7 +3,7 @@ import ToolLayout from "@/components/ToolLayout";
 import JsonGeneratorClient from "./JsonGeneratorClient";
 
 export const metadata: Metadata = {
-  title: "JSON Generator — Jsonifyr",
+  title: "JSON Generator - BeYourTools",
   description: "Generate realistic mock JSON data from a template using {{placeholder}} syntax.",
 };
 

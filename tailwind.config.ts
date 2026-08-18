@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Dark palette (unchanged — used directly in dark mode)
+        // Dark palette (unchanged - used directly in dark mode)
         ink: {
           950: "#0a0d13",
           900: "#0e1218",
@@ -38,7 +38,7 @@ const config: Config = {
           800: "#1e293b",
           900: "#0f172a",
         },
-        // Accent — same in both modes
+        // Accent - same in both modes
         amber: {
           400: "#f2b84b",
           500: "#e8a52f",

@@ -71,7 +71,7 @@ export default function PdfToolShell({
       {status === "idle" && (
         <div className="grid gap-3 pt-1 sm:grid-cols-3">
           {[
-            { icon: "🔒", title: "Private",  body: "Files stay in your browser — nothing is uploaded." },
+            { icon: "🔒", title: "Private",  body: "Files stay in your browser - nothing is uploaded." },
             { icon: "⚡", title: "Instant",  body: "Processing starts immediately, no waiting."        },
             { icon: "🆓", title: "Free",     body: "No account, no limits, always free."               },
           ].map(({ icon, title, body }) => (

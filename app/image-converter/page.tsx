@@ -1,11 +1,20 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { formats, routesBySourceFormat, getFormat, type ImageFormat } from "@/lib/image-tools-config";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Image Converter — BeYourTools",
-  description:
-    "Free browser-based image converter. Convert between JPG, PNG, WebP, AVIF, GIF, BMP, SVG, ICO, PDF and more — no upload, no sign-up.",
+  title: "Image Converter - Free Online JPG PNG WebP AVIF SVG ICO Converter",
+  description: "Free browser-based image converter. Convert between JPG, PNG, WebP, AVIF, GIF, BMP, SVG, ICO, PDF and more - 118 format combinations, no upload, no sign-up.",
+  keywords: "image converter, JPG to PNG, PNG to JPG, JPG to WebP, PNG to WebP, image format converter, WebP converter, AVIF converter, SVG converter, free online image converter",
+  alternates: { canonical: `${SITE.url}/image-converter` },
+  openGraph: {
+    type: "website", url: `${SITE.url}/image-converter`,
+    title: "Free Online Image Converter - BeYourTools",
+    description: "118 image conversion combinations in your browser - JPG, PNG, WebP, AVIF, SVG, ICO, PDF. No upload needed.",
+    images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "Image Converter" }],
+  },
 };
 
 const FORMAT_ICONS: Record<string, string> = {
@@ -19,7 +28,28 @@ export default function ImageConverterHub() {
   const activeSources = formats.filter((f) => bySource[f.id]?.length > 0);
   const totalRoutes = Object.values(bySource).reduce((s, r) => s + r.length, 0);
 
+  const schemas = [
+    breadcrumbSchema([
+      { name: "BeYourTools", url: SITE.url },
+      { name: "Image Converter", url: canonical("/image-converter") },
+    ]),
+    softwareApplicationSchema({
+      name: "BeYourTools Image Converter",
+      description: `${totalRoutes} free browser-based image conversion combinations including JPG, PNG, WebP, AVIF, SVG, ICO, BMP, TIFF and PDF.`,
+      url: canonical("/image-converter"),
+      category: "MultimediaApplication",
+    }),
+    faqSchema([
+      { question: "How do I convert JPG to WebP for free?", answer: "Use our free JPG to WebP converter - drag and drop your JPG, download the WebP instantly. No upload to any server, no account required." },
+      { question: "What image formats can I convert online?", answer: "We support 118 conversion combinations including JPG, PNG, WebP, AVIF, GIF, BMP, SVG, ICO, TIFF, HEIC, JXL, PSD, TGA, and PDF." },
+      { question: "Does converting images reduce quality?", answer: "Lossless conversions (PNG to WebP lossless, PNG to BMP) preserve every pixel. Lossy conversions (JPG, WebP lossy) have a quality setting - use 80-85% for minimal visible quality loss." },
+      { question: "Are my images uploaded to a server?", answer: "No - all image conversion happens in your browser using the Canvas API. Your images never leave your device." },
+    ]),
+  ];
+
   return (
+    <>
+      <JsonLd data={schemas} />
     <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
       {/* Breadcrumb */}
       <div className="mb-4 flex items-center gap-1.5 text-xs" style={{ color: "var(--text-subtle)" }}>
@@ -34,7 +64,7 @@ export default function ImageConverterHub() {
           Image Converter
         </h1>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-          Convert images between any format — entirely in your browser. Nothing is uploaded to a server.
+          Convert images between any format - entirely in your browser. Nothing is uploaded to a server.
           Supports JPG, PNG, WebP, AVIF, GIF, BMP, SVG, ICO, PDF, and more.
         </p>
         <div className="mt-5 flex flex-wrap gap-4 text-xs" style={{ color: "var(--text-subtle)" }}>
@@ -121,10 +151,11 @@ export default function ImageConverterHub() {
         style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-muted)" }}
       >
         <span className="font-semibold" style={{ color: "var(--text-secondary)" }}>Browser support note: </span>
-        Most conversions run via the browser&apos;s Canvas API — no server needed.
+        Most conversions run via the browser&apos;s Canvas API - no server needed.
         TIFF, HEIC, JXL, PSD, and TGA require decoding support that varies by browser;
         those converters will show a helpful message if your browser cannot handle the file.
       </div>
     </div>
+    </>
   );
 }

@@ -3,7 +3,7 @@ import ToolLayout from "@/components/ToolLayout";
 import ValidatorClient from "./ValidatorClient";
 
 export const metadata: Metadata = {
-  title: "JSON Validator — Jsonifyr",
+  title: "JSON Validator - BeYourTools",
   description: "Validate JSON syntax and get precise line and column error locations.",
 };
 

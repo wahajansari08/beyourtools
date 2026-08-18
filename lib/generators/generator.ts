@@ -93,7 +93,7 @@ function resolvePlaceholder(token: string): unknown {
     const m = t.match(/float\((-?[\d.]+),(-?[\d.]+)\)/);
     return m ? randFloat(Number(m[1]), Number(m[2])) : randFloat(0, 100);
   }
-  return token; // unknown — return as-is
+  return token; // unknown - return as-is
 }
 
 // ─── Template walker ─────────────────────────────────────────────────────────

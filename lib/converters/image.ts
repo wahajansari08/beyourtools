@@ -324,7 +324,7 @@ export async function convertImage(
     }
 
     if (ext === "gif") {
-      // Browsers cannot encode GIF via Canvas — we produce a PNG and warn.
+      // Browsers cannot encode GIF via Canvas - we produce a PNG and warn.
       warning = "Browsers cannot encode GIF directly. The file has been saved as PNG instead. Rename it to .png if needed.";
       const blob = await canvasToBlob(canvas, "image/png", 1);
       return { blob, ext: "png", mime: "image/png", warning, error: null };

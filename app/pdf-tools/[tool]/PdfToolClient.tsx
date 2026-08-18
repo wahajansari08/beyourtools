@@ -1,6 +1,6 @@
 "use client";
 
-// Central dispatcher — renders the correct tool UI based on slug.
+// Central dispatcher - renders the correct tool UI based on slug.
 // Each tool is a separate component to keep bundle chunks small.
 
 import dynamic from "next/dynamic";

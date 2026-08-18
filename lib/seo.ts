@@ -6,7 +6,7 @@
 export const SITE = {
   name:        "BeYourTools",
   url:         "https://beyourtools.com",
-  description: "Free online tools for developers — JSON utilities, image converters, PDF tools and more. All run privately in your browser.",
+  description: "Free online tools for developers - JSON utilities, image converters, PDF tools and more. All run privately in your browser.",
   twitter:     "@beyourtools",
   locale:      "en_US",
   logo:        "https://beyourtools.com/icon-512.png",

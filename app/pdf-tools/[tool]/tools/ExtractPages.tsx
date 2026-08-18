@@ -44,7 +44,7 @@ export default function ExtractPages() {
 
   const handleExtract = useCallback(async () => {
     if (!state.filename || !state.pages) return;
-    // Re-read file not stored — ask user to re-drop
+    // Re-read file not stored - ask user to re-drop
     setState((s) => ({ ...s, status: "idle" }));
   }, [state.filename, state.pages]);
 

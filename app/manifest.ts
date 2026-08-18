@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "BeYourTools",
     short_name: "BeYourTools",
-    description: "Free online tools for developers — JSON, Image Converter, PDF tools and more.",
+    description: "Free online tools for developers - JSON, Image Converter, PDF tools and more.",
     start_url: "/",
     display: "standalone",
     background_color: "#0a0d13",

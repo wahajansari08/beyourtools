@@ -3,7 +3,7 @@ import ToolLayout from "@/components/ToolLayout";
 import JsonlValidatorClient from "./JsonlValidatorClient";
 
 export const metadata: Metadata = {
-  title: "JSONL Validator — Jsonifyr",
+  title: "JSONL Validator - BeYourTools",
   description: "Validate every line of a JSONL file independently and see exactly which lines fail.",
 };
 

@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ThemeProvider from "@/components/ThemeProvider";
 import JsonLd from "@/components/JsonLd";
+import CookieBanner from "@/components/CookieBanner";
 import { websiteSchema, organizationSchema, SITE } from "@/lib/seo";
 
 const display = Space_Grotesk({ subsets: ["latin"], variable: "--font-display", weight: ["500","600","700"] });
@@ -14,10 +15,10 @@ const mono    = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: "BeYourTools — Free Online Developer Tools",
+    default: "BeYourTools - Free Online Developer Tools",
     template: "%s | BeYourTools",
   },
-  description: "Free browser-based tools for developers — JSON formatter, validator, converter, image converter, PDF tools and more. No upload, no sign-up, 100% private.",
+  description: "Free browser-based tools for developers - JSON formatter, validator, converter, image converter, PDF tools and more. No upload, no sign-up, 100% private.",
   keywords: "JSON tools, image converter, PDF tools, JSON formatter, JSON validator, free developer tools, online tools",
   authors: [{ name: "BeYourTools", url: SITE.url }],
   creator: "BeYourTools",
@@ -29,15 +30,15 @@ export const metadata: Metadata = {
     url: SITE.url,
     siteName: SITE.name,
     locale: "en_US",
-    title: "BeYourTools — Free Online Developer Tools",
-    description: "Free browser-based tools for developers — JSON, image, PDF and more. Nothing leaves your browser.",
+    title: "BeYourTools - Free Online Developer Tools",
+    description: "Free browser-based tools for developers - JSON, image, PDF and more. Nothing leaves your browser.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "BeYourTools" }],
   },
   twitter: {
     card: "summary_large_image",
     site: SITE.twitter,
-    title: "BeYourTools — Free Online Developer Tools",
-    description: "Free browser-based tools for developers — JSON, image, PDF and more.",
+    title: "BeYourTools - Free Online Developer Tools",
+    description: "Free browser-based tools for developers - JSON, image, PDF and more.",
     images: [`${SITE.url}/og-default.png`],
   },
 };
@@ -54,6 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Navbar />
           <main id="main-content" className="min-h-[calc(100vh-56px-100px)]">{children}</main>
           <Footer />
+          <CookieBanner />
         </ThemeProvider>
       </body>
     </html>
