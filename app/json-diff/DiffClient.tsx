@@ -9,26 +9,34 @@ import CopyButton from "@/components/CopyButton";
 import { diffJson, summarizeDiff, type DiffEntry } from "@/lib/json/diff";
 
 function formatValue(v: unknown): string {
-  if (v === undefined) return "—";
+  if (v === undefined) return "-";
   return typeof v === "string" ? `"${v}"` : JSON.stringify(v);
 }
 
 function DiffRow({ entry }: { entry: DiffEntry }) {
   const color =
-    entry.type === "added" ? "text-teal-400" : entry.type === "removed" ? "text-coral-400" : "text-amber-400";
+    entry.type === "added"
+      ? "var(--teal)"
+      : entry.type === "removed"
+      ? "var(--coral)"
+      : "var(--accent)";
   const symbol = entry.type === "added" ? "+" : entry.type === "removed" ? "-" : "~";
   return (
-    <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5 border-b border-ink-800 px-3.5 py-2 font-mono text-[13px]">
-      <span className={color}>{symbol}</span>
-      <span className="text-mist-200">{entry.path}</span>
+    <div
+      className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5 border-b px-3.5 py-2 font-mono text-[13px] last:border-0"
+      style={{ borderColor: "var(--border)" }}
+    >
+      <span style={{ color }}>{symbol}</span>
+      <span style={{ color: "var(--text-secondary)" }}>{entry.path}</span>
       {entry.type === "changed" && (
-        <span className="text-mist-400">
-          <span className="text-coral-400">{formatValue(entry.left)}</span> {" → "}
-          <span className="text-teal-400">{formatValue(entry.right)}</span>
+        <span style={{ color: "var(--text-muted)" }}>
+          <span style={{ color: "var(--coral)" }}>{formatValue(entry.left)}</span>
+          {" → "}
+          <span style={{ color: "var(--teal)" }}>{formatValue(entry.right)}</span>
         </span>
       )}
-      {entry.type === "added" && <span className="text-teal-400">{formatValue(entry.right)}</span>}
-      {entry.type === "removed" && <span className="text-coral-400">{formatValue(entry.left)}</span>}
+      {entry.type === "added"   && <span style={{ color: "var(--teal)"  }}>{formatValue(entry.right)}</span>}
+      {entry.type === "removed" && <span style={{ color: "var(--coral)" }}>{formatValue(entry.left)}</span>}
     </div>
   );
 }
@@ -56,41 +64,24 @@ export default function DiffClient() {
   return (
     <div className="space-y-3">
       <div className="grid gap-4 lg:grid-cols-2">
-        <ToolInput
-          label="Original (A)"
-          value={left}
-          onChange={setLeft}
-          placeholder='{"name":"Ada","age":30}'
-          rows={12}
-          actions={<FileUploader onFileText={(text) => setLeft(text)} />}
-        />
-        <ToolInput
-          label="Changed (B)"
-          value={right}
-          onChange={setRight}
-          placeholder='{"name":"Ada","age":31,"active":true}'
-          rows={12}
-          actions={<FileUploader onFileText={(text) => setRight(text)} />}
-        />
+        <ToolInput label="Original (A)" value={left} onChange={setLeft} placeholder='{"name":"Ada","age":30}' rows={12} actions={<FileUploader onFileText={(t) => setLeft(t)} />} />
+        <ToolInput label="Changed (B)"  value={right} onChange={setRight} placeholder='{"name":"Ada","age":31,"active":true}' rows={12} actions={<FileUploader onFileText={(t) => setRight(t)} />} />
       </div>
 
       {error && <StatusBanner type="error" message={error} />}
 
       {!error && left.trim() && right.trim() && (
-        <ToolOutput
-          label="Differences"
-          value={diffText}
-          placeholder="No differences to show yet."
-          actions={<CopyButton text={diffText} />}
-        >
+        <ToolOutput label="Differences" value={diffText} placeholder="No differences to show yet." actions={<CopyButton text={diffText} />}>
           {entries.length === 0 ? (
-            <div className="px-3.5 py-3 text-[13px] text-mist-300">These two JSON documents are identical.</div>
+            <div className="px-3.5 py-3 text-[13px]" style={{ color: "var(--text-muted)" }}>
+              These two JSON documents are identical.
+            </div>
           ) : (
             <div>
-              <div className="flex gap-4 border-b border-ink-800 px-3.5 py-2 text-[11px] text-mist-400">
-                <span className="text-teal-400">{summary.added} added</span>
-                <span className="text-coral-400">{summary.removed} removed</span>
-                <span className="text-amber-400">{summary.changed} changed</span>
+              <div className="flex gap-4 border-b px-3.5 py-2 text-[11px]" style={{ borderColor: "var(--border)", color: "var(--text-muted)" }}>
+                <span style={{ color: "var(--teal)"  }}>{summary.added} added</span>
+                <span style={{ color: "var(--coral)" }}>{summary.removed} removed</span>
+                <span style={{ color: "var(--accent)"}}>{summary.changed} changed</span>
               </div>
               {entries.map((entry, i) => (
                 <DiffRow key={`${entry.path}-${i}`} entry={entry} />

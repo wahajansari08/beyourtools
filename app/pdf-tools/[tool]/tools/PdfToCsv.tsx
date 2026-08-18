@@ -44,7 +44,7 @@ export default function PdfToCsv() {
       actions={url ? <><DownloadBtn href={url} filename={outName} label="Download .csv" /><CopyButton text={state.output} /></> : null}
       result={
         <PdfResultPanel label="CSV Output">
-          <pre className="max-h-80 overflow-auto whitespace-pre-wrap break-words font-mono text-[12px] leading-relaxed text-mist-200">
+          <pre className="max-h-80 overflow-auto whitespace-pre-wrap break-words font-mono text-[12px] leading-relaxed" style={{ color: "var(--text-secondary)" }}>
             {state.output}
           </pre>
         </PdfResultPanel>

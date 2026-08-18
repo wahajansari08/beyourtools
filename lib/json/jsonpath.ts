@@ -56,7 +56,7 @@ function matchesFilter(value: unknown, filter: string): boolean {
   const lt = filter.match(/^@\.(\w+)\s*<\s*(-?\d+(?:\.\d+)?)$/);
   if (lt) return Number((value as Record<string, unknown>)?.[lt[1]]) < Number(lt[2]);
 
-  // @.key — existence check
+  // @.key - existence check
   const exists = filter.match(/^@\.(\w+)$/);
   if (exists) return (value as Record<string, unknown>)?.[exists[1]] !== undefined;
 

@@ -3,7 +3,7 @@ import ToolLayout from "@/components/ToolLayout";
 import JsonlFormatterClient from "./JsonlFormatterClient";
 
 export const metadata: Metadata = {
-  title: "JSONL Formatter — Jsonifyr",
+  title: "JSONL Formatter - BeYourTools",
   description: "Pretty-print every line of a JSONL (newline-delimited JSON) file.",
 };
 

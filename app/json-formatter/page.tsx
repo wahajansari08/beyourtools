@@ -3,7 +3,7 @@ import ToolLayout from "@/components/ToolLayout";
 import FormatterClient from "./FormatterClient";
 
 export const metadata: Metadata = {
-  title: "JSON Formatter — Jsonifyr",
+  title: "JSON Formatter - BeYourTools",
   description: "Pretty-print JSON with 2, 4, or tab indentation. Free, fast, runs in your browser.",
 };
 

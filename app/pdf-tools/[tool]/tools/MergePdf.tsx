@@ -63,28 +63,34 @@ export default function MergePdf() {
       resetLabel="Merge more PDFs"
       actions={state.url ? <DownloadBtn href={state.url} filename="merged.pdf" label={`Download merged.pdf (${formatBytes(state.size)})`} /> : null}
       result={
-        <div className="rounded-lg border border-ink-700 bg-ink-900 p-6 text-center">
-          <p className="text-sm font-medium text-mist-200">{state.info}</p>
-          <p className="text-xs text-mist-400">{formatBytes(state.size)}</p>
+        <div
+          className="rounded-lg border p-6 text-center"
+          style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}
+        >
+          <p className="text-sm font-medium" style={{ color: "var(--text-secondary)" }}>{state.info}</p>
+          <p className="text-xs" style={{ color: "var(--text-muted)" }}>{formatBytes(state.size)}</p>
         </div>
       }
       dropzone={
         <div className="space-y-3">
-          <PdfDropzone accept=".pdf,application/pdf" multiple onFiles={addFiles} label="Drop PDF files here" sublabel="Add multiple PDFs — reorder below then click Merge" />
+          <PdfDropzone accept=".pdf,application/pdf" multiple onFiles={addFiles} label="Drop PDF files here" sublabel="Add multiple PDFs - reorder below then click Merge" />
           {state.files.length > 0 && (
-            <div className="rounded-lg border border-ink-700 bg-ink-900 divide-y divide-ink-800">
-              <div className="px-3 py-2 text-[11px] font-semibold uppercase tracking-wide text-mist-400">
-                {state.files.length} file{state.files.length !== 1 ? "s" : ""} — drag rows to reorder
+            <div
+              className="rounded-lg border divide-y"
+              style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}
+            >
+              <div className="px-3 py-2 text-[11px] font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>
+                {state.files.length} file{state.files.length !== 1 ? "s" : ""} - drag rows to reorder
               </div>
               {state.files.map((f, i) => (
-                <div key={i} className="flex items-center gap-2 px-3 py-2 text-sm text-mist-300">
-                  <span className="w-5 shrink-0 text-center text-[11px] text-mist-500">{i + 1}</span>
-                  <span className="flex-1 truncate font-mono text-[12px]">{f.name}</span>
-                  <span className="shrink-0 text-[11px] text-mist-500">{formatBytes(f.size)}</span>
+                <div key={i} className="flex items-center gap-2 border-b px-3 py-2 text-sm last:border-0" style={{ borderColor: "var(--border)", color: "var(--text-muted)" }}>
+                  <span className="w-5 shrink-0 text-center text-[11px]" style={{ color: "var(--text-subtle)" }}>{i + 1}</span>
+                  <span className="flex-1 truncate font-mono text-[12px]" style={{ color: "var(--text-secondary)" }}>{f.name}</span>
+                  <span className="shrink-0 text-[11px]" style={{ color: "var(--text-subtle)" }}>{formatBytes(f.size)}</span>
                   <div className="flex shrink-0 gap-1">
-                    {i > 0 && <button onClick={() => moveFile(i, i - 1)} className="focus-ring rounded px-1 text-mist-500 hover:text-mist-200" aria-label="Move up">↑</button>}
-                    {i < state.files.length - 1 && <button onClick={() => moveFile(i, i + 1)} className="focus-ring rounded px-1 text-mist-500 hover:text-mist-200" aria-label="Move down">↓</button>}
-                    <button onClick={() => removeFile(i)} className="focus-ring rounded px-1 text-coral-400 hover:text-coral-300" aria-label="Remove">✕</button>
+                    {i > 0 && <button onClick={() => moveFile(i, i - 1)} className="focus-ring rounded px-1 transition" style={{ color: "var(--text-subtle)" }} aria-label="Move up">↑</button>}
+                    {i < state.files.length - 1 && <button onClick={() => moveFile(i, i + 1)} className="focus-ring rounded px-1 transition" style={{ color: "var(--text-subtle)" }} aria-label="Move down">↓</button>}
+                    <button onClick={() => removeFile(i)} className="focus-ring rounded px-1 transition" style={{ color: "var(--coral)" }} aria-label="Remove">✕</button>
                   </div>
                 </div>
               ))}
@@ -94,13 +100,14 @@ export default function MergePdf() {
             <button
               type="button"
               onClick={handleMerge}
-              className="focus-ring inline-flex items-center gap-2 rounded-md bg-amber-400 px-5 py-2.5 text-sm font-semibold text-ink-950 transition hover:bg-amber-500"
+              className="focus-ring inline-flex items-center gap-2 rounded-md px-5 py-2.5 text-sm font-semibold transition hover:opacity-90"
+              style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}
             >
               Merge {state.files.length} PDFs
             </button>
           )}
           {state.files.length === 1 && (
-            <p className="text-xs text-mist-400">Add at least one more PDF to enable merging.</p>
+            <p className="text-xs" style={{ color: "var(--text-muted)" }}>Add at least one more PDF to enable merging.</p>
           )}
         </div>
       }

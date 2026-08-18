@@ -3,7 +3,7 @@ import ToolLayout from "@/components/ToolLayout";
 import DiffClient from "./DiffClient";
 
 export const metadata: Metadata = {
-  title: "JSON Diff / Compare — Jsonifyr",
+  title: "JSON Diff / Compare - BeYourTools",
   description: "Compare two JSON documents and see every added, removed, and changed value.",
 };
 

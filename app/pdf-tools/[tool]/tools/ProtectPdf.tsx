@@ -45,23 +45,26 @@ export default function ProtectPdf() {
       toolbar={
         <div className="flex flex-wrap gap-3 w-full">
           {[
-            { id: "user-pw", label: "User password *", value: password, set: setPassword, placeholder: "Required — to open the PDF" },
-            { id: "owner-pw", label: "Owner password", value: owner, set: setOwner, placeholder: "Optional — to edit/print" },
+            { id: "user-pw", label: "User password *", value: password, set: setPassword, placeholder: "Required - to open the PDF" },
+            { id: "owner-pw", label: "Owner password", value: owner, set: setOwner, placeholder: "Optional - to edit/print" },
           ].map(({ id, label, value, set, placeholder }) => (
-            <div key={id} className="flex items-center gap-2 rounded-lg border border-ink-700 bg-ink-900 px-3 py-2">
-              <label htmlFor={id} className="shrink-0 text-xs text-mist-400">{label}</label>
+            <div key={id} className="flex items-center gap-2 rounded-lg border px-3 py-2" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+              <label htmlFor={id} className="shrink-0 text-xs" style={{ color: "var(--text-muted)" }}>{label}</label>
               <input id={id} type={show ? "text" : "password"} value={value} onChange={(e) => set(e.target.value)} placeholder={placeholder}
-                className="code-surface focus-ring border-0 bg-transparent px-2 py-0.5 font-mono text-[13px] text-mist-100 w-44" />
+                className="code-surface focus-ring border-0 bg-transparent px-2 py-0.5 font-mono text-[13px] w-44"
+                style={{ color: "var(--text-primary)" }} />
             </div>
           ))}
-          <button type="button" onClick={() => setShow((s) => !s)} className="focus-ring rounded-md border border-ink-600 px-3 py-1.5 text-xs text-mist-400 hover:text-mist-100">
+          <button type="button" onClick={() => setShow((s) => !s)}
+            className="focus-ring rounded-md border px-3 py-1.5 text-xs"
+            style={{ borderColor: "var(--border-strong)", color: "var(--text-muted)", backgroundColor: "var(--bg-elevated)" }}>
             {show ? "Hide" : "Show"} passwords
           </button>
         </div>
       }
       dropzone={<PdfDropzone onFiles={handleFiles} label="Drop a PDF here" sublabel="Set passwords above, then drop the PDF" />}
       actions={state.url ? <DownloadBtn href={state.url} filename={`${base}-protected.pdf`} label={`Download (${formatBytes(state.size)})`} /> : null}
-      result={<div className="rounded-lg border border-ink-700 bg-ink-900 p-5 text-center text-sm text-mist-200">{state.info}</div>}
+      result={<div className="rounded-lg border p-5 text-center text-sm" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-secondary)" }}>{state.info}</div>}
     />
   );
 }

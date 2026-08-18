@@ -3,7 +3,7 @@ import ToolLayout from "@/components/ToolLayout";
 import FlattenClient from "./FlattenClient";
 
 export const metadata: Metadata = {
-  title: "JSON Flatten / Unflatten — Jsonifyr",
+  title: "JSON Flatten / Unflatten - BeYourTools",
   description: "Flatten nested JSON into dot-notation paths, or rebuild nested JSON from flat keys.",
 };
 

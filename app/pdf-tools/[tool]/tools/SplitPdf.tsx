@@ -51,15 +51,16 @@ export default function SplitPdf() {
       onReset={reset}
       resetLabel="Split another PDF"
       toolbar={
-        <div className="flex items-center gap-3 rounded-lg border border-ink-700 bg-ink-900 px-4 py-3 w-full">
-          <label htmlFor="ranges" className="shrink-0 text-xs text-mist-400">Page ranges</label>
+        <div className="flex items-center gap-3 rounded-lg border px-4 py-3 w-full" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+          <label htmlFor="ranges" className="shrink-0 text-xs" style={{ color: "var(--text-muted)" }}>Page ranges</label>
           <input
             id="ranges"
             type="text"
             value={state.ranges}
             onChange={(e) => setState((s) => ({ ...s, ranges: e.target.value }))}
             placeholder="e.g. 1-3, 5, 7-9 (leave blank for every page)"
-            className="code-surface focus-ring flex-1 rounded border-0 px-2 py-1 font-mono text-[13px] text-mist-100 placeholder:text-mist-500"
+            className="code-surface focus-ring flex-1 rounded border-0 px-2 py-1 font-mono text-[13px] placeholder:opacity-40"
+            style={{ color: "var(--text-primary)", backgroundColor: "transparent" }}
           />
         </div>
       }
@@ -75,13 +76,14 @@ export default function SplitPdf() {
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
           {state.pages.map((p) => (
             <a key={p.pageNumber} href={p.url} download={`${base}-page-${p.pageNumber}.pdf`}
-              className="focus-ring flex items-center gap-2 rounded-lg border border-ink-700 bg-ink-900 px-3 py-2.5 text-xs transition hover:border-ink-500">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 shrink-0 text-teal-400" aria-hidden="true">
+              className="focus-ring flex items-center gap-2 rounded-lg border px-3 py-2.5 text-xs transition hover:-translate-y-0.5"
+              style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4 shrink-0" style={{ color: "var(--teal)" }} aria-hidden="true">
                 <path fillRule="evenodd" d="M4.5 2A1.5 1.5 0 0 0 3 3.5v13A1.5 1.5 0 0 0 4.5 18h11a1.5 1.5 0 0 0 1.5-1.5V7.621a1.5 1.5 0 0 0-.44-1.06l-4.12-4.122A1.5 1.5 0 0 0 11.378 2H4.5Z" clipRule="evenodd" />
               </svg>
               <div>
-                <div className="font-medium text-mist-200">Page {p.pageNumber}</div>
-                <div className="text-mist-500">{formatBytes(p.size)}</div>
+                <div className="font-medium" style={{ color: "var(--text-secondary)" }}>Page {p.pageNumber}</div>
+                <div style={{ color: "var(--text-subtle)" }}>{formatBytes(p.size)}</div>
               </div>
             </a>
           ))}

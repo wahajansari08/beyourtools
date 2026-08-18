@@ -3,7 +3,7 @@ import ToolLayout from "@/components/ToolLayout";
 import JsonSchemaValidatorClient from "./JsonSchemaValidatorClient";
 
 export const metadata: Metadata = {
-  title: "JSON Schema Validator — Jsonifyr",
+  title: "JSON Schema Validator - BeYourTools",
   description: "Validate JSON against a JSON Schema (draft-07) and see detailed error messages.",
 };
 

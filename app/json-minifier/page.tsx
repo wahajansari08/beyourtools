@@ -3,7 +3,7 @@ import ToolLayout from "@/components/ToolLayout";
 import MinifierClient from "./MinifierClient";
 
 export const metadata: Metadata = {
-  title: "JSON Minifier — Jsonifyr",
+  title: "JSON Minifier - BeYourTools",
   description: "Strip whitespace from JSON to shrink payload size. See exactly how many bytes you saved.",
 };
 

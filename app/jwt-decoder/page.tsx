@@ -3,8 +3,8 @@ import ToolLayout from "@/components/ToolLayout";
 import JwtDecoderClient from "./JwtDecoderClient";
 
 export const metadata: Metadata = {
-  title: "JWT Decoder — Jsonifyr",
-  description: "Decode a JWT's header and payload instantly. Runs entirely in your browser — your token is never sent anywhere.",
+  title: "JWT Decoder - BeYourTools",
+  description: "Decode a JWT's header and payload instantly. Runs entirely in your browser - your token is never sent anywhere.",
 };
 
 export default function Page() {

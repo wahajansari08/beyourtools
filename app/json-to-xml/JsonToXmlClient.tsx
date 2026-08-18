@@ -24,12 +24,17 @@ export default function JsonToXmlClient() {
       downloadFilename="data.xml"
       downloadMime="application/xml"
       toolbar={
-        <label className="flex items-center gap-2 text-xs text-mist-400">
+        <label className="flex items-center gap-2 text-xs" style={{ color: "var(--text-muted)" }}>
           Root element
           <input
             value={rootName}
             onChange={(e) => setRootName(e.target.value.replace(/[^a-zA-Z0-9_-]/g, ""))}
-            className="focus-ring w-28 rounded-md border border-ink-600 bg-ink-900 px-2 py-1 font-mono text-xs text-mist-100"
+            className="focus-ring w-28 rounded-md border px-2 py-1 font-mono text-xs"
+            style={{
+              borderColor: "var(--border-strong)",
+              backgroundColor: "var(--bg-elevated)",
+              color: "var(--text-primary)",
+            }}
           />
         </label>
       }

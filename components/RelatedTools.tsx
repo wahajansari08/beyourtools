@@ -6,8 +6,8 @@ export default function RelatedTools({ category, currentSlug }: { category: Tool
   if (related.length === 0) return null;
 
   return (
-    <div className="mt-12 border-t border-ink-700 pt-6">
-      <h2 className="mb-3 text-xs font-semibold uppercase tracking-wide text-mist-400">
+    <div className="mt-12 border-t pt-6" style={{ borderColor: "var(--border)" }}>
+      <h2 className="mb-3 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>
         More in {category}
       </h2>
       <div className="flex flex-wrap gap-2">
@@ -15,7 +15,12 @@ export default function RelatedTools({ category, currentSlug }: { category: Tool
           <Link
             key={t.slug}
             href={`/${t.slug}`}
-            className="focus-ring rounded-md border border-ink-700 bg-ink-900 px-3 py-1.5 text-xs text-mist-300 transition hover:border-ink-500 hover:text-mist-50"
+            className="focus-ring rounded-md border px-3 py-1.5 text-xs transition hover-text hover-border"
+            style={{
+              borderColor: "var(--border)",
+              backgroundColor: "var(--bg-surface)",
+              color: "var(--text-muted)",
+            }}
           >
             {t.name}
           </Link>

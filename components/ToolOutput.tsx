@@ -1,7 +1,6 @@
 "use client";
 
 import { ReactNode } from "react";
-import clsx from "clsx";
 
 export default function ToolOutput({
   label,
@@ -9,7 +8,6 @@ export default function ToolOutput({
   actions,
   placeholder = "Output will appear here.",
   rows = 18,
-  className,
   children,
 }: {
   label: string;
@@ -17,16 +15,22 @@ export default function ToolOutput({
   actions?: ReactNode;
   placeholder?: string;
   rows?: number;
-  className?: string;
-  /** If provided, renders custom content instead of the plain text output (e.g. a tree view). */
   children?: ReactNode;
 }) {
   return (
-    <div className={clsx("flex flex-col overflow-hidden rounded-lg border border-ink-700 bg-ink-900", className)}>
-      <div className="flex items-center justify-between gap-2 border-b border-ink-700 px-3 py-2">
+    <div
+      className="flex flex-col overflow-hidden rounded-lg border"
+      style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}
+    >
+      <div
+        className="flex items-center justify-between gap-2 border-b px-3 py-2"
+        style={{ borderColor: "var(--border)" }}
+      >
         <div className="flex items-center gap-2">
           <span className="h-1.5 w-1.5 rounded-full bg-teal-400" />
-          <span className="text-xs font-semibold uppercase tracking-wide text-mist-300">{label}</span>
+          <span className="text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-muted)" }}>
+            {label}
+          </span>
         </div>
         <div className="flex items-center gap-1.5">{actions}</div>
       </div>
@@ -34,9 +38,19 @@ export default function ToolOutput({
         {children ? (
           children
         ) : value ? (
-          <pre className="whitespace-pre-wrap break-words px-3.5 py-3 font-mono text-[13px] leading-[1.6em] text-mist-100">{value}</pre>
+          <pre
+            className="whitespace-pre-wrap break-words px-3.5 py-3 font-mono text-[13px] leading-[1.6em]"
+            style={{ color: "var(--text-primary)" }}
+          >
+            {value}
+          </pre>
         ) : (
-          <div className="px-3.5 py-3 font-mono text-[13px] leading-[1.6em] text-mist-400/60">{placeholder}</div>
+          <div
+            className="px-3.5 py-3 font-mono text-[13px] leading-[1.6em] opacity-40"
+            style={{ color: "var(--text-muted)" }}
+          >
+            {placeholder}
+          </div>
         )}
       </div>
     </div>

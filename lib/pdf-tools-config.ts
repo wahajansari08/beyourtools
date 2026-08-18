@@ -9,7 +9,7 @@ export type PdfEngine =
   | "pdf-lib"   // pure-JS, fully client-side via pdf-lib
   | "canvas"    // pdf.js render → canvas (pdf→image)
   | "jspdf"     // jsPDF (image/html → pdf)
-  | "limited";  // browser-limited (Word, Excel, PPT, OCR — show honest UI)
+  | "limited";  // browser-limited (Word, Excel, PPT, OCR - show honest UI)
 
 export interface PdfToolDef {
   slug: string;

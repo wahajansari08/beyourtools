@@ -33,7 +33,6 @@ export default function TextTransformTool({
   transform: (input: string) => TransformResult;
   downloadFilename: string;
   downloadMime?: string;
-  /** Extra option controls (indent selector, delimiter, etc.), rendered above the panels. */
   toolbar?: ReactNode;
   defaultValue?: string;
   acceptUpload?: string;

@@ -1,5 +1,3 @@
-import clsx from "clsx";
-
 export default function StatusBanner({
   type,
   message,
@@ -7,14 +5,16 @@ export default function StatusBanner({
   type: "error" | "success" | "info";
   message: string;
 }) {
+  const styles = {
+    error:   { bg: "rgba(239,125,111,0.10)", border: "rgba(239,125,111,0.30)", text: "var(--coral)"  },
+    success: { bg: "rgba(79,209,197,0.10)",  border: "rgba(79,209,197,0.30)",  text: "var(--teal)"   },
+    info:    { bg: "rgba(242,184,75,0.10)",  border: "rgba(242,184,75,0.30)",  text: "var(--accent)" },
+  }[type];
+
   return (
     <div
-      className={clsx(
-        "flex items-start gap-2 rounded-md border px-3 py-2 text-[13px] font-mono",
-        type === "error" && "border-coral-400/30 bg-coral-400/10 text-coral-400",
-        type === "success" && "border-teal-400/30 bg-teal-400/10 text-teal-400",
-        type === "info" && "border-amber-400/30 bg-amber-400/10 text-amber-400"
-      )}
+      className="flex items-start gap-2 rounded-md border px-3 py-2 text-[13px] font-mono"
+      style={{ backgroundColor: styles.bg, borderColor: styles.border, color: styles.text }}
     >
       <span className="mt-0.5 shrink-0">
         {type === "error" ? "✕" : type === "success" ? "✓" : "i"}

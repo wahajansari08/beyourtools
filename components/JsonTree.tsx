@@ -4,12 +4,12 @@ import { useState } from "react";
 
 type JsonValue = string | number | boolean | null | JsonValue[] | { [key: string]: JsonValue };
 
-function valueColor(value: JsonValue): string {
-  if (typeof value === "string") return "text-amber-400";
-  if (typeof value === "number") return "text-teal-400";
-  if (typeof value === "boolean") return "text-coral-400";
-  if (value === null) return "text-mist-400";
-  return "text-mist-100";
+function valueStyle(value: JsonValue): React.CSSProperties {
+  if (typeof value === "string") return { color: "var(--accent)" };
+  if (typeof value === "number") return { color: "var(--teal)" };
+  if (typeof value === "boolean") return { color: "var(--coral)" };
+  if (value === null) return { color: "var(--text-subtle)" };
+  return { color: "var(--text-primary)" };
 }
 
 function formatPrimitive(value: JsonValue): string {
@@ -26,9 +26,9 @@ function Node({ label, value, depth }: { label: string | null; value: JsonValue;
 
   if (!isExpandable) {
     return (
-      <div className="flex items-start gap-1 py-0.5 pl-4" style={{ paddingLeft: `${depth * 16 + 16}px` }}>
-        {label !== null && <span className="text-mist-300">{label}:</span>}
-        <span className={valueColor(value)}>{formatPrimitive(value)}</span>
+      <div className="flex items-start gap-1 py-0.5" style={{ paddingLeft: `${depth * 16 + 16}px` }}>
+        {label !== null && <span style={{ color: "var(--text-muted)" }}>{label}:</span>}
+        <span style={valueStyle(value)}>{formatPrimitive(value)}</span>
       </div>
     );
   }
@@ -44,17 +44,16 @@ function Node({ label, value, depth }: { label: string | null; value: JsonValue;
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className="focus-ring flex w-full items-center gap-1 rounded py-0.5 pl-4 text-left hover:bg-ink-800"
+        className="focus-ring flex w-full items-center gap-1 rounded py-0.5 text-left transition hover:opacity-80"
         style={{ paddingLeft: `${depth * 16 + 4}px` }}
       >
-        <span className="w-3 text-mist-400">{open ? "▾" : "▸"}</span>
-        {label !== null && <span className="text-mist-300">{label}:</span>}
-        <span className="text-mist-400">
+        <span className="w-3" style={{ color: "var(--text-subtle)" }}>{open ? "▾" : "▸"}</span>
+        {label !== null && <span style={{ color: "var(--text-muted)" }}>{label}:</span>}
+        <span style={{ color: "var(--text-subtle)" }}>
           {bracket[0]}
           {!open && (
-            <span className="text-mist-500">
-              {" "}
-              {count} {count === 1 ? "item" : "items"}{" "}
+            <span style={{ color: "var(--text-subtle)", opacity: 0.7 }}>
+              {" "}{count} {count === 1 ? "item" : "items"}{" "}
             </span>
           )}
           {!open && bracket[1]}
@@ -65,7 +64,7 @@ function Node({ label, value, depth }: { label: string | null; value: JsonValue;
           {entries.map(([k, v]) => (
             <Node key={k} label={isArray ? null : k} value={v} depth={depth + 1} />
           ))}
-          <div className="text-mist-400" style={{ paddingLeft: `${depth * 16 + 20}px` }}>
+          <div style={{ paddingLeft: `${depth * 16 + 20}px`, color: "var(--text-subtle)" }}>
             {bracket[1]}
           </div>
         </div>

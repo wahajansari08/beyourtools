@@ -1,7 +1,7 @@
-# Jsonifyr
+# BeYourTools
 
 A JSON tools website built with Next.js 15 (App Router), React, TypeScript, and Tailwind CSS.
-Every tool runs entirely client-side — nothing pasted into the app is ever sent to a server.
+Every tool runs entirely client-side - nothing pasted into the app is ever sent to a server.
 
 ## Getting started
 
@@ -33,16 +33,16 @@ The project is structured so adding tool #21 takes four small steps:
    Keep it a pure function: `(input, options) => { output, error }`.
 2. **Flip `live: true`** for the tool's entry in `lib/tools-config.ts` (or add a new entry).
    This automatically makes it appear as a clickable card on the homepage and in "related tools".
-3. **Create `app/<slug>/page.tsx`** — a server component that renders `<ToolLayout>` with the
+3. **Create `app/<slug>/page.tsx`** - a server component that renders `<ToolLayout>` with the
    tool's title/description/category, wrapping a client component.
-4. **Create `app/<slug>/<Name>Client.tsx`** — for most single-input/output tools, wrap
+4. **Create `app/<slug>/<Name>Client.tsx`** - for most single-input/output tools, wrap
    `<TextTransformTool transform={...} .../>` from `components/TextTransformTool.tsx`. For
    dual-pane tools (like diff or merge), follow the pattern in `app/json-diff/DiffClient.tsx`.
 
 ## Project structure
 
 ```
-Jsonifyr/
+BeYourTools/
 ├── app/
 │   ├── json-formatter/{page.tsx, FormatterClient.tsx}
 │   ├── json-validator/{page.tsx, ValidatorClient.tsx}
@@ -80,14 +80,14 @@ Jsonifyr/
 ## Design system
 
 Dark, developer-tool aesthetic: near-black ink background, amber accent for strings/primary
-actions, teal for success/keys, coral for errors — mirroring common JSON syntax highlighting.
+actions, teal for success/keys, coral for errors - mirroring common JSON syntax highlighting.
 Space Grotesk for display type, Inter for body copy, JetBrains Mono for all code/data surfaces.
 Tokens live in `tailwind.config.ts` (`ink`, `mist`, `amber`, `teal`, `coral`).
 
 ## Scaling notes
 
 - Every tool page is a plain Next.js route, so this deploys as-is to Vercel or any Node host.
-- All processing happens in the browser (no API routes, no database) — the app scales as a
+- All processing happens in the browser (no API routes, no database) - the app scales as a
   static/edge-cacheable site with effectively no backend cost.
 - When you're ready to add server-backed features (auth, saved snippets, larger file processing),
-  add API routes under `app/api/` — the current architecture doesn't block that.
+  add API routes under `app/api/` - the current architecture doesn't block that.

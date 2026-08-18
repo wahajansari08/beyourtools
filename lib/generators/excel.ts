@@ -134,7 +134,7 @@ ${strings.map((s) => `  <si><t>${xmlEscape(s)}</t></si>`).join("\n")}
   <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/>
 </Relationships>`;
 
-  // Build a ZIP manually (stored — no compression, keeps it simple)
+  // Build a ZIP manually (stored - no compression, keeps it simple)
   const files: { name: string; data: string }[] = [
     { name: "[Content_Types].xml", data: contentTypes },
     { name: "_rels/.rels", data: topRels },

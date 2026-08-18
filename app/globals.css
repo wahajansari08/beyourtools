@@ -2,47 +2,382 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* ─── CSS custom properties ─────────────────────────────────────────────────
+   These are consumed by both Tailwind utilities (via var()) and raw CSS.
+   The .dark / .light classes are set by ThemeProvider on <html>.
+   Default (no class) falls back to dark so SSR flash is minimised.
+──────────────────────────────────────────────────────────────────────────── */
+
+:root,
+.dark {
   color-scheme: dark;
+
+  --bg-page:       #0a0d13;
+  --bg-surface:    #0e1218;
+  --bg-elevated:   #141a24;
+  --border:        #1c2432;
+  --border-strong: #2a3548;
+
+  --text-primary:   #f0f3f8;
+  --text-secondary: #dde2ec;
+  --text-muted:     #8b96ab;
+  --text-subtle:    #5c6b85;
+
+  --accent:         #f2b84b;
+  --accent-hover:   #e8a52f;
+  --accent-fg:      #0a0d13;
+
+  --teal:           #4fd1c5;
+  --coral:          #ef7d6f;
+
+  --scrollbar-track: #0e1218;
+  --scrollbar-thumb: #2a3548;
+  --scrollbar-hover: #3c4a63;
+
+  --focus-ring-color: #f2b84b;
+  --focus-ring-offset: #0a0d13;
 }
+
+.light {
+  color-scheme: light;
+
+  --bg-page:       #f8fafc;
+  --bg-surface:    #ffffff;
+  --bg-elevated:   #f1f5f9;
+  --border:        #e2e8f0;
+  --border-strong: #cbd5e1;
+
+  --text-primary:   #0f172a;
+  --text-secondary: #1e293b;
+  --text-muted:     #475569;
+  --text-subtle:    #64748b;
+
+  --accent:         #e8a52f;
+  --accent-hover:   #d48f1a;
+  --accent-fg:      #ffffff;
+
+  --teal:           #0d9488;
+  --coral:          #dc2626;
+
+  --scrollbar-track: #f1f5f9;
+  --scrollbar-thumb: #cbd5e1;
+  --scrollbar-hover: #94a3b8;
+
+  --focus-ring-color: #e8a52f;
+  --focus-ring-offset: #f8fafc;
+}
+
+/* ─── Base ─────────────────────────────────────────────────────────────────── */
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: #0a0d13;
-  color: #dde2ec;
+  background-color: var(--bg-page);
+  color: var(--text-secondary);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
+
+/* ─── Themed utility classes ────────────────────────────────────────────────
+   These map CSS vars → classes so components stay readable.
+──────────────────────────────────────────────────────────────────────────── */
+
+.bg-page     { background-color: var(--bg-page); }
+.bg-surface  { background-color: var(--bg-surface); }
+.bg-elevated { background-color: var(--bg-elevated); }
+.border-theme       { border-color: var(--border); }
+.border-theme-strong { border-color: var(--border-strong); }
+.text-primary   { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted     { color: var(--text-muted); }
+.text-subtle    { color: var(--text-subtle); }
+
+/* ─── Selection ─────────────────────────────────────────────────────────────── */
 
 ::selection {
   background-color: rgba(242, 184, 75, 0.3);
-  color: #fff;
+  color: var(--text-primary);
 }
 
-/* scrollbars */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-::-webkit-scrollbar-track {
-  background: #0e1218;
-}
-::-webkit-scrollbar-thumb {
-  background: #2a3548;
-  border-radius: 6px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #3c4a63;
-}
+/* ─── Scrollbars ────────────────────────────────────────────────────────────── */
+
+::-webkit-scrollbar        { width: 10px; height: 10px; }
+::-webkit-scrollbar-track  { background: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb  { background: var(--scrollbar-thumb); border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-hover); }
+
+/* ─── Focus ring ────────────────────────────────────────────────────────────── */
 
 .focus-ring {
-  @apply outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950;
+  @apply outline-none;
+}
+.focus-ring:focus-visible {
+  outline: 2px solid var(--focus-ring-color);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
+/* ─── Code surface (editor backgrounds) ────────────────────────────────────── */
+
 .code-surface {
-  background-color: #0e1218;
-  background-image:
-    linear-gradient(rgba(139,150,171,0.05) 1px, transparent 1px);
+  background-color: var(--bg-surface);
+  background-image: linear-gradient(rgba(139, 150, 171, 0.04) 1px, transparent 1px);
   background-size: 100% 1.6em;
+}
+
+/* ─── Grid fade (hero background) ──────────────────────────────────────────── */
+
+.bg-grid-fade {
+  background-image:
+    linear-gradient(to bottom, transparent, var(--bg-page)),
+    repeating-linear-gradient(0deg,  rgba(139,150,171,0.06) 0px, rgba(139,150,171,0.06) 1px, transparent 1px, transparent 40px),
+    repeating-linear-gradient(90deg, rgba(139,150,171,0.06) 0px, rgba(139,150,171,0.06) 1px, transparent 1px, transparent 40px);
+}
+
+/* ─── Prevent FOUC: apply dark before JS hydrates ──────────────────────────── */
+/* Inline script in layout.tsx handles this; the default :root vars above cover SSR. */
+
+/* ─── Hover utility classes (CSS-only, safe for Server Components) ──────────── */
+
+.hover-card:hover {
+  border-color: color-mix(in srgb, var(--teal) 40%, transparent) !important;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--teal) 15%, transparent);
+  transform: translateY(-2px);
+}
+
+.hover-card-accent:hover {
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent) !important;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 15%, transparent);
+  transform: translateY(-2px);
+}
+
+.hover-card-coral:hover {
+  border-color: color-mix(in srgb, var(--coral) 40%, transparent) !important;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--coral) 15%, transparent);
+  transform: translateY(-2px);
+}
+
+.hover-text:hover { color: var(--text-primary) !important; }
+.hover-border:hover { border-color: var(--border-strong) !important; }
+.hover-text-primary:hover { color: var(--text-primary) !important; }
+
+/* ─── Blog article content ──────────────────────────────────────────────────── */
+
+.blog-content {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+.blog-content h2 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.blog-content h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.blog-content p {
+  margin-bottom: 1rem;
+}
+
+.blog-content a {
+  color: var(--teal);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.blog-content a:hover {
+  color: var(--accent);
+}
+
+.blog-content ul,
+.blog-content ol {
+  margin: 0.75rem 0 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.blog-content ul { list-style-type: disc; }
+.blog-content ol { list-style-type: decimal; }
+
+.blog-content li { color: var(--text-secondary); }
+
+.blog-content code {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  background-color: var(--bg-elevated);
+  color: var(--accent);
+  border: 1px solid var(--border);
+}
+
+.blog-content pre {
+  margin: 1.25rem 0;
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border);
+  overflow-x: auto;
+}
+
+.blog-content pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.8125rem;
+  color: var(--text-primary);
+}
+
+.blog-content hr {
+  margin: 2rem 0;
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+.blog-content table {
+  width: 100%;
+  margin: 1.25rem 0;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.blog-content th {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--bg-elevated);
+  color: var(--text-primary);
+  font-weight: 600;
+  border: 1px solid var(--border);
+}
+
+.blog-content td {
+  padding: 0.5rem 0.75rem;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+.blog-content tr:nth-child(even) td {
+  background-color: color-mix(in srgb, var(--bg-elevated) 50%, transparent);
+}
+
+.blog-content strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ─── Cookie banner slide-up animation ──────────────────────────────────────── */
+
+@keyframes slide-up {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out;
+}
+
+/* ─── Policy / legal pages (terms, privacy, cookie, disclaimer, about) ──────── */
+
+.policy-content {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+.policy-content section { padding-top: 0.25rem; }
+
+.policy-content h2 {
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.policy-content h3 {
+  margin-top: 1.25rem;
+  margin-bottom: 0.4rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.policy-content p { margin-bottom: 0.75rem; }
+
+.policy-content ul,
+.policy-content ol {
+  margin: 0.5rem 0 0.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.policy-content ul { list-style-type: disc; }
+.policy-content ol { list-style-type: decimal; }
+.policy-content li { color: var(--text-secondary); }
+
+.policy-content a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.policy-content strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.policy-content code {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--accent);
+}
+
+.policy-content table {
+  width: 100%;
+  margin: 0.75rem 0 1rem;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  overflow-x: auto;
+  display: block;
+}
+
+.policy-content th {
+  text-align: left;
+  padding: 0.45rem 0.75rem;
+  background-color: var(--bg-elevated);
+  color: var(--text-primary);
+  font-weight: 600;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.policy-content td {
+  padding: 0.45rem 0.75rem;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.policy-content tr:nth-child(even) td {
+  background-color: color-mix(in srgb, var(--bg-elevated) 50%, transparent);
 }

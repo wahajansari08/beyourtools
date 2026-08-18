@@ -1,61 +1,87 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { pdfTools, pdfToolCategories, pdfToolsByCategory } from "@/lib/pdf-tools-config";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "PDF Tools — Merge, Split, Convert, Compress & More — Jsonifyr",
-  description:
-    "Free browser-based PDF tools. Merge, split, compress, rotate, watermark, protect, convert PDF to JPG/PNG/Word/Excel and more — no upload, no sign-up.",
+  title: "PDF Tools - Free Online PDF Editor, Converter & Compressor",
+  description: "Free browser-based PDF tools. Merge, split, compress, rotate, watermark, protect, convert PDF to JPG/PNG/text - no upload, no sign-up, 100% private.",
+  keywords: "merge PDF, split PDF, compress PDF, PDF to JPG, PDF to text, PDF watermark, protect PDF, free PDF tools, online PDF editor",
+  alternates: { canonical: `${SITE.url}/pdf-tools` },
+  openGraph: {
+    type: "website", url: `${SITE.url}/pdf-tools`,
+    title: "Free Online PDF Tools - BeYourTools",
+    description: "30 PDF tools in your browser - merge, split, compress, convert and more. No upload required.",
+    images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "PDF Tools" }],
+  },
 };
 
-const ENGINE_BADGE: Record<string, { label: string; color: string }> = {
-  "pdf-lib": { label: "Browser",  color: "text-teal-400 border-teal-400/30 bg-teal-400/10" },
-  "canvas":  { label: "Browser",  color: "text-teal-400 border-teal-400/30 bg-teal-400/10" },
-  "jspdf":   { label: "Browser",  color: "text-teal-400 border-teal-400/30 bg-teal-400/10" },
-  "limited": { label: "Limited",  color: "text-amber-400 border-amber-400/30 bg-amber-400/10" },
+const ENGINE_BADGE: Record<string, { label: string; bg: string; text: string }> = {
+  "pdf-lib": { label: "Browser", bg: "rgba(79,209,197,0.10)", text: "var(--teal)"   },
+  "canvas":  { label: "Browser", bg: "rgba(79,209,197,0.10)", text: "var(--teal)"   },
+  "jspdf":   { label: "Browser", bg: "rgba(79,209,197,0.10)", text: "var(--teal)"   },
+  "limited": { label: "Limited", bg: "rgba(242,184,75,0.10)", text: "var(--accent)" },
 };
 
 export default function PdfToolsHub() {
   const total = pdfTools.length;
   const browserCount = pdfTools.filter((t) => t.engine !== "limited").length;
 
+  const schemas = [
+    breadcrumbSchema([
+      { name: "BeYourTools", url: SITE.url },
+      { name: "PDF Tools", url: canonical("/pdf-tools") },
+    ]),
+    softwareApplicationSchema({
+      name: "BeYourTools PDF Tools",
+      description: `${total} free browser-based PDF tools. Merge, split, compress, protect, watermark, and convert PDFs.`,
+      url: canonical("/pdf-tools"),
+      category: "DeveloperApplication",
+    }),
+    faqSchema([
+      { question: "How do I merge PDF files for free?", answer: "Use our free PDF Merge tool - upload multiple PDFs, reorder them, and download the merged file. No account needed and files never leave your browser." },
+      { question: "How do I compress a PDF?", answer: "Our PDF Compressor re-serialises the PDF's internal object streams, typically reducing size by 10–40% for standard PDFs without quality loss." },
+      { question: "How do I password-protect a PDF?", answer: "Our PDF Protect tool adds AES-256 encryption. Enter a user password, upload your PDF, and download the protected version instantly." },
+      { question: "Is it safe to use online PDF tools?", answer: "With BeYourTools, your PDF files never leave your device. All processing happens locally in JavaScript - nothing is uploaded to any server." },
+    ]),
+  ];
+
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
+    <>
+      <JsonLd data={schemas} />
+      <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
       {/* Breadcrumb */}
-      <div className="mb-4 flex items-center gap-1.5 text-xs text-mist-400">
-        <Link href="/" className="focus-ring rounded hover:text-mist-100">Jsonifyr</Link>
+      <div className="mb-4 flex items-center gap-1.5 text-xs" style={{ color: "var(--text-subtle)" }}>
+        <Link href="/" className="focus-ring rounded" style={{ color: "var(--text-muted)" }}>BeYourTools</Link>
         <span>/</span>
-        <span className="text-mist-300">PDF Tools</span>
+        <span style={{ color: "var(--text-secondary)" }}>PDF Tools</span>
       </div>
 
       {/* Header */}
       <div className="mb-10">
-        <h1 className="font-display text-3xl font-semibold text-mist-50 sm:text-4xl">
+        <h1 className="font-display text-3xl font-semibold sm:text-4xl" style={{ color: "var(--text-primary)" }}>
           PDF Tools
         </h1>
-        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-mist-300">
-          Everything you need to work with PDFs — convert, edit, compress, protect and more.
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+          Everything you need to work with PDFs - convert, edit, compress, protect and more.
           Most tools run entirely in your browser with no file upload required.
         </p>
-        <div className="mt-5 flex flex-wrap gap-4 text-xs text-mist-400">
+        <div className="mt-5 flex flex-wrap gap-4 text-xs" style={{ color: "var(--text-subtle)" }}>
           <span className="flex items-center gap-1.5">
             <span className="h-1.5 w-1.5 rounded-full bg-teal-400" />
             {total} tools total
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
+            <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: "var(--accent)" }} />
             {browserCount} run fully in browser
-          </span>
-          <span className="flex items-center gap-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-teal-400" />
-            No file upload needed
           </span>
         </div>
       </div>
 
       {/* Popular */}
       <div className="mb-10">
-        <h2 className="mb-3 text-xs font-semibold uppercase tracking-wide text-mist-400">Popular</h2>
+        <h2 className="mb-3 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>Popular</h2>
         <div className="flex flex-wrap gap-2">
           {["pdf-to-jpg","jpg-to-pdf","merge-pdf","split-pdf","pdf-compressor","protect-pdf","pdf-to-text","rotate-pdf"].map((slug) => {
             const tool = pdfTools.find((t) => t.slug === slug);
@@ -64,7 +90,8 @@ export default function PdfToolsHub() {
               <Link
                 key={slug}
                 href={`/pdf-tools/${slug}`}
-                className="focus-ring flex items-center gap-1.5 rounded-md border border-ink-600 bg-ink-900 px-3 py-1.5 text-xs font-medium text-mist-200 transition hover:border-amber-400/50 hover:text-mist-50"
+                className="focus-ring flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-xs font-medium transition"
+                style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-secondary)" }}
               >
                 <span>{tool.icon}</span>
                 {tool.name}
@@ -81,8 +108,11 @@ export default function PdfToolsHub() {
           return (
             <section key={cat}>
               <div className="mb-3 flex items-center gap-2">
-                <h2 className="font-display text-base font-semibold text-mist-50">{cat}</h2>
-                <span className="rounded-full border border-ink-600 bg-ink-900 px-2 py-0.5 text-[10px] font-medium text-mist-400">
+                <h2 className="font-display text-base font-semibold" style={{ color: "var(--text-primary)" }}>{cat}</h2>
+                <span
+                  className="rounded-full border px-2 py-0.5 text-[10px] font-medium"
+                  style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-subtle)" }}
+                >
                   {tools.length} tools
                 </span>
               </div>
@@ -93,21 +123,25 @@ export default function PdfToolsHub() {
                     <Link
                       key={tool.slug}
                       href={`/pdf-tools/${tool.slug}`}
-                      className="focus-ring group flex flex-col justify-between rounded-lg border border-ink-700 bg-ink-900 p-4 transition hover:-translate-y-0.5 hover:border-amber-400/40 hover:shadow-[0_0_0_1px_rgba(242,184,75,0.15)]"
+                      className="focus-ring group flex flex-col justify-between rounded-lg border p-4 transition hover:-translate-y-0.5"
+                      style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}
                     >
                       <div>
                         <div className="mb-1.5 flex items-center justify-between gap-2">
                           <div className="flex items-center gap-2">
                             <span className="text-base" aria-hidden="true">{tool.icon}</span>
-                            <h3 className="text-sm font-semibold text-mist-50">{tool.name}</h3>
+                            <h3 className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>{tool.name}</h3>
                           </div>
-                          <span className={`shrink-0 rounded border px-1.5 py-0.5 text-[10px] font-medium ${badge.color}`}>
+                          <span
+                            className="shrink-0 rounded border px-1.5 py-0.5 text-[10px] font-medium"
+                            style={{ backgroundColor: badge.bg, color: badge.text, borderColor: `color-mix(in srgb, ${badge.text} 30%, transparent)` }}
+                          >
                             {badge.label}
                           </span>
                         </div>
-                        <p className="text-xs leading-relaxed text-mist-300">{tool.description}</p>
+                        <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>{tool.description}</p>
                       </div>
-                      <span className="mt-3 text-xs font-medium text-amber-400 opacity-0 transition group-hover:opacity-100">
+                      <span className="mt-3 text-xs font-medium opacity-0 transition group-hover:opacity-100" style={{ color: "var(--accent)" }}>
                         Open tool →
                       </span>
                     </Link>
@@ -120,11 +154,15 @@ export default function PdfToolsHub() {
       </div>
 
       {/* Note */}
-      <div className="mt-12 rounded-lg border border-ink-700 bg-ink-900 p-4 text-xs leading-relaxed text-mist-400">
-        <span className="font-semibold text-mist-300">About &quot;Limited&quot; tools: </span>
-        PDF ↔ Word, Excel, and PowerPoint conversions and OCR require server-side processing or native OS support
-        that browsers cannot provide. Those tools display a clear explanation and suggest free desktop alternatives.
+      <div
+        className="mt-12 rounded-lg border p-4 text-xs leading-relaxed"
+        style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-muted)" }}
+      >
+        <span className="font-semibold" style={{ color: "var(--text-secondary)" }}>About &quot;Limited&quot; tools: </span>
+        PDF ↔ Word, Excel, and PowerPoint conversions and OCR require server-side processing that browsers cannot provide.
+        Those tools display a clear explanation and suggest free desktop alternatives.
       </div>
     </div>
+    </>
   );
 }

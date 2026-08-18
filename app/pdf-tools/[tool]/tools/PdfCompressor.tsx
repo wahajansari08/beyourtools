@@ -47,13 +47,13 @@ export default function PdfCompressor() {
       result={
         <div className="grid gap-3 sm:grid-cols-3">
           {[
-            { label: "Original size",   value: formatBytes(state.originalSize),   color: "text-mist-200" },
-            { label: "Compressed size", value: formatBytes(state.compressedSize), color: "text-teal-400"  },
-            { label: "Saved",           value: saved > 0 ? `${formatBytes(saved)} (${pct}%)` : "0 B", color: saved > 0 ? "text-amber-400" : "text-mist-400" },
-          ].map(({ label, value, color }) => (
-            <div key={label} className="rounded-lg border border-ink-700 bg-ink-900 p-4 text-center">
-              <div className={`text-lg font-semibold ${color}`}>{value}</div>
-              <div className="mt-0.5 text-xs text-mist-400">{label}</div>
+            { label: "Original size",   value: formatBytes(state.originalSize),   textColor: "var(--text-secondary)" },
+            { label: "Compressed size", value: formatBytes(state.compressedSize), textColor: "var(--teal)"           },
+            { label: "Saved",           value: saved > 0 ? `${formatBytes(saved)} (${pct}%)` : "0 B", textColor: saved > 0 ? "var(--accent)" : "var(--text-subtle)" },
+          ].map(({ label, value, textColor }) => (
+            <div key={label} className="rounded-lg border p-4 text-center" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+              <div className="text-lg font-semibold" style={{ color: textColor }}>{value}</div>
+              <div className="mt-0.5 text-xs" style={{ color: "var(--text-muted)" }}>{label}</div>
             </div>
           ))}
         </div>

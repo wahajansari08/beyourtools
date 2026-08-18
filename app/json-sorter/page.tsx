@@ -3,7 +3,7 @@ import ToolLayout from "@/components/ToolLayout";
 import SorterClient from "./SorterClient";
 
 export const metadata: Metadata = {
-  title: "JSON Sorter — Jsonifyr",
+  title: "JSON Sorter - BeYourTools",
   description: "Sort JSON object keys alphabetically, recursively, ascending or descending.",
 };
 

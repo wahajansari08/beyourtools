@@ -3,7 +3,7 @@ import ToolLayout from "@/components/ToolLayout";
 import JsonSchemaGeneratorClient from "./JsonSchemaGeneratorClient";
 
 export const metadata: Metadata = {
-  title: "JSON Schema Generator — Jsonifyr",
+  title: "JSON Schema Generator - BeYourTools",
   description: "Infer a JSON Schema (draft-07) from any JSON sample automatically.",
 };
 

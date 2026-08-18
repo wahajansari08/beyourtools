@@ -11,7 +11,7 @@ export default function JwtDecoderClient() {
   const [token, setToken] = useState("");
   const result = useMemo(() => decodeJwt(token), [token]);
 
-  const headerText = result.header ? JSON.stringify(result.header, null, 2) : "";
+  const headerText  = result.header  ? JSON.stringify(result.header,  null, 2) : "";
   const payloadText = result.payload ? JSON.stringify(result.payload, null, 2) : "";
 
   return (
@@ -35,12 +35,19 @@ export default function JwtDecoderClient() {
             />
           )}
           <div className="grid gap-4 lg:grid-cols-2">
-            <ToolOutput label="Header" value={headerText} actions={<CopyButton text={headerText} />} />
+            <ToolOutput label="Header"  value={headerText}  actions={<CopyButton text={headerText}  />} />
             <ToolOutput label="Payload" value={payloadText} actions={<CopyButton text={payloadText} />} />
           </div>
-          <div className="rounded-lg border border-ink-700 bg-ink-900 px-3.5 py-2.5">
-            <span className="text-xs font-semibold uppercase tracking-wide text-mist-400">Signature</span>
-            <p className="mt-1 break-all font-mono text-xs text-mist-400">{result.signature}</p>
+          <div
+            className="rounded-lg border px-3.5 py-2.5"
+            style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}
+          >
+            <span className="text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-muted)" }}>
+              Signature
+            </span>
+            <p className="mt-1 break-all font-mono text-xs" style={{ color: "var(--text-muted)" }}>
+              {result.signature}
+            </p>
           </div>
         </>
       )}

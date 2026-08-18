@@ -3,7 +3,7 @@ import ToolLayout from "@/components/ToolLayout";
 import JsonPathClient from "./JsonPathClient";
 
 export const metadata: Metadata = {
-  title: "JSONPath Tester — Jsonifyr",
+  title: "JSONPath Tester - BeYourTools",
   description: "Run JSONPath expressions against your JSON data and see matching results instantly.",
 };
 

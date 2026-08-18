@@ -44,7 +44,7 @@ export default function ExtractPages() {
 
   const handleExtract = useCallback(async () => {
     if (!state.filename || !state.pages) return;
-    // Re-read file not stored — ask user to re-drop
+    // Re-read file not stored - ask user to re-drop
     setState((s) => ({ ...s, status: "idle" }));
   }, [state.filename, state.pages]);
 
@@ -59,22 +59,39 @@ export default function ExtractPages() {
       onReset={reset}
       resetLabel="Extract from another PDF"
       toolbar={
-        <div className="flex items-center gap-3 rounded-lg border border-ink-700 bg-ink-900 px-4 py-3 w-full">
-          <label htmlFor="extract-pages" className="shrink-0 text-xs text-mist-400">Pages to extract</label>
+        <div
+          className="flex items-center gap-3 rounded-lg border px-4 py-3 w-full"
+          style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}
+        >
+          <label htmlFor="extract-pages" className="shrink-0 text-xs" style={{ color: "var(--text-muted)" }}>
+            Pages to extract
+          </label>
           <input
             id="extract-pages"
             type="text"
             value={state.pages}
             onChange={(e) => setState((s) => ({ ...s, pages: e.target.value }))}
             placeholder="e.g. 1-3, 5, 8"
-            className="code-surface focus-ring flex-1 rounded border-0 px-2 py-1 font-mono text-[13px] text-mist-100 placeholder:text-mist-500"
+            className="code-surface focus-ring flex-1 rounded border-0 px-2 py-1 font-mono text-[13px] placeholder:opacity-40"
+            style={{ color: "var(--text-primary)", backgroundColor: "transparent" }}
           />
-          {state.totalPages > 0 && <span className="shrink-0 text-[11px] text-mist-500">{state.totalPages} pages total</span>}
+          {state.totalPages > 0 && (
+            <span className="shrink-0 text-[11px]" style={{ color: "var(--text-subtle)" }}>
+              {state.totalPages} pages total
+            </span>
+          )}
         </div>
       }
       dropzone={<PdfDropzone onFiles={handleFiles} label="Drop a PDF here" sublabel="Enter page numbers above, then drop the PDF" />}
       actions={state.url ? <DownloadBtn href={state.url} filename={`${base}-extracted.pdf`} label={`Download (${formatBytes(state.size)})`} /> : null}
-      result={<div className="rounded-lg border border-ink-700 bg-ink-900 p-5 text-center text-sm text-mist-200">{state.info}</div>}
+      result={
+        <div
+          className="rounded-lg border p-5 text-center text-sm"
+          style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-secondary)" }}
+        >
+          {state.info}
+        </div>
+      }
     />
   );
 }

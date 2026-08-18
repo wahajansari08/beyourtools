@@ -40,7 +40,7 @@ export default function PdfRepair() {
       resetLabel="Repair another PDF"
       dropzone={<PdfDropzone onFiles={handleFiles} label="Drop a damaged PDF here" />}
       actions={state.url ? <DownloadBtn href={state.url} filename={`${base}-repaired.pdf`} label={`Download (${formatBytes(state.size)})`} /> : null}
-      result={<div className="rounded-lg border border-ink-700 bg-ink-900 p-5 text-center text-sm text-mist-200">{state.info}</div>}
+      result={<div className="rounded-lg border p-5 text-center text-sm" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-secondary)" }}>{state.info}</div>}
     />
   );
 }

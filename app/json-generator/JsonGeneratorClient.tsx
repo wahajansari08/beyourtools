@@ -85,8 +85,14 @@ export default function JsonGeneratorClient() {
       />
 
       {/* Placeholder reference */}
-      <details className="rounded-lg border border-ink-700 bg-ink-900">
-        <summary className="cursor-pointer px-3.5 py-2.5 text-xs font-semibold uppercase tracking-wide text-mist-400 hover:text-mist-200">
+      <details
+        className="rounded-lg border"
+        style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}
+      >
+        <summary
+          className="cursor-pointer px-3.5 py-2.5 text-xs font-semibold uppercase tracking-wide"
+          style={{ color: "var(--text-muted)" }}
+        >
           Available Placeholders
         </summary>
         <div className="grid gap-x-6 gap-y-1 px-3.5 pb-3 pt-1 text-[12px] sm:grid-cols-2">
@@ -108,14 +114,14 @@ export default function JsonGeneratorClient() {
             ["{{url}}", "A URL"],
           ].map(([ph, desc]) => (
             <div key={ph} className="flex gap-2 py-0.5">
-              <code className="w-44 shrink-0 font-mono text-amber-400">{ph}</code>
-              <span className="text-mist-400">{desc}</span>
+              <code className="w-44 shrink-0 font-mono" style={{ color: "var(--accent)" }}>{ph}</code>
+              <span style={{ color: "var(--text-muted)" }}>{desc}</span>
             </div>
           ))}
         </div>
-        <p className="px-3.5 pb-3 text-[12px] text-mist-500">
+        <p className="px-3.5 pb-3 text-[12px]" style={{ color: "var(--text-subtle)" }}>
           Use{" "}
-          <code className="font-mono text-amber-400">
+          <code className="font-mono" style={{ color: "var(--accent)" }}>
             {"[{\"$repeat\": N, \"$template\": {...}}]"}
           </code>{" "}
           to repeat an object N times.
