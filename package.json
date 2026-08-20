@@ -15,6 +15,7 @@
     "fast-xml-parser": "^4.5.0",
     "js-yaml": "^4.1.0",
     "jsbarcode": "^3.12.3",
+    "jszip": "^3.10.1",
     "next": "^15.1.0",
     "pdf-lib": "^1.17.1",
     "qrcode": "^1.5.4",
@@ -24,6 +25,7 @@
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
     "@types/jsbarcode": "^3.11.4",
+    "@types/jszip": "^3.4.0",
     "@types/node": "^22.9.0",
     "@types/qrcode": "^1.5.6",
     "@types/react": "^19.0.0",
