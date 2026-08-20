@@ -33,6 +33,14 @@ const TOOL_LINKS = {
     { href: "/upc-barcode-generator",      label: "UPC Generator"          },
     { href: "/ean-barcode-generator",      label: "EAN-13 Generator"       },
   ],
+  "Audio Tools": [
+    { href: "/audio-tools",        label: "All Audio Tools"   },
+    { href: "/mp3-converter",      label: "MP3 Converter"     },
+    { href: "/mp3-cutter",         label: "MP3 Cutter"        },
+    { href: "/mp4-to-mp3",         label: "MP4 to MP3"        },
+    { href: "/mp3-compressor",     label: "MP3 Compressor"    },
+    { href: "/audio-recorder",     label: "Audio Recorder"    },
+  ],
   "Blog": [
     { href: "/blog",                                               label: "All Articles"         },
     { href: "/blog/json-tips-every-developer-should-know",        label: "10 JSON Tips"          },

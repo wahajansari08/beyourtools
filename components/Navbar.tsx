@@ -12,6 +12,7 @@ const NAV_LINKS = [
   { href: "/image-converter",   label: "Image Converter"   },
   { href: "/pdf-tools",         label: "PDF Tools"         },
   { href: "/qr-barcode-tools",  label: "QR & Barcodes"     },
+  { href: "/audio-tools",       label: "Audio Tools"       },
   { href: "/blog",              label: "Blog"              },
   { href: "/about",             label: "About"             },
 ];
