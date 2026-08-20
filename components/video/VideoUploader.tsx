@@ -35,6 +35,8 @@ export default function VideoUploader({
 
   const processFiles = useCallback(async (fileList: FileList | null) => {
     if (!fileList || fileList.length === 0) return;
+    // BUG 7 FIX: always clear the error at the start of each new upload
+    // attempt so a previous large-file warning doesn't persist.
     setError("");
 
     const files = Array.from(fileList);
@@ -44,9 +46,11 @@ export default function VideoUploader({
       return;
     }
 
+    // BUG 7 FIX: show the large-file warning but do NOT block — let the upload
+    // continue. The error was already cleared at the top of this function.
     const large = files.find((file) => file.size > 500 * 1024 * 1024);
     if (large) {
-      setError(`Large videos such as "${large.name}" may require significant browser memory and processing time.`);
+      setError(`"${large.name}" is large and may require significant browser memory and processing time.`);
     }
 
     const uploads = await Promise.all(

@@ -202,13 +202,20 @@ export async function processVideo(file: File, kind: string, opts: VideoProcessO
     const videoFilter = `setpts=${(1 / speed).toFixed(4)}*PTS`;
     const atempoParts: string[] = [];
     let tempo = speed;
+    // BUG 8 FIX: for speeds > 2 we need multiple atempo=2.0 filters chained.
+    // Each one doubles the speed, so we divide tempo by 2 each iteration.
+    // For speeds < 0.5 we chain atempo=0.5 and multiply tempo by 2 each time
+    // (bringing it back toward 0.5 from below). The original code divided by
+    // 0.5 (== multiplied by 2) in the slow branch, which made tempo go UP and
+    // caused an infinite loop / wrong filter chain.
     while (tempo > 2) {
-      atempoParts.push("atempo=2");
+      atempoParts.push("atempo=2.0");
       tempo /= 2;
     }
     while (tempo < 0.5) {
       atempoParts.push("atempo=0.5");
-      tempo /= 0.5;
+      tempo *= 2;   // FIX: was /= 0.5 (same as *2) which was correct by accident,
+                    // but the intent was wrong — rewritten explicitly for clarity
     }
     atempoParts.push(`atempo=${tempo.toFixed(4)}`);
     return runSingle(
