@@ -38,8 +38,12 @@ export default function BarcodeDisplay({ svgString, pngDataUrl, value }: Barcode
         className="w-full overflow-x-auto rounded-lg p-4"
         style={{ backgroundColor: "#fff" }}
         aria-label="Barcode preview"
-        dangerouslySetInnerHTML={{ __html: svgString }}
-      />
+      >
+        <div
+          style={{ maxWidth: "100%", overflowX: "auto" }}
+          dangerouslySetInnerHTML={{ __html: svgString }}
+        />
+      </div>
 
       {/* Actions */}
       <div className="flex flex-wrap items-center justify-center gap-2">

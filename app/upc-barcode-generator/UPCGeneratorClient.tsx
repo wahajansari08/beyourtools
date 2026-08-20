@@ -63,9 +63,9 @@ export default function UPCGeneratorClient() {
           <label htmlFor="upc-input" className="block mb-1 text-xs font-medium" style={{ color: "var(--text-muted)" }}>
             {autoCheck ? "UPC-A digits (11 digits)" : "Complete UPC-A (12 digits)"}
           </label>
-          <input id="upc-input" type="text" inputMode="numeric" value={raw} maxLength={12}
+          <input id="upc-input" type="text" inputMode="numeric" value={raw} maxLength={autoCheck ? 11 : 12}
             placeholder={autoCheck ? "03600029145" : "036000291452"}
-            onChange={(e) => setRaw(e.target.value.replace(/\D/g, "").slice(0, 12))}
+            onChange={(e) => setRaw(e.target.value.replace(/\D/g, "").slice(0, autoCheck ? 11 : 12))}
             onKeyDown={(e) => e.key === "Enter" && generate()}
             className={inputClass} style={inputStyle} />
           <p className="mt-1 text-[11px]" style={{ color: "var(--text-subtle)" }}>

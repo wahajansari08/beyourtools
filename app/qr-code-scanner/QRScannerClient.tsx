@@ -9,6 +9,7 @@ type ScanState = "idle" | "requesting" | "scanning" | "done" | "error";
 export default function QRScannerClient() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
+  const stoppedRef = useRef(false);
 
   const [state, setState] = useState<ScanState>("idle");
   const [result, setResult] = useState("");
@@ -20,6 +21,7 @@ export default function QRScannerClient() {
   const [uploadDecoding, setUploadDecoding] = useState(false);
 
   const stopCamera = useCallback(() => {
+    stoppedRef.current = true;
     streamRef.current?.getTracks().forEach((t) => t.stop());
     streamRef.current = null;
     if (videoRef.current) videoRef.current.srcObject = null;
@@ -29,6 +31,7 @@ export default function QRScannerClient() {
 
   const startScanning = useCallback(async (deviceId?: string) => {
     stopCamera();
+    stoppedRef.current = false;
     setState("requesting");
     setError("");
     try {
@@ -55,7 +58,8 @@ export default function QRScannerClient() {
       reader.decodeFromVideoElement(
         videoRef.current!,
         (result, err) => {
-          if (result) {
+          if (result && !stoppedRef.current) {
+            stoppedRef.current = true;
             stopCamera();
             setResult(result.getText());
             setState("done");

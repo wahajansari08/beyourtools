@@ -9,6 +9,7 @@ type ScanState = "idle" | "requesting" | "scanning" | "done" | "error";
 export default function BarcodeScannerClient() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
+  const stoppedRef = useRef(false);
 
   const [state, setState] = useState<ScanState>("idle");
   const [result, setResult] = useState("");
@@ -19,6 +20,7 @@ export default function BarcodeScannerClient() {
   const [uploadDecoding, setUploadDecoding] = useState(false);
 
   const stopCamera = useCallback(() => {
+    stoppedRef.current = true;
     streamRef.current?.getTracks().forEach((t) => t.stop());
     streamRef.current = null;
     if (videoRef.current) videoRef.current.srcObject = null;
@@ -28,6 +30,7 @@ export default function BarcodeScannerClient() {
 
   const startScanning = useCallback(async (deviceId?: string) => {
     stopCamera();
+    stoppedRef.current = false;
     setState("requesting");
     setError("");
     try {
@@ -51,7 +54,8 @@ export default function BarcodeScannerClient() {
       reader.decodeFromVideoElement(
         videoRef.current!,
         (result, err) => {
-          if (result) {
+          if (result && !stoppedRef.current) {
+            stoppedRef.current = true;
             stopCamera();
             setResult(result.getText());
             setFormat(result.getBarcodeFormat().toString());

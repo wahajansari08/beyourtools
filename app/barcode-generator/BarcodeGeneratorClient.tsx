@@ -44,10 +44,10 @@ const inputStyle = { borderColor: "var(--border-strong)", backgroundColor: "var(
 const labelStyle = { color: "var(--text-muted)" };
 
 const FORMAT_HINTS: Record<string, string> = {
-  EAN13:  "Enter 12 digits — check digit is calculated automatically.",
-  EAN8:   "Enter 7 digits — check digit is calculated automatically.",
-  UPC:    "Enter 11 digits — check digit is calculated automatically.",
-  ITF14:  "Enter 13 digits — check digit is calculated automatically.",
+  EAN13:  "Enter all 13 digits including the check digit. Use the EAN Generator for auto check-digit.",
+  EAN8:   "Enter all 8 digits including the check digit. Use the EAN Generator for auto check-digit.",
+  UPC:    "Enter all 12 digits including the check digit. Use the UPC Generator for auto check-digit.",
+  ITF14:  "Enter all 14 digits including the check digit.",
   CODE39: "Supports A-Z, 0-9, space and - . $ / + %",
   codabar:"Starts and ends with A, B, C or D. Digits and - $ : / . + allowed.",
   MSI:    "Digits only.",
