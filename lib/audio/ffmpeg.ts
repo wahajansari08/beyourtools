@@ -1,16 +1,11 @@
 /**
  * Singleton FFmpeg loader.
  * Loads @ffmpeg/ffmpeg + WASM from jsDelivr CDN so the large WASM file
- * never enters the Next.js bundle. Import this lazily only on pages that need it.
- *
- * Usage:
- *   const { ffmpeg, fetchFile } = await loadFFmpeg(onProgress);
+ * never enters the Next.js bundle.
  */
 
 export interface FFmpegProgress {
-  /** 0–1 ratio, or -1 if unknown */
   ratio: number;
-  /** Elapsed seconds */
   time: number;
 }
 
@@ -27,32 +22,27 @@ export async function loadFFmpeg(
     if (!loadPromise) {
       loadPromise = (async () => {
         const ff = new FFmpeg();
-
-        // Stream progress events
-        ff.on("progress", ({ progress, time }) => {
-          onProgress?.({ ratio: progress, time });
-        });
-
-        // Load WASM from CDN (avoids shipping 30 MB in the bundle)
         const base = "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.9/dist/esm";
         await ff.load({
-          coreURL:   await toBlobURL(`${base}/ffmpeg-core.js`,   "text/javascript"),
-          wasmURL:   await toBlobURL(`${base}/ffmpeg-core.wasm`, "application/wasm"),
+          coreURL: await toBlobURL(`${base}/ffmpeg-core.js`,   "text/javascript"),
+          wasmURL: await toBlobURL(`${base}/ffmpeg-core.wasm`, "application/wasm"),
         });
-
         ffmpegInstance = ff;
         return ff;
       })();
     }
     await loadPromise;
-  } else if (onProgress) {
-    // Re-attach progress listener for this call
-    ffmpegInstance.on("progress", ({ progress, time }) => {
-      onProgress({ ratio: progress, time });
-    });
   }
 
-  return { ffmpeg: ffmpegInstance!, fetchFile };
+  // BUG 1 FIX: remove ALL previous progress listeners before attaching a new
+  // one so callbacks don't accumulate across repeated calls to this function.
+  const ff = ffmpegInstance!;
+  ff.off("progress");          // clear every "progress" handler
+  if (onProgress) {
+    ff.on("progress", ({ progress, time }) => onProgress({ ratio: progress, time }));
+  }
+
+  return { ffmpeg: ff, fetchFile };
 }
 
 /** Write a File/Blob into FFmpeg's virtual FS */
@@ -62,19 +52,27 @@ export async function writeInputFile(
   file: File,
   name = "input"
 ): Promise<string> {
-  const inputName = `${name}.${file.name.split(".").pop() ?? "bin"}`;
+  const ext = file.name.split(".").pop() ?? "bin";
+  const inputName = `${name}.${ext}`;
   await ffmpeg.writeFile(inputName, await fetchFile(file));
   return inputName;
 }
 
-/** Read output from FFmpeg's virtual FS as a Blob */
+/**
+ * Read output from FFmpeg's virtual FS as a Blob.
+ * BUG 2 VERIFIED: `ffmpeg.readFile()` returns Uint8Array whose `.buffer`
+ * is ArrayBufferLike (may be SharedArrayBuffer in some environments).
+ * We slice() it to always get a plain ArrayBuffer, which the Blob ctor accepts.
+ */
 export async function readOutputFile(
   ffmpeg: import("@ffmpeg/ffmpeg").FFmpeg,
   name: string,
   mime: string
 ): Promise<Blob> {
   const data = await ffmpeg.readFile(name) as Uint8Array;
-  return new Blob([data.buffer as ArrayBuffer], { type: mime });
+  // .slice() copies into a regular ArrayBuffer, solving SharedArrayBuffer issues
+  const buf = data.buffer.slice(data.byteOffset, data.byteOffset + data.byteLength);
+  return new Blob([buf], { type: mime });
 }
 
 /** Clean up named files from FFmpeg virtual FS */
@@ -107,14 +105,8 @@ export function getAudioDuration(file: File): Promise<number> {
   return new Promise((resolve) => {
     const url = URL.createObjectURL(file);
     const audio = new Audio();
-    audio.addEventListener("loadedmetadata", () => {
-      URL.revokeObjectURL(url);
-      resolve(audio.duration);
-    });
-    audio.addEventListener("error", () => {
-      URL.revokeObjectURL(url);
-      resolve(0);
-    });
+    audio.addEventListener("loadedmetadata", () => { URL.revokeObjectURL(url); resolve(audio.duration); });
+    audio.addEventListener("error",          () => { URL.revokeObjectURL(url); resolve(0); });
     audio.src = url;
   });
 }

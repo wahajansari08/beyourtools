@@ -9,37 +9,51 @@ type RecordState = "idle" | "requesting" | "recording" | "paused" | "done" | "er
 
 export default function AudioRecorderClient() {
   const [recState,   setRecState]   = useState<RecordState>("idle");
-  const [elapsed,    setElapsed]    = useState(0);  // ms
+  const [elapsed,    setElapsed]    = useState(0);
   const [outputBlob, setOutputBlob] = useState<Blob | null>(null);
   const [outputExt,  setOutputExt]  = useState("webm");
   const [errorMsg,   setErrorMsg]   = useState("");
   const [mimeUsed,   setMimeUsed]   = useState("");
 
-  const mediaRecorderRef  = useRef<MediaRecorder | null>(null);
-  const streamRef         = useRef<MediaStream | null>(null);
-  const chunksRef         = useRef<Blob[]>([]);
-  const timerRef          = useRef<ReturnType<typeof setInterval> | null>(null);
-  const startTimeRef      = useRef<number>(0);
-  const pausedElapsedRef  = useRef<number>(0);
+  // BUG 4 FIX: manage the playback URL in state/effect so it is created once
+  // and revoked on cleanup — never call URL.createObjectURL() inline in JSX.
+  const [playbackUrl, setPlaybackUrl] = useState<string>("");
 
-  // Stop mic on unmount
-  useEffect(() => () => stopStream(), []);
+  useEffect(() => {
+    if (!outputBlob) { setPlaybackUrl(""); return; }
+    const url = URL.createObjectURL(outputBlob);
+    setPlaybackUrl(url);
+    return () => URL.revokeObjectURL(url);
+  }, [outputBlob]);
 
-  const stopStream = () => {
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const chunksRef        = useRef<Blob[]>([]);
+  const timerRef         = useRef<ReturnType<typeof setInterval> | null>(null);
+  const startTimeRef     = useRef<number>(0);
+  const pausedElapsedRef = useRef<number>(0);
+
+  // BUG 5 FIX: move stream ref and stopStream into a useRef / useCallback so
+  // the useEffect cleanup always closes over a stable reference.
+  const streamRef = useRef<MediaStream | null>(null);
+
+  const stopStream = useCallback(() => {
     streamRef.current?.getTracks().forEach((t) => t.stop());
     streamRef.current = null;
-  };
+  }, []);
 
-  const stopTimer = () => {
+  const stopTimer = useCallback(() => {
     if (timerRef.current) { clearInterval(timerRef.current); timerRef.current = null; }
-  };
+  }, []);
 
-  const startTimer = () => {
+  // Release mic on unmount — stopStream is stable (useCallback with no deps)
+  useEffect(() => () => { stopStream(); stopTimer(); }, [stopStream, stopTimer]);
+
+  const startTimer = useCallback(() => {
     startTimeRef.current = Date.now();
     timerRef.current = setInterval(() => {
       setElapsed(pausedElapsedRef.current + (Date.now() - startTimeRef.current));
     }, 100);
-  };
+  }, []);
 
   const handleStart = useCallback(async () => {
     setRecState("requesting");
@@ -47,6 +61,7 @@ export default function AudioRecorderClient() {
     chunksRef.current = [];
     pausedElapsedRef.current = 0;
     setElapsed(0);
+    setOutputBlob(null);
 
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
@@ -75,7 +90,7 @@ export default function AudioRecorderClient() {
         stopTimer();
       };
 
-      mr.start(250); // collect chunks every 250ms
+      mr.start(250);
       setRecState("recording");
       startTimer();
     } catch (err) {
@@ -89,33 +104,33 @@ export default function AudioRecorderClient() {
       }
       setRecState("error");
     }
-  }, []);
+  }, [stopStream, stopTimer, startTimer]);
 
-  const handlePause = () => {
+  const handlePause = useCallback(() => {
     if (mediaRecorderRef.current?.state === "recording") {
       mediaRecorderRef.current.pause();
       stopTimer();
       pausedElapsedRef.current = elapsed;
       setRecState("paused");
     }
-  };
+  }, [elapsed, stopTimer]);
 
-  const handleResume = () => {
+  const handleResume = useCallback(() => {
     if (mediaRecorderRef.current?.state === "paused") {
       mediaRecorderRef.current.resume();
       setRecState("recording");
       startTimer();
     }
-  };
+  }, [startTimer]);
 
-  const handleStop = () => {
+  const handleStop = useCallback(() => {
     stopTimer();
     if (mediaRecorderRef.current && mediaRecorderRef.current.state !== "inactive") {
       mediaRecorderRef.current.stop();
     }
-  };
+  }, [stopTimer]);
 
-  const handleReset = () => {
+  const handleReset = useCallback(() => {
     stopTimer();
     stopStream();
     mediaRecorderRef.current = null;
@@ -125,7 +140,7 @@ export default function AudioRecorderClient() {
     pausedElapsedRef.current = 0;
     setRecState("idle");
     setErrorMsg("");
-  };
+  }, [stopStream, stopTimer]);
 
   const isRecording = recState === "recording";
   const isPaused    = recState === "paused";
@@ -133,7 +148,6 @@ export default function AudioRecorderClient() {
 
   return (
     <div className="space-y-4">
-      {/* Main record panel */}
       {recState !== "done" && (
         <div className="rounded-xl border p-6 space-y-6 text-center"
           style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
@@ -145,20 +159,20 @@ export default function AudioRecorderClient() {
               {formatRecordingTime(elapsed)}
             </div>
             <p className="mt-1 text-xs" style={{ color: "var(--text-subtle)" }}>
-              {recState === "idle"      && "Ready to record"}
-              {recState === "requesting"&& "Requesting microphone…"}
-              {isRecording              && "● Recording"}
-              {isPaused                 && "⏸ Paused"}
+              {recState === "idle"       && "Ready to record"}
+              {recState === "requesting" && "Requesting microphone…"}
+              {isRecording               && "● Recording"}
+              {isPaused                  && "⏸ Paused"}
             </p>
           </div>
 
-          {/* Recording indicator */}
+          {/* Pulsing indicator while recording */}
           {isRecording && (
-            <div className="flex justify-center">
-              <span className="flex h-3 w-3 items-center justify-center">
-                <span className="absolute inline-flex h-3 w-3 animate-ping rounded-full opacity-75"
+            <div className="flex justify-center" aria-hidden="true">
+              <span className="relative flex h-3 w-3">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full opacity-75"
                   style={{ backgroundColor: "var(--coral)" }} />
-                <span className="relative inline-flex h-2 w-2 rounded-full"
+                <span className="relative inline-flex h-3 w-3 rounded-full"
                   style={{ backgroundColor: "var(--coral)" }} />
               </span>
             </div>
@@ -208,7 +222,6 @@ export default function AudioRecorderClient() {
         </div>
       )}
 
-      {/* Error */}
       {recState === "error" && (
         <div className="space-y-3">
           <StatusBanner type="error" message={errorMsg} />
@@ -220,7 +233,6 @@ export default function AudioRecorderClient() {
         </div>
       )}
 
-      {/* Done */}
       {recState === "done" && outputBlob && (
         <div className="space-y-4">
           <div className="rounded-xl border p-4 space-y-3"
@@ -232,9 +244,11 @@ export default function AudioRecorderClient() {
                 {formatRecordingTime(elapsed)} · {(outputBlob.size / 1024).toFixed(0)} KB
               </span>
             </div>
-            {/* Playback */}
-            {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-            <audio controls src={URL.createObjectURL(outputBlob)} className="w-full" />
+            {/* BUG 4 FIX: use stable playbackUrl from state, not inline createObjectURL */}
+            {playbackUrl && (
+              // eslint-disable-next-line jsx-a11y/media-has-caption
+              <audio controls src={playbackUrl} className="w-full" />
+            )}
             {mimeUsed && (
               <p className="text-[11px]" style={{ color: "var(--text-subtle)" }}>
                 Recorded as: <span className="font-mono">{mimeUsed}</span>
@@ -251,11 +265,10 @@ export default function AudioRecorderClient() {
         </div>
       )}
 
-      {/* Permissions info */}
       {recState === "idle" && (
         <div className="rounded-lg border px-4 py-3 text-xs leading-relaxed space-y-1"
           style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-muted)" }}>
-          <p>🎙️ <strong style={{ color: "var(--text-secondary)" }}>Microphone permission</strong> — your browser will ask for microphone access when you click Start Recording. You can revoke this permission at any time in your browser settings.</p>
+          <p>🎙️ <strong style={{ color: "var(--text-secondary)" }}>Microphone permission</strong> — your browser will ask for microphone access when you click Start Recording. You can revoke this at any time in your browser settings.</p>
           <p>🔒 Your recording is processed entirely in your browser and is never uploaded to any server.</p>
         </div>
       )}

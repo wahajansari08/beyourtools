@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import AudioUploader, { type AudioFile } from "@/components/audio/AudioUploader";
 import AudioFileInfo from "@/components/audio/AudioFileInfo";
 import AudioTrimmer from "@/components/audio/AudioTrimmer";
@@ -20,6 +20,20 @@ export default function Mp3CutterClient() {
   const [outBlob,   setOutBlob]   = useState<Blob | null>(null);
   const [errorMsg,  setErrorMsg]  = useState("");
 
+  // BUG 3 + 10 FIX: manage output URL in a ref so we can revoke it properly
+  // instead of calling URL.createObjectURL() inline during render.
+  const outUrlRef = useRef<string>("");
+  const [outUrl,  setOutUrl]  = useState<string>("");
+
+  // Revoke output URL when component unmounts or blob changes
+  useEffect(() => {
+    if (!outBlob) return;
+    const url = URL.createObjectURL(outBlob);
+    outUrlRef.current = url;
+    setOutUrl(url);
+    return () => { URL.revokeObjectURL(url); };
+  }, [outBlob]);
+
   const handleFiles = useCallback((files: AudioFile[]) => {
     const f = files[0];
     if (!f) return;
@@ -28,6 +42,7 @@ export default function Mp3CutterClient() {
     setEndSec(f.duration ?? 0);
     setState("ready");
     setOutBlob(null);
+    setOutUrl("");
     setErrorMsg("");
   }, []);
 
@@ -54,12 +69,11 @@ export default function Mp3CutterClient() {
     if (audioFile?.objectUrl) URL.revokeObjectURL(audioFile.objectUrl);
     setAudioFile(null);
     setOutBlob(null);
+    setOutUrl("");
     setState("idle");
     setErrorMsg("");
     setProgress(null);
   }, [audioFile]);
-
-  const outUrl = outBlob ? URL.createObjectURL(outBlob) : "";
 
   return (
     <div className="space-y-4">
