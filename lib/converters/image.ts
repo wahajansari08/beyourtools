@@ -196,7 +196,6 @@ function blobToDataUrl(blob: Blob): Promise<string> {
 
 declare global {
   interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     jspdf: any;
   }
 }
@@ -221,7 +220,6 @@ function loadJsPdf(): Promise<void> {
 
 async function buildPdf(canvas: HTMLCanvasElement): Promise<Blob> {
   await loadJsPdf();
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { jsPDF } = window.jspdf as any;
   const w = canvas.width;
   const h = canvas.height;

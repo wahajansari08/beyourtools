@@ -1,7 +1,8 @@
 import { buildVideoMetadata, renderVideoTool } from "@/components/video/videoPageHelpers";
 
-export const metadata = buildVideoMetadata("mp4-to-mp3");
+export const metadata = buildVideoMetadata("remove-audio-from-video");
 
 export default function Page() {
-  return renderVideoTool("mp4-to-mp3");
+  return renderVideoTool("remove-audio-from-video");
 }
+

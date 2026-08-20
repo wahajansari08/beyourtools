@@ -1,7 +1,8 @@
 import { buildVideoMetadata, renderVideoTool } from "@/components/video/videoPageHelpers";
 
-export const metadata = buildVideoMetadata("mp4-to-mp3");
+export const metadata = buildVideoMetadata("gif-to-mp4");
 
 export default function Page() {
-  return renderVideoTool("mp4-to-mp3");
+  return renderVideoTool("gif-to-mp4");
 }
+

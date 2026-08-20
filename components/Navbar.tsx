@@ -13,6 +13,7 @@ const NAV_LINKS = [
   { href: "/pdf-tools",         label: "PDF Tools"         },
   { href: "/qr-barcode-tools",  label: "QR & Barcodes"     },
   { href: "/audio-tools",       label: "Audio Tools"       },
+  { href: "/video-tools",       label: "Video Tools"       },
   { href: "/blog",              label: "Blog"              },
   { href: "/about",             label: "About"             },
 ];

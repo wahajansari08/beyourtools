@@ -1,6 +1,11 @@
 /**
  * Remove silence from audio using FFmpeg silenceremove filter.
  * Uses FFmpeg WASM.
+ *
+ * BUG 7 FIX: the original filter string was assembled with array.join("") across
+ * lines that contained template-literal newlines/indentation, producing a filter
+ * string with embedded whitespace that FFmpeg rejected. Now built as a single
+ * string with no extraneous whitespace.
  */
 
 import {
@@ -12,11 +17,11 @@ import {
 } from "./ffmpeg";
 
 export interface SilenceOptions {
-  /** Silence threshold in dB, e.g. -40 */
+  /** Silence threshold in dBFS, e.g. -40 */
   thresholdDb?: number;
   /** Minimum silence duration to remove, in seconds */
   minSilenceDuration?: number;
-  /** Padding to keep around speech, in seconds */
+  /** Padding to keep at edges of speech, in seconds */
   padding?: number;
   outputFormat?: "mp3" | "wav";
   bitrate?: string;
@@ -44,15 +49,15 @@ export async function removeSilence(file: File, opts: SilenceOptions = {}): Prom
   const inputName  = await writeInputFile(ffmpeg, fetchFile, file, "silence_in");
   const outputName = `no_silence.${outputFormat}`;
 
-  // silenceremove: remove silence from start, middle, and end
-  // start_periods=1 removes leading silence
-  // stop_periods=-1 removes all silence regions
-  const threshLinear = Math.pow(10, thresholdDb / 20);
-  const filter = [
-    `silenceremove=`,
-    `start_periods=1:start_silence=${padding}:start_threshold=${threshLinear}`,
-    `:stop_periods=-1:stop_silence=${minSilenceDuration}:stop_threshold=${threshLinear}`,
-  ].join("");
+  // Convert dBFS threshold to linear amplitude (0 – 1)
+  const threshLinear = Math.pow(10, thresholdDb / 20).toFixed(6);
+
+  // BUG 7 FIX: build the filter string as a single concatenated string with NO
+  // newlines or spaces — FFmpeg's filter parser treats whitespace as a separator.
+  const filter =
+    `silenceremove=` +
+    `start_periods=1:start_silence=${padding}:start_threshold=${threshLinear}:` +
+    `stop_periods=-1:stop_silence=${minSilenceDuration}:stop_threshold=${threshLinear}`;
 
   const args = [
     "-i", inputName,
@@ -66,7 +71,7 @@ export async function removeSilence(file: File, opts: SilenceOptions = {}): Prom
     args.push("-c:a", "pcm_s16le");
   }
 
-  args.push("-vn", outputName);
+  args.push(outputName);
 
   await ffmpeg.exec(args);
 

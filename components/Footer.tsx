@@ -41,6 +41,14 @@ const TOOL_LINKS = {
     { href: "/mp3-compressor",     label: "MP3 Compressor"    },
     { href: "/audio-recorder",     label: "Audio Recorder"    },
   ],
+  "Video Tools": [
+    { href: "/video-tools",                 label: "All Video Tools"   },
+    { href: "/video-compressor",            label: "Video Compressor"  },
+    { href: "/video-cutter",                label: "Video Cutter"      },
+    { href: "/video-converter",             label: "Video Converter"   },
+    { href: "/video-to-gif",                label: "Video to GIF"      },
+    { href: "/video-thumbnail-generator",   label: "Thumbnail Maker"   },
+  ],
   "Blog": [
     { href: "/blog",                                               label: "All Articles"         },
     { href: "/blog/json-tips-every-developer-should-know",        label: "10 JSON Tips"          },
@@ -68,7 +76,7 @@ export default function Footer() {
     >
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
         {/* Top: brand + link columns */}
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-6">
           {/* Brand */}
           <div>
             <Link href="/" className="focus-ring inline-flex items-center gap-2 rounded">

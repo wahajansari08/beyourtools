@@ -1,6 +1,10 @@
 /**
  * Audio merging — concatenate multiple audio files.
- * Uses FFmpeg WASM concat demuxer.
+ * Uses FFmpeg WASM.
+ *
+ * BUG 6 FIX: the concat demuxer with -c:a copy fails when input files have
+ * different sample rates, channel counts, or codecs. We now use the filter_complex
+ * concat approach which decodes every input and re-encodes a uniform output.
  */
 
 import {
@@ -49,17 +53,22 @@ export async function mergeAudio(files: File[], opts: MergeOptions = {}): Promis
     inputNames.push(name);
   }
 
-  // Write concat list file
-  const listContent = inputNames.map((n) => `file '${n}'`).join("\n");
-  const encoder = new TextEncoder();
-  await ffmpeg.writeFile("concat_list.txt", encoder.encode(listContent));
-
   const outputName = `merged.${outputExt}`;
 
+  // BUG 6 FIX: build a filter_complex concat graph that decodes every input,
+  // concatenates them as audio streams, and re-encodes the result.
+  // This handles mismatched sample rates, channels and codecs.
+  const n = files.length;
+  const inputArgs = inputNames.flatMap((name) => ["-i", name]);
+
+  // [0:a][1:a]...[n-1:a]concat=n=N:v=0:a=1[outa]
+  const inLabels   = inputNames.map((_, i) => `[${i}:a]`).join("");
+  const filterStr  = `${inLabels}concat=n=${n}:v=0:a=1[outa]`;
+
   const args = [
-    "-f", "concat",
-    "-safe", "0",
-    "-i", "concat_list.txt",
+    ...inputArgs,
+    "-filter_complex", filterStr,
+    "-map", "[outa]",
     "-y",
   ];
 
@@ -67,16 +76,18 @@ export async function mergeAudio(files: File[], opts: MergeOptions = {}): Promis
     args.push("-c:a", "libmp3lame", "-b:a", opts.bitrate ?? "192k");
   } else if (outputExt === "wav") {
     args.push("-c:a", "pcm_s16le");
+  } else if (outputExt === "ogg") {
+    args.push("-c:a", "libvorbis", "-q:a", "4");
   } else {
-    args.push("-c:a", "copy");
+    args.push("-c:a", "libmp3lame", "-b:a", opts.bitrate ?? "192k");
   }
 
-  args.push("-vn", outputName);
+  args.push(outputName);
 
   await ffmpeg.exec(args);
 
   const blob = await readOutputFile(ffmpeg, outputName, mime);
-  await cleanupFiles(ffmpeg, ...inputNames, "concat_list.txt", outputName);
+  await cleanupFiles(ffmpeg, ...inputNames, outputName);
 
   return { blob, ext: outputExt, mime };
 }

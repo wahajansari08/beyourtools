@@ -11,6 +11,7 @@ export interface FFmpegProgress {
 
 let ffmpegInstance: import("@ffmpeg/ffmpeg").FFmpeg | null = null;
 let loadPromise: Promise<import("@ffmpeg/ffmpeg").FFmpeg> | null = null;
+let progressHandler: ((event: { progress: number; time: number }) => void) | null = null;
 
 export async function loadFFmpeg(
   onProgress?: (p: FFmpegProgress) => void
@@ -34,12 +35,14 @@ export async function loadFFmpeg(
     await loadPromise;
   }
 
-  // BUG 1 FIX: remove ALL previous progress listeners before attaching a new
-  // one so callbacks don't accumulate across repeated calls to this function.
   const ff = ffmpegInstance!;
-  ff.off("progress");          // clear every "progress" handler
+  if (progressHandler) {
+    ff.off("progress", progressHandler);
+    progressHandler = null;
+  }
   if (onProgress) {
-    ff.on("progress", ({ progress, time }) => onProgress({ ratio: progress, time }));
+    progressHandler = ({ progress, time }) => onProgress({ ratio: progress, time });
+    ff.on("progress", progressHandler);
   }
 
   return { ffmpeg: ff, fetchFile };
@@ -70,9 +73,9 @@ export async function readOutputFile(
   mime: string
 ): Promise<Blob> {
   const data = await ffmpeg.readFile(name) as Uint8Array;
-  // .slice() copies into a regular ArrayBuffer, solving SharedArrayBuffer issues
-  const buf = data.buffer.slice(data.byteOffset, data.byteOffset + data.byteLength);
-  return new Blob([buf], { type: mime });
+  const copy = new Uint8Array(data.byteLength);
+  copy.set(data);
+  return new Blob([copy], { type: mime });
 }
 
 /** Clean up named files from FFmpeg virtual FS */

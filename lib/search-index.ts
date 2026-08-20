@@ -6,6 +6,7 @@
 import { tools } from "./tools-config";
 import { pdfTools } from "./pdf-tools-config";
 import { conversionRoutes, getFormat } from "./image-tools-config";
+import { videoTools } from "./video-tools-config";
 
 export interface SearchResult {
   slug: string;
@@ -13,7 +14,7 @@ export interface SearchResult {
   description: string;
   href: string;
   category: string;
-  section: "json" | "image" | "pdf";
+  section: "json" | "image" | "pdf" | "video";
   icon: string;
   keywords: string[];
 }
@@ -73,6 +74,23 @@ function buildIndex(): SearchResult[] {
         "convert", "image", "converter",
         ...from.extensions, ...to.extensions,
       ]
+        .join(" ")
+        .toLowerCase()
+        .split(/\s+/),
+    });
+  }
+
+  // Video tools
+  for (const t of videoTools) {
+    index.push({
+      slug: t.slug,
+      name: t.name,
+      description: t.description,
+      href: `/${t.slug}`,
+      category: `Video · ${t.category}`,
+      section: "video",
+      icon: t.icon,
+      keywords: [t.name, t.description, t.category, t.slug, ...t.formats, "video", "tools"]
         .join(" ")
         .toLowerCase()
         .split(/\s+/),

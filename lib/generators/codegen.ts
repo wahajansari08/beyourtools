@@ -1,6 +1,5 @@
 // ─── Shared helpers ──────────────────────────────────────────────────────────
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type JsonValue = any;
 
 function inferType(value: unknown): string {

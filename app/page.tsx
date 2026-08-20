@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { tools } from "@/lib/tools-config";
 import { pdfTools } from "@/lib/pdf-tools-config";
 import { conversionRoutes } from "@/lib/image-tools-config";
+import { videoTools } from "@/lib/video-tools-config";
 import { getRecentPosts, formatDate } from "@/lib/blog";
 import JsonLd from "@/components/JsonLd";
 import { websiteSchema, organizationSchema, faqSchema, SITE } from "@/lib/seo";
@@ -24,13 +25,15 @@ export const metadata: Metadata = {
 const JSON_FEATURED = ["json-formatter","json-validator","json-diff","json-to-csv","json-to-typescript","json-schema-generator","jwt-decoder","json-repair"];
 const IMAGE_FEATURED = ["jpg-to-png","jpg-to-webp","jpg-to-pdf","png-to-jpg","png-to-webp","png-to-svg","webp-to-jpg","svg-to-png","pdf-to-jpg"];
 const PDF_FEATURED   = ["pdf-to-jpg","jpg-to-pdf","merge-pdf","split-pdf","pdf-compressor","protect-pdf","pdf-to-text","rotate-pdf","pdf-metadata-viewer"];
+const VIDEO_FEATURED = ["video-compressor","video-cutter","video-converter","mp4-to-mp3","video-to-gif","video-thumbnail-generator","video-resizer","remove-audio-from-video"];
 
 const jsonCount  = tools.length;
 const imageCount = conversionRoutes.length;
 const pdfCount   = pdfTools.length;
+const videoCount = videoTools.length;
 
 const CATEGORY_COLORS: Record<string, string> = {
-  JSON: "var(--teal)", Image: "var(--accent)", PDF: "var(--coral)",
+  JSON: "var(--teal)", Image: "var(--accent)", PDF: "var(--coral)", Video: "var(--teal)",
 };
 
 export default function Home() {
@@ -78,7 +81,7 @@ function Hero() {
             <Link href="/pdf-tools" className="focus-ring rounded-md border px-5 py-2.5 text-sm font-semibold transition" style={{ borderColor: "var(--border-strong)", color: "var(--text-primary)", backgroundColor: "var(--bg-elevated)" }}>PDF Tools</Link>
           </div>
           <div className="mt-10 flex flex-wrap justify-center gap-8">
-            {[{ count: jsonCount, label: "JSON tools" }, { count: imageCount, label: "Image converters" }, { count: pdfCount, label: "PDF tools" }].map(({ count, label }) => (
+            {[{ count: jsonCount, label: "JSON tools" }, { count: imageCount, label: "Image converters" }, { count: pdfCount, label: "PDF tools" }, { count: videoCount, label: "Video tools" }].map(({ count, label }) => (
               <div key={label} className="text-center">
                 <div className="font-display text-2xl font-semibold" style={{ color: "var(--accent)" }}>{count}+</div>
                 <div className="mt-0.5 text-xs" style={{ color: "var(--text-subtle)" }}>{label}</div>
@@ -115,6 +118,14 @@ function ToolSections() {
         href="/pdf-tools" ctaLabel="All PDF Tools →"
         featured={PDF_FEATURED.map((s) => pdfTools.find((t) => t.slug === s)).filter(Boolean) as typeof pdfTools}
         cardHref={(s) => `/pdf-tools/${s}`} cardIcon="📄" cardIconColor="var(--coral)" />
+
+      <div className="h-px" style={{ backgroundColor: "var(--border)" }} />
+
+      <ToolSection id="video-tools" icon="VID" iconColor="var(--teal)" title="Video Tools"
+        description={`${videoCount} tools - compress, cut, convert, resize, crop, merge, GIFs and frames.`}
+        href="/video-tools" ctaLabel="All Video Tools →"
+        featured={VIDEO_FEATURED.map((s) => videoTools.find((t) => t.slug === s)).filter(Boolean) as typeof videoTools}
+        cardHref={(s) => `/${s}`} cardIcon="VID" cardIconColor="var(--teal)" />
 
       <div className="h-px" style={{ backgroundColor: "var(--border)" }} />
 

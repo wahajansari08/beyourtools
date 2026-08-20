@@ -92,7 +92,7 @@ export default function QRCodeGeneratorPage() {
           <ol className="space-y-2 text-sm" style={{ color: "var(--text-muted)" }}>
             <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>1.</span> Select the content type (URL, WiFi, vCard, etc.).</li>
             <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>2.</span> Fill in the required fields.</li>
-            <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>3.</span> Optionally expand "Customize QR code" to change size, colors and error correction.</li>
+            <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>3.</span> Optionally expand &quot;Customize QR code&quot; to change size, colors and error correction.</li>
             <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>4.</span> Click <strong>Generate QR Code</strong>.</li>
             <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>5.</span> Download PNG or SVG, or copy the encoded value.</li>
           </ol>

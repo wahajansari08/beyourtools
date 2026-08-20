@@ -8,8 +8,6 @@
  * function is called, avoiding bundle-size impact.
  */
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 // ─── CDN loader ───────────────────────────────────────────────────────────────
 
 declare global {
@@ -573,5 +571,4 @@ export function parsePageList(input: string, total: number): number[] {
   }
   return [...new Set(result)].sort((a, b) => a - b);
 }
-
 

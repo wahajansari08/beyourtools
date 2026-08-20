@@ -9,12 +9,14 @@ const SECTION_LABELS = {
   json:  "JSON Tools",
   image: "Image Converter",
   pdf:   "PDF Tools",
+  video: "Video Tools",
 } as const;
 
 const SECTION_COLORS = {
   json:  "var(--teal)",
   image: "var(--accent)",
   pdf:   "var(--coral)",
+  video: "var(--teal)",
 } as const;
 
 interface Props {
@@ -129,7 +131,7 @@ export default function SearchOverlay({ onClose }: Props) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Search all tools… (JSON, Image, PDF)"
+            placeholder="Search all tools... (JSON, Image, PDF, Video)"
             className="flex-1 border-0 bg-transparent text-sm outline-none placeholder:opacity-50"
             style={{ color: "var(--text-primary)" }}
             aria-label="Search tools"
@@ -166,8 +168,9 @@ export default function SearchOverlay({ onClose }: Props) {
               <p className="text-sm" style={{ color: "var(--text-subtle)" }}>
                 Start typing to search across{" "}
                 <span style={{ color: "var(--teal)" }}>JSON</span>,{" "}
-                <span style={{ color: "var(--accent)" }}>Image</span>, and{" "}
-                <span style={{ color: "var(--coral)" }}>PDF</span> tools.
+                <span style={{ color: "var(--accent)" }}>Image</span>,{" "}
+                <span style={{ color: "var(--coral)" }}>PDF</span>, and{" "}
+                <span style={{ color: "var(--teal)" }}>Video</span> tools.
               </p>
               <p className="mt-1 text-xs" style={{ color: "var(--text-subtle)" }}>
                 ↑ ↓ to navigate · Enter to open · Esc to close
