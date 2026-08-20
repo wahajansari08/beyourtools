@@ -9,17 +9,23 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@zxing/browser": "^0.2.1",
+    "@zxing/library": "^0.23.0",
     "clsx": "^2.1.1",
     "fast-xml-parser": "^4.5.0",
     "js-yaml": "^4.1.0",
+    "jsbarcode": "^3.12.3",
     "next": "^15.1.0",
     "pdf-lib": "^1.17.1",
+    "qrcode": "^1.5.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
+    "@types/jsbarcode": "^3.11.4",
     "@types/node": "^22.9.0",
+    "@types/qrcode": "^1.5.6",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "autoprefixer": "^10.4.20",

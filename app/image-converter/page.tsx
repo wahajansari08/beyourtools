@@ -3,6 +3,7 @@ import Link from "next/link";
 import { formats, routesBySourceFormat, getFormat, type ImageFormat } from "@/lib/image-tools-config";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
+import FormatSelectorClient from "./FormatSelectorClient";
 
 export const metadata: Metadata = {
   title: "Image Converter - Free Online JPG PNG WebP AVIF SVG ICO Converter",
@@ -82,6 +83,9 @@ export default function ImageConverterHub() {
           </span>
         </div>
       </div>
+
+      {/* Format selector */}
+      <FormatSelectorClient />
 
       {/* Popular */}
       <div className="mb-10">

@@ -25,6 +25,14 @@ const TOOL_LINKS = {
     { href: "/pdf-tools/pdf-compressor",  label: "Compress PDF"   },
     { href: "/pdf-tools/protect-pdf",     label: "Protect PDF"    },
   ],
+  "QR & Barcodes": [
+    { href: "/qr-barcode-tools",           label: "All QR & Barcode Tools" },
+    { href: "/qr-code-generator",          label: "QR Code Generator"      },
+    { href: "/wifi-qr-code-generator",     label: "WiFi QR Generator"      },
+    { href: "/barcode-generator",          label: "Barcode Generator"      },
+    { href: "/upc-barcode-generator",      label: "UPC Generator"          },
+    { href: "/ean-barcode-generator",      label: "EAN-13 Generator"       },
+  ],
   "Blog": [
     { href: "/blog",                                               label: "All Articles"         },
     { href: "/blog/json-tips-every-developer-should-know",        label: "10 JSON Tips"          },

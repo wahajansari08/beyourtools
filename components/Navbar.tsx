@@ -8,11 +8,12 @@ import dynamic from "next/dynamic";
 const SearchOverlay = dynamic(() => import("./SearchOverlay"), { ssr: false });
 
 const NAV_LINKS = [
-  { href: "/json-tools",      label: "JSON Tools"      },
-  { href: "/image-converter", label: "Image Converter" },
-  { href: "/pdf-tools",       label: "PDF Tools"       },
-  { href: "/blog",            label: "Blog"            },
-  { href: "/about",           label: "About"           },
+  { href: "/json-tools",        label: "JSON Tools"        },
+  { href: "/image-converter",   label: "Image Converter"   },
+  { href: "/pdf-tools",         label: "PDF Tools"         },
+  { href: "/qr-barcode-tools",  label: "QR & Barcodes"     },
+  { href: "/blog",              label: "Blog"              },
+  { href: "/about",             label: "About"             },
 ];
 
 const SearchIcon = () => (
