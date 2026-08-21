@@ -2,6 +2,7 @@ import {
   cleanupFiles,
   loadFFmpeg,
   readOutputFile,
+  type FFmpegLog,
   type FFmpegProgress,
 } from "./ffmpeg";
 
@@ -137,7 +138,43 @@ function videoEncodeArgs(ext: string, opts: VideoProcessOptions): string[] {
   ];
 }
 
-function friendlyError(): Error {
+function createLogCollector(): { logs: string[]; onLog: (entry: FFmpegLog) => void } {
+  const logs: string[] = [];
+  return {
+    logs,
+    onLog: ({ message }) => {
+      if (!message) return;
+      logs.push(message);
+      if (logs.length > 80) logs.shift();
+    },
+  };
+}
+
+async function execChecked(ffmpeg: import("@ffmpeg/ffmpeg").FFmpeg, args: string[]): Promise<void> {
+  const code = await ffmpeg.exec(args);
+  if (typeof code === "number" && code !== 0) {
+    throw new Error(`FFmpeg exited with code ${code}.`);
+  }
+}
+
+function friendlyError(cause?: unknown, logs: string[] = []): Error {
+  const detail = logs.join("\n").toLowerCase();
+  if (detail.includes("unknown encoder") || detail.includes("encoder not found")) {
+    return new Error("This browser FFmpeg build does not support the required encoder for that output format. Try MP4 output or another source file.");
+  }
+  if (detail.includes("unknown decoder") || detail.includes("decoder not found") || detail.includes("unsupported codec")) {
+    return new Error("This video uses a codec this browser FFmpeg build cannot decode. Try converting from a common MP4/H.264 file.");
+  }
+  if (detail.includes("stream map") || detail.includes("does not match any streams") || detail.includes("output file #0 does not contain any stream")) {
+    return new Error("This file is missing a required video or audio stream for that tool. Try another file or a different video tool.");
+  }
+
+  if (cause instanceof Error) {
+    console.warn("Video processing failed", { message: cause.message, logs });
+  } else {
+    console.warn("Video processing failed", { cause, logs });
+  }
+
   return new Error("We couldn't process this video. Please try another file, smaller clip, or a more common format such as MP4.");
 }
 
@@ -146,16 +183,19 @@ async function writeFile(ffmpeg: import("@ffmpeg/ffmpeg").FFmpeg, fetchFile: typ
 }
 
 async function runSingle(file: File, args: string[], out: string, mime: string, opts: VideoProcessOptions): Promise<VideoProcessResult> {
-  const { ffmpeg, fetchFile } = await loadFFmpeg(normalizeProgress(opts.onProgress));
+  const { logs, onLog } = createLogCollector();
+  const { ffmpeg, fetchFile } = await loadFFmpeg(normalizeProgress(opts.onProgress), onLog);
   const input = `input.${extension(file)}`;
   await writeFile(ffmpeg, fetchFile, file, input);
+  const resolvedArgs = args.map((arg) => (arg === "$INPUT" ? input : arg));
 
   try {
-    await ffmpeg.exec(args.map((arg) => (arg === "$INPUT" ? input : arg)));
+    await execChecked(ffmpeg, resolvedArgs);
     const blob = await readOutputFile(ffmpeg, out, mime);
     return { blob, ext: out.split(".").pop() || "mp4", mime };
-  } catch {
-    throw friendlyError();
+  } catch (err) {
+    console.warn("Video FFmpeg command failed", { args: resolvedArgs, error: err, logs });
+    throw friendlyError(err, logs);
   } finally {
     await cleanupFiles(ffmpeg, input, out, "palette.png");
   }
@@ -264,7 +304,8 @@ export async function processVideo(file: File, kind: string, opts: VideoProcessO
 export async function mergeVideos(files: File[], opts: VideoProcessOptions = {}): Promise<VideoProcessResult> {
   if (files.length < 2) throw new Error("Please add at least two videos.");
 
-  const { ffmpeg, fetchFile } = await loadFFmpeg(normalizeProgress(opts.onProgress));
+  const { logs, onLog } = createLogCollector();
+  const { ffmpeg, fetchFile } = await loadFFmpeg(normalizeProgress(opts.onProgress), onLog);
   const inputNames: string[] = [];
   const normalized: string[] = [];
   const output = "merged.mp4";
@@ -275,7 +316,7 @@ export async function mergeVideos(files: File[], opts: VideoProcessOptions = {})
       const segment = `segment_${i}.mp4`;
       await writeFile(ffmpeg, fetchFile, files[i], input);
       inputNames.push(input);
-      await ffmpeg.exec([
+      await execChecked(ffmpeg, [
         "-i",
         input,
         "-vf",
@@ -302,11 +343,11 @@ export async function mergeVideos(files: File[], opts: VideoProcessOptions = {})
 
     const list = normalized.map((name) => `file '${name}'`).join("\n");
     await ffmpeg.writeFile("concat.txt", new TextEncoder().encode(list));
-    await ffmpeg.exec(["-f", "concat", "-safe", "0", "-i", "concat.txt", "-c", "copy", "-movflags", "faststart", "-y", output]);
+    await execChecked(ffmpeg, ["-f", "concat", "-safe", "0", "-i", "concat.txt", "-c", "copy", "-movflags", "faststart", "-y", output]);
     const blob = await readOutputFile(ffmpeg, output, MIME.mp4);
     return { blob, ext: "mp4", mime: MIME.mp4 };
-  } catch {
-    throw friendlyError();
+  } catch (err) {
+    throw friendlyError(err, logs);
   } finally {
     await cleanupFiles(ffmpeg, ...inputNames, ...normalized, "concat.txt", output);
   }
@@ -315,7 +356,8 @@ export async function mergeVideos(files: File[], opts: VideoProcessOptions = {})
 export async function addAudioToVideo(videoFile: File, opts: VideoProcessOptions): Promise<VideoProcessResult> {
   if (!opts.audioFile) throw new Error("Please choose an audio file to add.");
 
-  const { ffmpeg, fetchFile } = await loadFFmpeg(normalizeProgress(opts.onProgress));
+  const { logs, onLog } = createLogCollector();
+  const { ffmpeg, fetchFile } = await loadFFmpeg(normalizeProgress(opts.onProgress), onLog);
   const videoInput = `video_input.${extension(videoFile)}`;
   const audioInput = `audio_input.${extension(opts.audioFile)}`;
   const output = "video_with_audio.mp4";
@@ -329,7 +371,7 @@ export async function addAudioToVideo(videoFile: File, opts: VideoProcessOptions
     await writeFile(ffmpeg, fetchFile, opts.audioFile, audioInput);
 
     if (mode === "mix") {
-      await ffmpeg.exec([
+      await execChecked(ffmpeg, [
         "-i",
         videoInput,
         "-itsoffset",
@@ -348,7 +390,7 @@ export async function addAudioToVideo(videoFile: File, opts: VideoProcessOptions
         output,
       ]);
     } else {
-      await ffmpeg.exec([
+      await execChecked(ffmpeg, [
         "-i",
         videoInput,
         "-itsoffset",
@@ -368,8 +410,8 @@ export async function addAudioToVideo(videoFile: File, opts: VideoProcessOptions
 
     const blob = await readOutputFile(ffmpeg, output, MIME.mp4);
     return { blob, ext: "mp4", mime: MIME.mp4 };
-  } catch {
-    throw friendlyError();
+  } catch (err) {
+    throw friendlyError(err, logs);
   } finally {
     await cleanupFiles(ffmpeg, videoInput, audioInput, output);
   }

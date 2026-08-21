@@ -9,12 +9,19 @@ export interface FFmpegProgress {
   time: number;
 }
 
+export interface FFmpegLog {
+  type: string;
+  message: string;
+}
+
 let ffmpegInstance: import("@ffmpeg/ffmpeg").FFmpeg | null = null;
 let loadPromise: Promise<import("@ffmpeg/ffmpeg").FFmpeg> | null = null;
 let progressHandler: ((event: { progress: number; time: number }) => void) | null = null;
+let logHandler: ((event: FFmpegLog) => void) | null = null;
 
 export async function loadFFmpeg(
-  onProgress?: (p: FFmpegProgress) => void
+  onProgress?: (p: FFmpegProgress) => void,
+  onLog?: (entry: FFmpegLog) => void
 ): Promise<{ ffmpeg: import("@ffmpeg/ffmpeg").FFmpeg; fetchFile: typeof import("@ffmpeg/util").fetchFile }> {
   const { FFmpeg } = await import("@ffmpeg/ffmpeg");
   const { fetchFile, toBlobURL } = await import("@ffmpeg/util");
@@ -23,7 +30,7 @@ export async function loadFFmpeg(
     if (!loadPromise) {
       loadPromise = (async () => {
         const ff = new FFmpeg();
-        const base = "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.9/dist/esm";
+        const base = "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.10/dist/umd";
         await ff.load({
           coreURL: await toBlobURL(`${base}/ffmpeg-core.js`,   "text/javascript"),
           wasmURL: await toBlobURL(`${base}/ffmpeg-core.wasm`, "application/wasm"),
@@ -43,6 +50,14 @@ export async function loadFFmpeg(
   if (onProgress) {
     progressHandler = ({ progress, time }) => onProgress({ ratio: progress, time });
     ff.on("progress", progressHandler);
+  }
+  if (logHandler) {
+    ff.off("log", logHandler);
+    logHandler = null;
+  }
+  if (onLog) {
+    logHandler = (entry) => onLog(entry);
+    ff.on("log", logHandler);
   }
 
   return { ffmpeg: ff, fetchFile };

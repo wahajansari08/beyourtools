@@ -19,7 +19,10 @@ export default function VideoQueue({ uploads, onChange }: VideoQueueProps) {
   };
 
   const remove = (index: number) => {
-    URL.revokeObjectURL(uploads[index].objectUrl);
+    // BUG 11 FIX: do NOT revoke the objectUrl here.
+    // VideoToolClient's unmount cleanup effect owns all URL revocations.
+    // Revoking here as well causes a double-revoke: the URL becomes invalid
+    // immediately, breaking any still-playing video previews in other rows.
     onChange(uploads.filter((_, i) => i !== index));
   };
 

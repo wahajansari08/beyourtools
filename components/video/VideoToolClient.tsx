@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { VideoTool } from "@/lib/video-tools-config";
 import { addAudioToVideo, mergeVideos, processVideo, type QualityPreset, type ResolutionPreset, type VideoFormat, type CropRect } from "@/lib/video/process";
 import { captureMultipleFrames, captureVideoFrame } from "@/lib/video/browser";
+import { formatBytes } from "@/lib/video/ffmpeg";
 import VideoDownload from "./VideoDownload";
 import VideoFileInfo from "./VideoFileInfo";
 import VideoPlayer from "./VideoPlayer";
@@ -46,8 +47,16 @@ function replaceExt(name: string, ext: string): string {
   return `${base}.${ext}`;
 }
 
-function outputFilename(tool: VideoTool, original: string, mime: string): string {
+function outputFilename(tool: VideoTool, original: string, mime: string, imageType?: string): string {
   if (mime === "application/zip") return "video-frames.zip";
+  // BUG 4 FIX: use the actual imageType mime to pick the right extension for
+  // thumbnail and frame tools rather than always falling back to tool.outputExt
+  // (which is always "png" in the config regardless of what the user selected).
+  if ((tool.kind === "thumbnail" || tool.kind === "frames") && imageType) {
+    const imgExt = imageType === "image/jpeg" ? "jpg" : "png";
+    const base = tool.kind === "thumbnail" ? "video-thumbnail" : "video-frame-001";
+    return `${base}.${imgExt}`;
+  }
   const names: Partial<Record<string, string>> = {
     "video-compressor": "compressed-video",
     "video-cutter": "cut-video",
@@ -72,6 +81,21 @@ function outputFilename(tool: VideoTool, original: string, mime: string): string
 
 function safeDuration(upload: VideoUpload | null): number {
   return Math.max(upload?.metadata.duration ?? 0, 0);
+}
+
+function statusText(state: State): string {
+  if (state === "ready") return "Ready";
+  if (state === "processing") return "Processing";
+  if (state === "done") return "Complete";
+  if (state === "error") return "Needs attention";
+  return "Waiting for media";
+}
+
+function statusColor(state: State): string {
+  if (state === "done") return "var(--teal)";
+  if (state === "error") return "var(--coral)";
+  if (state === "processing") return "var(--accent)";
+  return "var(--text-subtle)";
 }
 
 export default function VideoToolClient({ tool }: { tool: VideoTool }) {
@@ -109,6 +133,7 @@ export default function VideoToolClient({ tool }: { tool: VideoTool }) {
 
   const upload = uploads[0] ?? null;
   const duration = safeDuration(upload);
+  const selectedSize = useMemo(() => uploads.reduce((sum, item) => sum + item.file.size, 0), [uploads]);
 
   useEffect(() => {
     if (!upload) return;
@@ -133,13 +158,22 @@ export default function VideoToolClient({ tool }: { tool: VideoTool }) {
     if (videoRef.current) videoRef.current.playbackRate = speed;
   }, [speed, upload?.objectUrl]);
 
+  // BUG 3 FIX: outputUrl must NOT be in the cleanup effect deps.
+  // When outputUrl is listed as a dep, the effect re-runs every time a new URL
+  // is created, immediately revoking it before any download or preview can happen.
+  // We use a ref to always hold the latest outputUrl so the cleanup can revoke
+  // it on unmount without it being a reactive dependency.
+  const outputUrlRef = useRef<string>("");
+  useEffect(() => { outputUrlRef.current = outputUrl; }, [outputUrl]);
+
   useEffect(() => {
     return () => {
       uploads.forEach((item) => URL.revokeObjectURL(item.objectUrl));
       if (audioUpload) URL.revokeObjectURL(audioUpload.objectUrl);
-      if (outputUrl) URL.revokeObjectURL(outputUrl);
+      if (outputUrlRef.current) URL.revokeObjectURL(outputUrlRef.current);
     };
-  }, [uploads, audioUpload, outputUrl]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // intentionally empty — runs only on unmount
 
   const outputDimensions = useMemo(() => {
     if (!upload?.metadata.width || !upload.metadata.height) return null;
@@ -334,28 +368,68 @@ export default function VideoToolClient({ tool }: { tool: VideoTool }) {
     }
   };
 
-  const showTimeline = ["cut", "trim", "video-to-gif", "thumbnail", "frames"].includes(tool.kind);
+  // BUG 6 FIX: thumbnail only needs a single frame-position selector (start),
+  // not a start+end range. Separate the two concepts so the timeline for
+  // thumbnail shows a single handle labelled "Frame position" instead of
+  // a misleading start+end pair where end has no effect.
+  const showTimeline   = ["cut", "trim", "video-to-gif", "frames"].includes(tool.kind);
+  const showFrameSeek  = tool.kind === "thumbnail";
   const showQuality = ["compress", "convert", "mov-to-mp4", "mkv-to-mp4", "webm-to-mp4", "gif-to-mp4", "video-to-webm", "merge", "join", "add-audio"].includes(tool.kind);
   const showResolution = ["compress", "convert", "mov-to-mp4", "mkv-to-mp4", "webm-to-mp4", "gif-to-mp4", "video-to-webm"].includes(tool.kind);
   const canProcess = tool.multiple ? uploads.length >= 2 : Boolean(upload) && (tool.kind !== "add-audio" || Boolean(audioUpload));
+  const selectedLabel = tool.multiple
+    ? uploads.length > 0 ? `${uploads.length} videos selected` : "No videos selected"
+    : upload?.file.name ?? "No file selected";
+  const outputChangeLabel = upload && outputBlob
+    ? `${Math.abs((1 - outputBlob.size / upload.file.size) * 100).toFixed(1)}% ${outputBlob.size <= upload.file.size ? "smaller" : "larger"}`
+    : null;
 
   return (
-    <div className="space-y-4">
-      {(state === "idle" || state === "ready") && (
-        <VideoUploader
-          accept={tool.accept}
-          acceptLabel={tool.acceptLabel}
-          multiple={Boolean(tool.multiple)}
-          onFiles={setNewUploads}
-          label={tool.multiple ? "Drop video files here" : tool.kind === "gif-to-mp4" ? "Drop GIF file here" : "Drop video file here"}
-        />
-      )}
+    <div className="overflow-hidden rounded-xl border" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+      <div className="flex flex-col gap-3 border-b p-4 sm:flex-row sm:items-center sm:justify-between" style={{ borderColor: "var(--border)" }}>
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: statusColor(state) }} aria-hidden="true" />
+            <p className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>{statusText(state)}</p>
+            <span className="rounded border px-2 py-0.5 text-[11px]" style={{ borderColor: "var(--border-strong)", color: "var(--text-subtle)" }}>
+              {tool.engine === "browser" ? "Canvas engine" : "FFmpeg WebAssembly"}
+            </span>
+          </div>
+          <p className="mt-1 truncate text-xs" style={{ color: "var(--text-muted)" }}>
+            {selectedLabel}{selectedSize > 0 ? ` - ${formatBytes(selectedSize)}` : ""}
+          </p>
+        </div>
 
-      {tool.multiple && uploads.length > 0 && (state === "ready" || state === "processing") && (
-        <VideoQueue uploads={uploads} onChange={setUploads} />
-      )}
+        <div className="flex flex-wrap items-center gap-2">
+          {outputChangeLabel && (
+            <span className="rounded-md border px-2.5 py-1 text-xs font-medium" style={{ borderColor: "var(--border-strong)", color: outputBlob && upload && outputBlob.size <= upload.file.size ? "var(--teal)" : "var(--coral)" }}>
+              {outputChangeLabel}
+            </span>
+          )}
+          {(state === "ready" || state === "error" || state === "done") && uploads.length > 0 && (
+            <button type="button" onClick={reset} className="focus-ring rounded-md border px-3 py-1.5 text-xs font-medium transition hover:opacity-80" style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-secondary)" }}>
+              Reset
+            </button>
+          )}
+        </div>
+      </div>
 
-      {!tool.multiple && upload && (state === "ready" || state === "processing") && (
+      <div className="space-y-4 p-4 sm:p-5">
+        {(state === "idle" || state === "ready") && (
+          <VideoUploader
+            accept={tool.accept}
+            acceptLabel={tool.acceptLabel}
+            multiple={Boolean(tool.multiple)}
+            onFiles={setNewUploads}
+            label={tool.multiple ? "Drop video files here" : tool.kind === "gif-to-mp4" ? "Drop GIF file here" : "Drop video file here"}
+          />
+        )}
+
+        {tool.multiple && uploads.length > 0 && (state === "ready" || state === "processing") && (
+          <VideoQueue uploads={uploads} onChange={setUploads} />
+        )}
+
+        {!tool.multiple && upload && (state === "ready" || state === "processing") && (
         <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_320px]">
           <div className="space-y-4">
             {tool.kind === "gif-to-mp4" ? (
@@ -445,6 +519,35 @@ export default function VideoToolClient({ tool }: { tool: VideoTool }) {
               <VideoTimeline duration={duration} start={start} end={end} onStartChange={setStart} onEndChange={setEnd} onPreview={previewSelection} />
             )}
 
+            {/* BUG 6 FIX: thumbnail uses a single frame-position control, not a range */}
+            {showFrameSeek && (
+              <div className="space-y-3 rounded-lg border p-4"
+                style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+                <p className="text-xs font-medium" style={{ color: "var(--text-muted)" }}>Frame position</p>
+                <div className="flex items-center justify-between text-xs mb-1">
+                  <span style={{ color: "var(--text-subtle)" }}>0s</span>
+                  <span style={{ color: "var(--accent)" }}>{start.toFixed(1)}s</span>
+                  <span style={{ color: "var(--text-subtle)" }}>{duration ? `${duration.toFixed(1)}s` : "—"}</span>
+                </div>
+                <input type="range" min={0} max={duration || 1} step={0.1} value={start}
+                  onChange={(e) => { const v = Number(e.target.value); setStart(v); if (videoRef.current) videoRef.current.currentTime = v; }}
+                  className="w-full accent-amber-400" aria-label="Frame position" />
+                <label className="flex flex-col gap-1 text-xs" style={{ color: "var(--text-muted)" }}>
+                  Exact position (seconds)
+                  <input type="number" min={0} max={duration || 0} step={0.1}
+                    value={start.toFixed(1)}
+                    onChange={(e) => { const v = Math.min(Number(e.target.value), duration || 0); setStart(v); if (videoRef.current) videoRef.current.currentTime = v; }}
+                    className="focus-ring rounded-md border px-3 py-2 font-mono"
+                    style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-primary)" }} />
+                </label>
+                <button type="button" onClick={previewSelection}
+                  className="focus-ring rounded-md border px-3 py-1.5 text-xs font-medium"
+                  style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-secondary)" }}>
+                  Jump to frame
+                </button>
+              </div>
+            )}
+
             {tool.kind === "video-to-gif" && (
               <div className="grid gap-3 rounded-lg border p-4 text-xs" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-muted)" }}>
                 <label>GIF width<input type="number" min={120} max={1280} value={gifWidth} onChange={(e) => setGifWidth(Number(e.target.value))} className="focus-ring mt-1 w-full rounded-md border px-3 py-2" style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-primary)" }} /></label>
@@ -525,35 +628,41 @@ export default function VideoToolClient({ tool }: { tool: VideoTool }) {
             )}
           </div>
         </div>
-      )}
+        )}
 
-      {state === "ready" && (
-        <button type="button" onClick={process} disabled={!canProcess} className="focus-ring inline-flex items-center gap-2 rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50" style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>
-          {tool.processLabel}
-        </button>
-      )}
+        {state === "ready" && (
+          <div className="flex flex-col gap-2 border-t pt-4 sm:flex-row sm:items-center sm:justify-between" style={{ borderColor: "var(--border)" }}>
+            <p className="text-xs" style={{ color: "var(--text-subtle)" }}>
+              {tool.engine === "browser" ? "This runs instantly with local browser APIs." : "FFmpeg loads only when you start processing."}
+            </p>
+            <button type="button" onClick={process} disabled={!canProcess} className="focus-ring inline-flex items-center justify-center gap-2 rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50" style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>
+              {tool.processLabel}
+            </button>
+          </div>
+        )}
 
-      {state === "processing" && <VideoProgress ratio={progress} label={tool.engine === "browser" ? "Capturing frame..." : "Processing video..."} />}
+        {state === "processing" && <VideoProgress ratio={progress} label={tool.engine === "browser" ? "Capturing frame..." : "Processing video..."} />}
 
-      {state === "error" && (
-        <div className="space-y-3">
-          <p className="rounded-md border px-3 py-2 text-xs" role="alert" style={{ borderColor: "rgba(239,125,111,0.3)", backgroundColor: "rgba(239,125,111,0.08)", color: "var(--coral)" }}>{error}</p>
-          <button type="button" onClick={reset} className="focus-ring rounded-lg border px-5 py-2 text-sm font-medium" style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-secondary)" }}>Try again</button>
-        </div>
-      )}
+        {state === "error" && (
+          <div className="space-y-3">
+            <p className="rounded-md border px-3 py-2 text-xs" role="alert" style={{ borderColor: "rgba(239,125,111,0.3)", backgroundColor: "rgba(239,125,111,0.08)", color: "var(--coral)" }}>{error}</p>
+            <button type="button" onClick={reset} className="focus-ring rounded-lg border px-5 py-2 text-sm font-medium" style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-secondary)" }}>Try again</button>
+          </div>
+        )}
 
-      {state === "done" && outputBlob && (
-        <div className="space-y-4">
-          {outputUrl && outputMime.startsWith("video/") && <VideoPlayer src={outputUrl} label="Output preview" />}
-          {outputUrl && outputMime.startsWith("audio/") && <VideoPlayer src={outputUrl} label="Output audio preview" audio />}
-          {outputUrl && (outputMime.startsWith("image/") || outputMime === "image/gif") && (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={outputUrl} alt="Output preview" className="max-h-[420px] max-w-full rounded-lg border object-contain" style={{ borderColor: "var(--border)" }} />
-          )}
-          {upload && <VideoFileInfo file={upload.file} metadata={upload.metadata} outputSize={outputBlob.size} outputDimensions={outputDimensions} />}
-          <VideoDownload blob={outputBlob} filename={outputFilename(tool, upload?.file.name ?? "video", outputMime)} onReset={reset} />
-        </div>
-      )}
+        {state === "done" && outputBlob && (
+          <div className="space-y-4">
+            {outputUrl && outputMime.startsWith("video/") && <VideoPlayer src={outputUrl} label="Output preview" />}
+            {outputUrl && outputMime.startsWith("audio/") && <VideoPlayer src={outputUrl} label="Output audio preview" audio />}
+            {outputUrl && (outputMime.startsWith("image/") || outputMime === "image/gif") && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={outputUrl} alt="Output preview" className="max-h-[420px] max-w-full rounded-lg border object-contain" style={{ borderColor: "var(--border)" }} />
+            )}
+            {upload && <VideoFileInfo file={upload.file} metadata={upload.metadata} outputSize={outputBlob.size} outputDimensions={outputDimensions} />}
+            <VideoDownload blob={outputBlob} filename={outputFilename(tool, upload?.file.name ?? "video", outputMime, imageType)} onReset={reset} />
+          </div>
+        )}
+      </div>
     </div>
   );
 }
