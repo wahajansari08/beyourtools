@@ -5,15 +5,23 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "PDF Tools - Free Online PDF Editor, Converter & Compressor",
-  description: "Free browser-based PDF tools. Merge, split, compress, rotate, watermark, protect, convert PDF to JPG/PNG/text - no upload, no sign-up, 100% private.",
+  title: "PDF Tools — Free Online PDF Editor, Converter & Compressor | BeYourTools",
+  description: "Free browser-based PDF tools. Merge, split, compress, rotate, watermark, protect, convert PDF to JPG/PNG/text — no upload, no sign-up, 100% private.",
   keywords: "merge PDF, split PDF, compress PDF, PDF to JPG, PDF to text, PDF watermark, protect PDF, free PDF tools, online PDF editor",
   alternates: { canonical: `${SITE.url}/pdf-tools` },
+  robots: { index: true, follow: true },
   openGraph: {
     type: "website", url: `${SITE.url}/pdf-tools`,
-    title: "Free Online PDF Tools - BeYourTools",
-    description: "30 PDF tools in your browser - merge, split, compress, convert and more. No upload required.",
+    title: "PDF Tools — Free Online PDF Editor, Converter & Compressor",
+    description: "30 PDF tools in your browser — merge, split, compress, convert and more. No upload required.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "PDF Tools" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PDF Tools — Free Online PDF Editor & Converter | BeYourTools",
+    description: "30 free PDF tools — merge, split, compress, protect and more. No upload needed.",
+    site: "@beyourtools",
+    images: [`${SITE.url}/og-default.png`],
   },
 };
 

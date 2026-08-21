@@ -8,16 +8,24 @@ import BlogPagination from "./BlogPagination";
 const PER_PAGE = 12; // 1 featured + 11 in grid on page 1; 12 per page from page 2
 
 export const metadata: Metadata = {
-  title: "Blog - Developer Guides on JSON, Images & PDF",
-  description: "Free guides on JSON tools, image conversion, PDF utilities, web performance, and developer productivity. Written by the BeYourTools team.",
-  keywords: "JSON tutorial, image converter guide, PDF tools guide, developer blog, web development tips",
+  title: "Blog — Free Guides on JSON, Images, Audio, Video & PDF | BeYourTools",
+  description: "Practical guides on JSON tools, image conversion, PDF utilities, audio tools, video editing, QR codes, and developer productivity.",
+  keywords: "JSON tutorial, image converter guide, PDF tools guide, audio tools guide, developer blog, web development tips",
   alternates: { canonical: `${SITE.url}/blog` },
+  robots: { index: true, follow: true },
   openGraph: {
     type: "website",
     url: `${SITE.url}/blog`,
-    title: "BeYourTools Blog - Developer Guides",
-    description: "Practical guides on JSON, image formats, PDF tools, and developer productivity.",
+    title: "BeYourTools Blog — Free Guides on JSON, Images, Audio & More",
+    description: "Practical guides on JSON, image formats, PDF tools, audio, video and developer productivity.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "BeYourTools Blog" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BeYourTools Blog — Free Developer Guides",
+    description: "Practical guides on JSON, images, audio, video, PDF and more.",
+    site: "@beyourtools",
+    images: [`${SITE.url}/og-default.png`],
   },
 };
 

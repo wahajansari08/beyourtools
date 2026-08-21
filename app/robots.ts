@@ -1,17 +1,20 @@
 import type { MetadataRoute } from "next";
 
-const BASE = "https://beyourtools.com";
-
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/_next/", "/api/"],
+        // Disallow only truly non-indexable paths
+        disallow: [
+          "/api/",
+          "/_next/",
+          "/admin/",
+        ],
       },
     ],
-    sitemap: `${BASE}/sitemap.xml`,
-    host: BASE,
+    sitemap: "https://beyourtools.com/sitemap.xml",
+    host:    "https://beyourtools.com",
   };
 }

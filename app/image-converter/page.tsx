@@ -6,15 +6,23 @@ import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical
 import FormatSelectorClient from "./FormatSelectorClient";
 
 export const metadata: Metadata = {
-  title: "Image Converter - Free Online JPG PNG WebP AVIF SVG ICO Converter",
-  description: "Free browser-based image converter. Convert between JPG, PNG, WebP, AVIF, GIF, BMP, SVG, ICO, PDF and more - 118 format combinations, no upload, no sign-up.",
+  title: "Image Converter — Free Online JPG PNG WebP AVIF SVG ICO Converter",
+  description: "Free browser-based image converter. Convert between JPG, PNG, WebP, AVIF, GIF, BMP, SVG, ICO, PDF and more — 118 format combinations, no upload, no sign-up.",
   keywords: "image converter, JPG to PNG, PNG to JPG, JPG to WebP, PNG to WebP, image format converter, WebP converter, AVIF converter, SVG converter, free online image converter",
   alternates: { canonical: `${SITE.url}/image-converter` },
+  robots: { index: true, follow: true },
   openGraph: {
     type: "website", url: `${SITE.url}/image-converter`,
-    title: "Free Online Image Converter - BeYourTools",
-    description: "118 image conversion combinations in your browser - JPG, PNG, WebP, AVIF, SVG, ICO, PDF. No upload needed.",
+    title: "Image Converter — Free Online JPG PNG WebP Converter | BeYourTools",
+    description: "118 image conversion combinations in your browser — JPG, PNG, WebP, AVIF, SVG, ICO, PDF. No upload needed.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "Image Converter" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Image Converter — Free Online JPG PNG WebP Converter",
+    description: "118 image format conversions in your browser — no upload needed.",
+    site: "@beyourtools",
+    images: [`${SITE.url}/og-default.png`],
   },
 };
 

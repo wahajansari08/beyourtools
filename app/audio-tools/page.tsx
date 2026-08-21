@@ -5,17 +5,24 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Audio Tools - Free Online MP3 & Audio Processing | BeYourTools",
-  description:
-    "20 free browser-based audio tools — convert, cut, trim, compress, merge, boost volume, normalize and record audio. No upload to server, all processing in your browser.",
+  title: "Audio Tools — Free Online MP3 Converter, Cutter & Compressor | BeYourTools",
+  description: "20 free browser-based audio tools — convert, cut, trim, compress, merge, boost volume, normalize and record audio. No upload, all processing in your browser.",
   keywords: "audio tools, mp3 converter, audio converter, mp3 cutter, audio compressor, mp3 merger, audio recorder, online audio editor, free audio tools",
   alternates: { canonical: `${SITE.url}/audio-tools` },
+  robots: { index: true, follow: true },
   openGraph: {
     type: "website",
     url: `${SITE.url}/audio-tools`,
-    title: "Audio Tools - Free Online MP3 & Audio Processing | BeYourTools",
+    title: "Audio Tools — Free Online MP3 Converter, Cutter & More | BeYourTools",
     description: "20 free browser-based audio tools. Convert, cut, compress, merge and record audio privately in your browser.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "Audio Tools" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Audio Tools — Free MP3 Converter, Cutter & Compressor | BeYourTools",
+    description: "20 free audio tools — convert, cut, compress, merge, record. No upload needed.",
+    site: "@beyourtools",
+    images: [`${SITE.url}/og-default.png`],
   },
 };
 

@@ -4,33 +4,47 @@ import { tools } from "@/lib/tools-config";
 import { pdfTools } from "@/lib/pdf-tools-config";
 import { conversionRoutes } from "@/lib/image-tools-config";
 import { videoTools } from "@/lib/video-tools-config";
+import { audioTools } from "@/lib/audio-tools-config";
+import { qrBarcodeTools } from "@/lib/qr-barcode-config";
 import { getRecentPosts, formatDate } from "@/lib/blog";
 import JsonLd from "@/components/JsonLd";
 import { websiteSchema, organizationSchema, faqSchema, SITE } from "@/lib/seo";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title: "BeYourTools - Free Online Tools for Developers",
-  description: "Free browser-based tools for developers - JSON formatter, validator, image converter, PDF tools and more. No upload, no sign-up, 100% private.",
-  keywords: "JSON formatter, JSON validator, image converter, PDF tools, free developer tools, online tools, WebP converter, JSON to CSV, JWT decoder",
+  title: "BeYourTools — Free Online Tools for Everyone",
+  description: "200+ free browser-based tools: JSON formatter & validator, image converter, PDF editor, audio tools, video tools, QR code generator and more. No upload, no sign-up.",
+  keywords: "free online tools, JSON formatter, image converter, PDF tools, audio converter, mp3 converter, video compressor, QR code generator, barcode generator",
   alternates: { canonical: SITE.url },
+  robots: { index: true, follow: true },
   openGraph: {
     type: "website", url: SITE.url, siteName: SITE.name, locale: "en_US",
-    title: "BeYourTools - Free Online Developer Tools",
-    description: "Free browser-based tools - JSON, image, PDF and more. Nothing leaves your browser.",
-    images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "BeYourTools" }],
+    title: "BeYourTools — Free Online Tools for Everyone",
+    description: "200+ free browser-based tools — JSON, image, PDF, audio, video, QR codes and more. Nothing leaves your browser.",
+    images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "BeYourTools — Free Online Tools" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BeYourTools — Free Online Tools for Everyone",
+    description: "200+ free browser-based tools. Nothing leaves your browser.",
+    site: SITE.twitter,
+    images: [`${SITE.url}/og-default.png`],
   },
 };
 
-const JSON_FEATURED = ["json-formatter","json-validator","json-diff","json-to-csv","json-to-typescript","json-schema-generator","jwt-decoder","json-repair"];
+const JSON_FEATURED  = ["json-formatter","json-validator","json-diff","json-to-csv","json-to-typescript","json-schema-generator","jwt-decoder","json-repair"];
 const IMAGE_FEATURED = ["jpg-to-png","jpg-to-webp","jpg-to-pdf","png-to-jpg","png-to-webp","png-to-svg","webp-to-jpg","svg-to-png","pdf-to-jpg"];
 const PDF_FEATURED   = ["pdf-to-jpg","jpg-to-pdf","merge-pdf","split-pdf","pdf-compressor","protect-pdf","pdf-to-text","rotate-pdf","pdf-metadata-viewer"];
 const VIDEO_FEATURED = ["video-compressor","video-cutter","video-converter","mp4-to-mp3","video-to-gif","video-thumbnail-generator","video-resizer","remove-audio-from-video"];
+const AUDIO_FEATURED = ["mp3-converter","audio-converter","mp4-to-mp3","mp3-cutter","audio-cutter","mp3-compressor","mp3-merger","audio-joiner","mp3-to-wav","wav-to-mp3","m4a-to-mp3","mp3-volume-booster"];
+const QR_FEATURED    = ["qr-code-generator","qr-code-scanner","qr-code-decoder","wifi-qr-code-generator","barcode-generator","barcode-scanner","barcode-decoder","upc-barcode-generator","ean-barcode-generator","code-128-barcode-generator"];
 
 const jsonCount  = tools.length;
 const imageCount = conversionRoutes.length;
 const pdfCount   = pdfTools.length;
 const videoCount = videoTools.length;
+const audioCount = audioTools.length;
+const qrCount    = qrBarcodeTools.length;
 
 const CATEGORY_COLORS: Record<string, string> = {
   JSON: "var(--teal)", Image: "var(--accent)", PDF: "var(--coral)", Video: "var(--teal)",
@@ -38,11 +52,13 @@ const CATEGORY_COLORS: Record<string, string> = {
 
 export default function Home() {
   const homeFaqs = faqSchema([
-    { question: "Are all BeYourTools tools free?", answer: "Yes - every tool on BeYourTools is completely free, requires no account, and has no usage limits." },
-    { question: "Do my files get uploaded to a server?", answer: "No - all processing happens in your browser. Files and text never leave your device." },
+    { question: "Are all BeYourTools tools free?", answer: "Yes — every tool on BeYourTools is completely free, requires no account, and has no usage limits." },
+    { question: "Do my files get uploaded to a server?", answer: "No — all processing happens in your browser. Files and text never leave your device." },
     { question: "What JSON tools are available?", answer: "We offer 30+ JSON tools including formatter, validator, diff, schema generator, JSONPath tester, JWT decoder, and converters to CSV, TypeScript, Python, SQL, and more." },
-    { question: "Can I convert images for free?", answer: "Yes - we support 118 image conversion combinations including JPG, PNG, WebP, AVIF, SVG, ICO, BMP, TIFF, PDF and more, all running in your browser." },
+    { question: "Can I convert images for free?", answer: "Yes — we support 118 image conversion combinations including JPG, PNG, WebP, AVIF, SVG, ICO, BMP, TIFF, PDF and more, all running in your browser." },
     { question: "What PDF tools are available?", answer: "We offer 30 PDF tools including merge, split, compress, rotate, watermark, protect, unlock, metadata viewer/remover, PDF to JPG/PNG/text/JSON, and more." },
+    { question: "What audio tools are available?", answer: "We offer 20 audio tools including MP3 converter, cutter, compressor, merger, volume booster, normalizer, speed changer, silence remover, and an audio recorder." },
+    { question: "What QR and barcode tools are available?", answer: "We offer 10 QR and barcode tools including QR code generator, scanner, decoder, WiFi QR generator, barcode generator, scanner, decoder, UPC, EAN, and Code 128 generators." },
   ]);
 
   const schemas = [websiteSchema(), organizationSchema(), homeFaqs];
@@ -76,12 +92,21 @@ function Hero() {
             Free browser-based tools for developers and designers - JSON utilities, image converters, PDF tools and more. No installs, no accounts, no limits.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Link href="/json-tools" className="focus-ring rounded-md px-5 py-2.5 text-sm font-semibold transition hover:opacity-90" style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>Explore JSON Tools</Link>
+            <Link href="/json-tools"      className="focus-ring rounded-md px-5 py-2.5 text-sm font-semibold transition hover:opacity-90" style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>JSON Tools</Link>
             <Link href="/image-converter" className="focus-ring rounded-md border px-5 py-2.5 text-sm font-semibold transition" style={{ borderColor: "var(--border-strong)", color: "var(--text-primary)", backgroundColor: "var(--bg-elevated)" }}>Image Converter</Link>
-            <Link href="/pdf-tools" className="focus-ring rounded-md border px-5 py-2.5 text-sm font-semibold transition" style={{ borderColor: "var(--border-strong)", color: "var(--text-primary)", backgroundColor: "var(--bg-elevated)" }}>PDF Tools</Link>
+            <Link href="/pdf-tools"       className="focus-ring rounded-md border px-5 py-2.5 text-sm font-semibold transition" style={{ borderColor: "var(--border-strong)", color: "var(--text-primary)", backgroundColor: "var(--bg-elevated)" }}>PDF Tools</Link>
+            <Link href="/audio-tools"     className="focus-ring rounded-md border px-5 py-2.5 text-sm font-semibold transition" style={{ borderColor: "var(--border-strong)", color: "var(--text-primary)", backgroundColor: "var(--bg-elevated)" }}>Audio Tools</Link>
+            <Link href="/video-tools"     className="focus-ring rounded-md border px-5 py-2.5 text-sm font-semibold transition" style={{ borderColor: "var(--border-strong)", color: "var(--text-primary)", backgroundColor: "var(--bg-elevated)" }}>Video Tools</Link>
           </div>
-          <div className="mt-10 flex flex-wrap justify-center gap-8">
-            {[{ count: jsonCount, label: "JSON tools" }, { count: imageCount, label: "Image converters" }, { count: pdfCount, label: "PDF tools" }, { count: videoCount, label: "Video tools" }].map(({ count, label }) => (
+      <div className="mt-10 flex flex-wrap justify-center gap-8">
+            {[
+              { count: jsonCount,  label: "JSON tools"        },
+              { count: imageCount, label: "Image converters"   },
+              { count: pdfCount,   label: "PDF tools"          },
+              { count: videoCount, label: "Video tools"        },
+              { count: audioCount, label: "Audio tools"        },
+              { count: qrCount,    label: "QR & Barcode tools" },
+            ].map(({ count, label }) => (
               <div key={label} className="text-center">
                 <div className="font-display text-2xl font-semibold" style={{ color: "var(--accent)" }}>{count}+</div>
                 <div className="mt-0.5 text-xs" style={{ color: "var(--text-subtle)" }}>{label}</div>
@@ -122,10 +147,26 @@ function ToolSections() {
       <div className="h-px" style={{ backgroundColor: "var(--border)" }} />
 
       <ToolSection id="video-tools" icon="VID" iconColor="var(--teal)" title="Video Tools"
-        description={`${videoCount} tools - compress, cut, convert, resize, crop, merge, GIFs and frames.`}
+        description={`${videoCount} tools — compress, cut, convert, resize, crop, merge, GIFs and frames.`}
         href="/video-tools" ctaLabel="All Video Tools →"
         featured={VIDEO_FEATURED.map((s) => videoTools.find((t) => t.slug === s)).filter(Boolean) as typeof videoTools}
         cardHref={(s) => `/${s}`} cardIcon="VID" cardIconColor="var(--teal)" />
+
+      <div className="h-px" style={{ backgroundColor: "var(--border)" }} />
+
+      <ToolSection id="audio-tools" icon="🎵" iconColor="var(--accent)" title="Audio Tools"
+        description={`${audioCount} tools — convert, cut, compress, merge, boost volume and record audio.`}
+        href="/audio-tools" ctaLabel="All Audio Tools →"
+        featured={AUDIO_FEATURED.map((s) => audioTools.find((t) => t.slug === s)).filter(Boolean) as typeof audioTools}
+        cardHref={(s) => `/${s}`} cardIcon="🎵" cardIconColor="var(--accent)" />
+
+      <div className="h-px" style={{ backgroundColor: "var(--border)" }} />
+
+      <ToolSection id="qr-barcode-tools" icon="⬛" iconColor="var(--teal)" title="QR &amp; Barcode Tools"
+        description={`${qrCount} tools — generate, scan and decode QR codes, barcodes, UPC, EAN, Code 128 and more.`}
+        href="/qr-barcode-tools" ctaLabel="All QR &amp; Barcode Tools →"
+        featured={QR_FEATURED.map((s) => qrBarcodeTools.find((t) => t.slug === s)).filter(Boolean) as typeof qrBarcodeTools}
+        cardHref={(s) => `/${s}`} cardIcon="⬛" cardIconColor="var(--teal)" />
 
       <div className="h-px" style={{ backgroundColor: "var(--border)" }} />
 
