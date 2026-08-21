@@ -36,7 +36,7 @@ export default function Mp3MergerPage() {
       faqs={[
         { question: "Is there a limit on how many files I can merge?", answer: "There is no hard limit, but merging many large files may be slow due to browser memory constraints. For best performance, keep total file size under 200 MB." },
         { question: "Will there be a gap between merged files?", answer: "No silence is added between files. They are concatenated back-to-back. If you need silence between files, add a short silent MP3 between them." },
-        { question: "Can I merge MP3 files with different bitrates?", answer: "Yes. FFmpeg handles files with different bitrates. The output is re-encoded at 192 kbps." },
+        { question: "Can I merge MP3 files with different bitrates?", answer: "Yes. The tool handles files with different bitrates and re-encodes the output at 192 kbps." },
       ]}
     >
       <Mp3MergerClient />

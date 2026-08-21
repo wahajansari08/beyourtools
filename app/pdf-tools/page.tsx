@@ -43,7 +43,7 @@ export default function PdfToolsHub() {
       { question: "How do I merge PDF files for free?", answer: "Use our free PDF Merge tool - upload multiple PDFs, reorder them, and download the merged file. No account needed and files never leave your browser." },
       { question: "How do I compress a PDF?", answer: "Our PDF Compressor re-serialises the PDF's internal object streams, typically reducing size by 10–40% for standard PDFs without quality loss." },
       { question: "How do I password-protect a PDF?", answer: "Our PDF Protect tool adds AES-256 encryption. Enter a user password, upload your PDF, and download the protected version instantly." },
-      { question: "Is it safe to use online PDF tools?", answer: "With BeYourTools, your PDF files never leave your device. All processing happens locally in JavaScript - nothing is uploaded to any server." },
+      { question: "Is it safe to use online PDF tools?", answer: "With BeYourTools, your PDF files never leave your device. All processing happens locally in your browser — nothing is uploaded to any server." },
     ]),
   ];
 

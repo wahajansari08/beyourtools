@@ -34,7 +34,7 @@ const schemas = [
   }),
   faqSchema([
     { question: "What image formats does the QR decoder support?", answer: "PNG, JPG/JPEG, and WebP images are supported. The QR code should be clearly visible and not blurry." },
-    { question: "Are my images uploaded to a server?", answer: "No. All decoding happens locally in your browser using the ZXing library. Your images never leave your device." },
+    { question: "Are my images uploaded to a server?", answer: "No. All decoding happens locally in your browser. Your images never leave your device." },
     { question: "What types of QR codes can be decoded?", answer: "Any standard QR code including URLs, plain text, WiFi credentials, vCards, email, phone numbers, and SMS." },
     { question: "Why wasn't my QR code detected?", answer: "Ensure the image is well-lit, in focus, and the QR code fills a reasonable portion of the image. Heavily distorted or damaged codes may not decode reliably." },
   ]),
@@ -78,7 +78,7 @@ export default function QRDecoderPage() {
           <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>FAQ</h2>
           {[
             ["What image formats are supported?", "PNG, JPG, and WebP. The QR code must be clearly visible and not too small or blurry."],
-            ["Does this upload my image anywhere?", "No. Decoding is done entirely in your browser using the open-source ZXing library."],
+            ["Does this upload my image anywhere?", "No. Decoding is done entirely in your browser. Your images never leave your device."],
             ["My QR code wasn't detected — why?", "Try a higher-resolution image where the QR code fills more of the frame. Very small or heavily damaged codes may not decode."],
           ].map(([q, a]) => (
             <div key={q as string}>

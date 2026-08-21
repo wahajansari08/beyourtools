@@ -36,7 +36,7 @@ export default function AudioCutterPage() {
       faqs={[
         { question: "What formats are supported?", answer: "MP3, WAV, FLAC, M4A/AAC, OGG, Opus and WebM. The output is in the same format as the input." },
         { question: "Can I cut to an exact millisecond?", answer: "The number inputs accept decimal values (e.g. 10.5 seconds). Sub-100ms accuracy depends on the audio codec keyframe spacing." },
-        { question: "Is my audio file uploaded anywhere?", answer: "No. The tool uses FFmpeg WebAssembly running entirely in your browser." },
+        { question: "Is my audio file uploaded anywhere?", answer: "No. All processing happens locally in your browser. Your files never leave your device." },
       ]}
     >
       <AudioCutterClient />

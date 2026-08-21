@@ -29,7 +29,7 @@ export default function Mp3TrimmerPage() {
         "Precise decimal-second timestamp inputs",
         "Real-time selection preview",
         "Shows original and trimmed duration",
-        "FFmpeg-powered, 100% browser-based",
+        "100% browser-based — no upload",
       ]}
       formats={["MP3"]}
       faqs={[

@@ -32,7 +32,7 @@ const schemas = [
   }),
   faqSchema([
     { question: "Are these audio tools really free?", answer: "Yes — all 20 tools are completely free with no sign-up, no watermarks and no usage limits." },
-    { question: "Are my audio files uploaded to a server?", answer: "No. All audio processing happens entirely in your browser using FFmpeg WebAssembly. Your files never leave your device." },
+    { question: "Are my audio files uploaded to a server?", answer: "No. All audio processing happens entirely in your browser. Your files never leave your device." },
     { question: "Which formats are supported?", answer: "MP3, WAV, M4A, AAC, FLAC, OGG, Opus, WebM and MP4 (for audio extraction). Supported formats depend on the specific tool." },
     { question: "Do I need to install anything?", answer: "No installation required. The tools run directly in your browser on desktop and mobile." },
   ]),
@@ -113,7 +113,7 @@ export default function AudioToolsPage() {
             No file uploads, no account, no limits. Supports MP3, WAV, FLAC, M4A, OGG and more.
           </p>
           <div className="mt-5 flex flex-wrap gap-4 text-xs" style={{ color: "var(--text-subtle)" }}>
-            {[`${audioTools.length} tools`, "100% browser-based", "Files never uploaded", "FFmpeg-powered"].map((s) => (
+            {[`${audioTools.length} tools`, "100% browser-based", "Files never uploaded", "Fast & private"].map((s) => (
               <span key={s} className="flex items-center gap-1.5">
                 <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: "var(--teal)" }} />
                 {s}
@@ -163,7 +163,7 @@ export default function AudioToolsPage() {
         <div className="mt-12 rounded-lg border p-4 text-xs leading-relaxed"
           style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-muted)" }}>
           <span className="font-semibold" style={{ color: "var(--text-secondary)" }}>Privacy: </span>
-          All audio processing uses FFmpeg WebAssembly running in your browser.
+          All audio processing happens locally in your browser.
           Your audio files are never uploaded to any server and never leave your device.
         </div>
       </div>

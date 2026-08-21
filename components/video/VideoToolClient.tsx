@@ -421,7 +421,7 @@ export default function VideoToolClient({ tool }: { tool: VideoTool }) {
             <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: statusColor(state) }} aria-hidden="true" />
             <p className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>{statusText(state)}</p>
             <span className="rounded border px-2 py-0.5 text-[11px]" style={{ borderColor: "var(--border-strong)", color: "var(--text-subtle)" }}>
-              {tool.engine === "browser" ? "Canvas engine" : "FFmpeg WebAssembly"}
+              {tool.engine === "browser" ? "Capturing frame..." : "Processing video..."}
             </span>
           </div>
           <p className="mt-1 truncate text-xs" style={{ color: "var(--text-muted)" }}>
@@ -627,7 +627,7 @@ export default function VideoToolClient({ tool }: { tool: VideoTool }) {
 
             {tool.kind === "speed" && (
               <div className="space-y-3 rounded-lg border p-4 text-xs" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-muted)" }}>
-                <p className="font-medium">Speed changes duration. Pitch preservation depends on the source audio and browser FFmpeg support.</p>
+                <p className="font-medium">Changing speed also changes pitch proportionally. Faster audio sounds higher-pitched, slower audio sounds lower-pitched.</p>
                 <div className="flex flex-wrap gap-2">
                   {SPEEDS.map((item) => (
                     <button key={item} type="button" onClick={() => setSpeed(item)} className="focus-ring rounded-md border px-2.5 py-1" style={{ borderColor: speed === item ? "var(--accent)" : "var(--border-strong)", color: speed === item ? "var(--accent)" : "var(--text-secondary)" }}>{item}x</button>
@@ -685,7 +685,7 @@ export default function VideoToolClient({ tool }: { tool: VideoTool }) {
         {state === "ready" && (
           <div className="flex flex-col gap-2 border-t pt-4 sm:flex-row sm:items-center sm:justify-between" style={{ borderColor: "var(--border)" }}>
             <p className="text-xs" style={{ color: "var(--text-subtle)" }}>
-              {tool.engine === "browser" ? "This runs instantly with local browser APIs." : "FFmpeg loads only when you start processing."}
+              {tool.engine === "browser" ? "This runs instantly using local browser processing." : "Processing starts when you click the button below."}
             </p>
             <button type="button" onClick={process} disabled={!canProcess} className="focus-ring inline-flex items-center justify-center gap-2 rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50" style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>
               {tool.processLabel}

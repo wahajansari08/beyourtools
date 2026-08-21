@@ -17,7 +17,7 @@ export default function AudioRecorderPage() {
       title="Audio Recorder"
       categoryLabel="Recorder"
       tagline="Record audio directly from your microphone in the browser. Pause, resume and download your recording — no installation needed."
-      description="Free online audio recorder using the browser MediaRecorder API. Record, pause, resume and download. No upload."
+      description="Free online audio recorder. Record from your microphone, pause, resume and download. No upload, no account required."
       howTo={[
         { title: "Allow microphone", text: 'Click "Start Recording" and allow microphone access when your browser prompts you.' },
         { title: "Record", text: "Speak or play audio. The timer shows how long you have been recording." },

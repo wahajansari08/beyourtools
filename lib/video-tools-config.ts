@@ -89,7 +89,7 @@ export const videoTools: VideoTool[] = [
     howTo: [
       { title: "Upload", text: "Drop a video file or choose one from your device." },
       { title: "Choose settings", text: "Pick a compression preset, optional resolution, and output format." },
-      { title: "Compress", text: "Run FFmpeg WebAssembly in your browser and wait for the output preview." },
+      { title: "Compress", text: "Process your video locally and wait for the output preview." },
       { title: "Download", text: "Compare file sizes and save the compressed video." },
     ],
     features: ["CRF based quality presets", "Optional downscaling without upscaling by default", "Before and after size comparison", "Output preview before download"],
@@ -154,7 +154,7 @@ export const videoTools: VideoTool[] = [
       { title: "Preview", text: "Check the selected section before exporting." },
       { title: "Download", text: "Export the trimmed clip as MP4." },
     ],
-    features: ["Dedicated trimming UI", "Precise start and end inputs", "Output duration preview", "Local FFmpeg processing"],
+    features: ["Dedicated trimming UI", "Precise start and end inputs", "Output duration preview", "Local browser processing"],
     faqs: [
       { question: "What is the difference between trim and cut?", answer: "Trimming is focused on keeping a clean middle section, usually by removing the beginning or end. Cutting can be used for any selected range." },
       { question: "Does trimming change quality?", answer: "The output is encoded using a balanced MP4 profile so it plays reliably in modern browsers." },
@@ -182,13 +182,13 @@ export const videoTools: VideoTool[] = [
     howTo: [
       { title: "Upload", text: "Select the source video." },
       { title: "Choose output", text: "Pick MP4, WebM, MOV, or MKV and optional quality/resolution settings." },
-      { title: "Convert", text: "Run the conversion locally with FFmpeg WebAssembly." },
+      { title: "Convert", text: "Convert the video locally in your browser." },
       { title: "Download", text: "Preview and download the converted file." },
     ],
     features: ["Format detection from filename", "Selectable output format", "Quality and resolution controls", "Local conversion"],
     faqs: [
       { question: "Which output format should I choose?", answer: "MP4 is the best default for compatibility. WebM is useful for modern web delivery. MOV and MKV are available when you need those containers." },
-      { question: "Can every codec be converted?", answer: "Most common codecs work, but unusual or DRM-protected files may fail in FFmpeg WebAssembly." },
+      { question: "Can every codec be converted?", answer: "Most common codecs work, but unusual or DRM-protected files may fail in local browser processing." },
       privacyFaq,
     ],
     related: ["mov-to-mp4", "mkv-to-mp4", "webm-to-mp4", "video-to-webm"],
@@ -213,7 +213,7 @@ export const videoTools: VideoTool[] = [
     howTo: [
       { title: "Choose bitrate", text: "Select 96 kbps through 320 kbps depending on the quality you need." },
       { title: "Upload video", text: "Drop an MP4 or another supported video file." },
-      { title: "Extract", text: "FFmpeg keeps the audio track and discards the video stream." },
+      { title: "Extract", text: "The tool extracts the audio track and discards the video." },
       { title: "Download", text: "Preview the audio and download the MP3." },
     ],
     features: ["MP3 bitrate selector", "Video preview before extraction", "Audio preview after conversion", "No upload"],
@@ -264,7 +264,7 @@ export const videoTools: VideoTool[] = [
     icon: "MKV",
     kind: "mkv-to-mp4",
     title: "MKV to MP4 Converter - Convert Video Online Free | BeYourTools",
-    metaDescription: "Convert MKV videos to MP4 online for free using FFmpeg WebAssembly in your browser.",
+    metaDescription: "Convert MKV videos to MP4 online for free using local browser processing in your browser.",
     tagline: "Make MKV files easier to preview, share, and play by converting them to MP4.",
     accept: ".mkv,video/x-matroska,video/*",
     acceptLabel: "MKV video files",
@@ -275,7 +275,7 @@ export const videoTools: VideoTool[] = [
     howTo: [
       { title: "Upload MKV", text: "Choose the MKV file to convert." },
       { title: "Pick settings", text: "Select quality and optional resolution." },
-      { title: "Convert", text: "FFmpeg transcodes the file to MP4 locally." },
+      { title: "Convert", text: "The file is converted to MP4 locally in your browser." },
       { title: "Download", text: "Save the MP4 output." },
     ],
     features: ["MKV input support", "MP4 output", "Handles common codecs", "No server upload"],
@@ -306,7 +306,7 @@ export const videoTools: VideoTool[] = [
     howTo: [
       { title: "Upload WebM", text: "Select your WebM video." },
       { title: "Choose quality", text: "Use balanced output or customize resolution." },
-      { title: "Convert", text: "Transcode to MP4 with FFmpeg in the browser." },
+      { title: "Convert", text: "Convert to MP4 locally in your browser." },
       { title: "Download", text: "Preview and save your MP4 file." },
     ],
     features: ["WebM to MP4 conversion", "Quality presets", "Optional resizing", "Local processing"],
@@ -371,7 +371,7 @@ export const videoTools: VideoTool[] = [
       { title: "Pick ratio", text: "Use Free, 16:9, 4:3, 1:1, or 9:16." },
       { title: "Export", text: "Crop and download the MP4 result." },
     ],
-    features: ["Visual crop overlay", "Aspect ratio presets", "Pixel dimensions display", "FFmpeg crop filter"],
+    features: ["Visual crop overlay", "Aspect ratio presets", "Pixel dimensions display", "Built-in crop processing"],
     faqs: [
       { question: "Can I make a vertical video?", answer: "Yes. Choose the 9:16 preset and position the crop box around the subject." },
       { question: "Does cropping stretch the video?", answer: "No. Cropping removes pixels outside the selected rectangle. It does not distort the selected area." },
@@ -496,7 +496,7 @@ export const videoTools: VideoTool[] = [
       { title: "Join", text: "Create one MP4 file in the browser." },
       { title: "Download", text: "Save the final joined clip." },
     ],
-    features: ["Sequential clip joining", "Queue preview", "Remove and reorder controls", "FFmpeg normalization"],
+    features: ["Sequential clip joining", "Queue preview", "Remove and reorder controls", "Local normalization"],
     faqs: [
       { question: "Is joiner different from merger?", answer: "The engine is shared, but this page is tuned for arranging clips in a simple sequence." },
       { question: "Will audio be included?", answer: "Yes, when the source clips contain compatible audio tracks. Unusual files may require conversion first." },
@@ -556,7 +556,7 @@ export const videoTools: VideoTool[] = [
     howTo: [
       { title: "Upload", text: "Select a video file." },
       { title: "Choose WebM settings", text: "Pick quality, optional resolution, and FPS." },
-      { title: "Convert", text: "Encode with VP9 and Opus locally." },
+      { title: "Convert", text: "Encode to WebM locally in your browser." },
       { title: "Download", text: "Preview and save the WebM file." },
     ],
     features: ["WebM output", "Quality and FPS controls", "Optional resizing", "Efficient browser playback"],
@@ -587,10 +587,10 @@ export const videoTools: VideoTool[] = [
     howTo: [
       { title: "Upload", text: "Choose a video that your browser can preview." },
       { title: "Pick timestamp", text: "Move the slider or enter an exact second." },
-      { title: "Generate", text: "Canvas captures the current frame." },
+      { title: "Generate", text: "The current frame is captured from the video." },
       { title: "Download", text: "Save the thumbnail as PNG or JPG." },
     ],
-    features: ["No FFmpeg load", "Precise timestamp input", "PNG and JPG downloads", "Lightweight canvas capture"],
+    features: ["No heavy processing required", "Precise timestamp input", "PNG and JPG downloads", "Lightweight canvas capture"],
     faqs: [
       { question: "Why does this tool use Canvas?", answer: "For single-frame capture, the browser video element and Canvas API are faster and lighter than loading FFmpeg." },
       { question: "What if the video will not preview?", answer: "The browser may not support the source codec. Convert it to MP4 first, then generate a thumbnail." },

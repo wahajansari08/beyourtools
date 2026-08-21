@@ -45,6 +45,11 @@ export interface VideoProcessResult {
   mime: string;
 }
 
+export interface VideoPreviewOptions {
+  durationSec?: number;
+  onProgress?: (progress: FFmpegProgress) => void;
+}
+
 const MIME: Record<string, string> = {
   mp4: "video/mp4",
   webm: "video/webm",
@@ -199,6 +204,45 @@ async function runSingle(file: File, args: string[], out: string, mime: string, 
   } finally {
     await cleanupFiles(ffmpeg, input, out, "palette.png");
   }
+}
+
+export async function createPlayablePreview(file: File, opts: VideoPreviewOptions = {}): Promise<VideoProcessResult> {
+  if (!file || file.size === 0) throw new Error("Please choose a non-empty video file.");
+
+  const duration = Math.min(Math.max(opts.durationSec ?? 12, 2), 30);
+  const out = "playable-preview.mp4";
+  return runSingle(
+    file,
+    [
+      "-i",
+      "$INPUT",
+      "-t",
+      String(duration),
+      "-map",
+      "0:v:0",
+      "-map",
+      "0:a?",
+      "-vf",
+      "scale='trunc(min(1280,iw)/2)*2':-2,format=yuv420p",
+      "-c:v",
+      "libx264",
+      "-preset",
+      "veryfast",
+      "-crf",
+      "24",
+      "-c:a",
+      "aac",
+      "-b:a",
+      "128k",
+      "-movflags",
+      "faststart",
+      "-y",
+      out,
+    ],
+    out,
+    MIME.mp4,
+    { onProgress: opts.onProgress }
+  );
 }
 
 export async function processVideo(file: File, kind: string, opts: VideoProcessOptions = {}): Promise<VideoProcessResult> {

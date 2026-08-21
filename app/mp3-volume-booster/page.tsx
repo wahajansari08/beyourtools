@@ -21,7 +21,7 @@ export default function VolumeBoosterPage() {
       howTo={[
         { title: "Choose gain", text: "Select a preset (+25%, +50%, +75%, +100%) or drag the Custom slider." },
         { title: "Upload MP3", text: "Drop your MP3 or click to browse." },
-        { title: "Boost", text: 'Click "Boost volume". The FFmpeg volume filter applies the gain.' },
+        { title: "Boost", text: 'Click "Boost volume". The gain is applied to the entire audio file locally.' },
         { title: "Preview and download", text: "Listen to the boosted audio before downloading." },
       ]}
       features={[

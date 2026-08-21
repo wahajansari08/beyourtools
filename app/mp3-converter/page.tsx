@@ -21,7 +21,7 @@ export default function Mp3ConverterPage() {
       howTo={[
         { title: "Upload audio", text: "Drag and drop or click to select your audio file (MP3, WAV, FLAC, M4A, OGG, MP4 and more)." },
         { title: "Choose bitrate", text: "Select your desired MP3 bitrate — 128 kbps for smaller files, 320 kbps for best quality." },
-        { title: "Convert", text: 'Click "Convert to MP3" and wait for the browser-based FFmpeg to process your file.' },
+        { title: "Convert", text: 'Click "Convert to MP3" and wait a moment while the conversion runs locally in your browser.' },
         { title: "Download", text: "Preview the result and download your MP3." },
       ]}
       features={[
@@ -36,8 +36,8 @@ export default function Mp3ConverterPage() {
       faqs={[
         { question: "What formats can I convert to MP3?", answer: "WAV, FLAC, M4A, AAC, OGG, Opus, WebM and MP4 (audio extraction). Most common audio formats are supported." },
         { question: "Which bitrate should I choose?", answer: "192 kbps is a good balance of quality and file size. Use 320 kbps for best quality, or 128 kbps to reduce file size." },
-        { question: "Is my audio uploaded anywhere?", answer: "No. All conversion uses FFmpeg WebAssembly running entirely in your browser. Your files never leave your device." },
-        { question: "Why does conversion take a moment?", answer: "The first conversion loads the FFmpeg WASM engine (~5 MB). Subsequent conversions in the same session are faster." },
+        { question: "Is my audio uploaded anywhere?", answer: "No. All conversion runs entirely in your browser. Your files never leave your device." },
+        { question: "Why does conversion take a moment?", answer: "The first conversion of your session takes a little longer as the tool loads. Subsequent conversions are faster." },
       ]}
     >
       <Mp3ConverterClient />

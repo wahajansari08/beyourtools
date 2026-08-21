@@ -34,7 +34,7 @@ const schemas = [
   }),
   faqSchema([
     { question: "Which barcode formats can be decoded?", answer: "Code 128, Code 39, EAN-13, EAN-8, UPC-A, UPC-E, ITF, Data Matrix, Aztec, PDF417 and more — detection is automatic." },
-    { question: "Are my images uploaded to a server?", answer: "No. All decoding happens locally using the open-source ZXing library. Your images never leave your device." },
+    { question: "Are my images uploaded to a server?", answer: "No. All decoding happens locally in your browser. Your images never leave your device." },
     { question: "Why wasn't my barcode detected?", answer: "Make sure the barcode is clearly visible, not blurry, and fills a reasonable portion of the image. Low-contrast or heavily damaged barcodes may not decode." },
   ]),
 ];

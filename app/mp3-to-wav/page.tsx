@@ -20,7 +20,7 @@ export default function Mp3ToWavPage() {
       description="Free online MP3 to WAV converter. Converts to PCM 16-bit WAV in your browser."
       howTo={[
         { title: "Upload MP3", text: "Drop your MP3 file or click to browse." },
-        { title: "Convert", text: 'Click "Convert to WAV". FFmpeg decodes the MP3 and encodes to PCM WAV.' },
+        { title: "Convert", text: 'Click "Convert to WAV". The audio is decoded and encoded to uncompressed WAV locally.' },
         { title: "Download", text: "Preview and download the WAV file." },
       ]}
       features={[

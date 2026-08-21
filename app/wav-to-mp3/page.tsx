@@ -21,7 +21,7 @@ export default function WavToMp3Page() {
       howTo={[
         { title: "Select bitrate", text: "Choose your MP3 bitrate — 192 kbps is a good default." },
         { title: "Upload WAV", text: "Drop your WAV file or click to browse." },
-        { title: "Convert", text: 'Click "Convert to MP3". FFmpeg encodes the WAV audio to MP3.' },
+        { title: "Convert", text: 'Click "Convert to MP3". The audio is re-encoded locally in your browser.' },
         { title: "Download", text: "Preview and download the MP3. Check the size reduction in the file info." },
       ]}
       features={[

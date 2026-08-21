@@ -34,8 +34,8 @@ export default function AudioNormalizerPage() {
       ]}
       formats={["MP3", "WAV", "FLAC", "M4A", "OGG", "Opus", "AAC", "WebM"]}
       faqs={[
-        { question: "What is the difference between peak and dynamic normalization?", answer: "Peak normalization applies a single fixed gain so the loudest sample hits the target level (e.g. -1 dBFS). Dynamic normalization (dynaudnorm) analyzes the audio in frames and adjusts gain dynamically, making quiet sections louder and loud sections quieter." },
-        { question: "Is this the same as LUFS/loudness normalization?", answer: "Dynamic mode uses FFmpeg's dynaudnorm filter which provides perceptual leveling but is not a strict EBU R128 LUFS measurement. For broadcast-grade normalization a dedicated tool is recommended." },
+        { question: "What is the difference between peak and dynamic normalization?", answer: "Peak normalization adjusts the overall volume so the loudest moment reaches your target level. Dynamic normalization goes further — it analyzes the audio throughout and continuously balances quieter and louder sections for a more even listening experience." },
+        { question: "Is this the same as LUFS/loudness normalization?", answer: "Dynamic mode provides perceptual leveling across the file. It is not a broadcast-grade LUFS measurement tool. For strict broadcast standards, a dedicated mastering tool is recommended." },
         { question: "Will normalizing change the pitch or speed?", answer: "No. Normalization only adjusts volume/gain. Pitch and speed are not affected." },
       ]}
     >

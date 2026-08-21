@@ -44,7 +44,7 @@ export default function ImageConverterHub() {
       { question: "How do I convert JPG to WebP for free?", answer: "Use our free JPG to WebP converter - drag and drop your JPG, download the WebP instantly. No upload to any server, no account required." },
       { question: "What image formats can I convert online?", answer: "We support 118 conversion combinations including JPG, PNG, WebP, AVIF, GIF, BMP, SVG, ICO, TIFF, HEIC, JXL, PSD, TGA, and PDF." },
       { question: "Does converting images reduce quality?", answer: "Lossless conversions (PNG to WebP lossless, PNG to BMP) preserve every pixel. Lossy conversions (JPG, WebP lossy) have a quality setting - use 80-85% for minimal visible quality loss." },
-      { question: "Are my images uploaded to a server?", answer: "No - all image conversion happens in your browser using the Canvas API. Your images never leave your device." },
+      { question: "Are my images uploaded to a server?", answer: "No — all image conversion happens locally in your browser. Your images never leave your device." },
     ]),
   ];
 
@@ -155,7 +155,7 @@ export default function ImageConverterHub() {
         style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-muted)" }}
       >
         <span className="font-semibold" style={{ color: "var(--text-secondary)" }}>Browser support note: </span>
-        Most conversions run via the browser&apos;s Canvas API - no server needed.
+        Most conversions run entirely in your browser — no server needed.
         TIFF, HEIC, JXL, PSD, and TGA require decoding support that varies by browser;
         those converters will show a helpful message if your browser cannot handle the file.
       </div>

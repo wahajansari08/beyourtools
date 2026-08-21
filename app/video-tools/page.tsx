@@ -31,8 +31,8 @@ const schemas = [
   }),
   faqSchema([
     { question: "Are these video tools free?", answer: "Yes. The video tools are free to use in your browser with no sign-up." },
-    { question: "Are videos uploaded?", answer: "No. Video processing happens locally in your browser using FFmpeg WebAssembly or browser APIs." },
-    { question: "Which tools avoid FFmpeg?", answer: "The thumbnail generator and frame extractor use HTMLVideoElement and Canvas for lightweight frame capture." },
+    { question: "Are videos uploaded?", answer: "No. All video processing happens locally in your browser. Your files never leave your device." },
+    { question: "Which tools are the fastest?", answer: "The thumbnail generator and frame extractor capture frames directly from the video preview — they are nearly instant. Conversion, compression, and editing tools take a little longer depending on file size." },
   ]),
 ];
 
@@ -87,7 +87,7 @@ export default function VideoToolsPage() {
             Files are not uploaded or stored.
           </p>
           <div className="mt-5 flex flex-wrap gap-4 text-xs" style={{ color: "var(--text-subtle)" }}>
-            {[`${videoTools.length} tools`, "Browser-based processing", "Files never uploaded", "Lazy FFmpeg loading"].map((item) => (
+            {[`${videoTools.length} tools`, "Browser-based processing", "Files never uploaded", "Fast & private"].map((item) => (
               <span key={item} className="flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: "var(--teal)" }} />{item}</span>
             ))}
           </div>
@@ -127,7 +127,8 @@ export default function VideoToolsPage() {
 
         <div className="mt-12 rounded-lg border p-4 text-xs leading-relaxed" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-muted)" }}>
           <span className="font-semibold" style={{ color: "var(--text-secondary)" }}>Privacy: </span>
-          FFmpeg-powered tools run FFmpeg WebAssembly in your browser. Thumbnail and frame tools use the browser video element and Canvas API. No videos are uploaded.
+          All video processing happens locally in your browser.
+          No videos are uploaded to any server.
         </div>
       </div>
     </>

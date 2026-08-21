@@ -2,116 +2,85 @@ import type { BlogPost } from "@/lib/blog";
 
 export const batch2: BlogPost[] = [
   {
-    slug: "merge-pdf-files-free-online",
-    title: "How to Merge PDF Files Free Online in 3 Steps",
-    excerpt: "Combining multiple PDFs into one is easier than you think. No software download, no account - just drag, drop, and merge.",
+    slug: "pdf-tools-guide-merge-split-compress",
+    title: "The Complete Guide to Working with PDFs Online",
+    excerpt: "PDFs are everywhere — contracts, reports, invoices. Work with them efficiently without expensive software or complicated installs.",
     author: "BeYourTools Team",
-    publishedAt: "2026-09-23",
-    readingTime: 4,
-    category: "PDF",
-    tags: ["PDF", "Merge", "Free", "Online"],
-    content: `<h2>Step 1: Open the PDF Merge tool</h2><p>Navigate to our <a href="/pdf-tools/merge-pdf">Merge PDF</a> tool. No account or software installation required.</p><h2>Step 2: Upload your PDF files</h2><p>Click the upload area or drag and drop multiple PDF files. You can upload as many as you need.</p><h2>Step 3: Reorder and merge</h2><p>Use the up/down arrows to reorder files, then click "Merge". Your combined PDF downloads instantly.</p><h2>Why merge PDFs in a browser?</h2><p>Your files never leave your device. All processing happens locally using JavaScript - 100% private.</p><h2>Other PDF tools you might need</h2><p>After merging, you may want to <a href="/pdf-tools/pdf-compressor">compress the merged PDF</a>, add a <a href="/pdf-tools/pdf-watermark">watermark</a>, or <a href="/pdf-tools/protect-pdf">password-protect it</a>.</p><section class="faq"><h2>Frequently Asked Questions</h2><dl><dt>Is there a file size limit for merging PDFs?</dt><dd>Since processing happens in your browser, the practical limit is your device's available RAM - typically several hundred MB per file is fine.</dd><dt>Does merging PDFs reduce quality?</dt><dd>No - our tool uses pdf-lib to copy pages without re-encoding, so the original quality is fully preserved.</dd></dl></section>`,
-  },
-  {
-    slug: "json-formatter-online-guide",
-    title: "The Best Online JSON Formatter: How to Use It Effectively",
-    excerpt: "A good JSON formatter does more than add whitespace. Learn how to use formatting, indentation, and validation together for faster debugging.",
-    author: "BeYourTools Team",
-    publishedAt: "2026-09-30",
-    readingTime: 5,
-    category: "JSON",
-    tags: ["JSON", "Formatter", "Developer Tools", "Debugging"],
-    content: `<h2>What does a JSON formatter do?</h2><p>A formatter takes minified or messy JSON and adds consistent indentation and line breaks, making it human-readable. Our <a href="/json-formatter">JSON Formatter</a> supports 2-space, 4-space, and tab indentation.</p><h2>Formatting vs beautifying vs pretty-printing</h2><p>These terms all mean the same thing: converting compact JSON into a readable form. Our <a href="/json-beautifier">JSON Beautifier</a> is identical in function.</p><h2>How to format JSON in one click</h2><ol><li>Open our <a href="/json-formatter">JSON Formatter</a></li><li>Paste your JSON or upload a .json file</li><li>Choose your indent style (2 spaces is standard)</li><li>Copy or download the formatted output</li></ol><h2>Combining formatting with validation</h2><p>Formatting also reveals syntax errors - if your JSON can't be parsed, the formatter shows you the line and column of the error. For deeper validation, follow up with our <a href="/json-validator">JSON Validator</a>.</p><h2>Minifying formatted JSON</h2><p>After formatting for readability in development, use our <a href="/json-minifier">JSON Minifier</a> before shipping to production to remove all unnecessary whitespace.</p><section class="faq"><h2>Frequently Asked Questions</h2><dl><dt>What indentation should I use for JSON?</dt><dd>2 spaces is the most common standard (used by Node.js, npm, most APIs). 4 spaces is also common in Python projects. Tabs are less common but valid.</dd><dt>Why does JSON formatting fail?</dt><dd>The input isn't valid JSON. Common causes: trailing commas, unquoted keys, single quotes instead of double quotes. Use our <a href="/json-repair">JSON Repair</a> tool to fix common issues automatically.</dd></dl></section>`,
-  },
-  {
-    slug: "compress-pdf-reduce-file-size",
-    title: "How to Compress a PDF and Reduce Its File Size",
-    excerpt: "Email attachments too large? PDF files bloated with embedded resources? Here's how to shrink PDFs without buying expensive software.",
-    author: "BeYourTools Team",
-    publishedAt: "2026-10-07",
-    readingTime: 5,
-    category: "PDF",
-    tags: ["PDF", "Compression", "File Size", "Optimize"],
-    content: `<h2>Why are PDFs so large?</h2><p>PDFs embed fonts, high-resolution images, colour profiles, and sometimes redundant object streams. A scanned PDF can easily reach 50MB for a 10-page document.</p><h2>How browser-based compression works</h2><p>Our <a href="/pdf-tools/pdf-compressor">PDF Compressor</a> uses pdf-lib to re-serialise the PDF's internal object streams, removing redundant data. Results vary: 10–40% reduction is typical for text-heavy PDFs.</p><h2>What compression can't fix</h2><p>If your PDF is large because of high-resolution images embedded at print quality, browser-based compression has limited effect. For those, use desktop tools like Adobe Acrobat or GhostScript.</p><h2>Combine with image conversion</h2><p>If you originally created the PDF from images, try converting images to WebP with our <a href="/image-converter/jpg-to-webp">JPG to WebP converter</a> before creating the PDF.</p><h2>Remove metadata to reduce size slightly</h2><p>Our <a href="/pdf-tools/pdf-metadata-remover">PDF Metadata Remover</a> strips author, creation tool, and other metadata that adds unnecessary bytes.</p><section class="faq"><h2>Frequently Asked Questions</h2><dl><dt>How much can I reduce a PDF file size?</dt><dd>Browser-based compression typically reduces file size 10–40% for standard PDFs. Scanned PDFs with embedded images see less benefit without image recompression.</dd><dt>Does compressing a PDF affect its quality?</dt><dd>Our tool uses lossless PDF re-serialisation - no quality loss for text or vector content. Existing images are not recompressed.</dd></dl></section>`,
-  },
-  {
-    slug: "jsonpath-query-guide",
-    title: "JSONPath Query Language: A Practical Guide with Examples",
-    excerpt: "JSONPath lets you extract specific data from JSON without writing code. Learn the syntax with real examples you can run today.",
-    author: "BeYourTools Team",
-    publishedAt: "2026-10-14",
+    publishedAt: "2026-07-29",
     readingTime: 8,
-    category: "JSON",
-    tags: ["JSONPath", "Query", "JSON", "Data Extraction"],
-    content: `<h2>What is JSONPath?</h2><p>JSONPath is a query language for JSON, analogous to XPath for XML. It lets you select specific values from a JSON document using a path expression.</p><h2>Basic syntax</h2><ul><li><code>$</code> - root element</li><li><code>.property</code> - child property</li><li><code>..property</code> - recursive descent (any depth)</li><li><code>[*]</code> - all array elements</li><li><code>[0]</code> - first element</li><li><code>[0:3]</code> - slice (first 3 elements)</li><li><code>[?(@.price &lt; 30)]</code> - filter expression</li></ul><h2>Practical examples</h2><pre><code>$.store.books[*].title        // all book titles
-$.store..price                 // all prices (recursive)
-$.store.books[?(@.price < 20)] // books under $20
-$.store.books[-1]              // last book</code></pre><h2>Try it live</h2><p>Use our <a href="/jsonpath-tester">JSONPath Tester</a> to run expressions against real JSON. It supports dot notation, wildcards, array slices, and filter expressions.</p><h2>Related tools</h2><p>After extracting data with JSONPath, you might want to <a href="/json-formatter">format the result</a>, <a href="/json-to-csv">export to CSV</a>, or <a href="/json-schema-generator">generate a schema</a> from it.</p><section class="faq"><h2>Frequently Asked Questions</h2><dl><dt>What is the difference between dot notation and bracket notation in JSONPath?</dt><dd><code>$.name</code> and <code>$['name']</code> are equivalent. Bracket notation is needed for keys with special characters or spaces.</dd><dt>Can JSONPath modify JSON?</dt><dd>Standard JSONPath is read-only (query-only). For modifications, use JavaScript's native object manipulation or libraries like jsonpath-plus.</dd></dl></section>`,
-  },
-  {
-    slug: "split-pdf-extract-pages",
-    title: "How to Split a PDF and Extract Specific Pages",
-    excerpt: "Need just pages 5–12 from a 200-page report? Here's how to split any PDF into parts without downloading software.",
-    author: "BeYourTools Team",
-    publishedAt: "2026-10-21",
-    readingTime: 4,
     category: "PDF",
-    tags: ["PDF", "Split", "Extract Pages", "Free"],
-    content: `<h2>Two ways to split a PDF</h2><p><strong>Option 1: Split every page individually</strong> - Creates one PDF per page. Leave the range field blank in our <a href="/pdf-tools/split-pdf">PDF Split</a> tool.</p><p><strong>Option 2: Split by custom ranges</strong> - Enter ranges like <code>1-5</code>, <code>6-10</code>, <code>15</code> to create specific multi-page PDFs.</p><h2>Extract a range of pages</h2><p>To pull out pages 5 through 12: use our <a href="/pdf-tools/extract-pdf-pages">Extract PDF Pages</a> tool, enter <code>5-12</code> in the range field, and upload your PDF.</p><h2>Delete specific pages</h2><p>Want to remove a page rather than keep it? Use our <a href="/pdf-tools/delete-pdf-pages">Delete PDF Pages</a> tool - enter the page numbers to remove and download the result.</p><h2>After splitting</h2><p>You might want to <a href="/pdf-tools/merge-pdf">merge the resulting PDFs</a> with other documents, <a href="/pdf-tools/rotate-pdf">rotate pages</a>, or <a href="/pdf-tools/protect-pdf">password-protect the output</a>.</p><section class="faq"><h2>Frequently Asked Questions</h2><dl><dt>Can I split a password-protected PDF?</dt><dd>You'll need to <a href="/pdf-tools/unlock-pdf">unlock the PDF</a> first (requires the current password), then split it.</dd><dt>Does splitting a PDF affect page quality?</dt><dd>No - pages are copied exactly without re-rendering, so the quality is identical to the original.</dd></dl></section>`,
+    tags: ["PDF", "Productivity", "Documents", "Free Tools"],
+    content: `<h2>Merging PDFs</h2>
+<p>When you have several related documents — a cover letter, a resume, and supporting certificates, for example — combining them into one file makes sharing easier. Our <a href="/pdf-tools/merge-pdf">PDF Merge</a> tool lets you drag in multiple PDFs, reorder them, and download a single combined file. Nothing is uploaded to a server.</p>
+
+<h2>Splitting PDFs</h2>
+<p>Long documents are often more useful in smaller pieces. Our <a href="/pdf-tools/split-pdf">PDF Split</a> tool lets you define ranges like <code>1-5</code> or <code>6-10</code> and extract those pages as separate PDF files. You can also split into individual pages with a single click.</p>
+
+<h2>Compressing PDFs</h2>
+<p>Email attachments often have size limits and large PDFs get rejected. Our <a href="/pdf-tools/pdf-compressor">PDF Compressor</a> reduces file size by removing redundant internal data. Results vary depending on the source file — text-heavy PDFs typically compress noticeably; scanned image PDFs less so.</p>
+
+<h2>Converting PDFs to images</h2>
+<p>Sometimes you need an image of a PDF page — for a thumbnail, a preview, or a presentation slide. Our <a href="/pdf-tools/pdf-to-jpg">PDF to JPG</a> and <a href="/pdf-tools/pdf-to-png">PDF to PNG</a> tools render each page at high resolution directly in your browser.</p>
+
+<h2>Protecting PDFs</h2>
+<p>Before sharing sensitive documents, add password protection. Our <a href="/pdf-tools/protect-pdf">PDF Protect</a> tool encrypts the file so only people with the password can open it. The password is never transmitted anywhere.</p>
+
+<h2>Adding watermarks</h2>
+<p>Stamp "CONFIDENTIAL", "DRAFT", or your company name across every page with our <a href="/pdf-tools/pdf-watermark">PDF Watermark</a> tool. Useful for marking draft versions or deterring unauthorised sharing.</p>
+
+<section class="faq">
+<h2>Frequently Asked Questions</h2>
+<dl>
+<dt>How do I merge PDF files for free?</dt>
+<dd>Use our <a href="/pdf-tools/merge-pdf">free PDF Merge tool</a>. Upload your PDFs, drag to reorder them, and click Merge. No account or installation required.</dd>
+<dt>Is it safe to process PDFs in a browser tool?</dt>
+<dd>With BeYourTools, your files never leave your device. All PDF operations happen locally in your browser — nothing is sent to any server.</dd>
+<dt>How much can I reduce a PDF's file size?</dt>
+<dd>It depends on the source. Text-heavy PDFs often compress by 10–40%. PDFs made primarily from scanned images see less benefit without also recompressing the images themselves.</dd>
+</dl>
+</section>`,
   },
   {
-    slug: "xml-to-json-conversion-guide",
-    title: "XML to JSON Conversion: Why, When, and How",
-    excerpt: "REST APIs use JSON; legacy systems use XML. Here's a complete guide to converting between the two formats and handling the gotchas.",
+    slug: "jwt-explained-what-developers-need-to-know",
+    title: "JWTs Explained: What Every Developer Needs to Know",
+    excerpt: "JSON Web Tokens are everywhere — authentication, API keys, session management. How they work, how to read them, and common security mistakes.",
     author: "BeYourTools Team",
-    publishedAt: "2026-10-28",
-    readingTime: 6,
+    publishedAt: "2026-08-19",
+    readingTime: 7,
     category: "JSON",
-    tags: ["XML", "JSON", "Conversion", "APIs", "Integration"],
-    content: `<h2>Why convert XML to JSON?</h2><p>XML dominated enterprise APIs in the SOAP era. Modern REST APIs use JSON. If you're integrating with legacy SOAP services, government APIs, or RSS/Atom feeds, you'll frequently need to convert XML to JSON.</p><h2>The structural differences</h2><p>XML has attributes and text content; JSON has only values. Our <a href="/xml-to-json">XML to JSON converter</a> maps XML attributes to <code>@_attributeName</code> keys and preserves the hierarchy.</p><h2>XML to JSON in one step</h2><p>Paste your XML into our <a href="/xml-to-json">XML to JSON</a> tool and get clean JSON instantly. The reverse - <a href="/json-to-xml">JSON to XML</a> - is also available.</p><h2>Working with the converted output</h2><p>After converting, <a href="/json-formatter">format the JSON</a> for readability, then <a href="/json-schema-generator">generate a schema</a> to document the structure.</p><h2>SOAP envelope stripping</h2><p>SOAP responses are wrapped in <code>&lt;Envelope&gt;&lt;Body&gt;</code> elements. After converting to JSON, use our <a href="/json-flatten">JSON Flatten</a> tool to access the actual payload without deeply nested property access.</p><section class="faq"><h2>Frequently Asked Questions</h2><dl><dt>Is XML to JSON conversion always lossless?</dt><dd>Not always. XML supports mixed content (text and elements together) and namespaces that don't map cleanly to JSON. For most real-world APIs, conversion is practical and functional.</dd><dt>How do XML attributes appear in JSON?</dt><dd>Our converter maps XML attributes to JSON keys prefixed with @_ so they don't conflict with child element names.</dd></dl></section>`,
-  },
-  {
-    slug: "protect-pdf-with-password",
-    title: "How to Password-Protect a PDF (Free, No Software Needed)",
-    excerpt: "Add AES-256 encryption to any PDF before sharing sensitive documents. Everything happens in your browser - your file is never uploaded.",
-    author: "BeYourTools Team",
-    publishedAt: "2026-11-04",
-    readingTime: 4,
-    category: "PDF",
-    tags: ["PDF", "Password", "Security", "Encryption"],
-    content: `<h2>Why password-protect a PDF?</h2><p>When sharing contracts, financial statements, HR documents, or personal data, a password ensures only authorised recipients can open the file.</p><h2>Two types of PDF passwords</h2><p><strong>User password</strong> - Required to open the file. <strong>Owner password</strong> - Controls permissions (printing, copying, editing). Our <a href="/pdf-tools/protect-pdf">PDF Protect</a> tool lets you set both.</p><h2>How to protect a PDF in 3 steps</h2><ol><li>Open our <a href="/pdf-tools/protect-pdf">Protect PDF</a> tool</li><li>Enter a strong user password (and optionally an owner password)</li><li>Upload your PDF - the encrypted file downloads immediately</li></ol><h2>Encryption strength</h2><p>Our tool uses AES-256 encryption - the same standard used by banks and governments. The password is never transmitted to any server.</p><h2>Removing a password later</h2><p>If you need to unlock a protected PDF (you must know the current password), use our <a href="/pdf-tools/unlock-pdf">PDF Unlock</a> tool.</p><section class="faq"><h2>Frequently Asked Questions</h2><dl><dt>Is AES-256 PDF encryption secure?</dt><dd>Yes - AES-256 is considered computationally unbreakable with a strong password. Use a password of 12+ characters with mixed case, numbers, and symbols.</dd><dt>Can I remove the password without knowing it?</dt><dd>No - this would defeat the purpose of encryption. You must know the current password to unlock or remove it.</dd></dl></section>`,
-  },
-  {
-    slug: "yaml-to-json-devops-guide",
-    title: "YAML to JSON: The DevOps Engineer's Conversion Guide",
-    excerpt: "Kubernetes, GitHub Actions, Ansible - DevOps tools love YAML. But APIs and code love JSON. Here's how to convert between them efficiently.",
-    author: "BeYourTools Team",
-    publishedAt: "2026-11-11",
-    readingTime: 6,
-    category: "JSON",
-    tags: ["YAML", "JSON", "DevOps", "Kubernetes", "Conversion"],
-    content: `<h2>When YAML meets JSON in DevOps</h2><p>Kubernetes manifests, Helm values, GitHub Actions workflows, Docker Compose - all use YAML. But your application code, REST APIs, and most libraries work with JSON.</p><h2>Key differences between YAML and JSON</h2><p>YAML uses indentation for structure (no braces/brackets). It supports comments. It has implicit type coercion - <code>yes</code> becomes <code>true</code>, <code>1.0</code> stays a float. JSON is stricter and more explicit.</p><h2>Convert in one step</h2><p>Paste your YAML into our <a href="/yaml-to-json">YAML to JSON</a> converter. The result is valid, formatted JSON. Going the other way? Use <a href="/json-to-yaml">JSON to YAML</a>.</p><h2>Validating Kubernetes manifests</h2><p>After converting your k8s YAML to JSON, use our <a href="/json-validator">JSON Validator</a> to check the structure, then <a href="/json-schema-validator">validate against a JSON Schema</a> to catch missing required fields.</p><h2>CI/CD pipeline tip</h2><p>Store config as JSON in your repo, convert to YAML at deploy time. This keeps your config format consistent while meeting each tool's requirements.</p><section class="faq"><h2>Frequently Asked Questions</h2><dl><dt>Does YAML support everything JSON does?</dt><dd>Yes - YAML is a superset of JSON. Any valid JSON is valid YAML. YAML adds comments, anchors, multi-line strings, and more.</dd><dt>Why does my YAML have 'true' but JSON shows true?</dt><dd>YAML's unquoted <code>true</code>, <code>yes</code>, and <code>on</code> all map to JSON boolean <code>true</code>. This is expected and correct.</dd></dl></section>`,
-  },
-  {
-    slug: "rotate-pdf-pages-free",
-    title: "How to Rotate PDF Pages for Free (No Desktop Software)",
-    excerpt: "Scanned documents often come out sideways or upside down. Fix the orientation of any PDF page in seconds - no Acrobat needed.",
-    author: "BeYourTools Team",
-    publishedAt: "2026-11-18",
-    readingTime: 3,
-    category: "PDF",
-    tags: ["PDF", "Rotate", "Orientation", "Fix"],
-    content: `<h2>Why PDFs end up sideways</h2><p>Scanners sometimes misread paper orientation, especially with double-sided documents. Some PDF creators also default to landscape when portrait is needed.</p><h2>Rotate the entire document</h2><p>Open our <a href="/pdf-tools/rotate-pdf">Rotate PDF</a> tool, choose 90°, 180°, or 270°, upload your PDF, and download the corrected version.</p><h2>Rotate individual pages</h2><p>If only some pages are misoriented, you can specify page numbers in the rotation tool to leave others unchanged.</p><h2>Save quality when rotating</h2><p>PDF rotation is a metadata operation - pages are not re-rendered. Quality is 100% preserved regardless of how many times you rotate.</p><h2>Other PDF editing tools</h2><p>After fixing orientation, you may want to <a href="/pdf-tools/merge-pdf">merge the rotated PDF</a> with others, <a href="/pdf-tools/split-pdf">extract specific pages</a>, or <a href="/pdf-tools/pdf-compressor">reduce the file size</a>.</p><section class="faq"><h2>Frequently Asked Questions</h2><dl><dt>Does rotating a PDF change the file size?</dt><dd>No - PDF rotation updates a rotation metadata value (0, 90, 180, or 270 degrees) without re-rendering, so file size remains essentially the same.</dd><dt>Can I rotate just one page in a multi-page PDF?</dt><dd>Yes - our tool accepts a page list so you can specify exactly which pages to rotate while leaving the rest unchanged.</dd></dl></section>`,
-  },
-  {
-    slug: "json-diff-compare-tool-guide",
-    title: "JSON Diff: How to Compare Two JSON Documents",
-    excerpt: "API responses changed between deployments? Config files diverged between environments? JSON diff tools show you exactly what changed.",
-    author: "BeYourTools Team",
-    publishedAt: "2026-11-25",
-    readingTime: 5,
-    category: "JSON",
-    tags: ["JSON", "Diff", "Compare", "Debugging", "APIs"],
-    content: `<h2>When do you need a JSON diff?</h2><p>JSON diffs are invaluable for: comparing API responses before and after a deploy, checking config differences between environments, reviewing data changes, and debugging unexpected behaviour.</p><h2>How our JSON Diff works</h2><p>Our <a href="/json-diff">JSON Diff</a> tool recursively compares two JSON documents and highlights every added (green), removed (red), and changed (amber) value with its exact JSON path.</p><h2>Reading diff output</h2><ul><li><code>+</code> - key or value was added in document B</li><li><code>-</code> - key or value was removed (present in A, not B)</li><li><code>~</code> - value changed (shows old → new)</li></ul><h2>Comparing nested objects</h2><p>The diff recurses into nested objects and arrays. Array element changes are reported by index: <code>$.users[2].email</code> shows exactly which array element changed.</p><h2>Before diffing: sort your keys</h2><p>If your JSON objects have inconsistently ordered keys, sort them first with our <a href="/json-sorter">JSON Sorter</a> to avoid false positives in the diff output.</p><section class="faq"><h2>Frequently Asked Questions</h2><dl><dt>How is JSON diff different from a text diff?</dt><dd>Text diff compares raw text line-by-line and shows false changes when keys are reordered. JSON diff is structure-aware - it compares values regardless of key order.</dd><dt>Can I diff large JSON files?</dt><dd>Yes - our tool runs in your browser and can handle files up to your browser's memory limit (typically several MB) without performance issues.</dd></dl></section>`,
+    tags: ["JWT", "Authentication", "Security", "APIs"],
+    content: `<h2>What is a JWT?</h2>
+<p>A JWT (JSON Web Token) is a compact, URL-safe string used to represent claims between two parties. It consists of three Base64URL-encoded sections separated by dots: a header, a payload, and a signature. The signature allows the receiver to verify that the contents haven't been tampered with.</p>
+
+<h2>The three parts</h2>
+<p><strong>Header</strong> — specifies the algorithm used to sign the token and the token type.</p>
+<p><strong>Payload</strong> — contains claims: facts about the user and session, such as user ID, roles, and expiry time.</p>
+<p><strong>Signature</strong> — a cryptographic hash of the header and payload that proves the token hasn't been modified.</p>
+
+<h2>Common claims</h2>
+<p>The payload typically includes: <code>sub</code> (the subject — usually a user ID), <code>iat</code> (issued at), <code>exp</code> (expiry timestamp), <code>iss</code> (issuer), and <code>aud</code> (intended audience).</p>
+
+<h2>Decoding vs verifying</h2>
+<p>Anyone can decode a JWT — the payload is only encoded, not encrypted. Use our <a href="/jwt-decoder">JWT Decoder</a> to inspect the header and payload of any token during development. Verification (checking the signature) requires the secret key and happens on your server.</p>
+
+<h2>Common security mistakes to avoid</h2>
+<ul>
+<li>Never accept tokens with <code>"alg": "none"</code> — this disables signature verification entirely</li>
+<li>Store tokens in httpOnly cookies, not browser localStorage (which is vulnerable to cross-site scripting)</li>
+<li>Always validate the <code>exp</code> claim — expired tokens should be rejected</li>
+<li>Never put passwords or sensitive personal data in the payload — it can be read by anyone who has the token</li>
+</ul>
+
+<section class="faq">
+<h2>Frequently Asked Questions</h2>
+<dl>
+<dt>How do I inspect a JWT without writing code?</dt>
+<dd>Paste the token into our <a href="/jwt-decoder">JWT Decoder</a>. It splits the token into its three sections, decodes each one, and shows the full payload including all claims and the expiry time.</dd>
+<dt>Is the JWT payload encrypted?</dt>
+<dd>No — the payload is Base64URL-encoded, which anyone can decode. Never store passwords, credit card numbers, or other sensitive data in a JWT payload.</dd>
+<dt>What is the difference between a JWT and an API key?</dt>
+<dd>An API key is an opaque string — the server must look it up in a database to know what permissions it grants. A JWT is self-contained — the server can verify it and read the permissions from the payload without a database lookup.</dd>
+</dl>
+</section>`,
   },
 ];

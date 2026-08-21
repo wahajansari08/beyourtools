@@ -78,7 +78,7 @@ export default function AudioToolPage({
 
         {/* Privacy */}
         <p className="mt-6 text-[11px]" style={{ color: "var(--text-subtle)" }}>
-          🔒 Your audio files are processed locally in your browser using FFmpeg WebAssembly and are never uploaded to any server.
+          🔒 Your audio files are processed locally in your browser and are never uploaded to any server.
         </p>
 
         {/* How to use */}
