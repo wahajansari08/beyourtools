@@ -129,7 +129,9 @@ export default function VideoToolClient({ tool }: { tool: VideoTool }) {
   const [outputUrl, setOutputUrl] = useState("");
   const [outputMime, setOutputMime] = useState(tool.outputMime);
   const [error, setError] = useState("");
+  const [previewIssue, setPreviewIssue] = useState("");
   const videoRef = useRef<HTMLVideoElement>(null);
+  const uploadFrameTimerRef = useRef<number | null>(null);
 
   const upload = uploads[0] ?? null;
   const duration = safeDuration(upload);
@@ -157,6 +159,13 @@ export default function VideoToolClient({ tool }: { tool: VideoTool }) {
   useEffect(() => {
     if (videoRef.current) videoRef.current.playbackRate = speed;
   }, [speed, upload?.objectUrl]);
+
+  useEffect(() => {
+    setPreviewIssue("");
+    return () => {
+      if (uploadFrameTimerRef.current !== null) window.clearTimeout(uploadFrameTimerRef.current);
+    };
+  }, [upload?.objectUrl]);
 
   // BUG 3 FIX: outputUrl must NOT be in the cleanup effect deps.
   // When outputUrl is listed as a dep, the effect re-runs every time a new URL
@@ -193,6 +202,7 @@ export default function VideoToolClient({ tool }: { tool: VideoTool }) {
     setOutputBlob(null);
     setOutputUrl("");
     setError("");
+    setPreviewIssue("");
     setProgress(null);
     setState("ready");
   }, [outputUrl, uploads]);
@@ -207,6 +217,7 @@ export default function VideoToolClient({ tool }: { tool: VideoTool }) {
     setOutputUrl("");
     setProgress(null);
     setError("");
+    setPreviewIssue("");
     setState("idle");
   }, [audioUpload, outputUrl, uploads]);
 
@@ -227,6 +238,24 @@ export default function VideoToolClient({ tool }: { tool: VideoTool }) {
       videoRef.current.currentTime = start;
       videoRef.current.play().catch(() => undefined);
     }
+  };
+
+  const watchUploadFrame = () => {
+    const video = videoRef.current as (HTMLVideoElement & {
+      requestVideoFrameCallback?: (callback: () => void) => number;
+    }) | null;
+    if (!video?.requestVideoFrameCallback) return;
+
+    if (uploadFrameTimerRef.current !== null) window.clearTimeout(uploadFrameTimerRef.current);
+    uploadFrameTimerRef.current = window.setTimeout(() => {
+      setPreviewIssue("The file is playing, but your browser is not rendering decoded video frames. You can still try processing it, or convert from a common MP4/H.264 file.");
+    }, 1800);
+
+    video.requestVideoFrameCallback(() => {
+      if (uploadFrameTimerRef.current !== null) window.clearTimeout(uploadFrameTimerRef.current);
+      uploadFrameTimerRef.current = null;
+      setPreviewIssue("");
+    });
   };
 
   const startCropDrag = (event: React.PointerEvent<HTMLDivElement>) => {
@@ -439,7 +468,24 @@ export default function VideoToolClient({ tool }: { tool: VideoTool }) {
               </div>
             ) : (
               <div className="relative overflow-hidden rounded-lg border" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
-                <video ref={videoRef} src={upload.objectUrl} controls playsInline preload="metadata" className="aspect-video w-full bg-black" aria-label={upload.file.name} />
+                <video
+                  ref={videoRef}
+                  src={upload.objectUrl}
+                  controls
+                  playsInline
+                  preload="metadata"
+                  className="aspect-video w-full bg-black object-contain"
+                  aria-label={upload.file.name}
+                  onLoadedMetadata={(event) => {
+                    const video = event.currentTarget;
+                    if (!video.videoWidth || !video.videoHeight) {
+                      setPreviewIssue("The browser loaded the file duration, but it cannot find a displayable video track.");
+                    }
+                  }}
+                  onLoadedData={() => setPreviewIssue("")}
+                  onPlay={watchUploadFrame}
+                  onError={() => setPreviewIssue("This browser cannot preview this video's codec. Try processing it to MP4/H.264 or choose another source file.")}
+                />
                 {tool.kind === "crop" && upload.metadata.width && upload.metadata.height && (
                   <div
                     aria-label="Drag crop selection"
@@ -457,6 +503,12 @@ export default function VideoToolClient({ tool }: { tool: VideoTool }) {
                   />
                 )}
               </div>
+            )}
+            {previewIssue && (
+              <p className="rounded-md border px-3 py-2 text-xs" role="status"
+                style={{ borderColor: "rgba(239,125,111,0.3)", backgroundColor: "rgba(239,125,111,0.08)", color: "var(--coral)" }}>
+                {previewIssue}
+              </p>
             )}
             <VideoFileInfo file={upload.file} metadata={upload.metadata} outputSize={outputBlob?.size} outputDimensions={outputDimensions} />
           </div>
