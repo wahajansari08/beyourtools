@@ -18,6 +18,13 @@ export const qrBarcodeTools: QRBarcodeTool[] = [
     icon: "⬛",
   },
   {
+    slug: "qr-code-generator-with-logo",
+    name: "QR Code Generator with Logo",
+    description: "Generate QR codes with a custom or social logo overlay for URLs, text, WiFi and more.",
+    category: "QR Tools",
+    icon: "✨",
+  },
+  {
     slug: "qr-code-scanner",
     name: "QR Code Scanner",
     description: "Scan QR codes using your device camera in real time.",
@@ -45,6 +52,13 @@ export const qrBarcodeTools: QRBarcodeTool[] = [
     description: "Generate barcodes in CODE128, CODE39, EAN-13, UPC, ITF-14 and more.",
     category: "Barcode Tools",
     icon: "📊",
+  },
+  {
+    slug: "barcode-generator-with-logo",
+    name: "Barcode Generator with Logo",
+    description: "Generate Code 128, EAN-13, EAN-8, UPC-A or Code 39 barcodes with a custom or social logo overlay.",
+    category: "Barcode Tools",
+    icon: "🏷",
   },
   {
     slug: "barcode-scanner",

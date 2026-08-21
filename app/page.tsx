@@ -37,7 +37,7 @@ const IMAGE_FEATURED = ["jpg-to-png","jpg-to-webp","jpg-to-pdf","png-to-jpg","pn
 const PDF_FEATURED   = ["pdf-to-jpg","jpg-to-pdf","merge-pdf","split-pdf","pdf-compressor","protect-pdf","pdf-to-text","rotate-pdf","pdf-metadata-viewer"];
 const VIDEO_FEATURED = ["video-compressor","video-cutter","video-converter","mp4-to-mp3","video-to-gif","video-thumbnail-generator","video-resizer","remove-audio-from-video"];
 const AUDIO_FEATURED = ["mp3-converter","audio-converter","mp4-to-mp3","mp3-cutter","audio-cutter","mp3-compressor","mp3-merger","audio-joiner","mp3-to-wav","wav-to-mp3","m4a-to-mp3","mp3-volume-booster"];
-const QR_FEATURED    = ["qr-code-generator","qr-code-scanner","qr-code-decoder","wifi-qr-code-generator","barcode-generator","barcode-scanner","barcode-decoder","upc-barcode-generator","ean-barcode-generator","code-128-barcode-generator"];
+const QR_FEATURED    = ["qr-code-generator","qr-code-generator-with-logo","qr-code-scanner","qr-code-decoder","wifi-qr-code-generator","barcode-generator","barcode-generator-with-logo","barcode-scanner","barcode-decoder","upc-barcode-generator","ean-barcode-generator","code-128-barcode-generator"];
 
 const jsonCount  = tools.length;
 const imageCount = conversionRoutes.length;
