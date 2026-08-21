@@ -47,7 +47,19 @@ const audioCount = audioTools.length;
 const qrCount    = qrBarcodeTools.length;
 
 const CATEGORY_COLORS: Record<string, string> = {
-  JSON: "var(--teal)", Image: "var(--accent)", PDF: "var(--coral)", Video: "var(--teal)",
+  JSON:  "var(--teal)",
+  Image: "var(--accent-text)",
+  PDF:   "var(--coral)",
+  Video: "var(--teal)",
+};
+
+// Badge text colors — must pass 4.5:1 on their color-mix backgrounds
+// We use the full-strength color variable which is already darkened in light mode
+const BADGE_TEXT_COLORS: Record<string, string> = {
+  JSON:  "var(--teal)",
+  Image: "var(--accent-text)",
+  PDF:   "var(--coral)",
+  Video: "var(--teal)",
 };
 
 export default function Home() {
@@ -86,7 +98,7 @@ function Hero() {
           </div>
           <h1 className="font-display text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl" style={{ color: "var(--text-primary)" }}>
             Every tool you need,{" "}
-            <span style={{ color: "var(--accent)" }}>right here.</span>
+            <span style={{ color: "var(--accent-text)" }}>right here.</span>
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed" style={{ color: "var(--text-muted)" }}>
             Free browser-based tools for developers and designers - JSON utilities, image converters, PDF tools and more. No installs, no accounts, no limits.
@@ -108,7 +120,7 @@ function Hero() {
               { count: qrCount,    label: "QR & Barcode tools" },
             ].map(({ count, label }) => (
               <div key={label} className="text-center">
-                <div className="font-display text-2xl font-semibold" style={{ color: "var(--accent)" }}>{count}+</div>
+                <div className="font-display text-2xl font-semibold" style={{ color: "var(--accent-text)" }}>{count}+</div>
                 <div className="mt-0.5 text-xs" style={{ color: "var(--text-subtle)" }}>{label}</div>
               </div>
             ))}
@@ -130,16 +142,16 @@ function ToolSections() {
 
       <div className="h-px" style={{ backgroundColor: "var(--border)" }} />
 
-      <ToolSection id="image-converter" icon="🖼" iconColor="var(--accent)" title="Image Converter"
-        description={`${imageCount} conversion pairs - JPG, PNG, WebP, AVIF, SVG, ICO, PDF and more.`}
+      <ToolSection id="image-converter" icon="🖼" iconColor="var(--accent-text)" title="Image Converter"
+        description={`${imageCount} conversion pairs — JPG, PNG, WebP, AVIF, SVG, ICO, PDF and more.`}
         href="/image-converter" ctaLabel="All Image Converters →"
         featured={IMAGE_FEATURED.map((s) => { const [f,,t]=s.split("-"); return { slug:s, name:`${f.toUpperCase()} → ${t.toUpperCase()}`, description:`Convert ${f.toUpperCase()} to ${t.toUpperCase()}.` }; })}
-        cardHref={(s) => `/image-converter/${s}`} cardIcon="→" cardIconColor="var(--accent)" />
+        cardHref={(s) => `/image-converter/${s}`} cardIcon="→" cardIconColor="var(--accent-text)" />
 
       <div className="h-px" style={{ backgroundColor: "var(--border)" }} />
 
       <ToolSection id="pdf-tools" icon="📄" iconColor="var(--coral)" title="PDF Tools"
-        description={`${pdfCount} tools - merge, split, compress, protect, watermark and more.`}
+        description={`${pdfCount} tools — merge, split, compress, protect, watermark and more.`}
         href="/pdf-tools" ctaLabel="All PDF Tools →"
         featured={PDF_FEATURED.map((s) => pdfTools.find((t) => t.slug === s)).filter(Boolean) as typeof pdfTools}
         cardHref={(s) => `/pdf-tools/${s}`} cardIcon="📄" cardIconColor="var(--coral)" />
@@ -154,11 +166,11 @@ function ToolSections() {
 
       <div className="h-px" style={{ backgroundColor: "var(--border)" }} />
 
-      <ToolSection id="audio-tools" icon="🎵" iconColor="var(--accent)" title="Audio Tools"
+      <ToolSection id="audio-tools" icon="🎵" iconColor="var(--accent-text)" title="Audio Tools"
         description={`${audioCount} tools — convert, cut, compress, merge, boost volume and record audio.`}
         href="/audio-tools" ctaLabel="All Audio Tools →"
         featured={AUDIO_FEATURED.map((s) => audioTools.find((t) => t.slug === s)).filter(Boolean) as typeof audioTools}
-        cardHref={(s) => `/${s}`} cardIcon="🎵" cardIconColor="var(--accent)" />
+        cardHref={(s) => `/${s}`} cardIcon="🎵" cardIconColor="var(--accent-text)" />
 
       <div className="h-px" style={{ backgroundColor: "var(--border)" }} />
 
@@ -185,28 +197,40 @@ function ToolSection({ id, icon, iconColor, title, description, href, ctaLabel, 
     <section id={id} aria-label={title}>
       <div className="mb-6 flex flex-wrap items-baseline justify-between gap-3">
         <div className="flex items-center gap-3">
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg text-lg font-bold" style={{ backgroundColor: `color-mix(in srgb, ${iconColor} 15%, transparent)`, color: iconColor }} aria-hidden="true">{icon}</span>
+          {/* Icon badge — aria-hidden so screen readers skip the decorative char */}
+          <span
+            className="flex h-9 w-9 items-center justify-center rounded-lg text-lg font-bold"
+            style={{ backgroundColor: `color-mix(in srgb, ${iconColor} 15%, transparent)`, color: iconColor }}
+            aria-hidden="true"
+          >{icon}</span>
           <div>
             <h2 className="font-display text-xl font-semibold" style={{ color: "var(--text-primary)" }}>{title}</h2>
             <p className="mt-0.5 text-xs" style={{ color: "var(--text-muted)" }}>{description}</p>
           </div>
         </div>
+        {/* "All X →" CTA — uses iconColor which is already AA-compliant (teal/coral/accent-text) */}
         <Link href={href} className="focus-ring text-sm font-medium transition hover:opacity-80" style={{ color: iconColor }}>{ctaLabel}</Link>
       </div>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {featured.map((tool) => (
-          <Link key={tool.slug} href={cardHref(tool.slug)} className="focus-ring group flex flex-col justify-between rounded-lg border p-4 transition hover-card-accent" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+          <Link key={tool.slug} href={cardHref(tool.slug)}
+            className="focus-ring group flex flex-col justify-between rounded-lg border p-4 transition hover-card-accent"
+            style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
             <div>
               <div className="mb-1.5 flex items-center gap-2">
-                <span className="font-mono text-[11px] font-semibold" style={{ color: cardIconColor }}>{cardIcon}</span>
+                {/* Card icon text — aria-hidden, decorative */}
+                <span className="font-mono text-[11px] font-semibold" style={{ color: cardIconColor }} aria-hidden="true">{cardIcon}</span>
                 <h3 className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>{tool.name}</h3>
               </div>
               <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>{tool.description}</p>
             </div>
-            <span className="mt-3 text-xs font-medium opacity-0 transition group-hover:opacity-100" style={{ color: cardIconColor }}>Open →</span>
+            {/* "Open →" — aria-hidden, the entire card is the link */}
+            <span className="mt-3 text-xs font-medium opacity-0 transition group-hover:opacity-100" style={{ color: cardIconColor }} aria-hidden="true">Open →</span>
           </Link>
         ))}
-        <Link href={href} className="focus-ring group flex flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed p-4 text-center transition hover:-translate-y-0.5" style={{ borderColor: "var(--border-strong)", color: "var(--text-muted)" }}>
+        <Link href={href}
+          className="focus-ring group flex flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed p-4 text-center transition hover:-translate-y-0.5"
+          style={{ borderColor: "var(--border-strong)", color: "var(--text-muted)" }}>
           <span className="text-2xl" aria-hidden="true">→</span>
           <span className="text-xs font-medium">View all {title}</span>
         </Link>
@@ -221,29 +245,44 @@ function BlogSection() {
     <section id="blog" aria-label="Blog">
       <div className="mb-6 flex flex-wrap items-baseline justify-between gap-3">
         <div className="flex items-center gap-3">
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg text-lg" style={{ backgroundColor: "color-mix(in srgb, var(--accent) 15%, transparent)", color: "var(--accent)" }} aria-hidden="true">✍️</span>
+          <span className="flex h-9 w-9 items-center justify-center rounded-lg text-lg"
+            style={{ backgroundColor: "color-mix(in srgb, var(--accent-text) 15%, transparent)", color: "var(--accent-text)" }}
+            aria-hidden="true">✍️</span>
           <div>
             <h2 className="font-display text-xl font-semibold" style={{ color: "var(--text-primary)" }}>Blog</h2>
             <p className="mt-0.5 text-xs" style={{ color: "var(--text-muted)" }}>Practical guides on JSON, images, PDFs and developer productivity.</p>
           </div>
         </div>
-        <Link href="/blog" className="focus-ring text-sm font-medium transition hover:opacity-80" style={{ color: "var(--accent)" }}>All articles →</Link>
+        <Link href="/blog" className="focus-ring text-sm font-medium transition hover:opacity-80"
+          style={{ color: "var(--accent-text)" }}>All articles →</Link>
       </div>
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {posts.map((post) => {
-          const catColor = CATEGORY_COLORS[post.category] ?? "var(--teal)";
+          // Use BADGE_TEXT_COLORS for readable badge text on tinted backgrounds
+          const badgeColor = BADGE_TEXT_COLORS[post.category] ?? "var(--teal)";
           return (
-            <Link key={post.slug} href={`/blog/${post.slug}`} className="focus-ring group flex flex-col overflow-hidden rounded-xl border transition hover:-translate-y-0.5" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
-              <div className="flex items-center justify-between border-b px-4 py-3" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
-                <span className="rounded-full px-2 py-0.5 text-[11px] font-semibold" style={{ backgroundColor: `color-mix(in srgb, ${catColor} 15%, transparent)`, color: catColor }}>{post.category}</span>
+            <Link key={post.slug} href={`/blog/${post.slug}`}
+              className="focus-ring group flex flex-col overflow-hidden rounded-xl border transition hover:-translate-y-0.5"
+              style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+              <div className="flex items-center justify-between border-b px-4 py-3"
+                style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+                {/* Badge: tinted background + full-strength text for AA contrast */}
+                <span className="rounded-full px-2 py-0.5 text-[11px] font-semibold"
+                  style={{ backgroundColor: `color-mix(in srgb, ${badgeColor} 15%, transparent)`, color: badgeColor }}>
+                  {post.category}
+                </span>
+                {/* "6 min read" — --text-subtle passes AA on --bg-elevated in both modes */}
                 <span className="text-[11px]" style={{ color: "var(--text-subtle)" }}>{post.readingTime} min read</span>
               </div>
               <div className="flex flex-1 flex-col p-4">
                 <h3 className="font-display text-sm font-semibold leading-snug" style={{ color: "var(--text-primary)" }}>{post.title}</h3>
                 <p className="mt-1.5 flex-1 text-xs leading-relaxed line-clamp-2" style={{ color: "var(--text-muted)" }}>{post.excerpt}</p>
-                <div className="mt-3 flex items-center justify-between text-[11px]" style={{ color: "var(--text-subtle)" }}>
+                <div className="mt-3 flex items-center justify-between text-[11px]"
+                  style={{ color: "var(--text-subtle)" }}>
                   <span>{formatDate(post.publishedAt)}</span>
-                  <span className="font-medium transition group-hover:translate-x-0.5" style={{ color: "var(--accent)" }}>Read →</span>
+                  {/* "Read →" uses text-muted (readable) rather than accent on this small text size */}
+                  <span className="font-medium transition group-hover:translate-x-0.5"
+                    style={{ color: "var(--text-muted)" }}>Read →</span>
                 </div>
               </div>
             </Link>
