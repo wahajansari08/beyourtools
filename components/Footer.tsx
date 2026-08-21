@@ -80,12 +80,12 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link href="/" className="focus-ring inline-flex items-center gap-2 rounded">
-              <span
+              {/* <span
                 className="flex h-7 w-7 items-center justify-center rounded-md text-sm font-bold"
                 style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}
               >
                 B
-              </span>
+              </span> */}
               <span className="font-display text-base font-semibold" style={{ color: "var(--text-primary)" }}>
                 BeYourTools
               </span>
