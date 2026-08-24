@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getBlogPost, getRecentPosts, formatDate, blogPosts, getPostsByCategory } from "@/lib/blog";
 import JsonLd from "@/components/JsonLd";
 import { articleSchema, breadcrumbSchema, faqSchema, SITE, canonical } from "@/lib/seo";
+import ShareArticle from "./ShareArticle";
 
 interface Props { params: Promise<{ slug: string }>; }
 
@@ -107,7 +108,10 @@ export default async function BlogPostPage({ params }: Props) {
               <span className="rounded-full px-2.5 py-0.5 text-[11px] font-semibold" style={{ backgroundColor: `color-mix(in srgb, ${catColor} 15%, transparent)`, color: catColor }}>{post.category}</span>
               <span className="text-xs" style={{ color: "var(--text-subtle)" }}>{formatDate(post.publishedAt)}</span>
             </div>
-            <span className="text-xs" style={{ color: "var(--text-subtle)" }}>{post.readingTime} min read · {post.author}</span>
+            <div className="flex items-center gap-3">
+              <span className="hidden text-xs sm:inline" style={{ color: "var(--text-subtle)" }}>{post.readingTime} min read · {post.author}</span>
+              <ShareArticle url={url} title={post.title} />
+            </div>
           </div>
           <div className="px-6 py-6">
             <h1 className="font-display text-2xl font-semibold leading-tight sm:text-3xl" style={{ color: "var(--text-primary)" }}>{post.title}</h1>
