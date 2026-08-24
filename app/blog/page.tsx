@@ -7,35 +7,45 @@ import BlogPagination from "./BlogPagination";
 
 const PER_PAGE = 12; // 1 featured + 11 in grid on page 1; 12 per page from page 2
 
-export const metadata: Metadata = {
-  title: "Blog — Free Guides on JSON, Images, Audio, Video & PDF | BeYourTools",
-  description: "Practical guides on JSON tools, image conversion, PDF utilities, audio tools, video editing, QR codes, and developer productivity.",
-  keywords: "JSON tutorial, image converter guide, PDF tools guide, audio tools guide, developer blog, web development tips",
-  alternates: { canonical: `${SITE.url}/blog` },
-  robots: { index: true, follow: true },
-  openGraph: {
-    type: "website",
-    url: `${SITE.url}/blog`,
-    title: "BeYourTools Blog — Free Guides on JSON, Images, Audio & More",
-    description: "Practical guides on JSON, image formats, PDF tools, audio, video and developer productivity.",
-    images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "BeYourTools Blog" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "BeYourTools Blog — Free Developer Guides",
-    description: "Practical guides on JSON, images, audio, video, PDF and more.",
-    site: "@beyourtools",
-    images: [`${SITE.url}/og-default.png`],
-  },
-};
-
-const CATEGORY_COLORS: Record<string, string> = {
-  JSON: "var(--teal)", Image: "var(--accent)", PDF: "var(--coral)",
-};
+const BLOG_TITLE = "BeYourTools Blog — Free Guides on JSON, Images, Audio & More";
+const BLOG_DESCRIPTION = "Practical guides on JSON, image formats, PDF tools, audio, video and developer productivity.";
 
 interface Props {
   searchParams: Promise<{ page?: string }>;
 }
+
+export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
+  const params = await searchParams;
+  const requestedPage = Number.parseInt(params.page ?? "1", 10);
+  const currentPage = Number.isFinite(requestedPage) && requestedPage > 1 ? requestedPage : 1;
+  const url = currentPage === 1 ? `${SITE.url}/blog` : `${SITE.url}/blog?page=${currentPage}`;
+
+  return {
+    title: "Blog — Free Guides on JSON, Images, Audio, Video & PDF | BeYourTools",
+    description: BLOG_DESCRIPTION,
+    keywords: "JSON tutorial, image converter guide, PDF tools guide, audio tools guide, developer blog, web development tips",
+    alternates: { canonical: url },
+    robots: { index: true, follow: true },
+    openGraph: {
+      type: "website",
+      url,
+      title: BLOG_TITLE,
+      description: BLOG_DESCRIPTION,
+      images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "BeYourTools Blog" }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "BeYourTools Blog — Free Developer Guides",
+      description: BLOG_DESCRIPTION,
+      site: "@beyourtools",
+      images: [`${SITE.url}/og-default.png`],
+    },
+  };
+}
+
+const CATEGORY_COLORS: Record<string, string> = {
+  JSON: "var(--teal)", Image: "var(--accent)", PDF: "var(--coral)",
+};
 
 export default async function BlogPage({ searchParams }: Props) {
   const params = await searchParams;
