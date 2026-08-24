@@ -29,6 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${from.label} to ${to.label} Converter - Free Online Tool`,
     description: `Convert ${from.label} images to ${to.label} format instantly in your browser. No upload, no sign-up, completely free.`,
+    alternates: { canonical: `https://beyourtools.com/image-converter/${route.slug}` },
   };
 }
 

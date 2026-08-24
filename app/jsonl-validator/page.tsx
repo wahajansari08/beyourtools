@@ -5,6 +5,7 @@ import JsonlValidatorClient from "./JsonlValidatorClient";
 export const metadata: Metadata = {
   title: "JSONL Validator - BeYourTools",
   description: "Validate every line of a JSONL file independently and see exactly which lines fail.",
+  alternates: { canonical: "https://beyourtools.com/jsonl-validator" },
 };
 
 export default function Page() {

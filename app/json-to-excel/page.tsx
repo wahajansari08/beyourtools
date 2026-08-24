@@ -5,6 +5,7 @@ import JsonToExcelClient from "./JsonToExcelClient";
 export const metadata: Metadata = {
   title: "JSON to Excel - BeYourTools",
   description: "Export a JSON array as a downloadable .xlsx spreadsheet directly in your browser.",
+  alternates: { canonical: "https://beyourtools.com/json-to-excel" },
 };
 
 export default function Page() {

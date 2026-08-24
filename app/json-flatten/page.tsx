@@ -5,6 +5,7 @@ import FlattenClient from "./FlattenClient";
 export const metadata: Metadata = {
   title: "JSON Flatten / Unflatten - BeYourTools",
   description: "Flatten nested JSON into dot-notation paths, or rebuild nested JSON from flat keys.",
+  alternates: { canonical: "https://beyourtools.com/json-flatten" },
 };
 
 export default function Page() {

@@ -5,6 +5,7 @@ import SorterClient from "./SorterClient";
 export const metadata: Metadata = {
   title: "JSON Sorter - BeYourTools",
   description: "Sort JSON object keys alphabetically, recursively, ascending or descending.",
+  alternates: { canonical: "https://beyourtools.com/json-sorter" },
 };
 
 export default function Page() {

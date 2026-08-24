@@ -5,6 +5,7 @@ import JwtDecoderClient from "./JwtDecoderClient";
 export const metadata: Metadata = {
   title: "JWT Decoder - BeYourTools",
   description: "Decode a JWT's header and payload instantly. Runs entirely in your browser - your token is never sent anywhere.",
+  alternates: { canonical: "https://beyourtools.com/jwt-decoder" },
 };
 
 export default function Page() {

@@ -5,6 +5,7 @@ import JsonSchemaValidatorClient from "./JsonSchemaValidatorClient";
 export const metadata: Metadata = {
   title: "JSON Schema Validator - BeYourTools",
   description: "Validate JSON against a JSON Schema (draft-07) and see detailed error messages.",
+  alternates: { canonical: "https://beyourtools.com/json-schema-validator" },
 };
 
 export default function Page() {

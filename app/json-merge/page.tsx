@@ -5,6 +5,7 @@ import MergeClient from "./MergeClient";
 export const metadata: Metadata = {
   title: "JSON Merge - BeYourTools",
   description: "Deep-merge two JSON objects into one, with the second object's values taking precedence.",
+  alternates: { canonical: "https://beyourtools.com/json-merge" },
 };
 
 export default function Page() {

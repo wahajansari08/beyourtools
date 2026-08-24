@@ -5,6 +5,7 @@ import DiffClient from "./DiffClient";
 export const metadata: Metadata = {
   title: "JSON Diff / Compare - BeYourTools",
   description: "Compare two JSON documents and see every added, removed, and changed value.",
+  alternates: { canonical: "https://beyourtools.com/json-diff" },
 };
 
 export default function Page() {

@@ -5,6 +5,7 @@ import MinifierClient from "./MinifierClient";
 export const metadata: Metadata = {
   title: "JSON Minifier - BeYourTools",
   description: "Strip whitespace from JSON to shrink payload size. See exactly how many bytes you saved.",
+  alternates: { canonical: "https://beyourtools.com/json-minifier" },
 };
 
 export default function Page() {

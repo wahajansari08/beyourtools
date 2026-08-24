@@ -5,6 +5,7 @@ import TokenCounterClient from "./TokenCounterClient";
 export const metadata: Metadata = {
   title: "JSON Token Counter - BeYourTools",
   description: "Estimate the LLM token count of a JSON payload before sending it to an API.",
+  alternates: { canonical: "https://beyourtools.com/json-token-counter" },
 };
 
 export default function Page() {

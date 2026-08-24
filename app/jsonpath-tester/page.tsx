@@ -5,6 +5,7 @@ import JsonPathClient from "./JsonPathClient";
 export const metadata: Metadata = {
   title: "JSONPath Tester - BeYourTools",
   description: "Run JSONPath expressions against your JSON data and see matching results instantly.",
+  alternates: { canonical: "https://beyourtools.com/jsonpath-tester" },
 };
 
 export default function Page() {

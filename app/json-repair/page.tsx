@@ -5,6 +5,7 @@ import RepairClient from "./RepairClient";
 export const metadata: Metadata = {
   title: "JSON Repair - BeYourTools",
   description: "Automatically fix common JSON mistakes: trailing commas, single quotes, unquoted keys, and comments.",
+  alternates: { canonical: "https://beyourtools.com/json-repair" },
 };
 
 export default function Page() {

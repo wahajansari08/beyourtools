@@ -5,6 +5,7 @@ import YamlToJsonClient from "./YamlToJsonClient";
 export const metadata: Metadata = {
   title: "YAML to JSON - BeYourTools",
   description: "Convert YAML documents into JSON.",
+  alternates: { canonical: "https://beyourtools.com/yaml-to-json" },
 };
 
 export default function Page() {

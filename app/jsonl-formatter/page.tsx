@@ -5,6 +5,7 @@ import JsonlFormatterClient from "./JsonlFormatterClient";
 export const metadata: Metadata = {
   title: "JSONL Formatter - BeYourTools",
   description: "Pretty-print every line of a JSONL (newline-delimited JSON) file.",
+  alternates: { canonical: "https://beyourtools.com/jsonl-formatter" },
 };
 
 export default function Page() {

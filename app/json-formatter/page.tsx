@@ -5,6 +5,7 @@ import FormatterClient from "./FormatterClient";
 export const metadata: Metadata = {
   title: "JSON Formatter - BeYourTools",
   description: "Pretty-print JSON with 2, 4, or tab indentation. Free, fast, runs in your browser.",
+  alternates: { canonical: "https://beyourtools.com/json-formatter" },
 };
 
 export default function Page() {

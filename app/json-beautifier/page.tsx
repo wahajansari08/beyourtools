@@ -5,6 +5,7 @@ import BeautifierClient from "./BeautifierClient";
 export const metadata: Metadata = {
   title: "JSON Beautifier - BeYourTools",
   description: "Clean up messy or single-line JSON into a readable layout, with optional key sorting.",
+  alternates: { canonical: "https://beyourtools.com/json-beautifier" },
 };
 
 export default function Page() {

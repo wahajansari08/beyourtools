@@ -5,6 +5,7 @@ import JsonToCsvClient from "./JsonToCsvClient";
 export const metadata: Metadata = {
   title: "JSON to CSV - BeYourTools",
   description: "Convert a JSON array of objects into CSV, with configurable delimiter.",
+  alternates: { canonical: "https://beyourtools.com/json-to-csv" },
 };
 
 export default function Page() {

@@ -5,6 +5,7 @@ import JsonToTypeScriptClient from "./JsonToTypeScriptClient";
 export const metadata: Metadata = {
   title: "JSON to TypeScript - BeYourTools",
   description: "Generate TypeScript interfaces from a JSON object or array automatically.",
+  alternates: { canonical: "https://beyourtools.com/json-to-typescript" },
 };
 
 export default function Page() {

@@ -5,6 +5,7 @@ import JsonSchemaGeneratorClient from "./JsonSchemaGeneratorClient";
 export const metadata: Metadata = {
   title: "JSON Schema Generator - BeYourTools",
   description: "Infer a JSON Schema (draft-07) from any JSON sample automatically.",
+  alternates: { canonical: "https://beyourtools.com/json-schema-generator" },
 };
 
 export default function Page() {

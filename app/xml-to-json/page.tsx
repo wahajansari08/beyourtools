@@ -5,6 +5,7 @@ import XmlToJsonClient from "./XmlToJsonClient";
 export const metadata: Metadata = {
   title: "XML to JSON - BeYourTools",
   description: "Convert XML documents into JSON.",
+  alternates: { canonical: "https://beyourtools.com/xml-to-json" },
 };
 
 export default function Page() {

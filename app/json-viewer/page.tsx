@@ -5,6 +5,7 @@ import ViewerClient from "./ViewerClient";
 export const metadata: Metadata = {
   title: "JSON Viewer / Tree - BeYourTools",
   description: "Explore JSON as a collapsible tree. Paste large JSON and drill into exactly the part you need.",
+  alternates: { canonical: "https://beyourtools.com/json-viewer" },
 };
 
 export default function Page() {

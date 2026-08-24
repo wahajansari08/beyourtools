@@ -5,6 +5,7 @@ import ValidatorClient from "./ValidatorClient";
 export const metadata: Metadata = {
   title: "JSON Validator - BeYourTools",
   description: "Validate JSON syntax and get precise line and column error locations.",
+  alternates: { canonical: "https://beyourtools.com/json-validator" },
 };
 
 export default function Page() {

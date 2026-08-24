@@ -5,6 +5,7 @@ import JsonGeneratorClient from "./JsonGeneratorClient";
 export const metadata: Metadata = {
   title: "JSON Generator - BeYourTools",
   description: "Generate realistic mock JSON data from a template using {{placeholder}} syntax.",
+  alternates: { canonical: "https://beyourtools.com/json-generator" },
 };
 
 export default function Page() {

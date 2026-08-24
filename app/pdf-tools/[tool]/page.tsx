@@ -19,6 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${def.name} - Free Online PDF Tool - BeYourTools`,
     description: `${def.description} No upload required, runs entirely in your browser.`,
+    alternates: { canonical: `https://beyourtools.com/pdf-tools/${def.slug}` },
   };
 }
 
