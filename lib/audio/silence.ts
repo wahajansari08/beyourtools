@@ -53,7 +53,7 @@ export async function removeSilence(file: File, opts: SilenceOptions = {}): Prom
   const threshLinear = Math.pow(10, thresholdDb / 20).toFixed(6);
 
   // BUG 7 FIX: build the filter string as a single concatenated string with NO
-  // newlines or spaces — FFmpeg's filter parser treats whitespace as a separator.
+  // newlines or spaces - FFmpeg's filter parser treats whitespace as a separator.
   const filter =
     `silenceremove=` +
     `start_periods=1:start_silence=${padding}:start_threshold=${threshLinear}:` +

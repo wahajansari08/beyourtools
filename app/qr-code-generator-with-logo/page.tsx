@@ -6,9 +6,9 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "QR Code Generator with Logo — Add Logo to QR Code Free | BeYourTools",
+  title: "QR Code Generator with Logo - Add Logo to QR Code Free | BeYourTools",
   description:
-    "Generate QR codes for URLs, text, WiFi, email, phone and vCard — then overlay a custom or social media logo. Choose from Instagram, Facebook, YouTube, TikTok and more. Free, browser-based, no upload.",
+    "Generate QR codes for URLs, text, WiFi, email, phone and vCard - then overlay a custom or social media logo. Choose from Instagram, Facebook, YouTube, TikTok and more. Free, browser-based, no upload.",
   keywords:
     "QR code generator with logo, QR code with logo, custom QR code logo, QR code with image, branded QR code, social media QR code",
   alternates: { canonical: `${SITE.url}/qr-code-generator-with-logo` },
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: `${SITE.url}/qr-code-generator-with-logo`,
-    title: "QR Code Generator with Logo — Add Logo to QR Code Free | BeYourTools",
+    title: "QR Code Generator with Logo - Add Logo to QR Code Free | BeYourTools",
     description:
       "Create branded QR codes with a custom or social media logo. URL, WiFi, vCard and more. Browser-based, no upload.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "QR Code Generator with Logo" }],
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "QR Code Generator with Logo | BeYourTools",
-    description: "Add a custom or social logo to any QR code — free, browser-based.",
+    description: "Add a custom or social logo to any QR code - free, browser-based.",
     site: "@beyourtools",
     images: [`${SITE.url}/og-default.png`],
   },
@@ -34,7 +34,7 @@ const FAQS = [
   {
     question: "Can I add a logo to my QR code?",
     answer:
-      "Yes. Choose 'Social logo' to pick from built-in brand icons (Instagram, Facebook, YouTube, TikTok, X, LinkedIn, WhatsApp, Telegram, GitHub), or choose 'Upload logo' to use your own PNG, JPG, WebP or SVG image. Your logo is never uploaded — everything stays in your browser.",
+      "Yes. Choose 'Social logo' to pick from built-in brand icons (Instagram, Facebook, YouTube, TikTok, X, LinkedIn, WhatsApp, Telegram, GitHub), or choose 'Upload logo' to use your own PNG, JPG, WebP or SVG image. Your logo is never uploaded - everything stays in your browser.",
   },
   {
     question: "Will the logo prevent the QR code from scanning?",
@@ -54,7 +54,7 @@ const FAQS = [
   {
     question: "Can I download the QR code with logo as SVG?",
     answer:
-      "Yes — when a logo is applied, the tool generates an SVG that embeds the logo as an inline image element. You can download PNG, JPG or SVG in all cases. For best print quality, use SVG.",
+      "Yes - when a logo is applied, the tool generates an SVG that embeds the logo as an inline image element. You can download PNG, JPG or SVG in all cases. For best print quality, use SVG.",
   },
   {
     question: "Is my uploaded logo kept private?",
@@ -103,7 +103,7 @@ export default function QRCodeGeneratorWithLogoPage() {
             QR Code Generator with Logo
           </h1>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-            Generate QR codes for URLs, WiFi, contacts, email, phone and more — then overlay your brand logo or a social media icon.
+            Generate QR codes for URLs, WiFi, contacts, email, phone and more - then overlay your brand logo or a social media icon.
             Customize colors, error correction, logo size and padding. Download as PNG, JPG or SVG.
             Everything runs in your browser; nothing is uploaded.
           </p>
@@ -120,7 +120,7 @@ export default function QRCodeGeneratorWithLogoPage() {
           <ol className="space-y-2 text-sm" style={{ color: "var(--text-muted)" }}>
             {[
               ["Choose content type", "Select URL, Text, WiFi, Email, Phone, SMS, vCard or Location."],
-              ["Enter your data", "Fill in the required fields — for WiFi enter the SSID, password and security type; for vCard fill in the contact details."],
+              ["Enter your data", "Fill in the required fields - for WiFi enter the SSID, password and security type; for vCard fill in the contact details."],
               ["Add a logo", "Select 'Social logo' to choose a brand icon, or 'Upload logo' to add your own PNG, JPG, WebP or SVG image (max 2 MB)."],
               ["Adjust logo size", "Keep the logo under 20–25% of the QR size for reliable scanning. Error correction H is applied automatically when a logo is active."],
               ["Customize colors", "Expand 'Customize QR code' to change QR color, background, size and margin."],
@@ -128,7 +128,7 @@ export default function QRCodeGeneratorWithLogoPage() {
             ].map(([title, text], i) => (
               <li key={i} className="flex gap-2">
                 <span className="shrink-0 font-semibold" style={{ color: "var(--teal)" }}>{i + 1}.</span>
-                <span><strong style={{ color: "var(--text-secondary)" }}>{title}</strong> — {text}</span>
+                <span><strong style={{ color: "var(--text-secondary)" }}>{title}</strong> - {text}</span>
               </li>
             ))}
           </ol>
@@ -143,7 +143,7 @@ export default function QRCodeGeneratorWithLogoPage() {
             {[
               ["URL",      "Any web address. Protocol (https://) is added automatically if omitted."],
               ["Plain Text","Any text up to the QR code's data capacity."],
-              ["WiFi",     "SSID, password and security type. Guests scan to join — no typing required."],
+              ["WiFi",     "SSID, password and security type. Guests scan to join - no typing required."],
               ["Email",    "Pre-fills the recipient address in a mailto: link when scanned."],
               ["Phone",    "tel: link that initiates a call on a mobile device."],
               ["SMS",      "sms: link that opens the messages app with the number pre-filled."],
@@ -165,7 +165,7 @@ export default function QRCodeGeneratorWithLogoPage() {
             Custom and social logo support
           </h2>
           <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-            Choose from nine built-in social media brand icons: Instagram, Facebook, YouTube, TikTok, X (Twitter), LinkedIn, WhatsApp, Telegram and GitHub. These are rendered as inline vector graphics in your browser — no external network request is made and no image is loaded from any CDN.
+            Choose from nine built-in social media brand icons: Instagram, Facebook, YouTube, TikTok, X (Twitter), LinkedIn, WhatsApp, Telegram and GitHub. These are rendered as inline vector graphics in your browser - no external network request is made and no image is loaded from any CDN.
           </p>
           <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
             To use your own logo, upload a PNG, JPG, WebP or SVG file (maximum 2 MB). SVG files are sanitized before use to remove any scripts or unsafe elements. All image processing happens in the browser; your file is never transmitted anywhere.
@@ -179,13 +179,13 @@ export default function QRCodeGeneratorWithLogoPage() {
           </h2>
           <ul className="space-y-2 text-sm" style={{ color: "var(--text-muted)" }}>
             {[
-              "Always use error correction level H when adding a logo — this tool sets it automatically.",
+              "Always use error correction level H when adding a logo - this tool sets it automatically.",
               "Keep the logo under 20–25% of the QR code's total area for reliable scanning.",
               "Add a white padding background around the logo to visually separate it from the QR modules.",
-              "Use high contrast colors — dark QR modules on a white background scan most reliably.",
+              "Use high contrast colors - dark QR modules on a white background scan most reliably.",
               "Test the generated QR code with multiple scanner apps before printing at scale.",
               "For printed QR codes, use the SVG download for the sharpest output at any print size.",
-              "Avoid overly complex colors or gradients on the QR modules — they reduce contrast and scanability.",
+              "Avoid overly complex colors or gradients on the QR modules - they reduce contrast and scanability.",
             ].map((tip, i) => (
               <li key={i} className="flex gap-2">
                 <span aria-hidden="true" style={{ color: "var(--teal)" }}>✓</span>
@@ -199,7 +199,7 @@ export default function QRCodeGeneratorWithLogoPage() {
         <section className="mt-10 rounded-lg border p-4 text-sm leading-relaxed"
           style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-muted)" }}>
           <p>
-            <span className="font-semibold" style={{ color: "var(--text-secondary)" }}>🔒 Private browser-based processing — </span>
+            <span className="font-semibold" style={{ color: "var(--text-secondary)" }}>🔒 Private browser-based processing - </span>
             all QR code generation, logo rendering and image compositing happens locally in your browser using the qrcode library and the Canvas API.
             Your QR data, uploaded logo images and generated outputs are never sent to BeYourTools servers or any third-party service.
           </p>

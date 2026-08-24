@@ -29,11 +29,11 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: "BeYourTools — Free Online Tools for Everyone",
+    default: "BeYourTools - Free Online Tools for Everyone",
     template: "%s | BeYourTools",
   },
   description:
-    "200+ free browser-based tools — JSON formatter, image converter, PDF editor, audio tools, video tools, QR code generator and more. No upload, no sign-up.",
+    "200+ free browser-based tools - JSON formatter, image converter, PDF editor, audio tools, video tools, QR code generator and more. No upload, no sign-up.",
   keywords:
     "free online tools, JSON formatter, image converter, PDF tools, audio converter, mp3 converter, video compressor, QR code generator, barcode generator",
   authors: [{ name: "BeYourTools", url: SITE.url }],
@@ -50,24 +50,24 @@ export const metadata: Metadata = {
     url: SITE.url,
     siteName: SITE.name,
     locale: "en_US",
-    title: "BeYourTools — Free Online Tools for Everyone",
+    title: "BeYourTools - Free Online Tools for Everyone",
     description:
-      "200+ free browser-based tools — JSON, image, PDF, audio, video, QR codes and more. Nothing leaves your browser.",
+      "200+ free browser-based tools - JSON, image, PDF, audio, video, QR codes and more. Nothing leaves your browser.",
     images: [
       {
         url: `${SITE.url}/og-default.png`,
         width: 1200,
         height: 630,
-        alt: "BeYourTools — Free Online Tools",
+        alt: "BeYourTools - Free Online Tools",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     site: SITE.twitter,
-    title: "BeYourTools — Free Online Tools for Everyone",
+    title: "BeYourTools - Free Online Tools for Everyone",
     description:
-      "200+ free browser-based tools — JSON, image, PDF, audio, video, QR codes and more.",
+      "200+ free browser-based tools - JSON, image, PDF, audio, video, QR codes and more.",
     images: [`${SITE.url}/og-default.png`],
   },
 };

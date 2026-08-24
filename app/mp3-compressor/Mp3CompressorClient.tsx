@@ -28,7 +28,7 @@ export default function Mp3CompressorClient() {
                 {val.label}
               </p>
               <p className="mt-0.5 text-[11px]" style={{ color: "var(--text-subtle)" }}>
-                {val.bitrate} — {val.desc}
+                {val.bitrate} - {val.desc}
               </p>
             </button>
           ))}

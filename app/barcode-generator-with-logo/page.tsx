@@ -6,7 +6,7 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Barcode Generator with Logo — Add Logo to Barcode Free | BeYourTools",
+  title: "Barcode Generator with Logo - Add Logo to Barcode Free | BeYourTools",
   description:
     "Generate Code 128, EAN-13, EAN-8, UPC-A and Code 39 barcodes with a custom or social media logo overlay. Upload your own logo or choose from Instagram, Facebook, YouTube and more. Free, browser-based, no upload.",
   keywords:
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: `${SITE.url}/barcode-generator-with-logo`,
-    title: "Barcode Generator with Logo — Add Logo to Barcode Free | BeYourTools",
+    title: "Barcode Generator with Logo - Add Logo to Barcode Free | BeYourTools",
     description:
       "Create barcodes with a custom or social media logo. Code 128, EAN-13, UPC-A and more. Browser-based, no upload.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "Barcode Generator with Logo" }],
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Barcode Generator with Logo | BeYourTools",
-    description: "Add a custom or social logo to any barcode — free, browser-based.",
+    description: "Add a custom or social logo to any barcode - free, browser-based.",
     site: "@beyourtools",
     images: [`${SITE.url}/og-default.png`],
   },
@@ -34,7 +34,7 @@ const FAQS = [
   {
     question: "Can I add my own logo to a barcode?",
     answer:
-      "Yes. Choose 'Upload logo', pick a PNG, JPG, WebP or SVG file (max 2 MB) and it will be overlaid on the generated barcode. Your image is never uploaded to any server — everything stays in your browser.",
+      "Yes. Choose 'Upload logo', pick a PNG, JPG, WebP or SVG file (max 2 MB) and it will be overlaid on the generated barcode. Your image is never uploaded to any server - everything stays in your browser.",
   },
   {
     question: "Will adding a logo stop the barcode from scanning?",
@@ -49,7 +49,7 @@ const FAQS = [
   {
     question: "Can I use social media logos like Instagram or YouTube?",
     answer:
-      "Yes — choose 'Social logo' and pick from Instagram, Facebook, YouTube, TikTok, X, LinkedIn, WhatsApp, Telegram or GitHub. These logos are rendered as inline graphics directly in your browser — no external image requests are made.",
+      "Yes - choose 'Social logo' and pick from Instagram, Facebook, YouTube, TikTok, X, LinkedIn, WhatsApp, Telegram or GitHub. These logos are rendered as inline graphics directly in your browser - no external image requests are made.",
   },
   {
     question: "Can I download the barcode as SVG?",
@@ -105,7 +105,7 @@ export default function BarcodeGeneratorWithLogoPage() {
           <p className="mt-2 max-w-2xl text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
             Generate professional barcodes and overlay a custom or social media logo.
             Supports Code 128, EAN-13, EAN-8, UPC-A and Code 39.
-            Customize colors, size, logo position and padding — then download as PNG, JPG or SVG.
+            Customize colors, size, logo position and padding - then download as PNG, JPG or SVG.
             Everything runs in your browser; nothing is uploaded.
           </p>
         </div>
@@ -121,7 +121,7 @@ export default function BarcodeGeneratorWithLogoPage() {
           <ol className="space-y-2 text-sm" style={{ color: "var(--text-muted)" }}>
             {[
               ["Choose format", "Select Code 128, EAN-13, EAN-8, UPC-A or Code 39 from the format dropdown."],
-              ["Enter value", "Type your barcode value. For EAN-13/EAN-8/UPC-A you can enter the short form — the check digit is added automatically."],
+              ["Enter value", "Type your barcode value. For EAN-13/EAN-8/UPC-A you can enter the short form - the check digit is added automatically."],
               ["Add a logo", "Select 'Social logo' to choose a brand icon, or 'Upload logo' to add your own PNG, JPG, WebP or SVG image."],
               ["Adjust size & padding", "Use the logo size slider to control how much of the barcode the logo covers. Keep it under 20% for reliable scanning. Add padding to create a clean white border around the logo."],
               ["Customize barcode", "Set bar color, background, bar width and height to match your brand."],
@@ -129,7 +129,7 @@ export default function BarcodeGeneratorWithLogoPage() {
             ].map(([title, text], i) => (
               <li key={i} className="flex gap-2">
                 <span className="font-semibold shrink-0" style={{ color: "var(--teal)" }}>{i + 1}.</span>
-                <span><strong style={{ color: "var(--text-secondary)" }}>{title}</strong> — {text}</span>
+                <span><strong style={{ color: "var(--text-secondary)" }}>{title}</strong> - {text}</span>
               </li>
             ))}
           </ol>
@@ -146,7 +146,7 @@ export default function BarcodeGeneratorWithLogoPage() {
               ["Code 39",   "Uppercase A–Z, digits 0–9, and special characters. Common in manufacturing, military and healthcare."],
               ["EAN-13",    "13-digit European Article Number used on retail products worldwide. Check digit calculated automatically."],
               ["EAN-8",     "Compact 8-digit EAN for small packaging where a full EAN-13 would not fit."],
-              ["UPC-A",     "12-digit Universal Product Code — the standard for retail products in North America."],
+              ["UPC-A",     "12-digit Universal Product Code - the standard for retail products in North America."],
             ].map(([name, desc]) => (
               <div key={name} className="rounded-lg border p-3"
                 style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
@@ -163,7 +163,7 @@ export default function BarcodeGeneratorWithLogoPage() {
             Custom and social logo support
           </h2>
           <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-            You can overlay any of the following social media brand icons: Instagram, Facebook, YouTube, TikTok, X (Twitter), LinkedIn, WhatsApp, Telegram, and GitHub. These are rendered as inline vector graphics — no external network request is made and no image is loaded from a CDN.
+            You can overlay any of the following social media brand icons: Instagram, Facebook, YouTube, TikTok, X (Twitter), LinkedIn, WhatsApp, Telegram, and GitHub. These are rendered as inline vector graphics - no external network request is made and no image is loaded from a CDN.
           </p>
           <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
             To use your own logo, upload a PNG, JPG, WebP or SVG file (maximum 2 MB). SVG files are sanitized before use to remove any scripts or unsafe elements. All image processing happens in the browser; your file is never transmitted to any server.
@@ -196,7 +196,7 @@ export default function BarcodeGeneratorWithLogoPage() {
         <section className="mt-10 rounded-lg border p-4 text-sm leading-relaxed"
           style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-muted)" }}>
           <p>
-            <span className="font-semibold" style={{ color: "var(--text-secondary)" }}>🔒 Private browser-based processing — </span>
+            <span className="font-semibold" style={{ color: "var(--text-secondary)" }}>🔒 Private browser-based processing - </span>
             all barcode generation, logo rendering, and image compositing happens locally in your browser using the Canvas API and JsBarcode library.
             Your barcode values, uploaded logo images, and generated outputs are never sent to BeYourTools servers or any third-party service.
           </p>

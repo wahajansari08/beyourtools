@@ -82,7 +82,7 @@ export default function BarcodeDecoderClient() {
               Drop a barcode image here
             </p>
             <p className="mt-1 text-xs" style={{ color: "var(--text-subtle)" }}>
-              or click to browse — PNG, JPG, WebP supported
+              or click to browse - PNG, JPG, WebP supported
             </p>
           </div>
           <input id="bc-file-input" type="file" accept="image/*" className="sr-only"

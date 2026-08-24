@@ -182,7 +182,7 @@ export default function VideoToolClient({ tool }: { tool: VideoTool }) {
       if (outputUrlRef.current) URL.revokeObjectURL(outputUrlRef.current);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // intentionally empty — runs only on unmount
+  }, []); // intentionally empty - runs only on unmount
 
   const outputDimensions = useMemo(() => {
     if (!upload?.metadata.width || !upload.metadata.height) return null;
@@ -579,7 +579,7 @@ export default function VideoToolClient({ tool }: { tool: VideoTool }) {
                 <div className="flex items-center justify-between text-xs mb-1">
                   <span style={{ color: "var(--text-subtle)" }}>0s</span>
                   <span style={{ color: "var(--accent)" }}>{start.toFixed(1)}s</span>
-                  <span style={{ color: "var(--text-subtle)" }}>{duration ? `${duration.toFixed(1)}s` : "—"}</span>
+                  <span style={{ color: "var(--text-subtle)" }}>{duration ? `${duration.toFixed(1)}s` : "-"}</span>
                 </div>
                 <input type="range" min={0} max={duration || 1} step={0.1} value={start}
                   onChange={(e) => { const v = Number(e.target.value); setStart(v); if (videoRef.current) videoRef.current.currentTime = v; }}

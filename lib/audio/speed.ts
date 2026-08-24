@@ -1,5 +1,5 @@
 /**
- * Audio speed change — tempo adjustment via FFmpeg atempo filter.
+ * Audio speed change - tempo adjustment via FFmpeg atempo filter.
  * Uses FFmpeg WASM.
  *
  * NOTE: FFmpeg's `atempo` filter accepts values in [0.5, 2.0].

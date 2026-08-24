@@ -1,5 +1,5 @@
 /**
- * Volume adjustment — apply gain to an audio file.
+ * Volume adjustment - apply gain to an audio file.
  * Uses Web Audio API (OfflineAudioContext) + WAV encoder,
  * then re-encodes to MP3 via FFmpeg if needed.
  *
@@ -33,9 +33,9 @@ export async function adjustVolume(file: File, opts: VolumeOptions): Promise<Vol
   const { gain, outputFormat = "mp3", bitrate = "192k", onProgress } = opts;
 
   if (gain <= 0) throw new Error("Gain must be greater than 0.");
-  if (gain > 10) throw new Error("Gain too high — maximum is 10× to prevent damage.");
+  if (gain > 10) throw new Error("Gain too high - maximum is 10× to prevent damage.");
 
-  // Use FFmpeg volume filter — simpler and more reliable across browsers
+  // Use FFmpeg volume filter - simpler and more reliable across browsers
   const { ffmpeg, fetchFile } = await loadFFmpeg(onProgress);
 
   const inputName  = await writeInputFile(ffmpeg, fetchFile, file, "vol_in");

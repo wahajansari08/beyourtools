@@ -16,7 +16,7 @@ export default function AudioConverterPage() {
       slug="audio-converter"
       title="Audio Converter"
       categoryLabel="Converters"
-      tagline="Convert audio files between MP3, WAV, OGG, FLAC, M4A, and Opus — pick your output format and bitrate, then download."
+      tagline="Convert audio files between MP3, WAV, OGG, FLAC, M4A, and Opus - pick your output format and bitrate, then download."
       description="Free online audio converter supporting MP3, WAV, OGG, FLAC, M4A, and Opus. All conversion happens in your browser."
       howTo={[
         { title: "Choose output format", text: "Select the format you want to convert to from the buttons above." },
@@ -34,7 +34,7 @@ export default function AudioConverterPage() {
       formats={["MP3", "WAV", "OGG", "FLAC", "M4A", "AAC", "Opus", "WebM", "MP4"]}
       faqs={[
         { question: "Which output formats are available?", answer: "MP3, WAV, OGG Vorbis, FLAC, M4A (AAC), and Opus." },
-        { question: "Can I convert MP4 to audio?", answer: "Yes — upload an MP4 file and select your desired audio format. The video stream is stripped automatically." },
+        { question: "Can I convert MP4 to audio?", answer: "Yes - upload an MP4 file and select your desired audio format. The video stream is stripped automatically." },
         { question: "Is FLAC lossless?", answer: "Yes, FLAC is a lossless format. Converting lossy MP3 to FLAC won't recover quality lost during MP3 compression, but it won't degrade further." },
       ]}
     >

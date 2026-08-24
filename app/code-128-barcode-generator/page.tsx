@@ -8,7 +8,7 @@ import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical
 export const metadata: Metadata = {
   title: "Code 128 Barcode Generator - Create Barcodes Online | BeYourTools",
   description:
-    "Generate Code 128 barcodes from any printable text. Supports full ASCII, adjustable size and downloadable as PNG or SVG — free and browser-based.",
+    "Generate Code 128 barcodes from any printable text. Supports full ASCII, adjustable size and downloadable as PNG or SVG - free and browser-based.",
   keywords: "Code 128 barcode generator, code128 barcode, create Code 128, free barcode generator, ASCII barcode",
   alternates: { canonical: `${SITE.url}/code-128-barcode-generator` },
   openGraph: {
@@ -34,7 +34,7 @@ const schemas = [
   }),
   faqSchema([
     { question: "What is Code 128?", answer: "Code 128 is a high-density linear barcode that encodes full ASCII text including letters, numbers, and symbols. It's widely used in shipping, packaging, and logistics." },
-    { question: "What characters are supported?", answer: "All printable ASCII characters — that's letters (A-Z, a-z), digits (0-9), punctuation, and special characters like @, #, $, etc. Unicode characters are not supported." },
+    { question: "What characters are supported?", answer: "All printable ASCII characters - that's letters (A-Z, a-z), digits (0-9), punctuation, and special characters like @, #, $, etc. Unicode characters are not supported." },
     { question: "Is there a maximum length?", answer: "There is no hard limit, but very long values produce very wide barcodes. Adjust the bar width slider to control density." },
     { question: "Can I download the barcode for printing?", answer: "Yes. Download as SVG for crisp, scalable print output, or PNG for use in documents and images." },
   ]),
@@ -70,7 +70,7 @@ export default function Code128Page() {
           <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>About Code 128</h2>
           <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
             Code 128 is one of the most widely used linear barcodes in the world. Unlike EAN or UPC which are digit-only,
-            Code 128 encodes full ASCII text — making it suitable for part numbers, serial numbers, URLs, and any alphanumeric data.
+            Code 128 encodes full ASCII text - making it suitable for part numbers, serial numbers, URLs, and any alphanumeric data.
             It automatically selects the most efficient encoding subset (A, B, or C) to minimize barcode length.
           </p>
         </section>
@@ -78,8 +78,8 @@ export default function Code128Page() {
         <section className="mt-10 space-y-3">
           <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>FAQ</h2>
           {[
-            ["What is Code 128 used for?", "Shipping labels, inventory management, product tracking, library systems — any application needing alphanumeric barcodes."],
-            ["Does Code 128 need a check digit?", "Yes, but it's calculated automatically by the library — you don't need to compute it yourself."],
+            ["What is Code 128 used for?", "Shipping labels, inventory management, product tracking, library systems - any application needing alphanumeric barcodes."],
+            ["Does Code 128 need a check digit?", "Yes, but it's calculated automatically by the library - you don't need to compute it yourself."],
             ["What's the difference between Code 128 and Code 39?", "Code 128 is more compact (fits more data in less space) and supports lowercase letters. Code 39 is simpler but uses only uppercase and a limited character set."],
           ].map(([q, a]) => (
             <div key={q as string}>

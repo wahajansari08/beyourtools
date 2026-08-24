@@ -12,20 +12,20 @@ import { websiteSchema, organizationSchema, faqSchema, SITE } from "@/lib/seo";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title: "BeYourTools — Free Online Tools for Everyone",
+  title: "BeYourTools - Free Online Tools for Everyone",
   description: "200+ free browser-based tools: JSON formatter & validator, image converter, PDF editor, audio tools, video tools, QR code generator and more. No upload, no sign-up.",
   keywords: "free online tools, JSON formatter, image converter, PDF tools, audio converter, mp3 converter, video compressor, QR code generator, barcode generator",
   alternates: { canonical: SITE.url },
   robots: { index: true, follow: true },
   openGraph: {
     type: "website", url: SITE.url, siteName: SITE.name, locale: "en_US",
-    title: "BeYourTools — Free Online Tools for Everyone",
-    description: "200+ free browser-based tools — JSON, image, PDF, audio, video, QR codes and more. Nothing leaves your browser.",
-    images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "BeYourTools — Free Online Tools" }],
+    title: "BeYourTools - Free Online Tools for Everyone",
+    description: "200+ free browser-based tools - JSON, image, PDF, audio, video, QR codes and more. Nothing leaves your browser.",
+    images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "BeYourTools - Free Online Tools" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BeYourTools — Free Online Tools for Everyone",
+    title: "BeYourTools - Free Online Tools for Everyone",
     description: "200+ free browser-based tools. Nothing leaves your browser.",
     site: SITE.twitter,
     images: [`${SITE.url}/og-default.png`],
@@ -53,7 +53,7 @@ const CATEGORY_COLORS: Record<string, string> = {
   Video: "var(--teal)",
 };
 
-// Badge text colors — must pass 4.5:1 on their color-mix backgrounds
+// Badge text colors - must pass 4.5:1 on their color-mix backgrounds
 // We use the full-strength color variable which is already darkened in light mode
 const BADGE_TEXT_COLORS: Record<string, string> = {
   JSON:  "var(--teal)",
@@ -64,10 +64,10 @@ const BADGE_TEXT_COLORS: Record<string, string> = {
 
 export default function Home() {
   const homeFaqs = faqSchema([
-    { question: "Are all BeYourTools tools free?", answer: "Yes — every tool on BeYourTools is completely free, requires no account, and has no usage limits." },
-    { question: "Do my files get uploaded to a server?", answer: "No — all processing happens in your browser. Files and text never leave your device." },
+    { question: "Are all BeYourTools tools free?", answer: "Yes - every tool on BeYourTools is completely free, requires no account, and has no usage limits." },
+    { question: "Do my files get uploaded to a server?", answer: "No - all processing happens in your browser. Files and text never leave your device." },
     { question: "What JSON tools are available?", answer: "We offer 30+ JSON tools including formatter, validator, diff, schema generator, JSONPath tester, JWT decoder, and converters to CSV, TypeScript, Python, SQL, and more." },
-    { question: "Can I convert images for free?", answer: "Yes — we support 118 image conversion combinations including JPG, PNG, WebP, AVIF, SVG, ICO, BMP, TIFF, PDF and more, all running in your browser." },
+    { question: "Can I convert images for free?", answer: "Yes - we support 118 image conversion combinations including JPG, PNG, WebP, AVIF, SVG, ICO, BMP, TIFF, PDF and more, all running in your browser." },
     { question: "What PDF tools are available?", answer: "We offer 30 PDF tools including merge, split, compress, rotate, watermark, protect, unlock, metadata viewer/remover, PDF to JPG/PNG/text/JSON, and more." },
     { question: "What audio tools are available?", answer: "We offer 20 audio tools including MP3 converter, cutter, compressor, merger, volume booster, normalizer, speed changer, silence remover, and an audio recorder." },
     { question: "What QR and barcode tools are available?", answer: "We offer 10 QR and barcode tools including QR code generator, scanner, decoder, WiFi QR generator, barcode generator, scanner, decoder, UPC, EAN, and Code 128 generators." },
@@ -143,7 +143,7 @@ function ToolSections() {
       <div className="h-px" style={{ backgroundColor: "var(--border)" }} />
 
       <ToolSection id="image-converter" icon="🖼" iconColor="var(--accent-text)" title="Image Converter"
-        description={`${imageCount} conversion pairs — JPG, PNG, WebP, AVIF, SVG, ICO, PDF and more.`}
+        description={`${imageCount} conversion pairs - JPG, PNG, WebP, AVIF, SVG, ICO, PDF and more.`}
         href="/image-converter" ctaLabel="All Image Converters →"
         featured={IMAGE_FEATURED.map((s) => { const [f,,t]=s.split("-"); return { slug:s, name:`${f.toUpperCase()} → ${t.toUpperCase()}`, description:`Convert ${f.toUpperCase()} to ${t.toUpperCase()}.` }; })}
         cardHref={(s) => `/image-converter/${s}`} cardIcon="→" cardIconColor="var(--accent-text)" />
@@ -151,7 +151,7 @@ function ToolSections() {
       <div className="h-px" style={{ backgroundColor: "var(--border)" }} />
 
       <ToolSection id="pdf-tools" icon="📄" iconColor="var(--coral)" title="PDF Tools"
-        description={`${pdfCount} tools — merge, split, compress, protect, watermark and more.`}
+        description={`${pdfCount} tools - merge, split, compress, protect, watermark and more.`}
         href="/pdf-tools" ctaLabel="All PDF Tools →"
         featured={PDF_FEATURED.map((s) => pdfTools.find((t) => t.slug === s)).filter(Boolean) as typeof pdfTools}
         cardHref={(s) => `/pdf-tools/${s}`} cardIcon="📄" cardIconColor="var(--coral)" />
@@ -159,7 +159,7 @@ function ToolSections() {
       <div className="h-px" style={{ backgroundColor: "var(--border)" }} />
 
       <ToolSection id="video-tools" icon="VID" iconColor="var(--teal)" title="Video Tools"
-        description={`${videoCount} tools — compress, cut, convert, resize, crop, merge, GIFs and frames.`}
+        description={`${videoCount} tools - compress, cut, convert, resize, crop, merge, GIFs and frames.`}
         href="/video-tools" ctaLabel="All Video Tools →"
         featured={VIDEO_FEATURED.map((s) => videoTools.find((t) => t.slug === s)).filter(Boolean) as typeof videoTools}
         cardHref={(s) => `/${s}`} cardIcon="VID" cardIconColor="var(--teal)" />
@@ -167,7 +167,7 @@ function ToolSections() {
       <div className="h-px" style={{ backgroundColor: "var(--border)" }} />
 
       <ToolSection id="audio-tools" icon="🎵" iconColor="var(--accent-text)" title="Audio Tools"
-        description={`${audioCount} tools — convert, cut, compress, merge, boost volume and record audio.`}
+        description={`${audioCount} tools - convert, cut, compress, merge, boost volume and record audio.`}
         href="/audio-tools" ctaLabel="All Audio Tools →"
         featured={AUDIO_FEATURED.map((s) => audioTools.find((t) => t.slug === s)).filter(Boolean) as typeof audioTools}
         cardHref={(s) => `/${s}`} cardIcon="🎵" cardIconColor="var(--accent-text)" />
@@ -175,7 +175,7 @@ function ToolSections() {
       <div className="h-px" style={{ backgroundColor: "var(--border)" }} />
 
       <ToolSection id="qr-barcode-tools" icon="⬛" iconColor="var(--teal)" title="QR &amp; Barcode Tools"
-        description={`${qrCount} tools — generate, scan and decode QR codes, barcodes, UPC, EAN, Code 128 and more.`}
+        description={`${qrCount} tools - generate, scan and decode QR codes, barcodes, UPC, EAN, Code 128 and more.`}
         href="/qr-barcode-tools" ctaLabel="All QR &amp; Barcode Tools →"
         featured={QR_FEATURED.map((s) => qrBarcodeTools.find((t) => t.slug === s)).filter(Boolean) as typeof qrBarcodeTools}
         cardHref={(s) => `/${s}`} cardIcon="⬛" cardIconColor="var(--teal)" />
@@ -197,7 +197,7 @@ function ToolSection({ id, icon, iconColor, title, description, href, ctaLabel, 
     <section id={id} aria-label={title}>
       <div className="mb-6 flex flex-wrap items-baseline justify-between gap-3">
         <div className="flex items-center gap-3">
-          {/* Icon badge — aria-hidden so screen readers skip the decorative char */}
+          {/* Icon badge - aria-hidden so screen readers skip the decorative char */}
           <span
             className="flex h-9 w-9 items-center justify-center rounded-lg text-lg font-bold"
             style={{ backgroundColor: `color-mix(in srgb, ${iconColor} 15%, transparent)`, color: iconColor }}
@@ -208,7 +208,7 @@ function ToolSection({ id, icon, iconColor, title, description, href, ctaLabel, 
             <p className="mt-0.5 text-xs" style={{ color: "var(--text-muted)" }}>{description}</p>
           </div>
         </div>
-        {/* "All X →" CTA — uses iconColor which is already AA-compliant (teal/coral/accent-text) */}
+        {/* "All X →" CTA - uses iconColor which is already AA-compliant (teal/coral/accent-text) */}
         <Link href={href} className="focus-ring text-sm font-medium transition hover:opacity-80" style={{ color: iconColor }}>{ctaLabel}</Link>
       </div>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -218,13 +218,13 @@ function ToolSection({ id, icon, iconColor, title, description, href, ctaLabel, 
             style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
             <div>
               <div className="mb-1.5 flex items-center gap-2">
-                {/* Card icon text — aria-hidden, decorative */}
+                {/* Card icon text - aria-hidden, decorative */}
                 <span className="font-mono text-[11px] font-semibold" style={{ color: cardIconColor }} aria-hidden="true">{cardIcon}</span>
                 <h3 className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>{tool.name}</h3>
               </div>
               <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>{tool.description}</p>
             </div>
-            {/* "Open →" — aria-hidden, the entire card is the link */}
+            {/* "Open →" - aria-hidden, the entire card is the link */}
             <span className="mt-3 text-xs font-medium opacity-0 transition group-hover:opacity-100" style={{ color: cardIconColor }} aria-hidden="true">Open →</span>
           </Link>
         ))}
@@ -271,7 +271,7 @@ function BlogSection() {
                   style={{ backgroundColor: `color-mix(in srgb, ${badgeColor} 15%, transparent)`, color: badgeColor }}>
                   {post.category}
                 </span>
-                {/* "6 min read" — --text-subtle passes AA on --bg-elevated in both modes */}
+                {/* "6 min read" - --text-subtle passes AA on --bg-elevated in both modes */}
                 <span className="text-[11px]" style={{ color: "var(--text-subtle)" }}>{post.readingTime} min read</span>
               </div>
               <div className="flex flex-1 flex-col p-4">

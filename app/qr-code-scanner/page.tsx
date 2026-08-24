@@ -8,14 +8,14 @@ import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical
 export const metadata: Metadata = {
   title: "QR Code Scanner Online - Scan QR Codes Free | BeYourTools",
   description:
-    "Scan QR codes using your device camera or upload an image. Decodes URLs, text, WiFi, vCards and more — free, private, no app download needed.",
+    "Scan QR codes using your device camera or upload an image. Decodes URLs, text, WiFi, vCards and more - free, private, no app download needed.",
   keywords: "QR code scanner online, scan QR code, QR code reader, camera QR scanner, free QR scanner",
   alternates: { canonical: `${SITE.url}/qr-code-scanner` },
   openGraph: {
     type: "website",
     url: `${SITE.url}/qr-code-scanner`,
     title: "QR Code Scanner Online - Scan QR Codes Free | BeYourTools",
-    description: "Scan QR codes from your camera or upload an image — free and private.",
+    description: "Scan QR codes from your camera or upload an image - free and private.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "QR Code Scanner" }],
   },
 };
@@ -33,10 +33,10 @@ const schemas = [
     category: "UtilitiesApplication",
   }),
   faqSchema([
-    { question: "Do I need to install an app to scan QR codes?", answer: "No. This scanner runs directly in your browser — no download or installation required." },
+    { question: "Do I need to install an app to scan QR codes?", answer: "No. This scanner runs directly in your browser - no download or installation required." },
     { question: "Why does the scanner need camera permission?", answer: "Camera access is needed to capture a live video feed for real-time scanning. You can revoke permission in your browser settings at any time." },
     { question: "What if my device has no camera?", answer: "Use the image upload option to decode a QR code from an existing photo or screenshot." },
-    { question: "Is my camera feed private?", answer: "Yes. The video feed is processed locally — no frames are ever sent to a server." },
+    { question: "Is my camera feed private?", answer: "Yes. The video feed is processed locally - no frames are ever sent to a server." },
   ]),
 ];
 
@@ -70,7 +70,7 @@ export default function QRScannerPage() {
           <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>How to use</h2>
           <ol className="space-y-2 text-sm" style={{ color: "var(--text-muted)" }}>
             <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>1.</span> Click <strong>Start Camera Scan</strong> and allow camera access when prompted.</li>
-            <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>2.</span> Point your camera at a QR code — it detects automatically.</li>
+            <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>2.</span> Point your camera at a QR code - it detects automatically.</li>
             <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>3.</span> Copy the result, open it as a URL, or scan another code.</li>
             <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>4.</span> No camera? Upload a QR code image using the upload option.</li>
           </ol>
@@ -80,7 +80,7 @@ export default function QRScannerPage() {
           <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>FAQ</h2>
           {[
             ["Why isn't camera scanning working?", "Camera scanning requires HTTPS and a browser that supports getUserMedia (Chrome, Edge, Firefox, Safari). Ensure camera permission is granted."],
-            ["Can I switch between front and back camera?", "Yes — if multiple cameras are detected, a selector appears during scanning."],
+            ["Can I switch between front and back camera?", "Yes - if multiple cameras are detected, a selector appears during scanning."],
             ["Is there a size limit for uploaded images?", "There is no hard limit, but very large images may take a moment to decode. Most standard screenshots and photos work fine."],
           ].map(([q, a]) => (
             <div key={q as string}>

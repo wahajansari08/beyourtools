@@ -80,7 +80,7 @@ export default function QRDecoderClient() {
               Drop a QR code image here
             </p>
             <p className="mt-1 text-xs" style={{ color: "var(--text-subtle)" }}>
-              or click to browse — PNG, JPG, WebP supported
+              or click to browse - PNG, JPG, WebP supported
             </p>
           </div>
           <input id="qr-file-input" type="file" accept="image/*" className="sr-only"

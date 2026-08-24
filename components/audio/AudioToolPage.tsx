@@ -88,7 +88,7 @@ export default function AudioToolPage({
             {howTo.map((step, i) => (
               <li key={i} className="flex gap-2">
                 <span className="font-semibold shrink-0" style={{ color: "var(--teal)" }}>{i + 1}.</span>
-                <span><strong style={{ color: "var(--text-secondary)" }}>{step.title}</strong> — {step.text}</span>
+                <span><strong style={{ color: "var(--text-secondary)" }}>{step.title}</strong> - {step.text}</span>
               </li>
             ))}
           </ol>

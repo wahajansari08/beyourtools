@@ -5,22 +5,22 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "QR & Barcode Tools — Free Online QR Code Generator & Scanner | BeYourTools",
-  description: "Free browser-based QR code and barcode tools. Generate, scan and decode QR codes and barcodes — Code 128, EAN-13, UPC-A, WiFi QR and more. No upload, no sign-up.",
+  title: "QR & Barcode Tools - Free Online QR Code Generator & Scanner | BeYourTools",
+  description: "Free browser-based QR code and barcode tools. Generate, scan and decode QR codes and barcodes - Code 128, EAN-13, UPC-A, WiFi QR and more. No upload, no sign-up.",
   keywords: "QR code generator, barcode generator, QR code scanner, barcode decoder, WiFi QR code, EAN-13, UPC barcode, Code 128, free online tools",
   alternates: { canonical: `${SITE.url}/qr-barcode-tools` },
   robots: { index: true, follow: true },
   openGraph: {
     type: "website",
     url: `${SITE.url}/qr-barcode-tools`,
-    title: "QR & Barcode Tools — Free Online Generator & Scanner | BeYourTools",
-    description: "10 free browser-based QR code and barcode tools — generate, scan, decode. No upload needed.",
+    title: "QR & Barcode Tools - Free Online Generator & Scanner | BeYourTools",
+    description: "10 free browser-based QR code and barcode tools - generate, scan, decode. No upload needed.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "QR & Barcode Tools" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "QR & Barcode Tools — Free QR Code Generator & Scanner | BeYourTools",
-    description: "10 free QR code and barcode tools — generate, scan, decode. No upload needed.",
+    title: "QR & Barcode Tools - Free QR Code Generator & Scanner | BeYourTools",
+    description: "10 free QR code and barcode tools - generate, scan, decode. No upload needed.",
     site: "@beyourtools",
     images: [`${SITE.url}/og-default.png`],
   },
@@ -40,7 +40,7 @@ const schemas = [
   faqSchema([
     {
       question: "Are these QR and barcode tools free?",
-      answer: "Yes — all tools are completely free with no sign-up, no watermarks and no usage limits.",
+      answer: "Yes - all tools are completely free with no sign-up, no watermarks and no usage limits.",
     },
     {
       question: "Do these tools upload my data to a server?",
@@ -48,7 +48,7 @@ const schemas = [
     },
     {
       question: "Can I scan QR codes and barcodes without an app?",
-      answer: "Yes. The QR Code Scanner and Barcode Scanner tools use your device camera directly in the browser — no app download needed.",
+      answer: "Yes. The QR Code Scanner and Barcode Scanner tools use your device camera directly in the browser - no app download needed.",
     },
     {
       question: "Which barcode formats are supported?",
@@ -148,7 +148,7 @@ export default function QRBarcodeToolsPage() {
             QR &amp; Barcode Tools
           </h1>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-            Generate, scan and decode QR codes and barcodes — entirely in your browser.
+            Generate, scan and decode QR codes and barcodes - entirely in your browser.
             No file uploads, no account required. Supports WiFi QR codes, EAN-13, UPC-A,
             Code 128 and many more formats.
           </p>

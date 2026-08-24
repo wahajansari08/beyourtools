@@ -41,7 +41,7 @@ export default function AudioTrimmer({
   // BUG 9 FIX: store endSec in a ref so the timeupdate handler always reads the
   // latest value without needing endSec in the effect dependency array.
   // Previously the effect was NOT in the dep array at all, meaning the handler
-  // used a stale closure value — it would only stop at whatever endSec was when
+  // used a stale closure value - it would only stop at whatever endSec was when
   // the effect first ran (i.e. the initial full duration).
   const endSecRef = useRef(endSec);
   useEffect(() => { endSecRef.current = endSec; }, [endSec]);
@@ -71,7 +71,7 @@ export default function AudioTrimmer({
       a.removeEventListener("play",  onPlay);
       a.removeEventListener("pause", onPause);
     };
-    // Only re-run when src changes — endSec is handled via ref above
+    // Only re-run when src changes - endSec is handled via ref above
   }, [src]);
 
   const previewSelection = () => {
@@ -122,7 +122,7 @@ export default function AudioTrimmer({
       <div className="grid gap-3 sm:grid-cols-2">
         <div>
           <label htmlFor="trim-start" className="mb-1 block text-xs" style={{ color: "var(--text-muted)" }}>
-            Start — {fmtTimeMs(startSec)}
+            Start - {fmtTimeMs(startSec)}
           </label>
           <input id="trim-start" type="range" min={0} max={duration} step={0.1}
             value={startSec}
@@ -132,7 +132,7 @@ export default function AudioTrimmer({
         </div>
         <div>
           <label htmlFor="trim-end" className="mb-1 block text-xs" style={{ color: "var(--text-muted)" }}>
-            End — {fmtTimeMs(endSec)}
+            End - {fmtTimeMs(endSec)}
           </label>
           <input id="trim-end" type="range" min={0} max={duration} step={0.1}
             value={endSec}

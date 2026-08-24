@@ -11,7 +11,7 @@ import { formatBytes } from "@/lib/audio/ffmpeg";
 type State = "idle" | "processing" | "done" | "error";
 
 function fmtDur(sec: number | null): string {
-  if (!sec || !isFinite(sec)) return "—";
+  if (!sec || !isFinite(sec)) return "-";
   const m = Math.floor(sec / 60), s = Math.floor(sec % 60);
   return `${m}:${String(s).padStart(2, "0")}`;
 }

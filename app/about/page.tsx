@@ -3,21 +3,21 @@ import Link from "next/link";
 import { SITE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "About BeYourTools — Free Browser-Based Online Tools",
-  description: "Learn about BeYourTools — our mission, values, and why we built free browser-based tools for JSON, images, PDFs, audio, video and QR codes.",
+  title: "About BeYourTools - Free Browser-Based Online Tools",
+  description: "Learn about BeYourTools - our mission, values, and why we built free browser-based tools for JSON, images, PDFs, audio, video and QR codes.",
   alternates: { canonical: `${SITE.url}/about` },
   robots: { index: true, follow: true },
   openGraph: {
     type: "website",
     url: `${SITE.url}/about`,
-    title: "About BeYourTools — Free Browser-Based Online Tools",
+    title: "About BeYourTools - Free Browser-Based Online Tools",
     description: "Our mission: free, private, browser-based tools for everyone. No sign-up, no uploads, no paywalls.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "About BeYourTools" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "About BeYourTools",
-    description: "Free, private, browser-based tools — no sign-up, no uploads.",
+    description: "Free, private, browser-based tools - no sign-up, no uploads.",
     site: "@beyourtools",
     images: [`${SITE.url}/og-default.png`],
   },

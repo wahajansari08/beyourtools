@@ -18,10 +18,10 @@ export default function VideoTimeline({ duration, start, end, onStartChange, onE
   return (
     <div className="space-y-3 rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
       <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
-        {/* BUG 10 FIX: don't call formatDuration(null) — it always returns "Unknown".
+        {/* BUG 10 FIX: don't call formatDuration(null) - it always returns "Unknown".
             Show a dash when duration hasn't loaded yet. */}
         <span style={{ color: "var(--text-muted)" }}>
-          Original duration: {duration != null && duration > 0 ? formatDuration(duration) : "—"}
+          Original duration: {duration != null && duration > 0 ? formatDuration(duration) : "-"}
         </span>
         <span style={{ color: "var(--accent)" }}>Selected: {formatDuration(selected)}</span>
       </div>

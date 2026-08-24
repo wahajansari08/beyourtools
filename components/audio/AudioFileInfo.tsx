@@ -9,7 +9,7 @@ interface AudioFileInfoProps {
 }
 
 function fmtDur(sec: number | null | undefined): string {
-  if (!sec || !isFinite(sec)) return "—";
+  if (!sec || !isFinite(sec)) return "-";
   const m = Math.floor(sec / 60);
   const s = Math.floor(sec % 60);
   return `${m}:${String(s).padStart(2, "0")}`;

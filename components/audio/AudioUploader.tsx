@@ -106,7 +106,7 @@ export default function AudioUploader({
             {dragging ? "Drop it here" : "Drop audio file here"}
           </p>
           <p className="mt-1 text-xs" style={{ color: "var(--text-subtle)" }}>
-            or click to browse — {acceptLabel}
+            or click to browse - {acceptLabel}
           </p>
         </div>
         <input ref={inputRef} type="file" accept={accept} multiple={multiple}
