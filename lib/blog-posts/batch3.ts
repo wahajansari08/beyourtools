@@ -2,84 +2,80 @@ import type { BlogPost } from "@/lib/blog";
 
 export const batch3: BlogPost[] = [
   {
-    slug: "png-to-pdf-free-online",
-    title: "PNG to PDF: Convert Images to PDF Free Online",
-    excerpt: "Combine one or many PNG images into a professional PDF document in seconds - no software, no account, nothing uploaded.",
-    author: "BeYourTools Team", publishedAt: "2026-12-02", readingTime: 3, category: "PDF",
-    tags: ["PNG", "PDF", "Convert", "Free"],
-    content: `<h2>Why convert PNG to PDF?</h2><p>PDFs are universally accepted for sharing documents, submitting forms, and archiving. Converting PNGs to PDF lets you combine screenshots, diagrams, or photos into a single portable file.</p><h2>Convert in 3 steps</h2><ol><li>Open our <a href="/pdf-tools/png-to-pdf">PNG to PDF</a> tool</li><li>Upload one or multiple PNG files</li><li>Download the combined PDF instantly</li></ol><h2>Multiple images into one PDF</h2><p>Drop several PNGs at once - each becomes one page. Reorder them before converting to control page sequence.</p><h2>Related conversions</h2><p>Need JPG instead? Use <a href="/pdf-tools/jpg-to-pdf">JPG to PDF</a>. Want individual PNG pages from an existing PDF? Use <a href="/pdf-tools/pdf-to-png">PDF to PNG</a>.</p><section class="faq"><h2>FAQs</h2><dl><dt>Does PNG to PDF reduce image quality?</dt><dd>No - images are embedded at full resolution. Use our quality slider if you need to reduce file size.</dd></dl></section>`,
+    slug: "what-is-json-and-why-it-matters",
+    title: "What is JSON? A Complete Beginner's Guide",
+    excerpt: "JSON powers the modern web. From REST APIs to config files, here's everything you need to understand about the world's most popular data format.",
+    author: "BeYourTools Team",
+    publishedAt: "2026-08-26",
+    readingTime: 6,
+    category: "JSON",
+    tags: ["JSON", "Beginners", "Web Development", "APIs"],
+    content: `<h2>JSON stands for JavaScript Object Notation</h2>
+<p>Despite its name, JSON is language-independent and is used across virtually every modern programming language — Python, Go, Java, Ruby, PHP, and many others all handle it natively. It was named after JavaScript because it shares the same syntax for objects and arrays, but it's a universal standard, not a JavaScript-specific format.</p>
+
+<h2>The six data types</h2>
+<p>JSON supports exactly six value types: <strong>string</strong> (text in double quotes), <strong>number</strong> (integer or decimal), <strong>boolean</strong> (<code>true</code> or <code>false</code>), <strong>null</strong> (representing no value), <strong>array</strong> (an ordered list), and <strong>object</strong> (a set of named values). That's the entire specification.</p>
+
+<pre><code>{"name":"Ada","age":30,"active":true,"score":9.5,"tags":["engineer"],"address":null}</code></pre>
+
+<h2>JSON vs XML vs YAML</h2>
+<p>JSON replaced XML as the dominant web data format because it's more compact and easier to read. YAML is popular for configuration files because it supports comments and has cleaner syntax for deeply nested data, but JSON remains the default for APIs and browser storage.</p>
+
+<h2>Tools to work with JSON</h2>
+<p>Start with our <a href="/json-formatter">JSON Formatter</a> to make raw or minified JSON readable. Use the <a href="/json-validator">JSON Validator</a> to check whether JSON is well-formed. The <a href="/json-viewer">JSON Viewer</a> renders any JSON as a collapsible tree so you can explore its structure without getting lost in brackets.</p>
+
+<h2>Converting JSON to other formats</h2>
+<p>Need your data as a spreadsheet? Use <a href="/json-to-csv">JSON to CSV</a>. Want it as a configuration file? Try <a href="/json-to-yaml">JSON to YAML</a>. Need to generate TypeScript types from a JSON sample? Use <a href="/json-to-typescript">JSON to TypeScript</a>.</p>
+
+<section class="faq">
+<h2>Frequently Asked Questions</h2>
+<dl>
+<dt>What is JSON used for?</dt>
+<dd>JSON is used for REST API responses, application configuration files, document databases, browser storage, and communication between services. It is the most widely used data exchange format on the web.</dd>
+<dt>Can JSON have comments?</dt>
+<dd>No — standard JSON does not support comments. If you need commented configuration, consider YAML, which supports them fully. Our <a href="/json-to-yaml">JSON to YAML</a> converter makes the switch easy.</dd>
+<dt>What is the difference between a JSON object and an array?</dt>
+<dd>A JSON object is a collection of named key-value pairs wrapped in curly braces: <code>{"name":"Ada"}</code>. A JSON array is an ordered list of values in square brackets: <code>[1, 2, 3]</code>. Objects and arrays can be nested inside each other to any depth.</dd>
+</dl>
+</section>`,
   },
   {
-    slug: "csv-to-json-conversion-guide",
-    title: "CSV to JSON: How to Convert Spreadsheet Data to JSON",
-    excerpt: "Import CSV exports from Excel, Google Sheets, or databases into JSON for APIs, web apps, and data pipelines.",
-    author: "BeYourTools Team", publishedAt: "2026-12-09", readingTime: 5, category: "JSON",
-    tags: ["CSV", "JSON", "Data", "Spreadsheets"],
-    content: `<h2>When to convert CSV to JSON</h2><p>You need CSV to JSON when feeding spreadsheet data into an API, seeding a database, or building a front-end that consumes JSON.</p><h2>How our converter handles CSV</h2><p>Our <a href="/csv-to-json">CSV to JSON</a> tool reads the first row as headers and maps each subsequent row to a JSON object. Quoted fields with commas are handled correctly.</p><h2>Example</h2><pre><code>name,age\nAlice,30\nBob,25</code></pre><p>Becomes: <code>[{"name":"Alice","age":"30"},{"name":"Bob","age":"25"}]</code></p><h2>After converting</h2><p><a href="/json-formatter">Format</a> the output, <a href="/json-validator">validate</a> it, or <a href="/json-schema-generator">generate a schema</a> from it. Convert back with <a href="/json-to-csv">JSON to CSV</a>.</p><section class="faq"><h2>FAQs</h2><dl><dt>Does CSV to JSON preserve data types?</dt><dd>CSV has no type system - all values are strings. Post-process in code to cast numbers and booleans.</dd></dl></section>`,
-  },
-  {
-    slug: "json-repair-fix-invalid-json",
-    title: "How to Fix Invalid JSON Automatically",
-    excerpt: "Trailing commas, single quotes, unquoted keys - common JSON mistakes that break parsers. Here's how to repair them instantly.",
-    author: "BeYourTools Team", publishedAt: "2026-12-16", readingTime: 4, category: "JSON",
-    tags: ["JSON", "Repair", "Debug", "Fix"],
-    content: `<h2>Common JSON errors</h2><ul><li>Trailing commas: <code>{"a":1,}</code></li><li>Single quotes: <code>{'key':'value'}</code></li><li>Unquoted keys: <code>{key: 1}</code></li><li>JavaScript values: <code>{"x": undefined}</code></li><li>Comments: <code>{"a": 1 // note}</code></li></ul><h2>Auto-repair with one click</h2><p>Our <a href="/json-repair">JSON Repair</a> tool detects and fixes all of the above automatically, listing every change it made.</p><h2>After repair</h2><p>Validate the repaired output with our <a href="/json-validator">JSON Validator</a>, then <a href="/json-formatter">format it</a> for readability.</p><section class="faq"><h2>FAQs</h2><dl><dt>Can JSON Repair fix all invalid JSON?</dt><dd>It handles the most common mistakes. Severely corrupted files may need manual intervention.</dd></dl></section>`,
-  },
-  {
-    slug: "watermark-pdf-free",
-    title: "How to Add a Watermark to a PDF for Free",
-    excerpt: "Stamp CONFIDENTIAL, DRAFT, or any custom text diagonally across every page of your PDF - browser-based, no sign-up.",
-    author: "BeYourTools Team", publishedAt: "2026-12-23", readingTime: 3, category: "PDF",
-    tags: ["PDF", "Watermark", "Branding", "Security"],
-    content: `<h2>Why watermark a PDF?</h2><p>Watermarks deter unauthorised distribution, mark documents as drafts, and brand your materials professionally.</p><h2>Add a watermark in 3 steps</h2><ol><li>Go to our <a href="/pdf-tools/pdf-watermark">PDF Watermark</a> tool</li><li>Type your watermark text, set opacity and font size</li><li>Upload your PDF and download the watermarked version</li></ol><h2>Combine with password protection</h2><p>For sensitive documents, add a watermark first, then <a href="/pdf-tools/protect-pdf">password-protect the PDF</a> to restrict access.</p><section class="faq"><h2>FAQs</h2><dl><dt>Can I remove a watermark added by this tool?</dt><dd>Watermarks added by our tool are embedded as text content. They can be removed by someone with the right tools - for stronger protection, combine with encryption.</dd></dl></section>`,
-  },
-  {
-    slug: "json-minifier-reduce-api-payload",
-    title: "JSON Minifier: Reduce API Payload Size for Faster Apps",
-    excerpt: "Every unnecessary byte in your API response costs bandwidth and time. Here's how minifying JSON improves real-world performance.",
-    author: "BeYourTools Team", publishedAt: "2026-12-30", readingTime: 4, category: "JSON",
-    tags: ["JSON", "Minify", "Performance", "APIs"],
-    content: `<h2>Why minify JSON?</h2><p>Whitespace in JSON (spaces, newlines, indentation) is for humans. In production, it just wastes bandwidth. A well-formatted 100KB response minifies to ~75KB - a 25% saving on every request.</p><h2>Real savings at scale</h2><p>1 million API calls/day × 25KB saved = 25GB less bandwidth daily. That's real money at cloud provider rates.</p><h2>Minify instantly</h2><p>Paste your JSON into our <a href="/json-minifier">JSON Minifier</a> and see the exact byte reduction. The tool also reports the percentage saved.</p><h2>When to minify</h2><p>Minify JSON in: API responses, static JSON files served from CDN, localStorage payloads, and WebSocket messages.</p><h2>Reverse: format for debugging</h2><p>Use our <a href="/json-formatter">JSON Formatter</a> to re-expand minified JSON for debugging.</p><section class="faq"><h2>FAQs</h2><dl><dt>Does minifying JSON change the data?</dt><dd>No - minifying only removes whitespace. The data structure and all values are identical.</dd></dl></section>`,
-  },
-  {
-    slug: "jpg-to-pdf-guide",
-    title: "JPG to PDF: Combine Photos into a PDF Document",
-    excerpt: "Turn any number of JPEG photos into a single, shareable PDF. Perfect for document submission, portfolios, and photo archives.",
-    author: "BeYourTools Team", publishedAt: "2027-01-06", readingTime: 3, category: "PDF",
-    tags: ["JPG", "PDF", "Convert", "Photos"],
-    content: `<h2>Use cases for JPG to PDF</h2><p>Converting JPGs to PDF is useful for: submitting scanned documents, creating photo albums, building portfolios, combining receipts for expense reports.</p><h2>How to convert</h2><ol><li>Open our <a href="/pdf-tools/jpg-to-pdf">JPG to PDF</a> tool</li><li>Select one or multiple JPEG files</li><li>Download the PDF - each image becomes one page</li></ol><h2>Image quality in the PDF</h2><p>Images are embedded at their original resolution. The resulting PDF quality depends entirely on the source JPG quality.</p><h2>Related tools</h2><p>Convert the other way with <a href="/pdf-tools/pdf-to-jpg">PDF to JPG</a>. Need PNG instead? Use <a href="/pdf-tools/png-to-pdf">PNG to PDF</a>.</p><section class="faq"><h2>FAQs</h2><dl><dt>How many JPGs can I combine into one PDF?</dt><dd>There's no hard limit - the practical limit is your browser's available memory.</dd></dl></section>`,
-  },
-  {
-    slug: "json-to-typescript-guide",
-    title: "JSON to TypeScript: Auto-Generate Interfaces from JSON",
-    excerpt: "Stop writing TypeScript interfaces by hand. Generate accurate types from any JSON sample in one click.",
-    author: "BeYourTools Team", publishedAt: "2027-01-13", readingTime: 5, category: "JSON",
-    tags: ["JSON", "TypeScript", "Types", "Code Generation"],
-    content: `<h2>Why generate TypeScript interfaces from JSON?</h2><p>Writing interfaces for complex API responses by hand is tedious and error-prone. Auto-generation is faster and ensures types match the actual data.</p><h2>How it works</h2><p>Our <a href="/json-to-typescript">JSON to TypeScript</a> tool recursively inspects each value's type and generates nested interfaces automatically.</p><pre><code>{"id":1,"user":{"name":"Ada","active":true}}</code></pre><p>Generates:</p><pre><code>interface User { name: string; active: boolean; }
-interface Root { id: number; user: User; }</code></pre><h2>Handling arrays</h2><p>Array types are inferred from the first element: <code>tags: string[]</code> for <code>["a","b"]</code>.</p><h2>Complement with JSON Schema</h2><p>For runtime validation, also generate a <a href="/json-schema-generator">JSON Schema</a> - types for compile time, schema for runtime.</p><section class="faq"><h2>FAQs</h2><dl><dt>Does JSON to TypeScript support optional fields?</dt><dd>Fields present in the sample are marked required. Mark them optional manually after generation if needed.</dd></dl></section>`,
-  },
-  {
-    slug: "pdf-metadata-privacy-guide",
-    title: "PDF Metadata: What It Is, What It Reveals, and How to Remove It",
-    excerpt: "Every PDF you create contains hidden metadata revealing who made it, when, and with what software. Here's why that matters and how to scrub it.",
-    author: "BeYourTools Team", publishedAt: "2027-01-20", readingTime: 5, category: "PDF",
-    tags: ["PDF", "Metadata", "Privacy", "Security"],
-    content: `<h2>What metadata does a PDF contain?</h2><p>PDFs store: author name, creation date, modification date, software used (e.g. "Microsoft Word 16.0"), company name, and sometimes template file paths.</p><h2>Why this matters</h2><p>Sharing a legal document that reveals it was last edited by "Jane Smith at Acme Corp" on a specific date can be problematic. Journalists, lawyers, and security researchers regularly extract PDF metadata.</p><h2>View metadata first</h2><p>Use our <a href="/pdf-tools/pdf-metadata-viewer">PDF Metadata Viewer</a> to see exactly what's embedded before sharing.</p><h2>Strip all metadata</h2><p>Our <a href="/pdf-tools/pdf-metadata-remover">PDF Metadata Remover</a> clears all metadata fields in one click. The PDF structure and content are unchanged.</p><h2>Combine with password protection</h2><p>After removing metadata, <a href="/pdf-tools/protect-pdf">password-protect the PDF</a> for a fully private document.</p><section class="faq"><h2>FAQs</h2><dl><dt>Does printing to PDF remove metadata?</dt><dd>Printing to PDF (via system PDF printer) usually creates a new PDF without the original application metadata. But it may add new metadata from your OS.</dd></dl></section>`,
-  },
-  {
-    slug: "json-flatten-unflatten-guide",
-    title: "JSON Flatten and Unflatten: Working with Nested Data",
-    excerpt: "Deep JSON nesting causes headaches in databases, analytics tools, and spreadsheets. Learn how to flatten and restore nested JSON structures.",
-    author: "BeYourTools Team", publishedAt: "2027-01-27", readingTime: 5, category: "JSON",
-    tags: ["JSON", "Flatten", "Data Transformation", "Analytics"],
-    content: `<h2>What is JSON flattening?</h2><p>Flattening converts nested JSON into a single-level object using dot-notation keys:</p><pre><code>{"user":{"name":"Ada","age":30}} → {"user.name":"Ada","user.age":30}</code></pre><h2>Why flatten JSON?</h2><p>BigQuery, Redshift, and Snowflake handle flat data better than nested. CSV files can't represent nesting. Flattened JSON is easier to query with simple key lookups.</p><h2>Flatten and unflatten</h2><p>Our <a href="/json-flatten">JSON Flatten/Unflatten</a> tool handles both operations. Arrays use numeric indices: <code>tags.0</code>, <code>tags.1</code>.</p><h2>Use with JSON to CSV</h2><p>Flatten first, then export with <a href="/json-to-csv">JSON to CSV</a> - this ensures nested data appears as proper column headers rather than serialised strings.</p><section class="faq"><h2>FAQs</h2><dl><dt>Can I unflatten back to the original structure?</dt><dd>Yes - our unflatten operation reconstructs the original nested structure from dot-notation keys.</dd></dl></section>`,
-  },
-  {
-    slug: "ico-file-format-favicon-guide",
-    title: "ICO File Format: The Complete Favicon Guide",
-    excerpt: "ICO files power the tiny icons in browser tabs and bookmarks. Learn the format, sizes, and how to create perfect favicons for any website.",
-    author: "BeYourTools Team", publishedAt: "2027-02-03", readingTime: 5, category: "Image",
-    tags: ["ICO", "Favicon", "Image Format", "Web Design"],
-    content: `<h2>What is an ICO file?</h2><p>An ICO (Icon) file is a container format that can hold multiple image sizes simultaneously. Browsers pick the appropriate size based on context.</p><h2>Standard favicon sizes</h2><ul><li>16×16 - Browser tab icon</li><li>32×32 - Taskbar / bookmark icon</li><li>48×48 - Windows shortcut icon</li><li>256×256 - High-DPI displays</li></ul><h2>Create an ICO from PNG</h2><p>Our <a href="/image-converter/png-to-ico">PNG to ICO converter</a> creates a single-image ICO at 256×256 (which scales down for all uses). For multi-size ICOs, use a desktop tool like GIMP.</p><h2>Modern favicon approach</h2><p>For 2026 websites: use a 32×32 ICO for legacy support, an SVG favicon for modern browsers, and apple-touch-icon.png at 180×180 for iOS. Convert your logo to SVG with our <a href="/image-converter/png-to-svg">PNG to SVG converter</a>.</p><section class="faq"><h2>FAQs</h2><dl><dt>What size should a favicon be?</dt><dd>32×32 pixels is the modern standard. Supply 16×16 and 32×32 for broad compatibility. Use SVG for vector-perfect favicons on modern browsers.</dd></dl></section>`,
+    slug: "how-to-reduce-image-file-size",
+    title: "How to Reduce Image File Size Without Losing Quality",
+    excerpt: "Large images slow down every page on your site. A systematic guide to compressing images for the web while keeping them looking great.",
+    author: "BeYourTools Team",
+    publishedAt: "2026-09-09",
+    readingTime: 6,
+    category: "Image",
+    tags: ["Image Compression", "Performance", "WebP", "Web Optimisation"],
+    content: `<h2>Why image size matters so much</h2>
+<p>Images are typically 60–70% of a web page's total weight. Research consistently shows that page load time directly affects bounce rate and conversions. Cutting image size is the highest-return performance improvement available to most websites.</p>
+
+<h2>Choose the right format first</h2>
+<p>Format choice has a bigger impact than any quality setting. A photo saved as WebP instead of JPG at equivalent quality saves 25–35% of the file size with no visible difference. Use our <a href="/image-converter/jpg-to-webp">JPG to WebP converter</a> to convert individual images or batches at once.</p>
+
+<h2>Set an appropriate quality level</h2>
+<p>For JPG and WebP, quality 80–85 is the sweet spot for photographic content. Going higher gives minimal visual improvement but significantly larger files. Going lower starts introducing visible artifacts. Our <a href="/image-converter">Image Converter</a> has a quality slider so you can find the right balance for each image.</p>
+
+<h2>Convert photographic PNGs to JPG or WebP</h2>
+<p>PNG uses lossless compression — excellent for logos and screenshots, but wasteful for photographs. If you have a photographic image saved as PNG, converting it to JPG or WebP with our <a href="/image-converter/png-to-jpg">PNG to JPG converter</a> will typically reduce its size by 70–90%.</p>
+
+<h2>Try AVIF for maximum compression</h2>
+<p>AVIF provides roughly 50% smaller files than JPG at equivalent quality. It's well-supported in modern browsers as of 2026. Use our <a href="/image-converter/jpg-to-avif">JPG to AVIF converter</a> for the best compression available.</p>
+
+<h2>Resize before compressing</h2>
+<p>Serving a 4000×3000-pixel image that displays at 800×600 pixels wastes roughly 25 times the bandwidth needed. Resize images to their display dimensions before optimising them.</p>
+
+<section class="faq">
+<h2>Frequently Asked Questions</h2>
+<dl>
+<dt>How much can I compress a JPEG without visible quality loss?</dt>
+<dd>At quality 80–85, most photographic JPEGs are visually indistinguishable from the original while being 40–60% smaller. Lower quality settings are appropriate for thumbnails and non-critical images.</dd>
+<dt>What is the best image format for websites in 2026?</dt>
+<dd>WebP for broad compatibility and AVIF for maximum compression. Always include a JPG fallback for any environments that might not support newer formats.</dd>
+<dt>Does compressing an image reduce its resolution?</dt>
+<dd>No — compression reduces file size by discarding imperceptible image data. The dimensions (width and height in pixels) stay the same. Resizing is a separate step that actually changes the pixel dimensions.</dd>
+</dl>
+</section>`,
   },
 ];

@@ -5,15 +5,23 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "PDF Tools - Free Online PDF Editor, Converter & Compressor",
-  description: "Free browser-based PDF tools. Merge, split, compress, rotate, watermark, protect, convert PDF to JPG/PNG/text - no upload, no sign-up, 100% private.",
+  title: "PDF Tools — Free Online PDF Editor, Converter & Compressor | BeYourTools",
+  description: "Free browser-based PDF tools. Merge, split, compress, rotate, watermark, protect, convert PDF to JPG/PNG/text — no upload, no sign-up, 100% private.",
   keywords: "merge PDF, split PDF, compress PDF, PDF to JPG, PDF to text, PDF watermark, protect PDF, free PDF tools, online PDF editor",
   alternates: { canonical: `${SITE.url}/pdf-tools` },
+  robots: { index: true, follow: true },
   openGraph: {
     type: "website", url: `${SITE.url}/pdf-tools`,
-    title: "Free Online PDF Tools - BeYourTools",
-    description: "30 PDF tools in your browser - merge, split, compress, convert and more. No upload required.",
+    title: "PDF Tools — Free Online PDF Editor, Converter & Compressor",
+    description: "30 PDF tools in your browser — merge, split, compress, convert and more. No upload required.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "PDF Tools" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PDF Tools — Free Online PDF Editor & Converter | BeYourTools",
+    description: "30 free PDF tools — merge, split, compress, protect and more. No upload needed.",
+    site: "@beyourtools",
+    images: [`${SITE.url}/og-default.png`],
   },
 };
 
@@ -43,7 +51,7 @@ export default function PdfToolsHub() {
       { question: "How do I merge PDF files for free?", answer: "Use our free PDF Merge tool - upload multiple PDFs, reorder them, and download the merged file. No account needed and files never leave your browser." },
       { question: "How do I compress a PDF?", answer: "Our PDF Compressor re-serialises the PDF's internal object streams, typically reducing size by 10–40% for standard PDFs without quality loss." },
       { question: "How do I password-protect a PDF?", answer: "Our PDF Protect tool adds AES-256 encryption. Enter a user password, upload your PDF, and download the protected version instantly." },
-      { question: "Is it safe to use online PDF tools?", answer: "With BeYourTools, your PDF files never leave your device. All processing happens locally in JavaScript - nothing is uploaded to any server." },
+      { question: "Is it safe to use online PDF tools?", answer: "With BeYourTools, your PDF files never leave your device. All processing happens locally in your browser — nothing is uploaded to any server." },
     ]),
   ];
 

@@ -1,0 +1,8 @@
+import { buildVideoMetadata, renderVideoTool } from "@/components/video/videoPageHelpers";
+
+export const metadata = buildVideoMetadata("video-to-webm");
+
+export default function Page() {
+  return renderVideoTool("video-to-webm");
+}
+

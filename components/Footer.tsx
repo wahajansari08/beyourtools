@@ -25,6 +25,30 @@ const TOOL_LINKS = {
     { href: "/pdf-tools/pdf-compressor",  label: "Compress PDF"   },
     { href: "/pdf-tools/protect-pdf",     label: "Protect PDF"    },
   ],
+  "QR & Barcodes": [
+    { href: "/qr-barcode-tools",           label: "All QR & Barcode Tools" },
+    { href: "/qr-code-generator",          label: "QR Code Generator"      },
+    { href: "/wifi-qr-code-generator",     label: "WiFi QR Generator"      },
+    { href: "/barcode-generator",          label: "Barcode Generator"      },
+    { href: "/upc-barcode-generator",      label: "UPC Generator"          },
+    { href: "/ean-barcode-generator",      label: "EAN-13 Generator"       },
+  ],
+  "Audio Tools": [
+    { href: "/audio-tools",        label: "All Audio Tools"   },
+    { href: "/mp3-converter",      label: "MP3 Converter"     },
+    { href: "/mp3-cutter",         label: "MP3 Cutter"        },
+    { href: "/mp4-to-mp3",         label: "MP4 to MP3"        },
+    { href: "/mp3-compressor",     label: "MP3 Compressor"    },
+    { href: "/audio-recorder",     label: "Audio Recorder"    },
+  ],
+  "Video Tools": [
+    { href: "/video-tools",                 label: "All Video Tools"   },
+    { href: "/video-compressor",            label: "Video Compressor"  },
+    { href: "/video-cutter",                label: "Video Cutter"      },
+    { href: "/video-converter",             label: "Video Converter"   },
+    { href: "/video-to-gif",                label: "Video to GIF"      },
+    { href: "/video-thumbnail-generator",   label: "Thumbnail Maker"   },
+  ],
   "Blog": [
     { href: "/blog",                                               label: "All Articles"         },
     { href: "/blog/json-tips-every-developer-should-know",        label: "10 JSON Tips"          },
@@ -52,16 +76,16 @@ export default function Footer() {
     >
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
         {/* Top: brand + link columns */}
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-6">
           {/* Brand */}
           <div>
             <Link href="/" className="focus-ring inline-flex items-center gap-2 rounded">
-              <span
+              {/* <span
                 className="flex h-7 w-7 items-center justify-center rounded-md text-sm font-bold"
                 style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}
               >
                 B
-              </span>
+              </span> */}
               <span className="font-display text-base font-semibold" style={{ color: "var(--text-primary)" }}>
                 BeYourTools
               </span>

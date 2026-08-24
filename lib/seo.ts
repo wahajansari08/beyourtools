@@ -240,3 +240,75 @@ export function siteNavigationSchema(items: { name: string; url: string }[]) {
     },
   };
 }
+
+// ─── Tool metadata factory ────────────────────────────────────────────────────
+
+export interface ToolMetadataOpts {
+  title: string;
+  description: string;
+  path: string;
+  keywords?: string[];
+  category?: string;
+}
+
+/**
+ * Creates complete Next.js Metadata for any tool page.
+ * Includes title, description, canonical, OG, Twitter, robots.
+ */
+export function createToolMetadata(opts: ToolMetadataOpts) {
+  const url   = canonical(opts.path);
+  const image = `${SITE.url}/og-default.png`;
+  return {
+    metadataBase: new URL(SITE.url),
+    title: opts.title,
+    description: opts.description,
+    keywords: opts.keywords?.join(", "),
+    alternates: { canonical: url },
+    robots: { index: true, follow: true },
+    openGraph: {
+      type:        "website" as const,
+      url,
+      title:       opts.title,
+      description: opts.description,
+      siteName:    SITE.name,
+      locale:      SITE.locale,
+      images:      [{ url: image, width: 1200, height: 630, alt: opts.title }],
+    },
+    twitter: {
+      card:        "summary_large_image" as const,
+      title:       opts.title,
+      description: opts.description,
+      site:        SITE.twitter,
+      images:      [image],
+    },
+  };
+}
+
+/**
+ * WebApplication schema for tool pages.
+ * Lighter than SoftwareApplication — no fake ratings.
+ */
+export function webAppSchema(opts: {
+  name: string;
+  description: string;
+  url: string;
+  keywords?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: opts.name,
+    description: opts.description,
+    url: opts.url,
+    applicationCategory: "UtilitiesApplication",
+    operatingSystem: "Any",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    isAccessibleForFree: true,
+    author: {
+      "@type": "Organization",
+      "@id": `${SITE.url}/#organization`,
+      name: SITE.name,
+    },
+    ...(opts.keywords ? { keywords: opts.keywords } : {}),
+  };
+}

@@ -4,15 +4,19 @@ import Link from "next/link";
 import { useState, useCallback, useEffect } from "react";
 import ThemeToggle from "./ThemeToggle";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 
 const SearchOverlay = dynamic(() => import("./SearchOverlay"), { ssr: false });
 
 const NAV_LINKS = [
-  { href: "/json-tools",      label: "JSON Tools"      },
-  { href: "/image-converter", label: "Image Converter" },
-  { href: "/pdf-tools",       label: "PDF Tools"       },
-  { href: "/blog",            label: "Blog"            },
-  { href: "/about",           label: "About"           },
+  { href: "/json-tools",        label: "JSON Tools"        },
+  { href: "/image-converter",   label: "Image Converter"   },
+  { href: "/pdf-tools",         label: "PDF Tools"         },
+  { href: "/qr-barcode-tools",  label: "QR & Barcodes"     },
+  { href: "/audio-tools",       label: "Audio Tools"       },
+  { href: "/video-tools",       label: "Video Tools"       },
+  { href: "/blog",              label: "Blog"              },
+  { href: "/about",             label: "About"             },
 ];
 
 const SearchIcon = () => (
@@ -50,13 +54,19 @@ export default function Navbar() {
 
           {/* ── Logo ─────────────────────────────────────────────────────── */}
           <Link href="/" className="focus-ring flex items-center gap-2 rounded">
-            <span
+            {/* <span
               className="flex h-7 w-7 items-center justify-center rounded-md text-sm font-bold"
               style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}
               aria-hidden="true"
             >
               B
-            </span>
+            </span> */}
+            {/* <Image
+              src="/public/images/logo.png"
+              alt="Logo"
+              width={60}
+              height={70}
+            /> */}
             <span className="font-display text-base font-semibold" style={{ color: "var(--text-primary)" }}>
               BeYourTools
             </span>

@@ -2,83 +2,81 @@ import type { BlogPost } from "@/lib/blog";
 
 export const batch5: BlogPost[] = [
   {
-    slug: "webp-format-complete-guide",
-    title: "WebP Format: The Developer's Complete Guide",
-    excerpt: "WebP is now the default image format for the web. Here's everything you need to know about WebP support, quality settings, and conversion.",
-    author: "BeYourTools Team", publishedAt: "2027-04-21", readingTime: 7, category: "Image",
-    tags: ["WebP", "Image Format", "Performance", "Google"],
-    content: `<h2>What is WebP?</h2><p>WebP is a modern image format developed by Google that uses both lossy and lossless compression. It achieves 25–35% smaller files than JPG at equivalent quality, and supports transparency unlike JPG.</p><h2>Browser support in 2026</h2><p>WebP has universal support: Chrome, Firefox, Safari (14+), Edge, Opera. You no longer need JPG fallbacks for any modern browser.</p><h2>Lossy vs lossless WebP</h2><p>Use lossy WebP (quality 75–85) for photographs. Use lossless WebP for screenshots, logos, and images requiring transparency.</p><h2>Convert to WebP</h2><p><a href="/image-converter/jpg-to-webp">JPG to WebP</a>, <a href="/image-converter/png-to-webp">PNG to WebP</a>, <a href="/image-converter/gif-to-webp">GIF to WebP</a> - all free in your browser.</p><h2>Convert from WebP</h2><p>Need to share with legacy apps? <a href="/image-converter/webp-to-jpg">WebP to JPG</a> and <a href="/image-converter/webp-to-png">WebP to PNG</a> are also available.</p><section class="faq"><h2>FAQs</h2><dl><dt>Does WebP support animation?</dt><dd>Yes - animated WebP replaces GIF with dramatically smaller file sizes and better quality. However, GIF has broader tool support.</dd><dt>Is WebP better than AVIF?</dt><dd>AVIF offers 20–30% better compression than WebP but is newer. WebP is safer for broad compatibility in 2026.</dd></dl></section>`,
+    slug: "compress-pdf-reduce-file-size",
+    title: "How to Compress a PDF and Reduce Its File Size",
+    excerpt: "Email attachments too large? PDF files bloated with embedded content? Here's how to shrink them without buying expensive software.",
+    author: "BeYourTools Team",
+    publishedAt: "2026-10-07",
+    readingTime: 5,
+    category: "PDF",
+    tags: ["PDF", "Compression", "File Size", "Optimise"],
+    content: `<h2>Why are PDFs so large?</h2>
+<p>PDFs can embed fonts, high-resolution images, colour profiles, and various internal structures. A single scanned page at full resolution can easily reach several megabytes. A 10-page scanned document can top 50 MB — far too large for most email systems.</p>
+
+<h2>What browser-based compression can do</h2>
+<p>Our <a href="/pdf-tools/pdf-compressor">PDF Compressor</a> reduces file size by cleaning up and re-organising the PDF's internal data. Redundant content, duplicate objects, and inefficient structures are removed. For text-heavy PDFs, expect reductions in the range of 10–40%. The results vary — some files compress dramatically, others less so, depending on how the original was created.</p>
+
+<h2>What compression can't fix</h2>
+<p>If a PDF is large primarily because it contains high-resolution images embedded at print quality, browser-based compression has limited effect on those images. For those cases, desktop tools provide more control over image recompression at the cost of some additional setup.</p>
+
+<h2>Tips to keep PDFs small from the start</h2>
+<p>The easiest way to avoid large PDFs is to start with optimised sources. If you're creating a PDF from images, first convert them to WebP using our <a href="/image-converter/jpg-to-webp">JPG to WebP converter</a> to reduce their size before including them in the document.</p>
+
+<h2>Remove metadata to trim a few extra bytes</h2>
+<p>PDFs embed creation dates, author names, software details, and other metadata that contributes to file size. Our <a href="/pdf-tools/pdf-metadata-remover">PDF Metadata Remover</a> strips this information while leaving the document content completely intact.</p>
+
+<section class="faq">
+<h2>Frequently Asked Questions</h2>
+<dl>
+<dt>How much will my PDF compress?</dt>
+<dd>Results vary significantly by source. PDFs created from word processors or presentations often compress by 20–40%. Scanned PDFs — which are essentially image files wrapped in a PDF container — see less benefit without also recompressing the images.</dd>
+<dt>Does compressing a PDF reduce its visual quality?</dt>
+<dd>Our tool uses lossless PDF optimisation. Text and vector content are not degraded. Existing embedded images are not recompressed, so their quality is preserved exactly as in the original.</dd>
+<dt>Is it safe to compress confidential PDFs online?</dt>
+<dd>With BeYourTools, all processing happens locally in your browser. Your PDF never leaves your device, so there's no risk of sensitive content being transmitted or stored anywhere.</dd>
+</dl>
+</section>`,
   },
   {
-    slug: "json-to-yaml-devops",
-    title: "JSON to YAML Conversion for DevOps and Configuration",
-    excerpt: "Convert JSON configuration files to YAML for Kubernetes, Ansible, and CI/CD pipelines. A practical guide with real examples.",
-    author: "BeYourTools Team", publishedAt: "2027-04-28", readingTime: 5, category: "JSON",
-    tags: ["JSON", "YAML", "DevOps", "Configuration"],
-    content: `<h2>Why convert JSON config to YAML?</h2><p>Many DevOps tools prefer YAML: Kubernetes, Helm, GitHub Actions, CircleCI, Ansible, Docker Compose. If your config is in JSON, converting to YAML makes it compatible with these tools and supports comments.</p><h2>Key differences</h2><p>YAML is more human-readable for complex nested structures. JSON is more explicit and tool-friendly for programmatic generation.</p><h2>Convert instantly</h2><p>Use our <a href="/json-to-yaml">JSON to YAML</a> converter - paste any JSON and get clean YAML output immediately. The reverse is <a href="/yaml-to-json">YAML to JSON</a>.</p><h2>Validate after converting</h2><p>After converting back to JSON for APIs, always validate with our <a href="/json-validator">JSON Validator</a>.</p><section class="faq"><h2>FAQs</h2><dl><dt>Can JSON to YAML conversion fail?</dt><dd>If your JSON has keys that are YAML reserved words, quote them in the output. Otherwise conversion is straightforward.</dd></dl></section>`,
-  },
-  {
-    slug: "pdf-compare-documents",
-    title: "How to Compare Two PDF Documents and Find Differences",
-    excerpt: "Contract version changed? Need to audit document revisions? Compare two PDFs side by side and see every structural difference.",
-    author: "BeYourTools Team", publishedAt: "2027-05-05", readingTime: 4, category: "PDF",
-    tags: ["PDF", "Compare", "Diff", "Documents", "Contracts"],
-    content: `<h2>When to compare PDFs</h2><p>Contract revisions, regulatory filings, academic papers, software documentation - any situation where you need to verify what changed between two versions.</p><h2>What our tool checks</h2><p>Our <a href="/pdf-tools/pdf-compare">PDF Compare</a> tool checks: page count differences, page size changes, rotation differences, and metadata changes (title, author).</p><h2>Byte-level identity check</h2><p>If both files are identical down to the last byte, the tool reports "The two PDFs are identical" - useful for verifying file integrity.</p><h2>Text-level comparison</h2><p>For detailed text diffing, extract text from both PDFs using <a href="/pdf-tools/pdf-to-text">PDF to Text</a>, then compare the outputs with our <a href="/json-diff">JSON Diff</a> tool (after parsing into structured form).</p><section class="faq"><h2>FAQs</h2><dl><dt>Can I compare scanned PDFs?</dt><dd>Structural comparison works on all PDFs. Text comparison requires text-based PDFs - scanned PDFs need OCR first.</dd></dl></section>`,
-  },
-  {
-    slug: "base64-encode-decode-guide",
-    title: "Base64 Encoding and Decoding: A Developer's Reference",
-    excerpt: "Base64 appears in JWTs, data URLs, API authentication, and email attachments. Here's exactly what it is and how to use it.",
-    author: "BeYourTools Team", publishedAt: "2027-05-12", readingTime: 6, category: "JSON",
-    tags: ["Base64", "Encoding", "APIs", "Security"],
-    content: `<h2>What is Base64?</h2><p>Base64 is a binary-to-text encoding that represents binary data using 64 printable ASCII characters (A-Z, a-z, 0-9, +, /). It's not encryption - anyone can decode it.</p><h2>Common uses</h2><ul><li>Data URLs: <code>data:image/png;base64,iVBOR...</code></li><li>JWT tokens (header and payload sections)</li><li>Basic Authentication: <code>Authorization: Basic dXNlcjpwYXNz</code></li><li>Email MIME attachments</li><li>Embedding binary data in JSON</li></ul><h2>Encode and decode instantly</h2><p>Use our <a href="/base64">Base64 Encode/Decode</a> tool - supports Unicode text including emoji and international characters.</p><h2>Base64 and JWTs</h2><p>JWT headers and payloads use Base64URL (slightly different from standard Base64 - uses - and _ instead of + and /). Use our <a href="/jwt-decoder">JWT Decoder</a> to properly decode JWT segments.</p><section class="faq"><h2>FAQs</h2><dl><dt>Is Base64 the same as encryption?</dt><dd>No - Base64 is encoding, not encryption. Anyone can decode a Base64 string. Never use Base64 to protect sensitive data.</dd><dt>Why does Base64 make data larger?</dt><dd>Base64 encodes 3 bytes as 4 characters - a 33% size increase. This is the trade-off for binary data in text contexts.</dd></dl></section>`,
-  },
-  {
-    slug: "avif-image-format-guide",
-    title: "AVIF Format: The Future of Web Images",
-    excerpt: "AVIF achieves half the file size of JPG at the same quality. Here's everything you need to know about the next-generation image format.",
-    author: "BeYourTools Team", publishedAt: "2027-05-19", readingTime: 6, category: "Image",
-    tags: ["AVIF", "Image Format", "Performance", "Next-Gen"],
-    content: `<h2>What is AVIF?</h2><p>AVIF (AV1 Image File Format) is derived from the AV1 video codec developed by the Alliance for Open Media. It achieves ~50% smaller files than JPG and outperforms WebP by 20–30%.</p><h2>Browser support in 2026</h2><p>Chrome 85+, Firefox 93+, Safari 16+, Edge 121+. Support is now strong enough for primary use with WebP as fallback.</p><h2>When to use AVIF</h2><ul><li>High-traffic websites where bandwidth costs matter</li><li>E-commerce product images</li><li>Photography portfolios</li></ul><h2>Convert to AVIF</h2><p><a href="/image-converter/jpg-to-avif">JPG to AVIF</a>, <a href="/image-converter/png-to-avif">PNG to AVIF</a>, <a href="/image-converter/webp-to-avif">WebP to AVIF</a>.</p><h2>Fallback strategy</h2><p>Use the HTML <code>&lt;picture&gt;</code> element: AVIF source, WebP source, JPG fallback. This delivers the best format each browser can handle.</p><section class="faq"><h2>FAQs</h2><dl><dt>Is AVIF encoding slow?</dt><dd>Yes - AVIF encoding is significantly slower than JPG or WebP. Pre-encode images at build time rather than on-the-fly for production use.</dd></dl></section>`,
-  },
-  {
-    slug: "json-editor-live-preview",
-    title: "JSON Editor with Live Tree Preview: Edit and Explore Simultaneously",
-    excerpt: "The best JSON editing workflow combines a code editor with a live tree view. Here's how to use both tools together effectively.",
-    author: "BeYourTools Team", publishedAt: "2027-05-26", readingTime: 4, category: "JSON",
-    tags: ["JSON", "Editor", "Tree View", "Tools"],
-    content: `<h2>The problem with editing raw JSON</h2><p>Editing deeply nested JSON in a plain text editor is error-prone. A misplaced comma or brace breaks the entire structure, and the error often appears far from the actual mistake.</p><h2>Live tree preview to the rescue</h2><p>Our <a href="/json-editor">JSON Editor</a> shows the formatted text on the left and a live collapsible tree on the right. As you type, the tree updates in real time - showing errors immediately if the JSON becomes invalid.</p><h2>Use the full toolkit</h2><p>After editing, <a href="/json-validator">validate</a> the final JSON, <a href="/json-diff">diff it</a> against the original, and <a href="/json-formatter">format</a> before committing.</p><h2>Keyboard workflow</h2><p>Paste JSON with Ctrl+V, fix errors guided by the tree, copy clean output with Ctrl+C. The entire workflow takes seconds.</p><section class="faq"><h2>FAQs</h2><dl><dt>What is the difference between JSON Editor and JSON Formatter?</dt><dd>The <a href="/json-formatter">JSON Formatter</a> is for read-only formatting. The <a href="/json-editor">JSON Editor</a> is a full editing environment with live preview.</dd></dl></section>`,
-  },
-  {
-    slug: "html-to-pdf-free-online",
-    title: "HTML to PDF: Convert Web Content to PDF Free Online",
-    excerpt: "Convert HTML content to PDF for reports, invoices, certificates, and documentation - all in your browser, nothing uploaded.",
-    author: "BeYourTools Team", publishedAt: "2027-06-02", readingTime: 4, category: "PDF",
-    tags: ["HTML", "PDF", "Convert", "Reports", "Documents"],
-    content: `<h2>When to convert HTML to PDF</h2><p>Use cases: generating invoices or receipts, creating printable reports, archiving web pages, creating certificates, or producing offline documentation.</p><h2>How it works</h2><p>Our <a href="/pdf-tools/html-to-pdf">HTML to PDF</a> tool uses jsPDF's html() renderer to convert HTML markup to a properly formatted PDF document.</p><h2>Tips for better results</h2><ul><li>Use simple, semantic HTML (headings, paragraphs, lists)</li><li>Avoid complex CSS layouts - basic inline styles work best</li><li>Tables render well; flexbox/grid layouts may shift</li></ul><h2>Going the other way</h2><p>To extract HTML from a PDF, use our <a href="/pdf-tools/pdf-to-html">PDF to HTML</a> converter.</p><section class="faq"><h2>FAQs</h2><dl><dt>Does HTML to PDF preserve CSS styles?</dt><dd>Basic inline styles and simple CSS are supported. Complex layouts with external stylesheets or JavaScript-rendered content require server-side tools like Puppeteer.</dd></dl></section>`,
-  },
-  {
-    slug: "json-sorter-alphabetical-keys",
-    title: "JSON Key Sorter: Why and How to Sort JSON Alphabetically",
-    excerpt: "Consistent key ordering makes JSON files easier to diff, review, and understand. Here's when sorting matters and how to do it recursively.",
-    author: "BeYourTools Team", publishedAt: "2027-06-09", readingTime: 4, category: "JSON",
-    tags: ["JSON", "Sort", "Keys", "Git", "Code Review"],
-    content: `<h2>Why sort JSON keys?</h2><p>Sorted keys produce deterministic output - the same data always serialises identically. This makes Git diffs cleaner, code reviews easier, and JSON comparison reliable.</p><h2>Practical scenarios</h2><ul><li>Package.json files with inconsistent dependency ordering</li><li>Translation (i18n) files where key order matters</li><li>API response comparison when key order changes between versions</li><li>Configuration files committed to version control</li></ul><h2>Recursive sorting</h2><p>Our <a href="/json-sorter">JSON Sorter</a> sorts all nested objects recursively - not just the top level. Choose ascending (A→Z) or descending (Z→A) order.</p><h2>Before diffing</h2><p>Sort both documents before comparing with our <a href="/json-diff">JSON Diff</a> to avoid false positives caused by key reordering.</p><section class="faq"><h2>FAQs</h2><dl><dt>Does JSON key order matter technically?</dt><dd>No - the JSON spec doesn't guarantee object key order. However, consistent ordering is important for human readability, version control, and comparison.</dd></dl></section>`,
-  },
-  {
-    slug: "pdf-to-json-structured-extraction",
-    title: "PDF to JSON: Extract Structured Data from PDF Documents",
-    excerpt: "Convert PDF content to a structured JSON object with page dimensions, metadata, and text content - perfect for programmatic processing.",
-    author: "BeYourTools Team", publishedAt: "2027-06-16", readingTime: 5, category: "PDF",
-    tags: ["PDF", "JSON", "Data Extraction", "Automation"],
-    content: `<h2>When to extract PDF data as JSON</h2><p>Building a document processing pipeline, automating data extraction, feeding PDF content to an LLM, or indexing document libraries programmatically.</p><h2>What our tool extracts</h2><p>Our <a href="/pdf-tools/pdf-to-json">PDF to JSON</a> tool produces a structured object containing: metadata (title, author, page count), per-page information (dimensions, rotation), and extracted text content.</p><h2>Sample output</h2><pre><code>{"metadata":{"title":"Annual Report","pageCount":12},"pages":[{"page":1,"width":595,"height":842}],"text":"..."}</code></pre><h2>Process the output</h2><p>After extracting, <a href="/json-formatter">format the JSON</a>, <a href="/json-schema-generator">generate a schema</a>, or feed it to your processing pipeline.</p><section class="faq"><h2>FAQs</h2><dl><dt>Does PDF to JSON work on scanned PDFs?</dt><dd>Scanned PDFs contain image data, not text. Our tool extracts metadata and page info but cannot read scanned text without OCR.</dd></dl></section>`,
-  },
-  {
-    slug: "gif-format-when-to-use-it",
-    title: "GIF Format: When to Use It (and When Not To)",
-    excerpt: "GIF is 39 years old but still widely used. Here's an honest look at when GIF makes sense in 2026 and what modern alternatives exist.",
-    author: "BeYourTools Team", publishedAt: "2027-06-23", readingTime: 5, category: "Image",
-    tags: ["GIF", "Animation", "Image Format", "WebP"],
-    content: `<h2>The case for GIF in 2026</h2><p>Despite its age, GIF remains the universal format for short animations on social media, chat apps, and CMSes. Every platform accepts GIF.</p><h2>GIF's limitations</h2><ul><li>Limited to 256 colours - photos look terrible</li><li>No audio support</li><li>Larger than WebP animated or MP4 for the same content</li><li>No partial transparency (only fully transparent/opaque)</li></ul><h2>Convert GIF to modern formats</h2><p>For web use, convert with <a href="/image-converter/gif-to-webp">GIF to WebP</a> (animated WebP) or save as MP4 for video platforms. Our converter also supports <a href="/image-converter/gif-to-png">GIF to PNG</a> for static frames.</p><h2>Converting to GIF</h2><p>Note: our browser-based converter produces PNG output when "GIF" is selected, since browsers cannot natively encode animated GIF. Use dedicated tools like GIMP for GIF creation.</p><section class="faq"><h2>FAQs</h2><dl><dt>Is animated WebP better than GIF?</dt><dd>Yes in every technical metric - smaller file size, full colour, better transparency. However GIF has broader social platform support.</dd></dl></section>`,
+    slug: "json-to-csv-complete-guide",
+    title: "JSON to CSV: The Complete Conversion Guide",
+    excerpt: "Converting JSON data to CSV for spreadsheets, databases, or analytics. Everything you need to know with practical examples.",
+    author: "BeYourTools Team",
+    publishedAt: "2026-09-16",
+    readingTime: 7,
+    category: "JSON",
+    tags: ["JSON", "CSV", "Data", "Conversion", "Spreadsheets"],
+    content: `<h2>When to convert JSON to CSV</h2>
+<p>CSV is the universal format for tabular data. Convert to CSV when you need to open data in Excel or Google Sheets, import it into a relational database, send it to someone who isn't comfortable with JSON, or run analysis in a data tool.</p>
+
+<h2>How the conversion works</h2>
+<p>JSON-to-CSV works best on arrays of flat objects. Each object in the array becomes a row. Each unique key across all objects becomes a column header. Values are filled in for each row where the key exists.</p>
+
+<pre><code>[{"name":"Alice","age":30},{"name":"Bob","age":25}]</code></pre>
+<p>Becomes:</p>
+<pre><code>name,age
+Alice,30
+Bob,25</code></pre>
+
+<h2>Handling nested objects</h2>
+<p>Nested objects don't map cleanly to CSV columns. The best approach is to flatten the JSON first: our <a href="/json-flatten">JSON Flatten</a> tool converts <code>{"user":{"name":"Ada"}}</code> into <code>{"user.name":"Ada"}</code>, which then converts to a proper column header in the CSV.</p>
+
+<h2>Convert instantly</h2>
+<p>Use our <a href="/json-to-csv">JSON to CSV</a> tool — paste your JSON array and download the CSV file immediately. If you need to go the other way, our <a href="/csv-to-json">CSV to JSON</a> converter reads the header row and converts each subsequent row into a JSON object.</p>
+
+<h2>What happens to data types?</h2>
+<p>CSV is a text-based format — there's no concept of data types. Numbers, booleans, and dates all become text strings in the CSV. When you import the CSV into a database or analysis tool, you'll typically need to specify which columns should be treated as numbers or dates.</p>
+
+<section class="faq">
+<h2>Frequently Asked Questions</h2>
+<dl>
+<dt>Can I convert nested JSON to CSV?</dt>
+<dd>Yes, but you need to flatten the JSON first. Use our <a href="/json-flatten">JSON Flatten</a> tool to convert nested objects into dot-notation keys, then convert to CSV. This turns <code>user.name</code> into a column header.</dd>
+<dt>What if my JSON objects have different keys?</dt>
+<dd>Our converter handles inconsistent objects gracefully. It collects all unique keys from all objects and uses them as column headers. Objects missing a particular key will have an empty cell for that column.</dd>
+<dt>How do I open the CSV in Excel?</dt>
+<dd>Download the CSV file and double-click it. Excel opens CSV files directly. If numbers are imported as text, use Excel's "Convert to Number" option to fix the type.</dd>
+</dl>
+</section>`,
   },
 ];
