@@ -30,13 +30,13 @@ export default function ChangeAudioSpeedPage() {
         "Exports a permanent new audio file",
         "Supports MP3, WAV, FLAC, M4A, OGG input",
         "Output as MP3",
-        "100% browser-based — no upload",
+        "100% browser-based -no upload",
       ]}
       formats={["MP3", "WAV", "FLAC", "M4A", "OGG", "Opus", "AAC", "WebM"]}
       faqs={[
-        { question: "Does changing speed affect pitch?", answer: "Yes. Changing speed also changes pitch proportionally — faster audio sounds higher-pitched, slower audio sounds lower-pitched. Pitch-preserving time-stretching is not currently supported by this tool." },
+        { question: "Does changing speed affect pitch?", answer: "Yes. Changing speed also changes pitch proportionally -faster audio sounds higher-pitched, slower audio sounds lower-pitched. Pitch-preserving time-stretching is not currently supported by this tool." },
         { question: "What is the maximum speed?", answer: "Up to 4×. Very high speeds may produce unnatural results depending on the source audio." },
-        { question: "What is the difference between this and playback speed in the browser?", answer: "The browser audio player's speed control only changes playback in the browser — it does not create a new file. This tool permanently re-encodes the audio at the new tempo so you can download and use it anywhere." },
+        { question: "What is the difference between this and playback speed in the browser?", answer: "The browser audio player's speed control only changes playback in the browser -it does not create a new file. This tool permanently re-encodes the audio at the new tempo so you can download and use it anywhere." },
       ]}
     >
       <SpeedChangerClient />

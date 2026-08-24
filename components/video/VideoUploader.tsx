@@ -46,7 +46,7 @@ export default function VideoUploader({
       return;
     }
 
-    // BUG 7 FIX: show the large-file warning but do NOT block — let the upload
+    // BUG 7 FIX: show the large-file warning but do NOT block -let the upload
     // continue. The error was already cleared at the top of this function.
     const large = files.find((file) => file.size > 500 * 1024 * 1024);
     if (large) {

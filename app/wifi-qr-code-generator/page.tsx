@@ -8,14 +8,14 @@ import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical
 export const metadata: Metadata = {
   title: "WiFi QR Code Generator - Share WiFi Without Typing | BeYourTools",
   description:
-    "Generate a WiFi QR code your guests can scan to connect instantly — no password typing. Supports WPA/WPA2, WEP and open networks. Free, private, browser-based.",
+    "Generate a WiFi QR code your guests can scan to connect instantly -no password typing. Supports WPA/WPA2, WEP and open networks. Free, private, browser-based.",
   keywords: "WiFi QR code generator, WiFi QR code, share WiFi QR, WPA QR code, guest WiFi QR code",
   alternates: { canonical: `${SITE.url}/wifi-qr-code-generator` },
   openGraph: {
     type: "website",
     url: `${SITE.url}/wifi-qr-code-generator`,
     title: "WiFi QR Code Generator | BeYourTools",
-    description: "Share your WiFi with a scannable QR code — free and private.",
+    description: "Share your WiFi with a scannable QR code -free and private.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "WiFi QR Code Generator" }],
   },
 };
@@ -28,12 +28,12 @@ const schemas = [
   ]),
   softwareApplicationSchema({
     name: "WiFi QR Code Generator",
-    description: "Generate a WiFi QR code that lets guests join your network instantly by scanning — no typing required.",
+    description: "Generate a WiFi QR code that lets guests join your network instantly by scanning -no typing required.",
     url: canonical("/wifi-qr-code-generator"),
     category: "UtilitiesApplication",
   }),
   faqSchema([
-    { question: "How does a WiFi QR code work?", answer: "A WiFi QR code encodes your network name (SSID), password, and security type into a standard format. When someone scans it with their phone camera, they get a prompt to join the network automatically — no typing needed." },
+    { question: "How does a WiFi QR code work?", answer: "A WiFi QR code encodes your network name (SSID), password, and security type into a standard format. When someone scans it with their phone camera, they get a prompt to join the network automatically -no typing needed." },
     { question: "Is it safe to generate a WiFi QR code here?", answer: "Yes. Your WiFi credentials are processed entirely in your browser and are never sent to any server." },
     { question: "Which security types are supported?", answer: "WPA/WPA2 (most common), WEP (legacy), and open networks with no password." },
     { question: "Does this work on iPhone and Android?", answer: "Yes. Both iOS (11+) and Android (10+) can scan WiFi QR codes with the native camera app, no additional app required." },
@@ -60,7 +60,7 @@ export default function WiFiQRGeneratorPage() {
             WiFi QR Code Generator
           </h1>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-            Let guests join your WiFi by scanning a QR code — no password typing required.
+            Let guests join your WiFi by scanning a QR code -no password typing required.
             Enter your network name, password and security type, then download or print the code.
           </p>
         </div>

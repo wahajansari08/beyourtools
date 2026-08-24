@@ -11,7 +11,7 @@ export const batch3: BlogPost[] = [
     category: "JSON",
     tags: ["JSON", "Beginners", "Web Development", "APIs"],
     content: `<h2>JSON stands for JavaScript Object Notation</h2>
-<p>Despite its name, JSON is language-independent and is used across virtually every modern programming language — Python, Go, Java, Ruby, PHP, and many others all handle it natively. It was named after JavaScript because it shares the same syntax for objects and arrays, but it's a universal standard, not a JavaScript-specific format.</p>
+<p>Despite its name, JSON is language-independent and is used across virtually every modern programming language -Python, Go, Java, Ruby, PHP, and many others all handle it natively. It was named after JavaScript because it shares the same syntax for objects and arrays, but it's a universal standard, not a JavaScript-specific format.</p>
 
 <h2>The six data types</h2>
 <p>JSON supports exactly six value types: <strong>string</strong> (text in double quotes), <strong>number</strong> (integer or decimal), <strong>boolean</strong> (<code>true</code> or <code>false</code>), <strong>null</strong> (representing no value), <strong>array</strong> (an ordered list), and <strong>object</strong> (a set of named values). That's the entire specification.</p>
@@ -33,7 +33,7 @@ export const batch3: BlogPost[] = [
 <dt>What is JSON used for?</dt>
 <dd>JSON is used for REST API responses, application configuration files, document databases, browser storage, and communication between services. It is the most widely used data exchange format on the web.</dd>
 <dt>Can JSON have comments?</dt>
-<dd>No — standard JSON does not support comments. If you need commented configuration, consider YAML, which supports them fully. Our <a href="/json-to-yaml">JSON to YAML</a> converter makes the switch easy.</dd>
+<dd>No -standard JSON does not support comments. If you need commented configuration, consider YAML, which supports them fully. Our <a href="/json-to-yaml">JSON to YAML</a> converter makes the switch easy.</dd>
 <dt>What is the difference between a JSON object and an array?</dt>
 <dd>A JSON object is a collection of named key-value pairs wrapped in curly braces: <code>{"name":"Ada"}</code>. A JSON array is an ordered list of values in square brackets: <code>[1, 2, 3]</code>. Objects and arrays can be nested inside each other to any depth.</dd>
 </dl>
@@ -58,7 +58,7 @@ export const batch3: BlogPost[] = [
 <p>For JPG and WebP, quality 80–85 is the sweet spot for photographic content. Going higher gives minimal visual improvement but significantly larger files. Going lower starts introducing visible artifacts. Our <a href="/image-converter">Image Converter</a> has a quality slider so you can find the right balance for each image.</p>
 
 <h2>Convert photographic PNGs to JPG or WebP</h2>
-<p>PNG uses lossless compression — excellent for logos and screenshots, but wasteful for photographs. If you have a photographic image saved as PNG, converting it to JPG or WebP with our <a href="/image-converter/png-to-jpg">PNG to JPG converter</a> will typically reduce its size by 70–90%.</p>
+<p>PNG uses lossless compression -excellent for logos and screenshots, but wasteful for photographs. If you have a photographic image saved as PNG, converting it to JPG or WebP with our <a href="/image-converter/png-to-jpg">PNG to JPG converter</a> will typically reduce its size by 70–90%.</p>
 
 <h2>Try AVIF for maximum compression</h2>
 <p>AVIF provides roughly 50% smaller files than JPG at equivalent quality. It's well-supported in modern browsers as of 2026. Use our <a href="/image-converter/jpg-to-avif">JPG to AVIF converter</a> for the best compression available.</p>
@@ -74,7 +74,7 @@ export const batch3: BlogPost[] = [
 <dt>What is the best image format for websites in 2026?</dt>
 <dd>WebP for broad compatibility and AVIF for maximum compression. Always include a JPG fallback for any environments that might not support newer formats.</dd>
 <dt>Does compressing an image reduce its resolution?</dt>
-<dd>No — compression reduces file size by discarding imperceptible image data. The dimensions (width and height in pixels) stay the same. Resizing is a separate step that actually changes the pixel dimensions.</dd>
+<dd>No -compression reduces file size by discarding imperceptible image data. The dimensions (width and height in pixels) stay the same. Resizing is a separate step that actually changes the pixel dimensions.</dd>
 </dl>
 </section>`,
   },

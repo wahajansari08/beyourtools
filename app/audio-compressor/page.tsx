@@ -16,11 +16,11 @@ export default function AudioCompressorPage() {
       slug="audio-compressor"
       title="Audio Compressor"
       categoryLabel="Compressors"
-      tagline="Compress audio files from any supported format to MP3, OGG or AAC — choose your compression level and output format."
+      tagline="Compress audio files from any supported format to MP3, OGG or AAC -choose your compression level and output format."
       description="Free online audio compressor. Supports MP3, WAV, FLAC, M4A, OGG input. Output to MP3, OGG or AAC with selectable compression preset."
       howTo={[
         { title: "Choose output format", text: "Select MP3, OGG or AAC as your output format." },
-        { title: "Choose compression level", text: "Pick a preset — Balanced (128 kbps) is good for most use cases." },
+        { title: "Choose compression level", text: "Pick a preset -Balanced (128 kbps) is good for most use cases." },
         { title: "Upload audio", text: "Drop your audio file or click to browse." },
         { title: "Compress and download", text: 'Click "Compress Audio", preview the result, and download.' },
       ]}
@@ -29,7 +29,7 @@ export default function AudioCompressorPage() {
         "Output to MP3, OGG or AAC",
         "5 compression presets",
         "Shows file size reduction",
-        "100% browser-based — no upload",
+        "100% browser-based -no upload",
       ]}
       formats={["MP3", "WAV", "FLAC", "M4A", "OGG", "Opus", "AAC", "WebM"]}
       faqs={[

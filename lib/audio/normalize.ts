@@ -1,5 +1,5 @@
 /**
- * Audio normalization — peak normalization via FFmpeg loudnorm filter.
+ * Audio normalization -peak normalization via FFmpeg loudnorm filter.
  * Uses FFmpeg WASM.
  *
  * NOTE: We use FFmpeg's `loudnorm` filter in single-pass mode (linear).

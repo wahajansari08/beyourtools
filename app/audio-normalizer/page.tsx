@@ -30,11 +30,11 @@ export default function AudioNormalizerPage() {
         "Supports MP3, WAV, FLAC, M4A, OGG input",
         "Outputs normalized MP3",
         "Audio preview before and after",
-        "100% browser-based — no upload",
+        "100% browser-based -no upload",
       ]}
       formats={["MP3", "WAV", "FLAC", "M4A", "OGG", "Opus", "AAC", "WebM"]}
       faqs={[
-        { question: "What is the difference between peak and dynamic normalization?", answer: "Peak normalization adjusts the overall volume so the loudest moment reaches your target level. Dynamic normalization goes further — it analyzes the audio throughout and continuously balances quieter and louder sections for a more even listening experience." },
+        { question: "What is the difference between peak and dynamic normalization?", answer: "Peak normalization adjusts the overall volume so the loudest moment reaches your target level. Dynamic normalization goes further -it analyzes the audio throughout and continuously balances quieter and louder sections for a more even listening experience." },
         { question: "Is this the same as LUFS/loudness normalization?", answer: "Dynamic mode provides perceptual leveling across the file. It is not a broadcast-grade LUFS measurement tool. For strict broadcast standards, a dedicated mastering tool is recommended." },
         { question: "Will normalizing change the pitch or speed?", answer: "No. Normalization only adjusts volume/gain. Pitch and speed are not affected." },
       ]}

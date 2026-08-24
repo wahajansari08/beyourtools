@@ -1,5 +1,5 @@
 /**
- * Audio compression — re-encode to a lower bitrate MP3.
+ * Audio compression -re-encode to a lower bitrate MP3.
  * Uses FFmpeg WASM.
  */
 

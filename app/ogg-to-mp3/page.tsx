@@ -16,7 +16,7 @@ export default function OggToMp3Page() {
       slug="ogg-to-mp3"
       title="OGG to MP3"
       categoryLabel="Converters"
-      tagline="Convert OGG Vorbis audio files to widely compatible MP3 format — useful for devices that don't support OGG."
+      tagline="Convert OGG Vorbis audio files to widely compatible MP3 format -useful for devices that don't support OGG."
       description="Free online OGG to MP3 converter. Converts OGG Vorbis to MP3 in your browser."
       howTo={[
         { title: "Choose bitrate", text: "Select your MP3 bitrate." },
@@ -27,7 +27,7 @@ export default function OggToMp3Page() {
       features={[
         "Converts OGG Vorbis to MP3",
         "Selectable bitrate 64–320 kbps",
-        "No upload — 100% browser-based",
+        "No upload -100% browser-based",
         "Audio preview before and after",
       ]}
       formats={["OGG → MP3"]}

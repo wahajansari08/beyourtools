@@ -1,5 +1,5 @@
 /**
- * Audio trimming — cut a section [startSec, endSec] from an audio file.
+ * Audio trimming -cut a section [startSec, endSec] from an audio file.
  * Uses FFmpeg WASM.
  */
 

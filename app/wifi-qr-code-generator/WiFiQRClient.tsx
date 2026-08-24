@@ -156,13 +156,13 @@ export default function WiFiQRClient() {
           <div className="rounded-lg border p-4 text-xs leading-relaxed"
             style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-muted)" }}>
             <span className="font-semibold" style={{ color: "var(--text-secondary)" }}>How to use: </span>
-            Print or display this QR code near your router. Guests can open their phone&apos;s camera, point at the code, and tap the notification to join your WiFi — no typing required.
+            Print or display this QR code near your router. Guests can open their phone&apos;s camera, point at the code, and tap the notification to join your WiFi -no typing required.
           </div>
         </div>
       )}
 
       <p className="text-[11px]" style={{ color: "var(--text-subtle)" }}>
-        🔒 Your WiFi credentials are never uploaded — all processing happens locally in your browser.
+        🔒 Your WiFi credentials are never uploaded -all processing happens locally in your browser.
       </p>
     </div>
   );

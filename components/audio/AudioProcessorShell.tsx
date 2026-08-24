@@ -95,7 +95,7 @@ export default function AudioProcessorShell({
 
   return (
     <div className="space-y-4">
-      {/* Upload — always visible when idle/ready */}
+      {/* Upload -always visible when idle/ready */}
       {(state === "idle" || state === "ready") && (
         <AudioUploader
           accept={accept}

@@ -5,22 +5,22 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Audio Tools — Free Online MP3 Converter, Cutter & Compressor | BeYourTools",
-  description: "20 free browser-based audio tools — convert, cut, trim, compress, merge, boost volume, normalize and record audio. No upload, all processing in your browser.",
+  title: "Audio Tools -Free Online MP3 Converter, Cutter & Compressor | BeYourTools",
+  description: "20 free browser-based audio tools -convert, cut, trim, compress, merge, boost volume, normalize and record audio. No upload, all processing in your browser.",
   keywords: "audio tools, mp3 converter, audio converter, mp3 cutter, audio compressor, mp3 merger, audio recorder, online audio editor, free audio tools",
   alternates: { canonical: `${SITE.url}/audio-tools` },
   robots: { index: true, follow: true },
   openGraph: {
     type: "website",
     url: `${SITE.url}/audio-tools`,
-    title: "Audio Tools — Free Online MP3 Converter, Cutter & More | BeYourTools",
+    title: "Audio Tools -Free Online MP3 Converter, Cutter & More | BeYourTools",
     description: "20 free browser-based audio tools. Convert, cut, compress, merge and record audio privately in your browser.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "Audio Tools" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Audio Tools — Free MP3 Converter, Cutter & Compressor | BeYourTools",
-    description: "20 free audio tools — convert, cut, compress, merge, record. No upload needed.",
+    title: "Audio Tools -Free MP3 Converter, Cutter & Compressor | BeYourTools",
+    description: "20 free audio tools -convert, cut, compress, merge, record. No upload needed.",
     site: "@beyourtools",
     images: [`${SITE.url}/og-default.png`],
   },
@@ -38,7 +38,7 @@ const schemas = [
     category: "MultimediaApplication",
   }),
   faqSchema([
-    { question: "Are these audio tools really free?", answer: "Yes — all 20 tools are completely free with no sign-up, no watermarks and no usage limits." },
+    { question: "Are these audio tools really free?", answer: "Yes -all 20 tools are completely free with no sign-up, no watermarks and no usage limits." },
     { question: "Are my audio files uploaded to a server?", answer: "No. All audio processing happens entirely in your browser. Your files never leave your device." },
     { question: "Which formats are supported?", answer: "MP3, WAV, M4A, AAC, FLAC, OGG, Opus, WebM and MP4 (for audio extraction). Supported formats depend on the specific tool." },
     { question: "Do I need to install anything?", answer: "No installation required. The tools run directly in your browser on desktop and mobile." },
@@ -116,7 +116,7 @@ export default function AudioToolsPage() {
             Audio Tools
           </h1>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-            Convert, cut, compress, merge, and process audio files — entirely in your browser.
+            Convert, cut, compress, merge, and process audio files -entirely in your browser.
             No file uploads, no account, no limits. Supports MP3, WAV, FLAC, M4A, OGG and more.
           </p>
           <div className="mt-5 flex flex-wrap gap-4 text-xs" style={{ color: "var(--text-subtle)" }}>

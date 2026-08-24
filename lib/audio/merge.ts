@@ -1,5 +1,5 @@
 /**
- * Audio merging — concatenate multiple audio files.
+ * Audio merging -concatenate multiple audio files.
  * Uses FFmpeg WASM.
  *
  * BUG 6 FIX: the concat demuxer with -c:a copy fails when input files have

@@ -244,10 +244,10 @@ export default function QRWithLogoClient() {
     const cr = contrastRatio(qrOpts.fgColor, qrOpts.bgColor);
     if (cr < 4) warns.push("Low contrast between QR color and background may reduce scanability.");
 
-    // Force H error correction when logo is applied — must tolerate damage
+    // Force H error correction when logo is applied -must tolerate damage
     const effectiveErrorLevel: ErrorLevel = logoOpts.source !== "none" ? "H" : qrOpts.errorLevel;
     if (logoOpts.source !== "none" && qrOpts.errorLevel !== "H") {
-      warns.push("Error correction has been set to H (30%) automatically — required for reliable scanning with a logo overlay.");
+      warns.push("Error correction has been set to H (30%) automatically -required for reliable scanning with a logo overlay.");
     }
 
     setLoading(true);
@@ -506,10 +506,10 @@ export default function QRWithLogoClient() {
                 <select id="qrl-ecc" value={qrOpts.errorLevel}
                   onChange={(e) => setQrOpts((o) => ({ ...o, errorLevel: e.target.value as ErrorLevel }))}
                   className={inputCls} style={inputSty}>
-                  <option value="L">L — Low (7%)</option>
-                  <option value="M">M — Medium (15%)</option>
-                  <option value="Q">Q — Quartile (25%)</option>
-                  <option value="H">H — High (30%) ★ recommended with logo</option>
+                  <option value="L">L -Low (7%)</option>
+                  <option value="M">M -Medium (15%)</option>
+                  <option value="Q">Q -Quartile (25%)</option>
+                  <option value="H">H -High (30%) ★ recommended with logo</option>
                 </select>
                 {logoOpts.source !== "none" && (
                   <p className="mt-1 text-[11px]" style={{ color: "var(--teal)" }}>
@@ -597,7 +597,7 @@ export default function QRWithLogoClient() {
                 <input id="qrl-logo" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml"
                   className="sr-only" onChange={handleLogoUpload} aria-label="Upload logo image" />
                 <p className="mt-1 text-[11px]" style={{ color: "var(--text-subtle)" }}>
-                  PNG, JPG, WebP or SVG — max 2 MB. SVG files are sanitized.
+                  PNG, JPG, WebP or SVG -max 2 MB. SVG files are sanitized.
                 </p>
                 {logoOpts.uploadDataUrl && (
                   <div className="mt-2 flex items-center gap-2">

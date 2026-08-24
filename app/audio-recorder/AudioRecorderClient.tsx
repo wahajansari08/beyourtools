@@ -16,7 +16,7 @@ export default function AudioRecorderClient() {
   const [mimeUsed,   setMimeUsed]   = useState("");
 
   // BUG 4 FIX: manage the playback URL in state/effect so it is created once
-  // and revoked on cleanup — never call URL.createObjectURL() inline in JSX.
+  // and revoked on cleanup -never call URL.createObjectURL() inline in JSX.
   const [playbackUrl, setPlaybackUrl] = useState<string>("");
 
   useEffect(() => {
@@ -45,7 +45,7 @@ export default function AudioRecorderClient() {
     if (timerRef.current) { clearInterval(timerRef.current); timerRef.current = null; }
   }, []);
 
-  // Release mic on unmount — stopStream is stable (useCallback with no deps)
+  // Release mic on unmount -stopStream is stable (useCallback with no deps)
   useEffect(() => () => { stopStream(); stopTimer(); }, [stopStream, stopTimer]);
 
   const startTimer = useCallback(() => {
@@ -268,7 +268,7 @@ export default function AudioRecorderClient() {
       {recState === "idle" && (
         <div className="rounded-lg border px-4 py-3 text-xs leading-relaxed space-y-1"
           style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-muted)" }}>
-          <p>🎙️ <strong style={{ color: "var(--text-secondary)" }}>Microphone permission</strong> — your browser will ask for microphone access when you click Start Recording. You can revoke this at any time in your browser settings.</p>
+          <p>🎙️ <strong style={{ color: "var(--text-secondary)" }}>Microphone permission</strong> -your browser will ask for microphone access when you click Start Recording. You can revoke this at any time in your browser settings.</p>
           <p>🔒 Your recording is processed entirely in your browser and is never uploaded to any server.</p>
         </div>
       )}

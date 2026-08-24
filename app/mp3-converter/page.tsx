@@ -16,11 +16,11 @@ export default function Mp3ConverterPage() {
       slug="mp3-converter"
       title="MP3 Converter"
       categoryLabel="Converters"
-      tagline="Convert any audio file to MP3 instantly in your browser. Select your preferred bitrate and download — no upload required."
+      tagline="Convert any audio file to MP3 instantly in your browser. Select your preferred bitrate and download -no upload required."
       description="Free online MP3 converter. Convert WAV, FLAC, M4A, OGG, AAC and MP4 files to MP3 directly in your browser."
       howTo={[
         { title: "Upload audio", text: "Drag and drop or click to select your audio file (MP3, WAV, FLAC, M4A, OGG, MP4 and more)." },
-        { title: "Choose bitrate", text: "Select your desired MP3 bitrate — 128 kbps for smaller files, 320 kbps for best quality." },
+        { title: "Choose bitrate", text: "Select your desired MP3 bitrate -128 kbps for smaller files, 320 kbps for best quality." },
         { title: "Convert", text: 'Click "Convert to MP3" and wait a moment while the conversion runs locally in your browser.' },
         { title: "Download", text: "Preview the result and download your MP3." },
       ]}
@@ -28,7 +28,7 @@ export default function Mp3ConverterPage() {
         "Supports WAV, FLAC, M4A, OGG, AAC, MP4, WebM and more",
         "Selectable bitrate: 64–320 kbps",
         "Audio preview before and after conversion",
-        "100% browser-based — no upload",
+        "100% browser-based -no upload",
         "Free, no sign-up required",
         "Shows file size before and after",
       ]}

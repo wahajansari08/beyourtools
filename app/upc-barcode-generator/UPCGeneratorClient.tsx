@@ -70,7 +70,7 @@ export default function UPCGeneratorClient() {
             className={inputClass} style={inputStyle} />
           <p className="mt-1 text-[11px]" style={{ color: "var(--text-subtle)" }}>
             {autoCheck
-              ? "Enter 11 digits — the 12th check digit is calculated automatically."
+              ? "Enter 11 digits -the 12th check digit is calculated automatically."
               : "Enter all 12 digits including the check digit."}
           </p>
         </div>

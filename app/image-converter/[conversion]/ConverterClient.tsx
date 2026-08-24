@@ -142,7 +142,7 @@ function MultiDropzone({
           Drop {fromLabel} files here
         </p>
         <p className="mt-1 text-xs" style={{ color: "var(--text-subtle)" }}>
-          or click to browse — select multiple files at once
+          or click to browse -select multiple files at once
         </p>
       </div>
       <input
@@ -219,7 +219,7 @@ function FileRow({
 
       {/* Info */}
       <div className="min-w-0">
-        {/* Filename — show output name once done */}
+        {/* Filename -show output name once done */}
         <p
           className="truncate text-xs font-medium"
           style={{ color: "var(--text-primary)" }}
@@ -295,7 +295,7 @@ function FileRow({
           </button>
         )}
 
-        {/* Remove — available unless actively converting */}
+        {/* Remove -available unless actively converting */}
         {item.status !== "converting" && (
           <button
             type="button"
@@ -526,7 +526,7 @@ export default function ConverterClient({
       a.click();
       URL.revokeObjectURL(url);
     } catch {
-      // ZIP failed silently — individual downloads still work
+      // ZIP failed silently -individual downloads still work
     } finally {
       setZipping(false);
     }
@@ -570,7 +570,7 @@ export default function ConverterClient({
         </div>
       )}
 
-      {/* BUG 3 FIX: drop zone always enabled — no disabled prop */}
+      {/* BUG 3 FIX: drop zone always enabled -no disabled prop */}
       <MultiDropzone
         accept={accept}
         fromLabel={fromLabel}
@@ -658,7 +658,7 @@ export default function ConverterClient({
           </div>
 
           {/* Rows */}
-          {/* BUG 7 FIX: StatusBanner block below was removed — warnings render inline in FileRow */}
+          {/* BUG 7 FIX: StatusBanner block below was removed -warnings render inline in FileRow */}
           <div className="space-y-2" role="list" aria-label="Files to convert">
             {items.map((item) => (
               <FileRow
@@ -679,7 +679,7 @@ export default function ConverterClient({
           { icon: "🔒", title: "Private",
             body: "Files never leave your device. Conversion runs entirely in your browser." },
           { icon: "⚡", title: "Batch",
-            body: "Add as many files as you need — they queue automatically. Add more at any time." },
+            body: "Add as many files as you need -they queue automatically. Add more at any time." },
           { icon: "🆓", title: "Free",
             body: "No account, no limits, no watermarks. Always free." },
         ].map(({ icon, title, body }) => (

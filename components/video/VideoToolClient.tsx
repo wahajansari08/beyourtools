@@ -182,7 +182,7 @@ export default function VideoToolClient({ tool }: { tool: VideoTool }) {
       if (outputUrlRef.current) URL.revokeObjectURL(outputUrlRef.current);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // intentionally empty — runs only on unmount
+  }, []); // intentionally empty -runs only on unmount
 
   const outputDimensions = useMemo(() => {
     if (!upload?.metadata.width || !upload.metadata.height) return null;

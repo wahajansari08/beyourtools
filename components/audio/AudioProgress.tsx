@@ -2,7 +2,7 @@
 
 /**
  * BUG 8 FIX: the original indeterminate state used
- * `animate-[indeterminate_1.4s_ease-in-out_infinite]` — an arbitrary Tailwind
+ * `animate-[indeterminate_1.4s_ease-in-out_infinite]` -an arbitrary Tailwind
  * value that references a keyframe ("indeterminate") not defined anywhere in
  * the project. Replaced with a standard `animate-pulse` for the indeterminate
  * bar, and a sliding shimmer built with plain inline styles + a CSS animation

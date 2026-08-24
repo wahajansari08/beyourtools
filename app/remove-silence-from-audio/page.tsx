@@ -30,7 +30,7 @@ export default function RemoveSilencePage() {
         "Speech padding to protect word edges",
         "Supports MP3, WAV, FLAC, M4A, OGG input",
         "Audio preview before and after",
-        "100% browser-based — no upload",
+        "100% browser-based -no upload",
       ]}
       formats={["MP3", "WAV", "FLAC", "M4A", "OGG", "Opus", "AAC", "WebM"]}
       faqs={[

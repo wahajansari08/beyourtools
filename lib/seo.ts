@@ -286,7 +286,7 @@ export function createToolMetadata(opts: ToolMetadataOpts) {
 
 /**
  * WebApplication schema for tool pages.
- * Lighter than SoftwareApplication — no fake ratings.
+ * Lighter than SoftwareApplication -no fake ratings.
  */
 export function webAppSchema(opts: {
   name: string;

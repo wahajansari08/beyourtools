@@ -53,7 +53,7 @@ export default function FormatSelectorClient() {
       style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-surface)" }}
     >
       <p className="mb-4 text-sm font-semibold" style={{ color: "var(--text-secondary)" }}>
-        Quick convert — pick your formats
+        Quick convert -pick your formats
       </p>
 
       <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">

@@ -4,20 +4,20 @@ import { SITE } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Contact Us — BeYourTools",
+  title: "Contact Us -BeYourTools",
   description: "Get in touch with the BeYourTools team. Report a bug, suggest a tool, or ask a question.",
   alternates: { canonical: `${SITE.url}/contact` },
   robots: { index: true, follow: true },
   openGraph: {
     type: "website",
     url: `${SITE.url}/contact`,
-    title: "Contact Us — BeYourTools",
+    title: "Contact Us -BeYourTools",
     description: "Get in touch with the BeYourTools team. We typically respond within 2–3 business days.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "Contact BeYourTools" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contact Us — BeYourTools",
+    title: "Contact Us -BeYourTools",
     description: "Get in touch with the BeYourTools team.",
     site: "@beyourtools",
     images: [`${SITE.url}/og-default.png`],

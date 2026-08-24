@@ -299,7 +299,7 @@ export async function processVideo(file: File, kind: string, opts: VideoProcessO
     while (tempo < 0.5) {
       atempoParts.push("atempo=0.5");
       tempo *= 2;   // FIX: was /= 0.5 (same as *2) which was correct by accident,
-                    // but the intent was wrong — rewritten explicitly for clarity
+                    // but the intent was wrong -rewritten explicitly for clarity
     }
     atempoParts.push(`atempo=${tempo.toFixed(4)}`);
     return runSingle(

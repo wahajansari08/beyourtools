@@ -16,7 +16,7 @@ export default function Mp3ToWavPage() {
       slug="mp3-to-wav"
       title="MP3 to WAV"
       categoryLabel="Converters"
-      tagline="Convert MP3 files to uncompressed WAV format — useful for audio editing software that requires PCM audio."
+      tagline="Convert MP3 files to uncompressed WAV format -useful for audio editing software that requires PCM audio."
       description="Free online MP3 to WAV converter. Converts to PCM 16-bit WAV in your browser."
       howTo={[
         { title: "Upload MP3", text: "Drop your MP3 file or click to browse." },

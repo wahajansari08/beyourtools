@@ -30,7 +30,7 @@ export default function Mp3MergerPage() {
         "Shows file size and duration for each file",
         "Shows total merged duration",
         "Audio preview of merged output",
-        "100% browser-based — no upload",
+        "100% browser-based -no upload",
       ]}
       formats={["MP3"]}
       faqs={[

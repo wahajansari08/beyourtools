@@ -9,14 +9,14 @@ import CopyButton from "@/components/CopyButton";
 const FORMATS = [
   { value: "CODE128", label: "Code 128", hint: "Full ASCII printable characters." },
   { value: "CODE39",  label: "Code 39",  hint: "A–Z, 0–9, space, - . $ / + %" },
-  { value: "EAN13",   label: "EAN-13",   hint: "Enter 12 digits — check digit added automatically." },
-  { value: "EAN8",    label: "EAN-8",    hint: "Enter 7 digits — check digit added automatically." },
-  { value: "UPC",     label: "UPC-A",    hint: "Enter 11 digits — check digit added automatically." },
+  { value: "EAN13",   label: "EAN-13",   hint: "Enter 12 digits -check digit added automatically." },
+  { value: "EAN8",    label: "EAN-8",    hint: "Enter 7 digits -check digit added automatically." },
+  { value: "UPC",     label: "UPC-A",    hint: "Enter 11 digits -check digit added automatically." },
 ] as const;
 
 type FormatValue = typeof FORMATS[number]["value"];
 
-// Social logo paths (inline SVG data URLs — brand icons, safe, no network call)
+// Social logo paths (inline SVG data URLs -brand icons, safe, no network call)
 const SOCIAL_LOGOS: { id: string; label: string; svg: string }[] = [
   { id: "instagram", label: "Instagram", svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><radialGradient id="ig" cx="30%" cy="107%" r="150%"><stop offset="0%" stop-color="#fdf497"/><stop offset="5%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></radialGradient></defs><rect width="24" height="24" rx="5" fill="url(#ig)"/><path d="M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" fill="white"/><circle cx="17.5" cy="6.5" r="1.2" fill="white"/></svg>` },
   { id: "facebook",  label: "Facebook",  svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect width="24" height="24" rx="5" fill="#1877F2"/><path d="M15.12 12.96H13.2v7.04h-2.88V12.96H9V10.4h1.32V8.88C10.32 7.12 11.2 6 13.2 6h1.92v2.56h-1.2c-.56 0-.72.28-.72.72v1.12h1.96l-.04 2.56z" fill="white"/></svg>` },
@@ -128,7 +128,7 @@ function validateAndNormalize(value: string, format: FormatValue): { ok: boolean
     }
     return { ok: true, normalized: v.toUpperCase(), error: "" };
   }
-  // CODE128 — any printable ASCII
+  // CODE128 -any printable ASCII
   for (const ch of v) {
     if (ch.charCodeAt(0) < 32 || ch.charCodeAt(0) > 126) {
       return { ok: false, normalized: "", error: `Character "${ch}" is not supported in Code 128.` };
@@ -528,7 +528,7 @@ export default function BarcodeWithLogoClient() {
                 <input id="blwl-logo-upload" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml"
                   className="sr-only" onChange={handleLogoUpload} aria-label="Upload logo image" />
                 <p className="mt-1 text-[11px]" style={{ color: "var(--text-subtle)" }}>
-                  PNG, JPG, WebP or SVG — max 2 MB. SVG files are sanitized before use.
+                  PNG, JPG, WebP or SVG -max 2 MB. SVG files are sanitized before use.
                 </p>
                 {logoOpts.uploadDataUrl && (
                   <div className="mt-2 flex items-center gap-2">

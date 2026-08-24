@@ -8,7 +8,7 @@ import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical
 export const metadata: Metadata = {
   title: "EAN-13 Barcode Generator - Create EAN Barcodes Free | BeYourTools",
   description:
-    "Generate EAN-13 and EAN-8 barcodes with automatic check digit calculation. Enter your digits, get a valid barcode instantly. Download PNG or SVG — free and browser-based.",
+    "Generate EAN-13 and EAN-8 barcodes with automatic check digit calculation. Enter your digits, get a valid barcode instantly. Download PNG or SVG -free and browser-based.",
   keywords: "EAN-13 barcode generator, EAN barcode, EAN-8 generator, create EAN barcode, EAN check digit, free EAN generator",
   alternates: { canonical: `${SITE.url}/ean-barcode-generator` },
   openGraph: {
@@ -59,7 +59,7 @@ export default function EANGeneratorPage() {
             EAN-13 Barcode Generator
           </h1>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-            Generate EAN-13 barcodes used on retail products worldwide — and EAN-8 for compact packaging.
+            Generate EAN-13 barcodes used on retail products worldwide -and EAN-8 for compact packaging.
             Enter your digits, the check digit is calculated automatically. Download PNG or SVG.
           </p>
         </div>

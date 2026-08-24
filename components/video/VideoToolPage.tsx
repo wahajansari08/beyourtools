@@ -43,7 +43,7 @@ export default function VideoToolPage({ tool }: { tool: VideoTool }) {
 
         <p className="mt-6 text-[11px]" style={{ color: "var(--text-subtle)" }}>
           Your video is processed locally in your browser and is not uploaded to our servers.
-          {tool.engine === "browser" ? " This lightweight tool captures frames directly from the video in your browser." : " Processing starts only when you click the button — nothing happens until then."}
+          {tool.engine === "browser" ? " This lightweight tool captures frames directly from the video in your browser." : " Processing starts only when you click the button -nothing happens until then."}
         </p>
 
         <section className="mt-10 space-y-3">

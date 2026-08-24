@@ -30,7 +30,7 @@ export default function AudioJoinerPage() {
         "Reorderable file list",
         "Shows duration and size per file",
         "Total duration summary",
-        "100% browser-based — no upload",
+        "100% browser-based -no upload",
       ]}
       formats={["MP3", "WAV", "FLAC", "M4A", "OGG", "Opus", "AAC", "WebM"]}
       faqs={[

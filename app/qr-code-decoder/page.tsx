@@ -8,7 +8,7 @@ import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical
 export const metadata: Metadata = {
   title: "QR Code Decoder - Read QR Codes from Images Free | BeYourTools",
   description:
-    "Upload a QR code image and decode its content instantly — URL, text, WiFi, vCard and more. Works with PNG, JPG and WebP. Free, private, browser-based.",
+    "Upload a QR code image and decode its content instantly -URL, text, WiFi, vCard and more. Works with PNG, JPG and WebP. Free, private, browser-based.",
   keywords: "QR code decoder, read QR code from image, QR code reader online, decode QR code, QR image decoder",
   alternates: { canonical: `${SITE.url}/qr-code-decoder` },
   openGraph: {
@@ -59,7 +59,7 @@ export default function QRDecoderPage() {
             QR Code Decoder
           </h1>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-            Upload or drag in a QR code image to instantly reveal its contents — URL, WiFi credentials, contact info, or plain text. No camera needed. Everything happens in your browser.
+            Upload or drag in a QR code image to instantly reveal its contents -URL, WiFi credentials, contact info, or plain text. No camera needed. Everything happens in your browser.
           </p>
         </div>
 
@@ -79,7 +79,7 @@ export default function QRDecoderPage() {
           {[
             ["What image formats are supported?", "PNG, JPG, and WebP. The QR code must be clearly visible and not too small or blurry."],
             ["Does this upload my image anywhere?", "No. Decoding is done entirely in your browser. Your images never leave your device."],
-            ["My QR code wasn't detected — why?", "Try a higher-resolution image where the QR code fills more of the frame. Very small or heavily damaged codes may not decode."],
+            ["My QR code wasn't detected -why?", "Try a higher-resolution image where the QR code fills more of the frame. Very small or heavily damaged codes may not decode."],
           ].map(([q, a]) => (
             <div key={q as string}>
               <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>{q}</p>

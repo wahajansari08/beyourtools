@@ -16,10 +16,10 @@ export default function WavToMp3Page() {
       slug="wav-to-mp3"
       title="WAV to MP3"
       categoryLabel="Converters"
-      tagline="Compress large WAV files to MP3 — reduce file size significantly while keeping good audio quality."
+      tagline="Compress large WAV files to MP3 -reduce file size significantly while keeping good audio quality."
       description="Free online WAV to MP3 converter with bitrate control. Convert in your browser, no upload needed."
       howTo={[
-        { title: "Select bitrate", text: "Choose your MP3 bitrate — 192 kbps is a good default." },
+        { title: "Select bitrate", text: "Choose your MP3 bitrate -192 kbps is a good default." },
         { title: "Upload WAV", text: "Drop your WAV file or click to browse." },
         { title: "Convert", text: 'Click "Convert to MP3". The audio is re-encoded locally in your browser.' },
         { title: "Download", text: "Preview and download the MP3. Check the size reduction in the file info." },
@@ -29,7 +29,7 @@ export default function WavToMp3Page() {
         "Selectable bitrate 64–320 kbps",
         "Significant file size reduction",
         "Audio preview before and after",
-        "No upload — 100% browser-based",
+        "No upload -100% browser-based",
       ]}
       formats={["WAV → MP3"]}
       faqs={[

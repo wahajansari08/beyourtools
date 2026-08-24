@@ -19,7 +19,7 @@ export const audioTools: AudioTool[] = [
   { slug: "flac-to-mp3",      name: "FLAC to MP3",        description: "Convert lossless FLAC files to compressed MP3 format.",                     category: "Converters",              icon: "🎼" },
   { slug: "ogg-to-mp3",       name: "OGG to MP3",         description: "Convert OGG Vorbis audio files to MP3 format.",                             category: "Converters",              icon: "🎶" },
   // Cutters & Trimmers
-  { slug: "mp3-cutter",       name: "MP3 Cutter",         description: "Cut an MP3 file — select start and end points and save the section.",       category: "Cutters & Trimmers",      icon: "✂️" },
+  { slug: "mp3-cutter",       name: "MP3 Cutter",         description: "Cut an MP3 file -select start and end points and save the section.",       category: "Cutters & Trimmers",      icon: "✂️" },
   { slug: "audio-cutter",     name: "Audio Cutter",       description: "Cut audio files in any supported format by selecting a range.",             category: "Cutters & Trimmers",      icon: "🔪" },
   { slug: "mp3-trimmer",      name: "MP3 Trimmer",        description: "Trim silence or unwanted sections from the start or end of an MP3.",        category: "Cutters & Trimmers",      icon: "📐" },
   // Compressors

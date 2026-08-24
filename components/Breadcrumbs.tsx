@@ -9,7 +9,7 @@ export interface BreadcrumbItem {
 
 interface BreadcrumbsProps {
   items: BreadcrumbItem[];
-  /** Include JSON-LD schema — default true */
+  /** Include JSON-LD schema -default true */
   schema?: boolean;
 }
 

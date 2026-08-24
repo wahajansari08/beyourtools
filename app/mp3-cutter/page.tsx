@@ -29,7 +29,7 @@ export default function Mp3CutterPage() {
         "Precise timestamp inputs",
         "Preview selection before cutting",
         "Shows original and selected duration",
-        "100% browser-based — no upload",
+        "100% browser-based -no upload",
       ]}
       formats={["MP3"]}
       faqs={[
