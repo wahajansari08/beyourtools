@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ThemeProvider from "@/components/ThemeProvider";
@@ -116,6 +117,7 @@ export default function RootLayout({
             gtag('config', 'G-Y840CEVDN3');
           `}
         </Script>
+        <Analytics />
       </body>
     </html>
   );
