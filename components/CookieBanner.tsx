@@ -6,14 +6,15 @@ import Link from "next/link";
 type Consent = "accepted" | "declined" | null;
 
 export default function CookieBanner() {
-  const [consent, setConsent] = useState<Consent>(null);
-  const [visible, setVisible] = useState(false);
+  const [consent,  setConsent]  = useState<Consent>(null);
+  const [visible,  setVisible]  = useState(false);
+  const [mounted,  setMounted]  = useState(false);
 
   useEffect(() => {
     try {
       const stored = localStorage.getItem("cookie_consent") as Consent;
       if (!stored) {
-        // Slight delay so banner doesn't flash on first paint
+        // Small delay so the banner slides in after first paint
         const t = setTimeout(() => setVisible(true), 600);
         return () => clearTimeout(t);
       }
@@ -21,12 +22,23 @@ export default function CookieBanner() {
     } catch {
       setVisible(true);
     }
+    setMounted(true);
   }, []);
+
+  // Trigger slide-in transition after mount
+  useEffect(() => {
+    if (visible) {
+      const t = setTimeout(() => setMounted(true), 10);
+      return () => clearTimeout(t);
+    }
+    setMounted(false);
+  }, [visible]);
 
   const save = (choice: "accepted" | "declined") => {
     try { localStorage.setItem("cookie_consent", choice); } catch { /* ignore */ }
-    setConsent(choice);
-    setVisible(false);
+    setMounted(false);
+    // Wait for slide-out before unmounting
+    setTimeout(() => { setConsent(choice); setVisible(false); }, 300);
   };
 
   if (!visible || consent !== null) return null;
@@ -36,10 +48,14 @@ export default function CookieBanner() {
       role="dialog"
       aria-modal="false"
       aria-label="Cookie consent"
-      className="fixed inset-x-0 bottom-0 z-[200] animate-slide-up hidden"
+      className="fixed inset-x-0 bottom-0 z-[200]"
+      style={{
+        transform: mounted ? "translateY(0)" : "translateY(100%)",
+        transition: "transform 300ms ease",
+      }}
     >
       <div
-        className="flex w-full flex-col gap-4 border-t p-5 shadow-2xl sm:flex-row sm:items-center"
+        className="flex w-full flex-col gap-4 border-t p-5 sm:flex-row sm:items-center"
         style={{
           backgroundColor: "var(--bg-surface)",
           borderColor: "var(--border-strong)",
@@ -57,8 +73,8 @@ export default function CookieBanner() {
             style={{ color: "var(--teal)" }}
           >
             Cookie Policy
-          </Link>{" "}
-          ·{" "}
+          </Link>
+          {" · "}
           <Link
             href="/privacy-policy"
             className="focus-ring underline underline-offset-2 transition hover-text-primary"
