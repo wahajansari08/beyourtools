@@ -50,7 +50,7 @@ export default function AudioNormalizerClient() {
               <span>-12 dBFS</span><span>0 dBFS</span>
             </div>
             <p className="mt-1.5 text-[11px]" style={{ color: "var(--text-subtle)" }}>
-              -1.0 dBFS is the recommended default — leaves a small headroom to avoid clipping.
+              -1.0 dBFS is the recommended default - leaves a small headroom to avoid clipping.
             </p>
           </div>
         )}

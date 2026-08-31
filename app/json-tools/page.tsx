@@ -5,21 +5,21 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "JSON Tools — Free Online JSON Formatter, Validator & Converter",
-  description: "30+ free browser-based JSON tools. Format, validate, diff, convert, generate, and inspect JSON — no upload, no sign-up, 100% private.",
+  title: "JSON Tools - Free Online JSON Formatter, Validator & Converter",
+  description: "30+ free browser-based JSON tools. Format, validate, diff, convert, generate, and inspect JSON - no upload, no sign-up, 100% private.",
   keywords: "JSON formatter, JSON validator, JSON diff, JSON to CSV, JSON schema, JSONPath, JWT decoder, online JSON tools",
   alternates: { canonical: `${SITE.url}/json-tools` },
   robots: { index: true, follow: true },
   openGraph: {
     type: "website", url: `${SITE.url}/json-tools`,
-    title: "JSON Tools — Free Online JSON Formatter, Validator & More",
-    description: "30+ JSON tools in your browser — format, validate, convert, diff and more.",
+    title: "JSON Tools - Free Online JSON Formatter, Validator & More",
+    description: "30+ JSON tools in your browser - format, validate, convert, diff and more.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "JSON Tools" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "JSON Tools — Free Online JSON Formatter & Converter",
-    description: "30+ free browser-based JSON tools — format, validate, convert and more.",
+    title: "JSON Tools - Free Online JSON Formatter & Converter",
+    description: "30+ free browser-based JSON tools - format, validate, convert and more.",
     site: "@beyourtools",
     images: [`${SITE.url}/og-default.png`],
   },

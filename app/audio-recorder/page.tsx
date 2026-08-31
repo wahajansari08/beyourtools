@@ -16,7 +16,7 @@ export default function AudioRecorderPage() {
       slug="audio-recorder"
       title="Audio Recorder"
       categoryLabel="Recorder"
-      tagline="Record audio directly from your microphone in the browser. Pause, resume and download your recording — no installation needed."
+      tagline="Record audio directly from your microphone in the browser. Pause, resume and download your recording - no installation needed."
       description="Free online audio recorder. Record from your microphone, pause, resume and download. No upload, no account required."
       howTo={[
         { title: "Allow microphone", text: 'Click "Start Recording" and allow microphone access when your browser prompts you.' },
@@ -31,7 +31,7 @@ export default function AudioRecorderPage() {
         "Playback before downloading",
         "Descriptive filename with timestamp",
         "Microphone released after recording stops",
-        "No upload — recording stays on your device",
+        "No upload - recording stays on your device",
       ]}
       formats={["WebM (Opus)", "OGG (Opus)", "MP4"]}
       faqs={[

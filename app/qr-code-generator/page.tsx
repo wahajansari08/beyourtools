@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     type: "website",
     url: `${SITE.url}/qr-code-generator`,
     title: "QR Code Generator - Create Free QR Codes Online | BeYourTools",
-    description: "Generate QR codes for URLs, WiFi, vCards and more — free, instant, no sign-up.",
+    description: "Generate QR codes for URLs, WiFi, vCards and more - free, instant, no sign-up.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "QR Code Generator" }],
   },
 };
@@ -77,7 +77,7 @@ export default function QRCodeGeneratorPage() {
           </h1>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
             Create free QR codes for URLs, text, WiFi credentials, email, phone, SMS, vCards, and GPS locations.
-            Customize colors and download as PNG or SVG — everything happens in your browser.
+            Customize colors and download as PNG or SVG - everything happens in your browser.
           </p>
         </div>
 
@@ -108,7 +108,7 @@ export default function QRCodeGeneratorPage() {
               ["Adjustable size", "128 px to 512 px output"],
               ["Error correction", "L / M / Q / H levels"],
               ["PNG & SVG download", "Pixel-perfect PNG and infinitely scalable SVG"],
-              ["100% private", "No server upload — generated entirely in your browser"],
+              ["100% private", "No server upload - generated entirely in your browser"],
             ].map(([title, desc]) => (
               <div key={title} className="rounded-lg border p-3" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
                 <p className="text-xs font-semibold" style={{ color: "var(--text-secondary)" }}>{title}</p>
@@ -122,7 +122,7 @@ export default function QRCodeGeneratorPage() {
         <section className="mt-10 space-y-4">
           <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>FAQ</h2>
           {[
-            ["Is this QR code generator really free?", "Yes — no sign-up, no watermarks, unlimited usage."],
+            ["Is this QR code generator really free?", "Yes - no sign-up, no watermarks, unlimited usage."],
             ["Can I print the generated QR code?", "Yes. Download the SVG version for best print quality at any size."],
             ["What is error correction?", "It determines how much of the QR code can be damaged and still scan correctly. H (30%) is best for printed or outdoor use."],
           ].map(([q, a]) => (

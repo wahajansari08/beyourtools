@@ -11,10 +11,10 @@ export const batch5: BlogPost[] = [
     category: "PDF",
     tags: ["PDF", "Compression", "File Size", "Optimise"],
     content: `<h2>Why are PDFs so large?</h2>
-<p>PDFs can embed fonts, high-resolution images, colour profiles, and various internal structures. A single scanned page at full resolution can easily reach several megabytes. A 10-page scanned document can top 50 MB — far too large for most email systems.</p>
+<p>PDFs can embed fonts, high-resolution images, colour profiles, and various internal structures. A single scanned page at full resolution can easily reach several megabytes. A 10-page scanned document can top 50 MB - far too large for most email systems.</p>
 
 <h2>What browser-based compression can do</h2>
-<p>Our <a href="/pdf-tools/pdf-compressor">PDF Compressor</a> reduces file size by cleaning up and re-organising the PDF's internal data. Redundant content, duplicate objects, and inefficient structures are removed. For text-heavy PDFs, expect reductions in the range of 10–40%. The results vary — some files compress dramatically, others less so, depending on how the original was created.</p>
+<p>Our <a href="/pdf-tools/pdf-compressor">PDF Compressor</a> reduces file size by cleaning up and re-organising the PDF's internal data. Redundant content, duplicate objects, and inefficient structures are removed. For text-heavy PDFs, expect reductions in the range of 10–40%. The results vary - some files compress dramatically, others less so, depending on how the original was created.</p>
 
 <h2>What compression can't fix</h2>
 <p>If a PDF is large primarily because it contains high-resolution images embedded at print quality, browser-based compression has limited effect on those images. For those cases, desktop tools provide more control over image recompression at the cost of some additional setup.</p>
@@ -29,7 +29,7 @@ export const batch5: BlogPost[] = [
 <h2>Frequently Asked Questions</h2>
 <dl>
 <dt>How much will my PDF compress?</dt>
-<dd>Results vary significantly by source. PDFs created from word processors or presentations often compress by 20–40%. Scanned PDFs — which are essentially image files wrapped in a PDF container — see less benefit without also recompressing the images.</dd>
+<dd>Results vary significantly by source. PDFs created from word processors or presentations often compress by 20–40%. Scanned PDFs - which are essentially image files wrapped in a PDF container - see less benefit without also recompressing the images.</dd>
 <dt>Does compressing a PDF reduce its visual quality?</dt>
 <dd>Our tool uses lossless PDF optimisation. Text and vector content are not degraded. Existing embedded images are not recompressed, so their quality is preserved exactly as in the original.</dd>
 <dt>Is it safe to compress confidential PDFs online?</dt>
@@ -62,10 +62,10 @@ Bob,25</code></pre>
 <p>Nested objects don't map cleanly to CSV columns. The best approach is to flatten the JSON first: our <a href="/json-flatten">JSON Flatten</a> tool converts <code>{"user":{"name":"Ada"}}</code> into <code>{"user.name":"Ada"}</code>, which then converts to a proper column header in the CSV.</p>
 
 <h2>Convert instantly</h2>
-<p>Use our <a href="/json-to-csv">JSON to CSV</a> tool — paste your JSON array and download the CSV file immediately. If you need to go the other way, our <a href="/csv-to-json">CSV to JSON</a> converter reads the header row and converts each subsequent row into a JSON object.</p>
+<p>Use our <a href="/json-to-csv">JSON to CSV</a> tool - paste your JSON array and download the CSV file immediately. If you need to go the other way, our <a href="/csv-to-json">CSV to JSON</a> converter reads the header row and converts each subsequent row into a JSON object.</p>
 
 <h2>What happens to data types?</h2>
-<p>CSV is a text-based format — there's no concept of data types. Numbers, booleans, and dates all become text strings in the CSV. When you import the CSV into a database or analysis tool, you'll typically need to specify which columns should be treated as numbers or dates.</p>
+<p>CSV is a text-based format - there's no concept of data types. Numbers, booleans, and dates all become text strings in the CSV. When you import the CSV into a database or analysis tool, you'll typically need to specify which columns should be treated as numbers or dates.</p>
 
 <section class="faq">
 <h2>Frequently Asked Questions</h2>

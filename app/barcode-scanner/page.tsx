@@ -34,7 +34,7 @@ const schemas = [
   }),
   faqSchema([
     { question: "Which barcode formats does the scanner support?", answer: "Code 128, Code 39, EAN-13, EAN-8, UPC-A, UPC-E, ITF, Data Matrix, Aztec, and PDF417." },
-    { question: "Do I need to install an app?", answer: "No. The scanner runs entirely in your browser — no download needed." },
+    { question: "Do I need to install an app?", answer: "No. The scanner runs entirely in your browser - no download needed." },
     { question: "What if camera permission is denied?", answer: "You can still decode barcodes by uploading an image using the upload option below the camera controls." },
     { question: "Is my camera feed private?", answer: "Yes. All processing is done locally in JavaScript. No frames are uploaded to any server." },
   ]),
@@ -59,7 +59,7 @@ export default function BarcodeScannerPage() {
             Barcode Scanner
           </h1>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-            Scan barcodes live using your device camera. The format is detected automatically — Code 128,
+            Scan barcodes live using your device camera. The format is detected automatically - Code 128,
             EAN-13, UPC-A, and more. No camera? Upload a barcode image instead.
           </p>
         </div>
@@ -70,7 +70,7 @@ export default function BarcodeScannerPage() {
           <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>How to use</h2>
           <ol className="space-y-2 text-sm" style={{ color: "var(--text-muted)" }}>
             <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>1.</span> Click <strong>Start Camera Scan</strong> and allow camera access.</li>
-            <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>2.</span> Hold a barcode in front of your camera — detection is automatic.</li>
+            <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>2.</span> Hold a barcode in front of your camera - detection is automatic.</li>
             <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>3.</span> Copy the result or scan another barcode.</li>
             <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>4.</span> No camera? Upload a barcode image using the upload option.</li>
           </ol>

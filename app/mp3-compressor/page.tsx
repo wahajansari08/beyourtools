@@ -19,7 +19,7 @@ export default function Mp3CompressorPage() {
       tagline="Reduce the size of your MP3 file by re-encoding at a lower bitrate. Choose from presets ranging from maximum compression to best quality."
       description="Free online MP3 compressor. Select a compression preset and reduce MP3 file size in your browser."
       howTo={[
-        { title: "Choose preset", text: "Select a compression preset based on your needs — Balanced is a good default for most uses." },
+        { title: "Choose preset", text: "Select a compression preset based on your needs - Balanced is a good default for most uses." },
         { title: "Upload MP3", text: "Drop your MP3 file or click to browse." },
         { title: "Compress", text: 'Click "Compress MP3". The tool re-encodes at the selected bitrate.' },
         { title: "Check reduction", text: "The file info shows original and compressed size. Download if the result meets your needs." },
@@ -28,7 +28,7 @@ export default function Mp3CompressorPage() {
         "5 compression presets from 64 to 320 kbps",
         "Shows original vs compressed file size",
         "Audio preview before and after",
-        "100% browser-based — no upload",
+        "100% browser-based - no upload",
         "Free, no sign-up",
       ]}
       formats={["MP3"]}

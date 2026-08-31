@@ -6,21 +6,21 @@ import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical
 import FormatSelectorClient from "./FormatSelectorClient";
 
 export const metadata: Metadata = {
-  title: "Image Converter — Free Online JPG PNG WebP AVIF SVG ICO Converter",
-  description: "Free browser-based image converter. Convert between JPG, PNG, WebP, AVIF, GIF, BMP, SVG, ICO, PDF and more — 118 format combinations, no upload, no sign-up.",
+  title: "Image Converter - Free Online JPG PNG WebP AVIF SVG ICO Converter",
+  description: "Free browser-based image converter. Convert between JPG, PNG, WebP, AVIF, GIF, BMP, SVG, ICO, PDF and more - 118 format combinations, no upload, no sign-up.",
   keywords: "image converter, JPG to PNG, PNG to JPG, JPG to WebP, PNG to WebP, image format converter, WebP converter, AVIF converter, SVG converter, free online image converter",
   alternates: { canonical: `${SITE.url}/image-converter` },
   robots: { index: true, follow: true },
   openGraph: {
     type: "website", url: `${SITE.url}/image-converter`,
-    title: "Image Converter — Free Online JPG PNG WebP Converter | BeYourTools",
-    description: "118 image conversion combinations in your browser — JPG, PNG, WebP, AVIF, SVG, ICO, PDF. No upload needed.",
+    title: "Image Converter - Free Online JPG PNG WebP Converter | BeYourTools",
+    description: "118 image conversion combinations in your browser - JPG, PNG, WebP, AVIF, SVG, ICO, PDF. No upload needed.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "Image Converter" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Image Converter — Free Online JPG PNG WebP Converter",
-    description: "118 image format conversions in your browser — no upload needed.",
+    title: "Image Converter - Free Online JPG PNG WebP Converter",
+    description: "118 image format conversions in your browser - no upload needed.",
     site: "@beyourtools",
     images: [`${SITE.url}/og-default.png`],
   },
@@ -52,7 +52,7 @@ export default function ImageConverterHub() {
       { question: "How do I convert JPG to WebP for free?", answer: "Use our free JPG to WebP converter - drag and drop your JPG, download the WebP instantly. No upload to any server, no account required." },
       { question: "What image formats can I convert online?", answer: "We support 118 conversion combinations including JPG, PNG, WebP, AVIF, GIF, BMP, SVG, ICO, TIFF, HEIC, JXL, PSD, TGA, and PDF." },
       { question: "Does converting images reduce quality?", answer: "Lossless conversions (PNG to WebP lossless, PNG to BMP) preserve every pixel. Lossy conversions (JPG, WebP lossy) have a quality setting - use 80-85% for minimal visible quality loss." },
-      { question: "Are my images uploaded to a server?", answer: "No — all image conversion happens locally in your browser. Your images never leave your device." },
+      { question: "Are my images uploaded to a server?", answer: "No - all image conversion happens locally in your browser. Your images never leave your device." },
     ]),
   ];
 
@@ -163,7 +163,7 @@ export default function ImageConverterHub() {
         style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-muted)" }}
       >
         <span className="font-semibold" style={{ color: "var(--text-secondary)" }}>Browser support note: </span>
-        Most conversions run entirely in your browser — no server needed.
+        Most conversions run entirely in your browser - no server needed.
         TIFF, HEIC, JXL, PSD, and TGA require decoding support that varies by browser;
         those converters will show a helpful message if your browser cannot handle the file.
       </div>

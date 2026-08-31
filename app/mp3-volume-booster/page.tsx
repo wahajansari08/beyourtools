@@ -29,12 +29,12 @@ export default function VolumeBoosterPage() {
         "Custom gain slider up to +200%",
         "Clipping warning for high gain values",
         "Audio preview before and after",
-        "100% browser-based — no upload",
+        "100% browser-based - no upload",
       ]}
       formats={["MP3"]}
       faqs={[
         { question: "Will boosting volume cause distortion?", answer: "High gain can cause clipping (a harsh digital distortion) when audio peaks exceed the maximum digital level. Gains up to +50% are usually safe for quieter recordings. The tool warns you if gain is very high." },
-        { question: "What is the difference between volume boost and normalization?", answer: "Volume boost applies a fixed gain multiplier to the whole file. Normalization analyzes the peaks and adjusts gain so the loudest point reaches a target level — more intelligent but different in purpose." },
+        { question: "What is the difference between volume boost and normalization?", answer: "Volume boost applies a fixed gain multiplier to the whole file. Normalization analyzes the peaks and adjusts gain so the loudest point reaches a target level - more intelligent but different in purpose." },
         { question: "Can I boost only part of the file?", answer: "Not with this tool. Use the MP3 Cutter to extract a section first, then boost that section separately." },
       ]}
     >

@@ -8,14 +8,14 @@ import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical
 export const metadata: Metadata = {
   title: "Barcode Generator - Create Barcodes Online Free | BeYourTools",
   description:
-    "Generate barcodes online for free — Code 128, Code 39, EAN-13, EAN-8, UPC-A, ITF-14, MSI and Codabar. Customize size, colors and download as PNG or SVG.",
+    "Generate barcodes online for free - Code 128, Code 39, EAN-13, EAN-8, UPC-A, ITF-14, MSI and Codabar. Customize size, colors and download as PNG or SVG.",
   keywords: "barcode generator, free barcode generator, code 128 generator, EAN barcode, UPC barcode, online barcode maker",
   alternates: { canonical: `${SITE.url}/barcode-generator` },
   openGraph: {
     type: "website",
     url: `${SITE.url}/barcode-generator`,
     title: "Barcode Generator - Create Barcodes Online Free | BeYourTools",
-    description: "Create Code 128, EAN-13, UPC and more — free, instant, browser-based.",
+    description: "Create Code 128, EAN-13, UPC and more - free, instant, browser-based.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "Barcode Generator" }],
   },
 };
@@ -34,7 +34,7 @@ const schemas = [
   }),
   faqSchema([
     { question: "Which barcode formats are supported?", answer: "Code 128, Code 39, EAN-13, EAN-8, UPC-A, ITF-14, MSI and Codabar." },
-    { question: "Can I download the barcode?", answer: "Yes — as PNG for documents and as SVG for scalable print-quality output." },
+    { question: "Can I download the barcode?", answer: "Yes - as PNG for documents and as SVG for scalable print-quality output." },
     { question: "Does EAN-13 generation validate the check digit?", answer: "Yes. Enter 12 digits and the check digit is calculated and appended automatically. Invalid values show a clear error." },
     { question: "Is there a character limit?", answer: "Code 128 supports full ASCII and has no practical character limit. Other formats like Code 39 have character set restrictions shown under the input." },
   ]),
@@ -59,7 +59,7 @@ export default function BarcodeGeneratorPage() {
             Barcode Generator
           </h1>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-            Create barcodes in 8 popular formats — Code 128, Code 39, EAN-13, EAN-8, UPC-A, ITF-14, MSI and Codabar.
+            Create barcodes in 8 popular formats - Code 128, Code 39, EAN-13, EAN-8, UPC-A, ITF-14, MSI and Codabar.
             Customize size, colors and download as PNG or SVG instantly in your browser.
           </p>
         </div>
@@ -70,7 +70,7 @@ export default function BarcodeGeneratorPage() {
           <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>How to use</h2>
           <ol className="space-y-2 text-sm" style={{ color: "var(--text-muted)" }}>
             <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>1.</span> Choose a barcode format from the dropdown.</li>
-            <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>2.</span> Enter the value to encode — the hint below the field shows what characters are allowed.</li>
+            <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>2.</span> Enter the value to encode - the hint below the field shows what characters are allowed.</li>
             <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>3.</span> Optionally expand <strong>Customize barcode</strong> to adjust width, height, colors and text.</li>
             <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>4.</span> Click <strong>Generate Barcode</strong> and download as PNG or SVG.</li>
           </ol>

@@ -28,8 +28,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!route) return { title: "Not Found" };
   const from = getFormat(route.from)!;
   const to   = getFormat(route.to)!;
-  const title = `${from.label} to ${to.label} Converter — Free Online Tool | BeYourTools`;
-  const description = `Convert ${from.label} images to ${to.label} online for free. No upload, no sign-up — conversion runs directly in your browser and your files never leave your device.`;
+  const title = `${from.label} to ${to.label} Converter - Free Online Tool | BeYourTools`;
+  const description = `Convert ${from.label} images to ${to.label} online for free. No upload, no sign-up - conversion runs directly in your browser and your files never leave your device.`;
   const url = canonical(`/image-converter/${route.slug}`);
   const image = `${SITE.url}/og-default.png`;
   return {
@@ -116,9 +116,9 @@ export default async function Page({ params }: Props) {
 
   const faqs = [
     { question: `How do I convert ${from.label} to ${to.label}?`, answer: `Drop your ${from.label} file onto the upload area or click to browse. The conversion starts automatically. When it finishes, click Download to save your ${to.label} file.` },
-    { question: `Is the ${from.label} to ${to.label} converter free?`, answer: "Yes — completely free, no account required, no file limits, and no watermarks added to your images." },
+    { question: `Is the ${from.label} to ${to.label} converter free?`, answer: "Yes - completely free, no account required, no file limits, and no watermarks added to your images." },
     { question: `Are my ${from.label} files uploaded to a server?`, answer: `No. All conversion happens locally in your browser. Your ${from.label} files never leave your device.` },
-    { question: `Can I convert multiple ${from.label} files at once?`, answer: `Yes — drop multiple ${from.label} files at once or add them one by one. Each file is converted automatically and can be downloaded individually or all at once as a ZIP.` },
+    { question: `Can I convert multiple ${from.label} files at once?`, answer: `Yes - drop multiple ${from.label} files at once or add them one by one. Each file is converted automatically and can be downloaded individually or all at once as a ZIP.` },
     { question: `What is the difference between ${from.label} and ${to.label}?`, answer: `${from.label} and ${to.label} are different image formats with different compression methods and feature support. Use the converter to switch between them based on your needs.` },
   ];
 
@@ -130,7 +130,7 @@ export default async function Page({ params }: Props) {
     ]),
     webAppSchema({
       name: `${from.label} to ${to.label} Converter`,
-      description: `Free online ${from.label} to ${to.label} image converter. Runs entirely in your browser — no upload required.`,
+      description: `Free online ${from.label} to ${to.label} image converter. Runs entirely in your browser - no upload required.`,
       url,
     }),
     faqSchema(faqs),
@@ -156,7 +156,7 @@ export default async function Page({ params }: Props) {
           </h1>
           <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
             Convert {from.label} images to {to.label} format directly in your browser.
-            No file upload, no account required — files never leave your device.
+            No file upload, no account required - files never leave your device.
           </p>
         </div>
 
@@ -177,7 +177,7 @@ export default async function Page({ params }: Props) {
           </h2>
           <ol className="space-y-2 text-sm" style={{ color: "var(--text-muted)" }}>
             <li className="flex gap-2"><span className="font-semibold shrink-0" style={{ color: "var(--teal)" }}>1.</span>Drop your {from.label} file onto the upload area or click to browse.</li>
-            <li className="flex gap-2"><span className="font-semibold shrink-0" style={{ color: "var(--teal)" }}>2.</span>The converter processes your file locally — no upload needed.</li>
+            <li className="flex gap-2"><span className="font-semibold shrink-0" style={{ color: "var(--teal)" }}>2.</span>The converter processes your file locally - no upload needed.</li>
             <li className="flex gap-2"><span className="font-semibold shrink-0" style={{ color: "var(--teal)" }}>3.</span>Click <strong>Download</strong> to save your {to.label} file.</li>
           </ol>
         </section>

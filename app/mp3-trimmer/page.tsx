@@ -29,12 +29,12 @@ export default function Mp3TrimmerPage() {
         "Precise decimal-second timestamp inputs",
         "Real-time selection preview",
         "Shows original and trimmed duration",
-        "100% browser-based — no upload",
+        "100% browser-based - no upload",
       ]}
       formats={["MP3"]}
       faqs={[
-        { question: "What is the difference between MP3 Trimmer and MP3 Cutter?", answer: "Both tools do the same job — select a region and export it. The Trimmer interface is optimised for precision trimming with exact timestamp inputs, while the Cutter is designed for quickly grabbing a section by dragging handles." },
-        { question: "Can I trim from the start only?", answer: "Yes — set the start slider to where you want the audio to begin and leave the end at the file's full duration." },
+        { question: "What is the difference between MP3 Trimmer and MP3 Cutter?", answer: "Both tools do the same job - select a region and export it. The Trimmer interface is optimised for precision trimming with exact timestamp inputs, while the Cutter is designed for quickly grabbing a section by dragging handles." },
+        { question: "Can I trim from the start only?", answer: "Yes - set the start slider to where you want the audio to begin and leave the end at the file's full duration." },
         { question: "Will trimming affect audio quality?", answer: "Re-encoding to MP3 at 192 kbps causes minimal perceptible quality loss. If quality is critical, consider saving as WAV using the Audio Cutter tool." },
       ]}
     >

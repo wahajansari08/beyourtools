@@ -108,7 +108,7 @@ export default function EANGeneratorClient() {
             className={inputClass} style={inputStyle} />
           <p className="mt-1 text-[11px]" style={{ color: "var(--text-subtle)" }}>
             {autoCheck
-              ? `Enter ${eanType === "EAN13" ? 12 : 7} digits — check digit calculated automatically.`
+              ? `Enter ${eanType === "EAN13" ? 12 : 7} digits - check digit calculated automatically.`
               : `Enter all ${eanType === "EAN13" ? 13 : 8} digits including the check digit.`}
           </p>
         </div>

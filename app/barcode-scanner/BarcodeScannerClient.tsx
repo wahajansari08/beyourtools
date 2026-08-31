@@ -61,11 +61,11 @@ export default function BarcodeScannerClient() {
             setFormat(result.getBarcodeFormat().toString());
             setState("done");
           }
-          // err is a NotFoundException when no code is visible — ignore it
+          // err is a NotFoundException when no code is visible - ignore it
           void err;
         }
       ).catch(() => {
-        // stream ended or was stopped — ignore
+        // stream ended or was stopped - ignore
       });
     } catch (err) {
       const msg = err instanceof Error ? err.message : "";

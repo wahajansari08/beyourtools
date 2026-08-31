@@ -33,7 +33,7 @@ const schemas = [
     category: "UtilitiesApplication",
   }),
   faqSchema([
-    { question: "Which barcode formats can be decoded?", answer: "Code 128, Code 39, EAN-13, EAN-8, UPC-A, UPC-E, ITF, Data Matrix, Aztec, PDF417 and more — detection is automatic." },
+    { question: "Which barcode formats can be decoded?", answer: "Code 128, Code 39, EAN-13, EAN-8, UPC-A, UPC-E, ITF, Data Matrix, Aztec, PDF417 and more - detection is automatic." },
     { question: "Are my images uploaded to a server?", answer: "No. All decoding happens locally in your browser. Your images never leave your device." },
     { question: "Why wasn't my barcode detected?", answer: "Make sure the barcode is clearly visible, not blurry, and fills a reasonable portion of the image. Low-contrast or heavily damaged barcodes may not decode." },
   ]),
@@ -58,7 +58,7 @@ export default function BarcodeDecoderPage() {
             Barcode Decoder
           </h1>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-            Upload a barcode image to decode it instantly. The format is detected automatically —
+            Upload a barcode image to decode it instantly. The format is detected automatically -
             no need to specify Code 128, EAN-13, UPC, or any other type. Everything runs in your browser.
           </p>
         </div>

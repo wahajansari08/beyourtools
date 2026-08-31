@@ -7,7 +7,7 @@ import BlogPagination from "./BlogPagination";
 
 const PER_PAGE = 12; // 1 featured + 11 in grid on page 1; 12 per page from page 2
 
-const BLOG_TITLE = "BeYourTools Blog — Free Guides on JSON, Images, Audio & More";
+const BLOG_TITLE = "BeYourTools Blog - Free Guides on JSON, Images, Audio & More";
 const BLOG_DESCRIPTION = "Practical guides on JSON, image formats, PDF tools, audio, video and developer productivity.";
 
 interface Props {
@@ -21,7 +21,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   const url = currentPage === 1 ? `${SITE.url}/blog` : `${SITE.url}/blog?page=${currentPage}`;
 
   return {
-    title: "Blog — Free Guides on JSON, Images, Audio, Video & PDF | BeYourTools",
+    title: "Blog - Free Guides on JSON, Images, Audio, Video & PDF | BeYourTools",
     description: BLOG_DESCRIPTION,
     keywords: "JSON tutorial, image converter guide, PDF tools guide, audio tools guide, developer blog, web development tips",
     alternates: { canonical: url },
@@ -35,7 +35,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
     },
     twitter: {
       card: "summary_large_image",
-      title: "BeYourTools Blog — Free Developer Guides",
+      title: "BeYourTools Blog - Free Developer Guides",
       description: BLOG_DESCRIPTION,
       site: "@beyourtools",
       images: [`${SITE.url}/og-default.png`],

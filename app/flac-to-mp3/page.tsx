@@ -28,11 +28,11 @@ export default function FlacToMp3Page() {
         "Converts lossless FLAC to MP3",
         "Selectable bitrate 64–320 kbps",
         "Preserves metadata where possible",
-        "No upload — 100% browser-based",
+        "No upload - 100% browser-based",
       ]}
       formats={["FLAC → MP3"]}
       faqs={[
-        { question: "Does converting FLAC to MP3 lose quality?", answer: "Yes. MP3 is a lossy format — converting FLAC (lossless) to MP3 permanently reduces audio quality. Use 320 kbps for the best result. The original FLAC file is not affected." },
+        { question: "Does converting FLAC to MP3 lose quality?", answer: "Yes. MP3 is a lossy format - converting FLAC (lossless) to MP3 permanently reduces audio quality. Use 320 kbps for the best result. The original FLAC file is not affected." },
         { question: "Why convert FLAC to MP3?", answer: "FLAC files can be 5–10× larger than MP3. MP3 is more widely supported by devices and streaming platforms. For casual listening, a high-bitrate MP3 is often indistinguishable from FLAC." },
         { question: "Can I convert back from MP3 to FLAC?", answer: "You can convert the container, but you cannot recover the audio quality lost during MP3 encoding. Converting MP3 back to FLAC just produces a large lossless file with MP3-quality audio." },
       ]}

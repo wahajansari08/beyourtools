@@ -55,7 +55,7 @@
   --text-muted:     #475569;
   /* --text-subtle must pass AA (4.5:1) on all backgrounds including white (#ffffff).
      #64748b on #ffffff = 5.93:1 ✓. On #f8fafc = 5.7:1 ✓. On #f1f5f9 = 5.16:1 ✓.
-     All pass — no change needed for light mode text-subtle. */
+     All pass - no change needed for light mode text-subtle. */
   --text-subtle:    #64748b;
 
   --accent:         #e8a52f;
@@ -63,11 +63,11 @@
   /* BUG FIX: #e8a52f on #f8fafc = 2.2:1 (fails AA).
      For text/link usage in light mode, use --accent-text which is AA-compliant.
      --accent itself is retained for use as a background color with --accent-fg text. */
-  --accent-text:    #92600a;   /* 7.2:1 on white — AA + AAA */
+  --accent-text:    #92600a;   /* 7.2:1 on white - AA + AAA */
   --accent-fg:      #ffffff;
 
   /* BUG FIX: #0d9488 on #f8fafc = 4.6:1 (borderline for small text).
-     Darkened to #0a7a70 = 5.8:1 on white — safely passes AA for all sizes. */
+     Darkened to #0a7a70 = 5.8:1 on white - safely passes AA for all sizes. */
   --teal:           #0a7a70;
   --coral:          #dc2626;
 
