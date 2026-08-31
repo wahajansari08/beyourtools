@@ -6,17 +6,19 @@ import { useRouter } from "next/navigation";
 import { search, type SearchResult } from "@/lib/search-index";
 
 const SECTION_LABELS = {
-  json:  "JSON Tools",
-  image: "Image Converter",
-  pdf:   "PDF Tools",
-  video: "Video Tools",
+  json:    "JSON Tools",
+  image:   "Image Converter",
+  pdf:     "PDF Tools",
+  video:   "Video Tools",
+  finance: "Finance Tools",
 } as const;
 
 const SECTION_COLORS = {
-  json:  "var(--teal)",
-  image: "var(--accent)",
-  pdf:   "var(--coral)",
-  video: "var(--teal)",
+  json:    "var(--teal)",
+  image:   "var(--accent)",
+  pdf:     "var(--coral)",
+  video:   "var(--teal)",
+  finance: "var(--accent-text)",
 } as const;
 
 interface Props {

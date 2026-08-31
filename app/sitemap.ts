@@ -6,6 +6,7 @@ import { blogPosts } from "@/lib/blog";
 import { videoTools } from "@/lib/video-tools-config";
 import { audioTools } from "@/lib/audio-tools-config";
 import { qrBarcodeTools } from "@/lib/qr-barcode-config";
+import { financeTools, financeClusters, clusterSlugs } from "@/lib/finance-tools-config";
 
 const BASE = "https://beyourtools.com";
 const now  = new Date().toISOString();
@@ -32,6 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url("/video-tools",           { freq: "weekly",  priority: 0.9 }),
     url("/audio-tools",           { freq: "weekly",  priority: 0.9 }),
     url("/qr-barcode-tools",      { freq: "weekly",  priority: 0.9 }),
+    url("/finance-tools",         { freq: "weekly",  priority: 0.9 }),
     url("/blog",                  { freq: "daily",   priority: 0.8 }),
     // Trust / static pages
     url("/about",          { freq: "monthly", priority: 0.5 }),
@@ -77,6 +79,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url(`/${t.slug}`, { priority: 0.8 })
   );
 
+  // ── Finance hub ────────────────────────────────────────────────────────────
+  const financeClusterPages: MetadataRoute.Sitemap = financeClusters.map((c) =>
+    url(`/finance-tools/${clusterSlugs[c]}`, { freq: "weekly", priority: 0.85 })
+  );
+
+  // ── Finance tools (individual) ─────────────────────────────────────────────
+  const financeToolPages: MetadataRoute.Sitemap = financeTools.map((t) =>
+    url(`/${t.slug}`, { priority: 0.8 })
+  );
+
   // ── Blog posts ─────────────────────────────────────────────────────────────
   const blogPages: MetadataRoute.Sitemap = blogPosts.map((p) => ({
     url: `${BASE}/blog/${p.slug}`,
@@ -94,6 +106,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...videoPages,
     ...audioPages,
     ...qrBarcodePages,
+    ...financeClusterPages,
+    ...financeToolPages,
     ...blogPages,
   ];
 }

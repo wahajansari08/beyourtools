@@ -1,5 +1,5 @@
 /**
- * Unified search index for all tools across JSON, Image Converter, and PDF sections.
+ * Unified search index for all tools across JSON, Image Converter, PDF, Video, and Finance sections.
  * Used by the full-page search overlay.
  */
 
@@ -7,6 +7,7 @@ import { tools } from "./tools-config";
 import { pdfTools } from "./pdf-tools-config";
 import { conversionRoutes, getFormat } from "./image-tools-config";
 import { videoTools } from "./video-tools-config";
+import { financeTools } from "./finance-tools-config";
 
 export interface SearchResult {
   slug: string;
@@ -14,7 +15,7 @@ export interface SearchResult {
   description: string;
   href: string;
   category: string;
-  section: "json" | "image" | "pdf" | "video";
+  section: "json" | "image" | "pdf" | "video" | "finance";
   icon: string;
   keywords: string[];
 }
@@ -91,6 +92,23 @@ function buildIndex(): SearchResult[] {
       section: "video",
       icon: t.icon,
       keywords: [t.name, t.description, t.category, t.slug, ...t.formats, "video", "tools"]
+        .join(" ")
+        .toLowerCase()
+        .split(/\s+/),
+    });
+  }
+
+  // ── Finance tools ──────────────────────────────────────────────────────────
+  for (const t of financeTools) {
+    index.push({
+      slug: t.slug,
+      name: t.name,
+      description: t.description,
+      href: `/${t.slug}`,
+      category: `Finance · ${t.cluster}`,
+      section: "finance",
+      icon: t.icon,
+      keywords: [t.name, t.description, t.cluster, t.slug, ...t.keywords, "finance", "calculator"]
         .join(" ")
         .toLowerCase()
         .split(/\s+/),

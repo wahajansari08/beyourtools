@@ -312,3 +312,53 @@ export function webAppSchema(opts: {
     ...(opts.keywords ? { keywords: opts.keywords } : {}),
   };
 }
+
+/**
+ * Schema for a finance calculator tool page.
+ * Uses WebApplication with FinanceApplication category and a CalculateAction.
+ */
+export function financeCalculatorSchema(opts: {
+  name: string;
+  description: string;
+  url: string;
+  keywords?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: opts.name,
+    description: opts.description,
+    url: opts.url,
+    applicationCategory: "FinanceApplication",
+    operatingSystem: "Any",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    isAccessibleForFree: true,
+    potentialAction: {
+      "@type": "CalculateAction",
+      target: { "@type": "EntryPoint", urlTemplate: opts.url },
+    },
+    author: {
+      "@type": "Organization",
+      "@id": `${SITE.url}/#organization`,
+      name: SITE.name,
+    },
+    ...(opts.keywords ? { keywords: opts.keywords } : {}),
+  };
+}
+
+/**
+ * ItemList schema for a cluster/category page listing multiple tools.
+ */
+export function itemListSchema(items: { name: string; url: string; description: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      url: item.url,
+      description: item.description,
+    })),
+  };
+}

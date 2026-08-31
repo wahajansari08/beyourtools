@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import ThemeProvider from "@/components/ThemeProvider";
 import JsonLd from "@/components/JsonLd";
 import CookieBanner from "@/components/CookieBanner";
+import ChatSupport from "@/components/ChatSupport";
 import { websiteSchema, organizationSchema, SITE } from "@/lib/seo";
 
 const display = Space_Grotesk({
@@ -101,6 +102,7 @@ export default function RootLayout({
           </main>
           <Footer />
           <CookieBanner />
+          <ChatSupport />
         </ThemeProvider>
 
         {/* Google Analytics */}

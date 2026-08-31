@@ -6,6 +6,7 @@ import { conversionRoutes } from "@/lib/image-tools-config";
 import { videoTools } from "@/lib/video-tools-config";
 import { audioTools } from "@/lib/audio-tools-config";
 import { qrBarcodeTools } from "@/lib/qr-barcode-config";
+import { financeTools } from "@/lib/finance-tools-config";
 import { getRecentPosts, formatDate } from "@/lib/blog";
 import JsonLd from "@/components/JsonLd";
 import { websiteSchema, organizationSchema, faqSchema, SITE } from "@/lib/seo";
@@ -38,13 +39,24 @@ const PDF_FEATURED   = ["pdf-to-jpg","jpg-to-pdf","merge-pdf","split-pdf","pdf-c
 const VIDEO_FEATURED = ["video-compressor","video-cutter","video-converter","mp4-to-mp3","video-to-gif","video-thumbnail-generator","video-resizer","remove-audio-from-video"];
 const AUDIO_FEATURED = ["mp3-converter","audio-converter","mp4-to-mp3","mp3-cutter","audio-cutter","mp3-compressor","mp3-merger","audio-joiner","mp3-to-wav","wav-to-mp3","m4a-to-mp3","mp3-volume-booster"];
 const QR_FEATURED    = ["qr-code-generator","qr-code-generator-with-logo","qr-code-scanner","qr-code-decoder","wifi-qr-code-generator","barcode-generator","barcode-generator-with-logo","barcode-scanner","barcode-decoder","upc-barcode-generator","ean-barcode-generator","code-128-barcode-generator"];
+const FINANCE_FEATURED = [
+  "loan-payment-calculator",
+  "profit-margin-calculator",
+  "savings-calculator",
+  "roi-calculator",
+  "debt-snowball-calculator",
+  "credit-card-payoff-calculator",
+  "hourly-to-salary-calculator",
+  "sales-tax-calculator",
+];
 
-const jsonCount  = tools.length;
-const imageCount = conversionRoutes.length;
-const pdfCount   = pdfTools.length;
-const videoCount = videoTools.length;
-const audioCount = audioTools.length;
-const qrCount    = qrBarcodeTools.length;
+const jsonCount    = tools.length;
+const imageCount   = conversionRoutes.length;
+const pdfCount     = pdfTools.length;
+const videoCount   = videoTools.length;
+const audioCount   = audioTools.length;
+const qrCount      = qrBarcodeTools.length;
+const financeCount = financeTools.length;
 
 const CATEGORY_COLORS: Record<string, string> = {
   JSON:  "var(--teal)",
@@ -109,15 +121,17 @@ function Hero() {
             <Link href="/pdf-tools"       className="focus-ring rounded-md border px-5 py-2.5 text-sm font-semibold transition" style={{ borderColor: "var(--border-strong)", color: "var(--text-primary)", backgroundColor: "var(--bg-elevated)" }}>PDF Tools</Link>
             <Link href="/audio-tools"     className="focus-ring rounded-md border px-5 py-2.5 text-sm font-semibold transition" style={{ borderColor: "var(--border-strong)", color: "var(--text-primary)", backgroundColor: "var(--bg-elevated)" }}>Audio Tools</Link>
             <Link href="/video-tools"     className="focus-ring rounded-md border px-5 py-2.5 text-sm font-semibold transition" style={{ borderColor: "var(--border-strong)", color: "var(--text-primary)", backgroundColor: "var(--bg-elevated)" }}>Video Tools</Link>
+            <Link href="/finance-tools"   className="focus-ring rounded-md border px-5 py-2.5 text-sm font-semibold transition" style={{ borderColor: "var(--border-strong)", color: "var(--text-primary)", backgroundColor: "var(--bg-elevated)" }}>Finance Tools</Link>
           </div>
-      <div className="mt-10 flex flex-wrap justify-center gap-8">
+          <div className="mt-10 flex flex-wrap justify-center gap-8">
             {[
-              { count: jsonCount,  label: "JSON tools"        },
-              { count: imageCount, label: "Image converters"   },
-              { count: pdfCount,   label: "PDF tools"          },
-              { count: videoCount, label: "Video tools"        },
-              { count: audioCount, label: "Audio tools"        },
-              { count: qrCount,    label: "QR & Barcode tools" },
+              { count: jsonCount,    label: "JSON tools"          },
+              { count: imageCount,   label: "Image converters"     },
+              { count: pdfCount,     label: "PDF tools"            },
+              { count: videoCount,   label: "Video tools"          },
+              { count: audioCount,   label: "Audio tools"          },
+              { count: qrCount,      label: "QR & Barcode tools"   },
+              { count: financeCount, label: "Finance calculators"  },
             ].map(({ count, label }) => (
               <div key={label} className="text-center">
                 <div className="font-display text-2xl font-semibold" style={{ color: "var(--accent-text)" }}>{count}+</div>
@@ -182,6 +196,10 @@ function ToolSections() {
 
       <div className="h-px" style={{ backgroundColor: "var(--border)" }} />
 
+      <FinanceSection />
+
+      <div className="h-px" style={{ backgroundColor: "var(--border)" }} />
+
       <BlogSection />
     </div>
   );
@@ -233,6 +251,113 @@ function ToolSection({ id, icon, iconColor, title, description, href, ctaLabel, 
           style={{ borderColor: "var(--border-strong)", color: "var(--text-muted)" }}>
           <span className="text-2xl" aria-hidden="true">→</span>
           <span className="text-xs font-medium">View all {title}</span>
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+// ── Finance cluster quick-links shown as pill chips ───────────────────────────
+const FINANCE_CLUSTERS = [
+  { label: "Business Finance",   href: "/finance-tools/business-finance-calculators",   icon: "📈" },
+  { label: "Salary & Income",    href: "/finance-tools/salary-income-calculators",       icon: "💵" },
+  { label: "Loans",              href: "/finance-tools/loan-calculators",                icon: "🏦" },
+  { label: "Debt & Credit",      href: "/finance-tools/debt-credit-calculators",         icon: "💳" },
+  { label: "Savings & Interest", href: "/finance-tools/savings-interest-calculators",    icon: "🐷" },
+  { label: "Tax & Pricing",      href: "/finance-tools/tax-pricing-calculators",         icon: "🧾" },
+  { label: "Marketing & ROI",    href: "/finance-tools/marketing-roi-calculators",       icon: "🚀" },
+];
+
+function FinanceSection() {
+  const featured = FINANCE_FEATURED
+    .map((s) => financeTools.find((t) => t.slug === s))
+    .filter(Boolean) as typeof financeTools;
+
+  return (
+    <section id="finance-tools" aria-label="Finance Tools">
+      {/* Header */}
+      <div className="mb-6 flex flex-wrap items-baseline justify-between gap-3">
+        <div className="flex items-center gap-3">
+          <span
+            className="flex h-9 w-9 items-center justify-center rounded-lg text-lg"
+            style={{ backgroundColor: "color-mix(in srgb, var(--accent-text) 15%, transparent)", color: "var(--accent-text)" }}
+            aria-hidden="true"
+          >
+            💰
+          </span>
+          <div>
+            <h2 className="font-display text-xl font-semibold" style={{ color: "var(--text-primary)" }}>
+              Finance Calculators
+            </h2>
+            <p className="mt-0.5 text-xs" style={{ color: "var(--text-muted)" }}>
+              {financeCount} free calculators — loans, margins, savings, debt, ROI, taxes and more.
+            </p>
+          </div>
+        </div>
+        <Link
+          href="/finance-tools"
+          className="focus-ring text-sm font-medium transition hover:opacity-80"
+          style={{ color: "var(--accent-text)" }}
+        >
+          All Finance Tools →
+        </Link>
+      </div>
+
+      {/* Cluster chip row */}
+      <div className="mb-5 flex flex-wrap gap-2">
+        {FINANCE_CLUSTERS.map(({ label, href, icon }) => (
+          <Link
+            key={href}
+            href={href}
+            className="focus-ring flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium transition hover:opacity-80"
+            style={{
+              borderColor: "var(--border-strong)",
+              backgroundColor: "var(--bg-elevated)",
+              color: "var(--text-secondary)",
+            }}
+          >
+            <span aria-hidden="true">{icon}</span>
+            {label}
+          </Link>
+        ))}
+      </div>
+
+      {/* Tool cards — same pattern as other ToolSection grids */}
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {featured.map((tool) => (
+          <Link
+            key={tool.slug}
+            href={`/${tool.slug}`}
+            className="focus-ring group flex flex-col justify-between rounded-lg border p-4 transition hover-card-accent"
+            style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}
+          >
+            <div>
+              <div className="mb-1.5 flex items-center gap-2">
+                <span className="text-base" aria-hidden="true">{tool.icon}</span>
+                <h3 className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>
+                  {tool.name}
+                </h3>
+              </div>
+              <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                {tool.description}
+              </p>
+            </div>
+            <span
+              className="mt-3 text-xs font-medium opacity-0 transition group-hover:opacity-100"
+              style={{ color: "var(--accent-text)" }}
+              aria-hidden="true"
+            >
+              Calculate →
+            </span>
+          </Link>
+        ))}
+        <Link
+          href="/finance-tools"
+          className="focus-ring group flex flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed p-4 text-center transition hover:-translate-y-0.5"
+          style={{ borderColor: "var(--border-strong)", color: "var(--text-muted)" }}
+        >
+          <span className="text-2xl" aria-hidden="true">→</span>
+          <span className="text-xs font-medium">View all Finance Tools</span>
         </Link>
       </div>
     </section>
