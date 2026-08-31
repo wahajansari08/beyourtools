@@ -92,6 +92,13 @@ export default function RootLayout({
         />
 
         <JsonLd data={[websiteSchema(), organizationSchema()]} />
+
+        {/* Google AdSense */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8289649754182863"
+          crossOrigin="anonymous"
+        />
       </head>
 
       <body className="min-h-screen bg-page font-body text-secondary antialiased">
