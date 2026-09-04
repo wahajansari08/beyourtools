@@ -4,7 +4,7 @@ import DiscountClient from "./DiscountClient";
 import { SITE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Discount Calculator — Final Price After Discount % | BeYourTools",
+  title: "Discount Calculator - Final Price After Discount % | BeYourTools",
   description:
     "Calculate the final price after applying a percentage discount. See exactly how much you save and what the discounted amount is. Free, instant, no sign-up.",
   keywords: "discount calculator, price after discount, percent off calculator, sale price calculator, savings calculator",

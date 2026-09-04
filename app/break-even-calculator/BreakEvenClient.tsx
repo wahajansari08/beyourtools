@@ -47,7 +47,7 @@ export default function BreakEvenClient() {
           <input id="be-fixed" type="number" min="0" step="any" value={fixedCosts} onChange={(e) => setFixedCosts(e.target.value)} placeholder="e.g. 10000"
             className="focus-ring w-full rounded-lg border px-3 py-2 text-sm"
             style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-primary)" }} />
-          <p className="mt-1 text-[11px]" style={{ color: "var(--text-subtle)" }}>Rent, salaries, insurance — costs that don't change with output.</p>
+          <p className="mt-1 text-[11px]" style={{ color: "var(--text-subtle)" }}>Rent, salaries, insurance - costs that don't change with output.</p>
         </div>
         <div>
           <label htmlFor="be-price" className="mb-1 block text-xs font-medium" style={{ color: "var(--text-muted)" }}>Selling Price per Unit ($)</label>
@@ -60,10 +60,10 @@ export default function BreakEvenClient() {
           <input id="be-var" type="number" min="0" step="any" value={varCost} onChange={(e) => setVarCost(e.target.value)} placeholder="e.g. 10"
             className="focus-ring w-full rounded-lg border px-3 py-2 text-sm"
             style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-primary)" }} />
-          <p className="mt-1 text-[11px]" style={{ color: "var(--text-subtle)" }}>Materials, packaging, direct labour — costs per unit sold.</p>
+          <p className="mt-1 text-[11px]" style={{ color: "var(--text-subtle)" }}>Materials, packaging, direct labour - costs per unit sold.</p>
         </div>
         <div>
-          <label htmlFor="be-target" className="mb-1 block text-xs font-medium" style={{ color: "var(--text-muted)" }}>Target Profit ($ — optional)</label>
+          <label htmlFor="be-target" className="mb-1 block text-xs font-medium" style={{ color: "var(--text-muted)" }}>Target Profit ($ - optional)</label>
           <input id="be-target" type="number" min="0" step="any" value={targetProfit} onChange={(e) => setTargetProfit(e.target.value)} placeholder="e.g. 5000"
             className="focus-ring w-full rounded-lg border px-3 py-2 text-sm"
             style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-primary)" }} />
@@ -76,7 +76,7 @@ export default function BreakEvenClient() {
       <div className="flex gap-3">
         <button type="button" onClick={calculate} className="focus-ring rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90"
           style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>Calculate</button>
-        <button type="button" onClick={reset} className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition"
+        <button type="button" onClick={reset} className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
           style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>Reset</button>
       </div>
 

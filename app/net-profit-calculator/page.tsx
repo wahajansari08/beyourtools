@@ -4,7 +4,7 @@ import NetProfitClient from "./NetProfitClient";
 import { SITE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Net Profit Calculator — Net Income & Net Margin % | BeYourTools",
+  title: "Net Profit Calculator - Net Income & Net Margin % | BeYourTools",
   description:
     "Calculate net profit and net profit margin after deducting COGS, operating expenses, interest, and taxes from revenue. Includes gross and operating profit breakdown.",
   keywords: "net profit calculator, net income calculator, net margin, bottom line, profit after tax, net profit formula",
@@ -18,7 +18,7 @@ export default function NetProfitPage() {
       slug="net-profit-calculator"
       title="Net Profit Calculator"
       cluster="Business Finance"
-      tagline="Calculate your true bottom-line net profit — and gross and operating profit along the way — by deducting all costs, expenses, interest, and taxes from revenue."
+      tagline="Calculate your true bottom-line net profit, and gross and operating profit along the way, by deducting all costs, expenses, interest, and taxes from revenue."
       description="Free net profit calculator. Enter revenue, COGS, operating expenses, interest, and taxes to get gross profit, operating income, and net profit with margin percentages."
       formulaExplanation={
         <>

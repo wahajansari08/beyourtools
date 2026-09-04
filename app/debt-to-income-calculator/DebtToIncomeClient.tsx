@@ -57,11 +57,11 @@ export default function DebtToIncomeClient() {
   }
 
   function dtiLabel(dti: number) {
-    if (dti <= 20) return "Excellent — very comfortable";
-    if (dti <= 28) return "Good — well within lender limits";
-    if (dti <= 36) return "Acceptable — most lenders will approve";
-    if (dti <= 43) return "Borderline — some lenders may decline";
-    return "High — most lenders will not approve";
+    if (dti <= 20) return "Excellent - very comfortable";
+    if (dti <= 28) return "Good - well within lender limits";
+    if (dti <= 36) return "Acceptable - most lenders will approve";
+    if (dti <= 43) return "Borderline - some lenders may decline";
+    return "High - most lenders will not approve";
   }
 
   return (
@@ -121,7 +121,7 @@ export default function DebtToIncomeClient() {
           Calculate DTI
         </button>
         <button type="button" onClick={reset}
-          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition"
+          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
           style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>
           Reset
         </button>

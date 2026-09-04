@@ -64,7 +64,7 @@ export default function RoasClient() {
         </div>
         <div>
           <label htmlFor="roas-margin" className="mb-1 block text-xs font-medium" style={{ color: "var(--text-muted)" }}>
-            Gross Margin (% — optional, to calculate break-even ROAS)
+            Gross Margin (% - optional, to calculate break-even ROAS)
           </label>
           <input id="roas-margin" type="number" min="0" max="100" step="any" value={margin}
             onChange={(e) => setMargin(e.target.value)} placeholder="e.g. 30"
@@ -90,7 +90,7 @@ export default function RoasClient() {
           Calculate ROAS
         </button>
         <button type="button" onClick={reset}
-          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition"
+          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
           style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>
           Reset
         </button>

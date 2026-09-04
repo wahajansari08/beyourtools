@@ -290,7 +290,7 @@ function FinanceSection() {
               Finance Calculators
             </h2>
             <p className="mt-0.5 text-xs" style={{ color: "var(--text-muted)" }}>
-              {financeCount} free calculators — loans, margins, savings, debt, ROI, taxes and more.
+              {financeCount} free calculators - loans, margins, savings, debt, ROI, taxes and more.
             </p>
           </div>
         </div>
@@ -322,7 +322,7 @@ function FinanceSection() {
         ))}
       </div>
 
-      {/* Tool cards — same pattern as other ToolSection grids */}
+      {/* Tool cards - same pattern as other ToolSection grids */}
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {featured.map((tool) => (
           <Link

@@ -4,7 +4,7 @@ import MarkupClient from "./MarkupClient";
 import { SITE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Markup Calculator — Find Selling Price or Markup % | BeYourTools",
+  title: "Markup Calculator - Find Selling Price or Markup % | BeYourTools",
   description:
     "Calculate the selling price from cost and markup %, find the markup % from cost and price, or convert a desired margin into the right markup. Free online markup calculator.",
   keywords: "markup calculator, selling price calculator, markup percentage, cost to price, margin vs markup",
@@ -18,7 +18,7 @@ export default function MarkupPage() {
       slug="markup-calculator"
       title="Markup Calculator"
       cluster="Business Finance"
-      tagline="Convert between cost, markup percentage, selling price, and profit margin — in any direction you need."
+      tagline="Convert between cost, markup percentage, selling price, and profit margin, in any direction you need."
       description="Free online markup calculator. Calculate selling price from cost and markup, find markup percentage from cost and price, or work backwards from a desired profit margin."
       formulaExplanation={
         <>
@@ -34,7 +34,7 @@ export default function MarkupPage() {
       faqs={[
         {
           question: "What is the difference between markup and margin?",
-          answer: "Markup is calculated on cost: (Price − Cost) ÷ Cost. Margin is calculated on the selling price: (Price − Cost) ÷ Price. A 40% markup equals a 28.6% margin — they are not the same number.",
+          answer: "Markup is calculated on cost: (Price − Cost) ÷ Cost. Margin is calculated on the selling price: (Price − Cost) ÷ Price. A 40% markup equals a 28.6% margin, they are not the same number.",
         },
         {
           question: "How do I set a price to achieve a specific margin?",
@@ -42,7 +42,7 @@ export default function MarkupPage() {
         },
         {
           question: "Why do retailers use markup instead of margin?",
-          answer: "Markup is simpler to apply at point of purchase — you know your cost and want to add a percentage on top. Finance teams prefer margin because it directly expresses the percentage of revenue you keep.",
+          answer: "Markup is simpler to apply at point of purchase, you know your cost and want to add a percentage on top. Finance teams prefer margin because it directly expresses the percentage of revenue you keep.",
         },
         {
           question: "Can markup exceed 100%?",

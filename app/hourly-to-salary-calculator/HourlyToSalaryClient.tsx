@@ -65,12 +65,12 @@ export default function HourlyToSalaryClient() {
       <div className="flex gap-3">
         <button type="button" onClick={calculate} className="focus-ring rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90"
           style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>Calculate</button>
-        <button type="button" onClick={reset} className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition"
+        <button type="button" onClick={reset} className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
           style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>Reset</button>
       </div>
 
       {result && (
-        <div className="rounded-xl border p-5 space-y-3" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+        <div className="rounded-xl border p-5 space-y-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
           <h3 className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>Salary Equivalents</h3>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {[
@@ -80,8 +80,8 @@ export default function HourlyToSalaryClient() {
               { label: "Weekly", value: `$${fmt(result.weekly)}` },
               { label: "Daily (5-day week)", value: `$${fmt(result.daily)}` },
             ].map(({ label, value, primary }) => (
-              <div key={label} className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
-                <p className="text-xs" style={{ color: "var(--text-subtle)" }}>{label}</p>
+              <div key={label} className="rounded-lg border p-4 text-center" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+                <p className="text-[10px] uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>{label}</p>
                 <p className="mt-1 font-display text-xl font-bold" style={{ color: primary ? "var(--teal)" : "var(--text-primary)" }}>{value}</p>
               </div>
             ))}

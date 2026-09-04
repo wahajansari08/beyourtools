@@ -86,7 +86,7 @@ export default function LoanPaymentClient() {
           Calculate
         </button>
         <button type="button" onClick={reset}
-          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition"
+          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
           style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>
           Reset
         </button>
@@ -104,7 +104,7 @@ export default function LoanPaymentClient() {
             ].map(({ label, value, primary }) => (
               <div key={label} className="rounded-lg border p-4 text-center"
                 style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
-                <p className="text-xs" style={{ color: "var(--text-subtle)" }}>{label}</p>
+                <p className="text-[10px] uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>{label}</p>
                 <p className="mt-1 font-display text-xl font-bold"
                   style={{ color: primary ? "var(--teal)" : "var(--text-primary)" }}>
                   {value}
@@ -116,7 +116,7 @@ export default function LoanPaymentClient() {
           {/* Simple interest-vs-principal visual */}
           <div className="space-y-1">
             <p className="text-[11px] font-medium" style={{ color: "var(--text-subtle)" }}>
-              Breakdown — Principal vs. Interest
+              Breakdown - Principal vs. Interest
             </p>
             <div className="flex h-4 overflow-hidden rounded-full"
               style={{ backgroundColor: "var(--border-strong)" }}>

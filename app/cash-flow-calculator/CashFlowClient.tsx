@@ -110,7 +110,7 @@ export default function CashFlowClient() {
   return (
     <div className="space-y-5">
       <p className="text-xs leading-relaxed" style={{ color: "var(--text-subtle)" }}>
-        Enter positive values for inflows and outflows — use the sign indicator to set whether each item is cash in (+) or cash out (−).
+        Enter positive values for inflows and outflows - use the sign indicator to set whether each item is cash in (+) or cash out (−).
         Outflows are treated as negative by default for investing and financing activities.
       </p>
 
@@ -138,7 +138,7 @@ export default function CashFlowClient() {
           Calculate Cash Flow
         </button>
         <button type="button" onClick={reset}
-          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition"
+          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
           style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>
           Reset
         </button>

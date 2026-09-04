@@ -111,10 +111,10 @@ export default function PayRaiseClient() {
           <select id="pr-ppy" value={paychecksPerYear} onChange={(e) => setPaychecksPerYear(e.target.value)}
             className="focus-ring w-full rounded-lg border px-3 py-2 text-sm"
             style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-primary)" }}>
-            <option value="52">52 — Weekly</option>
-            <option value="26">26 — Bi-Weekly</option>
-            <option value="24">24 — Semi-Monthly</option>
-            <option value="12">12 — Monthly</option>
+            <option value="52">52 - Weekly</option>
+            <option value="26">26 - Bi-Weekly</option>
+            <option value="24">24 - Semi-Monthly</option>
+            <option value="12">12 - Monthly</option>
           </select>
         </div>
       </div>
@@ -124,12 +124,12 @@ export default function PayRaiseClient() {
       <div className="flex gap-3">
         <button type="button" onClick={calculate} className="focus-ring rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90"
           style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>Calculate</button>
-        <button type="button" onClick={reset} className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition"
+        <button type="button" onClick={reset} className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
           style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>Reset</button>
       </div>
 
       {result && (
-        <div className="rounded-xl border p-5 space-y-3" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+        <div className="rounded-xl border p-5 space-y-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
           <h3 className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>Your Pay Raise</h3>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {[

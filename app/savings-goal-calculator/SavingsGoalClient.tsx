@@ -66,7 +66,7 @@ export default function SavingsGoalClient() {
             className="focus-ring w-full rounded-lg border px-3 py-2 text-sm"
             style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-primary)" }} />
           <p className="mt-1 text-[11px]" style={{ color: "var(--text-subtle)" }}>
-            Emergency fund, down payment, holiday, retirement — any target amount.
+            Emergency fund, down payment, holiday, retirement - any target amount.
           </p>
         </div>
         <div>
@@ -114,7 +114,7 @@ export default function SavingsGoalClient() {
           Calculate
         </button>
         <button type="button" onClick={reset}
-          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition"
+          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
           style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>
           Reset
         </button>
@@ -126,7 +126,7 @@ export default function SavingsGoalClient() {
           <h3 className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>Results</h3>
           {result.monthlyRequired === 0 ? (
             <p className="text-sm" style={{ color: "var(--teal)" }}>
-              Your current savings will already reach your goal with compound interest — no additional contributions needed!
+              Your current savings will already reach your goal with compound interest - no additional contributions needed!
             </p>
           ) : (
             <div className="grid gap-3 sm:grid-cols-3">

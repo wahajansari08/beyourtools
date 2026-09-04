@@ -109,6 +109,50 @@ export default function PdfToolsHub() {
         </div>
       </div>
 
+      {/* Browse by Category */}
+      <div className="mb-12">
+        <h2 className="mb-4 font-display text-base font-semibold" style={{ color: "var(--text-primary)" }}>
+          Browse by Category
+        </h2>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+          {pdfToolCategories.map((cat) => {
+            const catTools = pdfToolsByCategory(cat);
+            const META: Record<string, { icon: string; desc: string; color: string; bg: string; border: string }> = {
+              "Convert":             { icon: "⇄", desc: "PDF to JPG, PNG, text, and more. JPG, PNG to PDF.", color: "var(--teal)",        bg: "color-mix(in srgb,var(--teal) 10%,transparent)",   border: "color-mix(in srgb,var(--teal) 30%,transparent)"   },
+              "Edit & Organize":     { icon: "✏️", desc: "Merge, split, rotate, reorder, and watermark PDFs.", color: "var(--accent-text)", bg: "color-mix(in srgb,var(--accent) 10%,transparent)", border: "color-mix(in srgb,var(--accent) 30%,transparent)" },
+              "Security":            { icon: "🔒", desc: "Protect with passwords or remove existing encryption.", color: "var(--coral)",    bg: "color-mix(in srgb,var(--coral) 10%,transparent)",  border: "color-mix(in srgb,var(--coral) 30%,transparent)"  },
+              "Extract & Analyze":   { icon: "🔍", desc: "Extract text, images, metadata, and page details.",    color: "var(--teal)",       bg: "color-mix(in srgb,var(--teal) 10%,transparent)",   border: "color-mix(in srgb,var(--teal) 30%,transparent)"   },
+              "Repair & Compare":    { icon: "⚙️", desc: "Repair corrupted PDFs and compare document versions.", color: "var(--accent-text)", bg: "color-mix(in srgb,var(--accent) 10%,transparent)", border: "color-mix(in srgb,var(--accent) 30%,transparent)" },
+            };
+            const m = META[cat] ?? META["Convert"];
+            const catSlug = cat.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+            return (
+              <Link
+                key={cat}
+                href={`/pdf-tools/category/${catSlug}`}
+                className="focus-ring group rounded-xl border p-4 transition hover-card"
+                style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}
+              >
+                <div className="mb-2 flex items-center gap-2">
+                  <span
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-lg"
+                    style={{ backgroundColor: m.bg, border: `1px solid ${m.border}` }}
+                    aria-hidden="true"
+                  >
+                    {m.icon}
+                  </span>
+                  <h3 className="text-sm font-semibold leading-tight" style={{ color: "var(--text-primary)" }}>{cat}</h3>
+                </div>
+                <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>{m.desc}</p>
+                <p className="mt-3 text-[11px] font-medium" style={{ color: m.color }}>
+                  {catTools.length} tools →
+                </p>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+
       {/* Tools grouped by category */}
       <div className="space-y-10">
         {pdfToolCategories.map((cat) => {

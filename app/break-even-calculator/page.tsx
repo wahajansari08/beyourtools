@@ -4,7 +4,7 @@ import BreakEvenClient from "./BreakEvenClient";
 import { SITE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Break-Even Calculator — Units & Revenue to Break Even | BeYourTools",
+  title: "Break-Even Calculator - Units & Revenue to Break Even | BeYourTools",
   description:
     "Calculate your break-even point in units and revenue. Enter fixed costs, selling price, and variable cost per unit. Optionally find units needed for a target profit.",
   keywords: "break even calculator, break even point, fixed costs, variable costs, contribution margin, break even analysis",
@@ -18,7 +18,7 @@ export default function BreakEvenPage() {
       slug="break-even-calculator"
       title="Break-Even Calculator"
       cluster="Business Finance"
-      tagline="Find exactly how many units you need to sell — and how much revenue to generate — to cover all your fixed and variable costs."
+      tagline="Find exactly how many units you need to sell, and how much revenue to generate, to cover all your fixed and variable costs."
       description="Free break-even calculator. Enter fixed costs, selling price per unit, and variable cost per unit to find your break-even point in units and revenue, plus the contribution margin."
       formulaExplanation={
         <>
@@ -35,7 +35,7 @@ export default function BreakEvenPage() {
       faqs={[
         {
           question: "What is the break-even point?",
-          answer: "The break-even point is the sales volume at which total revenue equals total costs — neither profit nor loss. Below it you're losing money; above it every additional unit generates profit equal to the contribution margin.",
+          answer: "The break-even point is the sales volume at which total revenue equals total costs, neither profit nor loss. Below it you're losing money; above it every additional unit generates profit equal to the contribution margin.",
         },
         {
           question: "What counts as a fixed cost?",
@@ -55,7 +55,7 @@ export default function BreakEvenPage() {
         },
         {
           question: "Can the break-even point be in revenue rather than units?",
-          answer: "Yes — especially useful for service businesses with no single unit price. Break-even revenue = Fixed Costs ÷ Contribution Margin Ratio. This calculator shows both automatically.",
+          answer: "Yes, especially useful for service businesses with no single unit price. Break-even revenue = Fixed Costs ÷ Contribution Margin Ratio. This calculator shows both automatically.",
         },
       ]}
     >

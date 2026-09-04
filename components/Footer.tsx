@@ -212,7 +212,7 @@ export default function Footer() {
         ─────────────────────────────────────────────────────────────────── */}
         <div className="grid grid-cols-2 gap-8 text-center sm:text-left lg:grid-cols-5 lg:gap-8">
 
-          {/* Brand / info — spans both cols on mobile, single col on desktop */}
+          {/* Brand / info - spans both cols on mobile, single col on desktop */}
           <div className="col-span-2 flex flex-col items-center sm:col-span-1 sm:items-start lg:col-span-1">
             <Link href="/" className="focus-ring inline-flex items-center gap-2 rounded">
               <span className="font-display text-base font-semibold" style={{ color: "var(--text-primary)" }}>
@@ -260,7 +260,7 @@ export default function Footer() {
         ─────────────────────────────────────────────────────────────────── */}
         <div className="grid grid-cols-2 gap-8 text-center sm:text-left lg:grid-cols-5 lg:gap-8">
 
-          {/* Blank first column on desktop — hidden on mobile/tablet */}
+          {/* Blank first column on desktop - hidden on mobile/tablet */}
           <div className="hidden lg:block" aria-hidden="true" />
 
           {/* Row 2 tool columns */}

@@ -21,9 +21,9 @@ import {
 } from "@/lib/finance-tools-config";
 
 export const metadata: Metadata = {
-  title: "Finance Calculators — Free Online Finance Tools | BeYourTools",
+  title: "Finance Calculators - Free Online Finance Tools | BeYourTools",
   description:
-    "40 free browser-based finance calculators — profit margins, loan payments, debt payoff, savings projections, ROI, sales tax, salary conversions and more. No sign-up, no ads.",
+    "40 free browser-based finance calculators - profit margins, loan payments, debt payoff, savings projections, ROI, sales tax, salary conversions and more. No sign-up, no ads.",
   keywords:
     "finance calculators, loan calculator, profit margin calculator, ROI calculator, savings calculator, debt payoff calculator, salary calculator, tax calculator",
   alternates: { canonical: `${SITE.url}/finance-tools` },
@@ -31,15 +31,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: `${SITE.url}/finance-tools`,
-    title: "Finance Calculators — 40 Free Online Finance Tools | BeYourTools",
+    title: "Finance Calculators - 40 Free Online Finance Tools | BeYourTools",
     description:
       "40 free browser-based finance calculators for business, loans, debt, savings, tax, and more. Everything runs privately in your browser.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "Finance Tools" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Finance Calculators — Free Online Finance Tools | BeYourTools",
-    description: "40 free finance calculators — loans, margins, savings, debt, ROI, taxes and more.",
+    title: "Finance Calculators - Free Online Finance Tools | BeYourTools",
+    description: "40 free finance calculators - loans, margins, savings, debt, ROI, taxes and more.",
     site: "@beyourtools",
     images: [`${SITE.url}/og-default.png`],
   },
@@ -67,7 +67,7 @@ const schemas = [
     {
       question: "Are these finance calculators free to use?",
       answer:
-        "Yes — all 40 calculators are completely free with no sign-up, no account, and no usage limits.",
+        "Yes - all 40 calculators are completely free with no sign-up, no account, and no usage limits.",
     },
     {
       question: "Do these calculators send my data anywhere?",
@@ -193,7 +193,7 @@ export default function FinanceToolsPage() {
             style={{ color: "var(--text-muted)" }}
           >
             {financeTools.length} free calculators for business profitability, loans, debt payoff,
-            savings growth, salary planning, tax, and marketing ROI — all running privately in your
+            savings growth, salary planning, tax, and marketing ROI - all running privately in your
             browser with no data sent anywhere.
           </p>
           <div

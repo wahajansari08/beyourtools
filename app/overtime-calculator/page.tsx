@@ -4,7 +4,7 @@ import OvertimeClient from "./OvertimeClient";
 import { SITE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Overtime Calculator — Overtime Pay at 1.5×, 2×, or Custom Rate | BeYourTools",
+  title: "Overtime Calculator - Overtime Pay at 1.5×, 2×, or Custom Rate | BeYourTools",
   description:
     "Calculate overtime pay for any number of overtime hours at time-and-a-half (1.5×), double time, or a custom multiplier. See regular pay, overtime pay, and total pay.",
   keywords: "overtime calculator, overtime pay calculator, time and a half calculator, double time pay, overtime wages",
@@ -38,7 +38,7 @@ export default function OvertimePage() {
         { question: "What is double time?", answer: "Double time is 2× the regular rate. Some employers offer double time for holidays or for hours beyond a daily/weekly threshold. In California, double time applies to hours over 12 in a single day." },
         { question: "Are all employees entitled to overtime?", answer: "No. 'Exempt' employees (typically salaried workers in executive, administrative, or professional roles earning above the FLSA threshold, currently $684/week) are not entitled to overtime under federal law." },
         { question: "How do shift differentials affect overtime?", answer: "Shift differentials (extra pay for nights or weekends) are generally included in the regular rate of pay for overtime calculation purposes, raising the base from which the 1.5× is calculated." },
-        { question: "Does overtime compound? (overtime on overtime)", answer: "No — overtime is always calculated on your regular base rate, not on previous overtime. The multiplier applies once to your regular hourly rate regardless of how many overtime hours you've worked." },
+        { question: "Does overtime compound? (overtime on overtime)", answer: "No, overtime is always calculated on your regular base rate, not on previous overtime. The multiplier applies once to your regular hourly rate regardless of how many overtime hours you've worked." },
       ]}
     >
       <OvertimeClient />

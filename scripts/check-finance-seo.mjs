@@ -49,7 +49,7 @@ const titles = [];
 
 function check(label, ok, detail = "") {
   if (ok) { passed++; }
-  else { failed++; issues.push(`FAIL  ${label}${detail ? " — " + detail : ""}`); }
+  else { failed++; issues.push(`FAIL  ${label}${detail ? " - " + detail : ""}`); }
 }
 
 // ── 1. PAGE FILES & METADATA ──────────────────────────────────────────────────
@@ -59,7 +59,7 @@ for (const slug of SLUGS) {
   const clientFile = path.join(ROOT, "app", slug, `${toPascal(slug)}Client.tsx`);
 
   check(`[${slug}] page.tsx exists`,         fs.existsSync(file));
-  // Client file uses a shortened PascalCase name — just verify one *Client.tsx exists in the dir
+  // Client file uses a shortened PascalCase name - just verify one *Client.tsx exists in the dir
   const dirContents = fs.existsSync(path.join(ROOT, "app", slug))
     ? fs.readdirSync(path.join(ROOT, "app", slug)) : [];
   const hasClient = dirContents.some(f => f.endsWith("Client.tsx"));

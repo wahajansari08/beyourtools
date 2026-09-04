@@ -4,7 +4,7 @@ import LoanPayoffClient from "./LoanPayoffClient";
 import { SITE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Loan Payoff Calculator — Time to Pay Off Loan at Current Payment | BeYourTools",
+  title: "Loan Payoff Calculator - Time to Pay Off Loan at Current Payment | BeYourTools",
   description:
     "See how long it takes to pay off your loan balance at your current monthly payment, and how much total interest you'll pay. Free, instant, browser-based.",
   keywords: "loan payoff calculator, how long to pay off loan, loan payoff time, remaining loan balance, total interest paid",
@@ -33,11 +33,11 @@ export default function LoanPayoffPage() {
         </>
       }
       faqs={[
-        { question: "What if my payment barely covers the interest?", answer: "If your monthly payment is at or below the monthly interest charge (balance × annual rate ÷ 12), the balance never decreases — you'll pay forever. The calculator flags this and tells you the minimum payment needed." },
+        { question: "What if my payment barely covers the interest?", answer: "If your monthly payment is at or below the monthly interest charge (balance × annual rate ÷ 12), the balance never decreases, you'll pay forever. The calculator flags this and tells you the minimum payment needed." },
         { question: "How do I pay off my loan faster?", answer: "Increase your monthly payment. Even an extra $50–100/month on a typical loan can shorten the payoff by months or years and save significant interest. Use the Extra Payment Loan Calculator to model specific scenarios." },
-        { question: "Does this work for car loans, personal loans, and student loans?", answer: "Yes — for any fixed-rate amortizing loan. Enter the current remaining balance (not the original amount), the current interest rate, and your current monthly payment for an accurate remaining payoff timeline." },
-        { question: "My loan has a variable rate — can I still use this?", answer: "Yes, but results are estimates. Enter your current rate for today's projection. If your rate adjusts, recalculate with the new rate and remaining balance at that point." },
-        { question: "What is the difference between this and the Loan Payment Calculator?", answer: "The Loan Payment Calculator finds your monthly payment from an original loan. This Payoff Calculator answers 'how long until I'm done?' given your current balance and payment — useful mid-loan when the original term no longer reflects reality." },
+        { question: "Does this work for car loans, personal loans, and student loans?", answer: "Yes, for any fixed-rate amortizing loan. Enter the current remaining balance (not the original amount), the current interest rate, and your current monthly payment for an accurate remaining payoff timeline." },
+        { question: "My loan has a variable rate, can I still use this?", answer: "Yes, but results are estimates. Enter your current rate for today's projection. If your rate adjusts, recalculate with the new rate and remaining balance at that point." },
+        { question: "What is the difference between this and the Loan Payment Calculator?", answer: "The Loan Payment Calculator finds your monthly payment from an original loan. This Payoff Calculator answers 'how long until I'm done?' given your current balance and payment, useful mid-loan when the original term no longer reflects reality." },
       ]}
     >
       <LoanPayoffClient />

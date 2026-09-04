@@ -173,7 +173,7 @@ function MegaMenu({ onClose }: { onClose: () => void }) {
               All Tools
             </p>
             <p className="mt-0.5 text-xs" style={{ color: "var(--text-subtle)" }}>
-              200+ free browser-based tools — nothing leaves your device
+              200+ free browser-based tools - nothing leaves your device
             </p>
           </div>
           <button
@@ -189,7 +189,7 @@ function MegaMenu({ onClose }: { onClose: () => void }) {
           </button>
         </div>
 
-        {/* Category grid — 4 cols on large, 2 on md */}
+        {/* Category grid - 4 cols on large, 2 on md */}
         <div className="grid gap-1 md:grid-cols-2 lg:grid-cols-4">
           {TOOL_CATEGORIES.map((cat) => (
             <div key={cat.href} className="rounded-xl p-3 transition"
@@ -341,7 +341,7 @@ export default function Navbar() {
               Home
             </Link>
 
-            {/* All Tools — mega menu trigger */}
+            {/* All Tools - mega menu trigger */}
             <button
               type="button"
               onClick={() => setMegaOpen((v) => !v)}
@@ -387,7 +387,7 @@ export default function Navbar() {
           {/* ── Right side ───────────────────────────────────────────────── */}
           <div className="flex items-center gap-0.5">
 
-            {/* Search — desktop */}
+            {/* Search - desktop */}
             <button
               type="button"
               onClick={openSearch}
@@ -409,7 +409,7 @@ export default function Navbar() {
               </kbd>
             </button>
 
-            {/* Search — mobile icon */}
+            {/* Search - mobile icon */}
             <button
               type="button"
               onClick={openSearch}
@@ -424,7 +424,7 @@ export default function Navbar() {
             <ThemeToggle />
             <div className="mx-1 h-4 w-px md:hidden" style={{ backgroundColor: "var(--border-strong)" }} aria-hidden="true" />
 
-            {/* Hamburger — mobile */}
+            {/* Hamburger - mobile */}
             <button
               type="button"
               onClick={() => setMenuOpen((o) => !o)}

@@ -4,7 +4,7 @@ import SalaryToHourlyClient from "./SalaryToHourlyClient";
 import { SITE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Salary to Hourly Calculator — Convert Annual Salary to Hourly Rate | BeYourTools",
+  title: "Salary to Hourly Calculator - Convert Annual Salary to Hourly Rate | BeYourTools",
   description:
     "Convert an annual, monthly, bi-weekly, or weekly salary into an equivalent hourly rate. Adjust hours per week and weeks worked per year for accurate results.",
   keywords: "salary to hourly calculator, annual salary to hourly rate, convert salary to hourly, hourly equivalent, income calculator",
@@ -18,7 +18,7 @@ export default function SalaryToHourlyPage() {
       slug="salary-to-hourly-calculator"
       title="Salary to Hourly Calculator"
       cluster="Salary & Income"
-      tagline="Convert a salary — annual, monthly, bi-weekly, or weekly — into an equivalent hourly rate based on your actual working hours."
+      tagline="Convert a salary, annual, monthly, bi-weekly, or weekly, into an equivalent hourly rate based on your actual working hours."
       description="Free salary to hourly calculator. Enter your salary, pay period, hours per week, and weeks per year to find your equivalent hourly rate and annual salary."
       formulaExplanation={
         <>

@@ -65,7 +65,7 @@ const CLUSTER_FAQS: Record<FinanceCluster, { question: string; answer: string }[
     { question: "What is the difference between APR and APY?", answer: "APR is the annual rate without compounding. APY (Annual Percentage Yield) accounts for compounding frequency, so APY is always ≥ APR. The more frequent the compounding, the higher the APY." },
     { question: "How does compound interest work?", answer: "Interest is calculated on both the original principal and the accumulated interest from previous periods. Over time this exponential growth significantly outpaces simple interest." },
     { question: "How much should I save each month to reach my goal?", answer: "Use the savings goal calculator: enter your target amount, current savings, expected interest rate, and target date. It calculates the exact monthly contribution needed." },
-    { question: "What is simple interest and when is it used?", answer: "Simple interest accrues only on the original principal (I = P × r × t). It's used for short-term loans, savings bonds, and some auto loans — situations where compounding isn't applied." },
+    { question: "What is simple interest and when is it used?", answer: "Simple interest accrues only on the original principal (I = P × r × t). It's used for short-term loans, savings bonds, and some auto loans - situations where compounding isn't applied." },
   ],
   "Tax & Pricing": [
     { question: "How do I calculate sales tax on a price?", answer: "Multiply the pre-tax price by the decimal tax rate. For 8% tax on a $50 item: $50 × 0.08 = $4 tax, giving a total of $54. The sales tax calculator handles both directions." },
@@ -99,23 +99,23 @@ export async function generateMetadata({
     .join(", ");
 
   const titles: Record<FinanceCluster, string> = {
-    "Business Finance":    "Business Finance Calculators — Margins, Markup & Break-Even",
-    "Salary & Income":     "Salary & Income Calculators — Hourly, Paycheck & Freelance Rate",
-    "Loans":               "Loan Calculators — Payment, Amortization & Payoff",
-    "Debt & Credit":       "Debt & Credit Calculators — Snowball, Avalanche & Credit Card Payoff",
-    "Savings & Interest":  "Savings & Interest Calculators — APY, APR & Compound Growth",
-    "Tax & Pricing":       "Tax & Pricing Calculators — Sales Tax, Discounts & Price Tools",
-    "Marketing & ROI":     "Marketing & ROI Calculators — ROI, ROAS & Revenue Growth",
+    "Business Finance":    "Business Finance Calculators - Margins, Markup & Break-Even",
+    "Salary & Income":     "Salary & Income Calculators - Hourly, Paycheck & Freelance Rate",
+    "Loans":               "Loan Calculators - Payment, Amortization & Payoff",
+    "Debt & Credit":       "Debt & Credit Calculators - Snowball, Avalanche & Credit Card Payoff",
+    "Savings & Interest":  "Savings & Interest Calculators - APY, APR & Compound Growth",
+    "Tax & Pricing":       "Tax & Pricing Calculators - Sales Tax, Discounts & Price Tools",
+    "Marketing & ROI":     "Marketing & ROI Calculators - ROI, ROAS & Revenue Growth",
   };
 
   const descriptions: Record<FinanceCluster, string> = {
     "Business Finance":    `${tools.length} free business finance calculators for profit margin, markup, break-even analysis, gross profit, net profit, and operating margin.`,
-    "Salary & Income":     `${tools.length} free salary and income calculators — convert hourly to salary, calculate overtime, estimate your paycheck, and set a fair freelance rate.`,
-    "Loans":               `${tools.length} free loan calculators — monthly payments, total interest, full amortization schedule, and the savings from extra payments.`,
-    "Debt & Credit":       `${tools.length} free debt calculators — debt snowball, debt avalanche, credit card payoff, minimum payment cost, and debt-to-income ratio.`,
-    "Savings & Interest":  `${tools.length} free savings calculators — project compound savings growth, find your required monthly contribution, and convert APR to APY.`,
-    "Tax & Pricing":       `${tools.length} free tax and pricing calculators — add or remove sales tax, calculate discounted prices, and work with tax-inclusive or exclusive amounts.`,
-    "Marketing & ROI":     `${tools.length} free marketing calculators — ROI, ROAS, net cash flow, and revenue growth rate for campaigns and business performance.`,
+    "Salary & Income":     `${tools.length} free salary and income calculators - convert hourly to salary, calculate overtime, estimate your paycheck, and set a fair freelance rate.`,
+    "Loans":               `${tools.length} free loan calculators - monthly payments, total interest, full amortization schedule, and the savings from extra payments.`,
+    "Debt & Credit":       `${tools.length} free debt calculators - debt snowball, debt avalanche, credit card payoff, minimum payment cost, and debt-to-income ratio.`,
+    "Savings & Interest":  `${tools.length} free savings calculators - project compound savings growth, find your required monthly contribution, and convert APR to APY.`,
+    "Tax & Pricing":       `${tools.length} free tax and pricing calculators - add or remove sales tax, calculate discounted prices, and work with tax-inclusive or exclusive amounts.`,
+    "Marketing & ROI":     `${tools.length} free marketing calculators - ROI, ROAS, net cash flow, and revenue growth rate for campaigns and business performance.`,
   };
 
   return {
@@ -275,7 +275,7 @@ export default async function ClusterPage({
             className="mt-3 max-w-2xl text-sm leading-relaxed"
             style={{ color: "var(--text-muted)" }}
           >
-            {clusterDescriptions[cluster]} All {tools.length} tools run entirely in your browser —
+            {clusterDescriptions[cluster]} All {tools.length} tools run entirely in your browser -
             no sign-up, no data stored.
           </p>
           <div

@@ -57,7 +57,7 @@ export default function ProfitMarginClient() {
             key={m}
             type="button"
             onClick={() => { setMode(m); setResult(null); setError(""); }}
-            className="focus-ring rounded border px-4 py-1.5 text-sm font-medium capitalize transition"
+            className="focus-ring rounded border px-3 py-1.5 text-xs font-medium capitalize transition"
             style={{
               borderColor: mode === m ? "var(--accent)" : "var(--border-strong)",
               backgroundColor: mode === m ? "color-mix(in srgb,var(--accent) 12%,transparent)" : "var(--bg-elevated)",
@@ -89,7 +89,7 @@ export default function ProfitMarginClient() {
         </div>
         <div>
           <label className="mb-1 block text-xs font-medium" style={{ color: "var(--text-muted)" }} htmlFor="pm-cogs">
-            Cost of Goods Sold — COGS ($)
+            Cost of Goods Sold - COGS ($)
           </label>
           <input
             id="pm-cogs"
@@ -150,33 +150,33 @@ export default function ProfitMarginClient() {
           Calculate
         </button>
         <button type="button" onClick={reset}
-          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition"
+          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
           style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>
           Reset
         </button>
       </div>
 
       {result && (
-        <div className="rounded-xl border p-5 space-y-3" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+        <div className="rounded-xl border p-5 space-y-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
           <h3 className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>Results</h3>
           <div className="grid gap-3 sm:grid-cols-2">
-            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
-              <p className="text-xs" style={{ color: "var(--text-subtle)" }}>{modeLabels[mode]}</p>
-              <p className="mt-1 font-display text-2xl font-bold" style={{ color: result.margin >= 0 ? "var(--teal)" : "var(--coral)" }}>
+            <div className="rounded-lg border p-4 text-center" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <p className="text-[10px] uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>{modeLabels[mode]}</p>
+              <p className="mt-1 font-display text-xl font-bold" style={{ color: result.margin >= 0 ? "var(--teal)" : "var(--coral)" }}>
                 {fmt(result.margin)}%
               </p>
             </div>
-            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
-              <p className="text-xs" style={{ color: "var(--text-subtle)" }}>
+            <div className="rounded-lg border p-4 text-center" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <p className="text-[10px] uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>
                 {mode === "gross" ? "Gross Profit" : mode === "operating" ? "Operating Income (EBIT)" : "Net Profit"}
               </p>
-              <p className="mt-1 font-display text-2xl font-bold" style={{ color: result.profit >= 0 ? "var(--teal)" : "var(--coral)" }}>
+              <p className="mt-1 font-display text-xl font-bold" style={{ color: result.profit >= 0 ? "var(--teal)" : "var(--coral)" }}>
                 ${fmt(result.profit)}
               </p>
             </div>
           </div>
           {result.margin < 0 && (
-            <p className="text-xs" style={{ color: "var(--coral)" }}>⚠ Negative margin — costs exceed revenue at this level.</p>
+            <p className="text-xs" style={{ color: "var(--coral)" }}>⚠ Negative margin - costs exceed revenue at this level.</p>
           )}
         </div>
       )}

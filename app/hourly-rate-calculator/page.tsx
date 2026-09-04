@@ -4,7 +4,7 @@ import HourlyRateClient from "./HourlyRateClient";
 import { SITE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Hourly Rate Calculator — Minimum Rate to Meet Your Income Goal | BeYourTools",
+  title: "Hourly Rate Calculator - Minimum Rate to Meet Your Income Goal | BeYourTools",
   description:
     "Calculate the minimum hourly rate needed to reach your annual income goal, with overhead and profit buffers built in. Ideal for freelancers, consultants, and contractors.",
   keywords: "hourly rate calculator, minimum hourly rate, income goal calculator, consultant rate, contractor rate, freelance pricing",
@@ -18,7 +18,7 @@ export default function HourlyRatePage() {
       slug="hourly-rate-calculator"
       title="Hourly Rate Calculator"
       cluster="Salary & Income"
-      tagline="Find the minimum hourly rate you must charge to meet your annual income goal — with separate overhead and profit buffers to arrive at a truly sustainable rate."
+      tagline="Find the minimum hourly rate you must charge to meet your annual income goal, with separate overhead and profit buffers to arrive at a truly sustainable rate."
       description="Free hourly rate calculator. Enter your annual income goal, hours worked, overhead percentage, and profit margin to see your base rate and recommended sustainable hourly rate."
       formulaExplanation={
         <>
@@ -32,11 +32,11 @@ export default function HourlyRatePage() {
         </>
       }
       faqs={[
-        { question: "What is the difference between this and the Freelance Rate Calculator?", answer: "The Freelance Rate Calculator works backwards from a desired after-tax net income, accounting for self-employment taxes and business expenses. This Hourly Rate Calculator works from a gross revenue goal with overhead and profit buffers — ideal for businesses or consultants quoting projects." },
+        { question: "What is the difference between this and the Freelance Rate Calculator?", answer: "The Freelance Rate Calculator works backwards from a desired after-tax net income, accounting for self-employment taxes and business expenses. This Hourly Rate Calculator works from a gross revenue goal with overhead and profit buffers, ideal for businesses or consultants quoting projects." },
         { question: "What overhead percentage should I use?", answer: "15–25% covers typical admin time, non-billable hours, and business costs. If you have significant non-billable time (sales calls, project management, invoicing), use 25–40%. Very efficient consultants doing pure billable work can use 10–15%." },
         { question: "Why add a profit margin on top of overhead?", answer: "Overhead covers break-even costs; profit is what lets you invest in growth, weather dry spells, save for retirement, and build a buffer. A 10–20% profit margin makes the rate sustainable long-term." },
-        { question: "How many hours per year should I plan for?", answer: "A 40-hour week for 50 working weeks = 2,000 hours. But not all are billable — admin, sales, and professional development are real costs. Using 1,500–1,800 billable hours is more realistic for most knowledge workers." },
-        { question: "Should I use this rate for every project?", answer: "Use it as a floor. Charge more for specialist expertise, tight deadlines, or complex projects. Never quote below your calculated rate — doing so erodes value and makes the work unprofitable." },
+        { question: "How many hours per year should I plan for?", answer: "A 40-hour week for 50 working weeks = 2,000 hours. But not all are billable, admin, sales, and professional development are real costs. Using 1,500–1,800 billable hours is more realistic for most knowledge workers." },
+        { question: "Should I use this rate for every project?", answer: "Use it as a floor. Charge more for specialist expertise, tight deadlines, or complex projects. Never quote below your calculated rate, doing so erodes value and makes the work unprofitable." },
       ]}
     >
       <HourlyRateClient />

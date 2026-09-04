@@ -111,7 +111,7 @@ export default function PaycheckClient() {
         </div>
         <div>
           <label htmlFor="pc-state" className="mb-1 block text-xs font-medium" style={{ color: "var(--text-muted)" }}>
-            State Income Tax Rate (% — enter 0 for no state tax)
+            State Income Tax Rate (% - enter 0 for no state tax)
           </label>
           <input id="pc-state" type="number" min="0" max="20" step="0.1" value={stateTaxRate} onChange={(e) => setStateTaxRate(e.target.value)}
             className="focus-ring w-full rounded-lg border px-3 py-2 text-sm"
@@ -145,13 +145,13 @@ export default function PaycheckClient() {
       <div className="flex gap-3">
         <button type="button" onClick={calculate} className="focus-ring rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90"
           style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>Calculate</button>
-        <button type="button" onClick={reset} className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition"
+        <button type="button" onClick={reset} className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
           style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>Reset</button>
       </div>
 
       {result && (
         <div className="rounded-xl border p-5 space-y-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
-          <h3 className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>Paycheck Breakdown — {PAY_PERIODS[payPeriod].label}</h3>
+          <h3 className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>Paycheck Breakdown - {PAY_PERIODS[payPeriod].label}</h3>
           <div className="space-y-2">
             {[
               { label: "Gross Pay", value: result.grossPaycheck, type: "positive" as const },
@@ -176,7 +176,7 @@ export default function PaycheckClient() {
             </div>
           </div>
           <p className="text-[11px]" style={{ color: "var(--text-subtle)" }}>
-            ⚠ Estimate only — uses 2024 US federal brackets for single filers. Actual tax depends on filing status, W-4 elections, and deductions. Consult a tax professional for exact figures.
+            ⚠ Estimate only - uses 2024 US federal brackets for single filers. Actual tax depends on filing status, W-4 elections, and deductions. Consult a tax professional for exact figures.
           </p>
         </div>
       )}

@@ -91,28 +91,28 @@ export default function OvertimeClient() {
       <div className="flex gap-3">
         <button type="button" onClick={calculate} className="focus-ring rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90"
           style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>Calculate</button>
-        <button type="button" onClick={reset} className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition"
+        <button type="button" onClick={reset} className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
           style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>Reset</button>
       </div>
 
       {result && (
-        <div className="rounded-xl border p-5 space-y-3" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+        <div className="rounded-xl border p-5 space-y-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
           <h3 className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>Results</h3>
           <div className="grid gap-3 sm:grid-cols-2">
             {[
               { label: "Regular Pay", value: `$${fmt(result.regularPay)}`, sub: `${regularHours} hrs × $${fmt(parseFloat(hourlyRate))}` },
               { label: "Overtime Pay", value: `$${fmt(result.overtimePay)}`, sub: `${overtimeHours} hrs × $${fmt(result.overtimeRate)} (${multiplier}×)` },
             ].map(({ label, value, sub }) => (
-              <div key={label} className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
-                <p className="text-xs" style={{ color: "var(--text-subtle)" }}>{label}</p>
+              <div key={label} className="rounded-lg border p-4 text-center" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+                <p className="text-[10px] uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>{label}</p>
                 <p className="mt-1 font-display text-xl font-bold" style={{ color: "var(--text-primary)" }}>{value}</p>
                 <p className="text-[11px] mt-0.5" style={{ color: "var(--text-subtle)" }}>{sub}</p>
               </div>
             ))}
           </div>
-          <div className="rounded-lg border p-4" style={{ borderColor: "color-mix(in srgb,var(--teal) 30%,transparent)", backgroundColor: "color-mix(in srgb,var(--teal) 8%,transparent)" }}>
-            <p className="text-xs font-medium" style={{ color: "var(--text-muted)" }}>Total Pay This Period</p>
-            <p className="mt-1 font-display text-2xl font-bold" style={{ color: "var(--teal)" }}>${fmt(result.totalPay)}</p>
+          <div className="rounded-lg border p-4 text-center" style={{ borderColor: "color-mix(in srgb,var(--teal) 30%,transparent)", backgroundColor: "color-mix(in srgb,var(--teal) 8%,transparent)" }}>
+            <p className="text-[10px] uppercase tracking-wide" style={{ color: "var(--text-muted)" }}>Total Pay This Period</p>
+            <p className="mt-1 font-display text-xl font-bold" style={{ color: "var(--teal)" }}>${fmt(result.totalPay)}</p>
           </div>
         </div>
       )}

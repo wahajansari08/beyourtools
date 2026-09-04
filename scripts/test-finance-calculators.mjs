@@ -23,7 +23,7 @@ function assertBool(label, condition) {
     passed++;
   } else {
     failed++;
-    failures.push(`FAIL  ${label} — condition was false`);
+    failures.push(`FAIL  ${label} - condition was false`);
   }
 }
 
@@ -183,7 +183,7 @@ section("8. Operating Margin Calculator");
 // ─── 9. BUSINESS MARGIN CALCULATOR ───────────────────────────────────────────
 section("9. Business Margin Calculator");
 {
-  // Mirrors net profit calculator — same formulas stacked
+  // Mirrors net profit calculator - same formulas stacked
   const r = 1000000, c = 400000, o = 250000, i = 20000, t = 55000;
   const gm = ((r - c) / r) * 100;
   const opM = ((r - c - o) / r) * 100;
@@ -291,7 +291,7 @@ section("14. Paycheck Calculator");
   assert("SS = 178.85", ss, 178.846, 0.01);
   assert("Medicare = 41.83", medicare, 41.827, 0.01);
 
-  // Federal tax on $75k (2024 single filer) — annual
+  // Federal tax on $75k (2024 single filer) - annual
   function federalTax(inc) {
     const brackets = [
       { limit: 11600,  rate: 0.10 },
@@ -856,7 +856,7 @@ section("32. APR Calculator");
     return r === 0 ? P / n : (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
   }
 
-  // Bisection APR solver — matches the fixed AprClient.tsx implementation
+  // Bisection APR solver - matches the fixed AprClient.tsx implementation
   function calcAPR(P, fees, annualRate, years) {
     const n = years * 12;
     const M = mPayment(P, annualRate, years);

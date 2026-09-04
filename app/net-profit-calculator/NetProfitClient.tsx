@@ -41,7 +41,7 @@ export default function NetProfitClient() {
       <div className="rounded-xl border p-5 space-y-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
         {[
           { id: "np-rev", label: "Total Revenue ($)", val: revenue, set: setRevenue, ph: "e.g. 500000" },
-          { id: "np-cogs", label: "Cost of Goods Sold — COGS ($)", val: cogs, set: setCogs, ph: "e.g. 200000" },
+          { id: "np-cogs", label: "Cost of Goods Sold - COGS ($)", val: cogs, set: setCogs, ph: "e.g. 200000" },
           { id: "np-opex", label: "Operating Expenses ($)", val: opex, set: setOpex, ph: "e.g. 150000" },
           { id: "np-int", label: "Interest & Other Expenses ($)", val: interest, set: setInterest, ph: "e.g. 10000" },
           { id: "np-tax", label: "Income Taxes ($)", val: taxes, set: setTaxes, ph: "e.g. 28000" },
@@ -60,12 +60,12 @@ export default function NetProfitClient() {
       <div className="flex gap-3">
         <button type="button" onClick={calculate} className="focus-ring rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90"
           style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>Calculate</button>
-        <button type="button" onClick={reset} className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition"
+        <button type="button" onClick={reset} className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
           style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>Reset</button>
       </div>
 
       {result && (
-        <div className="rounded-xl border p-5 space-y-3" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+        <div className="rounded-xl border p-5 space-y-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
           <h3 className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>Results</h3>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {[
@@ -73,8 +73,8 @@ export default function NetProfitClient() {
               { label: "Operating Income", value: `$${fmt(result.operatingIncome)}`, sub: `${fmt(result.operatingMargin)}% margin` },
               { label: "Net Profit", value: `$${fmt(result.netProfit)}`, sub: `${fmt(result.netMargin)}% margin` },
             ].map(({ label, value, sub }) => (
-              <div key={label} className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
-                <p className="text-xs" style={{ color: "var(--text-subtle)" }}>{label}</p>
+              <div key={label} className="rounded-lg border p-4 text-center" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+                <p className="text-[10px] uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>{label}</p>
                 <p className="mt-1 font-display text-xl font-bold" style={{ color: parseFloat(value.replace(/[^0-9.-]/g, "")) >= 0 ? "var(--teal)" : "var(--coral)" }}>{value}</p>
                 <p className="text-[11px] mt-0.5" style={{ color: "var(--text-subtle)" }}>{sub}</p>
               </div>

@@ -112,6 +112,48 @@ export default function VideoToolsPage() {
           </div>
         </div>
 
+        {/* Browse by Category */}
+        <div className="mb-12">
+          <h2 className="mb-4 font-display text-base font-semibold" style={{ color: "var(--text-primary)" }}>
+            Browse by Category
+          </h2>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+            {videoCategories.map((cat) => {
+              const c = CATEGORY_COLORS[cat];
+              const catTools = videoByCategory(cat);
+              const CAT_ICONS: Record<string, string> = {
+                "Compress & Convert": "🎬",
+                "Cut & Edit":         "✂️",
+                "Resize & Crop":      "⬚",
+                "GIF & Frames":       "🎞️",
+                "Audio":              "🔊",
+              };
+              return (
+                <Link
+                  key={cat}
+                  href={`/video-tools/${cat.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`}
+                  className="focus-ring group rounded-xl border p-4 transition hover-card"
+                  style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}
+                >
+                  <div className="mb-2 flex items-center gap-2">
+                    <span
+                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-lg"
+                      style={{ backgroundColor: c.bg, border: `1px solid ${c.border}` }}
+                      aria-hidden="true"
+                    >
+                      {CAT_ICONS[cat]}
+                    </span>
+                    <h3 className="text-sm font-semibold leading-tight" style={{ color: "var(--text-primary)" }}>{cat}</h3>
+                  </div>
+                  <p className="mt-3 text-[11px] font-medium" style={{ color: c.text }}>
+                    {catTools.length} {catTools.length === 1 ? "tool" : "tools"} →
+                  </p>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+
         <div className="space-y-12">
           {videoCategories.map((category) => {
             const tools = videoByCategory(category);

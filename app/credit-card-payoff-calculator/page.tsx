@@ -4,7 +4,7 @@ import CreditCardPayoffClient from "./CreditCardPayoffClient";
 import { SITE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Credit Card Payoff Calculator — Time & Interest to Pay Off Card | BeYourTools",
+  title: "Credit Card Payoff Calculator - Time & Interest to Pay Off Card | BeYourTools",
   description:
     "Find out how long it takes to pay off your credit card balance and total interest paid at a fixed monthly payment. Free, instant, browser-based credit card payoff calculator.",
   keywords: "credit card payoff calculator, credit card interest calculator, pay off credit card, credit card debt, APR calculator",
@@ -37,7 +37,7 @@ export default function CreditCardPayoffPage() {
         { question: "How does credit card interest compound?", answer: "Most credit cards compound interest daily. The daily periodic rate = APR ÷ 365. It's applied to your average daily balance each day, then charged to your account monthly. This calculator uses monthly compounding as a close approximation." },
         { question: "What happens if I only pay the minimum?", answer: "Minimum payments are typically 1–2% of balance or a fixed amount (e.g. $25), whichever is higher. On a $5,000 balance at 20% APR paying only minimums, payoff takes 20+ years and costs over $5,000 in interest. Use the Minimum Payment Calculator to see this." },
         { question: "How much do I need to pay to clear a card in 12 months?", answer: "For a $5,000 balance at 20.99% APR to be paid off in exactly 12 months, you'd need approximately $463/month. Use trial-and-error in the calculator to find your target payment for any specific timeframe." },
-        { question: "Does the APR change affect payments much?", answer: "Yes — significantly. On a $5,000 balance, the difference between 15% and 25% APR at $150/month is over $700 in extra interest. Getting a lower-rate balance transfer or personal loan can meaningfully reduce your total cost." },
+        { question: "Does the APR change affect payments much?", answer: "Yes, significantly. On a $5,000 balance, the difference between 15% and 25% APR at $150/month is over $700 in extra interest. Getting a lower-rate balance transfer or personal loan can meaningfully reduce your total cost." },
         { question: "Should I pay more than the minimum even if I can't pay the full balance?", answer: "Absolutely. Every extra dollar above the minimum directly reduces principal, cutting the interest on every future month. Paying $50 more per month on a typical card can cut years off the payoff timeline." },
       ]}
     >

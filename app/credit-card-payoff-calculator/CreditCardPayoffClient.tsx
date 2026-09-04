@@ -56,7 +56,7 @@ export default function CreditCardPayoffClient() {
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <label htmlFor="cc-apr" className="mb-1 block text-xs font-medium" style={{ color: "var(--text-muted)" }}>
-              Annual Percentage Rate — APR (%)
+              Annual Percentage Rate - APR (%)
             </label>
             <input id="cc-apr" type="number" min="0" step="any" value={apr}
               onChange={(e) => setApr(e.target.value)} placeholder="e.g. 20.99"
@@ -89,7 +89,7 @@ export default function CreditCardPayoffClient() {
           Calculate
         </button>
         <button type="button" onClick={reset}
-          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition"
+          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
           style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>
           Reset
         </button>

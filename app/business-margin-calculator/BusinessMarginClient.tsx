@@ -50,7 +50,7 @@ export default function BusinessMarginClient() {
       <div className="rounded-xl border p-5 space-y-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
         {[
           { id: "bm-rev", label: "Total Revenue ($)", val: revenue, set: setRevenue, ph: "e.g. 1000000" },
-          { id: "bm-cogs", label: "Cost of Goods Sold — COGS ($)", val: cogs, set: setCogs, ph: "e.g. 400000" },
+          { id: "bm-cogs", label: "Cost of Goods Sold - COGS ($)", val: cogs, set: setCogs, ph: "e.g. 400000" },
           { id: "bm-opex", label: "Operating Expenses ($)", val: opex, set: setOpex, ph: "e.g. 250000" },
           { id: "bm-int", label: "Interest & Other Expenses ($)", val: interest, set: setInterest, ph: "e.g. 20000" },
           { id: "bm-tax", label: "Income Taxes ($)", val: taxes, set: setTaxes, ph: "e.g. 55000" },
@@ -69,7 +69,7 @@ export default function BusinessMarginClient() {
       <div className="flex gap-3">
         <button type="button" onClick={calculate} className="focus-ring rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90"
           style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>Calculate</button>
-        <button type="button" onClick={reset} className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition"
+        <button type="button" onClick={reset} className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
           style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>Reset</button>
       </div>
 

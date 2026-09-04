@@ -4,7 +4,7 @@ import ProfitMarginClient from "./ProfitMarginClient";
 import { SITE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Profit Margin Calculator — Gross, Operating & Net Margin | BeYourTools",
+  title: "Profit Margin Calculator - Gross, Operating & Net Margin | BeYourTools",
   description:
     "Calculate gross, operating, or net profit margin instantly. Enter revenue and costs to see your margin percentage and profit amount. Free, browser-based, no sign-up.",
   keywords: "profit margin calculator, gross margin calculator, net margin calculator, operating margin, profit percentage",
@@ -18,7 +18,7 @@ export default function ProfitMarginPage() {
       slug="profit-margin-calculator"
       title="Profit Margin Calculator"
       cluster="Business Finance"
-      tagline="Calculate gross, operating, or net profit margin as a percentage of revenue — switch between margin types and see your profit figure instantly."
+      tagline="Calculate gross, operating, or net profit margin as a percentage of revenue, switch between margin types and see your profit figure instantly."
       description="Free online profit margin calculator. Enter revenue and costs to calculate gross margin, operating margin (EBIT), or net margin with the profit amount shown alongside."
       formulaExplanation={
         <>
@@ -38,7 +38,7 @@ export default function ProfitMarginPage() {
         },
         {
           question: "What is the difference between gross and net margin?",
-          answer: "Gross margin only deducts the direct cost of goods sold (COGS). Net margin deducts everything — COGS, operating expenses, interest, and taxes. Net margin shows what you truly keep from each dollar of revenue.",
+          answer: "Gross margin only deducts the direct cost of goods sold (COGS). Net margin deducts everything, COGS, operating expenses, interest, and taxes. Net margin shows what you truly keep from each dollar of revenue.",
         },
         {
           question: "Can a company have a positive gross margin but negative net margin?",
@@ -46,7 +46,7 @@ export default function ProfitMarginPage() {
         },
         {
           question: "What is included in COGS?",
-          answer: "COGS (Cost of Goods Sold) includes direct costs: raw materials, direct labour, manufacturing overhead, and freight-in. It excludes indirect costs like marketing, admin salaries, and rent — those go in operating expenses.",
+          answer: "COGS (Cost of Goods Sold) includes direct costs: raw materials, direct labour, manufacturing overhead, and freight-in. It excludes indirect costs like marketing, admin salaries, and rent, those go in operating expenses.",
         },
         {
           question: "How do I improve my profit margin?",

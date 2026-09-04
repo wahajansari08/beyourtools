@@ -4,7 +4,7 @@ import SimpleInterestClient from "./SimpleInterestClient";
 import { SITE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Simple Interest Calculator — I = PRT Formula | BeYourTools",
+  title: "Simple Interest Calculator - I = PRT Formula | BeYourTools",
   description:
     "Calculate simple interest earned or owed using the I = PRT formula. Supports years, months, or days. Shows interest amount and total value. Free, browser-based.",
   keywords: "simple interest calculator, I=PRT calculator, simple interest formula, principal rate time, interest calculation",
@@ -18,7 +18,7 @@ export default function SimpleInterestPage() {
       slug="simple-interest-calculator"
       title="Simple Interest Calculator"
       cluster="Savings & Interest"
-      tagline="Calculate simple interest on any principal using I = PRT — enter the amount, annual rate, and time period in years, months, or days."
+      tagline="Calculate simple interest on any principal using I = PRT, enter the amount, annual rate, and time period in years, months, or days."
       description="Free simple interest calculator using the I = PRT formula. Enter principal, annual rate, and time period (years, months, or days) to calculate interest earned or owed."
       formulaExplanation={
         <>
@@ -36,7 +36,7 @@ export default function SimpleInterestPage() {
         </>
       }
       faqs={[
-        { question: "What is the difference between simple and compound interest?", answer: "Simple interest accrues only on the original principal — the interest never earns additional interest. Compound interest earns interest on both principal and accumulated interest, growing exponentially. For the same principal and rate, compound interest always produces a higher total." },
+        { question: "What is the difference between simple and compound interest?", answer: "Simple interest accrues only on the original principal, the interest never earns additional interest. Compound interest earns interest on both principal and accumulated interest, growing exponentially. For the same principal and rate, compound interest always produces a higher total." },
         { question: "When is simple interest used in practice?", answer: "Short-term personal loans, some auto loans, US Treasury Bills, certain savings bonds, and some mortgages (especially simple-interest mortgages). It's most common for short durations where compounding has minimal practical effect." },
         { question: "What is a simple interest mortgage?", answer: "A mortgage where interest accrues daily on the remaining principal balance rather than being calculated monthly. If you pay early in the month, less interest accrues; if you pay late, more accrues. Paying consistently on time or early saves money." },
         { question: "How do I calculate daily simple interest?", answer: "Use T = number of days ÷ 365 in the formula. For a $5,000 loan at 8% APR over 90 days: I = $5,000 × 0.08 × (90/365) = $98.63." },

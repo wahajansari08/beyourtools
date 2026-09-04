@@ -115,6 +115,55 @@ export default function ImageConverterHub() {
         </div>
       </div>
 
+      {/* Browse by Format */}
+      <div className="mb-12">
+        <h2 className="mb-4 font-display text-base font-semibold" style={{ color: "var(--text-primary)" }}>
+          Browse by Format
+        </h2>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {activeSources.map((fmt) => {
+            const routes = bySource[fmt.id as ImageFormat] ?? [];
+            const COLORS = [
+              "var(--teal)", "var(--accent-text)", "var(--coral)",
+              "var(--teal)", "var(--accent-text)", "var(--coral)",
+              "var(--teal)", "var(--accent-text)", "var(--coral)",
+              "var(--teal)", "var(--accent-text)", "var(--coral)",
+            ];
+            const idx = activeSources.findIndex((f) => f.id === fmt.id) % 3;
+            const colorPairs = [
+              { color: "var(--teal)",        bg: "color-mix(in srgb,var(--teal) 10%,transparent)",   border: "color-mix(in srgb,var(--teal) 30%,transparent)"   },
+              { color: "var(--accent-text)", bg: "color-mix(in srgb,var(--accent) 10%,transparent)", border: "color-mix(in srgb,var(--accent) 30%,transparent)" },
+              { color: "var(--coral)",       bg: "color-mix(in srgb,var(--coral) 10%,transparent)",  border: "color-mix(in srgb,var(--coral) 30%,transparent)"  },
+            ];
+            const cp = colorPairs[idx];
+            return (
+              <Link
+                key={fmt.id}
+                href={`/image-converter/from/${fmt.id}`}
+                className="focus-ring group rounded-xl border p-4 transition hover-card"
+                style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}
+              >
+                <div className="mb-2 flex items-center gap-2">
+                  <span
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg font-mono text-xs font-bold"
+                    style={{ backgroundColor: cp.bg, border: `1px solid ${cp.border}`, color: cp.color }}
+                    aria-hidden="true"
+                  >
+                    {fmt.label}
+                  </span>
+                  <h3 className="text-sm font-semibold leading-tight" style={{ color: "var(--text-primary)" }}>
+                    {fmt.label} Converter
+                  </h3>
+                </div>
+                <p className="mt-3 text-[11px] font-medium" style={{ color: cp.color }}>
+                  {routes.length} conversions →
+                </p>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+
       {/* All conversions grouped by source */}
       <div className="space-y-10">
         {activeSources.map((fmt) => {

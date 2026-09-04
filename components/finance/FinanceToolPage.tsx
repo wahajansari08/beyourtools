@@ -1,6 +1,5 @@
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
-import FaqAccordion from "@/components/FaqAccordion";
 import FinanceRelatedTools from "./FinanceRelatedTools";
 import {
   breadcrumbSchema,
@@ -148,15 +147,26 @@ export default function FinanceToolPage({
         </section>
 
         {/* FAQ */}
-        <section className="mt-10 space-y-4" aria-labelledby="faq-heading">
+        <section className="mt-10" aria-labelledby="faq-heading">
           <h2
             id="faq-heading"
-            className="font-display text-lg font-semibold"
+            className="mb-4 font-display text-lg font-semibold"
             style={{ color: "var(--text-primary)" }}
           >
             Frequently Asked Questions
           </h2>
-          <FaqAccordion faqs={faqs} />
+          <div className="space-y-5">
+            {faqs.map(({ question, answer }) => (
+              <div key={question}>
+                <p className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>
+                  {question}
+                </p>
+                <p className="mt-1 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                  {answer}
+                </p>
+              </div>
+            ))}
+          </div>
         </section>
 
         {/* Related tools */}

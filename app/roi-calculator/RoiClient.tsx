@@ -56,7 +56,7 @@ export default function RoiClient() {
         </div>
         <div>
           <label htmlFor="roi-yrs" className="mb-1 block text-xs font-medium" style={{ color: "var(--text-muted)" }}>
-            Holding Period (years — optional, for annualised ROI)
+            Holding Period (years - optional, for annualised ROI)
           </label>
           <input id="roi-yrs" type="number" min="0" step="any" value={years}
             onChange={(e) => setYears(e.target.value)} placeholder="e.g. 3"
@@ -79,7 +79,7 @@ export default function RoiClient() {
           Calculate ROI
         </button>
         <button type="button" onClick={reset}
-          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition"
+          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
           style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>
           Reset
         </button>

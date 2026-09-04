@@ -118,7 +118,7 @@ export default function HourlyRateClient() {
           Calculate
         </button>
         <button type="button" onClick={reset}
-          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition"
+          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
           style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>
           Reset
         </button>
@@ -128,11 +128,11 @@ export default function HourlyRateClient() {
         <div className="rounded-xl border p-5 space-y-4"
           style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
           <h3 className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>
-            Hourly Rate — {fmt(result.totalHours, 0)} hours/year
+            Hourly Rate - {fmt(result.totalHours, 0)} hours/year
           </h3>
           <div className="space-y-3">
             {[
-              { label: "Base Rate (income ÷ hours)", value: result.baseRate, desc: "Bare minimum — no overhead buffer" },
+              { label: "Base Rate (income ÷ hours)", value: result.baseRate, desc: "Bare minimum - no overhead buffer" },
               { label: `With Overhead (+${overheadPct}%)`, value: result.withOverhead, desc: "Covers admin, gaps, non-billable time" },
               { label: `Recommended Rate (+${profitPct}% profit)`, value: result.withProfit, desc: "Sustainable long-term rate", primary: true },
             ].map(({ label, value, desc, primary }) => (

@@ -192,6 +192,47 @@ export default function QRBarcodeToolsPage() {
           </div>
         </div>
 
+        {/* Browse by Category */}
+        <div className="mb-12">
+          <h2 className="mb-4 font-display text-base font-semibold" style={{ color: "var(--text-primary)" }}>
+            Browse by Category
+          </h2>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {qrBarcodeCategories.map((cat) => {
+              const catTools = qrBarcodeByCategory(cat);
+              const colors = CATEGORY_COLORS[cat];
+              const META: Record<string, { icon: string; desc: string }> = {
+                "QR Tools":      { icon: "▦",  desc: "Generate QR codes for URLs, WiFi, contacts and more. Scan and decode QR codes from images or your camera." },
+                "Barcode Tools": { icon: "|||", desc: "Generate Code 128, EAN-13, UPC-A and more barcodes. Scan and decode any barcode format from an image." },
+              };
+              const m = META[cat];
+              return (
+                <Link
+                  key={cat}
+                  href={`/qr-barcode-tools/${cat.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`}
+                  className="focus-ring group rounded-xl border p-4 transition hover-card"
+                  style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}
+                >
+                  <div className="mb-2 flex items-center gap-2">
+                    <span
+                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg font-mono text-sm font-bold"
+                      style={{ backgroundColor: colors.bg, border: `1px solid ${colors.border}` }}
+                      aria-hidden="true"
+                    >
+                      {m.icon}
+                    </span>
+                    <h3 className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>{cat}</h3>
+                  </div>
+                  <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>{m.desc}</p>
+                  <p className="mt-3 text-[11px] font-medium" style={{ color: cat === "QR Tools" ? "var(--teal)" : "var(--accent-text)" }}>
+                    {catTools.length} tools →
+                  </p>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+
         {/* Tools grouped by category */}
         <div className="space-y-12">
           {qrBarcodeCategories.map((cat) => {

@@ -1,5 +1,5 @@
 /**
- * Finance Tools configuration — all 40 tools, 7 clusters.
+ * Finance Tools configuration - all 40 tools, 7 clusters.
  * Used by the hub page, cluster pages, sitemap, search index, and related-tools components.
  */
 
@@ -208,7 +208,7 @@ export const financeTools: FinanceTool[] = [
   {
     slug: "debt-snowball-calculator",
     name: "Debt Snowball Calculator",
-    description: "Use the debt snowball method — pay smallest balances first to build momentum.",
+    description: "Use the debt snowball method - pay smallest balances first to build momentum.",
     cluster: "Debt & Credit",
     icon: "⛄",
     keywords: ["debt snowball", "smallest balance", "payoff order", "debt free", "method"],
@@ -216,7 +216,7 @@ export const financeTools: FinanceTool[] = [
   {
     slug: "debt-avalanche-calculator",
     name: "Debt Avalanche Calculator",
-    description: "Use the debt avalanche method — target highest-interest debts first to minimize total cost.",
+    description: "Use the debt avalanche method - target highest-interest debts first to minimize total cost.",
     cluster: "Debt & Credit",
     icon: "🏔️",
     keywords: ["debt avalanche", "highest interest", "payoff order", "save money", "method"],

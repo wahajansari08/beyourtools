@@ -123,7 +123,7 @@ export default function DebtSnowballClient() {
                 { field: "minPayment" as const, label: "Min. Payment ($/mo)", ph: "e.g. 40" },
               ].map(({ field, label, ph }) => (
                 <div key={field}>
-                  <label className="mb-1 block text-[11px]" style={{ color: "var(--text-subtle)" }}>{label}</label>
+                  <label className="mb-1 block text-xs font-medium" style={{ color: "var(--text-muted)" }}>{label}</label>
                   <input type="number" min="0" step="any" value={debt[field]}
                     onChange={(e) => updateDebt(i, field, e.target.value)} placeholder={ph}
                     className="focus-ring w-full rounded-lg border px-3 py-1.5 text-sm"
@@ -143,7 +143,7 @@ export default function DebtSnowballClient() {
 
       <div className="rounded-xl border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
         <label htmlFor="sb-extra" className="mb-1 block text-xs font-medium" style={{ color: "var(--text-muted)" }}>
-          Extra Monthly Payment ($) — directed at smallest balance
+          Extra Monthly Payment ($) - directed at smallest balance
         </label>
         <input id="sb-extra" type="number" min="0" step="any" value={extraPayment}
           onChange={(e) => setExtraPayment(e.target.value)} placeholder="e.g. 100"
@@ -165,7 +165,7 @@ export default function DebtSnowballClient() {
           Calculate
         </button>
         <button type="button" onClick={reset}
-          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition"
+          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
           style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>
           Reset
         </button>

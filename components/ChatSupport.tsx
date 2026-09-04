@@ -26,13 +26,13 @@ function getBotReply(input: string): string {
   const q = input.toLowerCase();
 
   if (q.includes("bug") || q.includes("error") || q.includes("broken") || q.includes("not working"))
-    return "Sorry to hear that! Please email us at hello@beyourtools.com with the tool name and a short description of the issue — we usually fix bugs within 1–2 days.";
+    return "Sorry to hear that! Please email us at hello@beyourtools.com with the tool name and a short description of the issue - we usually fix bugs within 1–2 days.";
 
   if (q.includes("new tool") || q.includes("suggest") || q.includes("request") || q.includes("add"))
     return "We love suggestions! Send your idea to hello@beyourtools.com or reach us on Reddit at u/beyourtools and we'll consider it for an upcoming update.";
 
   if (q.includes("free") || q.includes("cost") || q.includes("price") || q.includes("paid"))
-    return "Yes — every tool on BeYourTools is 100% free with no sign-up, no ads, and no usage limits. We plan to keep it that way.";
+    return "Yes - every tool on BeYourTools is 100% free with no sign-up, no ads, and no usage limits. We plan to keep it that way.";
 
   if (q.includes("data") || q.includes("privacy") || q.includes("upload") || q.includes("server") || q.includes("safe"))
     return "All processing happens entirely in your browser. Your files and data are never sent to our servers. See our Privacy Policy for full details.";
@@ -47,7 +47,7 @@ function getBotReply(input: string): string {
     return "You're welcome! Is there anything else I can help you with?";
 
   // Fallback
-  return "Thanks for your message! For the fastest response, email us at hello@beyourtools.com — we reply within 2–3 business days. You can also check our Contact page for more options.";
+  return "Thanks for your message! For the fastest response, email us at hello@beyourtools.com - we reply within 2–3 business days. You can also check our Contact page for more options.";
 }
 
 // ── Chat bubble icon ──────────────────────────────────────────────────────────
@@ -269,7 +269,7 @@ export default function ChatSupport() {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Quick replies — only show on first message */}
+          {/* Quick replies - only show on first message */}
           {messages.length === 1 && !typing && (
             <div className="shrink-0 border-t px-4 py-2" style={{ borderColor: "var(--border)" }}>
               <p className="mb-1.5 text-[10px] uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>

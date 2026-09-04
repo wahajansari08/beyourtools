@@ -4,7 +4,7 @@ import FreelanceRateClient from "./FreelanceRateClient";
 import { SITE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Freelance Rate Calculator — Minimum Hourly Rate for Freelancers | BeYourTools",
+  title: "Freelance Rate Calculator - Minimum Hourly Rate for Freelancers | BeYourTools",
   description:
     "Calculate the minimum hourly freelance rate you need to charge to hit your income goal after taxes, business expenses, and non-billable time. Free, browser-based.",
   keywords: "freelance rate calculator, freelancer hourly rate, self employed rate, minimum hourly rate, freelance pricing, contractor rate",
@@ -32,10 +32,10 @@ export default function FreelanceRatePage() {
         </>
       }
       faqs={[
-        { question: "What are billable hours and how many should I use?", answer: "Billable hours are the hours clients actually pay for. Most freelancers bill 60–75% of their working hours — the rest goes to admin, marketing, unpaid revisions, and professional development. 1,000–1,400 hours/year is realistic for a full-time freelancer." },
-        { question: "Why is the self-employment tax 15.3%?", answer: "Employees split FICA taxes with their employer — each paying 7.65%. Self-employed people pay both halves: 12.4% Social Security (up to the wage base) + 2.9% Medicare = 15.3% total. You can deduct half of SE tax when calculating income tax." },
+        { question: "What are billable hours and how many should I use?", answer: "Billable hours are the hours clients actually pay for. Most freelancers bill 60–75% of their working hours, the rest goes to admin, marketing, unpaid revisions, and professional development. 1,000–1,400 hours/year is realistic for a full-time freelancer." },
+        { question: "Why is the self-employment tax 15.3%?", answer: "Employees split FICA taxes with their employer, each paying 7.65%. Self-employed people pay both halves: 12.4% Social Security (up to the wage base) + 2.9% Medicare = 15.3% total. You can deduct half of SE tax when calculating income tax." },
         { question: "How much should I add as a buffer?", answer: "Add 15–25% to your minimum rate. Freelancing involves unpaid admin time, late-paying clients, project gaps, unexpected expenses, and dry spells. The minimum rate is break-even; your actual rate should build in profit and stability." },
-        { question: "Should I charge hourly or project-based?", answer: "Project-based pricing is usually more profitable — it rewards efficiency and aligns with client value. Use your hourly rate as a floor when estimating project costs: estimate hours × rate, then add a scope buffer of 20–30%." },
+        { question: "Should I charge hourly or project-based?", answer: "Project-based pricing is usually more profitable, it rewards efficiency and aligns with client value. Use your hourly rate as a floor when estimating project costs: estimate hours × rate, then add a scope buffer of 20–30%." },
         { question: "What counts as a business expense?", answer: "Deductible freelance expenses: software subscriptions, home office (proportional rent/utilities), professional equipment, health insurance premiums, retirement contributions (SEP-IRA/solo 401k), professional development, and accountant fees." },
         { question: "How does my rate compare to a salaried equivalent?", answer: "To compare fairly, add 25–40% to any salaried offer to account for self-employment taxes, no employer benefits (health insurance, retirement match, paid leave), and income volatility. A $100k salary is roughly equivalent to $125–140k freelance gross." },
       ]}

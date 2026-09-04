@@ -65,7 +65,7 @@ export default function PriceAfterDiscountClient() {
         </div>
         <div>
           <label htmlFor="pad-tax" className="mb-1 block text-xs font-medium" style={{ color: "var(--text-muted)" }}>
-            Sales Tax Rate (% — optional, applied after discount)
+            Sales Tax Rate (% - optional, applied after discount)
           </label>
           <input id="pad-tax" type="number" min="0" max="50" step="any" value={taxRate}
             onChange={(e) => setTaxRate(e.target.value)} placeholder="e.g. 8.5"
@@ -88,7 +88,7 @@ export default function PriceAfterDiscountClient() {
           Calculate
         </button>
         <button type="button" onClick={reset}
-          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition"
+          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
           style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>
           Reset
         </button>

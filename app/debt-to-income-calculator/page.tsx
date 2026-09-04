@@ -4,7 +4,7 @@ import DebtToIncomeClient from "./DebtToIncomeClient";
 import { SITE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Debt-to-Income Calculator — DTI Ratio for Loan Qualification | BeYourTools",
+  title: "Debt-to-Income Calculator - DTI Ratio for Loan Qualification | BeYourTools",
   description:
     "Calculate your debt-to-income (DTI) ratio to understand your borrowing capacity and loan qualification prospects. Includes front-end and back-end DTI. Free, browser-based.",
   keywords: "debt to income calculator, DTI calculator, debt to income ratio, mortgage DTI, loan qualification, back end ratio, front end ratio",
@@ -35,7 +35,7 @@ export default function DebtToIncomePage() {
         { question: "What is the difference between front-end and back-end DTI?", answer: "Front-end DTI (housing ratio) includes only housing costs: mortgage/rent, property tax, insurance, HOA. Back-end DTI includes all monthly debt: housing + car loans + student loans + credit card minimums + any other obligations." },
         { question: "What counts as debt for DTI purposes?", answer: "Monthly minimum payments on: mortgage/rent, auto loans, student loans, credit card balances, personal loans, child support/alimony, and any other regular debt obligation. Utilities, groceries, insurance premiums, and subscriptions are NOT included." },
         { question: "How do I lower my DTI to qualify for a mortgage?", answer: "Pay down debt to reduce monthly obligations (especially credit cards), increase income, avoid taking on new debt before applying, or save a larger down payment to borrow less. Even closing paid-off cards can temporarily help by removing the minimum payment obligation." },
-        { question: "Does rental income count toward income for DTI?", answer: "Usually yes — most lenders count 75% of gross rental income to account for vacancies. Self-employment income typically uses a 2-year average from tax returns. Verify with your lender which income sources they accept." },
+        { question: "Does rental income count toward income for DTI?", answer: "Usually yes, most lenders count 75% of gross rental income to account for vacancies. Self-employment income typically uses a 2-year average from tax returns. Verify with your lender which income sources they accept." },
       ]}
     >
       <DebtToIncomeClient />

@@ -121,21 +121,21 @@ export default function DebtPayoffClient() {
             </div>
             <div className="grid gap-3 sm:grid-cols-3">
               <div>
-                <label className="mb-1 block text-[11px]" style={{ color: "var(--text-subtle)" }}>Balance ($)</label>
+                <label className="mb-1 block text-xs font-medium" style={{ color: "var(--text-muted)" }}>Balance ($)</label>
                 <input type="number" min="0" step="any" value={debt.balance}
                   onChange={(e) => updateDebt(i, "balance", e.target.value)} placeholder="e.g. 5000"
                   className="focus-ring w-full rounded-lg border px-3 py-1.5 text-sm"
                   style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-primary)" }} />
               </div>
               <div>
-                <label className="mb-1 block text-[11px]" style={{ color: "var(--text-subtle)" }}>Interest Rate (%)</label>
+                <label className="mb-1 block text-xs font-medium" style={{ color: "var(--text-muted)" }}>Interest Rate (%)</label>
                 <input type="number" min="0" step="any" value={debt.rate}
                   onChange={(e) => updateDebt(i, "rate", e.target.value)} placeholder="e.g. 19.99"
                   className="focus-ring w-full rounded-lg border px-3 py-1.5 text-sm"
                   style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-primary)" }} />
               </div>
               <div>
-                <label className="mb-1 block text-[11px]" style={{ color: "var(--text-subtle)" }}>Min. Payment ($/mo)</label>
+                <label className="mb-1 block text-xs font-medium" style={{ color: "var(--text-muted)" }}>Min. Payment ($/mo)</label>
                 <input type="number" min="0" step="any" value={debt.minPayment}
                   onChange={(e) => updateDebt(i, "minPayment", e.target.value)} placeholder="e.g. 100"
                   className="focus-ring w-full rounded-lg border px-3 py-1.5 text-sm"
@@ -155,7 +155,7 @@ export default function DebtPayoffClient() {
       <div className="rounded-xl border p-4"
         style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
         <label htmlFor="dp-extra" className="mb-1 block text-xs font-medium" style={{ color: "var(--text-muted)" }}>
-          Extra Monthly Payment ($) — split across all debts
+          Extra Monthly Payment ($) - split across all debts
         </label>
         <input id="dp-extra" type="number" min="0" step="any" value={extraPayment}
           onChange={(e) => setExtraPayment(e.target.value)} placeholder="e.g. 200"
@@ -177,7 +177,7 @@ export default function DebtPayoffClient() {
           Calculate Payoff
         </button>
         <button type="button" onClick={reset}
-          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition"
+          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
           style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>
           Reset
         </button>

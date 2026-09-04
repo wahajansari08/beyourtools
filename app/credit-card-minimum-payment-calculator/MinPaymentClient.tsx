@@ -68,7 +68,7 @@ export default function MinPaymentClient() {
         </div>
         <div>
           <label htmlFor="mp-apr" className="mb-1 block text-xs font-medium" style={{ color: "var(--text-muted)" }}>
-            Annual Percentage Rate — APR (%)
+            Annual Percentage Rate - APR (%)
           </label>
           <input id="mp-apr" type="number" min="0" step="any" value={apr}
             onChange={(e) => setApr(e.target.value)} placeholder="e.g. 22.99"
@@ -138,7 +138,7 @@ export default function MinPaymentClient() {
           Calculate
         </button>
         <button type="button" onClick={reset}
-          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition"
+          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
           style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>
           Reset
         </button>
@@ -165,7 +165,7 @@ export default function MinPaymentClient() {
           </div>
           <p className="text-[11px]" style={{ color: "var(--text-subtle)" }}>
             ⚠ The total interest ($
-            {fmt(result.totalInterest)}) represents {fmt((result.totalInterest / parseFloat(balance)) * 100)}% of your original balance — paid purely in interest.
+            {fmt(result.totalInterest)}) represents {fmt((result.totalInterest / parseFloat(balance)) * 100)}% of your original balance - paid purely in interest.
           </p>
         </div>
       )}
