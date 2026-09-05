@@ -13,6 +13,7 @@ import AudioPlayer from "./AudioPlayer";
 import AudioProgress from "./AudioProgress";
 import AudioDownload from "./AudioDownload";
 import StatusBanner from "@/components/StatusBanner";
+import Btn from "@/components/Btn";
 
 type State = "idle" | "ready" | "processing" | "done" | "error";
 
@@ -121,14 +122,9 @@ export default function AudioProcessorShell({
 
       {/* Process button */}
       {state === "ready" && (
-        <button
-          type="button"
-          onClick={handleProcess}
-          className="focus-ring inline-flex items-center gap-2 rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90"
-          style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}
-        >
+        <Btn variant="primary" size="lg" onClick={handleProcess}>
           {processLabel}
-        </button>
+        </Btn>
       )}
 
       {/* Progress */}
@@ -140,11 +136,9 @@ export default function AudioProcessorShell({
       {state === "error" && (
         <div className="space-y-3">
           <StatusBanner type="error" message={errorMsg} />
-          <button type="button" onClick={reset}
-            className="focus-ring rounded-lg border px-5 py-2 text-sm font-medium"
-            style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-secondary)" }}>
+          <Btn variant="secondary" size="md" onClick={reset}>
             Try again
-          </button>
+          </Btn>
         </div>
       )}
 

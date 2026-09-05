@@ -4,6 +4,7 @@ import { useCallback, useState } from "react";
 import PdfDropzone from "@/components/PdfDropzone";
 import PdfToolShell, { DownloadBtn, formatBytes } from "@/components/PdfToolShell";
 import { unlockPdf, bytesToBlob } from "@/lib/pdf/engine";
+import Btn from "@/components/Btn";
 
 interface State {
   status: "idle" | "processing" | "done" | "error";
@@ -47,7 +48,7 @@ export default function UnlockPdf() {
           <input id="unlock-pw" type={show ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter current password"
             className="code-surface focus-ring flex-1 border-0 bg-transparent px-2 py-0.5 font-mono text-[13px]"
             style={{ color: "var(--text-primary)" }} />
-          <button type="button" onClick={() => setShow((s) => !s)} className="shrink-0 text-xs" style={{ color: "var(--text-muted)" }}>{show ? "Hide" : "Show"}</button>
+          <Btn variant="ghost" size="sm" className="shrink-0" onClick={() => setShow((s) => !s)}>{show ? "Hide" : "Show"}</Btn>
         </div>
       }
       dropzone={<PdfDropzone onFiles={handleFiles} label="Drop a protected PDF here" sublabel="Enter the password above, then drop the PDF" />}

@@ -13,6 +13,7 @@ import {
 import ConverterClient from "./ConverterClient";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, faqSchema, webAppSchema, SITE, canonical } from "@/lib/seo";
+import Btn from "@/components/Btn";
 
 interface Props {
   params: Promise<{ conversion: string }>;
@@ -69,14 +70,9 @@ function RelatedConversions({ route }: { route: ConversionRoute }) {
           </h2>
           <div className="flex flex-wrap gap-2">
             {sameFrom.map((r) => (
-              <Link
-                key={r.slug}
-                href={`/image-converter/${r.slug}`}
-                className="focus-ring rounded-md border px-3 py-1.5 text-xs transition"
-                style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-muted)" }}
-              >
+              <Btn key={r.slug} variant="pill" href={`/image-converter/${r.slug}`}>
                 {conversionTitle(r)}
-              </Link>
+              </Btn>
             ))}
           </div>
         </div>
@@ -88,14 +84,9 @@ function RelatedConversions({ route }: { route: ConversionRoute }) {
           </h2>
           <div className="flex flex-wrap gap-2">
             {sameTo.map((r) => (
-              <Link
-                key={r.slug}
-                href={`/image-converter/${r.slug}`}
-                className="focus-ring rounded-md border px-3 py-1.5 text-xs transition"
-                style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-muted)" }}
-              >
+              <Btn key={r.slug} variant="pill" href={`/image-converter/${r.slug}`}>
                 {conversionTitle(r)}
-              </Link>
+              </Btn>
             ))}
           </div>
         </div>

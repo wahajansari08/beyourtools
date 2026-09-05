@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getPdfTool, pdfTools, pdfToolsByCategory } from "@/lib/pdf-tools-config";
 import PdfToolClient from "./PdfToolClient";
+import Btn from "@/components/Btn";
 
 interface Props {
   params: Promise<{ tool: string }>;
@@ -63,14 +64,9 @@ export default async function Page({ params }: Props) {
           </h2>
           <div className="flex flex-wrap gap-2">
             {related.map((t) => (
-              <Link
-                key={t.slug}
-                href={`/pdf-tools/${t.slug}`}
-                className="focus-ring rounded-md border px-3 py-1.5 text-xs transition"
-                style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-muted)" }}
-              >
-                {t.icon} {t.name}
-              </Link>
+              <Btn key={t.slug} variant="pill" href={`/pdf-tools/${t.slug}`}>
+                <span aria-hidden="true">{t.icon}</span> {t.name}
+              </Btn>
             ))}
           </div>
         </div>

@@ -3,6 +3,7 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import StatusBanner from "@/components/StatusBanner";
 import CopyButton from "@/components/CopyButton";
+import Btn from "@/components/Btn";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -476,16 +477,7 @@ export default function BarcodeWithLogoClient() {
             {/* Source selector */}
             <div className="flex flex-wrap gap-2">
               {(["none", "social", "upload"] as const).map((src) => (
-                <button key={src} type="button"
-                  onClick={() => setLogoOpts((o) => ({ ...o, source: src }))}
-                  className="focus-ring rounded border px-3 py-1.5 text-xs font-medium transition capitalize"
-                  style={{
-                    borderColor: logoOpts.source === src ? "var(--accent)" : "var(--border-strong)",
-                    backgroundColor: logoOpts.source === src ? "color-mix(in srgb,var(--accent) 12%,transparent)" : "var(--bg-elevated)",
-                    color: logoOpts.source === src ? "var(--accent)" : "var(--text-muted)",
-                  }}>
-                  {src === "none" ? "No logo" : src === "social" ? "Social logo" : "Upload logo"}
-                </button>
+                <Btn variant="toggle" size="sm" key={src} onClick={() => setLogoOpts((o) => ({ ...o, source: src }))} selected={logoOpts.source === src}>{src === "none" ? "No logo" : src === "social" ? "Social logo" : "Upload logo"}</Btn>
               ))}
             </div>
 
@@ -495,20 +487,8 @@ export default function BarcodeWithLogoClient() {
                 <p className="mb-2 text-xs font-medium" style={labelSty}>Choose social logo</p>
                 <div className="flex flex-wrap gap-2">
                   {SOCIAL_LOGOS.map((s) => (
-                    <button key={s.id} type="button"
-                      onClick={() => setLogoOpts((o) => ({ ...o, socialId: s.id }))}
-                      title={s.label}
-                      className="focus-ring flex h-10 w-10 items-center justify-center rounded-lg border transition hover:opacity-80"
-                      style={{
-                        borderColor: logoOpts.socialId === s.id ? "var(--accent)" : "var(--border-strong)",
-                        backgroundColor: logoOpts.socialId === s.id ? "color-mix(in srgb,var(--accent) 12%,transparent)" : "var(--bg-elevated)",
-                      }}
-                      aria-label={s.label}
-                      aria-pressed={logoOpts.socialId === s.id}
-                    >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={svgToDataUrl(s.svg)} alt={s.label} className="h-6 w-6" />
-                    </button>
+                    <Btn variant="toggle" size="sm" key={s.id} onClick={() => setLogoOpts((o) => ({ ...o, socialId: s.id }))} selected={logoOpts.socialId === s.id} aria-label={s.label} title={s.label} className="h-10 w-10 p-0">{/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={svgToDataUrl(s.svg)} alt={s.label} className="h-6 w-6" /></Btn>
                   ))}
                 </div>
               </div>
@@ -535,8 +515,7 @@ export default function BarcodeWithLogoClient() {
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={logoOpts.uploadDataUrl} alt="Uploaded logo preview" className="h-10 w-10 rounded border object-contain"
                       style={{ borderColor: "var(--border)", backgroundColor: "#fff" }} />
-                    <button type="button" onClick={() => setLogoOpts((o) => ({ ...o, uploadDataUrl: "" }))}
-                      className="text-xs" style={{ color: "var(--coral)" }}>Remove</button>
+                    <Btn variant="danger" onClick={() => setLogoOpts((o) => ({ ...o, uploadDataUrl: "" }))}>Remove</Btn>
                   </div>
                 )}
               </div>
@@ -586,22 +565,14 @@ export default function BarcodeWithLogoClient() {
 
           {/* Generate button */}
           <div className="flex flex-wrap gap-3">
-            <button type="button" onClick={generate} disabled={loading}
-              className="focus-ring inline-flex items-center gap-2 rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90 disabled:opacity-50"
-              style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>
-              {loading ? (
+            <Btn variant="primary" size="lg" disabled={loading} onClick={generate}>{loading ? (
                 <><svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                 </svg>Generating…</>
-              ) : "Generate Barcode"}
-            </button>
+              ) : "Generate Barcode"}</Btn>
             {hasResult && (
-              <button type="button" onClick={() => { setPngUrl(null); setJpgUrl(null); setSvgStr(null); setValue(""); setWarnings([]); }}
-                className="focus-ring inline-flex items-center rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
-                style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-secondary)" }}>
-                Reset
-              </button>
+              <Btn variant="secondary" size="md" onClick={() => { setPngUrl(null); setJpgUrl(null); setSvgStr(null); setValue(""); setWarnings([]); }}>Reset</Btn>
             )}
           </div>
         </div>
@@ -628,30 +599,14 @@ export default function BarcodeWithLogoClient() {
             {/* Download + copy + print */}
             {hasResult && pngUrl && (
               <div className="mt-4 flex flex-wrap gap-2">
-                <button type="button" onClick={() => downloadDataUrl(pngUrl, "barcode-with-logo.png")}
-                  className="focus-ring inline-flex items-center gap-1.5 rounded-md px-3 py-2 text-xs font-semibold transition hover:opacity-90"
-                  style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>
-                  PNG
-                </button>
+                <Btn variant="primary" size="sm" onClick={() => downloadDataUrl(pngUrl, "barcode-with-logo.png")}>PNG</Btn>
                 {jpgUrl && (
-                  <button type="button" onClick={() => downloadDataUrl(jpgUrl, "barcode-with-logo.jpg")}
-                    className="focus-ring inline-flex items-center gap-1.5 rounded-md border px-3 py-2 text-xs font-medium transition hover:opacity-80"
-                    style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-secondary)" }}>
-                    JPG
-                  </button>
+                  <Btn variant="secondary" size="sm" onClick={() => downloadDataUrl(jpgUrl, "barcode-with-logo.jpg")}>JPG</Btn>
                 )}
                 {svgStr && logoOpts.source === "none" && (
-                  <button type="button" onClick={downloadSvg}
-                    className="focus-ring inline-flex items-center gap-1.5 rounded-md border px-3 py-2 text-xs font-medium transition hover:opacity-80"
-                    style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-secondary)" }}>
-                    SVG
-                  </button>
+                  <Btn variant="secondary" size="sm" onClick={downloadSvg}>SVG</Btn>
                 )}
-                <button type="button" onClick={handlePrint}
-                  className="focus-ring inline-flex items-center gap-1.5 rounded-md border px-3 py-2 text-xs font-medium transition hover:opacity-80"
-                  style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-secondary)" }}>
-                  🖨️ Print
-                </button>
+                <Btn variant="secondary" size="sm" onClick={handlePrint}>🖨️ Print</Btn>
                 <CopyButton text={value.trim()} />
               </div>
             )}

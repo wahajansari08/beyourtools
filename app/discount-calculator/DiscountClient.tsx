@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Btn from "@/components/Btn";
 
 function fmt(n: number) { return n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
 
@@ -41,10 +42,12 @@ export default function DiscountClient() {
       {error && <p className="rounded-lg border px-4 py-2 text-sm" style={{ borderColor: "var(--coral)", color: "var(--coral)", backgroundColor: "color-mix(in srgb,var(--coral) 8%,transparent)" }}>{error}</p>}
 
       <div className="flex gap-3">
-        <button type="button" onClick={calculate} className="focus-ring rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90"
-          style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>Calculate</button>
-        <button type="button" onClick={reset} className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
-          style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>Reset</button>
+        <Btn variant="primary" size="lg" onClick={calculate}>
+          Calculate
+        </Btn>
+        <Btn variant="secondary" onClick={reset}>
+          Reset
+        </Btn>
       </div>
 
       {result && (

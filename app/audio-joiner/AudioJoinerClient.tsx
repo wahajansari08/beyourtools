@@ -8,6 +8,7 @@ import StatusBanner from "@/components/StatusBanner";
 import { mergeAudio } from "@/lib/audio/merge";
 import { formatBytes } from "@/lib/audio/ffmpeg";
 import { FORMAT_LABEL, type AudioFormat } from "@/lib/audio/convert";
+import Btn from "@/components/Btn";
 
 type State = "idle" | "processing" | "done" | "error";
 
@@ -66,15 +67,7 @@ export default function AudioJoinerClient() {
           style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
           <span className="text-xs font-medium shrink-0" style={{ color: "var(--text-muted)" }}>Output</span>
           {OUT_FORMATS.map((f) => (
-            <button key={f.value} type="button" onClick={() => setOutFmt(f.value)}
-              className="focus-ring rounded border px-3 py-1 text-xs font-medium transition"
-              style={{
-                borderColor: outFmt === f.value ? "var(--accent)" : "var(--border-strong)",
-                backgroundColor: outFmt === f.value ? "color-mix(in srgb,var(--accent) 12%,transparent)" : "var(--bg-elevated)",
-                color: outFmt === f.value ? "var(--accent)" : "var(--text-muted)",
-              }}>
-              {f.label}
-            </button>
+            <Btn variant="toggle" size="sm" key={f.value} onClick={() => setOutFmt(f.value)} selected={outFmt === f.value}>{f.label}</Btn>
           ))}
         </div>
       )}
@@ -94,7 +87,7 @@ export default function AudioJoinerClient() {
             <span className="text-xs font-semibold" style={{ color: "var(--text-subtle)" }}>
               {files.length} file{files.length !== 1 ? "s" : ""} · {fmtDur(totalDuration)}
             </span>
-            <button type="button" onClick={reset} className="text-xs" style={{ color: "var(--text-subtle)" }}>Clear all</button>
+            <Btn variant="ghost" size="sm" onClick={reset}>Clear all</Btn>
           </div>
           <ul>
             {files.map((f, i) => (
@@ -105,12 +98,9 @@ export default function AudioJoinerClient() {
                   <p className="text-[11px]" style={{ color: "var(--text-subtle)" }}>{formatBytes(f.file.size)} · {fmtDur(f.duration)}</p>
                 </div>
                 <div className="flex gap-1 shrink-0">
-                  <button type="button" onClick={() => moveUp(i)} disabled={i === 0} aria-label="Move up"
-                    className="focus-ring rounded p-1 text-xs disabled:opacity-30" style={{ color: "var(--text-muted)" }}>▲</button>
-                  <button type="button" onClick={() => moveDown(i)} disabled={i === files.length - 1} aria-label="Move down"
-                    className="focus-ring rounded p-1 text-xs disabled:opacity-30" style={{ color: "var(--text-muted)" }}>▼</button>
-                  <button type="button" onClick={() => removeFile(i)} aria-label="Remove"
-                    className="focus-ring rounded p-1 text-xs" style={{ color: "var(--coral)" }}>✕</button>
+                  <Btn variant="icon" disabled={i === 0} aria-label="Move up" onClick={() => moveUp(i)}>▲</Btn>
+                  <Btn variant="icon" disabled={i === files.length - 1} aria-label="Move down" onClick={() => moveDown(i)}>▼</Btn>
+                  <Btn variant="danger" aria-label="Remove" onClick={() => removeFile(i)}>✕</Btn>
                 </div>
               </li>
             ))}
@@ -119,22 +109,18 @@ export default function AudioJoinerClient() {
       )}
 
       {files.length >= 2 && state === "idle" && (
-        <button type="button" onClick={handleJoin}
-          className="focus-ring inline-flex items-center gap-2 rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90"
-          style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>
+        <Btn variant="primary" size="lg" onClick={handleJoin}>
           ➕ Join {files.length} files → {FORMAT_LABEL[outFmt]}
-        </button>
+        </Btn>
       )}
 
       {state === "processing" && <AudioProgress ratio={progress} label="Joining audio files…" />}
       {state === "error" && (
         <div className="space-y-3">
           <StatusBanner type="error" message={errorMsg} />
-          <button type="button" onClick={reset}
-            className="focus-ring rounded-lg border px-5 py-2 text-sm font-medium"
-            style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-secondary)" }}>
-            Try again
-          </button>
+          <Btn variant="secondary" onClick={reset}>
+          Try again
+        </Btn>
         </div>
       )}
       {state === "done" && outBlob && (

@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Btn from "@/components/Btn";
 
 function fmt(n: number) {
   return n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -50,13 +51,7 @@ export default function SalaryToHourlyClient() {
           <p className="mb-2 text-xs font-medium" style={{ color: "var(--text-muted)" }}>Salary Period</p>
           <div className="flex flex-wrap gap-2" role="group" aria-label="Salary period">
             {periods.map((p) => (
-              <button key={p.id} type="button" onClick={() => { setPeriod(p.id); setResult(null); }}
-                className="focus-ring rounded border px-3 py-1.5 text-xs font-medium transition"
-                style={{
-                  borderColor: period === p.id ? "var(--accent)" : "var(--border-strong)",
-                  backgroundColor: period === p.id ? "color-mix(in srgb,var(--accent) 12%,transparent)" : "var(--bg-elevated)",
-                  color: period === p.id ? "var(--accent)" : "var(--text-muted)",
-                }} aria-pressed={period === p.id}>{p.label}</button>
+              <Btn variant="toggle" size="sm" key={p.id} onClick={() => { setPeriod(p.id); setResult(null); }} selected={period === p.id}>{p.label}</Btn>
             ))}
           </div>
         </div>
@@ -87,10 +82,12 @@ export default function SalaryToHourlyClient() {
       {error && <p className="rounded-lg border px-4 py-2 text-sm" style={{ borderColor: "var(--coral)", color: "var(--coral)", backgroundColor: "color-mix(in srgb,var(--coral) 8%,transparent)" }}>{error}</p>}
 
       <div className="flex gap-3">
-        <button type="button" onClick={calculate} className="focus-ring rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90"
-          style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>Calculate</button>
-        <button type="button" onClick={reset} className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
-          style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>Reset</button>
+        <Btn variant="primary" size="lg" onClick={calculate}>
+          Calculate
+        </Btn>
+        <Btn variant="secondary" onClick={reset}>
+          Reset
+        </Btn>
       </div>
 
       {result && (

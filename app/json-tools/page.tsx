@@ -3,6 +3,7 @@ import Link from "next/link";
 import { tools, categories, toolsByCategory } from "@/lib/tools-config";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
+import Btn from "@/components/Btn";
 
 export const metadata: Metadata = {
   title: "JSON Tools - Free Online JSON Formatter, Validator & Converter",
@@ -97,19 +98,10 @@ export default function JsonToolsPage() {
             const tool = tools.find((t) => t.slug === slug);
             if (!tool) return null;
             return (
-              <Link
-                key={slug}
-                href={`/${slug}`}
-                className="focus-ring flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-xs font-medium transition"
-                style={{
-                  borderColor: "var(--border-strong)",
-                  backgroundColor: "var(--bg-elevated)",
-                  color: "var(--text-secondary)",
-                }}
-              >
+              <Btn variant="pill" key={slug} href={`/${slug}`}>
                 <span className="font-mono text-[10px]" style={{ color: "var(--teal)" }}>{"{ }"}</span>
                 {tool.name}
-              </Link>
+              </Btn>
             );
           })}
         </div>

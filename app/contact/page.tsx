@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
+import Btn from "@/components/Btn";
 
 export const metadata: Metadata = {
   title: "Contact Us - BeYourTools",
@@ -120,13 +121,9 @@ export default function ContactPage() {
             />
           </div>
 
-          <button
-            type="submit"
-            className="focus-ring rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90"
-            style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}
-          >
-            Send message
-          </button>
+          <Btn variant="primary" size="lg">
+          Send message
+        </Btn>
         </form>
 
         {/* Alternative contact */}

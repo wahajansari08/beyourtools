@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Btn from "@/components/Btn";
 
 type MarginType = "gross" | "operating" | "net";
 
@@ -53,20 +54,7 @@ export default function ProfitMarginClient() {
       {/* Mode selector */}
       <div className="flex flex-wrap gap-2" role="group" aria-label="Margin type">
         {(["gross", "operating", "net"] as MarginType[]).map((m) => (
-          <button
-            key={m}
-            type="button"
-            onClick={() => { setMode(m); setResult(null); setError(""); }}
-            className="focus-ring rounded border px-3 py-1.5 text-xs font-medium capitalize transition"
-            style={{
-              borderColor: mode === m ? "var(--accent)" : "var(--border-strong)",
-              backgroundColor: mode === m ? "color-mix(in srgb,var(--accent) 12%,transparent)" : "var(--bg-elevated)",
-              color: mode === m ? "var(--accent)" : "var(--text-muted)",
-            }}
-            aria-pressed={mode === m}
-          >
-            {modeLabels[m]}
-          </button>
+          <Btn variant="toggle" size="sm" key={m} onClick={() => { setMode(m); setResult(null); setError(""); }} selected={mode === m}>{modeLabels[m]}</Btn>
         ))}
       </div>
 
@@ -144,16 +132,12 @@ export default function ProfitMarginClient() {
       {error && <p className="rounded-lg border px-4 py-2 text-sm" style={{ borderColor: "var(--coral)", color: "var(--coral)", backgroundColor: "color-mix(in srgb,var(--coral) 8%,transparent)" }}>{error}</p>}
 
       <div className="flex gap-3">
-        <button type="button" onClick={calculate}
-          className="focus-ring rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90"
-          style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>
+        <Btn variant="primary" size="lg" onClick={calculate}>
           Calculate
-        </button>
-        <button type="button" onClick={reset}
-          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
-          style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>
+        </Btn>
+        <Btn variant="secondary" onClick={reset}>
           Reset
-        </button>
+        </Btn>
       </div>
 
       {result && (

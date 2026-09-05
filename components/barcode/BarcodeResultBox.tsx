@@ -1,6 +1,7 @@
 "use client";
 
 import CopyButton from "@/components/CopyButton";
+import Btn from "@/components/Btn";
 
 interface BarcodeResultBoxProps {
   value: string;
@@ -63,23 +64,13 @@ export default function BarcodeResultBox({ value, format, onReset, onScanAgain }
           </a>
         )}
         {onScanAgain && (
-          <button
-            type="button"
-            onClick={onScanAgain}
-            className="focus-ring inline-flex items-center gap-1.5 rounded border px-3 py-1.5 text-xs font-medium transition hover:opacity-80"
-            style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-secondary)" }}
-          >
-            Scan again
-          </button>
+          <Btn variant="secondary" size="sm" onClick={onScanAgain}>
+          Scan again
+        </Btn>
         )}
-        <button
-          type="button"
-          onClick={onReset}
-          className="focus-ring inline-flex items-center gap-1.5 rounded border px-3 py-1.5 text-xs font-medium transition hover:opacity-80"
-          style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}
-        >
+        <Btn variant="secondary" size="sm" onClick={onReset}>
           Reset
-        </button>
+        </Btn>
       </div>
     </div>
   );

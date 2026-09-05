@@ -4,6 +4,7 @@ import { useCallback, useState } from "react";
 import PdfDropzone from "@/components/PdfDropzone";
 import PdfToolShell, { DownloadBtn, formatBytes } from "@/components/PdfToolShell";
 import { protectPdf, bytesToBlob } from "@/lib/pdf/engine";
+import Btn from "@/components/Btn";
 
 interface State {
   status: "idle" | "processing" | "done" | "error";
@@ -55,11 +56,7 @@ export default function ProtectPdf() {
                 style={{ color: "var(--text-primary)" }} />
             </div>
           ))}
-          <button type="button" onClick={() => setShow((s) => !s)}
-            className="focus-ring rounded-md border px-3 py-1.5 text-xs"
-            style={{ borderColor: "var(--border-strong)", color: "var(--text-muted)", backgroundColor: "var(--bg-elevated)" }}>
-            {show ? "Hide" : "Show"} passwords
-          </button>
+          <Btn variant="secondary" size="sm" onClick={() => setShow((s) => !s)}>{show ? "Hide" : "Show"} passwords</Btn>
         </div>
       }
       dropzone={<PdfDropzone onFiles={handleFiles} label="Drop a PDF here" sublabel="Set passwords above, then drop the PDF" />}

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { formats, routesBySourceFormat, getFormat, type ImageFormat } from "@/lib/image-tools-config";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
+import Btn from "@/components/Btn";
 import FormatSelectorClient from "./FormatSelectorClient";
 
 export const metadata: Metadata = {
@@ -102,14 +103,9 @@ export default function ImageConverterHub() {
           {["jpg-to-png","jpg-to-webp","jpg-to-pdf","png-to-jpg","png-to-webp","png-to-svg","webp-to-jpg","webp-to-png","svg-to-png"].map((slug) => {
             const [from,,to] = slug.split("-");
             return (
-              <Link
-                key={slug}
-                href={`/image-converter/${slug}`}
-                className="focus-ring rounded-md border px-3 py-1.5 text-xs font-medium transition"
-                style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-secondary)" }}
-              >
+              <Btn key={slug} variant="pill" href={`/image-converter/${slug}`}>
                 {from.toUpperCase()} → {to.toUpperCase()}
-              </Link>
+              </Btn>
             );
           })}
         </div>

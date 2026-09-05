@@ -3,6 +3,7 @@ import Link from "next/link";
 import { pdfTools, pdfToolCategories, pdfToolsByCategory } from "@/lib/pdf-tools-config";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
+import Btn from "@/components/Btn";
 
 export const metadata: Metadata = {
   title: "PDF Tools - Free Online PDF Editor, Converter & Compressor | BeYourTools",
@@ -95,15 +96,10 @@ export default function PdfToolsHub() {
             const tool = pdfTools.find((t) => t.slug === slug);
             if (!tool) return null;
             return (
-              <Link
-                key={slug}
-                href={`/pdf-tools/${slug}`}
-                className="focus-ring flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-xs font-medium transition"
-                style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-secondary)" }}
-              >
+              <Btn variant="pill" key={slug} href={`/pdf-tools/${slug}`}>
                 <span>{tool.icon}</span>
                 {tool.name}
-              </Link>
+              </Btn>
             );
           })}
         </div>

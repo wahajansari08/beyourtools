@@ -3,6 +3,7 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import BarcodeResultBox from "@/components/barcode/BarcodeResultBox";
 import StatusBanner from "@/components/StatusBanner";
+import Btn from "@/components/Btn";
 
 type ScanState = "idle" | "requesting" | "scanning" | "done" | "error";
 
@@ -116,21 +117,15 @@ export default function BarcodeScannerClient() {
       {state !== "done" && (
         <div className="flex flex-wrap items-center gap-3">
           {!isScanning ? (
-            <button type="button" onClick={() => startScanning(activeCameraId)}
-              className="focus-ring inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold transition hover:opacity-90"
-              style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>
+            <Btn variant="primary" size="md" onClick={() => startScanning(activeCameraId)}>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4" aria-hidden="true">
                 <path d="M10 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
                 <path fillRule="evenodd" d="M.664 10.59a1.651 1.651 0 0 1 0-1.186A10.004 10.004 0 0 1 10 3c4.257 0 7.893 2.66 9.336 6.41.147.381.146.804 0 1.186A10.004 10.004 0 0 1 10 17c-4.257 0-7.893-2.66-9.336-6.41ZM14 10a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" clipRule="evenodd" />
               </svg>
               Start Camera Scan
-            </button>
+            </Btn>
           ) : (
-            <button type="button" onClick={reset}
-              className="focus-ring inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-medium transition"
-              style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-secondary)" }}>
-              Stop Scanning
-            </button>
+              <Btn variant="secondary" size="md" onClick={reset}>Stop Scanning</Btn>
           )}
 
           {isScanning && cameras.length > 1 && (

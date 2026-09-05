@@ -3,6 +3,7 @@
 import { useCallback, useState } from "react";
 import PdfToolShell, { DownloadBtn, formatBytes } from "@/components/PdfToolShell";
 import { htmlToPdf } from "@/lib/pdf/image-convert";
+import Btn from "@/components/Btn";
 
 interface State {
   status: "idle" | "processing" | "done" | "error";
@@ -67,15 +68,9 @@ export default function HtmlToPdf() {
             />
           </div>
 
-          <button
-            type="button"
-            onClick={handleConvert}
-            disabled={!html.trim()}
-            className="focus-ring inline-flex items-center gap-2 rounded-md px-5 py-2.5 text-sm font-semibold transition hover:opacity-90 disabled:opacity-40"
-            style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}
-          >
-            Convert to PDF
-          </button>
+          <Btn variant="primary" onClick={handleConvert} disabled={!html.trim()}>
+          Convert to PDF
+        </Btn>
         </div>
       )}
 
@@ -143,18 +138,9 @@ export default function HtmlToPdf() {
 
           <div className="flex flex-wrap gap-3">
             {state.url && <DownloadBtn href={state.url} filename="document.pdf" label="Download PDF" />}
-            <button
-              type="button"
-              onClick={reset}
-              className="focus-ring inline-flex items-center gap-2 rounded-md border px-5 py-2.5 text-sm font-medium transition"
-              style={{
-                borderColor: "var(--border-strong)",
-                color: "var(--text-secondary)",
-                backgroundColor: "var(--bg-elevated)",
-              }}
-            >
-              Start over
-            </button>
+            <Btn variant="secondary" onClick={reset}>
+          Start over
+        </Btn>
           </div>
         </div>
       )}

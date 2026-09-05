@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Btn from "@/components/Btn";
 
 function fmt(n: number, d = 2) {
   return n.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
@@ -55,11 +56,7 @@ export default function PriceAfterDiscountClient() {
           {/* Quick discount presets */}
           <div className="mt-2 flex flex-wrap gap-1.5">
             {["5", "10", "15", "20", "25", "30", "40", "50", "60", "70", "75"].map((d) => (
-              <button key={d} type="button" onClick={() => { setDiscountPct(d); setResult(null); }}
-                className="focus-ring rounded border px-2 py-0.5 text-[10px] font-medium transition hover:opacity-80"
-                style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-subtle)" }}>
-                {d}% off
-              </button>
+              <Btn variant="secondary" size="sm" className="px-2 py-0.5 text-[10px]" key={d} onClick={() => { setDiscountPct(d); setResult(null); }}>{d}% off</Btn>
             ))}
           </div>
         </div>
@@ -82,16 +79,12 @@ export default function PriceAfterDiscountClient() {
       )}
 
       <div className="flex gap-3">
-        <button type="button" onClick={calculate}
-          className="focus-ring rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90"
-          style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>
+        <Btn variant="primary" size="lg" onClick={calculate}>
           Calculate
-        </button>
-        <button type="button" onClick={reset}
-          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
-          style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>
+        </Btn>
+        <Btn variant="secondary" onClick={reset}>
           Reset
-        </button>
+        </Btn>
       </div>
 
       {result && (

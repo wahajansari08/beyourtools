@@ -3,6 +3,7 @@
 import { useState } from "react";
 import AudioProcessorShell from "@/components/audio/AudioProcessorShell";
 import { normalizeAudio, type NormalizationMode } from "@/lib/audio/normalize";
+import Btn from "@/components/Btn";
 
 export default function AudioNormalizerClient() {
   const [mode,     setMode]     = useState<NormalizationMode>("peak");
@@ -20,17 +21,12 @@ export default function AudioNormalizerClient() {
               { value: "peak",    label: "Peak normalization",    desc: "Adjusts gain so the loudest peak reaches the target level." },
               { value: "dynamic", label: "Dynamic normalization", desc: "Balances volume across the whole file for even loudness." },
             ] as { value: NormalizationMode; label: string; desc: string }[]).map((m) => (
-              <button key={m.value} type="button" onClick={() => setMode(m.value)}
-                className="focus-ring rounded-lg border p-3 text-left transition"
-                style={{
-                  borderColor: mode === m.value ? "var(--accent)" : "var(--border-strong)",
-                  backgroundColor: mode === m.value ? "color-mix(in srgb,var(--accent) 8%,transparent)" : "var(--bg-elevated)",
-                }}>
+              <Btn variant="toggle" size="sm" key={m.value} onClick={() => setMode(m.value)} selected={mode === m.value} className="w-full p-3 text-left">
                 <p className="text-xs font-semibold" style={{ color: mode === m.value ? "var(--accent)" : "var(--text-secondary)" }}>
                   {m.label}
                 </p>
                 <p className="mt-0.5 text-[11px]" style={{ color: "var(--text-subtle)" }}>{m.desc}</p>
-              </button>
+              </Btn>
             ))}
           </div>
         </div>

@@ -4,6 +4,7 @@ import { useCallback, useState } from "react";
 import PdfDropzone from "@/components/PdfDropzone";
 import StatusBanner from "@/components/StatusBanner";
 import { comparePdfs, type PdfDiffResult } from "@/lib/pdf/engine";
+import Btn from "@/components/Btn";
 
 interface State {
   status: "idle" | "processing" | "done" | "error";
@@ -53,11 +54,9 @@ export default function PdfCompare() {
       )}
 
       {state.status === "idle" && state.fileA && state.fileB && (
-        <button type="button" onClick={handleCompare}
-          className="focus-ring inline-flex items-center gap-2 rounded-md px-5 py-2.5 text-sm font-semibold transition hover:opacity-90"
-          style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>
+        <Btn variant="primary" onClick={handleCompare}>
           Compare PDFs
-        </button>
+        </Btn>
       )}
 
       {state.status === "processing" && (
@@ -96,11 +95,9 @@ export default function PdfCompare() {
               ))}
             </div>
           )}
-          <button type="button" onClick={reset}
-            className="focus-ring inline-flex items-center gap-2 rounded-md border px-5 py-2.5 text-sm font-medium transition"
-            style={{ borderColor: "var(--border-strong)", color: "var(--text-secondary)", backgroundColor: "var(--bg-elevated)" }}>
-            Compare other PDFs
-          </button>
+          <Btn variant="secondary" onClick={reset}>
+          Compare other PDFs
+        </Btn>
         </div>
       )}
     </div>

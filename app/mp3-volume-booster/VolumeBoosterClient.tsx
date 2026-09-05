@@ -4,6 +4,7 @@ import { useState } from "react";
 import AudioProcessorShell from "@/components/audio/AudioProcessorShell";
 import { adjustVolume } from "@/lib/audio/volume";
 import StatusBanner from "@/components/StatusBanner";
+import Btn from "@/components/Btn";
 
 const PRESETS = [
   { label: "+25%", gain: 1.25 },
@@ -28,26 +29,9 @@ export default function VolumeBoosterClient() {
           <p className="mb-2 text-xs font-medium" style={{ color: "var(--text-muted)" }}>Quick presets</p>
           <div className="flex flex-wrap gap-2">
             {PRESETS.map((p) => (
-              <button key={p.label} type="button"
-                onClick={() => { setGain(p.gain); setCustom(false); }}
-                className="focus-ring rounded border px-3 py-1.5 text-xs font-semibold transition"
-                style={{
-                  borderColor: gain === p.gain && !custom ? "var(--accent)" : "var(--border-strong)",
-                  backgroundColor: gain === p.gain && !custom ? "color-mix(in srgb,var(--accent) 12%,transparent)" : "var(--bg-elevated)",
-                  color: gain === p.gain && !custom ? "var(--accent)" : "var(--text-muted)",
-                }}>
-                {p.label}
-              </button>
+              <Btn variant="toggle" size="sm" key={p.label} onClick={() => { setGain(p.gain); setCustom(false); }} selected={gain === p.gain && !custom}>{p.label}</Btn>
             ))}
-            <button type="button" onClick={() => setCustom(true)}
-              className="focus-ring rounded border px-3 py-1.5 text-xs font-medium transition"
-              style={{
-                borderColor: custom ? "var(--accent)" : "var(--border-strong)",
-                backgroundColor: custom ? "color-mix(in srgb,var(--accent) 12%,transparent)" : "var(--bg-elevated)",
-                color: custom ? "var(--accent)" : "var(--text-muted)",
-              }}>
-              Custom
-            </button>
+            <Btn variant="toggle" size="sm" onClick={() => setCustom(true)} selected={custom}>Custom</Btn>
           </div>
         </div>
 

@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import QRDisplay from "@/components/qr/QRDisplay";
 import StatusBanner from "@/components/StatusBanner";
+import Btn from "@/components/Btn";
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 
@@ -204,19 +205,7 @@ export default function QRGeneratorClient() {
         </p>
         <div className="flex flex-wrap gap-2">
           {(Object.keys(INPUT_LABELS) as InputType[]).map((t) => (
-            <button
-              key={t}
-              type="button"
-              onClick={() => { setInputType(t); setTextValue(""); setError(null); setResult(null); }}
-              className="focus-ring rounded-md border px-3 py-1.5 text-xs font-medium transition"
-              style={{
-                borderColor: inputType === t ? "var(--accent)" : "var(--border-strong)",
-                backgroundColor: inputType === t ? "color-mix(in srgb, var(--accent) 12%, transparent)" : "var(--bg-elevated)",
-                color: inputType === t ? "var(--accent)" : "var(--text-muted)",
-              }}
-            >
-              {INPUT_LABELS[t]}
-            </button>
+            <Btn variant="toggle" size="sm" key={t} onClick={() => { setInputType(t); setTextValue(""); setError(null); setResult(null); }} selected={inputType === t}>{INPUT_LABELS[t]}</Btn>
           ))}
         </div>
       </div>
@@ -375,13 +364,7 @@ export default function QRGeneratorClient() {
 
       {/* ── Generate button ───────────────────────────────────────────── */}
       <div className="flex flex-wrap gap-3">
-        <button
-          type="button"
-          onClick={generate}
-          disabled={loading}
-          className="focus-ring inline-flex items-center gap-2 rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90 disabled:opacity-50"
-          style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}
-        >
+        <Btn variant="primary" size="lg" onClick={generate} disabled={loading}>
           {loading ? (
             <>
               <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -393,13 +376,11 @@ export default function QRGeneratorClient() {
           ) : (
             "Generate QR Code"
           )}
-        </button>
+        </Btn>
         {result && (
-          <button type="button" onClick={reset}
-            className="focus-ring inline-flex items-center rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
-            style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-secondary)" }}>
-            Reset
-          </button>
+          <Btn variant="secondary" onClick={reset}>
+          Reset
+        </Btn>
         )}
       </div>
 

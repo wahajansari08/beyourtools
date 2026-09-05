@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Btn from "@/components/Btn";
 
 type Consent = "accepted" | "declined" | null;
 
@@ -86,26 +87,12 @@ export default function CookieBanner() {
 
         {/* Buttons */}
         <div className="flex shrink-0 flex-wrap gap-2">
-          <button
-            type="button"
-            onClick={() => save("declined")}
-            className="focus-ring rounded-lg border px-4 py-2 text-sm font-medium transition"
-            style={{
-              borderColor: "var(--border-strong)",
-              color: "var(--text-muted)",
-              backgroundColor: "var(--bg-elevated)",
-            }}
-          >
+          <Btn variant="secondary" size="md" onClick={() => save("declined")}>
             Decline
-          </button>
-          <button
-            type="button"
-            onClick={() => save("accepted")}
-            className="focus-ring rounded-lg px-4 py-2 text-sm font-semibold transition hover:opacity-90"
-            style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}
-          >
+          </Btn>
+          <Btn variant="primary" size="md" onClick={() => save("accepted")}>
             Accept all
-          </button>
+          </Btn>
         </div>
       </div>
     </div>

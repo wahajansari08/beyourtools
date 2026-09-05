@@ -3,6 +3,7 @@
 import { useCallback, useRef, useState } from "react";
 import { convertImage, suggestFilename } from "@/lib/converters/image";
 import type { ImageFormat } from "@/lib/image-tools-config";
+import Btn from "@/components/Btn";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -279,37 +280,12 @@ function FileRow({
 
         {/* BUG 6 FIX: retry button for failed files */}
         {item.status === "error" && (
-          <button
-            type="button"
-            onClick={() => onRetry(item.id)}
-            className="focus-ring inline-flex items-center gap-1.5 rounded border px-2.5 py-1.5 text-xs font-medium transition hover:opacity-80"
-            style={{
-              borderColor: "var(--border-strong)",
-              backgroundColor: "var(--bg-elevated)",
-              color: "var(--accent)",
-            }}
-            aria-label={`Retry ${item.file.name}`}
-          >
-            <RetryIcon />
-            <span className="hidden sm:inline">Retry</span>
-          </button>
+          <Btn variant="secondary" size="sm" aria-label={`Retry ${item.file.name}`} onClick={() => onRetry(item.id)}><RetryIcon /><span className="hidden sm:inline">Retry</span></Btn>
         )}
 
         {/* Remove - available unless actively converting */}
         {item.status !== "converting" && (
-          <button
-            type="button"
-            onClick={() => onRemove(item.id)}
-            className="focus-ring inline-flex items-center justify-center rounded border p-1.5 transition hover:opacity-80"
-            style={{
-              borderColor: "var(--border)",
-              backgroundColor: "var(--bg-elevated)",
-              color: "var(--text-subtle)",
-            }}
-            aria-label={`Remove ${item.file.name}`}
-          >
-            <TrashIcon />
-          </button>
+          <Btn variant="icon" aria-label={`Remove ${item.file.name}`} onClick={() => onRemove(item.id)}><TrashIcon /></Btn>
         )}
       </div>
     </div>
@@ -614,46 +590,13 @@ export default function ConverterClient({
             {/* Bulk actions */}
             <div className="flex items-center gap-2">
               {hasAnyDone && allSettled && (
-                <button
-                  type="button"
-                  onClick={downloadAllZip}
-                  disabled={zipping}
-                  className="focus-ring inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-semibold transition hover:opacity-90 disabled:opacity-50"
-                  style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}
-                >
-                  {zipping
-                    ? <><SpinnerIcon /> Zipping…</>
-                    : <><DownloadIcon /> Download all ({doneCount}) as ZIP</>
-                  }
-                </button>
+                <Btn variant="primary" size="sm" disabled={zipping} onClick={downloadAllZip}>{zipping ? <><SpinnerIcon /> Zipping…</> : <><DownloadIcon /> Download all ({doneCount}) as ZIP</>}</Btn>
               )}
               {/* Show ZIP button while converting too, labelled clearly */}
               {hasAnyDone && !allSettled && (
-                <button
-                  type="button"
-                  onClick={downloadAllZip}
-                  disabled={zipping}
-                  className="focus-ring inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-semibold transition hover:opacity-90 disabled:opacity-50"
-                  style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}
-                >
-                  {zipping
-                    ? <><SpinnerIcon /> Zipping…</>
-                    : <><DownloadIcon /> ZIP {doneCount} so far</>
-                  }
-                </button>
+                <Btn variant="primary" size="sm" disabled={zipping} onClick={downloadAllZip}>{zipping ? <><SpinnerIcon /> Zipping…</> : <><DownloadIcon /> ZIP {doneCount} so far</>}</Btn>
               )}
-              <button
-                type="button"
-                onClick={clearAll}
-                className="focus-ring inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-xs font-medium transition hover:opacity-80"
-                style={{
-                  borderColor: "var(--border-strong)",
-                  backgroundColor: "var(--bg-elevated)",
-                  color: "var(--text-muted)",
-                }}
-              >
-                Clear all
-              </button>
+              <Btn variant="secondary" size="sm" onClick={clearAll}>Clear all</Btn>
             </div>
           </div>
 

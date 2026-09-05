@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { formats, conversionRoutes } from "@/lib/image-tools-config";
 import type { ImageFormat } from "@/lib/image-tools-config";
+import Btn from "@/components/Btn";
 
 export default function FormatSelectorClient() {
   const router = useRouter();
@@ -125,18 +126,9 @@ export default function FormatSelectorClient() {
         {/* Go button */}
         <div className="flex flex-col gap-1 sm:mt-0">
           <span className="hidden text-[11px] sm:block" aria-hidden="true">&nbsp;</span>
-          <button
-            type="button"
-            onClick={handleConvert}
-            disabled={!isValid}
-            className="focus-ring rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
-            style={{
-              backgroundColor: "var(--accent)",
-              color: "var(--accent-fg)",
-            }}
-          >
-            Convert
-          </button>
+          <Btn variant="primary" size="lg" onClick={handleConvert} disabled={!isValid}>
+          Convert
+        </Btn>
         </div>
       </div>
 

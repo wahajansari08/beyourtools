@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Btn from "@/components/Btn";
 
 function fmt(n: number, d = 2) {
   return n.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
@@ -47,11 +48,7 @@ export default function TaxInclusiveClient() {
             style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-primary)" }} />
           <div className="mt-2 flex flex-wrap gap-1.5">
             {[["5", "5% GST"], ["10", "10% GST/AU"], ["20", "20% VAT/UK"], ["19", "19% VAT/DE"], ["21", "21% VAT/NL"]].map(([r, l]) => (
-              <button key={r} type="button" onClick={() => { setTaxRate(r); setResult(null); }}
-                className="focus-ring rounded border px-2 py-0.5 text-[10px] font-medium transition hover:opacity-80"
-                style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-subtle)" }}>
-                {l}
-              </button>
+              <Btn variant="secondary" size="sm" className="px-2 py-0.5 text-[10px]" key={r} onClick={() => { setTaxRate(r); setResult(null); }}>{l}</Btn>
             ))}
           </div>
         </div>
@@ -65,16 +62,12 @@ export default function TaxInclusiveClient() {
       )}
 
       <div className="flex gap-3">
-        <button type="button" onClick={calculate}
-          className="focus-ring rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90"
-          style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>
+        <Btn variant="primary" size="lg" onClick={calculate}>
           Calculate
-        </button>
-        <button type="button" onClick={reset}
-          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
-          style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>
+        </Btn>
+        <Btn variant="secondary" onClick={reset}>
           Reset
-        </button>
+        </Btn>
       </div>
 
       {result && (

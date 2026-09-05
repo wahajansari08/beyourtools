@@ -3,6 +3,7 @@
 import { useState } from "react";
 import AudioProcessorShell from "@/components/audio/AudioProcessorShell";
 import { convertAudio, type MP3Bitrate } from "@/lib/audio/convert";
+import Btn from "@/components/Btn";
 
 const BITRATES: MP3Bitrate[] = ["64k", "96k", "128k", "192k", "256k", "320k"];
 
@@ -19,15 +20,7 @@ export default function Mp3ConverterClient() {
         </label>
         <div className="flex flex-wrap gap-1.5">
           {BITRATES.map((b) => (
-            <button key={b} type="button" onClick={() => setBitrate(b)}
-              className="focus-ring rounded border px-2.5 py-1 text-xs font-medium transition"
-              style={{
-                borderColor: bitrate === b ? "var(--accent)" : "var(--border-strong)",
-                backgroundColor: bitrate === b ? "color-mix(in srgb,var(--accent) 12%,transparent)" : "var(--bg-elevated)",
-                color: bitrate === b ? "var(--accent)" : "var(--text-muted)",
-              }}>
-              {b}
-            </button>
+            <Btn variant="toggle" size="sm" key={b} onClick={() => setBitrate(b)} selected={bitrate === b}>{b}</Btn>
           ))}
         </div>
       </div>

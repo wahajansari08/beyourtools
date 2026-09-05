@@ -16,6 +16,7 @@ import {
   toolsByCategory,
   type ToolCategory,
 } from "@/lib/tools-config";
+import Btn from "@/components/Btn";
 
 // ── Slug helpers ──────────────────────────────────────────────────────────────
 
@@ -410,15 +411,10 @@ export default async function JsonCategoryPage({
           </h2>
           <div className="flex flex-wrap gap-2">
             {siblingCats.map((c) => (
-              <Link
-                key={c}
-                href={`/json-tools/${toSlug(c)}`}
-                className="focus-ring flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-xs font-medium transition hover-card"
-                style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}
-              >
+              <Btn variant="pill" key={c} href={`/json-tools/${toSlug(c)}`}>
                 <span aria-hidden="true">{CAT_META[c].icon}</span>
                 {c}
-              </Link>
+              </Btn>
             ))}
           </div>
           <div className="mt-4">

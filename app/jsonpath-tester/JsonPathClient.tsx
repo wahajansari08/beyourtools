@@ -8,6 +8,7 @@ import FileUploader from "@/components/FileUploader";
 import CopyButton from "@/components/CopyButton";
 import DownloadButton from "@/components/DownloadButton";
 import { evaluateJsonPath } from "@/lib/json/jsonpath";
+import Btn from "@/components/Btn";
 
 const EXAMPLE_JSON = `{
   "store": {
@@ -61,15 +62,7 @@ export default function JsonPathClient() {
           </div>
           <div className="flex flex-wrap gap-1.5">
             {EXAMPLE_EXPRESSIONS.map((e) => (
-              <button
-                key={e.expr}
-                type="button"
-                onClick={() => setExpression(e.expr)}
-                className="focus-ring rounded border px-2 py-0.5 text-[11px] transition"
-                style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}
-              >
-                {e.label}
-              </button>
+              <Btn variant="secondary" size="sm" className="px-2 py-0.5 text-[11px]" key={e.expr} onClick={() => setExpression(e.expr)}>{e.label}</Btn>
             ))}
           </div>
         </div>

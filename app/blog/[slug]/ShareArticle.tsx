@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Btn from "@/components/Btn";
 
 interface ShareArticleProps {
   url: string;
@@ -47,19 +48,12 @@ export default function ShareArticle({ url, title }: ShareArticleProps) {
 
   return (
     <div className="relative shrink-0">
-      <button
-        type="button"
-        className="focus-ring inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-xs font-medium transition hover:-translate-y-0.5"
-        style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-muted)" }}
-        aria-expanded={open}
-        aria-haspopup="menu"
-        onClick={() => setOpen((value) => !value)}
-      >
+      <Btn variant="secondary" size="sm" className="hover:-translate-y-0.5" aria-expanded={open} aria-haspopup="menu" onClick={() => setOpen((value) => !value)}>
         <svg viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5" aria-hidden="true">
           <path d="M15 13a2.5 2.5 0 0 0-1.96.95l-5.2-2.9a2.48 2.48 0 0 0 0-2.1l5.2-2.9A2.5 2.5 0 1 0 12.5 4c0 .2.03.4.08.59l-5.2 2.9a2.5 2.5 0 1 0 0 5.02l5.2 2.9A2.5 2.5 0 1 0 15 13Z" />
         </svg>
         Share
-      </button>
+      </Btn>
 
       {open && (
         <div
@@ -69,26 +63,9 @@ export default function ShareArticle({ url, title }: ShareArticleProps) {
           style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}
         >
           {shareTargets.map((target) => (
-            <button
-              key={target.name}
-              type="button"
-              role="menuitem"
-              className="focus-ring rounded-md px-2.5 py-2 text-left text-xs transition hover:bg-black/5 dark:hover:bg-white/5"
-              style={{ color: "var(--text-secondary)" }}
-              onClick={() => share(target)}
-            >
-              {target.name}
-            </button>
+            <Btn variant="ghost" size="sm" key={target.name} role="menuitem" className="w-full px-2.5 py-2 text-left" onClick={() => share(target)}>{target.name}</Btn>
           ))}
-          <button
-            type="button"
-            role="menuitem"
-            className="focus-ring col-span-2 mt-1 rounded-md border px-2.5 py-2 text-center text-xs font-medium transition hover:bg-black/5 dark:hover:bg-white/5"
-            style={{ borderColor: "var(--border)", color: "var(--accent)" }}
-            onClick={copyLink}
-          >
-            {copied ? "Link copied" : "Copy link"}
-          </button>
+          <Btn variant="secondary" size="sm" role="menuitem" className="col-span-2 mt-1 px-2.5 py-2 text-center" onClick={copyLink}>{copied ? "Link copied" : "Copy link"}</Btn>
         </div>
       )}
     </div>

@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Btn from "@/components/Btn";
 
 type Mode = "markup-to-price" | "price-to-markup" | "margin-to-markup";
 
@@ -58,16 +59,7 @@ export default function MarkupClient() {
     <div className="space-y-5">
       <div className="flex flex-wrap gap-2" role="group" aria-label="Calculation mode">
         {modes.map((m) => (
-          <button key={m.id} type="button" onClick={() => { setMode(m.id); setResult(null); setError(""); }}
-            className="focus-ring rounded border px-3 py-1.5 text-xs font-medium transition"
-            style={{
-              borderColor: mode === m.id ? "var(--accent)" : "var(--border-strong)",
-              backgroundColor: mode === m.id ? "color-mix(in srgb,var(--accent) 12%,transparent)" : "var(--bg-elevated)",
-              color: mode === m.id ? "var(--accent)" : "var(--text-muted)",
-            }}
-            aria-pressed={mode === m.id}>
-            {m.label}
-          </button>
+          <Btn variant="toggle" size="sm" key={m.id} onClick={() => { setMode(m.id); setResult(null); setError(""); }} selected={mode === m.id}>{m.label}</Btn>
         ))}
       </div>
 
@@ -107,10 +99,12 @@ export default function MarkupClient() {
       {error && <p className="rounded-lg border px-4 py-2 text-sm" style={{ borderColor: "var(--coral)", color: "var(--coral)", backgroundColor: "color-mix(in srgb,var(--coral) 8%,transparent)" }}>{error}</p>}
 
       <div className="flex gap-3">
-        <button type="button" onClick={calculate} className="focus-ring rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90"
-          style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>Calculate</button>
-        <button type="button" onClick={reset} className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
-          style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>Reset</button>
+        <Btn variant="primary" size="lg" onClick={calculate}>
+          Calculate
+        </Btn>
+        <Btn variant="secondary" onClick={reset}>
+          Reset
+        </Btn>
       </div>
 
       {result && (

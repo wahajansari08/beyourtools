@@ -3,6 +3,7 @@
 import { useState } from "react";
 import AudioProcessorShell from "@/components/audio/AudioProcessorShell";
 import { convertAudio, FORMAT_LABEL, type AudioFormat, type MP3Bitrate } from "@/lib/audio/convert";
+import Btn from "@/components/Btn";
 
 const OUTPUT_FORMATS: AudioFormat[] = ["mp3", "wav", "ogg", "flac", "m4a", "opus"];
 const BITRATES: MP3Bitrate[] = ["64k", "96k", "128k", "192k", "256k", "320k"];
@@ -21,15 +22,7 @@ export default function AudioConverterClient() {
           <p className="mb-2 text-xs font-medium" style={{ color: "var(--text-muted)" }}>Output format</p>
           <div className="flex flex-wrap gap-1.5">
             {OUTPUT_FORMATS.map((f) => (
-              <button key={f} type="button" onClick={() => setOutputFmt(f)}
-                className="focus-ring rounded border px-3 py-1 text-xs font-medium transition"
-                style={{
-                  borderColor: outputFmt === f ? "var(--accent)" : "var(--border-strong)",
-                  backgroundColor: outputFmt === f ? "color-mix(in srgb,var(--accent) 12%,transparent)" : "var(--bg-elevated)",
-                  color: outputFmt === f ? "var(--accent)" : "var(--text-muted)",
-                }}>
-                {FORMAT_LABEL[f]}
-              </button>
+              <Btn variant="toggle" size="sm" key={f} onClick={() => setOutputFmt(f)} selected={outputFmt === f}>{FORMAT_LABEL[f]}</Btn>
             ))}
           </div>
         </div>
@@ -39,15 +32,7 @@ export default function AudioConverterClient() {
             <p className="mb-2 text-xs font-medium" style={{ color: "var(--text-muted)" }}>Bitrate</p>
             <div className="flex flex-wrap gap-1.5">
               {BITRATES.map((b) => (
-                <button key={b} type="button" onClick={() => setBitrate(b)}
-                  className="focus-ring rounded border px-2.5 py-1 text-xs font-medium transition"
-                  style={{
-                    borderColor: bitrate === b ? "var(--accent)" : "var(--border-strong)",
-                    backgroundColor: bitrate === b ? "color-mix(in srgb,var(--accent) 12%,transparent)" : "var(--bg-elevated)",
-                    color: bitrate === b ? "var(--accent)" : "var(--text-muted)",
-                  }}>
-                  {b}
-                </button>
+                <Btn variant="toggle" size="sm" key={b} onClick={() => setBitrate(b)} selected={bitrate === b}>{b}</Btn>
               ))}
             </div>
           </div>

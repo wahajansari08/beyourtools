@@ -12,6 +12,7 @@ import VideoProgress from "./VideoProgress";
 import VideoQueue from "./VideoQueue";
 import VideoTimeline from "./VideoTimeline";
 import VideoUploader, { type VideoUpload } from "./VideoUploader";
+import Btn from "@/components/Btn";
 
 type State = "idle" | "ready" | "processing" | "done" | "error";
 
@@ -436,9 +437,9 @@ export default function VideoToolClient({ tool }: { tool: VideoTool }) {
             </span>
           )}
           {(state === "ready" || state === "error" || state === "done") && uploads.length > 0 && (
-            <button type="button" onClick={reset} className="focus-ring rounded-md border px-3 py-1.5 text-xs font-medium transition hover:opacity-80" style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-secondary)" }}>
-              Reset
-            </button>
+            <Btn variant="secondary" size="sm" onClick={reset}>
+          Reset
+        </Btn>
           )}
         </div>
       </div>
@@ -561,7 +562,7 @@ export default function VideoToolClient({ tool }: { tool: VideoTool }) {
                 <label className="flex items-center gap-2 text-xs" style={{ color: "var(--text-muted)" }}><input type="checkbox" checked={allowUpscale} onChange={(e) => setAllowUpscale(e.target.checked)} />Allow upscaling</label>
                 <div className="flex flex-wrap gap-2">
                   {RESIZE_PRESETS.map((preset) => (
-                    <button key={preset.label} type="button" onClick={() => { setWidth(preset.width); setHeight(preset.height); }} className="focus-ring rounded-md border px-2.5 py-1 text-xs" style={{ borderColor: "var(--border-strong)", color: "var(--text-secondary)" }}>{preset.label}</button>
+                    <Btn variant="secondary" size="sm" key={preset.label} onClick={() => { setWidth(preset.width); setHeight(preset.height); }}>{preset.label}</Btn>
                   ))}
                 </div>
               </div>
@@ -592,11 +593,9 @@ export default function VideoToolClient({ tool }: { tool: VideoTool }) {
                     className="focus-ring rounded-md border px-3 py-2 font-mono"
                     style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-primary)" }} />
                 </label>
-                <button type="button" onClick={previewSelection}
-                  className="focus-ring rounded-md border px-3 py-1.5 text-xs font-medium"
-                  style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-secondary)" }}>
-                  Jump to frame
-                </button>
+                <Btn variant="secondary" size="sm" onClick={previewSelection}>
+          Jump to frame
+        </Btn>
               </div>
             )}
 
@@ -619,7 +618,7 @@ export default function VideoToolClient({ tool }: { tool: VideoTool }) {
                 <legend className="px-1 text-xs font-medium" style={{ color: "var(--text-muted)" }}>MP3 bitrate</legend>
                 <div className="mt-2 flex flex-wrap gap-2">
                   {BITRATES.map((item) => (
-                    <button key={item} type="button" onClick={() => setBitrate(item)} className="focus-ring rounded-md border px-2.5 py-1 text-xs" style={{ borderColor: bitrate === item ? "var(--accent)" : "var(--border-strong)", color: bitrate === item ? "var(--accent)" : "var(--text-secondary)" }}>{item}</button>
+                    <Btn variant="toggle" size="sm" key={item} onClick={() => setBitrate(item)} selected={bitrate === item}>{item}</Btn>
                   ))}
                 </div>
               </fieldset>
@@ -630,7 +629,7 @@ export default function VideoToolClient({ tool }: { tool: VideoTool }) {
                 <p className="font-medium">Changing speed also changes pitch proportionally. Faster audio sounds higher-pitched, slower audio sounds lower-pitched.</p>
                 <div className="flex flex-wrap gap-2">
                   {SPEEDS.map((item) => (
-                    <button key={item} type="button" onClick={() => setSpeed(item)} className="focus-ring rounded-md border px-2.5 py-1" style={{ borderColor: speed === item ? "var(--accent)" : "var(--border-strong)", color: speed === item ? "var(--accent)" : "var(--text-secondary)" }}>{item}x</button>
+                    <Btn variant="toggle" size="sm" key={item} onClick={() => setSpeed(item)} selected={speed === item}>{item}x</Btn>
                   ))}
                 </div>
                 <label>Custom speed<input type="number" min={0.25} max={4} step={0.05} value={speed} onChange={(e) => setSpeed(Number(e.target.value))} className="focus-ring mt-1 w-full rounded-md border px-3 py-2" style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-primary)" }} /></label>
@@ -687,9 +686,9 @@ export default function VideoToolClient({ tool }: { tool: VideoTool }) {
             <p className="text-xs" style={{ color: "var(--text-subtle)" }}>
               {tool.engine === "browser" ? "This runs instantly using local browser processing." : "Processing starts when you click the button below."}
             </p>
-            <button type="button" onClick={process} disabled={!canProcess} className="focus-ring inline-flex items-center justify-center gap-2 rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50" style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>
-              {tool.processLabel}
-            </button>
+            <Btn variant="primary" size="lg" onClick={process} disabled={!canProcess}>
+          {tool.processLabel}
+        </Btn>
           </div>
         )}
 
@@ -698,7 +697,9 @@ export default function VideoToolClient({ tool }: { tool: VideoTool }) {
         {state === "error" && (
           <div className="space-y-3">
             <p className="rounded-md border px-3 py-2 text-xs" role="alert" style={{ borderColor: "rgba(239,125,111,0.3)", backgroundColor: "rgba(239,125,111,0.08)", color: "var(--coral)" }}>{error}</p>
-            <button type="button" onClick={reset} className="focus-ring rounded-lg border px-5 py-2 text-sm font-medium" style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-secondary)" }}>Try again</button>
+            <Btn variant="secondary" onClick={reset}>
+          Try again
+        </Btn>
           </div>
         )}
 

@@ -4,6 +4,7 @@ import { useCallback, useState } from "react";
 import PdfDropzone from "@/components/PdfDropzone";
 import PdfToolShell, { DownloadBtn, formatBytes } from "@/components/PdfToolShell";
 import { mergePdfs, bytesToBlob } from "@/lib/pdf/engine";
+import Btn from "@/components/Btn";
 
 interface State {
   status: "idle" | "processing" | "done" | "error";
@@ -88,23 +89,18 @@ export default function MergePdf() {
                   <span className="flex-1 truncate font-mono text-[12px]" style={{ color: "var(--text-secondary)" }}>{f.name}</span>
                   <span className="shrink-0 text-[11px]" style={{ color: "var(--text-subtle)" }}>{formatBytes(f.size)}</span>
                   <div className="flex shrink-0 gap-1">
-                    {i > 0 && <button onClick={() => moveFile(i, i - 1)} className="focus-ring rounded px-1 transition" style={{ color: "var(--text-subtle)" }} aria-label="Move up">↑</button>}
-                    {i < state.files.length - 1 && <button onClick={() => moveFile(i, i + 1)} className="focus-ring rounded px-1 transition" style={{ color: "var(--text-subtle)" }} aria-label="Move down">↓</button>}
-                    <button onClick={() => removeFile(i)} className="focus-ring rounded px-1 transition" style={{ color: "var(--coral)" }} aria-label="Remove">✕</button>
+                    {i > 0 && <Btn variant="icon" onClick={() => moveFile(i, i - 1)} aria-label="Move up">↑</Btn>}
+                    {i < state.files.length - 1 && <Btn variant="icon" onClick={() => moveFile(i, i + 1)} aria-label="Move down">↓</Btn>}
+                    <Btn variant="danger" onClick={() => removeFile(i)} aria-label="Remove">✕</Btn>
                   </div>
                 </div>
               ))}
             </div>
           )}
           {state.files.length >= 2 && (
-            <button
-              type="button"
-              onClick={handleMerge}
-              className="focus-ring inline-flex items-center gap-2 rounded-md px-5 py-2.5 text-sm font-semibold transition hover:opacity-90"
-              style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}
-            >
-              Merge {state.files.length} PDFs
-            </button>
+            <Btn variant="primary" onClick={handleMerge}>
+          Merge {state.files.length} PDFs
+        </Btn>
           )}
           {state.files.length === 1 && (
             <p className="text-xs" style={{ color: "var(--text-muted)" }}>Add at least one more PDF to enable merging.</p>

@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 import BarcodeDisplay from "@/components/barcode/BarcodeDisplay";
 import StatusBanner from "@/components/StatusBanner";
 import CopyButton from "@/components/CopyButton";
+import Btn from "@/components/Btn";
 
 type EANType = "EAN13" | "EAN8";
 
@@ -81,16 +82,7 @@ export default function EANGeneratorClient() {
       {/* EAN type toggle */}
       <div className="flex gap-2">
         {(["EAN13", "EAN8"] as EANType[]).map((t) => (
-          <button key={t} type="button"
-            onClick={() => { setEanType(t); setRaw(""); setError(null); setResult(null); }}
-            className="focus-ring rounded-md border px-4 py-2 text-sm font-medium transition"
-            style={{
-              borderColor: eanType === t ? "var(--accent)" : "var(--border-strong)",
-              backgroundColor: eanType === t ? "color-mix(in srgb, var(--accent) 12%, transparent)" : "var(--bg-elevated)",
-              color: eanType === t ? "var(--accent)" : "var(--text-muted)",
-            }}>
-            {t === "EAN13" ? "EAN-13" : "EAN-8"}
-          </button>
+          <Btn variant="toggle" key={t} onClick={() => { setEanType(t); setRaw(""); setError(null); setResult(null); }} selected={eanType === t}>{t === "EAN13" ? "EAN-13" : "EAN-8"}</Btn>
         ))}
       </div>
 
@@ -124,17 +116,13 @@ export default function EANGeneratorClient() {
       </div>
 
       <div className="flex flex-wrap gap-3">
-        <button type="button" onClick={generate} disabled={loading}
-          className="focus-ring inline-flex items-center gap-2 rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90 disabled:opacity-50"
-          style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>
+        <Btn variant="primary" size="lg" onClick={generate} disabled={loading}>
           {loading ? "Generating…" : `Generate ${eanType === "EAN13" ? "EAN-13" : "EAN-8"} Barcode`}
-        </button>
+        </Btn>
         {result && (
-          <button type="button" onClick={reset}
-            className="focus-ring inline-flex items-center rounded-lg border px-5 py-2.5 text-sm font-medium transition"
-            style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-secondary)" }}>
-            Reset
-          </button>
+          <Btn variant="secondary" onClick={reset}>
+          Reset
+        </Btn>
         )}
       </div>
 

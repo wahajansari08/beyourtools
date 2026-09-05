@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
+import Btn from "@/components/Btn";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -184,15 +185,7 @@ export default function ChatSupport() {
                 </p>
               </div>
             </div>
-            <button
-              type="button"
-              onClick={() => setOpen(false)}
-              className="focus-ring rounded-lg p-1 transition hover:opacity-70"
-              style={{ color: "var(--accent-fg)" }}
-              aria-label="Close chat"
-            >
-              <CloseIcon />
-            </button>
+            <button type="button" onClick={() => setOpen(false)} className="focus-ring rounded-lg p-1 transition hover:opacity-70" style={{ color: "var(--accent-fg)" }} aria-label="Close chat"><CloseIcon /></button>
           </div>
 
           {/* Messages */}
@@ -277,19 +270,7 @@ export default function ChatSupport() {
               </p>
               <div className="flex flex-wrap gap-1.5">
                 {QUICK_REPLIES.map((q) => (
-                  <button
-                    key={q}
-                    type="button"
-                    onClick={() => handleSend(q)}
-                    className="focus-ring rounded-full border px-2.5 py-1 text-[11px] font-medium transition hover:opacity-80"
-                    style={{
-                      borderColor: "var(--accent)",
-                      backgroundColor: "color-mix(in srgb,var(--accent) 10%,transparent)",
-                      color: "var(--accent-text)",
-                    }}
-                  >
-                    {q}
-                  </button>
+                  <Btn variant="chip" key={q} onClick={() => handleSend(q)}>{q}</Btn>
                 ))}
               </div>
             </div>
@@ -331,36 +312,13 @@ export default function ChatSupport() {
               maxLength={500}
               aria-label="Message input"
             />
-            <button
-              type="button"
-              onClick={() => handleSend(input)}
-              disabled={!input.trim()}
-              className="focus-ring flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition disabled:opacity-40 hover:opacity-80"
-              style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}
-              aria-label="Send message"
-            >
-              <SendIcon />
-            </button>
+            <Btn variant="primary" size="sm" className="h-8 w-8 rounded-full p-0 shrink-0" disabled={!input.trim()} aria-label="Send message" onClick={() => handleSend(input)}><SendIcon /></Btn>
           </div>
         </div>
       )}
 
       {/* ── Trigger bubble ─────────────────────────────────────────────── */}
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        className="focus-ring relative flex h-14 w-14 items-center justify-center rounded-full shadow-lg transition hover:scale-105 active:scale-95"
-        style={{
-          pointerEvents: "all",
-          backgroundColor: "var(--accent)",
-          color: "var(--accent-fg)",
-          boxShadow: "0 8px 24px color-mix(in srgb, var(--accent) 45%, transparent)",
-          transition: "transform 150ms ease, box-shadow 150ms ease",
-        }}
-        aria-label={open ? "Close chat" : "Open chat support"}
-        aria-expanded={open}
-        aria-haspopup="dialog"
-      >
+      <Btn variant="primary" size="md" className="relative h-14 w-14 rounded-full p-0 shadow-lg hover:scale-105 active:scale-95" style={{ pointerEvents: "all", boxShadow: "0 8px 24px color-mix(in srgb, var(--accent) 45%, transparent)", transition: "transform 150ms ease, box-shadow 150ms ease" }} onClick={() => setOpen((v) => !v)} aria-label={open ? "Close chat" : "Open chat support"} aria-expanded={open} aria-haspopup="dialog">
         <span
           className="transition-all duration-200"
           style={{ opacity: open ? 0 : 1, transform: open ? "rotate(90deg) scale(0.7)" : "rotate(0deg) scale(1)", position: "absolute" }}
@@ -384,7 +342,7 @@ export default function ChatSupport() {
             {unread}
           </span>
         )}
-      </button>
+      </Btn>
     </div>
   );
 }

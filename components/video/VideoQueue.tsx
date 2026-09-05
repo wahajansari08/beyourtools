@@ -3,6 +3,7 @@
 import VideoFileInfo from "./VideoFileInfo";
 import VideoPlayer from "./VideoPlayer";
 import type { VideoUpload } from "./VideoUploader";
+import Btn from "@/components/Btn";
 
 interface VideoQueueProps {
   uploads: VideoUpload[];
@@ -41,9 +42,9 @@ export default function VideoQueue({ uploads, onChange }: VideoQueueProps) {
           <VideoPlayer src={upload.objectUrl} label={`Clip ${index + 1}`} />
           <VideoFileInfo file={upload.file} metadata={upload.metadata} />
           <div className="flex flex-wrap gap-2 lg:flex-col">
-            <button type="button" onClick={() => move(index, -1)} disabled={index === 0} className="focus-ring rounded-md border px-3 py-1.5 text-xs disabled:opacity-40" style={{ borderColor: "var(--border-strong)", color: "var(--text-secondary)" }}>Up</button>
-            <button type="button" onClick={() => move(index, 1)} disabled={index === uploads.length - 1} className="focus-ring rounded-md border px-3 py-1.5 text-xs disabled:opacity-40" style={{ borderColor: "var(--border-strong)", color: "var(--text-secondary)" }}>Down</button>
-            <button type="button" onClick={() => remove(index)} className="focus-ring rounded-md border px-3 py-1.5 text-xs" style={{ borderColor: "rgba(239,125,111,0.4)", color: "var(--coral)" }}>Remove</button>
+            <Btn variant="secondary" size="sm" disabled={index === 0} onClick={() => move(index, -1)}>Up</Btn>
+            <Btn variant="secondary" size="sm" disabled={index === uploads.length - 1} onClick={() => move(index, 1)}>Down</Btn>
+            <Btn variant="danger" onClick={() => remove(index)}>Remove</Btn>
           </div>
         </div>
       ))}

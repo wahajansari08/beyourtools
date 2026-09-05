@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Btn from "@/components/Btn";
 
 function fmt(n: number, d = 4) {
   return n.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
@@ -62,13 +63,7 @@ export default function ApyClient() {
           <p className="mb-2 text-xs font-medium" style={{ color: "var(--text-muted)" }}>Compounding Frequency</p>
           <div className="grid gap-2 sm:grid-cols-3">
             {(Object.entries(FREQS) as [CompoundFreq, { label: string; n: number }][]).map(([key, { label }]) => (
-              <button key={key} type="button" onClick={() => { setFreq(key); setResult(null); }}
-                className="focus-ring rounded border px-3 py-2 text-xs font-medium text-left transition"
-                style={{
-                  borderColor: freq === key ? "var(--accent)" : "var(--border-strong)",
-                  backgroundColor: freq === key ? "color-mix(in srgb,var(--accent) 12%,transparent)" : "var(--bg-elevated)",
-                  color: freq === key ? "var(--accent)" : "var(--text-muted)",
-                }} aria-pressed={freq === key}>{label}</button>
+              <Btn variant="toggle" size="sm" key={key} onClick={() => { setFreq(key); setResult(null); }} selected={freq === key}>{label}</Btn>
             ))}
           </div>
         </div>
@@ -102,16 +97,12 @@ export default function ApyClient() {
       )}
 
       <div className="flex gap-3">
-        <button type="button" onClick={calculate}
-          className="focus-ring rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90"
-          style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>
+        <Btn variant="primary" size="lg" onClick={calculate}>
           Calculate APY
-        </button>
-        <button type="button" onClick={reset}
-          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
-          style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>
+        </Btn>
+        <Btn variant="secondary" onClick={reset}>
           Reset
-        </button>
+        </Btn>
       </div>
 
       {result && (

@@ -4,6 +4,7 @@ import { useState } from "react";
 import AudioProcessorShell from "@/components/audio/AudioProcessorShell";
 import { compressAudio, COMPRESSION_PRESETS, type CompressionPreset } from "@/lib/audio/compress";
 import { formatBytes } from "@/lib/audio/ffmpeg";
+import Btn from "@/components/Btn";
 
 const PRESETS = Object.entries(COMPRESSION_PRESETS) as [CompressionPreset, typeof COMPRESSION_PRESETS[CompressionPreset]][];
 
@@ -18,19 +19,14 @@ export default function Mp3CompressorClient() {
         <p className="text-xs font-medium" style={{ color: "var(--text-muted)" }}>Compression quality</p>
         <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {PRESETS.map(([key, val]) => (
-            <button key={key} type="button" onClick={() => setPreset(key)}
-              className="focus-ring rounded-lg border p-3 text-left transition"
-              style={{
-                borderColor: preset === key ? "var(--accent)" : "var(--border-strong)",
-                backgroundColor: preset === key ? "color-mix(in srgb,var(--accent) 8%,transparent)" : "var(--bg-elevated)",
-              }}>
+            <Btn variant="toggle" size="sm" key={key} onClick={() => setPreset(key)} selected={preset === key} className="w-full p-3 text-left">
               <p className="text-xs font-semibold" style={{ color: preset === key ? "var(--accent)" : "var(--text-secondary)" }}>
                 {val.label}
               </p>
               <p className="mt-0.5 text-[11px]" style={{ color: "var(--text-subtle)" }}>
                 {val.bitrate} - {val.desc}
               </p>
-            </button>
+            </Btn>
           ))}
         </div>
       </div>

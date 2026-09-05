@@ -21,6 +21,7 @@ import {
   type FinanceCluster,
   type FinanceTool,
 } from "@/lib/finance-tools-config";
+import Btn from "@/components/Btn";
 
 // ── Static params ─────────────────────────────────────────────────────────────
 
@@ -340,19 +341,10 @@ export default async function ClusterPage({
           </h2>
           <div className="flex flex-wrap gap-2">
             {siblingClusters.map((cl) => (
-              <Link
-                key={cl}
-                href={`/finance-tools/${clusterSlugs[cl]}`}
-                className="focus-ring flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-xs font-medium transition hover-card"
-                style={{
-                  borderColor: "var(--border-strong)",
-                  backgroundColor: "var(--bg-elevated)",
-                  color: "var(--text-muted)",
-                }}
-              >
+              <Btn variant="pill" key={cl} href={`/finance-tools/${clusterSlugs[cl]}`}>
                 <span aria-hidden="true">{clusterIcons[cl]}</span>
                 {cl}
-              </Link>
+              </Btn>
             ))}
           </div>
           <div className="mt-4">

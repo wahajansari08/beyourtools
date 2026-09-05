@@ -7,6 +7,7 @@ import AudioDownload from "@/components/audio/AudioDownload";
 import StatusBanner from "@/components/StatusBanner";
 import { mergeAudio } from "@/lib/audio/merge";
 import { formatBytes } from "@/lib/audio/ffmpeg";
+import Btn from "@/components/Btn";
 
 type State = "idle" | "processing" | "done" | "error";
 
@@ -93,10 +94,7 @@ export default function Mp3MergerClient() {
             <span className="text-xs font-semibold" style={{ color: "var(--text-subtle)" }}>
               {files.length} file{files.length !== 1 ? "s" : ""} · total {fmtDur(totalDuration)}
             </span>
-            <button type="button" onClick={reset}
-              className="text-xs transition hover:opacity-70" style={{ color: "var(--text-subtle)" }}>
-              Clear all
-            </button>
+            <Btn variant="ghost" size="sm" onClick={reset}>Clear all</Btn>
           </div>
           <ul>
             {files.map((f, i) => (
@@ -111,17 +109,9 @@ export default function Mp3MergerClient() {
                   </p>
                 </div>
                 <div className="flex items-center gap-1 shrink-0">
-                  <button type="button" onClick={() => moveUp(i)} disabled={i === 0}
-                    aria-label="Move up"
-                    className="focus-ring rounded p-1 text-xs disabled:opacity-30 transition hover:opacity-70"
-                    style={{ color: "var(--text-muted)" }}>▲</button>
-                  <button type="button" onClick={() => moveDown(i)} disabled={i === files.length - 1}
-                    aria-label="Move down"
-                    className="focus-ring rounded p-1 text-xs disabled:opacity-30 transition hover:opacity-70"
-                    style={{ color: "var(--text-muted)" }}>▼</button>
-                  <button type="button" onClick={() => removeFile(i)} aria-label={`Remove ${f.file.name}`}
-                    className="focus-ring rounded p-1 text-xs transition hover:opacity-70"
-                    style={{ color: "var(--coral)" }}>✕</button>
+                  <Btn variant="icon" disabled={i === 0} aria-label="Move up" onClick={() => moveUp(i)}>▲</Btn>
+                  <Btn variant="icon" disabled={i === files.length - 1} aria-label="Move down" onClick={() => moveDown(i)}>▼</Btn>
+                  <Btn variant="danger" aria-label={`Remove ${f.file.name}`} onClick={() => removeFile(i)}>✕</Btn>
                 </div>
               </li>
             ))}
@@ -130,11 +120,9 @@ export default function Mp3MergerClient() {
       )}
 
       {files.length >= 2 && state === "idle" && (
-        <button type="button" onClick={handleMerge}
-          className="focus-ring inline-flex items-center gap-2 rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90"
-          style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>
+        <Btn variant="primary" size="lg" onClick={handleMerge}>
           🔗 Merge {files.length} MP3 files
-        </button>
+        </Btn>
       )}
 
       {files.length < 2 && files.length > 0 && (
@@ -145,11 +133,9 @@ export default function Mp3MergerClient() {
       {state === "error" && (
         <div className="space-y-3">
           <StatusBanner type="error" message={errorMsg} />
-          <button type="button" onClick={reset}
-            className="focus-ring rounded-lg border px-5 py-2 text-sm font-medium"
-            style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-secondary)" }}>
-            Try again
-          </button>
+          <Btn variant="secondary" onClick={reset}>
+          Try again
+        </Btn>
         </div>
       )}
       {state === "done" && outBlob && (

@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import AudioDownload from "@/components/audio/AudioDownload";
 import StatusBanner from "@/components/StatusBanner";
 import { getBestRecordingMime, extForMime, recordingFilename, formatRecordingTime } from "@/lib/audio/recorder";
+import Btn from "@/components/Btn";
 
 type RecordState = "idle" | "requesting" | "recording" | "paused" | "done" | "error";
 
@@ -181,43 +182,32 @@ export default function AudioRecorderClient() {
           {/* Buttons */}
           <div className="flex flex-wrap items-center justify-center gap-3">
             {recState === "idle" && (
-              <button type="button" onClick={handleStart}
-                className="focus-ring inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition hover:opacity-90"
-                style={{ backgroundColor: "var(--coral)", color: "#fff" }}>
-                <span className="h-2.5 w-2.5 rounded-full bg-white" aria-hidden="true" />
+              <Btn variant="danger" onClick={handleStart}>
+          <span className="h-2.5 w-2.5 rounded-full bg-white" aria-hidden="true" />
                 Start Recording
-              </button>
+        </Btn>
             )}
 
             {isActive && (
               <>
                 {isRecording ? (
-                  <button type="button" onClick={handlePause}
-                    className="focus-ring inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
-                    style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-secondary)" }}>
-                    ⏸ Pause
-                  </button>
+                  <Btn variant="secondary" onClick={handlePause}>
+          ⏸ Pause
+        </Btn>
                 ) : (
-                  <button type="button" onClick={handleResume}
-                    className="focus-ring inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition hover:opacity-90"
-                    style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>
-                    ▶ Resume
-                  </button>
+                  <Btn variant="primary" onClick={handleResume}>
+          ▶ Resume
+        </Btn>
                 )}
-                <button type="button" onClick={handleStop}
-                  className="focus-ring inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
-                  style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-secondary)" }}>
-                  ■ Stop
-                </button>
+                <Btn variant="secondary" onClick={handleStop}>
+          ■ Stop
+        </Btn>
               </>
             )}
           </div>
 
           {isActive && (
-            <button type="button" onClick={handleReset}
-              className="text-xs transition hover:opacity-70" style={{ color: "var(--text-subtle)" }}>
-              Cancel recording
-            </button>
+            <Btn variant="ghost" size="sm" onClick={handleReset}>Cancel recording</Btn>
           )}
         </div>
       )}
@@ -225,11 +215,9 @@ export default function AudioRecorderClient() {
       {recState === "error" && (
         <div className="space-y-3">
           <StatusBanner type="error" message={errorMsg} />
-          <button type="button" onClick={handleReset}
-            className="focus-ring rounded-lg border px-5 py-2 text-sm font-medium"
-            style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-secondary)" }}>
-            Try again
-          </button>
+          <Btn variant="secondary" onClick={handleReset}>
+          Try again
+        </Btn>
         </div>
       )}
 

@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import BarcodeDisplay from "@/components/barcode/BarcodeDisplay";
 import StatusBanner from "@/components/StatusBanner";
+import Btn from "@/components/Btn";
 
 interface Options { width: number; height: number; displayValue: boolean; margin: number }
 interface Result { svgString: string; pngDataUrl: string; value: string }
@@ -101,17 +102,13 @@ export default function Code128Client() {
       </div>
 
       <div className="flex flex-wrap gap-3">
-        <button type="button" onClick={generate} disabled={loading}
-          className="focus-ring inline-flex items-center gap-2 rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90 disabled:opacity-50"
-          style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>
+        <Btn variant="primary" size="lg" onClick={generate} disabled={loading}>
           {loading ? "Generating…" : "Generate Code 128 Barcode"}
-        </button>
+        </Btn>
         {result && (
-          <button type="button" onClick={reset}
-            className="focus-ring inline-flex items-center rounded-lg border px-5 py-2.5 text-sm font-medium transition"
-            style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-secondary)" }}>
-            Reset
-          </button>
+          <Btn variant="secondary" onClick={reset}>
+          Reset
+        </Btn>
         )}
       </div>
 

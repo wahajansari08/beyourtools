@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Btn from "@/components/Btn";
 
 function fmt(n: number, d = 2) {
   return n.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
@@ -29,16 +30,13 @@ function Section({
             style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-primary)" }}
             aria-label="Amount" placeholder="$" />
           {items.length > 1 && (
-            <button type="button" onClick={() => onRemove(i)}
-              className="focus-ring rounded text-xs shrink-0" style={{ color: "var(--coral)" }}>✕</button>
+            <Btn variant="danger" onClick={() => onRemove(i)}>✕</Btn>
           )}
         </div>
       ))}
-      <button type="button" onClick={onAdd}
-        className="focus-ring rounded-lg border px-3 py-1.5 text-xs font-medium transition"
-        style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>
-        + Add item
-      </button>
+      <Btn variant="secondary" size="sm" onClick={onAdd}>
+          + Add item
+        </Btn>
     </div>
   );
 }
@@ -132,16 +130,12 @@ export default function CashFlowClient() {
       )}
 
       <div className="flex gap-3">
-        <button type="button" onClick={calculate}
-          className="focus-ring rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90"
-          style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>
+        <Btn variant="primary" size="lg" onClick={calculate}>
           Calculate Cash Flow
-        </button>
-        <button type="button" onClick={reset}
-          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
-          style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>
+        </Btn>
+        <Btn variant="secondary" onClick={reset}>
           Reset
-        </button>
+        </Btn>
       </div>
 
       {result && (

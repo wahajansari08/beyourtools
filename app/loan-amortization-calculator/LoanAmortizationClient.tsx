@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Btn from "@/components/Btn";
 
 function fmt(n: number, d = 2) {
   return n.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
@@ -102,16 +103,12 @@ export default function LoanAmortizationClient() {
       )}
 
       <div className="flex gap-3">
-        <button type="button" onClick={calculate}
-          className="focus-ring rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90"
-          style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>
+        <Btn variant="primary" size="lg" onClick={calculate}>
           Generate Schedule
-        </button>
-        <button type="button" onClick={reset}
-          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
-          style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>
+        </Btn>
+        <Btn variant="secondary" onClick={reset}>
           Reset
-        </button>
+        </Btn>
       </div>
 
       {summary && (
@@ -166,11 +163,9 @@ export default function LoanAmortizationClient() {
           </div>
 
           {schedule && schedule.length > 24 && (
-            <button type="button" onClick={() => setShowAll((v) => !v)}
-              className="focus-ring w-full rounded-lg border py-2 text-xs font-medium transition"
-              style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>
+            <Btn variant="secondary" size="sm" className="w-full" onClick={() => setShowAll((v) => !v)}>
               {showAll ? "Show fewer rows ↑" : `Show all ${schedule.length} months ↓`}
-            </button>
+            </Btn>
           )}
         </div>
       )}

@@ -4,6 +4,7 @@ import { useCallback, useState } from "react";
 import PdfDropzone from "@/components/PdfDropzone";
 import { formatBytes } from "@/components/PdfToolShell";
 import { loadPdfJs } from "@/lib/pdf/image-convert";
+import Btn from "@/components/Btn";
 
 interface PageThumb { page: number; url: string; width: number; height: number; }
 interface State {
@@ -78,13 +79,7 @@ export default function PdfEditor() {
           >
             ✕ {state.error}
           </div>
-          <button
-            onClick={reset}
-            className="focus-ring rounded-md border px-4 py-2 text-sm transition"
-            style={{ borderColor: "var(--border-strong)", color: "var(--text-secondary)", backgroundColor: "var(--bg-elevated)" }}
-          >
-            Try another PDF
-          </button>
+          <Btn variant="secondary" size="md" onClick={reset}>Try another PDF</Btn>
         </div>
       )}
 
@@ -100,27 +95,14 @@ export default function PdfEditor() {
               <span>{state.pageCount} pages</span>
               <span>{formatBytes(state.fileSize)}</span>
             </div>
-            <button
-              onClick={reset}
-              className="focus-ring rounded-md border px-3 py-1 text-xs transition"
-              style={{ borderColor: "var(--border-strong)", color: "var(--text-muted)", backgroundColor: "var(--bg-elevated)" }}
-            >
-              Close
-            </button>
+            <Btn variant="secondary" size="sm" onClick={reset}>Close</Btn>
           </div>
 
           <div className="grid gap-4 lg:grid-cols-[180px_1fr]">
             {/* Thumbnail strip */}
             <div className="flex flex-row gap-2 overflow-x-auto lg:flex-col lg:overflow-y-auto lg:max-h-[600px]">
               {state.pages.map((p, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() => setSelected(i)}
-                  className="shrink-0 overflow-hidden rounded border-2 transition"
-                  style={{ borderColor: selected === i ? "var(--accent)" : "var(--border)" }}
-                  aria-label={`Page ${p.page}`}
-                >
+                <Btn variant="toggle" size="sm" key={i} onClick={() => setSelected(i)} selected={selected === i} className="shrink-0 overflow-hidden rounded border-2 p-0" aria-label={`Page ${p.page}`}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={p.url} alt={`Page ${p.page}`} className="w-36 object-contain lg:w-full" />
                   <div
@@ -129,7 +111,7 @@ export default function PdfEditor() {
                   >
                     {p.page}
                   </div>
-                </button>
+                </Btn>
               ))}
             </div>
 

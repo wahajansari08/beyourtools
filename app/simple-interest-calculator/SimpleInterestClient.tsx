@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Btn from "@/components/Btn";
 
 function fmt(n: number, d = 2) {
   return n.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
@@ -66,13 +67,7 @@ export default function SimpleInterestClient() {
             </label>
             <div className="flex gap-1" role="group" aria-label="Time unit">
               {units.map((u) => (
-                <button key={u} type="button" onClick={() => setUnit(u)}
-                  className="focus-ring rounded border px-2 py-1 text-[11px] font-medium capitalize transition"
-                  style={{
-                    borderColor: unit === u ? "var(--accent)" : "var(--border-strong)",
-                    backgroundColor: unit === u ? "color-mix(in srgb,var(--accent) 12%,transparent)" : "var(--bg-elevated)",
-                    color: unit === u ? "var(--accent)" : "var(--text-muted)",
-                  }} aria-pressed={unit === u}>{u}</button>
+                <Btn variant="toggle" size="sm" key={u} onClick={() => setUnit(u)} selected={unit === u}>{u}</Btn>
               ))}
             </div>
           </div>
@@ -91,16 +86,12 @@ export default function SimpleInterestClient() {
       )}
 
       <div className="flex gap-3">
-        <button type="button" onClick={calculate}
-          className="focus-ring rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90"
-          style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>
+        <Btn variant="primary" size="lg" onClick={calculate}>
           Calculate
-        </button>
-        <button type="button" onClick={reset}
-          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
-          style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>
+        </Btn>
+        <Btn variant="secondary" onClick={reset}>
           Reset
-        </button>
+        </Btn>
       </div>
 
       {result && (

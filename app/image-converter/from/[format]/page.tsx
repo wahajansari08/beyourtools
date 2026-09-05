@@ -17,6 +17,7 @@ import {
   routesBySourceFormat,
   type ImageFormat,
 } from "@/lib/image-tools-config";
+import Btn from "@/components/Btn";
 
 // ── Static params ─────────────────────────────────────────────────────────────
 
@@ -245,32 +246,24 @@ export default async function ImageFormatPage({
               const toFmt = getFormat(route.to);
               const c = COLOR_CYCLE[idx % COLOR_CYCLE.length];
               return (
-                <Link
+                <Btn
                   key={route.slug}
+                  variant="pill"
                   href={`/image-converter/${route.slug}`}
-                  className="focus-ring group flex flex-col items-center gap-2 rounded-xl border p-4 text-center transition hover-card"
-                  style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}
+                  className="flex-col gap-2 py-3 text-center"
+                  style={{ borderColor: c.border, backgroundColor: c.bg, color: c.color }}
                 >
                   <span
-                    className="flex h-10 w-10 items-center justify-center rounded-lg font-mono text-xs font-bold"
-                    style={{ backgroundColor: c.bg, border: `1px solid ${c.border}`, color: c.color }}
+                    className="flex h-8 w-8 items-center justify-center rounded-lg font-mono text-xs font-bold"
+                    style={{ backgroundColor: "color-mix(in srgb,var(--bg-page) 30%,transparent)" }}
                     aria-hidden="true"
                   >
                     {toFmt?.label ?? route.to.toUpperCase()}
                   </span>
-                  <div>
-                    <p className="text-xs font-semibold" style={{ color: "var(--text-primary)" }}>
-                      {fmt.label} to {toFmt?.label ?? route.to.toUpperCase()}
-                    </p>
-                  </div>
-                  <span
-                    className="text-[10px] font-medium opacity-0 transition group-hover:opacity-100"
-                    style={{ color: c.color }}
-                    aria-hidden="true"
-                  >
-                    Convert →
-                  </span>
-                </Link>
+                  <p className="text-xs font-semibold">
+                    {fmt.label} to {toFmt?.label ?? route.to.toUpperCase()}
+                  </p>
+                </Btn>
               );
             })}
           </div>
@@ -298,20 +291,15 @@ export default async function ImageFormatPage({
           </h2>
           <div className="flex flex-wrap gap-2">
             {allFormats.slice(0, 12).map((f) => (
-              <Link
-                key={f.id}
-                href={`/image-converter/from/${f.id}`}
-                className="focus-ring rounded-md border px-3 py-1.5 text-xs font-medium transition hover-card"
-                style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}
-              >
+              <Btn key={f.id} variant="pill" href={`/image-converter/from/${f.id}`}>
                 {f.label} Converter
-              </Link>
+              </Btn>
             ))}
           </div>
           <div className="mt-4">
-            <Link href="/image-converter" className="focus-ring text-xs font-medium hover:underline" style={{ color: "var(--teal)" }}>
+            <Btn variant="ghost" size="sm" href="/image-converter">
               ← All Image Converters
-            </Link>
+            </Btn>
           </div>
         </section>
       </div>

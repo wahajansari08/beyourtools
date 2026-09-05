@@ -3,6 +3,7 @@ import Link from "next/link";
 import { audioTools, audioCategories, audioByCategory, type AudioTool } from "@/lib/audio-tools-config";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
+import Btn from "@/components/Btn";
 
 export const metadata: Metadata = {
   title: "Audio Tools - Free Online MP3 Converter, Cutter & Compressor | BeYourTools",
@@ -134,11 +135,9 @@ export default function AudioToolsPage() {
           <h2 className="mb-3 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>Popular</h2>
           <div className="flex flex-wrap gap-2">
             {popularTools.map((t) => (
-              <Link key={t.slug} href={`/${t.slug}`}
-                className="focus-ring flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-xs font-medium transition"
-                style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-secondary)" }}>
+              <Btn variant="pill" key={t.slug} href={`/${t.slug}`}>
                 <span aria-hidden="true">{t.icon}</span>{t.name}
-              </Link>
+              </Btn>
             ))}
           </div>
         </div>

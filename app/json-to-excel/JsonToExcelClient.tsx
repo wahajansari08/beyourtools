@@ -6,6 +6,7 @@ import ToolOutput from "@/components/ToolOutput";
 import StatusBanner from "@/components/StatusBanner";
 import FileUploader from "@/components/FileUploader";
 import { jsonToExcel } from "@/lib/generators/excel";
+import Btn from "@/components/Btn";
 
 const EXAMPLE = `[
   { "name": "Alice", "age": 30, "city": "London",    "active": true  },
@@ -65,13 +66,8 @@ export default function JsonToExcelClient() {
           placeholder="A spreadsheet preview will appear here."
           actions={
             result.blob ? (
-              <button
-                type="button"
-                onClick={handleDownload}
-                className="focus-ring flex items-center gap-1.5 rounded border px-2.5 py-1 text-xs font-medium transition"
-                style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}
-              >
-                <svg
+              <Btn variant="secondary" onClick={handleDownload}>
+          <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
                   fill="currentColor"
@@ -82,7 +78,7 @@ export default function JsonToExcelClient() {
                   <path d="M3.5 12.75a.75.75 0 0 0-1.5 0v2.5A2.75 2.75 0 0 0 4.75 18h10.5A2.75 2.75 0 0 0 18 15.25v-2.5a.75.75 0 0 0-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5Z" />
                 </svg>
                 Download .xlsx
-              </button>
+        </Btn>
             ) : null
           }
         >

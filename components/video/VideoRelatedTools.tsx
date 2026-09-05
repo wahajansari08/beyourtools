@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Btn from "@/components/Btn";
 import { relatedVideoTools } from "@/lib/video-tools-config";
 
 export default function VideoRelatedTools({ currentSlug }: { currentSlug: string }) {
@@ -12,9 +12,9 @@ export default function VideoRelatedTools({ currentSlug }: { currentSlug: string
       </h2>
       <div className="flex flex-wrap gap-2">
         {related.map((tool) => (
-          <Link key={tool.slug} href={`/${tool.slug}`} className="focus-ring rounded-md border px-3 py-1.5 text-xs transition hover-text hover-border" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-muted)" }}>
+          <Btn key={tool.slug} variant="pill" href={`/${tool.slug}`}>
             {tool.name}
-          </Link>
+          </Btn>
         ))}
       </div>
     </div>

@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Btn from "@/components/Btn";
 
 function fmt(n: number, d = 2) {
   return n.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
@@ -112,8 +113,7 @@ export default function DebtSnowballClient() {
                 style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-primary)" }}
                 placeholder="Debt name" aria-label="Debt name" />
               {debts.length > 1 && (
-                <button type="button" onClick={() => removeDebt(i)}
-                  className="focus-ring rounded text-xs" style={{ color: "var(--coral)" }}>Remove</button>
+                <Btn variant="danger" onClick={() => removeDebt(i)}>Remove</Btn>
               )}
             </div>
             <div className="grid gap-3 sm:grid-cols-3">
@@ -135,11 +135,9 @@ export default function DebtSnowballClient() {
         ))}
       </div>
 
-      <button type="button" onClick={addDebt}
-        className="focus-ring rounded-lg border px-4 py-2 text-xs font-medium transition"
-        style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>
-        + Add Another Debt
-      </button>
+      <Btn variant="secondary" size="sm" onClick={addDebt}>
+          + Add Another Debt
+        </Btn>
 
       <div className="rounded-xl border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
         <label htmlFor="sb-extra" className="mb-1 block text-xs font-medium" style={{ color: "var(--text-muted)" }}>
@@ -159,16 +157,12 @@ export default function DebtSnowballClient() {
       )}
 
       <div className="flex gap-3">
-        <button type="button" onClick={calculate}
-          className="focus-ring rounded-lg px-6 py-2.5 text-sm font-semibold transition hover:opacity-90"
-          style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }}>
+        <Btn variant="primary" size="lg" onClick={calculate}>
           Calculate
-        </button>
-        <button type="button" onClick={reset}
-          className="focus-ring rounded-lg border px-5 py-2.5 text-sm font-medium transition hover:opacity-80"
-          style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}>
+        </Btn>
+        <Btn variant="secondary" onClick={reset}>
           Reset
-        </button>
+        </Btn>
       </div>
 
       {results && totals && (

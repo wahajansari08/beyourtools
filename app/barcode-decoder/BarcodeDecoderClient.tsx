@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import BarcodeResultBox from "@/components/barcode/BarcodeResultBox";
 import StatusBanner from "@/components/StatusBanner";
+import Btn from "@/components/Btn";
 
 type State = "idle" | "decoding" | "done" | "error";
 
@@ -123,11 +124,9 @@ export default function BarcodeDecoderClient() {
           {state === "error" && (
             <div className="space-y-3">
               <StatusBanner type="error" message={error} />
-              <button type="button" onClick={reset}
-                className="focus-ring rounded-lg border px-5 py-2 text-sm font-medium transition"
-                style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-secondary)" }}>
-                Try another image
-              </button>
+              <Btn variant="secondary" onClick={reset}>
+          Try another image
+        </Btn>
             </div>
           )}
         </div>

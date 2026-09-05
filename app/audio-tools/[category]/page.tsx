@@ -16,6 +16,7 @@ import {
   audioByCategory,
   type AudioCategory,
 } from "@/lib/audio-tools-config";
+import Btn from "@/components/Btn";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -410,15 +411,10 @@ export default async function AudioCategoryPage({
           </h2>
           <div className="flex flex-wrap gap-2">
             {siblings.map((sib) => (
-              <Link
-                key={sib}
-                href={`/audio-tools/${toSlug(sib)}`}
-                className="focus-ring flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-xs font-medium transition hover-card"
-                style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-muted)" }}
-              >
+              <Btn variant="pill" key={sib} href={`/audio-tools/${toSlug(sib)}`}>
                 <span aria-hidden="true">{CAT_ICONS[sib]}</span>
                 {sib}
-              </Link>
+              </Btn>
             ))}
           </div>
           <div className="mt-4">

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import AudioProcessorShell from "@/components/audio/AudioProcessorShell";
 import { changeAudioSpeed, SPEED_OPTIONS } from "@/lib/audio/speed";
+import Btn from "@/components/Btn";
 
 export default function SpeedChangerClient() {
   const [speed,  setSpeed]  = useState(1.5);
@@ -17,26 +18,9 @@ export default function SpeedChangerClient() {
           <p className="mb-2 text-xs font-medium" style={{ color: "var(--text-muted)" }}>Speed</p>
           <div className="flex flex-wrap gap-2">
             {SPEED_OPTIONS.map((s) => (
-              <button key={s} type="button"
-                onClick={() => { setSpeed(s); setCustom(false); }}
-                className="focus-ring rounded border px-3 py-1.5 text-xs font-semibold transition"
-                style={{
-                  borderColor: speed === s && !custom ? "var(--accent)" : "var(--border-strong)",
-                  backgroundColor: speed === s && !custom ? "color-mix(in srgb,var(--accent) 12%,transparent)" : "var(--bg-elevated)",
-                  color: speed === s && !custom ? "var(--accent)" : "var(--text-muted)",
-                }}>
-                {s}×
-              </button>
+              <Btn variant="toggle" size="sm" key={s} onClick={() => { setSpeed(s); setCustom(false); }} selected={speed === s && !custom}>{s}×</Btn>
             ))}
-            <button type="button" onClick={() => setCustom(true)}
-              className="focus-ring rounded border px-3 py-1.5 text-xs font-medium transition"
-              style={{
-                borderColor: custom ? "var(--accent)" : "var(--border-strong)",
-                backgroundColor: custom ? "color-mix(in srgb,var(--accent) 12%,transparent)" : "var(--bg-elevated)",
-                color: custom ? "var(--accent)" : "var(--text-muted)",
-              }}>
-              Custom
-            </button>
+            <Btn variant="toggle" size="sm" onClick={() => setCustom(true)} selected={custom}>Custom</Btn>
           </div>
         </div>
 
