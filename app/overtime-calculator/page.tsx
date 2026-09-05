@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import OvertimeClient from "./OvertimeClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Overtime Calculator - Overtime Pay at 1.5×, 2×, or Custom Rate | BeYourTools",
-  description:
-    "Calculate overtime pay for any number of overtime hours at time-and-a-half (1.5×), double time, or a custom multiplier. See regular pay, overtime pay, and total pay.",
+  description: "Calculate overtime pay for any number of overtime hours at time-and-a-half (1.5×), double time, or a custom multiplier. See regular pay, overtime pay, and total pay.",
   keywords: "overtime calculator, overtime pay calculator, time and a half calculator, double time pay, overtime wages",
-  alternates: { canonical: `${SITE.url}/overtime-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/overtime-calculator",
+});
 
 export default function OvertimePage() {
   return (

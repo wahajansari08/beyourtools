@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import DebtPayoffClient from "./DebtPayoffClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Debt Payoff Calculator - Time & Total Interest for Multiple Debts | BeYourTools",
-  description:
-    "Calculate how long it takes to pay off multiple debts and the total interest cost at your current payments. Add extra monthly payments to see the impact. Free, browser-based.",
+  description: "Calculate how long it takes to pay off multiple debts and the total interest cost at your current payments. Add extra monthly payments to see the impact. Free, browser-based.",
   keywords: "debt payoff calculator, multiple debt calculator, pay off debt, total interest, debt free calculator, debt elimination",
-  alternates: { canonical: `${SITE.url}/debt-payoff-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/debt-payoff-calculator",
+});
 
 export default function DebtPayoffPage() {
   return (

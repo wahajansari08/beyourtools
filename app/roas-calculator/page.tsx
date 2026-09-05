@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import RoasClient from "./RoasClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "ROAS Calculator - Return on Ad Spend for Any Campaign | BeYourTools",
-  description:
-    "Calculate ROAS (Return on Ad Spend) for any advertising campaign. Enter revenue and ad spend, add your gross margin to see profitability and break-even ROAS. Free, instant.",
+  description: "Calculate ROAS (Return on Ad Spend) for any advertising campaign. Enter revenue and ad spend, add your gross margin to see profitability and break-even ROAS. Free, instant.",
   keywords: "ROAS calculator, return on ad spend, advertising ROI, Facebook ads ROAS, Google ads ROAS, marketing profitability, break-even ROAS",
-  alternates: { canonical: `${SITE.url}/roas-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/roas-calculator",
+});
 
 export default function RoasPage() {
   return (

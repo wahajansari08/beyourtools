@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import AudioToolPage from "@/components/audio/AudioToolPage";
 import AudioCompressorClient from "./AudioCompressorClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Audio Compressor - Compress Audio Files Online Free | BeYourTools",
   description: "Compress audio files to reduce size online for free. Supports MP3, WAV, FLAC, M4A, OGG. Choose output format and compression level. Browser-based, no upload.",
   keywords: "audio compressor, compress audio online, reduce audio file size, audio file compressor, compress wav, compress flac",
-  alternates: { canonical: `${SITE.url}/audio-compressor` },
-};
+  path: "/audio-compressor",
+});
 
 export default function AudioCompressorPage() {
   return (

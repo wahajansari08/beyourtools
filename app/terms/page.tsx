@@ -1,19 +1,42 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
+import { SITE, breadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Terms and Conditions - BeYourTools",
   description: "Read the Terms and Conditions for using BeYourTools. Understand your rights and responsibilities when using our free online tools.",
   alternates: { canonical: `${SITE.url}/terms` },
+  openGraph: {
+    title: "Terms and Conditions - BeYourTools",
+    description: "Read the Terms and Conditions for using BeYourTools. Understand your rights and responsibilities when using our free online tools.",
+    url: `${SITE.url}/terms`,
+    type: "website",
+    images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "BeYourTools Terms and Conditions" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terms and Conditions - BeYourTools",
+    description: "Read the Terms and Conditions for using BeYourTools. Understand your rights and responsibilities when using our free online tools.",
+    images: [`${SITE.url}/og-default.png`],
+  },
   robots: { index: true, follow: true },
 };
 
 const EFFECTIVE = "August 1, 2026";
 
 export default function TermsPage() {
+  const schemas = [
+    breadcrumbSchema([
+      { name: "BeYourTools", url: SITE.url },
+      { name: "Terms and Conditions", url: `${SITE.url}/terms` },
+    ]),
+  ];
+
   return (
-    <div className="mx-auto w-full max-w-3xl px-4 py-10 sm:px-6 sm:py-14">
+    <>
+      <JsonLd data={schemas} />
+      <div className="mx-auto w-full max-w-3xl px-4 py-10 sm:px-6 sm:py-14">
       <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-1.5 text-xs" style={{ color: "var(--text-subtle)" }}>
         <Link href="/" className="focus-ring rounded hover-text-primary" style={{ color: "var(--text-muted)" }}>BeYourTools</Link>
         <span>/</span>
@@ -103,5 +126,6 @@ export default function TermsPage() {
 
       </div>
     </div>
+    </>
   );
 }

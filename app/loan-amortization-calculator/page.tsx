@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import LoanAmortizationClient from "./LoanAmortizationClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Loan Amortization Calculator - Full Month-by-Month Schedule | BeYourTools",
-  description:
-    "Generate a complete month-by-month amortization schedule for any loan. See payment, principal, interest, and remaining balance for every payment. Free, browser-based.",
+  description: "Generate a complete month-by-month amortization schedule for any loan. See payment, principal, interest, and remaining balance for every payment. Free, browser-based.",
   keywords: "loan amortization calculator, amortization schedule, mortgage amortization, loan schedule, principal and interest breakdown",
-  alternates: { canonical: `${SITE.url}/loan-amortization-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/loan-amortization-calculator",
+});
 
 export default function LoanAmortizationPage() {
   return (

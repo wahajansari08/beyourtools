@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import DebtAvalancheClient from "./DebtAvalancheClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Debt Avalanche Calculator - Pay Highest Interest Rate First | BeYourTools",
-  description:
-    "Use the debt avalanche method to eliminate debt by targeting the highest interest rate first. Saves the most money in total interest. Free, browser-based calculator.",
+  description: "Use the debt avalanche method to eliminate debt by targeting the highest interest rate first. Saves the most money in total interest. Free, browser-based calculator.",
   keywords: "debt avalanche calculator, debt avalanche method, highest interest first, debt payoff, minimize interest, debt elimination strategy",
-  alternates: { canonical: `${SITE.url}/debt-avalanche-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/debt-avalanche-calculator",
+});
 
 export default function DebtAvalanchePage() {
   return (

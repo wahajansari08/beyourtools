@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import TaxInclusiveClient from "./TaxInclusiveClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Tax-Inclusive Price Calculator - Add VAT/GST to Net Price | BeYourTools",
-  description:
-    "Calculate the gross (tax-inclusive) price by adding VAT, GST, or sales tax to a net price. Includes presets for UK VAT (20%), AU GST (10%), and EU VAT rates.",
+  description: "Calculate the gross (tax-inclusive) price by adding VAT, GST, or sales tax to a net price. Includes presets for UK VAT (20%), AU GST (10%), and EU VAT rates.",
   keywords: "tax inclusive price calculator, VAT calculator, GST calculator, add VAT to price, gross price calculator, tax on price",
-  alternates: { canonical: `${SITE.url}/tax-inclusive-price-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/tax-inclusive-price-calculator",
+});
 
 export default function TaxInclusivePage() {
   return (

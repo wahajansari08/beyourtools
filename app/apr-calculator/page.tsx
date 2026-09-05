@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import AprClient from "./AprClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "APR Calculator - True Annual Percentage Rate Including Fees | BeYourTools",
-  description:
-    "Calculate the true APR of a loan including origination fees, points, and closing costs. Compare loans accurately by their real annual cost. Free, browser-based.",
+  description: "Calculate the true APR of a loan including origination fees, points, and closing costs. Compare loans accurately by their real annual cost. Free, browser-based.",
   keywords: "APR calculator, annual percentage rate, loan APR, true cost of loan, mortgage APR, origination fee APR",
-  alternates: { canonical: `${SITE.url}/apr-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/apr-calculator",
+});
 
 export default function AprPage() {
   return (

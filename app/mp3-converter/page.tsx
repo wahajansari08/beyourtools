@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import AudioToolPage from "@/components/audio/AudioToolPage";
 import Mp3ConverterClient from "./Mp3ConverterClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "MP3 Converter - Convert Audio to MP3 Online Free | BeYourTools",
   description: "Convert audio files to MP3 online for free. Supports WAV, FLAC, M4A, OGG, AAC, MP4 and more. Choose bitrate and download instantly. 100% browser-based.",
   keywords: "mp3 converter, convert to mp3, audio to mp3, wav to mp3 online, flac to mp3, m4a to mp3",
-  alternates: { canonical: `${SITE.url}/mp3-converter` },
-};
+  path: "/mp3-converter",
+});
 
 export default function Mp3ConverterPage() {
   return (

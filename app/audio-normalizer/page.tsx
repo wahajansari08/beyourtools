@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import AudioToolPage from "@/components/audio/AudioToolPage";
 import AudioNormalizerClient from "./AudioNormalizerClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Audio Normalizer - Normalize Audio Volume Online Free | BeYourTools",
   description: "Normalize audio levels online for free. Peak normalization or dynamic normalization. Supports MP3, WAV, FLAC and more. Browser-based, no upload.",
   keywords: "audio normalizer, normalize audio online, audio volume normalizer, peak normalization, loudness normalization, audio leveler",
-  alternates: { canonical: `${SITE.url}/audio-normalizer` },
-};
+  path: "/audio-normalizer",
+});
 
 export default function AudioNormalizerPage() {
   return (

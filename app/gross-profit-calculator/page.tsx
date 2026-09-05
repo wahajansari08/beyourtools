@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import GrossProfitClient from "./GrossProfitClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Gross Profit Calculator - Gross Profit & Gross Margin % | BeYourTools",
-  description:
-    "Calculate gross profit and gross profit margin from revenue and cost of goods sold (COGS). Fast, free, and browser-based with no sign-up required.",
+  description: "Calculate gross profit and gross profit margin from revenue and cost of goods sold (COGS). Fast, free, and browser-based with no sign-up required.",
   keywords: "gross profit calculator, gross margin calculator, cogs, revenue, gross profit formula",
-  alternates: { canonical: `${SITE.url}/gross-profit-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/gross-profit-calculator",
+});
 
 export default function GrossProfitPage() {
   return (

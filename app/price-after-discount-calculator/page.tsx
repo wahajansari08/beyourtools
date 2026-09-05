@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import PriceAfterDiscountClient from "./PriceAfterDiscountClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Price After Discount Calculator - Final Price with Discount & Tax | BeYourTools",
-  description:
-    "Find the final price after applying a percentage discount, with optional sales tax added after the discount. Quick preset buttons for common discount percentages.",
+  description: "Find the final price after applying a percentage discount, with optional sales tax added after the discount. Quick preset buttons for common discount percentages.",
   keywords: "price after discount calculator, final price calculator, discount and tax calculator, sale price calculator, percent off calculator",
-  alternates: { canonical: `${SITE.url}/price-after-discount-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/price-after-discount-calculator",
+});
 
 export default function PriceAfterDiscountPage() {
   return (

@@ -226,7 +226,7 @@ export interface ToolMetadataOpts {
   title: string;
   description: string;
   path: string;
-  keywords?: string[];
+  keywords?: string[] | string;
   category?: string;
 }
 
@@ -237,11 +237,12 @@ export interface ToolMetadataOpts {
 export function createToolMetadata(opts: ToolMetadataOpts) {
   const url   = canonical(opts.path);
   const image = `${SITE.url}/og-default.png`;
+  const kw = Array.isArray(opts.keywords) ? opts.keywords.join(", ") : opts.keywords;
   return {
     metadataBase: new URL(SITE.url),
     title: opts.title,
     description: opts.description,
-    keywords: opts.keywords?.join(", "),
+    keywords: kw,
     alternates: { canonical: url },
     robots: { index: true, follow: true },
     openGraph: {

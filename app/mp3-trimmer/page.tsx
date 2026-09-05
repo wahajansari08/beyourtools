@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import AudioToolPage from "@/components/audio/AudioToolPage";
 import Mp3TrimmerClient from "./Mp3TrimmerClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "MP3 Trimmer - Trim MP3 Audio Online Free | BeYourTools",
   description: "Trim MP3 files to the exact section you need. Set start and end points, preview your selection, and download the trimmed audio. Free and browser-based.",
   keywords: "mp3 trimmer, trim mp3 online, mp3 cutter trimmer, trim audio online free, mp3 clip maker",
-  alternates: { canonical: `${SITE.url}/mp3-trimmer` },
-};
+  path: "/mp3-trimmer",
+});
 
 export default function Mp3TrimmerPage() {
   return (

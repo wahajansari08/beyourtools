@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import AudioToolPage from "@/components/audio/AudioToolPage";
 import AudioCutterClient from "./AudioCutterClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Audio Cutter - Cut Audio Files Online Free | BeYourTools",
   description: "Cut any audio file online for free. Supports MP3, WAV, FLAC, M4A, OGG and more. Select start/end, preview, and download. Browser-based, no upload.",
   keywords: "audio cutter, cut audio online, trim audio online, audio trimmer, cut wav online, cut flac online",
-  alternates: { canonical: `${SITE.url}/audio-cutter` },
-};
+  path: "/audio-cutter",
+});
 
 export default function AudioCutterPage() {
   return (

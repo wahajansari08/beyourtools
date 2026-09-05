@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import SavingsGoalClient from "./SavingsGoalClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Savings Goal Calculator - Monthly Savings Needed to Hit Your Target | BeYourTools",
-  description:
-    "Find out exactly how much you need to save each month to reach any savings goal by a target date. Accounts for existing savings and compound interest. Free, browser-based.",
+  description: "Find out exactly how much you need to save each month to reach any savings goal by a target date. Accounts for existing savings and compound interest. Free, browser-based.",
   keywords: "savings goal calculator, monthly savings calculator, how much to save, target savings, savings plan calculator, future value calculator",
-  alternates: { canonical: `${SITE.url}/savings-goal-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/savings-goal-calculator",
+});
 
 export default function SavingsGoalPage() {
   return (

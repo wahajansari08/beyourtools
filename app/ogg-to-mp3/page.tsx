@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import AudioToolPage from "@/components/audio/AudioToolPage";
 import SimpleConvertClient from "@/components/audio/SimpleConvertClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "OGG to MP3 Converter - Convert OGG Vorbis to MP3 Free | BeYourTools",
   description: "Convert OGG Vorbis audio files to MP3 online for free. Browser-based conversion, no upload, selectable bitrate.",
   keywords: "ogg to mp3, convert ogg to mp3, ogg vorbis to mp3, ogg mp3 converter online",
-  alternates: { canonical: `${SITE.url}/ogg-to-mp3` },
-};
+  path: "/ogg-to-mp3",
+});
 
 export default function OggToMp3Page() {
   return (

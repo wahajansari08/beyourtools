@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import MinPaymentClient from "./MinPaymentClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Credit Card Minimum Payment Calculator - True Cost of Paying Minimums | BeYourTools",
-  description:
-    "See the shocking true cost of only making minimum payments on your credit card, how many years it takes and how much interest you pay in total. Free, browser-based.",
+  description: "See the shocking true cost of only making minimum payments on your credit card, how many years it takes and how much interest you pay in total. Free, browser-based.",
   keywords: "credit card minimum payment calculator, minimum payment interest, how long to pay off credit card minimums, credit card cost",
-  alternates: { canonical: `${SITE.url}/credit-card-minimum-payment-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/credit-card-minimum-payment-calculator",
+});
 
 export default function MinPaymentPage() {
   return (

@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import AudioToolPage from "@/components/audio/AudioToolPage";
 import VolumeBoosterClient from "./VolumeBoosterClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "MP3 Volume Booster - Increase MP3 Volume Online Free | BeYourTools",
   description: "Boost the volume of your MP3 file online for free. Choose a gain preset or set a custom level. Preview and download. Browser-based, no upload.",
   keywords: "mp3 volume booster, increase mp3 volume, boost audio volume online, mp3 louder, volume increaser",
-  alternates: { canonical: `${SITE.url}/mp3-volume-booster` },
-};
+  path: "/mp3-volume-booster",
+});
 
 export default function VolumeBoosterPage() {
   return (

@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import NetProfitClient from "./NetProfitClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Net Profit Calculator - Net Income & Net Margin % | BeYourTools",
-  description:
-    "Calculate net profit and net profit margin after deducting COGS, operating expenses, interest, and taxes from revenue. Includes gross and operating profit breakdown.",
+  description: "Calculate net profit and net profit margin after deducting COGS, operating expenses, interest, and taxes from revenue. Includes gross and operating profit breakdown.",
   keywords: "net profit calculator, net income calculator, net margin, bottom line, profit after tax, net profit formula",
-  alternates: { canonical: `${SITE.url}/net-profit-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/net-profit-calculator",
+});
 
 export default function NetProfitPage() {
   return (

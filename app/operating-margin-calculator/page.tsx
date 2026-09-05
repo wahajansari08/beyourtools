@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import OperatingMarginClient from "./OperatingMarginClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Operating Margin Calculator - EBIT Margin % | BeYourTools",
-  description:
-    "Calculate operating margin (EBIT margin) from revenue, COGS, and operating expenses. See your operating income in dollars and as a percentage of revenue.",
+  description: "Calculate operating margin (EBIT margin) from revenue, COGS, and operating expenses. See your operating income in dollars and as a percentage of revenue.",
   keywords: "operating margin calculator, EBIT margin, operating income, operating profit margin, EBIT calculator",
-  alternates: { canonical: `${SITE.url}/operating-margin-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/operating-margin-calculator",
+});
 
 export default function OperatingMarginPage() {
   return (

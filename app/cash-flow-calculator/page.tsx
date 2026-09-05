@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import CashFlowClient from "./CashFlowClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Cash Flow Calculator - Net Cash Flow from Operating, Investing & Financing | BeYourTools",
-  description:
-    "Calculate net cash flow from operating, investing, and financing activities. Enter line items for each category to get a clear cash flow summary. Free, browser-based.",
+  description: "Calculate net cash flow from operating, investing, and financing activities. Enter line items for each category to get a clear cash flow summary. Free, browser-based.",
   keywords: "cash flow calculator, net cash flow, operating cash flow, investing cash flow, financing cash flow, business cash flow",
-  alternates: { canonical: `${SITE.url}/cash-flow-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/cash-flow-calculator",
+});
 
 export default function CashFlowPage() {
   return (

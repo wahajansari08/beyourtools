@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import SavingsClient from "./SavingsClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Savings Calculator - Compound Savings Growth Projector | BeYourTools",
-  description:
-    "Project how your savings grow with an initial deposit, regular contributions, and compound interest over any time period. Shows year-by-year breakdown. Free, browser-based.",
+  description: "Project how your savings grow with an initial deposit, regular contributions, and compound interest over any time period. Shows year-by-year breakdown. Free, browser-based.",
   keywords: "savings calculator, compound interest calculator, savings growth calculator, future value calculator, investment savings calculator",
-  alternates: { canonical: `${SITE.url}/savings-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/savings-calculator",
+});
 
 export default function SavingsPage() {
   return (

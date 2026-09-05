@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import LoanPaymentClient from "./LoanPaymentClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Loan Payment Calculator - Monthly Payment, Total Interest | BeYourTools",
-  description:
-    "Calculate your monthly loan payment, total amount paid, and total interest for any loan amount, interest rate, and term. Free, browser-based, instant results.",
+  description: "Calculate your monthly loan payment, total amount paid, and total interest for any loan amount, interest rate, and term. Free, browser-based, instant results.",
   keywords: "loan payment calculator, monthly loan payment, loan calculator, mortgage payment calculator, auto loan calculator, personal loan calculator",
-  alternates: { canonical: `${SITE.url}/loan-payment-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/loan-payment-calculator",
+});
 
 export default function LoanPaymentPage() {
   return (

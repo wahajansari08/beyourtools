@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import DebtToIncomeClient from "./DebtToIncomeClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Debt-to-Income Calculator - DTI Ratio for Loan Qualification | BeYourTools",
-  description:
-    "Calculate your debt-to-income (DTI) ratio to understand your borrowing capacity and loan qualification prospects. Includes front-end and back-end DTI. Free, browser-based.",
+  description: "Calculate your debt-to-income (DTI) ratio to understand your borrowing capacity and loan qualification prospects. Includes front-end and back-end DTI. Free, browser-based.",
   keywords: "debt to income calculator, DTI calculator, debt to income ratio, mortgage DTI, loan qualification, back end ratio, front end ratio",
-  alternates: { canonical: `${SITE.url}/debt-to-income-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/debt-to-income-calculator",
+});
 
 export default function DebtToIncomePage() {
   return (

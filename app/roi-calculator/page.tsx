@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import RoiClient from "./RoiClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "ROI Calculator - Return on Investment Percentage & Net Gain | BeYourTools",
-  description:
-    "Calculate return on investment (ROI) percentage, net gain or loss, and annualised ROI for any investment. Free, instant, browser-based ROI calculator.",
+  description: "Calculate return on investment (ROI) percentage, net gain or loss, and annualised ROI for any investment. Free, instant, browser-based ROI calculator.",
   keywords: "ROI calculator, return on investment calculator, investment return, net gain calculator, annualised ROI, investment performance",
-  alternates: { canonical: `${SITE.url}/roi-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/roi-calculator",
+});
 
 export default function RoiPage() {
   return (

@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import SalesTaxClient from "./SalesTaxClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Sales Tax Calculator - Add or Remove Sales Tax from Any Price | BeYourTools",
-  description:
-    "Add sales tax to a pre-tax price or remove tax from a tax-inclusive total. Supports any tax rate. Includes quick presets for US states and VAT rates. Free, instant.",
+  description: "Add sales tax to a pre-tax price or remove tax from a tax-inclusive total. Supports any tax rate. Includes quick presets for US states and VAT rates. Free, instant.",
   keywords: "sales tax calculator, add sales tax, remove sales tax, tax inclusive price, VAT calculator, price with tax",
-  alternates: { canonical: `${SITE.url}/sales-tax-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/sales-tax-calculator",
+});
 
 export default function SalesTaxPage() {
   return (

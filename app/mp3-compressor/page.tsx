@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import AudioToolPage from "@/components/audio/AudioToolPage";
 import Mp3CompressorClient from "./Mp3CompressorClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "MP3 Compressor - Compress MP3 Files Online Free | BeYourTools",
   description: "Reduce MP3 file size online for free. Choose a compression preset, compress your MP3, and see the exact size reduction before downloading.",
   keywords: "mp3 compressor, compress mp3 online, reduce mp3 file size, mp3 file size reducer, compress audio online",
-  alternates: { canonical: `${SITE.url}/mp3-compressor` },
-};
+  path: "/mp3-compressor",
+});
 
 export default function Mp3CompressorPage() {
   return (

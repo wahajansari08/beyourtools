@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import AudioToolPage from "@/components/audio/AudioToolPage";
 import SimpleConvertClient from "@/components/audio/SimpleConvertClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "FLAC to MP3 Converter - Convert FLAC to MP3 Free Online | BeYourTools",
   description: "Convert lossless FLAC files to compressed MP3 online for free. Reduce file size while keeping good audio quality. Browser-based, no upload.",
   keywords: "flac to mp3, convert flac to mp3, flac to mp3 online, lossless to mp3, flac converter",
-  alternates: { canonical: `${SITE.url}/flac-to-mp3` },
-};
+  path: "/flac-to-mp3",
+});
 
 export default function FlacToMp3Page() {
   return (

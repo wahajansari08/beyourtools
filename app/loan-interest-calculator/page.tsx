@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import LoanInterestClient from "./LoanInterestClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Loan Interest Calculator - Total Interest Paid on Any Loan | BeYourTools",
-  description:
-    "Find out the total interest you'll pay over the life of any loan. Enter principal, interest rate, and term to see total interest, monthly payment, and interest as a percentage of the loan.",
+  description: "Find out the total interest you'll pay over the life of any loan. Enter principal, interest rate, and term to see total interest, monthly payment, and interest as a percentage of the loan.",
   keywords: "loan interest calculator, total interest paid, loan cost calculator, interest on loan, how much interest on a loan",
-  alternates: { canonical: `${SITE.url}/loan-interest-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/loan-interest-calculator",
+});
 
 export default function LoanInterestPage() {
   return (

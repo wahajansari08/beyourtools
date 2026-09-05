@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import ExtraPaymentClient from "./ExtraPaymentClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Extra Payment Loan Calculator - Interest Saved by Paying Extra | BeYourTools",
-  description:
-    "See how much interest and time you save by making extra monthly payments or a lump-sum payment on your loan. Side-by-side comparison with and without extra payments.",
+  description: "See how much interest and time you save by making extra monthly payments or a lump-sum payment on your loan. Side-by-side comparison with and without extra payments.",
   keywords: "extra payment loan calculator, overpayment calculator, pay off loan early, interest savings, lump sum loan payment",
-  alternates: { canonical: `${SITE.url}/extra-payment-loan-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/extra-payment-loan-calculator",
+});
 
 export default function ExtraPaymentPage() {
   return (

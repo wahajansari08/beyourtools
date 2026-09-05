@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import CreditCardPayoffClient from "./CreditCardPayoffClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Credit Card Payoff Calculator - Time & Interest to Pay Off Card | BeYourTools",
-  description:
-    "Find out how long it takes to pay off your credit card balance and total interest paid at a fixed monthly payment. Free, instant, browser-based credit card payoff calculator.",
+  description: "Find out how long it takes to pay off your credit card balance and total interest paid at a fixed monthly payment. Free, instant, browser-based credit card payoff calculator.",
   keywords: "credit card payoff calculator, credit card interest calculator, pay off credit card, credit card debt, APR calculator",
-  alternates: { canonical: `${SITE.url}/credit-card-payoff-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/credit-card-payoff-calculator",
+});
 
 export default function CreditCardPayoffPage() {
   return (

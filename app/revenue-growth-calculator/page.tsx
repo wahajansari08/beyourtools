@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import RevenueGrowthClient from "./RevenueGrowthClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Revenue Growth Calculator - Growth Rate, Projected Revenue & CAGR | BeYourTools",
-  description:
-    "Calculate revenue growth rate between two periods, project future revenue at a given growth rate, or find CAGR between a start and end revenue. Free, browser-based.",
+  description: "Calculate revenue growth rate between two periods, project future revenue at a given growth rate, or find CAGR between a start and end revenue. Free, browser-based.",
   keywords: "revenue growth calculator, revenue growth rate, CAGR calculator, projected revenue, YoY growth, compound annual growth rate",
-  alternates: { canonical: `${SITE.url}/revenue-growth-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/revenue-growth-calculator",
+});
 
 export default function RevenueGrowthPage() {
   return (

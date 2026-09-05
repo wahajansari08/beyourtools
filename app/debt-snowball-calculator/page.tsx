@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import DebtSnowballClient from "./DebtSnowballClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Debt Snowball Calculator - Pay Off Debts Smallest Balance First | BeYourTools",
-  description:
-    "Use the debt snowball method to pay off multiple debts by tackling the smallest balance first. See your payoff order, month-by-month plan, and total interest cost.",
+  description: "Use the debt snowball method to pay off multiple debts by tackling the smallest balance first. See your payoff order, month-by-month plan, and total interest cost.",
   keywords: "debt snowball calculator, debt snowball method, pay off debt, smallest balance first, debt payoff order, debt free plan",
-  alternates: { canonical: `${SITE.url}/debt-snowball-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/debt-snowball-calculator",
+});
 
 export default function DebtSnowballPage() {
   return (

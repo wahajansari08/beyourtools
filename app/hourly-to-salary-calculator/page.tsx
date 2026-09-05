@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import HourlyToSalaryClient from "./HourlyToSalaryClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Hourly to Salary Calculator - Convert Hourly Wage to Annual Salary | BeYourTools",
-  description:
-    "Convert an hourly wage to annual, monthly, bi-weekly, weekly, and daily salary equivalents. Adjust hours per week and weeks per year for accurate results.",
+  description: "Convert an hourly wage to annual, monthly, bi-weekly, weekly, and daily salary equivalents. Adjust hours per week and weeks per year for accurate results.",
   keywords: "hourly to salary calculator, hourly wage to annual salary, convert hourly to yearly, salary calculator, income calculator",
-  alternates: { canonical: `${SITE.url}/hourly-to-salary-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/hourly-to-salary-calculator",
+});
 
 export default function HourlyToSalaryPage() {
   return (

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
+import { SITE, breadcrumbSchema, organizationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "About BeYourTools - Free Browser-Based Online Tools",
@@ -24,8 +25,18 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
+  const schemas = [
+    organizationSchema(),
+    breadcrumbSchema([
+      { name: "BeYourTools", url: SITE.url },
+      { name: "About", url: `${SITE.url}/about` },
+    ]),
+  ];
+
   return (
-    <div className="mx-auto w-full max-w-3xl px-4 py-10 sm:px-6 sm:py-14">
+    <>
+      <JsonLd data={schemas} />
+      <div className="mx-auto w-full max-w-3xl px-4 py-10 sm:px-6 sm:py-14">
       <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-1.5 text-xs" style={{ color: "var(--text-subtle)" }}>
         <Link href="/" className="focus-ring rounded hover-text-primary" style={{ color: "var(--text-muted)" }}>BeYourTools</Link>
         <span>/</span>
@@ -88,5 +99,6 @@ export default function AboutPage() {
 
       </div>
     </div>
+    </>
   );
 }

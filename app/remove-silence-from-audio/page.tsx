@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import AudioToolPage from "@/components/audio/AudioToolPage";
 import RemoveSilenceClient from "./RemoveSilenceClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Remove Silence from Audio - Online Free | BeYourTools",
   description: "Automatically remove silent sections from audio files online for free. Adjust threshold, minimum duration and padding. Browser-based, no upload.",
   keywords: "remove silence from audio, silence remover, remove quiet parts audio, trim silence audio online, audio silence detector",
-  alternates: { canonical: `${SITE.url}/remove-silence-from-audio` },
-};
+  path: "/remove-silence-from-audio",
+});
 
 export default function RemoveSilencePage() {
   return (

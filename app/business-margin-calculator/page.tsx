@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import BusinessMarginClient from "./BusinessMarginClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Business Margin Calculator - Gross, Operating & Net Margins Side-by-Side | BeYourTools",
-  description:
-    "Compare gross, operating, and net profit margins in one view. Enter all revenue and cost figures to get a complete profitability picture for your business.",
+  description: "Compare gross, operating, and net profit margins in one view. Enter all revenue and cost figures to get a complete profitability picture for your business.",
   keywords: "business margin calculator, gross margin, operating margin, net margin, profitability calculator, margin comparison",
-  alternates: { canonical: `${SITE.url}/business-margin-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/business-margin-calculator",
+});
 
 export default function BusinessMarginPage() {
   return (

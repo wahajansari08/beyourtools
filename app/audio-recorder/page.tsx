@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import AudioToolPage from "@/components/audio/AudioToolPage";
 import AudioRecorderClient from "./AudioRecorderClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Online Audio Recorder - Record Voice Free | BeYourTools",
   description: "Record audio from your microphone directly in the browser. Pause, resume, stop and download your recording. Free, no sign-up, no upload.",
   keywords: "online audio recorder, voice recorder online, record audio browser, microphone recorder, free voice recorder, record sound online",
-  alternates: { canonical: `${SITE.url}/audio-recorder` },
-};
+  path: "/audio-recorder",
+});
 
 export default function AudioRecorderPage() {
   return (

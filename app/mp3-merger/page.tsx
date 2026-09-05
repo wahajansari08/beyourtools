@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import AudioToolPage from "@/components/audio/AudioToolPage";
 import Mp3MergerClient from "./Mp3MergerClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "MP3 Merger - Merge Multiple MP3 Files Online Free | BeYourTools",
   description: "Merge multiple MP3 files into one seamless audio file. Reorder files, preview, and download the merged MP3. Free and browser-based.",
   keywords: "mp3 merger, merge mp3 files, combine mp3 online, join mp3 files, mp3 joiner online free",
-  alternates: { canonical: `${SITE.url}/mp3-merger` },
-};
+  path: "/mp3-merger",
+});
 
 export default function Mp3MergerPage() {
   return (

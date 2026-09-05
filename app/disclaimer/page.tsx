@@ -1,18 +1,42 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
+import { SITE, breadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Disclaimer - BeYourTools",
   description: "BeYourTools disclaimer. Information about limitations of our tools and accuracy of content.",
   alternates: { canonical: `${SITE.url}/disclaimer` },
+  openGraph: {
+    title: "Disclaimer - BeYourTools",
+    description: "BeYourTools disclaimer. Information about limitations of our tools and accuracy of content.",
+    url: `${SITE.url}/disclaimer`,
+    type: "website",
+    images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "BeYourTools Disclaimer" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Disclaimer - BeYourTools",
+    description: "BeYourTools disclaimer. Information about limitations of our tools and accuracy of content.",
+    images: [`${SITE.url}/og-default.png`],
+  },
+  robots: { index: true, follow: true },
 };
 
 const EFFECTIVE = "August 1, 2026";
 
 export default function DisclaimerPage() {
+  const schemas = [
+    breadcrumbSchema([
+      { name: "BeYourTools", url: SITE.url },
+      { name: "Disclaimer", url: `${SITE.url}/disclaimer` },
+    ]),
+  ];
+
   return (
-    <div className="mx-auto w-full max-w-3xl px-4 py-10 sm:px-6 sm:py-14">
+    <>
+      <JsonLd data={schemas} />
+      <div className="mx-auto w-full max-w-3xl px-4 py-10 sm:px-6 sm:py-14">
       <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-1.5 text-xs" style={{ color: "var(--text-subtle)" }}>
         <Link href="/" className="focus-ring rounded hover-text-primary" style={{ color: "var(--text-muted)" }}>BeYourTools</Link>
         <span>/</span>
@@ -78,5 +102,6 @@ export default function DisclaimerPage() {
 
       </div>
     </div>
+    </>
   );
 }

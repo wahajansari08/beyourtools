@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import ProfitMarginClient from "./ProfitMarginClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Profit Margin Calculator - Gross, Operating & Net Margin | BeYourTools",
-  description:
-    "Calculate gross, operating, or net profit margin instantly. Enter revenue and costs to see your margin percentage and profit amount. Free, browser-based, no sign-up.",
+  description: "Calculate gross, operating, or net profit margin instantly. Enter revenue and costs to see your margin percentage and profit amount. Free, browser-based, no sign-up.",
   keywords: "profit margin calculator, gross margin calculator, net margin calculator, operating margin, profit percentage",
-  alternates: { canonical: `${SITE.url}/profit-margin-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/profit-margin-calculator",
+});
 
 export default function ProfitMarginPage() {
   return (

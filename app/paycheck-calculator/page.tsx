@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import PaycheckClient from "./PaycheckClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Paycheck Calculator - Estimate Take-Home Pay After Tax | BeYourTools",
-  description:
-    "Estimate your take-home pay after federal and state income tax, Social Security, Medicare, 401(k), and health insurance deductions. Free US paycheck calculator.",
+  description: "Estimate your take-home pay after federal and state income tax, Social Security, Medicare, 401(k), and health insurance deductions. Free US paycheck calculator.",
   keywords: "paycheck calculator, take home pay calculator, net pay calculator, after tax pay, FICA calculator, salary after tax",
-  alternates: { canonical: `${SITE.url}/paycheck-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/paycheck-calculator",
+});
 
 export default function PaycheckPage() {
   return (

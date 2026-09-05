@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import SimpleInterestClient from "./SimpleInterestClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Simple Interest Calculator - I = PRT Formula | BeYourTools",
-  description:
-    "Calculate simple interest earned or owed using the I = PRT formula. Supports years, months, or days. Shows interest amount and total value. Free, browser-based.",
+  description: "Calculate simple interest earned or owed using the I = PRT formula. Supports years, months, or days. Shows interest amount and total value. Free, browser-based.",
   keywords: "simple interest calculator, I=PRT calculator, simple interest formula, principal rate time, interest calculation",
-  alternates: { canonical: `${SITE.url}/simple-interest-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/simple-interest-calculator",
+});
 
 export default function SimpleInterestPage() {
   return (

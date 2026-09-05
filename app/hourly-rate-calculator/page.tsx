@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import HourlyRateClient from "./HourlyRateClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Hourly Rate Calculator - Minimum Rate to Meet Your Income Goal | BeYourTools",
-  description:
-    "Calculate the minimum hourly rate needed to reach your annual income goal, with overhead and profit buffers built in. Ideal for freelancers, consultants, and contractors.",
+  description: "Calculate the minimum hourly rate needed to reach your annual income goal, with overhead and profit buffers built in. Ideal for freelancers, consultants, and contractors.",
   keywords: "hourly rate calculator, minimum hourly rate, income goal calculator, consultant rate, contractor rate, freelance pricing",
-  alternates: { canonical: `${SITE.url}/hourly-rate-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/hourly-rate-calculator",
+});
 
 export default function HourlyRatePage() {
   return (

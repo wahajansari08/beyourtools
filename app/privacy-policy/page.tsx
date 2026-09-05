@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
+import { SITE, breadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Privacy Policy - BeYourTools",
@@ -25,8 +26,17 @@ export const metadata: Metadata = {
 const EFFECTIVE = "August 1, 2026";
 
 export default function PrivacyPolicyPage() {
+  const schemas = [
+    breadcrumbSchema([
+      { name: "BeYourTools", url: SITE.url },
+      { name: "Privacy Policy", url: `${SITE.url}/privacy-policy` },
+    ]),
+  ];
+
   return (
-    <div className="mx-auto w-full max-w-3xl px-4 py-10 sm:px-6 sm:py-14">
+    <>
+      <JsonLd data={schemas} />
+      <div className="mx-auto w-full max-w-3xl px-4 py-10 sm:px-6 sm:py-14">
       <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-1.5 text-xs" style={{ color: "var(--text-subtle)" }}>
         <Link href="/" className="focus-ring rounded hover-text-primary" style={{ color: "var(--text-muted)" }}>BeYourTools</Link>
         <span>/</span>
@@ -133,5 +143,6 @@ export default function PrivacyPolicyPage() {
 
       </div>
     </div>
+    </>
   );
 }

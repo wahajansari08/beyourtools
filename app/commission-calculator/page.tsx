@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import CommissionClient from "./CommissionClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Commission Calculator - Flat Rate & Tiered Sales Commission | BeYourTools",
-  description:
-    "Calculate sales commission earnings for flat-rate or tiered commission structures. Add a base salary to find total pay. Free, instant, browser-based.",
+  description: "Calculate sales commission earnings for flat-rate or tiered commission structures. Add a base salary to find total pay. Free, instant, browser-based.",
   keywords: "commission calculator, sales commission, tiered commission, flat rate commission, commission earnings, sales pay",
-  alternates: { canonical: `${SITE.url}/commission-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/commission-calculator",
+});
 
 export default function CommissionPage() {
   return (

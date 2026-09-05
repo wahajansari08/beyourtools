@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import PayRaiseClient from "./PayRaiseClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Pay Raise Calculator - Annual & Per-Paycheck Raise Amount | BeYourTools",
-  description:
-    "Calculate how much a pay raise is worth annually, monthly, and per paycheck. Enter by percentage, dollar amount, or new salary. Free, instant, browser-based.",
+  description: "Calculate how much a pay raise is worth annually, monthly, and per paycheck. Enter by percentage, dollar amount, or new salary. Free, instant, browser-based.",
   keywords: "pay raise calculator, salary increase calculator, raise percentage, new salary, paycheck increase",
-  alternates: { canonical: `${SITE.url}/pay-raise-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/pay-raise-calculator",
+});
 
 export default function PayRaisePage() {
   return (

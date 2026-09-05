@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import FreelanceRateClient from "./FreelanceRateClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Freelance Rate Calculator - Minimum Hourly Rate for Freelancers | BeYourTools",
-  description:
-    "Calculate the minimum hourly freelance rate you need to charge to hit your income goal after taxes, business expenses, and non-billable time. Free, browser-based.",
+  description: "Calculate the minimum hourly freelance rate you need to charge to hit your income goal after taxes, business expenses, and non-billable time. Free, browser-based.",
   keywords: "freelance rate calculator, freelancer hourly rate, self employed rate, minimum hourly rate, freelance pricing, contractor rate",
-  alternates: { canonical: `${SITE.url}/freelance-rate-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/freelance-rate-calculator",
+});
 
 export default function FreelanceRatePage() {
   return (

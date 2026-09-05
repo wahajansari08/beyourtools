@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import AudioToolPage from "@/components/audio/AudioToolPage";
 import AudioConverterClient from "./AudioConverterClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Audio Converter - Convert Between Audio Formats Free | BeYourTools",
   description: "Convert audio files between MP3, WAV, OGG, FLAC, M4A and Opus formats online for free. Browser-based, no upload, instant download.",
   keywords: "audio converter, convert audio online, mp3 to wav, wav to ogg, flac converter, audio format converter",
-  alternates: { canonical: `${SITE.url}/audio-converter` },
-};
+  path: "/audio-converter",
+});
 
 export default function AudioConverterPage() {
   return (

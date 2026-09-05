@@ -78,11 +78,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url(`/image-converter/${r.slug}`, { priority: 0.75 })
   );
 
-  // ── Image converter index ──────────────────────────────────────────────────
-  const imageIndexPage: MetadataRoute.Sitemap = [
-    url("/image-converter", { freq: "weekly", priority: 0.9 }),
-  ];
-
   // ── Video sub-category pages ───────────────────────────────────────────────
   const videoCategoryPages: MetadataRoute.Sitemap = videoCategories.map((c) =>
     url(`/video-tools/${toSlug(c)}`, { freq: "weekly", priority: 0.85 })
@@ -131,7 +126,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  return [
+  const allPages: MetadataRoute.Sitemap = [
     ...staticPages,
     // Sub-category pages (high priority - between hub and tool pages)
     ...jsonCategoryPages,
@@ -144,7 +139,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Individual tool pages
     ...jsonToolPages,
     ...pdfToolPages,
-    ...imageIndexPage,
     ...imagePages,
     ...videoPages,
     ...audioPages,
@@ -152,6 +146,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...financeToolPages,
     ...blogPages,
   ];
+
+  // Guaranteed deduplication by URL
+  const seen = new Set<string>();
+  return allPages.filter((item) => {
+    if (seen.has(item.url)) return false;
+    seen.add(item.url);
+    return true;
+  });
 }
 
 

@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import FinanceToolPage from "@/components/finance/FinanceToolPage";
 import BreakEvenClient from "./BreakEvenClient";
-import { SITE } from "@/lib/seo";
+import { createToolMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createToolMetadata({
   title: "Break-Even Calculator - Units & Revenue to Break Even | BeYourTools",
-  description:
-    "Calculate your break-even point in units and revenue. Enter fixed costs, selling price, and variable cost per unit. Optionally find units needed for a target profit.",
+  description: "Calculate your break-even point in units and revenue. Enter fixed costs, selling price, and variable cost per unit. Optionally find units needed for a target profit.",
   keywords: "break even calculator, break even point, fixed costs, variable costs, contribution margin, break even analysis",
-  alternates: { canonical: `${SITE.url}/break-even-calculator` },
-  robots: { index: true, follow: true },
-};
+  path: "/break-even-calculator",
+});
 
 export default function BreakEvenPage() {
   return (
