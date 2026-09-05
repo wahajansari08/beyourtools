@@ -94,14 +94,6 @@ export function websiteSchema() {
         height: 512,
       },
     },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${SITE.url}/blog?q={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
-    },
   };
 }
 
@@ -224,19 +216,6 @@ export function softwareApplicationSchema(opts: {
       "@type": "Organization",
       "@id": `${SITE.url}/#organization`,
       name: SITE.name,
-    },
-  };
-}
-
-export function siteNavigationSchema(items: { name: string; url: string }[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "SiteLinksSearchBox",
-    url: SITE.url,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${SITE.url}/?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
     },
   };
 }
