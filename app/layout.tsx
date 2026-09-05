@@ -45,7 +45,6 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true },
   },
-  alternates: { canonical: SITE.url },
   openGraph: {
     type: "website",
     url: SITE.url,

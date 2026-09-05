@@ -30,7 +30,7 @@ function url(
 export default function sitemap(): MetadataRoute.Sitemap {
   // ── Static / category pages ────────────────────────────────────────────────
   const staticPages: MetadataRoute.Sitemap = [
-    url("/",                     { freq: "weekly",  priority: 1.0 }),
+    url("",                      { freq: "weekly",  priority: 1.0 }),
     url("/json-tools",            { freq: "weekly",  priority: 0.9 }),
     url("/image-converter",       { freq: "weekly",  priority: 0.9 }),
     url("/pdf-tools",             { freq: "weekly",  priority: 0.9 }),
