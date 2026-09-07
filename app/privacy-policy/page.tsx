@@ -93,8 +93,8 @@ export default function PrivacyPolicyPage() {
           <p>You may opt out of personalised advertising at any time:</p>
           <ul>
             <li><a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" style={{ color: "var(--teal)" }}>Google Ad Settings</a></li>
-            <li><a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--teal)" }}>Digital Advertising Alliance (aboutads.info)</a></li>
-            <li><a href="https://optout.networkadvertising.org/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--teal)" }}>Network Advertising Initiative (NAI) Opt-Out</a></li>
+            <li><a href="https://www.aboutads.info/choices" target="_blank" rel="noopener noreferrer" style={{ color: "var(--teal)" }}>Digital Advertising Alliance (aboutads.info)</a></li>
+            <li><a href="https://optout.networkadvertising.org" target="_blank" rel="noopener noreferrer" style={{ color: "var(--teal)" }}>Network Advertising Initiative (NAI) Opt-Out</a></li>
           </ul>
           <p>For more details on how Google processes data, please review the <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" style={{ color: "var(--teal)" }}>Google Advertising Privacy &amp; Terms page</a>.</p>
         </section>

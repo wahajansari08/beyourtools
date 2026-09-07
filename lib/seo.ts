@@ -15,7 +15,9 @@ export const SITE = {
 // ─── Canonical URL helper ────────────────────────────────────────────────────
 
 export function canonical(path: string): string {
-  return `${SITE.url}${path.startsWith("/") ? path : `/${path}`}`;
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  const cleanPath = normalized.replace(/\/+$/, "") || "/";
+  return cleanPath === "/" ? SITE.url : `${SITE.url}${cleanPath}`;
 }
 
 // ─── Base metadata factory ───────────────────────────────────────────────────

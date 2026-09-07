@@ -111,12 +111,14 @@ export default async function Page({ params }: Props) {
     { question: `Are my ${from.label} files uploaded to a server?`, answer: `No. All conversion happens locally in your browser. Your ${from.label} files never leave your device.` },
     { question: `Can I convert multiple ${from.label} files at once?`, answer: `Yes - drop multiple ${from.label} files at once or add them one by one. Each file is converted automatically and can be downloaded individually or all at once as a ZIP.` },
     { question: `What is the difference between ${from.label} and ${to.label}?`, answer: `${from.label} and ${to.label} are different image formats with different compression methods and feature support. Use the converter to switch between them based on your needs.` },
+    { question: `Will converting ${from.label} to ${to.label} reduce my file size?`, answer: `File size changes depend on the underlying compression algorithms. Converting uncompressed or lossless formats (such as PNG, BMP, or TIFF) into high-efficiency formats (such as WebP, AVIF, or JPG) frequently achieves a 30% to 80% reduction in storage size while maintaining excellent visual fidelity. Conversely, converting to lossless formats preserves exact pixel values.` },
+    { question: `Is this ${from.label} to ${to.label} converter secure for confidential images?`, answer: `Yes. All processing executes locally inside your web browser using HTML5 Canvas, OffscreenCanvas, and WebAssembly APIs. Your graphics and personal photos never travel over the network, are never stored on external databases, and are immediately cleared from browser memory when you close the tab.` },
   ];
 
   const schemas = [
     breadcrumbSchema([
       { name: "BeYourTools",    url: SITE.url },
-      { name: "Image Converter", url: `${SITE.url}/image-converter` },
+      { name: "Image Converter", url: canonical("/image-converter") },
       { name: title,             url },
     ]),
     webAppSchema({
@@ -173,14 +175,59 @@ export default async function Page({ params }: Props) {
           </ol>
         </section>
 
+        {/* Format Comparison & Technical Guide */}
+        <section className="mt-10 space-y-4 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+            Understanding {from.label} vs {to.label} Format Differences
+          </h2>
+          <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            Choosing the right image container depends on your target environment, bandwidth considerations, and graphical requirements. 
+            Converting from <strong style={{ color: "var(--text-primary)" }}>{from.label}</strong> to <strong style={{ color: "var(--text-primary)" }}>{to.label}</strong> allows you to adapt media assets for optimal compatibility, loading speeds, and rendering quality across mobile apps, websites, graphic suites, and print workflows.
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2 text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>About {from.label} Format</h3>
+              <p>
+                {from.label} files ({from.extensions.map((e) => `.${e}`).join(", ")}) are widely recognized across creative applications and operating systems. 
+                Depending on the original format, it provides dedicated encoding characteristics suited for its native capture, authoring, or storage ecosystem.
+              </p>
+            </div>
+            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Why Switch to {to.label}?</h3>
+              <p>
+                Exporting your imagery as {to.label} ({to.extensions.map((e) => `.${e}`).join(", ")}) ensures your content fulfills specific technical prerequisites, 
+                whether you require compact delivery for Core Web Vitals performance, broad universal viewing compatibility, or specialized container integration.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Best Practices Section */}
+        <section className="mt-10 space-y-3">
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+            Best Practices for {from.label} to {to.label} Conversion
+          </h2>
+          <ul className="space-y-2 text-sm list-disc pl-5" style={{ color: "var(--text-muted)" }}>
+            <li>
+              <strong style={{ color: "var(--text-secondary)" }}>Preserve Aspect Ratio and Detail:</strong> Our in-browser conversion engine retains the original pixel dimensions and aspect ratio of your source {from.label} graphic without introducing unwanted scaling artifacts.
+            </li>
+            <li>
+              <strong style={{ color: "var(--text-secondary)" }}>Transparency Handling:</strong> If converting an image containing transparent pixels into a format that does not support transparency (such as JPEG), transparent backgrounds are cleanly filled with a solid neutral background.
+            </li>
+            <li>
+              <strong style={{ color: "var(--text-secondary)" }}>Web Performance Optimization:</strong> For web deployment, modern formats offer enhanced compression curves that drastically cut byte payload, helping websites score higher on Google PageSpeed Insights and mobile usability benchmarks.
+            </li>
+          </ul>
+        </section>
+
         {/* FAQ */}
         <section className="mt-10 space-y-3">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>FAQ</h2>
-          <dl className="space-y-3">
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>Frequently Asked Questions</h2>
+          <dl className="space-y-4">
             {faqs.map((faq) => (
               <div key={faq.question}>
                 <dt className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>{faq.question}</dt>
-                <dd className="mt-1 text-sm" style={{ color: "var(--text-muted)" }}>{faq.answer}</dd>
+                <dd className="mt-1 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{faq.answer}</dd>
               </div>
             ))}
           </dl>

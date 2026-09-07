@@ -63,6 +63,14 @@ export const batch4: BlogPost[] = [
 <h2>Other PDF tools you might need</h2>
 <p>After merging, you might want to <a href="/pdf-tools/pdf-compressor">reduce the combined PDF's file size</a>, add a <a href="/pdf-tools/pdf-watermark">watermark</a> before sharing, or <a href="/pdf-tools/protect-pdf">add a password</a> to restrict access.</p>
 
+<h2>Best Practices for Preparing Documents Before Merging</h2>
+<p>To ensure your final merged document looks polished and professional, check a few quick details before combining your files:</p>
+<ul>
+<li><strong>Page Orientation:</strong> If scanned pages or tables appear sideways, use our <a href="/pdf-tools/rotate-pdf">Rotate PDF</a> tool first so readers don't have to tilt their screens.</li>
+<li><strong>File Names &amp; Sequence:</strong> Naming your files with numeric prefixes (e.g., 01-Cover.pdf, 02-Report.pdf) helps you verify that everything is assembled in logical chronological order.</li>
+<li><strong>Optimizing File Size:</strong> Combining multiple high-resolution scans can result in a bulky file. Running documents through our <a href="/pdf-tools/pdf-compressor">PDF Compressor</a> ensures your finished file stays lightweight for email attachments.</li>
+</ul>
+
 <section class="faq">
 <h2>Frequently Asked Questions</h2>
 <dl>
@@ -72,6 +80,8 @@ export const batch4: BlogPost[] = [
 <dd>No. Pages are copied from one file to another without re-rendering, so the original quality of every page is fully preserved in the merged output.</dd>
 <dt>Can I change the order of pages after merging?</dt>
 <dd>If you need to reorder individual pages after merging, use our <a href="/pdf-tools/split-pdf">PDF Split</a> tool to extract pages into separate files, reorder them, and merge again.</dd>
+<dt>Are embedded hyperlinks and fonts preserved when merging?</dt>
+<dd>Yes. The underlying object streams, interactive table of contents, hyperlinks, and embedded vector fonts are carried over intact into the unified PDF document.</dd>
 </dl>
 </section>`,
   },

@@ -101,7 +101,7 @@ export default function TermsPage() {
         <section>
           <h2>8. Advertising</h2>
           <p>BeYourTools displays advertisements provided by third-party advertising partners. These ads help keep the Site free. Advertisers are responsible for their own content. We do not endorse any advertised product or service.</p>
-          <p>Third-party vendors use cookies to serve ads based on prior visits to this and other websites. You may opt out of personalised advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" style={{ color: "var(--teal)" }}>Ad Settings</a> or <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--teal)" }}>AboutAds.info</a>.</p>
+          <p>Third-party vendors use cookies to serve ads based on prior visits to this and other websites. You may opt out of personalised advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" style={{ color: "var(--teal)" }}>Ad Settings</a> or <a href="https://www.aboutads.info/choices" target="_blank" rel="noopener noreferrer" style={{ color: "var(--teal)" }}>AboutAds.info</a>.</p>
         </section>
 
         <section>

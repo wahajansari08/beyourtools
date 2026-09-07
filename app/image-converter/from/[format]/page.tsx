@@ -273,6 +273,32 @@ export default async function ImageFormatPage({
           </div>
         </section>
 
+        {/* Technical Profile & Conversion Workflows */}
+        <section className="mt-12 space-y-4 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+            About the {fmt.label} Image Format & Conversion Workflows
+          </h2>
+          <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            The <strong style={{ color: "var(--text-primary)" }}>{fmt.label}</strong> standard (supporting extensions {fmt.extensions.map((e) => `.${e}`).join(", ")}) is engineered for specific performance and fidelity profiles. 
+            Depending on your delivery medium—whether optimizing landing pages for faster mobile page loads, preparing vector assets for high-DPI retina displays, or sending attachments across legacy enterprise email servers—converting your {fmt.label} files into an appropriate target container provides immense efficiency gains.
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2 text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>High-Speed Local Processing</h3>
+              <p>
+                Every conversion on this platform runs natively in your client environment through hardware-accelerated OffscreenCanvas and WebAssembly compilation. 
+                Your {fmt.label} source imagery remains securely within your device&apos;s browser memory—completely avoiding cloud upload latency, bandwidth consumption, and third-party data tracking.
+              </p>
+            </div>
+            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Multi-Format Versatility</h3>
+              <p>
+                With {routes.length} available output paths directly accessible from this {fmt.label} hub, you can seamlessly convert single or batch assets into modern web formats (WebP, AVIF), universal standard rasters (PNG, JPG), document archives (PDF), or desktop icons (ICO) in a single click.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* FAQ */}
         <section className="mt-12" aria-labelledby="faq-heading">
           <h2 id="faq-heading" className="mb-4 font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
@@ -285,6 +311,18 @@ export default async function ImageFormatPage({
                 <p className="mt-1 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{answer}</p>
               </div>
             ))}
+            <div>
+              <p className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>Can I convert multiple {fmt.label} files simultaneously?</p>
+              <p className="mt-1 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                Yes. Our tool features concurrent multi-worker processing. You can select multiple {fmt.label} files at once; the engine processes up to three files concurrently and provides instant download links for individual files or a merged ZIP archive.
+              </p>
+            </div>
+            <div>
+              <p className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>Are my personal photos or sensitive {fmt.label} documents stored?</p>
+              <p className="mt-1 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                No. Because all conversion logic executes client-side via JavaScript Canvas and WebAssembly, zero bytes of your imagery ever leave your computer or phone. Your data is deleted from memory as soon as you close or reload the browser tab.
+              </p>
+            </div>
           </div>
         </section>
 

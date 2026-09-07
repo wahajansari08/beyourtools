@@ -29,6 +29,14 @@ export const batch6: BlogPost[] = [
 <h2>Removing a password later</h2>
 <p>If you need to unlock a protected PDF you own, use our <a href="/pdf-tools/unlock-pdf">PDF Unlock</a> tool. You'll need to provide the current password - the tool then removes the protection from the file.</p>
 
+<h2>Best Practices for Securely Transmitting Encrypted Documents</h2>
+<p>Applying bank-grade AES-256 encryption is only half the battle; how you share the decryption key matters just as much:</p>
+<ul>
+<li><strong>Out-of-Band Delivery:</strong> Never include the password in the same email thread as the attached PDF. Send the password via an alternative secure channel, such as an encrypted messaging app (Signal, WhatsApp) or via phone call.</li>
+<li><strong>Password Managers:</strong> Generate high-entropy passwords with a password manager to avoid repeating credentials across multiple business documents.</li>
+<li><strong>Back Up Original Files:</strong> Keep an unencrypted master copy in an encrypted local vault so you never lock yourself out of vital legal records.</li>
+</ul>
+
 <section class="faq">
 <h2>Frequently Asked Questions</h2>
 <dl>
@@ -38,6 +46,8 @@ export const batch6: BlogPost[] = [
 <dd>With AES-256 encryption and a strong password, the file is computationally infeasible to crack. Weak or common passwords are the only realistic vulnerability.</dd>
 <dt>What if I forget my PDF password?</dt>
 <dd>There is no recovery mechanism - that's the point of encryption. Store your password in a password manager before sharing the PDF. If you lose the password to your own document, password recovery tools exist but are not guaranteed to work.</dd>
+<dt>Can I restrict printing or editing without restricting opening?</dt>
+<dd>Yes. You can configure permission flags so recipients can view the document but are restricted from extracting raw text or sending the document to physical printers.</dd>
 </dl>
 </section>`,
   },

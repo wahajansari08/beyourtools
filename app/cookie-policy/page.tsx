@@ -96,7 +96,7 @@ export default function CookiePolicyPage() {
           <ul>
             <li><strong>Browser settings:</strong> Most browsers allow you to block or delete cookies. See your browser&apos;s help documentation for instructions.</li>
             <li><strong>Advertising:</strong> Opt out at <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" style={{ color: "var(--teal)" }}>Ad Settings</a></li>
-            <li><strong>Network Advertising Initiative:</strong> Opt out at <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--teal)" }}>aboutads.info/choices</a></li>
+            <li><strong>Network Advertising Initiative:</strong> Opt out at <a href="https://www.aboutads.info/choices" target="_blank" rel="noopener noreferrer" style={{ color: "var(--teal)" }}>aboutads.info/choices</a></li>
             <li><strong>Analytics opt-out:</strong> Install the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" style={{ color: "var(--teal)" }}>analytics opt-out browser add-on</a></li>
           </ul>
           <p>Note: Blocking some cookies may affect the functionality of the Site (e.g., theme preferences will not be saved).</p>
