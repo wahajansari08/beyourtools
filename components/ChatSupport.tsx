@@ -33,7 +33,7 @@ function getBotReply(input: string): string {
     return "We love suggestions! Send your idea to hello@beyourtools.com or reach us on Reddit at u/beyourtools and we'll consider it for an upcoming update.";
 
   if (q.includes("free") || q.includes("cost") || q.includes("price") || q.includes("paid"))
-    return "Yes - every tool on BeYourTools is 100% free with no sign-up, no ads, and no usage limits. We plan to keep it that way.";
+    return "Yes - every tool on BeYourTools is 100% free with no sign-up, no subscriptions, and no usage limits. We plan to keep it that way.";
 
   if (q.includes("data") || q.includes("privacy") || q.includes("upload") || q.includes("server") || q.includes("safe"))
     return "All processing happens entirely in your browser. Your files and data are never sent to our servers. See our Privacy Policy for full details.";

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
@@ -70,6 +70,15 @@ export const metadata: Metadata = {
       "200+ free browser-based tools - JSON, image, PDF, audio, video, QR codes and more.",
     images: [`${SITE.url}/og-default.png`],
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b0f17" },
+  ],
 };
 
 export default function RootLayout({

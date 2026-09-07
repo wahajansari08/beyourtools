@@ -87,14 +87,16 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section>
-          <h2>4. Online Advertising</h2>
-          <p>We display advertisements to support the free service. Our advertising partner uses cookies to serve ads based on prior visits to our site and other websites. This enables serving of relevant ads.</p>
-          <p>You may opt out of personalised advertising:</p>
+          <h2>4. Online Advertising &amp; Google AdSense</h2>
+          <p>We display advertisements to support the free service. Third-party vendors, including Google, use cookies to serve ads based on a user&apos;s prior visits to our website or other websites on the Internet.</p>
+          <p>Google&apos;s use of advertising cookies enables it and its partners to serve ads to users based on their visit to BeYourTools and/or other sites across the Internet.</p>
+          <p>You may opt out of personalised advertising at any time:</p>
           <ul>
-            <li><a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" style={{ color: "var(--teal)" }}>Ad Settings</a></li>
-            <li><a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--teal)" }}>Network Advertising Initiative opt-out</a></li>
+            <li><a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" style={{ color: "var(--teal)" }}>Google Ad Settings</a></li>
+            <li><a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--teal)" }}>Digital Advertising Alliance (aboutads.info)</a></li>
+            <li><a href="https://optout.networkadvertising.org/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--teal)" }}>Network Advertising Initiative (NAI) Opt-Out</a></li>
           </ul>
-          <p>For more information, see the <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" style={{ color: "var(--teal)" }}>advertising partner&apos;s policy</a>.</p>
+          <p>For more details on how Google processes data, please review the <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" style={{ color: "var(--teal)" }}>Google Advertising Privacy &amp; Terms page</a>.</p>
         </section>
 
         <section>

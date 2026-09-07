@@ -24,7 +24,7 @@ import Btn from "@/components/Btn";
 export const metadata: Metadata = {
   title: "Finance Calculators - Free Online Finance Tools | BeYourTools",
   description:
-    "40 free browser-based finance calculators - profit margins, loan payments, debt payoff, savings projections, ROI, sales tax, salary conversions and more. No sign-up, no ads.",
+    "40 free browser-based finance calculators - profit margins, loan payments, debt payoff, savings projections, ROI, sales tax, salary conversions and more. No sign-up, 100% private.",
   keywords:
     "finance calculators, loan calculator, profit margin calculator, ROI calculator, savings calculator, debt payoff calculator, salary calculator, tax calculator",
   alternates: { canonical: `${SITE.url}/finance-tools` },
