@@ -120,7 +120,24 @@ function scaleFilter(opts: VideoProcessOptions): string | null {
 function videoEncodeArgs(ext: string, opts: VideoProcessOptions): string[] {
   const quality = opts.quality ?? "balanced";
   if (ext === "webm") {
-    const args = ["-c:v", "libvpx-vp9", "-crf", WEBM_CRF[quality], "-b:v", "0", "-c:a", "libopus", "-b:a", "128k"];
+    const args = [
+      "-c:v",
+      "libvpx-vp9",
+      "-deadline",
+      "realtime",
+      "-cpu-used",
+      "8",
+      "-row-mt",
+      "1",
+      "-crf",
+      WEBM_CRF[quality],
+      "-b:v",
+      "0",
+      "-c:a",
+      "libopus",
+      "-b:a",
+      "128k",
+    ];
     if (opts.fps) args.unshift("-r", String(opts.fps));
     return args;
   }
@@ -129,7 +146,9 @@ function videoEncodeArgs(ext: string, opts: VideoProcessOptions): string[] {
     "-c:v",
     "libx264",
     "-preset",
-    "veryfast",
+    "ultrafast",
+    "-tune",
+    "fastdecode",
     "-crf",
     CRF[quality],
     "-pix_fmt",
@@ -227,7 +246,9 @@ export async function createPlayablePreview(file: File, opts: VideoPreviewOption
       "-c:v",
       "libx264",
       "-preset",
-      "veryfast",
+      "ultrafast",
+      "-tune",
+      "fastdecode",
       "-crf",
       "24",
       "-c:a",
@@ -265,10 +286,10 @@ export async function processVideo(file: File, kind: string, opts: VideoProcessO
     const fps = opts.fps ?? 10;
     const width = opts.gifWidth ?? 480;
     const out = outputName("gif");
-    const filter = `fps=${fps},scale=${width}:-1:flags=lanczos`;
+    const filter = `fps=${fps},scale=${width}:-1:flags=bilinear`;
     return runSingle(
       file,
-      ["-ss", String(start), "-t", String(duration), "-i", "$INPUT", "-vf", `${filter},split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse`, "-loop", "0", "-y", out],
+      ["-ss", String(start), "-t", String(duration), "-i", "$INPUT", "-vf", `${filter},split[s0][s1];[s0]palettegen=max_colors=128[p];[s1][p]paletteuse=dither=bayer`, "-loop", "0", "-y", out],
       out,
       MIME.gif,
       opts
@@ -314,7 +335,7 @@ export async function processVideo(file: File, kind: string, opts: VideoProcessO
   if (kind === "gif-to-mp4") {
     const out = outputName("mp4");
     const filters = [scaleFilter(opts), "fps=30"].filter(Boolean).join(",");
-    const args = ["-i", "$INPUT", "-movflags", "faststart", "-pix_fmt", "yuv420p", "-vf", filters || "fps=30", "-c:v", "libx264", "-crf", CRF[opts.quality ?? "balanced"], "-y", out];
+    const args = ["-i", "$INPUT", "-movflags", "faststart", "-pix_fmt", "yuv420p", "-vf", filters || "fps=30", "-c:v", "libx264", "-preset", "ultrafast", "-tune", "fastdecode", "-crf", CRF[opts.quality ?? "balanced"], "-y", out];
     return runSingle(file, args, out, MIME.mp4, opts);
   }
 

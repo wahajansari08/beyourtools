@@ -77,7 +77,7 @@ export interface PdfFromImagesResult {
 export async function pdfToImages(
   bytes: Uint8Array,
   format: "jpeg" | "png" = "jpeg",
-  scale = 2.0
+  scale = 1.5
 ): Promise<{ pages: PageImageResult[]; error: string | null }> {
   try {
     const pdfjsLib = await loadPdfJs();
@@ -86,13 +86,15 @@ export async function pdfToImages(
     const numPages = pdf.numPages;
     const pages: PageImageResult[] = [];
 
+    // Reuse a single canvas across pages to avoid continuous DOM allocations
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d", { alpha: false, willReadFrequently: false })!;
+
     for (let i = 1; i <= numPages; i++) {
       const page = await pdf.getPage(i);
       const viewport = page.getViewport({ scale });
-      const canvas = document.createElement("canvas");
       canvas.width  = Math.floor(viewport.width);
       canvas.height = Math.floor(viewport.height);
-      const ctx = canvas.getContext("2d")!;
       await page.render({ canvasContext: ctx, viewport }).promise;
 
       const mime = format === "jpeg" ? "image/jpeg" : "image/png";
@@ -113,28 +115,47 @@ export async function imagesToPdf(files: File[]): Promise<PdfFromImagesResult> {
   if (!files.length) return { blob: null, error: "No images selected.", pageCount: 0 };
   try {
     const { jsPDF } = await loadJsPdf();
-
-    const readFile = (file: File): Promise<string> =>
-      new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result as string);
-        reader.onerror = () => reject(new Error("FileReader error"));
-        reader.readAsDataURL(file);
-      });
-
-    const getImageDimensions = (dataUrl: string): Promise<{ w: number; h: number }> =>
-      new Promise((resolve) => {
-        const img = new Image();
-        img.onload = () => resolve({ w: img.naturalWidth, h: img.naturalHeight });
-        img.src = dataUrl;
-      });
-
     let doc: any = null;
 
     for (let idx = 0; idx < files.length; idx++) {
       const file = files[idx];
-      const dataUrl = await readFile(file);
-      const { w, h } = await getImageDimensions(dataUrl);
+      let w = 800;
+      let h = 600;
+      let imgData: any = null;
+
+      // Fast path: use createImageBitmap and draw to canvas without base64
+      if (typeof createImageBitmap === "function") {
+        try {
+          const bmp = await createImageBitmap(file);
+          w = bmp.width;
+          h = bmp.height;
+          const canvas = document.createElement("canvas");
+          canvas.width = w;
+          canvas.height = h;
+          canvas.getContext("2d")!.drawImage(bmp, 0, 0);
+          bmp.close();
+          imgData = canvas;
+        } catch {
+          // Fall back if bitmap decoding fails
+        }
+      }
+
+      if (!imgData) {
+        const dataUrl = await new Promise<string>((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result as string);
+          reader.onerror = () => reject(new Error("FileReader error"));
+          reader.readAsDataURL(file);
+        });
+        const dims = await new Promise<{ w: number; h: number }>((resolve) => {
+          const img = new Image();
+          img.onload = () => resolve({ w: img.naturalWidth, h: img.naturalHeight });
+          img.src = dataUrl;
+        });
+        w = dims.w;
+        h = dims.h;
+        imgData = dataUrl;
+      }
 
       // Convert px → mm (96dpi → 25.4mm/inch)
       const mmW = (w / 96) * 25.4;
@@ -150,7 +171,7 @@ export async function imagesToPdf(files: File[]): Promise<PdfFromImagesResult> {
       } else {
         doc.addPage([mmW, mmH], mmW >= mmH ? "landscape" : "portrait");
       }
-      doc.addImage(dataUrl, imgFormat, 0, 0, mmW, mmH);
+      doc.addImage(imgData, imgFormat, 0, 0, mmW, mmH);
     }
 
     const pdfBytes = doc.output("arraybuffer") as ArrayBuffer;

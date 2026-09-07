@@ -1,22 +1,51 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useId } from "react";
 import { useRouter } from "next/navigation";
 import { formats, conversionRoutes } from "@/lib/image-tools-config";
 import type { ImageFormat } from "@/lib/image-tools-config";
 import Btn from "@/components/Btn";
 
-export default function FormatSelectorClient() {
-  const router = useRouter();
+interface FormatSelectorClientProps {
+  initialFrom?: ImageFormat;
+  initialTo?: ImageFormat;
+}
 
-  const [from, setFrom] = useState<ImageFormat>("jpg");
-  const [to, setTo] = useState<ImageFormat>("png");
+export default function FormatSelectorClient({
+  initialFrom,
+  initialTo,
+}: FormatSelectorClientProps = {}) {
+  const router = useRouter();
+  const id = useId();
+  const fromId = `fmt-from-${id}`;
+  const toId = `fmt-to-${id}`;
 
   // Formats that have at least one conversion route as the source
   const sourceFmts = useMemo(
     () => formats.filter((f) => conversionRoutes.some((r) => r.from === f.id)),
     []
   );
+
+  const defaultFrom =
+    initialFrom && sourceFmts.some((f) => f.id === initialFrom)
+      ? initialFrom
+      : "jpg";
+
+  const [from, setFrom] = useState<ImageFormat>(defaultFrom);
+  const [to, setTo] = useState<ImageFormat>(() => {
+    if (
+      initialTo &&
+      conversionRoutes.some((r) => r.from === defaultFrom && r.to === initialTo)
+    ) {
+      return initialTo;
+    }
+    const firstTarget = formats.find(
+      (f) =>
+        f.id !== defaultFrom &&
+        conversionRoutes.some((r) => r.from === defaultFrom && r.to === f.id)
+    );
+    return firstTarget ? firstTarget.id : "png";
+  });
 
   // Target formats available for the selected source
   const targetFmts = useMemo(
@@ -61,14 +90,14 @@ export default function FormatSelectorClient() {
         {/* From */}
         <div className="flex flex-1 flex-col gap-1">
           <label
-            htmlFor="fmt-from"
+            htmlFor={fromId}
             className="text-[11px] font-medium uppercase tracking-wide"
             style={{ color: "var(--text-subtle)" }}
           >
             From
           </label>
           <select
-            id="fmt-from"
+            id={fromId}
             value={from}
             onChange={(e) => handleFromChange(e.target.value as ImageFormat)}
             className="w-full rounded-lg border px-3 py-2.5 text-sm font-medium outline-none focus:ring-2"
@@ -98,14 +127,14 @@ export default function FormatSelectorClient() {
         {/* To */}
         <div className="flex flex-1 flex-col gap-1">
           <label
-            htmlFor="fmt-to"
+            htmlFor={toId}
             className="text-[11px] font-medium uppercase tracking-wide"
             style={{ color: "var(--text-subtle)" }}
           >
             To
           </label>
           <select
-            id="fmt-to"
+            id={toId}
             value={to}
             onChange={(e) => setTo(e.target.value as ImageFormat)}
             className="w-full rounded-lg border px-3 py-2.5 text-sm font-medium outline-none focus:ring-2"

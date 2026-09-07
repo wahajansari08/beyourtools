@@ -18,6 +18,7 @@ import {
   type ImageFormat,
 } from "@/lib/image-tools-config";
 import Btn from "@/components/Btn";
+import FormatSelectorClient from "@/app/image-converter/FormatSelectorClient";
 
 // ── Static params ─────────────────────────────────────────────────────────────
 
@@ -231,6 +232,9 @@ export default async function ImageFormatPage({
             ))}
           </div>
         </div>
+
+        {/* Quick convert selector */}
+        <FormatSelectorClient key={fmt.id} initialFrom={fmt.id as ImageFormat} />
 
         {/* Conversion grid */}
         <section aria-labelledby="conversions-heading">

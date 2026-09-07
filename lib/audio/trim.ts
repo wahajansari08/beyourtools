@@ -64,7 +64,11 @@ export async function trimAudio(file: File, opts: TrimOptions): Promise<TrimResu
   ];
 
   if (outputExt === "mp3") {
-    args.push("-c:a", "libmp3lame", "-b:a", opts.bitrate ?? "192k");
+    if (inputExt === "mp3" && !opts.bitrate) {
+      args.push("-c:a", "copy");
+    } else {
+      args.push("-c:a", "libmp3lame", "-compression_level", "0", "-b:a", opts.bitrate ?? "192k");
+    }
   } else if (outputExt === "wav") {
     args.push("-c:a", "pcm_s16le");
   } else {

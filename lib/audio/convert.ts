@@ -66,7 +66,7 @@ export async function convertAudio(
   // Format-specific encoding args
   switch (opts.outputFormat) {
     case "mp3":
-      args.push("-c:a", "libmp3lame");
+      args.push("-c:a", "libmp3lame", "-compression_level", "0");
       if (opts.bitrate) args.push("-b:a", opts.bitrate);
       else args.push("-b:a", "192k");
       break;

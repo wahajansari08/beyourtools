@@ -139,7 +139,7 @@ export async function mergePdfs(files: Uint8Array[]): Promise<PdfResult> {
       const pages = await merged.copyPages(src, src.getPageIndices());
       pages.forEach((p: any) => merged.addPage(p));
     }
-    const out = await merged.save();
+    const out = await merged.save({ useObjectStreams: false });
     const pageCount = merged.getPageCount();
     return { bytes: out, error: null, info: `Merged ${files.length} files → ${pageCount} pages.` };
   } catch (e) {
@@ -187,7 +187,7 @@ export async function splitPdf(bytes: Uint8Array, ranges?: string): Promise<Spli
       const doc = await PDFDocument.create();
       const copied = await doc.copyPages(src, group);
       copied.forEach((p: any) => doc.addPage(p));
-      const out = await doc.save();
+      const out = await doc.save({ useObjectStreams: false });
       pages.push({ pageNumber: group[0] + 1, bytes: out });
     }
     return { pages, error: null };

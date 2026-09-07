@@ -342,27 +342,24 @@ export default function ConverterClient({
   //   • Removed items are skipped because their status won't be "queued"
   //     in the live ref.
 
-  const startWorker = useCallback(async () => {
-    if (workerRunning.current) return; // already draining
-    workerRunning.current = true;
+  // Concurrency pool: process up to 3 images in parallel
+  const activeWorkersRef = useRef(0);
+  const MAX_CONCURRENCY = 3;
 
-    // eslint-disable-next-line no-constant-condition
-    while (true) {
-      // BUG 2 FIX: read live state every iteration, not a stale closure snapshot
-      const next = itemsRef.current.find((it) => it.status === "queued");
-      if (!next) break; // nothing left to do
+  const processNext = useCallback(async () => {
+    const next = itemsRef.current.find((it) => it.status === "queued");
+    if (!next) return;
 
-      // Mark as converting
-      setItemsSync((prev) =>
-        prev.map((it) => it.id === next.id ? { ...it, status: "converting" } : it)
-      );
+    // Mark as converting
+    setItemsSync((prev) =>
+      prev.map((it) => (it.id === next.id ? { ...it, status: "converting" } : it))
+    );
 
-      const result = await convertImage(next.file, toFormat, quality / 100);
+    const result = await convertImage(next.file, toFormat, quality / 100);
 
-      // Check the item still exists (user may have removed it while converting)
-      const stillExists = itemsRef.current.some((it) => it.id === next.id);
-      if (!stillExists) continue; // was removed mid-flight, skip update
-
+    // Check the item still exists (user may have removed it while converting)
+    const stillExists = itemsRef.current.some((it) => it.id === next.id);
+    if (stillExists) {
       if (result.error || !result.blob) {
         setItemsSync((prev) =>
           prev.map((it) =>
@@ -371,34 +368,50 @@ export default function ConverterClient({
               : it
           )
         );
-        continue;
+      } else {
+        const outputUrl = URL.createObjectURL(result.blob);
+        const outputFilename = suggestFilename(next.file.name, result.ext);
+
+        setItemsSync((prev) =>
+          prev.map((it) =>
+            it.id === next.id
+              ? {
+                  ...it,
+                  status: "done",
+                  outputUrl,
+                  outputFilename,
+                  outputExt: result.ext,
+                  outputMime: result.mime,
+                  outputSize: result.blob!.size,
+                  outputBlob: result.blob,
+                  warning: result.warning ?? null,
+                  error: null,
+                }
+              : it
+          )
+        );
       }
-
-      const outputUrl = URL.createObjectURL(result.blob);
-      const outputFilename = suggestFilename(next.file.name, result.ext);
-
-      setItemsSync((prev) =>
-        prev.map((it) =>
-          it.id === next.id
-            ? {
-                ...it,
-                status: "done",
-                outputUrl,
-                outputFilename,
-                outputExt: result.ext,
-                outputMime: result.mime,
-                outputSize: result.blob!.size,
-                outputBlob: result.blob,
-                warning: result.warning ?? null,
-                error: null,
-              }
-            : it
-        )
-      );
     }
 
-    workerRunning.current = false;
+    // Process next queued item if any remain
+    await processNext();
   }, [toFormat, quality, setItemsSync]);
+
+  const startWorker = useCallback(() => {
+    const availableSlots = MAX_CONCURRENCY - activeWorkersRef.current;
+    for (let i = 0; i < availableSlots; i++) {
+      const hasQueued = itemsRef.current.some((it) => it.status === "queued");
+      if (!hasQueued) break;
+
+      activeWorkersRef.current++;
+      processNext().finally(() => {
+        activeWorkersRef.current--;
+        if (itemsRef.current.some((it) => it.status === "queued")) {
+          startWorker();
+        }
+      });
+    }
+  }, [processNext]);
 
   // ── Add files ─────────────────────────────────────────────────────────────
   // BUG 3 FIX: dropzone no longer disabled during conversion.

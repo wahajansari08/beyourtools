@@ -73,9 +73,29 @@ function imageToCanvas(img: HTMLImageElement): HTMLCanvasElement {
   return canvas;
 }
 
-function canvasToBlob(canvas: HTMLCanvasElement, mime: string, quality = 0.92): Promise<Blob> {
+async function canvasToBlob(
+  canvas: HTMLCanvasElement | OffscreenCanvas,
+  mime: string,
+  quality = 0.92
+): Promise<Blob> {
+  if (typeof OffscreenCanvas !== "undefined" && canvas instanceof OffscreenCanvas) {
+    try {
+      return await canvas.convertToBlob({ type: mime, quality });
+    } catch {
+      // Fallback to DOM canvas if OffscreenCanvas.convertToBlob fails
+    }
+  }
+
+  const domCanvas = canvas instanceof HTMLCanvasElement ? canvas : (() => {
+    const c = document.createElement("canvas");
+    c.width = canvas.width;
+    c.height = canvas.height;
+    c.getContext("2d")!.drawImage(canvas, 0, 0);
+    return c;
+  })();
+
   return new Promise((resolve, reject) => {
-    canvas.toBlob(
+    domCanvas.toBlob(
       (blob) => {
         if (blob) resolve(blob);
         else reject(new Error(`Encoding to ${mime} failed. Your browser may not support this output format.`));
@@ -135,12 +155,12 @@ function buildBmp(imageData: ImageData): Blob {
 // ─── ICO encoder ─────────────────────────────────────────────────────────────
 // Builds a minimal single-image ICO containing a 256×256 (or smaller) PNG.
 
-async function buildIco(canvas: HTMLCanvasElement): Promise<Blob> {
+async function buildIco(canvas: HTMLCanvasElement | OffscreenCanvas): Promise<Blob> {
   // Resize to 256×256 max (ICO standard sizes: 16, 32, 48, 64, 128, 256)
   const size = Math.min(256, canvas.width, canvas.height);
-  const c2 = document.createElement("canvas");
+  const c2 = typeof OffscreenCanvas !== "undefined" ? new OffscreenCanvas(size, size) : document.createElement("canvas");
   c2.width = c2.height = size;
-  c2.getContext("2d")!.drawImage(canvas, 0, 0, size, size);
+  (c2.getContext("2d") as any)!.drawImage(canvas, 0, 0, size, size);
 
   const pngBlob = await canvasToBlob(c2, "image/png");
   const pngBytes = new Uint8Array(await pngBlob.arrayBuffer());
@@ -171,7 +191,7 @@ async function buildIco(canvas: HTMLCanvasElement): Promise<Blob> {
 // ─── SVG wrapper ─────────────────────────────────────────────────────────────
 // Produces an SVG that embeds the raster image as a data-URI.
 
-async function buildSvg(canvas: HTMLCanvasElement): Promise<Blob> {
+async function buildSvg(canvas: HTMLCanvasElement | OffscreenCanvas): Promise<Blob> {
   const pngBlob = await canvasToBlob(canvas, "image/png");
   const dataUrl = await blobToDataUrl(pngBlob);
   const svg = `<?xml version="1.0" encoding="UTF-8"?>
@@ -218,7 +238,7 @@ function loadJsPdf(): Promise<void> {
   return jsPdfLoading;
 }
 
-async function buildPdf(canvas: HTMLCanvasElement): Promise<Blob> {
+async function buildPdf(canvas: HTMLCanvasElement | OffscreenCanvas): Promise<Blob> {
   await loadJsPdf();
   const { jsPDF } = window.jspdf as any;
   const w = canvas.width;
@@ -234,7 +254,13 @@ async function buildPdf(canvas: HTMLCanvasElement): Promise<Blob> {
     format: [mmW, mmH],
   });
 
-  const dataUrl = canvas.toDataURL("image/jpeg", 0.92);
+  let dataUrl: string;
+  if (canvas instanceof HTMLCanvasElement) {
+    dataUrl = canvas.toDataURL("image/jpeg", 0.92);
+  } else {
+    const blob = await canvasToBlob(canvas, "image/jpeg", 0.92);
+    dataUrl = await blobToDataUrl(blob);
+  }
   doc.addImage(dataUrl, "JPEG", 0, 0, mmW, mmH);
   const pdfBytes = doc.output("arraybuffer") as ArrayBuffer;
   return new Blob([pdfBytes], { type: "application/pdf" });
@@ -284,9 +310,44 @@ export async function convertImage(
   }
 
   // ── Load image ──
-  let img: HTMLImageElement;
+  let canvas: HTMLCanvasElement | OffscreenCanvas;
   try {
-    img = await loadImageFromBlob(file);
+    if (typeof createImageBitmap === "function") {
+      try {
+        const bmp = await createImageBitmap(file);
+        const w = bmp.width;
+        const h = bmp.height;
+        if (typeof OffscreenCanvas !== "undefined") {
+          const off = new OffscreenCanvas(w, h);
+          const ctx = off.getContext("2d");
+          if (ctx) {
+            ctx.drawImage(bmp, 0, 0);
+            bmp.close();
+            canvas = off;
+          } else {
+            const dom = document.createElement("canvas");
+            dom.width = w;
+            dom.height = h;
+            dom.getContext("2d")!.drawImage(bmp, 0, 0);
+            bmp.close();
+            canvas = dom;
+          }
+        } else {
+          const dom = document.createElement("canvas");
+          dom.width = w;
+          dom.height = h;
+          dom.getContext("2d")!.drawImage(bmp, 0, 0);
+          bmp.close();
+          canvas = dom;
+        }
+      } catch {
+        const img = await loadImageFromBlob(file);
+        canvas = imageToCanvas(img);
+      }
+    } else {
+      const img = await loadImageFromBlob(file);
+      canvas = imageToCanvas(img);
+    }
   } catch (e) {
     return {
       blob: null, ext, mime, warning: null,
@@ -294,7 +355,6 @@ export async function convertImage(
     };
   }
 
-  const canvas = imageToCanvas(img);
   let warning: string | null = null;
 
   try {
@@ -315,7 +375,7 @@ export async function convertImage(
     }
 
     if (ext === "bmp") {
-      const ctx = canvas.getContext("2d")!;
+      const ctx = (canvas.getContext("2d") as any)!;
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       const blob = buildBmp(imageData);
       return { blob, ext: "bmp", mime: "image/bmp", warning, error: null };
