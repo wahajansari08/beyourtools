@@ -280,14 +280,14 @@ export default async function ImageFormatPage({
           </h2>
           <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
             The <strong style={{ color: "var(--text-primary)" }}>{fmt.label}</strong> standard (supporting extensions {fmt.extensions.map((e) => `.${e}`).join(", ")}) is engineered for specific performance and fidelity profiles. 
-            Depending on your delivery medium—whether optimizing landing pages for faster mobile page loads, preparing vector assets for high-DPI retina displays, or sending attachments across legacy enterprise email servers—converting your {fmt.label} files into an appropriate target container provides immense efficiency gains.
+            Depending on your delivery medium-whether optimizing landing pages for faster mobile page loads, preparing vector assets for high-DPI retina displays, or sending attachments across legacy enterprise email servers-converting your {fmt.label} files into an appropriate target container provides immense efficiency gains.
           </p>
           <div className="grid gap-4 sm:grid-cols-2 text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
             <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
               <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>High-Speed Local Processing</h3>
               <p>
                 Every conversion on this platform runs natively in your client environment through hardware-accelerated OffscreenCanvas and WebAssembly compilation. 
-                Your {fmt.label} source imagery remains securely within your device&apos;s browser memory—completely avoiding cloud upload latency, bandwidth consumption, and third-party data tracking.
+                Your {fmt.label} source imagery remains securely within your device&apos;s browser memory-completely avoiding cloud upload latency, bandwidth consumption, and third-party data tracking.
               </p>
             </div>
             <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>

@@ -192,7 +192,7 @@ function MegaMenu({ onClose }: { onClose: () => void }) {
         {/* Category grid - 4 cols on large, 2 on md */}
         <div className="grid gap-1 md:grid-cols-2 lg:grid-cols-4">
           {TOOL_CATEGORIES.map((cat) => (
-            <div key={cat.href} className="rounded-xl p-3 transition"
+            <div key={cat.label} className="rounded-xl p-3 transition"
               style={{ backgroundColor: "var(--bg-elevated)" }}>
               {/* Category header */}
               <Link
@@ -486,7 +486,7 @@ export default function Navbar() {
               </p>
               {TOOL_CATEGORIES.filter((cat) => cat.label !== "Developer Tools").map((cat) => (
                 <Link
-                  key={cat.href}
+                  key={cat.label}
                   href={cat.href}
                   onClick={() => setMenuOpen(false)}
                   className="focus-ring flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium transition"

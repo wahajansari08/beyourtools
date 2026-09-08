@@ -94,8 +94,9 @@ export default function RootLayout({
     >
       <head>
         <script
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('byt-theme');var cls=t==='light'?'light':t==='dark'?'dark':(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.classList.add(cls);}catch(e){}})();`,
+            __html: `(function(){try{var t=localStorage.getItem('byt-theme');var cls=t==='light'?'light':t==='dark'?'dark':(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.classList.add(cls);}catch(e){}if(typeof window!=='undefined'){window.addEventListener('error',function(e){if(e.filename&&(e.filename.indexOf('chrome-extension://')===0||e.filename.indexOf('moz-extension://')===0)){e.stopImmediatePropagation();e.preventDefault();}},true);window.addEventListener('unhandledrejection',function(e){var s=e.reason&&(e.reason.stack||e.reason.message);if(s&&(s.indexOf('chrome-extension://')!==-1||s.indexOf('moz-extension://')!==-1)){e.stopImmediatePropagation();e.preventDefault();}},true);}})();`,
           }}
         />
 
@@ -104,12 +105,13 @@ export default function RootLayout({
         {/* Google AdSense */}
         <script
           async
+          suppressHydrationWarning
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8289649754182863"
           crossOrigin="anonymous"
         />
       </head>
 
-      <body className="min-h-screen bg-page font-body text-secondary antialiased">
+      <body className="min-h-screen bg-page font-body text-secondary antialiased" suppressHydrationWarning>
         <ThemeProvider>
           <Navbar />
           <main id="main-content" className="min-h-[calc(100vh-56px-100px)]">

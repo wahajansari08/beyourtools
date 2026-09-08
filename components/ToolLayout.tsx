@@ -141,7 +141,7 @@ export default function ToolLayout({
               <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Zero-Server Security</h3>
               <p>
                 Handling sensitive database dumps, API credentials, bearer tokens, or user payloads in online tools requires uncompromising privacy. 
-                All data entered into {title} is parsed and manipulated locally within your browser sandbox—nothing is ever transmitted across the network or logged on external servers.
+                All data entered into {title} is parsed and manipulated locally within your browser sandbox-nothing is ever transmitted across the network or logged on external servers.
               </p>
             </div>
             <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>

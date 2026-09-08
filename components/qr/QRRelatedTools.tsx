@@ -14,7 +14,7 @@ export default function QRRelatedTools({ currentSlug }: { currentSlug: string })
         </h2>
         <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
           {isBarcode
-            ? "Linear 1D barcodes encode alphanumeric data using alternating parallel lines and spaces with standardized width ratios. Choosing the appropriate symbology—such as Code 128 for variable-length logistics labels, EAN-13 for global retail products, or UPC-A for North American point-of-sale systems—ensures seamless optical recognition across laser scanners, CCD readers, and camera-based mobile apps."
+            ? "Linear 1D barcodes encode alphanumeric data using alternating parallel lines and spaces with standardized width ratios. Choosing the appropriate symbology-such as Code 128 for variable-length logistics labels, EAN-13 for global retail products, or UPC-A for North American point-of-sale systems-ensures seamless optical recognition across laser scanners, CCD readers, and camera-based mobile apps."
             : "Quick Response (QR) codes are two-dimensional matrix symbologies standardized under ISO/IEC 18004. Equipped with Reed-Solomon error correction (ranging from Level L at 7% recovery up to Level H at 30% recovery), QR codes allow reliable scanning even if portions of the printed matrix suffer physical abrasion, smudging, or partial obstruction by custom logos."}
         </p>
         <div className="grid gap-4 sm:grid-cols-2 text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
@@ -24,7 +24,7 @@ export default function QRRelatedTools({ currentSlug }: { currentSlug: string })
             </h3>
             <p>
               {isBarcode
-                ? "Maintain a solid unprinted margin (the quiet zone) of at least 10 times the narrowest bar width on both ends. Ensure high optical contrast—dark bars on a clean white background—to prevent scanner read failures under warehouse and retail lighting."
+                ? "Maintain a solid unprinted margin (the quiet zone) of at least 10 times the narrowest bar width on both ends. Ensure high optical contrast-dark bars on a clean white background-to prevent scanner read failures under warehouse and retail lighting."
                 : "Always preserve a quiet zone border of at least 4 modules around the outer edge of the QR code. Avoid low-contrast color combinations (such as yellow on white); dark modules on light backgrounds deliver the fastest camera decode speeds."}
             </p>
           </div>
@@ -34,7 +34,7 @@ export default function QRRelatedTools({ currentSlug }: { currentSlug: string })
             </h3>
             <p>
               Export your finished code in SVG vector format for crisp, infinite scalability on large signage, product packaging, and business cards without pixelation. 
-              All generation and camera decoding executes 100% locally in your browser memory—no private credentials, URLs, or scans are ever uploaded to a server.
+              All generation and camera decoding executes 100% locally in your browser memory-no private credentials, URLs, or scans are ever uploaded to a server.
             </p>
           </div>
         </div>

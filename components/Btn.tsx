@@ -1,23 +1,23 @@
 /**
- * Btn — unified button/anchor component for BeYourTools.
+ * Btn - unified button/anchor component for BeYourTools.
  *
  * Renders as <button> by default.
  * Pass href="" to render as Next.js <Link> (or <a> for external URLs).
  *
  * Variants:
- *   primary   — amber accent fill. Used for Calculate, Accept, Download, Send.
- *   secondary — outline border + elevated bg. Used for Reset, Decline, Try again.
- *   ghost     — no bg or border, text-only. Used for nav links, inline "← Back" links.
- *   danger    — coral text, no bg. Used for destructive inline actions like "Remove".
- *   toggle    — outline that lights up when selected. Used for mode selectors.
- *   pill      — small bordered chip. Used for quick-links, related tools, popular tools.
- *   chip      — rounded-full accent-tinted. Used for chat quick-reply suggestions.
- *   icon      — square/round icon-only. Used for search, hamburger, close buttons.
+ *   primary   - amber accent fill. Used for Calculate, Accept, Download, Send.
+ *   secondary - outline border + elevated bg. Used for Reset, Decline, Try again.
+ *   ghost     - no bg or border, text-only. Used for nav links, inline "← Back" links.
+ *   danger    - coral text, no bg. Used for destructive inline actions like "Remove".
+ *   toggle    - outline that lights up when selected. Used for mode selectors.
+ *   pill      - small bordered chip. Used for quick-links, related tools, popular tools.
+ *   chip      - rounded-full accent-tinted. Used for chat quick-reply suggestions.
+ *   icon      - square/round icon-only. Used for search, hamburger, close buttons.
  *
  * Size:
- *   sm  — text-xs,  px-3  py-1.5
- *   md  — text-sm,  px-5  py-2.5  (default)
- *   lg  — text-sm,  px-6  py-2.5
+ *   sm  - text-xs,  px-3  py-1.5
+ *   md  - text-sm,  px-5  py-2.5  (default)
+ *   lg  - text-sm,  px-6  py-2.5
  *
  * All variants share the same focus-ring, transition, and aria semantics.
  */
