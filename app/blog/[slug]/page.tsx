@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const url = canonical(`/blog/${post.slug}`);
   const image = `${SITE.url}/og-default.png`;
   return {
-    title: post.title,
+    title: `${post.title} | BeYourTools`,
     description: post.excerpt,
     keywords: post.tags.join(", "),
     alternates: { canonical: url },

@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
     default: "BeYourTools - Free Online Tools for Everyone",
-    template: "%s | BeYourTools",
+    template: "%s",
   },
   description:
     "200+ free browser-based tools - JSON formatter, image converter, PDF editor, audio tools, video tools, QR code generator and more. No upload, no sign-up.",
