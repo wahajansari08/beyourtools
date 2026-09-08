@@ -15,6 +15,31 @@ const nextConfig: NextConfig = {
         destination: "https://beyourtools.com/:path*",
         permanent: true,
       },
+      {
+        source: "/image-converter/pdf-to-jpg",
+        destination: "/pdf-tools/pdf-to-jpg",
+        permanent: true,
+      },
+      {
+        source: "/&",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/%26",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/$",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/%24",
+        destination: "/",
+        permanent: true,
+      },
     ];
   },
 };
