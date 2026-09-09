@@ -27,10 +27,10 @@ function getBotReply(input: string): string {
   const q = input.toLowerCase();
 
   if (q.includes("bug") || q.includes("error") || q.includes("broken") || q.includes("not working"))
-    return "Sorry to hear that! Please email us at hello@beyourtools.com with the tool name and a short description of the issue - we usually fix bugs within 1–2 days.";
+    return "Sorry to hear that! Please email us at beyourtools@gmail.com with the tool name and a short description of the issue - we usually fix bugs within 1–2 days.";
 
   if (q.includes("new tool") || q.includes("suggest") || q.includes("request") || q.includes("add"))
-    return "We love suggestions! Send your idea to hello@beyourtools.com or reach us on Reddit at u/beyourtools and we'll consider it for an upcoming update.";
+    return "We love suggestions! Send your idea to beyourtools@gmail.com or reach us on Reddit at u/beyourtools and we'll consider it for an upcoming update.";
 
   if (q.includes("free") || q.includes("cost") || q.includes("price") || q.includes("paid"))
     return "Yes - every tool on BeYourTools is 100% free with no sign-up, no subscriptions, and no usage limits. We plan to keep it that way.";
@@ -39,7 +39,7 @@ function getBotReply(input: string): string {
     return "All processing happens entirely in your browser. Your files and data are never sent to our servers. See our Privacy Policy for full details.";
 
   if (q.includes("contact") || q.includes("email") || q.includes("reach"))
-    return "You can reach us at hello@beyourtools.com or via our Contact page. We typically respond within 2–3 business days.";
+    return "You can reach us at beyourtools@gmail.com or via our Contact page. We typically respond within 2–3 business days.";
 
   if (q.includes("hello") || q.includes("hi") || q.includes("hey") || q.includes("howdy"))
     return "Hey there! 👋 How can I help you today? Feel free to ask about our tools, report a bug, or suggest a new feature.";
@@ -48,7 +48,7 @@ function getBotReply(input: string): string {
     return "You're welcome! Is there anything else I can help you with?";
 
   // Fallback
-  return "Thanks for your message! For the fastest response, email us at hello@beyourtools.com - we reply within 2–3 business days. You can also check our Contact page for more options.";
+  return "Thanks for your message! For the fastest response, email us at beyourtools@gmail.com - we reply within 2–3 business days. You can also check our Contact page for more options.";
 }
 
 // ── Chat bubble icon ──────────────────────────────────────────────────────────

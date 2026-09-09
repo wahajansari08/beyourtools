@@ -53,7 +53,7 @@ export default function ContactPage() {
         {/* Contact form */}
         <form
           className="mt-8 space-y-5"
-          action="mailto:hello@beyourtools.com"
+          action="mailto:beyourtools@gmail.com"
           method="get"
           aria-label="Contact form"
         >
@@ -148,11 +148,11 @@ export default function ContactPage() {
             <div>
               <p className="text-xs font-medium" style={{ color: "var(--text-secondary)" }}>Email</p>
               <a
-                href="mailto:hello@beyourtools.com"
+                href="mailto:beyourtools@gmail.com"
                 className="focus-ring text-xs hover:underline"
                 style={{ color: "var(--teal)" }}
               >
-                hello@beyourtools.com
+                beyourtools@gmail.com
               </a>
               <p className="mt-0.5 text-[11px]" style={{ color: "var(--text-subtle)" }}>
                 We typically respond within 2–3 business days.
