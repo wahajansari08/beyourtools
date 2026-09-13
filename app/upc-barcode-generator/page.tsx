@@ -82,6 +82,49 @@ export default function UPCGeneratorPage() {
           <p className="mt-1">Output: <code className="font-mono text-xs px-1 rounded" style={{ backgroundColor: "var(--bg-elevated)", color: "var(--teal)" }}>036000291452</code> (check digit = 2)</p>
         </section>
 
+        {/* UPC Standards & Point-of-Sale Guide */}
+        <section className="mt-10 space-y-4 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+            North American Retail Point-of-Sale (POS) &amp; UPC Symbology
+          </h2>
+          <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            The Universal Product Code (UPC-A) is the foundational barcode standard for consumer goods throughout the United States and Canada. 
+            Introduced in 1974, UPC-A encases exactly 12 numeric digits representing the product manufacturer and individual SKU item code, allowing high-speed optical scanning at supermarket and retail cash registers.
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2 text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Number System &amp; Manufacturer Prefix</h3>
+              <p>
+                The first digit identifies the numbering category (such as standard goods, weighted produce, or pharmacy coupons). 
+                The subsequent 5 digits correspond to the company prefix assigned by GS1 US, followed by the 5-digit product code selected by the brand owner.
+              </p>
+            </div>
+            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Modulo-10 Checksum Algorithm</h3>
+              <p>
+                The 12th digit guarantees optical scanning accuracy. Digits in odd positions (1, 3, 5, 7, 9, 11) are multiplied by 3, while digits in even positions are summed directly. 
+                Subtracting the unit value from 10 yields the check digit, preventing cashier key-in typos and scan misidentifications.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="mt-10 space-y-4">
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>Frequently Asked Questions</h2>
+          {[
+            ["What is the difference between UPC-A and EAN-13?", "UPC-A is 12 digits and is primarily used in the United States and Canada. EAN-13 is 13 digits and is standard across the rest of the world. A UPC-A barcode can be converted into an equivalent EAN-13 by prepending a leading zero (0)."],
+            ["Can I generate barcodes for commercial products on Amazon or Walmart?", "Yes. However, major commercial retailers require official GS1 company prefixes registered to your brand. Once you receive your numbers from GS1, our generator produces valid print-ready SVG and PNG barcode assets."],
+            ["How do I ensure my printed UPC barcode scans reliably?", "Print in high contrast (pure black bars on clean white background) with at least 100% standard magnification, leave ample quiet zones on both sides, and avoid placing barcodes across package seams or curves."],
+            ["Are my barcode numbers logged or saved on your servers?", "No. All barcode generation logic executes purely in your web browser session using client-side JavaScript. No SKU numbers or product data are ever saved or transmitted."],
+          ].map(([q, a]) => (
+            <div key={q as string}>
+              <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>{q}</p>
+              <p className="mt-1 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{a}</p>
+            </div>
+          ))}
+        </section>
+
         <QRRelatedTools currentSlug="upc-barcode-generator" />
       </div>
     </>

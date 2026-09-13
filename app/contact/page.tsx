@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
-import Btn from "@/components/Btn";
+import ContactForm from "./ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact Us - BeYourTools",
@@ -51,80 +51,7 @@ export default function ContactPage() {
         </p>
 
         {/* Contact form */}
-        <form
-          className="mt-8 space-y-5"
-          action="mailto:beyourtools@gmail.com"
-          method="get"
-          aria-label="Contact form"
-        >
-          <div>
-            <label htmlFor="contact-name" className="mb-1.5 block text-sm font-medium" style={{ color: "var(--text-secondary)" }}>
-              Name
-            </label>
-            <input
-              id="contact-name"
-              name="subject"
-              type="text"
-              required
-              placeholder="Your name"
-              className="focus-ring w-full rounded-lg border px-4 py-2.5 text-sm"
-              style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-primary)" }}
-            />
-          </div>
-
-          <div>
-            <label htmlFor="contact-email" className="mb-1.5 block text-sm font-medium" style={{ color: "var(--text-secondary)" }}>
-              Email address
-            </label>
-            <input
-              id="contact-email"
-              name="to"
-              type="email"
-              required
-              placeholder="you@example.com"
-              className="focus-ring w-full rounded-lg border px-4 py-2.5 text-sm"
-              style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-primary)" }}
-            />
-          </div>
-
-          <div>
-            <label htmlFor="contact-subject" className="mb-1.5 block text-sm font-medium" style={{ color: "var(--text-secondary)" }}>
-              Subject
-            </label>
-            <select
-              id="contact-subject"
-              name="subject"
-              className="focus-ring w-full rounded-lg border px-4 py-2.5 text-sm"
-              style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-primary)" }}
-            >
-              <option value="general">General enquiry</option>
-              <option value="bug">Bug report</option>
-              <option value="feature">Feature request</option>
-              <option value="privacy">Privacy / data request</option>
-              <option value="ads">Advertising enquiry</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-
-          <div>
-            <label htmlFor="contact-message" className="mb-1.5 block text-sm font-medium" style={{ color: "var(--text-secondary)" }}>
-              Message
-            </label>
-            <textarea
-              id="contact-message"
-              name="body"
-              required
-              rows={6}
-              placeholder="Describe your question or issue in detail…"
-              className="focus-ring w-full rounded-lg border px-4 py-2.5 text-sm resize-none"
-              style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-primary)" }}
-            />
-          </div>
-
-          <Btn variant="primary" size="lg">
-          Send message
-        </Btn>
-        </form>
+        <ContactForm />
 
         {/* Alternative contact */}
         <div

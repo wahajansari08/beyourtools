@@ -71,6 +71,21 @@ export default function DisclaimerPage() {
         </section>
 
         <section>
+          <h2>Financial, Loan, Tax &amp; Calculation Tools Disclaimer</h2>
+          <p>
+            BeYourTools provides specialized financial calculators covering loans, mortgages, APR, debt payoff strategies, profit margins, and investment returns. 
+            <strong>Please review the following essential terms regarding all calculation tools:</strong>
+          </p>
+          <ul>
+            <li><strong>Educational &amp; Illustrative Only:</strong> All calculators and generated outputs are intended solely for general personal budgeting, educational evaluation, and theoretical modeling. BeYourTools is not a licensed financial advisor, Certified Financial Planner (CFP), mortgage broker, commercial lender, or Certified Public Accountant (CPA).</li>
+            <li><strong>Mathematical Approximations:</strong> Calculations utilize standard mathematical algorithms (such as compound interest formulas, Newton-Raphson iterative approximations for APR, and amortized repayment schedules). Results reflect theoretical values based strictly on user-submitted inputs.</li>
+            <li><strong>Institutional Discretion:</strong> Actual interest rates, loan terms, origination fees, closing costs, and tax liabilities depend upon lender underwriting standards, personal credit history, and regional statutory regulations.</li>
+            <li><strong>No Fiduciary Duty:</strong> Accessing or relying upon outputs from our calculators does not establish any client-advisor, broker, or fiduciary relationship between you and BeYourTools.</li>
+            <li><strong>Professional Consultation Recommended:</strong> Do not execute binding loans, real estate purchases, or commercial debt consolidations without consulting an independent certified financial planner, accountant, or licensed lending officer.</li>
+          </ul>
+        </section>
+
+        <section>
           <h2>File Safety</h2>
           <p>Although BeYourTools processes files locally in your browser and does not upload them to servers, you should always maintain independent backups of important files before processing them with any tool. We accept no liability for file loss or corruption.</p>
         </section>

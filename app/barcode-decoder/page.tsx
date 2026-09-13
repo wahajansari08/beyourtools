@@ -74,6 +74,49 @@ export default function BarcodeDecoderPage() {
           </ol>
         </section>
 
+        {/* Computer Vision & Optical Decoding Standards */}
+        <section className="mt-10 space-y-4 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+            Computer Vision &amp; In-Browser Optical Decoding Architecture
+          </h2>
+          <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            Decoding one-dimensional and two-dimensional optical barcodes from uploaded photos or screenshots requires multi-stage image processing. 
+            Our in-browser decoding engine performs real-time image binarization, adaptive thresholding, edge detection, and perspective distortion correction directly inside your browser tab without transmitting images across external networks.
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2 text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Universal Format Detection</h3>
+              <p>
+                The decoder automatically evaluates 1D linear symbologies (Code 128, Code 39, EAN-13, EAN-8, UPC-A, ITF) as well as 2D matrix symbologies (Data Matrix, Aztec, PDF417). 
+                You never need to know the specific barcode encoding type prior to decoding.
+              </p>
+            </div>
+            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Client-Side Confidentiality</h3>
+              <p>
+                Confidential supply chain manifests, internal asset tracking tags, shipping labels, and product serial numbers remain 100% private. 
+                Images are processed directly in browser RAM via HTML5 Canvas image buffers and are instantly discarded when you close or refresh the page.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="mt-10 space-y-4">
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>Frequently Asked Questions</h2>
+          {[
+            ["Which barcode formats can be decoded from images?", "The decoder automatically scans for Code 128, Code 39, EAN-13, EAN-8, UPC-A, UPC-E, ITF, Data Matrix, Aztec, and PDF417 formats without manual configuration."],
+            ["Why wasn't my barcode recognized?", "Ensure the barcode is well-lit, sharp, and has adequate quiet zones (clear margins) around the bars. Blurry, low-resolution, or heavily skewed photos may require re-taking the photo closer to the symbol."],
+            ["Can I decode barcodes from smartphone screenshots or PDF invoices?", "Yes. Save the screenshot or document page as PNG, JPG, or WebP and drop it into the decoder to extract the embedded alphanumeric payload."],
+            ["Are my uploaded images stored or logged on a server?", "No. The entire optical scanning pipeline executes in JavaScript within your local browser environment. No files or decoded strings are sent to any remote server."],
+          ].map(([q, a]) => (
+            <div key={q as string}>
+              <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>{q}</p>
+              <p className="mt-1 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{a}</p>
+            </div>
+          ))}
+        </section>
+
         <QRRelatedTools currentSlug="barcode-decoder" />
       </div>
     </>

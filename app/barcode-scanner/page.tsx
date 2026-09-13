@@ -76,6 +76,49 @@ export default function BarcodeScannerPage() {
           </ol>
         </section>
 
+        {/* Camera Scanning & Real-Time Video Stream Architecture */}
+        <section className="mt-10 space-y-4 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+            Real-Time Camera Optical Scanning &amp; Frame Processing
+          </h2>
+          <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            Scanning barcodes directly from your smartphone or desktop webcam requires streaming live video frames through the browser&apos;s MediaDevices Web API. 
+            Each video frame is sampled, transformed into high-contrast luminance arrays, and evaluated against multi-format pattern algorithms in milliseconds.
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2 text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Zero Cloud Stream Latency</h3>
+              <p>
+                Unlike remote scanning services that stream video frames to a cloud server for recognition, all computer vision decoding executes locally on your device&apos;s CPU. 
+                This provides instant barcode detection while safeguarding camera privacy.
+              </p>
+            </div>
+            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Hardware Autofocus &amp; Exposure</h3>
+              <p>
+                The scanner automatically requests continuous autofocus and exposure compensation from compatible mobile hardware sensors. 
+                This facilitates instantaneous recognition of glossy retail labels, warehouse barcodes, and curved pharmaceutical vials.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="mt-10 space-y-4">
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>Frequently Asked Questions</h2>
+          {[
+            ["Which barcode formats does the live camera scanner detect?", "The scanner identifies Code 128, Code 39, EAN-13, EAN-8, UPC-A, UPC-E, ITF, Data Matrix, Aztec, and PDF417 in real time."],
+            ["Do I need to install an iOS or Android app?", "No. The scanner runs directly within your mobile or desktop web browser using HTML5 WebRTC. No app installation or registration is needed."],
+            ["What should I do if the camera does not scan immediately?", "Ensure the barcode is well-lit and held steady approximately 6 to 12 inches (15–30 cm) from the lens. If your camera has multiple lenses, tap to switch between front and rear cameras."],
+            ["Is my video stream sent over the internet?", "No. The video stream is processed exclusively in your device's memory. No video frames, photographs, or extracted strings are transmitted to any server."],
+          ].map(([q, a]) => (
+            <div key={q as string}>
+              <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>{q}</p>
+              <p className="mt-1 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{a}</p>
+            </div>
+          ))}
+        </section>
+
         <QRRelatedTools currentSlug="barcode-scanner" />
       </div>
     </>

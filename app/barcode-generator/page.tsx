@@ -97,6 +97,50 @@ export default function BarcodeGeneratorPage() {
           </div>
         </section>
 
+        {/* Optical Scanning & Symbology Architecture Guide */}
+        <section className="mt-10 space-y-4 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+            Linear Symbologies &amp; Optical Scanning Standards
+          </h2>
+          <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            One-dimensional (1D) barcodes represent data through alternating parallel black bars and white spaces of varying widths. 
+            When scanned by laser or CCD optical readers, the reflected light patterns are translated into binary signals that match standardized lookup tables. 
+            Choosing the correct symbology ensures high read rates across handheld scanners, automated conveyor belt sorters, and mobile optical cameras.
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2 text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Quiet Zones &amp; Contrast Ratio</h3>
+              <p>
+                Every standard linear barcode requires an unprinted margin (the &quot;quiet zone&quot;) on both the left and right edges. 
+                Maintaining a minimum quiet zone equal to at least 10 times the width of the narrowest bar prevents scanner timing errors and misreads.
+              </p>
+            </div>
+            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Mathematical Check Digits</h3>
+              <p>
+                Retail and industrial symbologies (including EAN-13, UPC-A, and Code 128) feature mandatory modulo-10 or modulo-103 check digits. 
+                Our generator automatically computes and verifies these checksums, ensuring your barcodes never fail validation at point-of-sale terminals.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="mt-10 space-y-4">
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>Frequently Asked Questions</h2>
+          {[
+            ["Which barcode format should I choose for retail products?", "For North American retail, use UPC-A (12 digits). For international retail outside North America, use EAN-13. Both are recognized globally by modern POS systems."],
+            ["Which barcode is best for inventory, warehousing, and shipping?", "Code 128 is the industry gold standard for logistics and internal tracking because it encodes full ASCII text, numbers, and symbols in a compact footprint."],
+            ["Can I download vector barcodes for commercial printing?", "Yes. Click 'Download SVG' for an infinitely scalable vector graphic that maintains razor-sharp line precision at any DPI print setting."],
+            ["Does this barcode generator upload my product SKU numbers to a server?", "No. All barcode rasterization and SVG vector drawing execute locally in your web browser memory. No data is stored or tracked."],
+          ].map(([q, a]) => (
+            <div key={q as string}>
+              <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>{q}</p>
+              <p className="mt-1 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{a}</p>
+            </div>
+          ))}
+        </section>
+
         <QRRelatedTools currentSlug="barcode-generator" />
       </div>
     </>

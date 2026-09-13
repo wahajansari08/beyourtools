@@ -118,6 +118,33 @@ export default function QRCodeGeneratorPage() {
           </div>
         </section>
 
+        {/* QR Standards & Architecture Guide */}
+        <section className="mt-10 space-y-4 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+            ISO/IEC 18004 Standards &amp; Reed-Solomon Error Correction
+          </h2>
+          <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            Quick Response (QR) codes are two-dimensional matrix symbologies standardized under <strong>ISO/IEC 18004</strong>. 
+            Unlike traditional linear barcodes that encode data solely along a single horizontal axis, QR codes store data in both vertical and horizontal module arrangements, enabling thousands of alphanumeric characters to be compacted into a small footprint.
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2 text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Reed-Solomon Resilience</h3>
+              <p>
+                QR codes incorporate Reed-Solomon algebraic error correction algorithms across four standard levels: Level L (7% recovery), Level M (15%), Level Q (25%), and Level H (30%). 
+                Level H allows codes to remain fully readable even if up to nearly a third of the graphic is obscured, smudged, or stamped with a center brand logo.
+              </p>
+            </div>
+            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Position Detection Patterns</h3>
+              <p>
+                The distinctive three square finder patterns in the corners establish rotation, scale, and skew angles. 
+                This optical geometry enables omnidirectional 360-degree scanning from any angle, even on high-speed mobile smartphone cameras and industrial fixed-mount optical readers.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* FAQ */}
         <section className="mt-10 space-y-4">
           <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>FAQ</h2>

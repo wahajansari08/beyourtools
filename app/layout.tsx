@@ -123,14 +123,6 @@ export default function RootLayout({
             __html: `(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();`,
           }}
         />
-
-        {/* Error protection message for blocked ad scripts */}
-        <script
-          suppressHydrationWarning
-          dangerouslySetInnerHTML={{
-            __html: `(function(){var adScript=document.querySelector('script[src*="adsbygoogle.js"]');function showMessage(){if(document.getElementById('ad-blocking-message'))return;var message=document.createElement('div');message.id='ad-blocking-message';message.setAttribute('role','status');message.style.cssText='position:fixed;bottom:16px;left:16px;right:16px;z-index:2147483647;padding:12px 16px;border:1px solid #f0c36d;border-radius:6px;background:#fff8e1;color:#5f4300;font:14px/1.4 Arial,sans-serif;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.12)';message.textContent='You are seeing this message because ad or script blocking software is interfering with this page. Disable it, then reload the page.';document.body&&document.body.appendChild(message)}if(adScript){adScript.addEventListener('error',showMessage);setTimeout(function(){if(!window.adsbygoogle)showMessage()},2000)}})();`,
-          }}
-        />
       </head>
 
       <body className="min-h-screen bg-page font-body text-secondary antialiased" suppressHydrationWarning>

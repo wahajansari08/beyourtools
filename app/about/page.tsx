@@ -249,6 +249,50 @@ export default function AboutPage() {
           </section>
 
           <section>
+            <h2>Engineering Standards &amp; Formula Verification</h2>
+            <p>
+              To maintain the highest level of reliability, every utility on BeYourTools is built upon open, audited technical standards and rigorous mathematical verification:
+            </p>
+            <ul>
+              <li><strong>Data &amp; Code Formats:</strong> JSON formatters, schema generators, and validators adhere strictly to <em>RFC 8259</em> and <em>ECMA-404</em> standards, ensuring 100% interoperability across enterprise backend systems.</li>
+              <li><strong>Document Standards:</strong> PDF engines strictly respect <em>ISO 32000-1</em> specifications, preserving embedded fonts, vector linework, and color profile fidelity.</li>
+              <li><strong>Financial Engines:</strong> Calculators implement verified mathematical models—such as the Newton-Raphson iterative solver for APR calculations conforming with Truth in Lending (Regulation Z) frameworks, standard compound interest annuities, and classical amortization models.</li>
+              <li><strong>Media Processing:</strong> Audio and video tools leverage secure, sandboxed WebAssembly (Wasm) ports of FFmpeg and native HTML5 Media APIs for hardware-accelerated transcoding without external network hops.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Editorial Integrity &amp; Quality Guidelines</h2>
+            <p>
+              Our guides, documentation, and technical articles are developed with a strong commitment to original analysis, clarity, and practical utility. We do not publish auto-generated placeholder text or deceptive promotional content.
+            </p>
+            <div className="grid gap-4 sm:grid-cols-2 not-prose">
+              <div className="rounded-xl border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+                <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Technical Precision</h3>
+                <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                  Every tutorial and reference guide is reviewed by experienced software engineers to ensure code examples, terminal commands, and architectural advice are accurate and safe for production use.
+                </p>
+              </div>
+              <div className="rounded-xl border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+                <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Ongoing Audits &amp; Updates</h3>
+                <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                  We routinely audit our tools, browser compatibility matrices, and financial algorithms against updated web standards and regional regulatory updates.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>Corrections &amp; Community Feedback</h2>
+            <p>
+              We welcome peer review, bug reports, and community contributions. If you discover a discrepancy in any mathematical formula, encounter an unexpected parsing edge-case, or have a suggestion for improving a tool&apos;s interface:
+            </p>
+            <p>
+              Please contact our engineering team via <Link href="/contact" style={{ color: "var(--teal)" }}>our Contact page</Link> or send an email to <a href="mailto:beyourtools@gmail.com" style={{ color: "var(--teal)" }}>beyourtools@gmail.com</a>. We prioritize verified formula reports and deploy corrections within 24 to 48 hours.
+            </p>
+          </section>
+
+          <section>
             <h2>Get in Touch &amp; Feedback</h2>
             <p>
               We continuously expand and refine our tools based on community requests and developer feedback. If you have suggestions for a new tool, encounter a bug, or would like to partner with us, we would love to hear from you.

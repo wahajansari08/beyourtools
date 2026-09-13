@@ -66,27 +66,52 @@ export default function Code128Page() {
 
         <Code128Client />
 
-        <section className="mt-12 space-y-3">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>About Code 128</h2>
+        {/* Technical Architecture & Standards */}
+        <section className="mt-12 space-y-4 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+            Code 128 Symbology Architecture &amp; ISO/IEC 15417 Standards
+          </h2>
           <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-            Code 128 is one of the most widely used linear barcodes in the world. Unlike EAN or UPC which are digit-only,
-            Code 128 encodes full ASCII text - making it suitable for part numbers, serial numbers, URLs, and any alphanumeric data.
-            It automatically selects the most efficient encoding subset (A, B, or C) to minimize barcode length.
+            Code 128 is an extremely high-density linear barcode symbology defined under international standard <strong style={{ color: "var(--text-primary)" }}>ISO/IEC 15417</strong>.
+            Unlike numeric-only retail barcodes like UPC-A and EAN-13, Code 128 can encode all 128 ASCII characters (including uppercase, lowercase, punctuation, numbers, and control codes) using three distinct code sets (A, B, and C).
           </p>
+          <div className="grid gap-4 sm:grid-cols-2 text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Character Sets &amp; Auto-Switching</h3>
+              <p>
+                <strong>Code Set A:</strong> Uppercase letters, digits, and ASCII control characters (00–95).<br />
+                <strong>Code Set B:</strong> Full printable ASCII (uppercase, lowercase, digits, and punctuation).<br />
+                <strong>Code Set C:</strong> Numeric double-density encoding (00–99 encoded into single bar patterns), halving the required physical width for digit sequences.
+              </p>
+            </div>
+            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Modulo 103 Checksum &amp; Quiet Zones</h3>
+              <p>
+                Data integrity is enforced through a mandatory weighted modulo-103 check character calculated automatically before transmission.
+                For reliable scanning by laser and CCD readers, a minimum quiet zone of 10 times the module width (X-dimension) is maintained on both margins.
+              </p>
+            </div>
+          </div>
         </section>
 
-        <section className="mt-10 space-y-3">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>FAQ</h2>
-          {[
-            ["What is Code 128 used for?", "Shipping labels, inventory management, product tracking, library systems - any application needing alphanumeric barcodes."],
-            ["Does Code 128 need a check digit?", "Yes, but it's calculated automatically by the library - you don't need to compute it yourself."],
-            ["What's the difference between Code 128 and Code 39?", "Code 128 is more compact (fits more data in less space) and supports lowercase letters. Code 39 is simpler but uses only uppercase and a limited character set."],
-          ].map(([q, a]) => (
-            <div key={q as string}>
-              <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>{q}</p>
-              <p className="mt-1 text-sm" style={{ color: "var(--text-muted)" }}>{a}</p>
-            </div>
-          ))}
+        {/* FAQ */}
+        <section className="mt-10 space-y-4">
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-3">
+            {[
+              ["What is Code 128 used for?", "Code 128 is the global standard for logistics, shipping containers (GS1-128 / UCC-128), carton labels, pharmaceutical tracking, and enterprise asset inventory management."],
+              ["Does Code 128 need a manual check digit?", "No. The modulo-103 checksum is calculated automatically by the browser generator and appended to the symbol structure."],
+              ["What is the difference between Code 128 and Code 39?", "Code 128 is significantly more compact, supports lowercase letters, and includes mandatory checksum verification. Code 39 has a larger physical footprint and is primarily used in legacy industrial equipment."],
+              ["Are generated barcodes stored on your servers?", "No. Barcodes are rendered entirely in client-side memory using HTML5 Canvas and SVG. No data is transmitted to or logged on remote servers."],
+            ].map(([q, a]) => (
+              <div key={q as string}>
+                <p className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>{q}</p>
+                <p className="mt-1 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{a}</p>
+              </div>
+            ))}
+          </div>
         </section>
 
         <QRRelatedTools currentSlug="code-128-barcode-generator" />
