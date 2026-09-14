@@ -4,8 +4,8 @@ import ApyClient from "./ApyClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "APY Calculator - Convert APR to Annual Percentage Yield | BeYourTools",
-  description: "Convert an annual percentage rate (APR) to APY (Annual Percentage Yield) for any compounding frequency. See actual interest earned on any principal. Free, browser-based.",
+  title: "APY Calculator - Convert APR to APY Yield | BeYourTools",
+  description: "Convert APR to APY for any compounding frequency. Calculate effective annual percentage yield and interest earned in your browser.",
   keywords: "APY calculator, APR to APY, annual percentage yield, compound interest rate, effective annual rate, savings account APY",
   path: "/apy-calculator",
 });

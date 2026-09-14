@@ -4,8 +4,8 @@ import Mp3ConverterClient from "./Mp3ConverterClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "MP3 Converter - Convert Audio to MP3 Online Free | BeYourTools",
-  description: "Convert audio files to MP3 online for free. Supports WAV, FLAC, M4A, OGG, AAC, MP4 and more. Choose bitrate and download instantly. 100% browser-based.",
+  title: "MP3 Converter - Convert Audio to MP3 Online | BeYourTools",
+  description: "Convert audio files to MP3 online for free. Supports WAV, FLAC, M4A, OGG, and AAC. Select bitrate and download. 100% browser-based.",
   keywords: "mp3 converter, convert to mp3, audio to mp3, wav to mp3 online, flac to mp3, m4a to mp3",
   path: "/mp3-converter",
 });

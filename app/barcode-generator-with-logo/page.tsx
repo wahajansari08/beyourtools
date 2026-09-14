@@ -6,9 +6,9 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Barcode Generator with Logo - Add Logo to Barcode Free | BeYourTools",
+  title: "Barcode Generator with Logo - Add Custom Logo | BeYourTools",
   description:
-    "Generate Code 128, EAN-13, EAN-8, UPC-A and Code 39 barcodes with a custom or social media logo overlay. Upload your own logo or choose from Instagram, Facebook, YouTube and more. Free, browser-based, no upload.",
+    "Generate Code 128, EAN & UPC barcodes with a custom or social logo. Free, private, and runs in your browser with no upload required.",
   keywords:
     "barcode generator with logo, barcode with logo, custom barcode logo, EAN-13 barcode logo, Code 128 logo barcode, brand barcode generator",
   alternates: { canonical: `${SITE.url}/barcode-generator-with-logo` },
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: `${SITE.url}/barcode-generator-with-logo`,
-    title: "Barcode Generator with Logo - Add Logo to Barcode Free | BeYourTools",
+    title: "Barcode Generator with Logo - Add Logo | BeYourTools",
     description:
       "Create barcodes with a custom or social media logo. Code 128, EAN-13, UPC-A and more. Browser-based, no upload.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "Barcode Generator with Logo" }],
@@ -72,7 +72,7 @@ const schemas = [
   softwareApplicationSchema({
     name: "Barcode Generator with Logo",
     description:
-      "Free browser-based barcode generator with custom logo overlay. Supports Code 128, EAN-13, EAN-8, UPC-A and Code 39. Upload a custom logo or choose a social media icon.",
+      "Free browser-based barcode generator with logo overlay. Supports Code 128, EAN-13, EAN-8, UPC-A, and Code 39 in your browser.",
     url: canonical("/barcode-generator-with-logo"),
     category: "UtilitiesApplication",
   }),

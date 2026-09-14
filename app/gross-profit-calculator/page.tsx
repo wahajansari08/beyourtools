@@ -4,8 +4,8 @@ import GrossProfitClient from "./GrossProfitClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Gross Profit Calculator - Gross Profit & Gross Margin % | BeYourTools",
-  description: "Calculate gross profit and gross profit margin from revenue and cost of goods sold (COGS). Fast, free, and browser-based with no sign-up required.",
+  title: "Gross Profit Calculator - Margin & Profit | BeYourTools",
+  description: "Calculate gross profit and gross profit margin from revenue and cost of goods sold (COGS). Fast, free financial calculator in your browser.",
   keywords: "gross profit calculator, gross margin calculator, cogs, revenue, gross profit formula",
   path: "/gross-profit-calculator",
 });

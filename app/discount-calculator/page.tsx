@@ -4,8 +4,8 @@ import DiscountClient from "./DiscountClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Discount Calculator - Final Price After Discount % | BeYourTools",
-  description: "Calculate the final price after applying a percentage discount. See exactly how much you save and what the discounted amount is. Free, instant, no sign-up.",
+  title: "Discount Calculator - Final Price & Sale | BeYourTools",
+  description: "Calculate final price and savings after applying a discount percentage. Instant, free discount calculator in your browser.",
   keywords: "discount calculator, price after discount, percent off calculator, sale price calculator, savings calculator",
   path: "/discount-calculator",
 });

@@ -4,8 +4,8 @@ import TaxExclusiveClient from "./TaxExclusiveClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Tax-Exclusive Price Calculator - Remove VAT/Tax from Gross Price | BeYourTools",
-  description: "Extract the net (tax-exclusive) price from a tax-inclusive gross price. Remove VAT, GST, or any sales tax to find the original pre-tax amount. Free, browser-based.",
+  title: "Tax-Exclusive Price Calculator - Net Cost | BeYourTools",
+  description: "Extract the net price from a tax-inclusive total. Remove VAT, GST, or sales tax to find pre-tax amounts in your browser.",
   keywords: "tax exclusive price calculator, remove VAT, extract tax, net price calculator, reverse VAT calculator, price without tax",
   path: "/tax-exclusive-price-calculator",
 });

@@ -6,9 +6,9 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "WiFi QR Code Generator - Share WiFi Without Typing | BeYourTools",
+  title: "WiFi QR Code Generator - Connect Instantly | BeYourTools",
   description:
-    "Generate a WiFi QR code your guests can scan to connect instantly - no password typing. Supports WPA/WPA2, WEP and open networks. Free, private, browser-based.",
+    "Generate a WiFi QR code your guests can scan to connect instantly. Supports WPA2, WEP, and open networks. Free, private, browser-based.",
   keywords: "WiFi QR code generator, WiFi QR code, share WiFi QR, WPA QR code, guest WiFi QR code",
   alternates: { canonical: `${SITE.url}/wifi-qr-code-generator` },
   openGraph: {
@@ -68,7 +68,7 @@ export default function WiFiQRGeneratorPage() {
         <WiFiQRClient />
 
         <section className="mt-12 space-y-3">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>How to use</h2>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>How to Generate a WiFi QR Code</h2>
           <ol className="space-y-2 text-sm" style={{ color: "var(--text-muted)" }}>
             <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>1.</span> Enter your WiFi network name (SSID).</li>
             <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>2.</span> Choose the security type and enter your password.</li>

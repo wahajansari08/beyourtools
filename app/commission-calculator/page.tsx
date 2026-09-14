@@ -4,8 +4,8 @@ import CommissionClient from "./CommissionClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Commission Calculator - Flat Rate & Tiered Sales Commission | BeYourTools",
-  description: "Calculate sales commission earnings for flat-rate or tiered commission structures. Add a base salary to find total pay. Free, instant, browser-based.",
+  title: "Commission Calculator - Sales Commission | BeYourTools",
+  description: "Calculate sales commission earnings for flat-rate or tiered structures. Add base salary to find total pay in your browser.",
   keywords: "commission calculator, sales commission, tiered commission, flat rate commission, commission earnings, sales pay",
   path: "/commission-calculator",
 });

@@ -12,6 +12,7 @@ import { batch10 } from "./blog-posts/batch10";
 export interface BlogPost {
   slug: string;
   title: string;
+  seoTitle?: string;
   excerpt: string;
   content: string;
   author: string;

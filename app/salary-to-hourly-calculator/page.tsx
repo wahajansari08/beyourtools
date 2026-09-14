@@ -4,8 +4,8 @@ import SalaryToHourlyClient from "./SalaryToHourlyClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Salary to Hourly Calculator - Convert Annual Salary to Hourly Rate | BeYourTools",
-  description: "Convert an annual, monthly, bi-weekly, or weekly salary into an equivalent hourly rate. Adjust hours per week and weeks worked per year for accurate results.",
+  title: "Salary to Hourly Calculator - Hourly Rate | BeYourTools",
+  description: "Convert annual, monthly, or weekly salary into an equivalent hourly rate. Adjust working hours and weeks in your browser.",
   keywords: "salary to hourly calculator, annual salary to hourly rate, convert salary to hourly, hourly equivalent, income calculator",
   path: "/salary-to-hourly-calculator",
 });

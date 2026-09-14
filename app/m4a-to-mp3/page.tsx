@@ -4,7 +4,7 @@ import SimpleConvertClient from "@/components/audio/SimpleConvertClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "M4A to MP3 Converter - Convert M4A to MP3 Free Online | BeYourTools",
+  title: "M4A to MP3 Converter - Convert M4A Online | BeYourTools",
   description: "Convert M4A (Apple audio) files to MP3 online for free. Browser-based, no upload, selectable bitrate.",
   keywords: "m4a to mp3, convert m4a to mp3, m4a to mp3 online, apple audio to mp3, aac to mp3",
   path: "/m4a-to-mp3",

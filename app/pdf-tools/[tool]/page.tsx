@@ -148,7 +148,7 @@ export default async function Page({ params }: Props) {
         {/* PDF Architecture & Privacy Standards */}
         <section className="mt-10 space-y-4 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
           <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
-            Document Security &amp; Client-Side PDF Architecture
+            {def.name} Security &amp; Architecture
           </h2>
           <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
             Standard cloud-based PDF web services require uploading your private files to remote servers, exposing confidential business contracts, financial statements, and personal records to potential transit interception or third-party retention. 
@@ -175,7 +175,7 @@ export default async function Page({ params }: Props) {
         {/* FAQs */}
         <section className="mt-10 space-y-3" aria-labelledby="faq-heading">
           <h2 id="faq-heading" className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
-            Frequently Asked Questions
+            {def.name} Frequently Asked Questions
           </h2>
           <div className="space-y-4">
             {faqs.map(({ question, answer }) => (

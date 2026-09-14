@@ -4,7 +4,7 @@ import Mp3CompressorClient from "./Mp3CompressorClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "MP3 Compressor - Compress MP3 Files Online Free | BeYourTools",
+  title: "MP3 Compressor - Compress MP3 Online Free | BeYourTools",
   description: "Reduce MP3 file size online for free. Choose a compression preset, compress your MP3, and see the exact size reduction before downloading.",
   keywords: "mp3 compressor, compress mp3 online, reduce mp3 file size, mp3 file size reducer, compress audio online",
   path: "/mp3-compressor",

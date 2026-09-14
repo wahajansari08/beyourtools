@@ -4,6 +4,7 @@ export const batch4: BlogPost[] = [
   {
     slug: "json-schema-beginners-guide",
     title: "JSON Schema: A Beginner's Guide to Validating Your Data",
+    seoTitle: "JSON Schema: Beginner Validation Guide",
     excerpt: "JSON Schema is the most underused tool in API development. Learn how to write schemas, validate data, and catch problems before they reach production.",
     author: "BeYourTools Team",
     publishedAt: "2026-08-05",

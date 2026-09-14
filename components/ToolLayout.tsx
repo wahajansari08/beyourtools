@@ -104,7 +104,7 @@ export default function ToolLayout({
               className="font-display text-lg font-semibold"
               style={{ color: "var(--text-primary)" }}
             >
-              How to use
+              How to Use {title}
             </h2>
             <ol className="space-y-2 text-sm" style={{ color: "var(--text-muted)" }}>
               {howTo.map((step, i) => (
@@ -130,24 +130,24 @@ export default function ToolLayout({
         {/* JSON Architecture & Developer Standards */}
         <section className="mt-10 space-y-4 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
           <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
-            JSON Architecture &amp; Data Interchange Standards
+            {title} &amp; JSON Developer Standards
           </h2>
           <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-            JavaScript Object Notation (JSON) is standardized under RFC 8259 and ECMA-404 as the universal lightweight data interchange format for modern cloud architectures, microservices, and REST/GraphQL APIs. 
-            Utilizing the <strong style={{ color: "var(--text-primary)" }}>{title}</strong> ensures that your schemas, configurations, and API payloads adhere strictly to syntax specifications, prevent serialization anomalies, and streamline collaboration across engineering teams.
+            JSON is the standard format for web APIs and modern applications. Using the{" "}
+            <strong style={{ color: "var(--text-primary)" }}>{title}</strong> helps you check syntax,
+            catch formatting errors, and keep your data clean and readable.
           </p>
           <div className="grid gap-4 sm:grid-cols-2 text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
             <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
               <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Zero-Server Security</h3>
               <p>
-                Handling sensitive database dumps, API credentials, bearer tokens, or user payloads in online tools requires uncompromising privacy. 
-                All data entered into {title} is parsed and manipulated locally within your browser sandbox-nothing is ever transmitted across the network or logged on external servers.
+                All data entered into {title} runs directly inside your browser sandbox. Nothing is ever sent across the network or saved on remote servers.
               </p>
             </div>
             <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
-              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Syntax Precision &amp; CI/CD Ready</h3>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Clean &amp; CI/CD Ready</h3>
               <p>
-                Properly validated and cleanly formatted JSON eliminates runtime parse exceptions, ensures predictable Git diffs across version control, and accelerates automated testing in continuous deployment pipelines.
+                Well-formatted JSON prevents runtime syntax bugs, makes code reviews easier, and ensures smooth API data exchange.
               </p>
             </div>
           </div>
@@ -161,7 +161,7 @@ export default function ToolLayout({
               className="mb-4 font-display text-lg font-semibold"
               style={{ color: "var(--text-primary)" }}
             >
-              Frequently Asked Questions
+              {title} Frequently Asked Questions
             </h2>
             <div className="space-y-5">
               {faqs.map(({ question, answer }) => (
