@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useRef, useEffect } from "react";
+import { useState, useCallback, useRef } from "react";
 import StatusBanner from "@/components/StatusBanner";
 import CopyButton from "@/components/CopyButton";
 import Btn from "@/components/Btn";
@@ -175,6 +175,21 @@ const inputCls = "w-full rounded-lg border px-3 py-2 text-sm outline-none focus:
 const inputSty = { borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-primary)" };
 const labelSty = { color: "var(--text-muted)" };
 
+function getActiveSocialSvg(socialId: string): string | null {
+  const s = SOCIAL_LOGOS.find((s) => s.id === socialId);
+  return s ? s.svg : null;
+}
+
+function getLogoDataUrl(opts: LogoOpts): string | null {
+  if (opts.source === "none") return null;
+  if (opts.source === "upload" && opts.uploadDataUrl) return opts.uploadDataUrl;
+  if (opts.source === "social") {
+    const svg = getActiveSocialSvg(opts.socialId);
+    if (svg) return svgToDataUrl(svg);
+  }
+  return null;
+}
+
 export default function BarcodeWithLogoClient() {
   const [value,      setValue]      = useState("");
   const [barOpts,    setBarOpts]    = useState<BarcodeOpts>(DEFAULT_BARCODE);
@@ -186,26 +201,6 @@ export default function BarcodeWithLogoClient() {
   const [jpgUrl,     setJpgUrl]     = useState<string | null>(null);
   const [svgStr,     setSvgStr]     = useState<string | null>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  // Revoke old object URLs on unmount
-  useEffect(() => () => { if (pngUrl) URL.revokeObjectURL(pngUrl); if (jpgUrl) URL.revokeObjectURL(jpgUrl); }, []);
-
-  // ── Logo source helpers ──────────────────────────────────────────────────
-
-  function getActiveSocialSvg(): string | null {
-    const s = SOCIAL_LOGOS.find((s) => s.id === logoOpts.socialId);
-    return s ? s.svg : null;
-  }
-
-  async function logoDataUrl(): Promise<string | null> {
-    if (logoOpts.source === "none") return null;
-    if (logoOpts.source === "upload" && logoOpts.uploadDataUrl) return logoOpts.uploadDataUrl;
-    if (logoOpts.source === "social") {
-      const svg = getActiveSocialSvg();
-      if (svg) return svgToDataUrl(svg);
-    }
-    return null;
-  }
 
   // ── File upload ──────────────────────────────────────────────────────────
 
@@ -294,7 +289,7 @@ export default function BarcodeWithLogoClient() {
       ctx.drawImage(barcodeImg, 0, 0);
 
       // 3. Overlay logo (if selected)
-      const lUrl = await logoDataUrl();
+      const lUrl = getLogoDataUrl(logoOpts);
       if (lUrl) {
         const logoImg = await loadImage(lUrl);
         const logoW = Math.round(canvas.width * (logoOpts.size / 100));

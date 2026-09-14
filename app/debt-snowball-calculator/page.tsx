@@ -22,8 +22,8 @@ export default function DebtSnowballPage() {
         <>
           <p><strong style={{ color: "var(--text-secondary)" }}>Step 1:</strong> List debts from smallest to largest balance.</p>
           <p><strong style={{ color: "var(--text-secondary)" }}>Step 2:</strong> Pay minimums on all debts every month.</p>
-          <p><strong style={{ color: "var(--text-secondary)" }}>Step 3:</strong> Direct all extra money at the smallest balance until it's gone.</p>
-          <p><strong style={{ color: "var(--text-secondary)" }}>Step 4:</strong> Once a debt is paid, roll its freed payment to the next smallest, the "snowball" grows with each payoff.</p>
+          <p><strong style={{ color: "var(--text-secondary)" }}>Step 3:</strong> Direct all extra money at the smallest balance until it&apos;s gone.</p>
+          <p><strong style={{ color: "var(--text-secondary)" }}>Step 4:</strong> Once a debt is paid, roll its freed payment to the next smallest, the &quot;snowball&quot; grows with each payoff.</p>
           <p className="text-xs mt-2" style={{ color: "var(--text-subtle)" }}>
             The snowball method is psychologically powerful because it produces quick wins. It costs slightly more in interest than the avalanche method but keeps more people on track to completion.
           </p>

@@ -100,7 +100,7 @@ export default function DebtSnowballClient() {
     <div className="space-y-5">
       <div className="rounded-xl border px-4 py-3 text-xs leading-relaxed"
         style={{ borderColor: "color-mix(in srgb,var(--teal) 30%,transparent)", backgroundColor: "color-mix(in srgb,var(--teal) 6%,transparent)", color: "var(--text-muted)" }}>
-        <strong style={{ color: "var(--teal)" }}>Snowball method:</strong> Pay minimums on all debts, then direct all extra money at the <strong>smallest balance first</strong>. Once it's paid, roll that payment to the next smallest.
+        <strong style={{ color: "var(--teal)" }}>Snowball method:</strong> Pay minimums on all debts, then direct all extra money at the <strong>smallest balance first</strong>. Once it&apos;s paid, roll that payment to the next smallest.
       </div>
 
       <div className="space-y-3">

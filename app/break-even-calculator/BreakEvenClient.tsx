@@ -48,7 +48,7 @@ export default function BreakEvenClient() {
           <input id="be-fixed" type="number" min="0" step="any" value={fixedCosts} onChange={(e) => setFixedCosts(e.target.value)} placeholder="e.g. 10000"
             className="focus-ring w-full rounded-lg border px-3 py-2 text-sm"
             style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-primary)" }} />
-          <p className="mt-1 text-[11px]" style={{ color: "var(--text-subtle)" }}>Rent, salaries, insurance - costs that don't change with output.</p>
+          <p className="mt-1 text-[11px]" style={{ color: "var(--text-subtle)" }}>Rent, salaries, insurance - costs that don&apos;t change with output.</p>
         </div>
         <div>
           <label htmlFor="be-price" className="mb-1 block text-xs font-medium" style={{ color: "var(--text-muted)" }}>Selling Price per Unit ($)</label>
