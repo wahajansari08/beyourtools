@@ -6,7 +6,7 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Barcode Generator - Create Barcodes Online Free | BeYourTools",
+  title: "Barcode Generator - Create Barcodes Online | BeYourTools",
   description:
     "Generate barcodes online for free - Code 128, Code 39, EAN-13, EAN-8, UPC-A, ITF-14, MSI and Codabar. Customize size, colors and download as PNG or SVG.",
   keywords: "barcode generator, free barcode generator, code 128 generator, EAN barcode, UPC barcode, online barcode maker",
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: `${SITE.url}/barcode-generator`,
-    title: "Barcode Generator - Create Barcodes Online Free | BeYourTools",
+    title: "Barcode Generator - Create Barcodes Free | BeYourTools",
     description: "Create Code 128, EAN-13, UPC and more - free, instant, browser-based.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "Barcode Generator" }],
   },
@@ -67,7 +67,7 @@ export default function BarcodeGeneratorPage() {
         <BarcodeGeneratorClient />
 
         <section className="mt-12 space-y-3">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>How to use</h2>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>How to Generate Barcodes</h2>
           <ol className="space-y-2 text-sm" style={{ color: "var(--text-muted)" }}>
             <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>1.</span> Choose a barcode format from the dropdown.</li>
             <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>2.</span> Enter the value to encode - the hint below the field shows what characters are allowed.</li>

@@ -21,8 +21,8 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   const url = currentPage === 1 ? `${SITE.url}/blog` : `${SITE.url}/blog?page=${currentPage}`;
   const title =
     currentPage > 1
-      ? `Blog (Page ${currentPage}) - Free Guides on JSON, Images, Audio, Video & PDF | BeYourTools`
-      : "Blog - Free Guides on JSON, Images, Audio, Video & PDF | BeYourTools";
+      ? `Blog (Page ${currentPage}) - Developer Guides | BeYourTools`
+      : "Blog - Free Developer Guides & Tutorials | BeYourTools";
   const ogTitle = currentPage > 1 ? `${BLOG_TITLE} - Page ${currentPage}` : BLOG_TITLE;
 
   const description =

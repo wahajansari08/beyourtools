@@ -59,7 +59,7 @@ const CAT_META: Record<
 > = {
   "Compress & Convert": {
     description:
-      "Free online video compressors and converters. Reduce video file size, convert between MP4, WebM, MKV, MOV, and AVI formats. All processing runs in your browser.",
+      "Free online video compressors and converters. Reduce video file size, convert between MP4, WebM, MKV, and MOV. 100% private in your browser.",
     intro:
       "These tools shrink and reformat video files. Use the compressor to reduce file size before uploading or sharing, and the converters to change formats for compatibility with different devices and platforms.",
     faqs: [
@@ -115,7 +115,7 @@ const CAT_META: Record<
   },
   "Resize & Crop": {
     description:
-      "Free online video resizer and cropper. Change video resolution, resize for social media aspect ratios, and crop to remove unwanted areas. Browser-based, no upload.",
+      "Free online video resizer and cropper. Change video resolution, resize for social media aspect ratios, and crop video. 100% private in your browser.",
     intro:
       "Resize video dimensions and crop to the exact frame you need. These tools are useful for reformatting videos for different platforms, removing black bars, or producing square clips for Instagram.",
     faqs: [
@@ -143,7 +143,7 @@ const CAT_META: Record<
   },
   "GIF & Frames": {
     description:
-      "Free online video to GIF converter and frame extractor. Convert video clips to animated GIFs, extract frames as images, and convert GIFs to MP4. No upload needed.",
+      "Free online video to GIF converter and frame extractor. Convert clips to animated GIFs, extract frames, and turn GIFs into MP4. 100% browser-based.",
     intro:
       "Turn video clips into shareable animated GIFs, extract individual frames as still images, or convert a GIF into a proper video file. All processing runs client-side in your browser.",
     faqs: [
@@ -171,7 +171,7 @@ const CAT_META: Record<
   },
   "Audio": {
     description:
-      "Free online video audio tools. Extract MP3 audio from MP4 video, remove audio from video, and add an audio track to a video. All processing runs in your browser.",
+      "Free online video audio tools. Extract MP3 from MP4, remove audio tracks, and add sound to videos. Fast, client-side processing in your browser.",
     intro:
       "Manage the audio track in your video files. Extract the soundtrack as an MP3, remove audio entirely for a silent video, or replace the audio with a different track.",
     faqs: [
@@ -213,7 +213,7 @@ export async function generateMetadata({
   const catTools = videoByCategory(cat);
 
   return {
-    title: `${cat} Video Tools - Free Online Video ${cat} | BeYourTools`,
+    title: `${cat} Video Tools Online | BeYourTools`,
     description: m.description,
     keywords: catTools
       .map((t) => t.name)

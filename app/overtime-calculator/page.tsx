@@ -4,8 +4,8 @@ import OvertimeClient from "./OvertimeClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Overtime Calculator - Overtime Pay at 1.5×, 2×, or Custom Rate | BeYourTools",
-  description: "Calculate overtime pay for any number of overtime hours at time-and-a-half (1.5×), double time, or a custom multiplier. See regular pay, overtime pay, and total pay.",
+  title: "Overtime Calculator - Overtime Pay Rate | BeYourTools",
+  description: "Calculate overtime pay at 1.5x, double time, or custom rates. See regular pay, overtime pay, and total pay in your browser.",
   keywords: "overtime calculator, overtime pay calculator, time and a half calculator, double time pay, overtime wages",
   path: "/overtime-calculator",
 });

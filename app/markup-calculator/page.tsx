@@ -4,8 +4,8 @@ import MarkupClient from "./MarkupClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Markup Calculator - Find Selling Price or Markup % | BeYourTools",
-  description: "Calculate the selling price from cost and markup %, find the markup % from cost and price, or convert a desired margin into the right markup. Free online markup calculator.",
+  title: "Markup Calculator - Markup & Margin | BeYourTools",
+  description: "Calculate selling price from cost and markup, find markup percentages, or convert margin to markup in your browser.",
   keywords: "markup calculator, selling price calculator, markup percentage, cost to price, margin vs markup",
   path: "/markup-calculator",
 });

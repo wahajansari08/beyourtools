@@ -4,6 +4,7 @@ export const batch6: BlogPost[] = [
   {
     slug: "protect-pdf-with-password",
     title: "How to Password-Protect a PDF (Free, No Software Needed)",
+    seoTitle: "How to Password-Protect a PDF Free",
     excerpt: "Add strong encryption to any PDF before sharing sensitive documents. Everything happens in your browser - your file is never sent anywhere.",
     author: "BeYourTools Team",
     publishedAt: "2026-11-04",
