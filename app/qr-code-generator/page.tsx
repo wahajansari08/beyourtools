@@ -6,16 +6,16 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, softwareApplicationSchema, faqSchema, howToSchema, SITE, canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "QR Code Generator - Create Free QR Codes Online | BeYourTools",
+  title: "QR Code Generator - Create Free QR Codes | BeYourTools",
   description:
-    "Create free QR codes online for URLs, text, WiFi, email, phone numbers, vCards and more. Customize colors, size and error correction. Download as PNG or SVG.",
+    "Create free QR codes for URLs, WiFi, email, and contacts. Customize colors and error correction. Download as PNG or SVG.",
   keywords:
     "QR code generator, free QR code, create QR code, WiFi QR code, vCard QR code, URL QR code, custom QR code",
   alternates: { canonical: `${SITE.url}/qr-code-generator` },
   openGraph: {
     type: "website",
     url: `${SITE.url}/qr-code-generator`,
-    title: "QR Code Generator - Create Free QR Codes Online | BeYourTools",
+    title: "QR Code Generator - Create Free QR Codes | BeYourTools",
     description: "Generate QR codes for URLs, WiFi, vCards and more - free, instant, no sign-up.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "QR Code Generator" }],
   },
@@ -87,7 +87,7 @@ export default function QRCodeGeneratorPage() {
         {/* How to use */}
         <section className="mt-12 space-y-4">
           <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
-            How to use
+            How to Generate QR Codes
           </h2>
           <ol className="space-y-2 text-sm" style={{ color: "var(--text-muted)" }}>
             <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>1.</span> Select the content type (URL, WiFi, vCard, etc.).</li>
@@ -100,7 +100,7 @@ export default function QRCodeGeneratorPage() {
 
         {/* Features */}
         <section className="mt-10">
-          <h2 className="mb-3 font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>Features</h2>
+          <h2 className="mb-3 font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>QR Code Generator Features</h2>
           <div className="grid gap-3 sm:grid-cols-2">
             {[
               ["8 content types", "URL, Text, Email, Phone, SMS, WiFi, vCard, Location"],

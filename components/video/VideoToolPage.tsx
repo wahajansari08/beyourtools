@@ -47,7 +47,7 @@ export default function VideoToolPage({ tool }: { tool: VideoTool }) {
         </p>
 
         <section className="mt-10 space-y-3">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>How to use</h2>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>How to Use {tool.name}</h2>
           <ol className="space-y-2 text-sm" style={{ color: "var(--text-muted)" }}>
             {tool.howTo.map((step, index) => (
               <li key={step.title} className="flex gap-2">
@@ -59,7 +59,7 @@ export default function VideoToolPage({ tool }: { tool: VideoTool }) {
         </section>
 
         <section className="mt-10">
-          <h2 className="mb-3 font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>Features</h2>
+          <h2 className="mb-3 font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>{tool.name} Features</h2>
           <div className="grid gap-2 sm:grid-cols-2">
             {tool.features.map((feature) => (
               <div key={feature} className="flex items-start gap-2 rounded-lg border p-3" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
@@ -71,7 +71,7 @@ export default function VideoToolPage({ tool }: { tool: VideoTool }) {
         </section>
 
         <section className="mt-10">
-          <h2 className="mb-2 font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>Supported formats</h2>
+          <h2 className="mb-2 font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>Supported {tool.name} Formats</h2>
           <div className="flex flex-wrap gap-2">
             {tool.formats.map((format) => (
               <span key={format} className="rounded border px-2 py-0.5 font-mono text-xs" style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-secondary)" }}>

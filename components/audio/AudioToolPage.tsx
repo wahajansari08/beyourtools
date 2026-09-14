@@ -83,7 +83,7 @@ export default function AudioToolPage({
 
         {/* How to use */}
         <section className="mt-10 space-y-3">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>How to use</h2>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>How to Use {title}</h2>
           <ol className="space-y-2 text-sm" style={{ color: "var(--text-muted)" }}>
             {howTo.map((step, i) => (
               <li key={i} className="flex gap-2">
@@ -97,7 +97,7 @@ export default function AudioToolPage({
         {/* Features */}
         {features && features.length > 0 && (
           <section className="mt-10">
-            <h2 className="mb-3 font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>Features</h2>
+            <h2 className="mb-3 font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>{title} Features</h2>
             <div className="grid gap-2 sm:grid-cols-2">
               {features.map((f) => (
                 <div key={f} className="flex items-start gap-2 rounded-lg border p-3"

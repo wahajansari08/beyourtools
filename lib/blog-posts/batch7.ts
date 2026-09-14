@@ -40,6 +40,7 @@ export const batch7: BlogPost[] = [
   {
     slug: "heic-to-jpg-conversion",
     title: "HEIC to JPG: Convert iPhone Photos for Universal Compatibility",
+    seoTitle: "HEIC to JPG: Convert iPhone Photos",
     excerpt: "iPhones shoot in HEIC format, but many apps and websites don't accept it. Here's how to convert HEIC photos to JPG quickly and for free.",
     author: "BeYourTools Team",
     publishedAt: "2027-03-24",

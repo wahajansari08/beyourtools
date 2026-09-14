@@ -4,8 +4,8 @@ import CashFlowClient from "./CashFlowClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Cash Flow Calculator - Net Cash Flow from Operating, Investing & Financing | BeYourTools",
-  description: "Calculate net cash flow from operating, investing, and financing activities. Enter line items for each category to get a clear cash flow summary. Free, browser-based.",
+  title: "Cash Flow Calculator - Operating & Financing | BeYourTools",
+  description: "Calculate net cash flow from operating, investing, and financing activities. Get an instant cash flow summary in your browser.",
   keywords: "cash flow calculator, net cash flow, operating cash flow, investing cash flow, financing cash flow, business cash flow",
   path: "/cash-flow-calculator",
 });

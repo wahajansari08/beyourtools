@@ -22,9 +22,9 @@ import {
 import Btn from "@/components/Btn";
 
 export const metadata: Metadata = {
-  title: "Finance Calculators - Free Online Finance Tools | BeYourTools",
+  title: "Finance Calculators - 40 Free Online Tools | BeYourTools",
   description:
-    "40 free browser-based finance calculators - profit margins, loan payments, debt payoff, savings projections, ROI, sales tax, salary conversions and more. No sign-up, 100% private.",
+    "40 free browser-based finance calculators for profit margins, loan payments, debt payoff, savings, and taxes. 100% private, no sign-up.",
   keywords:
     "finance calculators, loan calculator, profit margin calculator, ROI calculator, savings calculator, debt payoff calculator, salary calculator, tax calculator",
   alternates: { canonical: `${SITE.url}/finance-tools` },
@@ -32,14 +32,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: `${SITE.url}/finance-tools`,
-    title: "Finance Calculators - 40 Free Online Finance Tools | BeYourTools",
+    title: "Finance Calculators - Free Online Tools | BeYourTools",
     description:
       "40 free browser-based finance calculators for business, loans, debt, savings, tax, and more. Everything runs privately in your browser.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "Finance Tools" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Finance Calculators - Free Online Finance Tools | BeYourTools",
+    title: "Finance Calculators - Free Online Tools | BeYourTools",
     description: "40 free finance calculators - loans, margins, savings, debt, ROI, taxes and more.",
     site: "@beyourtools",
     images: [`${SITE.url}/og-default.png`],

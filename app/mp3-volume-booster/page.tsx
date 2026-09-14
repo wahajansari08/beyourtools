@@ -4,7 +4,7 @@ import VolumeBoosterClient from "./VolumeBoosterClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "MP3 Volume Booster - Increase MP3 Volume Online Free | BeYourTools",
+  title: "MP3 Volume Booster - Boost Audio Volume | BeYourTools",
   description: "Boost the volume of your MP3 file online for free. Choose a gain preset or set a custom level. Preview and download. Browser-based, no upload.",
   keywords: "mp3 volume booster, increase mp3 volume, boost audio volume online, mp3 louder, volume increaser",
   path: "/mp3-volume-booster",
