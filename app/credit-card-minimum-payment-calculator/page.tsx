@@ -4,8 +4,8 @@ import MinPaymentClient from "./MinPaymentClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Credit Card Minimum Payment Calculator - True Cost of Paying Minimums | BeYourTools",
-  description: "See the shocking true cost of only making minimum payments on your credit card, how many years it takes and how much interest you pay in total. Free, browser-based.",
+  title: "Credit Card Minimum Payment Calculator | BeYourTools",
+  description: "See the true cost of making minimum payments on your credit card. Calculate payoff time and total interest in your browser.",
   keywords: "credit card minimum payment calculator, minimum payment interest, how long to pay off credit card minimums, credit card cost",
   path: "/credit-card-minimum-payment-calculator",
 });

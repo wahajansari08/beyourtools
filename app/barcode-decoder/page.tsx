@@ -6,7 +6,7 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Barcode Decoder - Read Barcodes from Images Free | BeYourTools",
+  title: "Barcode Decoder - Read Barcodes from Images | BeYourTools",
   description:
     "Upload a barcode image and decode it instantly. Supports Code 128, Code 39, EAN-13, EAN-8, UPC-A, ITF and more. Free, private, browser-based.",
   keywords: "barcode decoder, read barcode from image, barcode reader online, decode barcode, barcode image decoder",
@@ -66,7 +66,7 @@ export default function BarcodeDecoderPage() {
         <BarcodeDecoderClient />
 
         <section className="mt-12 space-y-3">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>How to use</h2>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>How to Decode Barcodes from Images</h2>
           <ol className="space-y-2 text-sm" style={{ color: "var(--text-muted)" }}>
             <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>1.</span> Drag and drop a barcode image, or click to browse for a file.</li>
             <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>2.</span> The decoder automatically detects the barcode format and reads its value.</li>

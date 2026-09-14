@@ -55,6 +55,7 @@ export const batch1: BlogPost[] = [
   {
     slug: "image-formats-explained-jpg-png-webp-avif",
     title: "Image Formats Explained: JPG vs PNG vs WebP vs AVIF",
+    seoTitle: "Image Formats: JPG, PNG, WebP & AVIF",
     excerpt: "Choosing the wrong image format can double your page load time. A practical guide to picking the right format for every situation.",
     author: "BeYourTools Team",
     publishedAt: "2026-07-22",

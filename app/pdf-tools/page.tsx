@@ -6,14 +6,14 @@ import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical
 import Btn from "@/components/Btn";
 
 export const metadata: Metadata = {
-  title: "PDF Tools - Free Online PDF Editor, Converter & Compressor | BeYourTools",
+  title: "PDF Tools - Free Online PDF Editor & Tools | BeYourTools",
   description: "Free browser-based PDF tools. Merge, split, compress, rotate, watermark, protect, convert PDF to JPG/PNG/text - no upload, no sign-up, 100% private.",
   keywords: "merge PDF, split PDF, compress PDF, PDF to JPG, PDF to text, PDF watermark, protect PDF, free PDF tools, online PDF editor",
   alternates: { canonical: `${SITE.url}/pdf-tools` },
   robots: { index: true, follow: true },
   openGraph: {
     type: "website", url: `${SITE.url}/pdf-tools`,
-    title: "PDF Tools - Free Online PDF Editor, Converter & Compressor",
+    title: "PDF Tools - Free Online PDF Editor & Tools | BeYourTools",
     description: "30 PDF tools in your browser - merge, split, compress, convert and more. No upload required.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "PDF Tools" }],
   },

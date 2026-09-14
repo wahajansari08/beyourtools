@@ -4,8 +4,8 @@ import RevenueGrowthClient from "./RevenueGrowthClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Revenue Growth Calculator - Growth Rate, Projected Revenue & CAGR | BeYourTools",
-  description: "Calculate revenue growth rate between two periods, project future revenue at a given growth rate, or find CAGR between a start and end revenue. Free, browser-based.",
+  title: "Revenue Growth Calculator - Growth & CAGR | BeYourTools",
+  description: "Calculate revenue growth rates, project future revenue, and find CAGR between periods. Free business calculator in your browser.",
   keywords: "revenue growth calculator, revenue growth rate, CAGR calculator, projected revenue, YoY growth, compound annual growth rate",
   path: "/revenue-growth-calculator",
 });

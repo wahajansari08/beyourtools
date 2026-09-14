@@ -61,7 +61,7 @@ const CAT_META: Record<
 > = {
   "Converters": {
     description:
-      "Free online audio converters. Convert MP3, WAV, FLAC, M4A, OGG, and AAC files between formats. Extract MP3 audio from MP4 video. All processing happens in your browser.",
+      "Free online audio converters. Convert MP3, WAV, FLAC, M4A, OGG, and AAC files between formats. All processing happens in your browser.",
     intro:
       "These converters let you change audio file formats without any upload or installation. Whether you need a WAV for editing, an MP3 for compatibility, or audio extracted from a video, these tools handle it in seconds.",
     faqs: [
@@ -89,7 +89,7 @@ const CAT_META: Record<
   },
   "Cutters & Trimmers": {
     description:
-      "Free online audio cutter and trimmer tools. Cut MP3 and audio files to any length, trim silence or unwanted sections from the start or end. No upload needed.",
+      "Free online audio cutter and trimmer tools. Cut MP3 and audio files to any length, trim silence, or extract segments in your browser.",
     intro:
       "These tools let you cut, trim, and clip audio files directly in your browser. Select a precise start and end point, trim dead air from your recordings, or extract a specific segment without any software.",
     faqs: [
@@ -145,7 +145,7 @@ const CAT_META: Record<
   },
   "Mergers": {
     description:
-      "Free online audio merger and joiner tools. Merge multiple MP3 files into one, join audio files of any format. All merging runs in your browser with no upload.",
+      "Free online audio merger and joiner tools. Merge multiple MP3 files into one or join different audio formats privately in your browser.",
     intro:
       "Combine multiple audio files into a single output without any software. Useful for joining podcast segments, stitching music tracks, or combining voice recordings.",
     faqs: [
@@ -173,7 +173,7 @@ const CAT_META: Record<
   },
   "Effects & Processing": {
     description:
-      "Free online audio effects and processing tools. Boost MP3 volume, normalise audio levels, change playback speed, and remove silence. All processing is client-side.",
+      "Free online audio tools. Boost MP3 volume, normalize audio levels, change playback speed, and remove silence. 100% private in your browser.",
     intro:
       "Enhance, correct, and transform audio files with these processing tools. All operations run entirely in your browser, so your audio never leaves your device.",
     faqs: [
@@ -243,7 +243,7 @@ export async function generateMetadata({
   const catTools = audioByCategory(cat);
 
   return {
-    title: `${cat} - Free Online Audio ${cat} | BeYourTools`,
+    title: `${cat} Audio Tools Online | BeYourTools`,
     description: m.description,
     keywords: catTools
       .map((t) => t.name)

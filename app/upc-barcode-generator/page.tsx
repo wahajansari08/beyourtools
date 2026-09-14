@@ -6,7 +6,7 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "UPC Barcode Generator - Create UPC-A Barcodes Free | BeYourTools",
+  title: "UPC Barcode Generator - Create UPC-A Free | BeYourTools",
   description:
     "Generate valid UPC-A barcodes with automatic check digit calculation. Enter 11 digits and get a complete 12-digit UPC-A barcode. Download PNG or SVG.",
   keywords: "UPC barcode generator, UPC-A barcode, create UPC barcode, UPC check digit, free UPC generator",
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: `${SITE.url}/upc-barcode-generator`,
-    title: "UPC Barcode Generator - Create UPC-A Barcodes Free | BeYourTools",
+    title: "UPC Barcode Generator - Free Online | BeYourTools",
     description: "Generate UPC-A barcodes with automatic check digit calculation. Free and browser-based.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "UPC Barcode Generator" }],
   },
@@ -66,7 +66,7 @@ export default function UPCGeneratorPage() {
         <UPCGeneratorClient />
 
         <section className="mt-12 space-y-3">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>How to use</h2>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>How to Generate UPC Barcodes</h2>
           <ol className="space-y-2 text-sm" style={{ color: "var(--text-muted)" }}>
             <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>1.</span> Enter your 11-digit UPC number (the check digit will be calculated for you).</li>
             <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>2.</span> Or disable auto-check and enter the full 12-digit code to validate it.</li>

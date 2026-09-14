@@ -43,6 +43,7 @@ export const batch2: BlogPost[] = [
   {
     slug: "jwt-explained-what-developers-need-to-know",
     title: "JWTs Explained: What Every Developer Needs to Know",
+    seoTitle: "JWTs Explained: Complete Developer Guide",
     excerpt: "JSON Web Tokens are everywhere - authentication, API keys, session management. How they work, how to read them, and common security mistakes.",
     author: "BeYourTools Team",
     publishedAt: "2026-08-19",

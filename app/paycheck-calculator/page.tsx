@@ -4,8 +4,8 @@ import PaycheckClient from "./PaycheckClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Paycheck Calculator - Estimate Take-Home Pay After Tax | BeYourTools",
-  description: "Estimate your take-home pay after federal and state income tax, Social Security, Medicare, 401(k), and health insurance deductions. Free US paycheck calculator.",
+  title: "Paycheck Calculator - Take-Home Pay | BeYourTools",
+  description: "Estimate take-home pay after federal and state taxes, Social Security, Medicare, and deductions. Free paycheck calculator.",
   keywords: "paycheck calculator, take home pay calculator, net pay calculator, after tax pay, FICA calculator, salary after tax",
   path: "/paycheck-calculator",
 });

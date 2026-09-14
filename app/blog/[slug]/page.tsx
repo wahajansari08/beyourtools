@@ -18,8 +18,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return { title: "Not Found" };
   const url = canonical(`/blog/${post.slug}`);
   const image = `${SITE.url}/og-default.png`;
+  const title = `${post.seoTitle || post.title} | BeYourTools`;
   return {
-    title: `${post.title} | BeYourTools`,
+    title,
     description: post.excerpt,
     keywords: post.tags.join(", "),
     alternates: { canonical: url },

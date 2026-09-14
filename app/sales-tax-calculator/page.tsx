@@ -4,8 +4,8 @@ import SalesTaxClient from "./SalesTaxClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Sales Tax Calculator - Add or Remove Sales Tax from Any Price | BeYourTools",
-  description: "Add sales tax to a pre-tax price or remove tax from a tax-inclusive total. Supports any tax rate. Includes quick presets for US states and VAT rates. Free, instant.",
+  title: "Sales Tax Calculator - Add or Remove Tax | BeYourTools",
+  description: "Add sales tax to a price or remove tax from a total. Includes presets for US states and VAT rates. Free tool in your browser.",
   keywords: "sales tax calculator, add sales tax, remove sales tax, tax inclusive price, VAT calculator, price with tax",
   path: "/sales-tax-calculator",
 });
