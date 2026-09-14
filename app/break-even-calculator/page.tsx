@@ -4,8 +4,8 @@ import BreakEvenClient from "./BreakEvenClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Break-Even Calculator - Units & Revenue to Break Even | BeYourTools",
-  description: "Calculate your break-even point in units and revenue. Enter fixed costs, selling price, and variable cost per unit. Optionally find units needed for a target profit.",
+  title: "Break-Even Calculator - Units & Revenue | BeYourTools",
+  description: "Calculate your break-even point in units and revenue. Enter fixed costs, price, and variable costs to plan profitability instantly.",
   keywords: "break even calculator, break even point, fixed costs, variable costs, contribution margin, break even analysis",
   path: "/break-even-calculator",
 });

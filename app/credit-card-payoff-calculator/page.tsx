@@ -4,8 +4,8 @@ import CreditCardPayoffClient from "./CreditCardPayoffClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Credit Card Payoff Calculator - Time & Interest to Pay Off Card | BeYourTools",
-  description: "Find out how long it takes to pay off your credit card balance and total interest paid at a fixed monthly payment. Free, instant, browser-based credit card payoff calculator.",
+  title: "Credit Card Payoff Calculator - Free Tool | BeYourTools",
+  description: "Find out how long it takes to pay off your credit card balance and total interest paid at a fixed monthly payment in your browser.",
   keywords: "credit card payoff calculator, credit card interest calculator, pay off credit card, credit card debt, APR calculator",
   path: "/credit-card-payoff-calculator",
 });

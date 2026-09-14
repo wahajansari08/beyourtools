@@ -4,6 +4,7 @@ export const batch9: BlogPost[] = [
   {
     slug: "image-formats-comparison-2026",
     title: "Image Format Comparison 2026: Which Should You Use?",
+    seoTitle: "Image Format Comparison: Which to Use",
     excerpt: "With JPG, PNG, WebP, AVIF, and SVG all available, which format should you actually use? A practical, no-nonsense comparison.",
     author: "BeYourTools Team",
     publishedAt: "2028-02-16",
@@ -53,6 +54,7 @@ export const batch9: BlogPost[] = [
   {
     slug: "free-pdf-tools-vs-adobe-acrobat",
     title: "Free PDF Tools vs Adobe Acrobat: An Honest Comparison",
+    seoTitle: "Free PDF Tools vs Adobe Acrobat Guide",
     excerpt: "Adobe Acrobat costs hundreds per year. Here's an honest look at what free browser-based tools can and genuinely cannot do.",
     author: "BeYourTools Team",
     publishedAt: "2028-04-27",

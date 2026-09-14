@@ -4,8 +4,8 @@ import HourlyRateClient from "./HourlyRateClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Hourly Rate Calculator - Minimum Rate to Meet Your Income Goal | BeYourTools",
-  description: "Calculate the minimum hourly rate needed to reach your annual income goal, with overhead and profit buffers built in. Ideal for freelancers, consultants, and contractors.",
+  title: "Hourly Rate Calculator - Income Goal Rate | BeYourTools",
+  description: "Calculate the minimum hourly rate needed to reach your annual income goal with overhead and profit buffers built in. Free and browser-based.",
   keywords: "hourly rate calculator, minimum hourly rate, income goal calculator, consultant rate, contractor rate, freelance pricing",
   path: "/hourly-rate-calculator",
 });

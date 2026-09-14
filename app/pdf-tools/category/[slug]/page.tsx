@@ -84,7 +84,7 @@ const CAT_META: Record<
   },
   "Edit & Organize": {
     description:
-      "Free online PDF editor and organiser tools. Merge, split, rotate, reorder, watermark, and compress PDF files. All editing runs in your browser with no upload.",
+      "Free online PDF editor and organiser tools. Merge, split, rotate, reorder, watermark, and compress PDF files privately in your browser.",
     intro:
       "Organise and modify PDF files without any desktop software. Combine multiple PDFs into one, split a large PDF into parts, rotate pages, add watermarks, and compress for sharing.",
     faqs: [
@@ -210,7 +210,7 @@ export async function generateMetadata({
   const catTools = pdfToolsByCategory(cat);
 
   return {
-    title: `PDF ${cat} Tools - Free Online PDF ${cat} | BeYourTools`,
+    title: `PDF ${cat} Tools Online | BeYourTools`,
     description: m.description,
     keywords: catTools
       .map((t) => t.name)

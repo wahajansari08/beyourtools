@@ -4,8 +4,8 @@ import AprClient from "./AprClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "APR Calculator - True Annual Percentage Rate Including Fees | BeYourTools",
-  description: "Calculate the true APR of a loan including origination fees, points, and closing costs. Compare loans accurately by their real annual cost. Free, browser-based.",
+  title: "APR Calculator - True Loan APR with Fees | BeYourTools",
+  description: "Calculate the true APR of a loan including origination fees, points, and closing costs. Compare real loan costs in your browser.",
   keywords: "APR calculator, annual percentage rate, loan APR, true cost of loan, mortgage APR, origination fee APR",
   path: "/apr-calculator",
 });

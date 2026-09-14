@@ -4,8 +4,8 @@ import PayRaiseClient from "./PayRaiseClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Pay Raise Calculator - Annual & Per-Paycheck Raise Amount | BeYourTools",
-  description: "Calculate how much a pay raise is worth annually, monthly, and per paycheck. Enter by percentage, dollar amount, or new salary. Free, instant, browser-based.",
+  title: "Pay Raise Calculator - Salary & Hourly | BeYourTools",
+  description: "Calculate how much a pay raise is worth annually, monthly, and per paycheck. Free salary increase calculator in your browser.",
   keywords: "pay raise calculator, salary increase calculator, raise percentage, new salary, paycheck increase",
   path: "/pay-raise-calculator",
 });

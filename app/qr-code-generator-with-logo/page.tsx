@@ -6,9 +6,9 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "QR Code Generator with Logo - Add Logo to QR Code Free | BeYourTools",
+  title: "QR Code Generator with Logo - Custom Logo | BeYourTools",
   description:
-    "Generate QR codes for URLs, text, WiFi, email, phone and vCard - then overlay a custom or social media logo. Choose from Instagram, Facebook, YouTube, TikTok and more. Free, browser-based, no upload.",
+    "Generate custom QR codes for URLs, WiFi, or text with social logos like Instagram & YouTube. Free, instant, and 100% browser-based.",
   keywords:
     "QR code generator with logo, QR code with logo, custom QR code logo, QR code with image, branded QR code, social media QR code",
   alternates: { canonical: `${SITE.url}/qr-code-generator-with-logo` },
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: `${SITE.url}/qr-code-generator-with-logo`,
-    title: "QR Code Generator with Logo - Add Logo to QR Code Free | BeYourTools",
+    title: "QR Code Generator with Logo - Add Logo | BeYourTools",
     description:
       "Create branded QR codes with a custom or social media logo. URL, WiFi, vCard and more. Browser-based, no upload.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "QR Code Generator with Logo" }],
@@ -72,7 +72,7 @@ const schemas = [
   softwareApplicationSchema({
     name: "QR Code Generator with Logo",
     description:
-      "Free browser-based QR code generator with custom logo overlay. Supports URL, WiFi, vCard, email, phone and text. Upload a custom logo or choose a social media icon.",
+      "Free browser-based QR code generator with logo overlay. Supports URL, WiFi, vCard, email, phone, and text in your browser.",
     url: canonical("/qr-code-generator-with-logo"),
     category: "UtilitiesApplication",
   }),

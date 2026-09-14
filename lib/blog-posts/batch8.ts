@@ -4,6 +4,7 @@ export const batch8: BlogPost[] = [
   {
     slug: "base64-encode-decode-guide",
     title: "Base64 Encoding and Decoding: A Developer's Reference",
+    seoTitle: "Base64 Encoding & Decoding Guide",
     excerpt: "Base64 appears in authentication headers, data URLs, email attachments, and API tokens. Here's exactly what it is and how to use it.",
     author: "BeYourTools Team",
     publishedAt: "2027-05-12",
@@ -48,6 +49,7 @@ export const batch8: BlogPost[] = [
   {
     slug: "jpg-to-webp-migration-guide",
     title: "JPG to WebP Migration: A Step-by-Step Guide for Websites",
+    seoTitle: "JPG to WebP Migration Step-by-Step",
     excerpt: "Migrating from JPG to WebP is one of the highest-impact performance improvements available. Here's how to do it systematically.",
     author: "BeYourTools Team",
     publishedAt: "2028-05-11",

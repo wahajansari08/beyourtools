@@ -4,7 +4,7 @@ import SimpleConvertClient from "@/components/audio/SimpleConvertClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "WAV to MP3 Converter - Compress WAV to MP3 Free Online | BeYourTools",
+  title: "WAV to MP3 Converter - Compress Audio Free | BeYourTools",
   description: "Convert WAV audio to MP3 online for free. Choose bitrate, reduce file size, and download instantly. Browser-based, no upload.",
   keywords: "wav to mp3, convert wav to mp3, wav to mp3 online, wav to mp3 converter free, compress wav",
   path: "/wav-to-mp3",
