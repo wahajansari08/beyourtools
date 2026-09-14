@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "JSON Editor - BeYourTools",
+  title: "JSON Editor Online - Edit & Validate JSON | BeYourTools",
   description: "Edit JSON directly and see a live, structured preview update as you type.",
   keywords: "json editor, online json editor, json tree view, format json",
   path: "/json-editor",

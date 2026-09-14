@@ -4,20 +4,20 @@ import JsonLd from "@/components/JsonLd";
 import { SITE, breadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy - BeYourTools",
+  title: "Privacy Policy - Data Security & Privacy | BeYourTools",
   description: "BeYourTools privacy policy. All tool processing happens locally in your browser - files and data are never uploaded to our servers.",
   alternates: { canonical: `${SITE.url}/privacy-policy` },
   robots: { index: true, follow: true },
   openGraph: {
     type: "website",
     url: `${SITE.url}/privacy-policy`,
-    title: "Privacy Policy - BeYourTools",
+    title: "Privacy Policy - Data Security & Privacy | BeYourTools",
     description: "All tool processing happens locally in your browser. Files are never uploaded.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "Privacy Policy" }],
   },
   twitter: {
     card: "summary",
-    title: "Privacy Policy - BeYourTools",
+    title: "Privacy Policy - Data Security & Privacy | BeYourTools",
     description: "All tool processing is local. Files are never uploaded.",
     site: "@beyourtools",
   },

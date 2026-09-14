@@ -4,11 +4,11 @@ import JsonLd from "@/components/JsonLd";
 import { SITE, breadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Cookie Policy - BeYourTools",
+  title: "Cookie Policy & Tracking Preferences | BeYourTools",
   description: "BeYourTools Cookie Policy. Learn which cookies we use, why, and how to control them.",
   alternates: { canonical: `${SITE.url}/cookie-policy` },
   openGraph: {
-    title: "Cookie Policy - BeYourTools",
+    title: "Cookie Policy & Tracking Preferences | BeYourTools",
     description: "BeYourTools Cookie Policy. Learn which cookies we use, why, and how to control them.",
     url: `${SITE.url}/cookie-policy`,
     type: "website",
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cookie Policy - BeYourTools",
+    title: "Cookie Policy & Tracking Preferences | BeYourTools",
     description: "BeYourTools Cookie Policy. Learn which cookies we use, why, and how to control them.",
     images: [`${SITE.url}/og-default.png`],
   },

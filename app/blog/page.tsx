@@ -19,24 +19,32 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   const requestedPage = Number.parseInt(params.page ?? "1", 10);
   const currentPage = Number.isFinite(requestedPage) && requestedPage > 1 ? requestedPage : 1;
   const url = currentPage === 1 ? `${SITE.url}/blog` : `${SITE.url}/blog?page=${currentPage}`;
+  const title =
+    currentPage > 1
+      ? `Blog (Page ${currentPage}) - Free Guides on JSON, Images, Audio, Video & PDF | BeYourTools`
+      : "Blog - Free Guides on JSON, Images, Audio, Video & PDF | BeYourTools";
+  const ogTitle = currentPage > 1 ? `${BLOG_TITLE} - Page ${currentPage}` : BLOG_TITLE;
+
+  const description =
+    currentPage > 1 ? `${BLOG_DESCRIPTION} Page ${currentPage}.` : BLOG_DESCRIPTION;
 
   return {
-    title: "Blog - Free Guides on JSON, Images, Audio, Video & PDF | BeYourTools",
-    description: BLOG_DESCRIPTION,
+    title,
+    description,
     keywords: "JSON tutorial, image converter guide, PDF tools guide, audio tools guide, developer blog, web development tips",
     alternates: { canonical: url },
     robots: { index: true, follow: true },
     openGraph: {
       type: "website",
       url,
-      title: BLOG_TITLE,
-      description: BLOG_DESCRIPTION,
+      title: ogTitle,
+      description,
       images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "BeYourTools Blog" }],
     },
     twitter: {
       card: "summary_large_image",
-      title: "BeYourTools Blog - Free Developer Guides",
-      description: BLOG_DESCRIPTION,
+      title: ogTitle,
+      description,
       site: "@beyourtools",
       images: [`${SITE.url}/og-default.png`],
     },
@@ -101,7 +109,7 @@ export default async function BlogPage({ searchParams }: Props) {
         {/* Header */}
         <div className="mb-10">
           <h1 className="font-display text-3xl font-semibold sm:text-4xl" style={{ color: "var(--text-primary)" }}>
-            Blog
+            {currentPage > 1 ? `Blog (Page ${currentPage})` : "Blog"}
           </h1>
           <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
             {totalPosts} articles on JSON, images, PDFs, and developer productivity.

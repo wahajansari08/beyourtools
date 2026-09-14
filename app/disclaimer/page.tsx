@@ -4,11 +4,11 @@ import JsonLd from "@/components/JsonLd";
 import { SITE, breadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Disclaimer - BeYourTools",
+  title: "Disclaimer & Terms of Service | BeYourTools",
   description: "BeYourTools disclaimer. Information about limitations of our tools and accuracy of content.",
   alternates: { canonical: `${SITE.url}/disclaimer` },
   openGraph: {
-    title: "Disclaimer - BeYourTools",
+    title: "Disclaimer & Terms of Service | BeYourTools",
     description: "BeYourTools disclaimer. Information about limitations of our tools and accuracy of content.",
     url: `${SITE.url}/disclaimer`,
     type: "website",
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Disclaimer - BeYourTools",
+    title: "Disclaimer & Terms of Service | BeYourTools",
     description: "BeYourTools disclaimer. Information about limitations of our tools and accuracy of content.",
     images: [`${SITE.url}/og-default.png`],
   },
