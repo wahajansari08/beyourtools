@@ -6,15 +6,15 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "EAN-13 Barcode Generator - Create EAN Barcodes Free | BeYourTools",
+  title: "EAN-13 Barcode Generator - Create EAN Barcodes | BeYourTools",
   description:
-    "Generate EAN-13 and EAN-8 barcodes with automatic check digit calculation. Enter your digits, get a valid barcode instantly. Download PNG or SVG - free and browser-based.",
+    "Generate EAN-13 and EAN-8 barcodes with automatic check digits. Enter your digits and download PNG or SVG. 100% free and browser-based.",
   keywords: "EAN-13 barcode generator, EAN barcode, EAN-8 generator, create EAN barcode, EAN check digit, free EAN generator",
   alternates: { canonical: `${SITE.url}/ean-barcode-generator` },
   openGraph: {
     type: "website",
     url: `${SITE.url}/ean-barcode-generator`,
-    title: "EAN-13 Barcode Generator - Create EAN Barcodes Free | BeYourTools",
+    title: "EAN Barcode Generator - Free Online | BeYourTools",
     description: "Generate EAN-13 and EAN-8 barcodes with check digit validation. Free and browser-based.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "EAN Barcode Generator" }],
   },
@@ -67,7 +67,7 @@ export default function EANGeneratorPage() {
         <EANGeneratorClient />
 
         <section className="mt-12 space-y-3">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>How to use</h2>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>How to Generate EAN Barcodes</h2>
           <ol className="space-y-2 text-sm" style={{ color: "var(--text-muted)" }}>
             <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>1.</span> Choose EAN-13 or EAN-8 using the toggle.</li>
             <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>2.</span> Enter your digits (12 for EAN-13, 7 for EAN-8 with auto check digit).</li>

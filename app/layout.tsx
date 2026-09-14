@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description:
-    "200+ free browser-based tools - JSON formatter, image converter, PDF editor, audio tools, video tools, QR code generator and more. No upload, no sign-up.",
+    "200+ free browser-based developer and utility tools: JSON, image converter, PDF, audio, video, and QR codes. Fast, private, no sign-up.",
   keywords:
     "free online tools, JSON formatter, image converter, PDF tools, audio converter, mp3 converter, video compressor, QR code generator, barcode generator",
   authors: [{ name: "BeYourTools", url: SITE.url }],

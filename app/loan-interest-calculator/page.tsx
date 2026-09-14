@@ -4,8 +4,8 @@ import LoanInterestClient from "./LoanInterestClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Loan Interest Calculator - Total Interest Paid on Any Loan | BeYourTools",
-  description: "Find out the total interest you'll pay over the life of any loan. Enter principal, interest rate, and term to see total interest, monthly payment, and interest as a percentage of the loan.",
+  title: "Loan Interest Calculator - Total Interest | BeYourTools",
+  description: "Find out the total interest you will pay over the life of any loan. Calculate payments and interest ratios in your browser.",
   keywords: "loan interest calculator, total interest paid, loan cost calculator, interest on loan, how much interest on a loan",
   path: "/loan-interest-calculator",
 });

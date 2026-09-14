@@ -4,8 +4,8 @@ import NetProfitClient from "./NetProfitClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Net Profit Calculator - Net Income & Net Margin % | BeYourTools",
-  description: "Calculate net profit and net profit margin after deducting COGS, operating expenses, interest, and taxes from revenue. Includes gross and operating profit breakdown.",
+  title: "Net Profit Calculator - Margin & Profit | BeYourTools",
+  description: "Calculate net profit and net profit margin after deducting COGS, operating expenses, interest, and taxes. Free tool in your browser.",
   keywords: "net profit calculator, net income calculator, net margin, bottom line, profit after tax, net profit formula",
   path: "/net-profit-calculator",
 });

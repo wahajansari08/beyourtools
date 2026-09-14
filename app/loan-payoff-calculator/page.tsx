@@ -4,8 +4,8 @@ import LoanPayoffClient from "./LoanPayoffClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Loan Payoff Calculator - Time to Pay Off Loan at Current Payment | BeYourTools",
-  description: "See how long it takes to pay off your loan balance at your current monthly payment, and how much total interest you'll pay. Free, instant, browser-based.",
+  title: "Loan Payoff Calculator - Payoff Time | BeYourTools",
+  description: "See how long it takes to pay off your loan balance at your current payment, and how much total interest you will pay in your browser.",
   keywords: "loan payoff calculator, how long to pay off loan, loan payoff time, remaining loan balance, total interest paid",
   path: "/loan-payoff-calculator",
 });

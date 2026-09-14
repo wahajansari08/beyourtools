@@ -4,8 +4,8 @@ import FreelanceRateClient from "./FreelanceRateClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Freelance Rate Calculator - Minimum Hourly Rate for Freelancers | BeYourTools",
-  description: "Calculate the minimum hourly freelance rate you need to charge to hit your income goal after taxes, business expenses, and non-billable time. Free, browser-based.",
+  title: "Freelance Rate Calculator - Hourly Rate | BeYourTools",
+  description: "Calculate the minimum hourly freelance rate needed to reach your income goal after taxes, expenses, and billable hours in your browser.",
   keywords: "freelance rate calculator, freelancer hourly rate, self employed rate, minimum hourly rate, freelance pricing, contractor rate",
   path: "/freelance-rate-calculator",
 });

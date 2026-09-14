@@ -4,8 +4,8 @@ import ProfitMarginClient from "./ProfitMarginClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Profit Margin Calculator - Gross, Operating & Net Margin | BeYourTools",
-  description: "Calculate gross, operating, or net profit margin instantly. Enter revenue and costs to see your margin percentage and profit amount. Free, browser-based, no sign-up.",
+  title: "Profit Margin Calculator - Gross & Net | BeYourTools",
+  description: "Calculate gross, operating, or net profit margin instantly. Enter revenue and costs to see margin percentages in your browser.",
   keywords: "profit margin calculator, gross margin calculator, net margin calculator, operating margin, profit percentage",
   path: "/profit-margin-calculator",
 });

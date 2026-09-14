@@ -4,8 +4,8 @@ import DebtPayoffClient from "./DebtPayoffClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Debt Payoff Calculator - Time & Total Interest for Multiple Debts | BeYourTools",
-  description: "Calculate how long it takes to pay off multiple debts and the total interest cost at your current payments. Add extra monthly payments to see the impact. Free, browser-based.",
+  title: "Debt Payoff Calculator - Time & Interest | BeYourTools",
+  description: "Calculate how long it takes to pay off multiple debts and total interest. Add extra payments to see your debt-free date faster.",
   keywords: "debt payoff calculator, multiple debt calculator, pay off debt, total interest, debt free calculator, debt elimination",
   path: "/debt-payoff-calculator",
 });

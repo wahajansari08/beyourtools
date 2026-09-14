@@ -4,8 +4,8 @@ import SavingsClient from "./SavingsClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Savings Calculator - Compound Savings Growth Projector | BeYourTools",
-  description: "Project how your savings grow with an initial deposit, regular contributions, and compound interest over any time period. Shows year-by-year breakdown. Free, browser-based.",
+  title: "Savings Calculator - Compound Growth | BeYourTools",
+  description: "Project how your savings grow with regular deposits and compound interest. See year-by-year growth projections in your browser.",
   keywords: "savings calculator, compound interest calculator, savings growth calculator, future value calculator, investment savings calculator",
   path: "/savings-calculator",
 });

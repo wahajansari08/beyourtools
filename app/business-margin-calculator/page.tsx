@@ -4,8 +4,8 @@ import BusinessMarginClient from "./BusinessMarginClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Business Margin Calculator - Gross, Operating & Net Margins Side-by-Side | BeYourTools",
-  description: "Compare gross, operating, and net profit margins in one view. Enter all revenue and cost figures to get a complete profitability picture for your business.",
+  title: "Business Margin Calculator - Gross & Net | BeYourTools",
+  description: "Compare gross, operating, and net profit margins in one view. Enter revenue and cost figures for a complete profitability analysis.",
   keywords: "business margin calculator, gross margin, operating margin, net margin, profitability calculator, margin comparison",
   path: "/business-margin-calculator",
 });

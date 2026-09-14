@@ -4,7 +4,7 @@ import AudioConverterClient from "./AudioConverterClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Audio Converter - Convert Between Audio Formats Free | BeYourTools",
+  title: "Audio Converter - Convert Audio Formats Free | BeYourTools",
   description: "Convert audio files between MP3, WAV, OGG, FLAC, M4A and Opus formats online for free. Browser-based, no upload, instant download.",
   keywords: "audio converter, convert audio online, mp3 to wav, wav to ogg, flac converter, audio format converter",
   path: "/audio-converter",

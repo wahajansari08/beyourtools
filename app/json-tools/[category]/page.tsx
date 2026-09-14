@@ -223,7 +223,7 @@ export async function generateMetadata({
   const m = CAT_META[cat];
 
   return {
-    title: `${cat} JSON Tools - Free Online ${cat} Tools | BeYourTools`,
+    title: `${cat} JSON Tools Online | BeYourTools`,
     description: m.description,
     keywords: catTools
       .map((t) => t.name)

@@ -4,8 +4,8 @@ import PriceAfterDiscountClient from "./PriceAfterDiscountClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Price After Discount Calculator - Final Price with Discount & Tax | BeYourTools",
-  description: "Find the final price after applying a percentage discount, with optional sales tax added after the discount. Quick preset buttons for common discount percentages.",
+  title: "Price After Discount Calculator - Deals | BeYourTools",
+  description: "Find the final price after applying a discount percentage, with optional sales tax. Free sale price calculator in your browser.",
   keywords: "price after discount calculator, final price calculator, discount and tax calculator, sale price calculator, percent off calculator",
   path: "/price-after-discount-calculator",
 });

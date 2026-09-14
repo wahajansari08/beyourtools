@@ -4,8 +4,8 @@ import SimpleInterestClient from "./SimpleInterestClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Simple Interest Calculator - I = PRT Formula | BeYourTools",
-  description: "Calculate simple interest earned or owed using the I = PRT formula. Supports years, months, or days. Shows interest amount and total value. Free, browser-based.",
+  title: "Simple Interest Calculator - Interest | BeYourTools",
+  description: "Calculate simple interest earned or owed using the I = PRT formula for years, months, or days. Free tool in your browser.",
   keywords: "simple interest calculator, I=PRT calculator, simple interest formula, principal rate time, interest calculation",
   path: "/simple-interest-calculator",
 });

@@ -4,8 +4,8 @@ import SpeedChangerClient from "./SpeedChangerClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Change Audio Speed - Speed Up or Slow Down Audio Free | BeYourTools",
-  description: "Change the speed of any audio file online for free. Speed up or slow down MP3, WAV, FLAC and more. Export a new audio file at the selected speed. Browser-based.",
+  title: "Change Audio Speed - Speed Up & Slow Down | BeYourTools",
+  description: "Change the speed of any audio file online for free. Speed up or slow down MP3, WAV, FLAC and more. Export instantly in your browser.",
   keywords: "change audio speed, speed up audio online, slow down audio, audio speed changer, mp3 speed changer, change playback speed",
   path: "/change-audio-speed",
 });
