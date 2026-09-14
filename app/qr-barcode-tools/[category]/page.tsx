@@ -50,7 +50,7 @@ const CAT_META: Record<
 > = {
   "QR Tools": {
     description:
-      "Free online QR code generator, scanner, and decoder. Create QR codes for URLs, WiFi, contact cards, and more. Scan and decode QR codes from images. No upload required.",
+      "Free online QR code generator, scanner, and decoder. Create QR codes for URLs, WiFi, and contacts, or scan from images. No upload required.",
     intro:
       "Generate QR codes for any purpose, scan them live with your camera, or upload an image to decode it. Every tool runs entirely in your browser with no files sent to a server.",
     faqs: [
@@ -70,7 +70,7 @@ const CAT_META: Record<
           "Yes. The QR Code Decoder accepts image files (JPG, PNG, WebP) and decodes the QR code content. This is useful when you have a screenshot or photo of a QR code you want to read without a phone.",
       },
       {
-        question: "What QR code error correction level should I use?",
+        question: "What error correction level should I choose?",
         answer:
           "Higher error correction levels (Q or H) allow the QR code to be scanned even if up to 25-30% of it is damaged or obscured. Use level H if you plan to add a logo. Use level L or M for clean codes where file size matters.",
       },
@@ -78,7 +78,7 @@ const CAT_META: Record<
   },
   "Barcode Tools": {
     description:
-      "Free online barcode generator, scanner, and decoder. Generate Code 128, EAN-13, UPC-A, and more barcode formats. Scan and decode barcodes from images. Browser-based.",
+      "Free online barcode generator, scanner, and decoder. Generate Code 128, EAN, and UPC barcodes or decode from images. 100% browser-based.",
     intro:
       "Generate industry-standard barcodes for products, inventory, and logistics, or scan and decode barcodes from images and your device camera. All tools run entirely in your browser.",
     faqs: [

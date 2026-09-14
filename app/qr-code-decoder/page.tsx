@@ -6,7 +6,7 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "QR Code Decoder - Read QR Codes from Images Free | BeYourTools",
+  title: "QR Code Decoder - Read QR Codes from Images | BeYourTools",
   description:
     "Upload a QR code image and decode its content instantly - URL, text, WiFi, vCard and more. Works with PNG, JPG and WebP. Free, private, browser-based.",
   keywords: "QR code decoder, read QR code from image, QR code reader online, decode QR code, QR image decoder",
@@ -66,7 +66,7 @@ export default function QRDecoderPage() {
         <QRDecoderClient />
 
         <section className="mt-12 space-y-3">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>How to use</h2>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>How to Decode QR Codes from Images</h2>
           <ol className="space-y-2 text-sm" style={{ color: "var(--text-muted)" }}>
             <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>1.</span> Drag and drop a QR code image onto the upload area, or click to browse.</li>
             <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--teal)" }}>2.</span> The decoder reads the QR code automatically.</li>

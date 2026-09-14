@@ -4,6 +4,7 @@ export const batch10: BlogPost[] = [
   {
     slug: "svg-scalable-vector-guide",
     title: "SVG Images: The Complete Guide to Scalable Vector Graphics",
+    seoTitle: "SVG Images: The Complete Guide",
     excerpt: "SVG files stay crisp at any size, making them perfect for logos and icons. Learn when to use SVG and how to work with it across different formats.",
     author: "BeYourTools Team",
     publishedAt: "2027-04-07",
@@ -48,6 +49,7 @@ export const batch10: BlogPost[] = [
   {
     slug: "developer-tools-productivity-guide",
     title: "10 Online Tools That Save Developers Hours Every Week",
+    seoTitle: "10 Online Developer Tools to Save Time",
     excerpt: "The right tools eliminate tedious manual work. Here are 10 browser-based tools that developers reach for every day.",
     author: "BeYourTools Team",
     publishedAt: "2028-06-08",

@@ -44,8 +44,8 @@ export async function generateMetadata({
   const targets = routes.map((r) => getFormat(r.to)?.label ?? r.to.toUpperCase()).join(", ");
 
   return {
-    title: `${fmt.label} Image Converter - Convert ${fmt.label} to ${routes.slice(0, 4).map((r) => getFormat(r.to)?.label ?? r.to.toUpperCase()).join(", ")} and More | BeYourTools`,
-    description: `Free online ${fmt.label} image converter. Convert ${fmt.label} files to ${targets}. All conversions run in your browser with no upload required.`,
+    title: `${fmt.label} Image Converter - Free Online | BeYourTools`,
+    description: `Free online ${fmt.label} converter. Convert ${fmt.label} to JPG, PNG, WebP, SVG and more in your browser. Fast, private, no upload.`,
     keywords: routes
       .map((r) => `${fmt.label} to ${getFormat(r.to)?.label ?? r.to.toUpperCase()}`)
       .concat([`${fmt.label} converter`, "image converter", "free online", "browser-based"])

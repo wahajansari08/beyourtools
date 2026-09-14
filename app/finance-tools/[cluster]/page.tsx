@@ -100,23 +100,23 @@ export async function generateMetadata({
     .join(", ");
 
   const titles: Record<FinanceCluster, string> = {
-    "Business Finance":    "Business Finance Calculators - Margins, Markup & Break-Even",
-    "Salary & Income":     "Salary & Income Calculators - Hourly, Paycheck & Freelance Rate",
-    "Loans":               "Loan Calculators - Payment, Amortization & Payoff",
-    "Debt & Credit":       "Debt & Credit Calculators - Snowball, Avalanche & Credit Card Payoff",
-    "Savings & Interest":  "Savings & Interest Calculators - APY, APR & Compound Growth",
-    "Tax & Pricing":       "Tax & Pricing Calculators - Sales Tax, Discounts & Price Tools",
-    "Marketing & ROI":     "Marketing & ROI Calculators - ROI, ROAS & Revenue Growth",
+    "Business Finance":    "Business Finance Calculators - Margins",
+    "Salary & Income":     "Salary & Income Calculators - Paycheck",
+    "Loans":               "Loan Calculators - Payment & Payoff",
+    "Debt & Credit":       "Debt & Credit Calculators - Payoff",
+    "Savings & Interest":  "Savings & Interest Calculators - Growth",
+    "Tax & Pricing":       "Tax & Pricing Calculators - Sales Tax",
+    "Marketing & ROI":     "Marketing & ROI Calculators - Ad Spend",
   };
 
   const descriptions: Record<FinanceCluster, string> = {
-    "Business Finance":    `${tools.length} free business finance calculators for profit margin, markup, break-even analysis, gross profit, net profit, and operating margin.`,
-    "Salary & Income":     `${tools.length} free salary and income calculators - convert hourly to salary, calculate overtime, estimate your paycheck, and set a fair freelance rate.`,
-    "Loans":               `${tools.length} free loan calculators - monthly payments, total interest, full amortization schedule, and the savings from extra payments.`,
-    "Debt & Credit":       `${tools.length} free debt calculators - debt snowball, debt avalanche, credit card payoff, minimum payment cost, and debt-to-income ratio.`,
-    "Savings & Interest":  `${tools.length} free savings calculators - project compound savings growth, find your required monthly contribution, and convert APR to APY.`,
-    "Tax & Pricing":       `${tools.length} free tax and pricing calculators - add or remove sales tax, calculate discounted prices, and work with tax-inclusive or exclusive amounts.`,
-    "Marketing & ROI":     `${tools.length} free marketing calculators - ROI, ROAS, net cash flow, and revenue growth rate for campaigns and business performance.`,
+    "Business Finance":    `${tools.length} free business finance calculators for profit margins, markup, break-even analysis, gross and net profit. 100% private.`,
+    "Salary & Income":     `${tools.length} free salary & income calculators: hourly to salary, overtime pay, paycheck take-home, and freelance rates. No sign-up.`,
+    "Loans":               `${tools.length} free loan calculators for monthly payments, total interest, amortization schedules, and extra payment savings.`,
+    "Debt & Credit":       `${tools.length} free debt calculators: debt snowball, debt avalanche, credit card payoff, minimum payments, and DTI ratio.`,
+    "Savings & Interest":  `${tools.length} free savings calculators to project compound interest growth, required savings, and APR to APY conversions.`,
+    "Tax & Pricing":       `${tools.length} free tax & pricing calculators to add or remove sales tax, calculate discounts, and tax-inclusive prices.`,
+    "Marketing & ROI":     `${tools.length} free marketing calculators: ROI, ROAS, net cash flow, and revenue growth rates for campaigns and business.`,
   };
 
   return {

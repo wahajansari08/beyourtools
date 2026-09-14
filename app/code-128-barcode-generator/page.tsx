@@ -6,7 +6,7 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Code 128 Barcode Generator - Create Barcodes Online | BeYourTools",
+  title: "Code 128 Barcode Generator - Online Free | BeYourTools",
   description:
     "Generate Code 128 barcodes from any printable text. Supports full ASCII, adjustable size and downloadable as PNG or SVG - free and browser-based.",
   keywords: "Code 128 barcode generator, code128 barcode, create Code 128, free barcode generator, ASCII barcode",

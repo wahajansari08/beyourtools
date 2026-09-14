@@ -4,7 +4,7 @@ import SimpleConvertClient from "@/components/audio/SimpleConvertClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "OGG to MP3 Converter - Convert OGG Vorbis to MP3 Free | BeYourTools",
+  title: "OGG to MP3 Converter - Free Online | BeYourTools",
   description: "Convert OGG Vorbis audio files to MP3 online for free. Browser-based conversion, no upload, selectable bitrate.",
   keywords: "ogg to mp3, convert ogg to mp3, ogg vorbis to mp3, ogg mp3 converter online",
   path: "/ogg-to-mp3",

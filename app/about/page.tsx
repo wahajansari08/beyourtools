@@ -5,7 +5,7 @@ import { SITE, breadcrumbSchema, organizationSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "About BeYourTools - Free Browser-Based Online Tools",
-  description: "Learn about BeYourTools - our mission, client-side technology, and why we built 290+ free browser-based tools for JSON, images, PDFs, video, audio, QR codes, and finance.",
+  description: "Learn about BeYourTools: our mission, client-side technology, and 290+ free browser tools for JSON, images, PDFs, audio, video, and finance.",
   alternates: { canonical: `${SITE.url}/about` },
   robots: { index: true, follow: true },
   openGraph: {
@@ -60,10 +60,10 @@ export default function AboutPage() {
           <section>
             <h2>Our Mission &amp; Vision</h2>
             <p>
-              In today&apos;s digital ecosystem, performing simple daily tasks-such as formatting a JSON payload, converting an image, compressing a PDF, or trimming an audio clip-often comes with frustrating barriers: forced account sign-ups, subscription paywalls, intrusive tracking, and privacy risks from uploading sensitive files to unknown remote servers.
+              Daily tasks like converting images, compressing PDFs, or formatting JSON should be fast and simple. Yet most sites force you to create accounts, pay subscriptions, or upload private files to remote servers.
             </p>
             <p>
-              <strong>BeYourTools</strong> was created to eliminate these barriers entirely. We believe essential productivity and utility tools should be <em>universally accessible, instant, and privacy-preserving by default</em>. By harnessing modern browser standards, WebAssembly, HTML5 Canvas, and client-side processing, every single computation on our platform runs locally inside your web browser. Your confidential documents, images, code, and financial data never leave your device.
+              <strong>BeYourTools</strong> was created to remove these hurdles. We believe helpful tools should be free, fast, and private by default. By using modern browser technology, WebAssembly, and local processing, every tool runs right on your device. Your documents, photos, code, and finances never leave your hands.
             </p>
           </section>
 
@@ -198,15 +198,15 @@ export default function AboutPage() {
           <section>
             <h2>How Our Technology Works (Client-Side Architecture)</h2>
             <p>
-              Traditional online utility websites upload your files and data to their remote cloud servers, run backend scripts, and send the result back. This architecture introduces bandwidth bottlenecks, server wait times, and severe data privacy vulnerabilities.
+              Most online tools upload your files to remote servers, run scripts, and send files back. This causes delays and puts your privacy at risk.
             </p>
             <p>
-              BeYourTools operates on a <strong>modern client-first paradigm</strong>:
+              BeYourTools works differently by running directly on your device:
             </p>
             <ul>
-              <li><strong>In-Memory Processing:</strong> Data manipulation occurs strictly within your browser&apos;s allocated memory sandbox using JavaScript Web Workers, HTML5 Canvas, and WebAssembly binaries.</li>
-              <li><strong>Zero External Storage:</strong> We do not operate databases to retain your files, text, credentials, or generated outputs. Once you close or reload your browser tab, your data is completely discarded.</li>
-              <li><strong>High Performance:</strong> Since files are processed locally on your device&apos;s CPU and GPU, you experience instant processing without waiting for upload or download transfers.</li>
+              <li><strong>In-Memory Processing:</strong> Tools run inside your browser memory using local Web Workers and WebAssembly.</li>
+              <li><strong>Zero External Storage:</strong> We never store your files, text, or results. When you close the tab, everything is gone.</li>
+              <li><strong>Fast Performance:</strong> Processing files locally uses your device power, so you never wait for slow uploads.</li>
             </ul>
           </section>
 
@@ -233,10 +233,10 @@ export default function AboutPage() {
           <section>
             <h2>Sustainable &amp; Transparent Advertising</h2>
             <p>
-              BeYourTools is free to use worldwide thanks to support from clean, non-intrusive digital advertising. Revenue generated from advertising covers infrastructure maintenance, content delivery network (CDN) bandwidth, and active feature development.
+              BeYourTools is completely free to use thanks to clean, simple ads. Ad revenue pays for our hosting, fast global network, and ongoing tool updates.
             </p>
             <p>
-              We adhere to strict ethical advertising standards:
+              We follow clear ethical advertising rules:
             </p>
             <ul>
               <li>No deceptive &quot;fake download&quot; buttons or misleading advertisements.</li>

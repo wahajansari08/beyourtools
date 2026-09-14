@@ -4,8 +4,8 @@ import TaxInclusiveClient from "./TaxInclusiveClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Tax-Inclusive Price Calculator - Add VAT/GST to Net Price | BeYourTools",
-  description: "Calculate the gross (tax-inclusive) price by adding VAT, GST, or sales tax to a net price. Includes presets for UK VAT (20%), AU GST (10%), and EU VAT rates.",
+  title: "Tax-Inclusive Price Calculator - Add VAT | BeYourTools",
+  description: "Calculate gross price by adding VAT, GST, or sales tax to a net price. Includes presets for UK, AU, and EU rates in your browser.",
   keywords: "tax inclusive price calculator, VAT calculator, GST calculator, add VAT to price, gross price calculator, tax on price",
   path: "/tax-inclusive-price-calculator",
 });

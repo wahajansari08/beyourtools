@@ -4,8 +4,8 @@ import RoiClient from "./RoiClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "ROI Calculator - Return on Investment Percentage & Net Gain | BeYourTools",
-  description: "Calculate return on investment (ROI) percentage, net gain or loss, and annualised ROI for any investment. Free, instant, browser-based ROI calculator.",
+  title: "ROI Calculator - Return on Investment | BeYourTools",
+  description: "Calculate return on investment (ROI) percentage, net gain, and annualised ROI for any investment. Free tool in your browser.",
   keywords: "ROI calculator, return on investment calculator, investment return, net gain calculator, annualised ROI, investment performance",
   path: "/roi-calculator",
 });

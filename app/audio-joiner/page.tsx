@@ -4,7 +4,7 @@ import AudioJoinerClient from "./AudioJoinerClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Audio Joiner - Join Multiple Audio Files Online Free | BeYourTools",
+  title: "Audio Joiner - Join Audio Files Online Free | BeYourTools",
   description: "Join multiple audio files of any format into one. Supports MP3, WAV, FLAC, M4A, OGG. Reorder files and download merged audio. Free, browser-based.",
   keywords: "audio joiner, join audio files online, merge audio files, combine audio online, audio merger free",
   path: "/audio-joiner",

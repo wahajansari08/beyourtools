@@ -4,8 +4,8 @@ import ExtraPaymentClient from "./ExtraPaymentClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Extra Payment Loan Calculator - Interest Saved by Paying Extra | BeYourTools",
-  description: "See how much interest and time you save by making extra monthly payments or a lump-sum payment on your loan. Side-by-side comparison with and without extra payments.",
+  title: "Extra Payment Loan Calculator - Savings | BeYourTools",
+  description: "See how much interest and time you save by making extra monthly payments or a lump-sum payment. Free loan comparison in your browser.",
   keywords: "extra payment loan calculator, overpayment calculator, pay off loan early, interest savings, lump sum loan payment",
   path: "/extra-payment-loan-calculator",
 });

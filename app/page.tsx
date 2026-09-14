@@ -14,7 +14,7 @@ import { websiteSchema, organizationSchema, faqSchema, SITE } from "@/lib/seo";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: "BeYourTools - Free Online Tools for Everyone",
-  description: "200+ free browser-based tools: JSON formatter & validator, image converter, PDF editor, audio tools, video tools, QR code generator and more. No upload, no sign-up.",
+  description: "200+ free browser-based developer and utility tools: JSON, image converter, PDF, audio, video, and QR codes. Fast, private, no sign-up.",
   keywords: "free online tools, JSON formatter, image converter, PDF tools, audio converter, mp3 converter, video compressor, QR code generator, barcode generator",
   alternates: { canonical: SITE.url },
   robots: { index: true, follow: true },

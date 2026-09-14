@@ -4,8 +4,8 @@ import LoanAmortizationClient from "./LoanAmortizationClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Loan Amortization Calculator - Full Month-by-Month Schedule | BeYourTools",
-  description: "Generate a complete month-by-month amortization schedule for any loan. See payment, principal, interest, and remaining balance for every payment. Free, browser-based.",
+  title: "Loan Amortization Calculator - Schedule | BeYourTools",
+  description: "Generate a complete month-by-month amortization schedule for any loan. See principal, interest, and balance breakdown in your browser.",
   keywords: "loan amortization calculator, amortization schedule, mortgage amortization, loan schedule, principal and interest breakdown",
   path: "/loan-amortization-calculator",
 });

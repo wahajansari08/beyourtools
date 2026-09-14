@@ -6,7 +6,7 @@ import { videoByCategory, videoCategories, videoTools, type VideoTool } from "@/
 import Btn from "@/components/Btn";
 
 export const metadata: Metadata = {
-  title: "Video Tools - Free Online Video Editor, Converter & Compressor | BeYourTools",
+  title: "Video Tools - Free Online Editor & Converter | BeYourTools",
   description: "20 free browser-based video tools to compress, cut, trim, convert, resize, crop, merge, create GIFs, extract frames, and edit audio locally.",
   keywords: "video tools, video compressor, video converter, video cutter, video trimmer, mp4 to mp3, video to gif, online video tools",
   alternates: { canonical: `${SITE.url}/video-tools` },
@@ -14,13 +14,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: `${SITE.url}/video-tools`,
-    title: "Video Tools - Free Online Video Editor, Converter & Compressor",
+    title: "Video Tools - Free Online Video Editor | BeYourTools",
     description: "Compress, convert, cut, resize, crop, merge, and process videos locally in your browser.",
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "Video Tools" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Video Tools - Free Online Video Editor & Converter | BeYourTools",
+    title: "Video Tools - Free Online Video Editor | BeYourTools",
     description: "20 free video tools - compress, cut, convert, resize and more. No upload needed.",
     site: "@beyourtools",
     images: [`${SITE.url}/og-default.png`],

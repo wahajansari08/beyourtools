@@ -42,6 +42,7 @@ export const batch3: BlogPost[] = [
   {
     slug: "how-to-reduce-image-file-size",
     title: "How to Reduce Image File Size Without Losing Quality",
+    seoTitle: "How to Reduce Image File Size Easily",
     excerpt: "Large images slow down every page on your site. A systematic guide to compressing images for the web while keeping them looking great.",
     author: "BeYourTools Team",
     publishedAt: "2026-09-09",

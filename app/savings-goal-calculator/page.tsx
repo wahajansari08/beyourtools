@@ -4,8 +4,8 @@ import SavingsGoalClient from "./SavingsGoalClient";
 import { createToolMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createToolMetadata({
-  title: "Savings Goal Calculator - Monthly Savings Needed to Hit Your Target | BeYourTools",
-  description: "Find out exactly how much you need to save each month to reach any savings goal by a target date. Accounts for existing savings and compound interest. Free, browser-based.",
+  title: "Savings Goal Calculator - Target Savings | BeYourTools",
+  description: "Find out how much you need to save each month to reach your savings goal by a target date. Free calculator in your browser.",
   keywords: "savings goal calculator, monthly savings calculator, how much to save, target savings, savings plan calculator, future value calculator",
   path: "/savings-goal-calculator",
 });
