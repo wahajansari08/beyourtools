@@ -75,7 +75,7 @@ export default function QRDecoderPage() {
         </section>
 
         <section className="mt-10 space-y-3">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>FAQ</h2>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>QR Code Decoder Frequently Asked Questions</h2>
           {[
             ["What image formats are supported?", "PNG, JPG, and WebP. The QR code must be clearly visible and not too small or blurry."],
             ["Does this upload my image anywhere?", "No. Decoding is done entirely in your browser. Your images never leave your device."],

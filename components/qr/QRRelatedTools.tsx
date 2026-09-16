@@ -66,7 +66,7 @@ export default function QRRelatedTools({ currentSlug }: { currentSlug: string })
       {related.length > 0 && (
         <div className="mt-12 border-t pt-6" style={{ borderColor: "var(--border)" }}>
           <h2 className="mb-3 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>
-            Related tools
+            Related QR &amp; Barcode Tools
           </h2>
           <div className="flex flex-wrap gap-2">
             {related.map((t) => (

@@ -347,7 +347,7 @@ export default async function JsonCategoryPage({
             className="mb-4 font-display text-base font-semibold"
             style={{ color: "var(--text-primary)" }}
           >
-            All {cat} Tools
+            All {cat} JSON Tools
           </h2>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {catTools.map((tool) => (
@@ -389,7 +389,7 @@ export default async function JsonCategoryPage({
             className="mb-4 font-display text-lg font-semibold"
             style={{ color: "var(--text-primary)" }}
           >
-            Frequently Asked Questions
+            {cat} JSON Frequently Asked Questions
           </h2>
           <div className="space-y-5">
             {m.faqs.map(({ question, answer }) => (

@@ -77,7 +77,7 @@ export default function QRScannerPage() {
         </section>
 
         <section className="mt-10 space-y-3">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>FAQ</h2>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>QR Code Scanner Frequently Asked Questions</h2>
           {[
             ["Why isn't camera scanning working?", "Camera scanning requires HTTPS and a browser that supports getUserMedia (Chrome, Edge, Firefox, Safari). Ensure camera permission is granted."],
             ["Can I switch between front and back camera?", "Yes - if multiple cameras are detected, a selector appears during scanning."],

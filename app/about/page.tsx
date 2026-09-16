@@ -51,7 +51,7 @@ export default function AboutPage() {
             About BeYourTools
           </h1>
           <p className="mt-3 text-base leading-relaxed sm:text-lg" style={{ color: "var(--text-muted)" }}>
-            Fast, private, browser-based online tools for developers, creators, entrepreneurs, and everyday users. Zero file uploads, zero account registration, and zero paywalls.
+            Fast, private, browser-based online tools for everyone. Zero file uploads, zero account sign-ups, and zero paywalls.
           </p>
         </header>
 
@@ -70,7 +70,7 @@ export default function AboutPage() {
           <section>
             <h2>What We Build</h2>
             <p className="mb-4">
-              BeYourTools provides a unified ecosystem of over <strong>290+ specialized tools</strong> organized across seven core suites, all engineered for immediate client-side execution:
+              BeYourTools provides over <strong>290+ free tools</strong> across seven categories, all built to run instantly right in your browser:
             </p>
 
             <div className="grid gap-4 sm:grid-cols-2 not-prose">
@@ -87,7 +87,7 @@ export default function AboutPage() {
                   </div>
                 </div>
                 <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
-                  High-speed JSON formatters, validators, side-by-side diff engines, JSONPath evaluators, JWT token decoders, and converters for CSV, TypeScript, Python, SQL, XML, and YAML with zero server transmission.
+                  Format, validate, and compare JSON data in your browser. Decode JWT tokens and convert JSON to CSV, YAML, Python, and SQL with zero server uploads.
                 </p>
               </div>
 
@@ -104,7 +104,7 @@ export default function AboutPage() {
                   </div>
                 </div>
                 <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
-                  Comprehensive two-way image conversions between JPG, PNG, WebP, AVIF, SVG, ICO, BMP, TIFF, HEIC, and PDF. Features multi-file batch processing, instant previewing, and client-side ZIP packaging.
+                  Convert images between JPG, PNG, WebP, AVIF, SVG, ICO, and PDF. Convert multiple files at once, preview changes instantly, and download as a ZIP file.
                 </p>
               </div>
 
@@ -121,7 +121,7 @@ export default function AboutPage() {
                   </div>
                 </div>
                 <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
-                  Fast and secure PDF management including merge, split, compress, password protect, unlock, rotate, watermark, page reordering, and lossless extraction to text and images without cloud uploads.
+                  Merge, split, and compress PDF files right on your device. Add passwords, rotate pages, or extract text and images without uploading files to any server.
                 </p>
               </div>
 
@@ -138,7 +138,7 @@ export default function AboutPage() {
                   </div>
                 </div>
                 <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
-                  Hardware-accelerated browser video utilities powered by WebAssembly. Compress videos, trim clips, convert formats (MP4, WebM, MOV, MKV), extract audio tracks, generate GIFs, and capture frame thumbnails.
+                  Compress and trim videos right in your browser. Convert MP4, WebM, and MKV files, create animated GIFs, and grab clean video frames.
                 </p>
               </div>
 
@@ -155,7 +155,7 @@ export default function AboutPage() {
                   </div>
                 </div>
                 <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
-                  Comprehensive audio tools including MP3 converters, audio cutters, bit rate compressors, audio mergers, volume boosters, tempo changers, and an in-browser microphone voice recorder.
+                  Cut, join, and compress audio files with ease. Boost volume, convert formats like MP3 and WAV, or record sound right inside your web browser.
                 </p>
               </div>
 
@@ -172,7 +172,7 @@ export default function AboutPage() {
                   </div>
                 </div>
                 <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
-                  Custom QR code generator with embedded logos, WiFi network QR codes, image scanners, and linear retail barcode generators supporting UPC-A, EAN-13, and Code 128 standards.
+                  Make custom QR codes with logos, build WiFi QR codes, scan codes with your camera, and create retail barcodes like UPC-A and Code 128.
                 </p>
               </div>
 
@@ -189,7 +189,7 @@ export default function AboutPage() {
                   </div>
                 </div>
                 <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
-                  Mathematical calculation suites covering loan payments, amortization schedules, gross and net profit margins, savings targets, investment ROI, debt snowball/avalanche strategies, credit card payoff models, and hourly-to-salary wage conversions.
+                  Calculate loan payments, payoff dates, interest, and profit margins. Plan your budget, compare debts, and estimate your take-home paycheck.
                 </p>
               </div>
             </div>
@@ -214,10 +214,10 @@ export default function AboutPage() {
             <h2>Our Core Principles</h2>
             <div className="grid gap-4 sm:grid-cols-2 not-prose">
               {[
-                { icon: "🔒", title: "Privacy by Default", body: "No files or text are transmitted to remote servers. Confidential legal documents, private source code, and images stay strictly on your device." },
-                { icon: "🆓", title: "Free Forever", body: "We are committed to keeping all core tools accessible without paywalls, subscriptions, daily usage limits, or hidden fees." },
-                { icon: "⚡", title: "Frictionless & Instant", body: "No registration, no account logins, and no email collection. Simply open any tool, drop in your data, and export your results immediately." },
-                { icon: "🌍", title: "Cross-Platform & Accessible", body: "Fully responsive across desktop, tablet, and mobile screens. Designed with WCAG accessibility standards and native dark/light theme support." },
+                { icon: "🔒", title: "Private by Default", body: "Your files and text stay on your device. We never send your documents, photos, or code to any cloud server." },
+                { icon: "🆓", title: "Free to Use", body: "All core tools are 100% free. Enjoy full access without paywalls, subscriptions, daily limits, or hidden costs." },
+                { icon: "⚡", title: "Fast and Simple", body: "No account needed. Just open any tool, drop in your files, and download your results in seconds." },
+                { icon: "🌍", title: "Works Everywhere", body: "Use our tools on phones, tablets, and laptops. Enjoy clean layouts with light and dark mode support." },
               ].map(({ icon, title, body }) => (
                 <div key={title} className="rounded-xl border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
                   <div className="mb-2 flex items-center gap-2">
@@ -251,54 +251,44 @@ export default function AboutPage() {
           <section>
             <h2>Engineering Standards &amp; Formula Verification</h2>
             <p>
-              To maintain the highest level of reliability, every utility on BeYourTools is built upon open, audited technical standards and rigorous mathematical verification:
+              We build every tool to follow strict web standards and exact math formulas:
             </p>
             <ul>
-              <li><strong>Data &amp; Code Formats:</strong> JSON formatters, schema generators, and validators adhere strictly to <em>RFC 8259</em> and <em>ECMA-404</em> standards, ensuring 100% interoperability across enterprise backend systems.</li>
-              <li><strong>Document Standards:</strong> PDF engines strictly respect <em>ISO 32000-1</em> specifications, preserving embedded fonts, vector linework, and color profile fidelity.</li>
-              <li><strong>Financial Engines:</strong> Calculators implement verified mathematical models—such as the Newton-Raphson iterative solver for APR calculations conforming with Truth in Lending (Regulation Z) frameworks, standard compound interest annuities, and classical amortization models.</li>
-              <li><strong>Media Processing:</strong> Audio and video tools leverage secure, sandboxed WebAssembly (Wasm) ports of FFmpeg and native HTML5 Media APIs for hardware-accelerated transcoding without external network hops.</li>
+              <li><strong>Data Formats:</strong> Our JSON tools follow official RFC 8259 rules. They format and check code so it works across all modern apps.</li>
+              <li><strong>PDF Documents:</strong> Our PDF tools follow ISO 32000 rules. Your fonts, lines, and layout stay sharp and clean on any device.</li>
+              <li><strong>Finance Math:</strong> Every calculator uses proven math formulas. We test our loan, interest, and tax math against standard banking rules.</li>
+              <li><strong>Media Processing:</strong> Audio and video tools run locally using modern browser WebAssembly. Your media transforms fast without network lag.</li>
             </ul>
           </section>
 
           <section>
             <h2>Editorial Integrity &amp; Quality Guidelines</h2>
             <p>
-              Our guides, documentation, and technical articles are developed with a strong commitment to original analysis, clarity, and practical utility. We do not publish auto-generated placeholder text or deceptive promotional content.
+              We write our guides to give you clear, honest, and practical help. We never use fake filler text or spammy marketing content.
             </p>
             <div className="grid gap-4 sm:grid-cols-2 not-prose">
               <div className="rounded-xl border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
                 <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Technical Precision</h3>
                 <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
-                  Every tutorial and reference guide is reviewed by experienced software engineers to ensure code examples, terminal commands, and architectural advice are accurate and safe for production use.
+                  Our team reviews every guide and tutorial. We make sure all code, steps, and tips are tested and safe for you to use.
                 </p>
               </div>
               <div className="rounded-xl border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
-                <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Ongoing Audits &amp; Updates</h3>
+                <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Regular Updates</h3>
                 <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
-                  We routinely audit our tools, browser compatibility matrices, and financial algorithms against updated web standards and regional regulatory updates.
+                  We review our tools and math formulas often. When browser standards or tax rules change, we update our tools to match.
                 </p>
               </div>
             </div>
           </section>
 
           <section>
-            <h2>Corrections &amp; Community Feedback</h2>
-            <p>
-              We welcome peer review, bug reports, and community contributions. If you discover a discrepancy in any mathematical formula, encounter an unexpected parsing edge-case, or have a suggestion for improving a tool&apos;s interface:
-            </p>
-            <p>
-              Please contact our engineering team via <Link href="/contact" style={{ color: "var(--teal)" }}>our Contact page</Link> or send an email to <a href="mailto:beyourtools@gmail.com" style={{ color: "var(--teal)" }}>beyourtools@gmail.com</a>. We prioritize verified formula reports and deploy corrections within 24 to 48 hours.
-            </p>
-          </section>
-
-          <section>
             <h2>Get in Touch &amp; Feedback</h2>
             <p>
-              We continuously expand and refine our tools based on community requests and developer feedback. If you have suggestions for a new tool, encounter a bug, or would like to partner with us, we would love to hear from you.
+              We love hearing from you! If you find a bug, have an idea for a new tool, or need help with a formula, let us know.
             </p>
             <p>
-              Reach out through our <Link href="/contact" style={{ color: "var(--teal)" }}>Contact Page</Link> or connect with us on social media.
+              Contact our team through our <Link href="/contact" style={{ color: "var(--teal)" }}>Contact Page</Link> or send an email to <a href="mailto:beyourtools@gmail.com" style={{ color: "var(--teal)" }}>beyourtools@gmail.com</a>. We review feedback daily and update tools quickly.
             </p>
           </section>
 

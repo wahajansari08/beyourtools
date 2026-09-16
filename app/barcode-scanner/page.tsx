@@ -105,7 +105,7 @@ export default function BarcodeScannerPage() {
 
         {/* FAQ */}
         <section className="mt-10 space-y-4">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>Frequently Asked Questions</h2>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>Barcode Scanner Frequently Asked Questions</h2>
           {[
             ["Which barcode formats does the live camera scanner detect?", "The scanner identifies Code 128, Code 39, EAN-13, EAN-8, UPC-A, UPC-E, ITF, Data Matrix, Aztec, and PDF417 in real time."],
             ["Do I need to install an iOS or Android app?", "No. The scanner runs directly within your mobile or desktop web browser using HTML5 WebRTC. No app installation or registration is needed."],

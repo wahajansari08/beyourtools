@@ -132,7 +132,7 @@ export default function AudioToolsPage() {
 
         {/* Popular quick links */}
         <div className="mb-10">
-          <h2 className="mb-3 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>Popular</h2>
+          <h2 className="mb-3 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>Popular Audio Tools</h2>
           <div className="flex flex-wrap gap-2">
             {popularTools.map((t) => (
               <Btn variant="pill" key={t.slug} href={`/${t.slug}`}>
@@ -145,7 +145,7 @@ export default function AudioToolsPage() {
         {/* Browse by Category */}
         <div className="mb-12">
           <h2 className="mb-4 font-display text-base font-semibold" style={{ color: "var(--text-primary)" }}>
-            Browse by Category
+            Browse Audio Tools by Category
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
             {audioCategories.map((cat) => {

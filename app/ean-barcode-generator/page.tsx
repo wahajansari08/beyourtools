@@ -105,7 +105,7 @@ export default function EANGeneratorPage() {
 
         {/* FAQ */}
         <section className="mt-10 space-y-4">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>Frequently Asked Questions</h2>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>EAN Barcode Frequently Asked Questions</h2>
           {[
             ["What is the difference between EAN-13 and EAN-8?", "EAN-13 is the standard full 13-digit product barcode. EAN-8 is a specialized compact 8-digit derivative reserved for small packaging items (like chewing gum or cosmetics) with limited physical label surface area."],
             ["Can EAN-13 barcodes be scanned in the United States and Canada?", "Yes. Since 2005 (the GS1 2005 Sunrise initiative), all modern North American point-of-sale barcode scanners and retail checkout systems seamlessly scan and process both 12-digit UPC-A and 13-digit EAN-13 symbols."],

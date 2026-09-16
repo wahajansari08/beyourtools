@@ -263,7 +263,7 @@ export default async function QRBarcodeCategoryPage({
         {/* FAQ */}
         <section className="mt-12" aria-labelledby="faq-heading">
           <h2 id="faq-heading" className="mb-4 font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
-            Frequently Asked Questions
+            {cat} Barcode Frequently Asked Questions
           </h2>
           <div className="space-y-5">
             {m.faqs.map(({ question, answer }) => (

@@ -79,7 +79,7 @@ export default function WiFiQRGeneratorPage() {
         </section>
 
         <section className="mt-10 space-y-3">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>FAQ</h2>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>WiFi QR Code Generator Frequently Asked Questions</h2>
           {[
             ["Does this work on iPhone and Android?", "Yes. iOS 11+ and Android 10+ scan WiFi QR codes with the native camera app."],
             ["Is my password safe?", "Your password never leaves your browser. Nothing is uploaded to a server."],

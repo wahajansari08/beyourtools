@@ -113,7 +113,7 @@ export default function AudioToolPage({
         {/* Supported formats */}
         {formats && formats.length > 0 && (
           <section className="mt-10">
-            <h2 className="mb-2 font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>Supported formats</h2>
+            <h2 className="mb-2 font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>Supported {title} Formats</h2>
             <div className="flex flex-wrap gap-2">
               {formats.map((f) => (
                 <span key={f} className="rounded border px-2 py-0.5 font-mono text-xs"
@@ -154,7 +154,7 @@ export default function AudioToolPage({
 
         {/* FAQ */}
         <section className="mt-10 space-y-4">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>FAQ</h2>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>{title} Frequently Asked Questions</h2>
           {faqs.map(({ question, answer }) => (
             <div key={question}>
               <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>{question}</p>

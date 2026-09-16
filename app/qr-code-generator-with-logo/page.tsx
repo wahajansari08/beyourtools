@@ -162,7 +162,7 @@ export default function QRCodeGeneratorWithLogoPage() {
         {/* Logo support */}
         <section className="mt-10 space-y-3">
           <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
-            Custom and social logo support
+            Custom and Social Logo Support for QR Codes
           </h2>
           <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
             Choose from nine built-in social media brand icons: Instagram, Facebook, YouTube, TikTok, X (Twitter), LinkedIn, WhatsApp, Telegram and GitHub. These are rendered as inline vector graphics in your browser - no external network request is made and no image is loaded from any CDN.
@@ -207,7 +207,7 @@ export default function QRCodeGeneratorWithLogoPage() {
 
         {/* FAQ */}
         <section className="mt-10 space-y-4">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>FAQ</h2>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>QR Code with Logo Frequently Asked Questions</h2>
           {FAQS.map(({ question, answer }) => (
             <div key={question}>
               <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>{question}</p>

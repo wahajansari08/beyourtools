@@ -40,7 +40,7 @@ export default function LimitedTool() {
       >
         <div className="mb-2 flex items-center gap-2">
           <span className="text-lg" aria-hidden="true">⚠️</span>
-          <h2 className="text-sm font-semibold" style={{ color: "var(--accent)" }}>Browser limitation</h2>
+          <p className="text-sm font-semibold" style={{ color: "var(--accent)" }}>Browser limitation</p>
         </div>
         <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{reason}</p>
       </div>

@@ -315,7 +315,7 @@ export default async function ClusterPage({
             className="font-display text-lg font-semibold"
             style={{ color: "var(--text-primary)" }}
           >
-            Frequently Asked Questions
+            {cluster} Calculators Frequently Asked Questions
           </h2>
           <div className="space-y-4">
             {faqs.map(({ question, answer }) => (

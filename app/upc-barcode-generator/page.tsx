@@ -111,7 +111,7 @@ export default function UPCGeneratorPage() {
 
         {/* FAQ */}
         <section className="mt-10 space-y-4">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>Frequently Asked Questions</h2>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>UPC Barcode Frequently Asked Questions</h2>
           {[
             ["What is the difference between UPC-A and EAN-13?", "UPC-A is 12 digits and is primarily used in the United States and Canada. EAN-13 is 13 digits and is standard across the rest of the world. A UPC-A barcode can be converted into an equivalent EAN-13 by prepending a leading zero (0)."],
             ["Can I generate barcodes for commercial products on Amazon or Walmart?", "Yes. However, major commercial retailers require official GS1 company prefixes registered to your brand. Once you receive your numbers from GS1, our generator produces valid print-ready SVG and PNG barcode assets."],

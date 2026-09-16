@@ -98,7 +98,7 @@ export default function ImageConverterHub() {
 
       {/* Popular */}
       <div className="mb-10">
-        <h2 className="mb-3 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>Popular</h2>
+        <h2 className="mb-3 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>Popular Image Converters</h2>
         <div className="flex flex-wrap gap-2">
           {["jpg-to-png","jpg-to-webp","jpg-to-pdf","png-to-jpg","png-to-webp","png-to-svg","webp-to-jpg","webp-to-png","svg-to-png"].map((slug) => {
             const [from,,to] = slug.split("-");

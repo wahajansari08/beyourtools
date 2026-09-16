@@ -160,7 +160,7 @@ export default function BarcodeGeneratorWithLogoPage() {
         {/* Logo section */}
         <section className="mt-10 space-y-3">
           <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
-            Custom and social logo support
+            Custom and Social Logo Support for Barcodes
           </h2>
           <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
             You can overlay any of the following social media brand icons: Instagram, Facebook, YouTube, TikTok, X (Twitter), LinkedIn, WhatsApp, Telegram, and GitHub. These are rendered as inline vector graphics - no external network request is made and no image is loaded from a CDN.
@@ -204,7 +204,7 @@ export default function BarcodeGeneratorWithLogoPage() {
 
         {/* FAQ */}
         <section className="mt-10 space-y-4">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>FAQ</h2>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>Barcode with Logo Frequently Asked Questions</h2>
           {FAQS.map(({ question, answer }) => (
             <div key={question}>
               <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>{question}</p>

@@ -117,6 +117,47 @@ const FORMAT_DESC: Partial<Record<ImageFormat, { intro: string; faqs: { question
       { question: "Why does my converted SVG look slightly different?", answer: "SVG rendering can vary between browsers. The converter uses the browser's SVG engine, so very complex SVGs with custom fonts or filters may render slightly differently from how they appear in a dedicated SVG editor." },
     ],
   },
+  avif: {
+    intro: "AVIF is a modern image format based on AV1 video compression. It gives you the smallest file sizes on the web while keeping images sharp and colorful. Convert AVIF to JPG or PNG for wider device support, or to WebP for fast web delivery.",
+    faqs: [
+      { question: "Why convert AVIF to JPG or PNG?", answer: "AVIF offers great file savings, but some older image viewers, apps, and operating systems cannot open it yet. Converting to JPG or PNG ensures everyone can view your images." },
+      { question: "Is AVIF better than WebP?", answer: "AVIF usually produces smaller file sizes than WebP at high visual quality. However, WebP has slightly wider support across older software tools and email apps." },
+      { question: "Does AVIF support transparency?", answer: "Yes, AVIF fully supports transparent backgrounds. Converting AVIF to PNG or WebP keeps transparency, while converting to JPG adds a solid background." },
+      { question: "Can I convert AVIF to PDF?", answer: "Yes, you can convert AVIF pictures directly into standard PDF files right in your browser for easy document sharing and printing." },
+      { question: "What devices can open AVIF files?", answer: "Modern web browsers like Chrome, Firefox, Safari, and Edge open AVIF files without trouble. If you need to share images with users on older phones or older office tools, converting to JPG or PNG works best." },
+    ],
+  },
+  ico: {
+    intro: "ICO is the standard icon format used for website favicons and desktop shortcuts. Convert ICO files to PNG or SVG to edit them in graphic design apps, or convert photos into ICO format to create your own custom website favicons.",
+    faqs: [
+      { question: "What is an ICO file used for?", answer: "ICO files are mainly used for website favicons (the icon shown in your browser tab) and desktop app icons. They can store multiple icon sizes in a single file." },
+      { question: "Why should I convert ICO to PNG?", answer: "PNG files are easy to view, share, and edit in any graphic design program. Converting your ICO to PNG extracts the clean raster icon so you can use it anywhere." },
+      { question: "Does converting ICO preserve transparency?", answer: "Yes, converting ICO to PNG, WebP, or SVG preserves full transparency so your icon looks clean on any background." },
+      { question: "Can I create a website favicon by converting to ICO?", answer: "Yes. Converting any PNG or JPG image to ICO gives you a standard favicon.ico file that works on all web browsers and website hosts." },
+      { question: "What sizes are stored inside an ICO file?", answer: "A single ICO container often holds icon sizes like 16 by 16, 32 by 32, and 48 by 48 pixels. Converting to PNG lets you pull out each size cleanly for web design and app development." },
+    ],
+  },
+  bmp: {
+    intro: "BMP is an uncompressed raster image format originally created for Windows. It stores raw pixel data, making files large. Convert BMP to JPG, PNG, or WebP to reduce file size by up to 90% without losing visible clarity.",
+    faqs: [
+      { question: "Why are BMP files so large?", answer: "BMP files do not use modern compression, so every pixel is stored raw. Converting to PNG or JPG reduces file size dramatically." },
+      { question: "What is the best format to convert BMP to?", answer: "PNG is best if you want exact lossless quality. JPG is best if you want the smallest file size for photos and web sharing." },
+    ],
+  },
+  tiff: {
+    intro: "TIFF is a high-resolution format used in professional photography, publishing, and scanning. Convert TIFF files to JPG or WebP for web use, or to PDF for multi-page documents.",
+    faqs: [
+      { question: "Why should I convert TIFF to JPG or PNG?", answer: "TIFF files are often too large for web pages and emails. Converting to JPG or PNG makes them easy to view and share on any device." },
+      { question: "Can I convert multi-page TIFF files?", answer: "Our converter processes your TIFF pages directly in your browser without uploading your files to any remote server." },
+    ],
+  },
+  heic: {
+    intro: "HEIC is the default photo format used by modern iPhones and iPads. It saves space on Apple devices, but many Windows PCs and web tools cannot open it. Convert HEIC to JPG or PNG for universal compatibility.",
+    faqs: [
+      { question: "Why can't I open HEIC photos on Windows?", answer: "Windows often requires extra codecs to open HEIC files. Converting your iPhone photos to standard JPG makes them open instantly on all devices." },
+      { question: "Does converting HEIC to JPG reduce photo quality?", answer: "Our converter uses high-quality settings to keep your photos looking clear and sharp with virtually no visible difference." },
+    ],
+  },
 };
 
 const DEFAULT_META = {
@@ -276,24 +317,35 @@ export default async function ImageFormatPage({
         {/* Technical Profile & Conversion Workflows */}
         <section className="mt-12 space-y-4 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
           <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
-            About the {fmt.label} Image Format & Conversion Workflows
+            About {fmt.label} Files &amp; Conversion Workflows
           </h2>
           <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-            The <strong style={{ color: "var(--text-primary)" }}>{fmt.label}</strong> standard (supporting extensions {fmt.extensions.map((e) => `.${e}`).join(", ")}) is engineered for specific performance and fidelity profiles. 
-            Depending on your delivery medium-whether optimizing landing pages for faster mobile page loads, preparing vector assets for high-DPI retina displays, or sending attachments across legacy enterprise email servers-converting your {fmt.label} files into an appropriate target container provides immense efficiency gains.
+            The <strong style={{ color: "var(--text-primary)" }}>{fmt.label}</strong> format ({fmt.extensions.map((e) => `.${e}`).join(", ")}) is built for specific image uses.
+            Whether you want faster websites, smaller email attachments, or crisp graphics, converting your {fmt.label} files helps you get the best quality and file size.
           </p>
           <div className="grid gap-4 sm:grid-cols-2 text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
             <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
-              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>High-Speed Local Processing</h3>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Private Local Processing</h3>
               <p>
-                Every conversion on this platform runs natively in your client environment through hardware-accelerated OffscreenCanvas and WebAssembly compilation. 
-                Your {fmt.label} source imagery remains securely within your device&apos;s browser memory-completely avoiding cloud upload latency, bandwidth consumption, and third-party data tracking.
+                Every conversion runs directly inside your browser using local device memory. Your photos never travel to remote servers, keeping your work fast and completely private.
               </p>
             </div>
             <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
-              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Multi-Format Versatility</h3>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Flexible Output Options</h3>
               <p>
-                With {routes.length} available output paths directly accessible from this {fmt.label} hub, you can seamlessly convert single or batch assets into modern web formats (WebP, AVIF), universal standard rasters (PNG, JPG), document archives (PDF), or desktop icons (ICO) in a single click.
+                Choose from {routes.length} different output formats. Convert your images to modern formats like WebP or AVIF, standard PNG or JPG files, or PDF documents in seconds.
+              </p>
+            </div>
+            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>True Image Quality</h3>
+              <p>
+                When converting between formats, our tool keeps pixel dimensions and color data true to your original picture without adding blur or compression artifacts.
+              </p>
+            </div>
+            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Quick Batch Downloads</h3>
+              <p>
+                Save time by processing whole folders of images at once. Download your finished files one by one or get them all together in a single tidy ZIP archive.
               </p>
             </div>
           </div>
@@ -302,7 +354,7 @@ export default async function ImageFormatPage({
         {/* FAQ */}
         <section className="mt-12" aria-labelledby="faq-heading">
           <h2 id="faq-heading" className="mb-4 font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
-            Frequently Asked Questions
+            {fmt.label} Converter Frequently Asked Questions
           </h2>
           <div className="space-y-5">
             {faqs.map(({ question, answer }) => (
@@ -312,15 +364,15 @@ export default async function ImageFormatPage({
               </div>
             ))}
             <div>
-              <p className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>Can I convert multiple {fmt.label} files simultaneously?</p>
+              <p className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>Can I convert several {fmt.label} files at once?</p>
               <p className="mt-1 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-                Yes. Our tool features concurrent multi-worker processing. You can select multiple {fmt.label} files at once; the engine processes up to three files concurrently and provides instant download links for individual files or a merged ZIP archive.
+                Yes. You can choose several {fmt.label} files at the same time. The tool converts up to three files at once and lets you download them one by one or together in a ZIP file.
               </p>
             </div>
             <div>
-              <p className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>Are my personal photos or sensitive {fmt.label} documents stored?</p>
+              <p className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>Are my photos or {fmt.label} files saved anywhere?</p>
               <p className="mt-1 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-                No. Because all conversion logic executes client-side via JavaScript Canvas and WebAssembly, zero bytes of your imagery ever leave your computer or phone. Your data is deleted from memory as soon as you close or reload the browser tab.
+                No. All image work takes place directly in your web browser. Your files never leave your computer or phone. All data clears out of memory as soon as you close the page.
               </p>
             </div>
           </div>

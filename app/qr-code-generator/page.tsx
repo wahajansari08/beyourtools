@@ -147,7 +147,7 @@ export default function QRCodeGeneratorPage() {
 
         {/* FAQ */}
         <section className="mt-10 space-y-4">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>FAQ</h2>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>QR Code Generator Frequently Asked Questions</h2>
           {[
             ["Is this QR code generator really free?", "Yes - no sign-up, no watermarks, unlimited usage."],
             ["Can I print the generated QR code?", "Yes. Download the SVG version for best print quality at any size."],

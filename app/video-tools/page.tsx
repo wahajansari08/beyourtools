@@ -103,7 +103,7 @@ export default function VideoToolsPage() {
         </div>
 
         <div className="mb-10">
-          <h2 className="mb-3 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>Popular</h2>
+          <h2 className="mb-3 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>Popular Video Tools</h2>
           <div className="flex flex-wrap gap-2">
             {popularTools.map((tool) => (
               <Btn variant="pill" key={tool.slug} href={`/${tool.slug}`}>
@@ -116,7 +116,7 @@ export default function VideoToolsPage() {
         {/* Browse by Category */}
         <div className="mb-12">
           <h2 className="mb-4 font-display text-base font-semibold" style={{ color: "var(--text-primary)" }}>
-            Browse by Category
+            Browse Video Tools by Category
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {videoCategories.map((cat) => {

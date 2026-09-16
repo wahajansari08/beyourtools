@@ -533,9 +533,9 @@ export default function QRWithLogoClient() {
           {/* Logo section */}
           <div className="rounded-xl border p-5 space-y-4"
             style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
-            <h2 className="text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>
-              Logo overlay
-            </h2>
+            <h3 className="text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>
+              QR Code Logo Overlay
+            </h3>
 
             {/* Source selector */}
             <div className="flex flex-wrap gap-2">
@@ -637,9 +637,9 @@ export default function QRWithLogoClient() {
         {/* ── Right: preview ──────────────────────────────────────────────── */}
         <div className="space-y-4">
           <div className="sticky top-4">
-            <h2 className="mb-3 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>
+            <h3 className="mb-3 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>
               Preview
-            </h2>
+            </h3>
             <div className="flex min-h-[280px] items-center justify-center rounded-xl border p-4"
               style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
               {hasResult && pngUrl ? (

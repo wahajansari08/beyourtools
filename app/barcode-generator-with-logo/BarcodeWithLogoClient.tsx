@@ -465,9 +465,9 @@ export default function BarcodeWithLogoClient() {
           {/* Logo section */}
           <div className="rounded-xl border p-5 space-y-4"
             style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
-            <h2 className="text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>
-              Logo overlay
-            </h2>
+            <h3 className="text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>
+              Barcode Logo Overlay
+            </h3>
 
             {/* Source selector */}
             <div className="flex flex-wrap gap-2">

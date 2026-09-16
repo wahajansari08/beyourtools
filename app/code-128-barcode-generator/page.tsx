@@ -97,7 +97,7 @@ export default function Code128Page() {
         {/* FAQ */}
         <section className="mt-10 space-y-4">
           <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
-            Frequently Asked Questions
+            Code 128 Barcode Frequently Asked Questions
           </h2>
           <div className="space-y-3">
             {[

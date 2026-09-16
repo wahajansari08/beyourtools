@@ -115,7 +115,7 @@ export default function VideoToolPage({ tool }: { tool: VideoTool }) {
         </section>
 
         <section className="mt-10 space-y-4">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>FAQ</h2>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>{tool.name} Frequently Asked Questions</h2>
           {tool.faqs.map((faq) => (
             <div key={faq.question}>
               <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>{faq.question}</p>

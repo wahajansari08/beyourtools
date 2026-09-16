@@ -222,7 +222,7 @@ export default async function Page({ params }: Props) {
 
         {/* FAQ */}
         <section className="mt-10 space-y-3">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>Frequently Asked Questions</h2>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>{from.label} to {to.label} Frequently Asked Questions</h2>
           <dl className="space-y-4">
             {faqs.map((faq) => (
               <div key={faq.question}>

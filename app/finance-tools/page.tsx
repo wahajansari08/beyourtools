@@ -242,7 +242,7 @@ export default function FinanceToolsPage() {
             className="mb-4 font-display text-base font-semibold"
             style={{ color: "var(--text-primary)" }}
           >
-            Browse by Category
+            Browse Finance Tools by Category
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {financeClusters.map((cluster) => {

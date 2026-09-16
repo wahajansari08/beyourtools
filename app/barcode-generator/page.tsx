@@ -77,7 +77,7 @@ export default function BarcodeGeneratorPage() {
         </section>
 
         <section className="mt-10 space-y-3">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>Supported formats</h2>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>Supported Barcode Formats</h2>
           <div className="grid gap-2 sm:grid-cols-2">
             {[
               ["Code 128", "Full ASCII, variable length. Widely used in shipping and logistics."],
@@ -127,7 +127,7 @@ export default function BarcodeGeneratorPage() {
 
         {/* FAQ */}
         <section className="mt-10 space-y-4">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>Frequently Asked Questions</h2>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>Barcode Generator Frequently Asked Questions</h2>
           {[
             ["Which barcode format should I choose for retail products?", "For North American retail, use UPC-A (12 digits). For international retail outside North America, use EAN-13. Both are recognized globally by modern POS systems."],
             ["Which barcode is best for inventory, warehousing, and shipping?", "Code 128 is the industry gold standard for logistics and internal tracking because it encodes full ASCII text, numbers, and symbols in a compact footprint."],

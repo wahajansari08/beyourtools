@@ -103,7 +103,7 @@ export default function BarcodeDecoderPage() {
 
         {/* FAQ */}
         <section className="mt-10 space-y-4">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>Frequently Asked Questions</h2>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>Barcode Decoder Frequently Asked Questions</h2>
           {[
             ["Which barcode formats can be decoded from images?", "The decoder automatically scans for Code 128, Code 39, EAN-13, EAN-8, UPC-A, UPC-E, ITF, Data Matrix, Aztec, and PDF417 formats without manual configuration."],
             ["Why wasn't my barcode recognized?", "Ensure the barcode is well-lit, sharp, and has adequate quiet zones (clear margins) around the bars. Blurry, low-resolution, or heavily skewed photos may require re-taking the photo closer to the symbol."],
