@@ -48,9 +48,9 @@ export default function LimitedTool() {
       {/* Alternatives */}
       {alts.length > 0 && (
         <div className="rounded-lg border p-5" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
-          <h3 className="mb-3 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>
             Free alternatives for {name}
-          </h3>
+          </p>
           <ul className="space-y-2">
             {alts.map((alt) => (
               <li key={alt.url}>
@@ -75,9 +75,9 @@ export default function LimitedTool() {
 
       {/* What we CAN do */}
       <div className="rounded-lg border p-5" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
-        <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>
+        <p className="mb-2 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>
           What you can do here instead
-        </h3>
+        </p>
         <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
           Try <strong style={{ color: "var(--text-secondary)" }}>PDF to Text</strong> or{" "}
           <strong style={{ color: "var(--text-secondary)" }}>PDF to JSON</strong> to extract

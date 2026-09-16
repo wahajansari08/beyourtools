@@ -1,8 +1,43 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SITE } from "@/lib/seo";
+import { SITE, faqSchema } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
 import ContactForm from "./ContactForm";
+
+const CONTACT_FAQS = [
+  {
+    question: "How quickly does the BeYourTools team respond?",
+    answer: "We aim to reply to all messages within 2 to 3 business days. Security reports and broken tool notices receive top priority."
+  },
+  {
+    question: "How can I submit an effective bug report?",
+    answer: "Share the tool name, your browser brand and version, and any error message shown on your screen. Describing the steps to reproduce the issue helps us fix bugs much faster."
+  },
+  {
+    question: "Can I suggest a new browser tool or format?",
+    answer: "Yes, we welcome tool ideas. Tell us the input formats you want to convert, your desired output format, and how the tool will help your workflow."
+  },
+  {
+    question: "Does BeYourTools log or store my contact message?",
+    answer: "We only use your name and email to answer your inquiry. We never sell your contact details or use them for marketing newsletters without your consent."
+  },
+  {
+    question: "What should I do if a tool fails to process my file?",
+    answer: "First, check that your file is not password protected or corrupted. Try refreshing your browser tab or disabling browser extensions that block WebAssembly scripts."
+  },
+  {
+    question: "Why does BeYourTools run tools directly in the browser?",
+    answer: "Processing files locally ensures your photos, PDFs, and private documents never leave your computer. This gives you maximum speed, zero upload wait times, and complete data privacy."
+  },
+  {
+    question: "How do I report a security issue or privacy concern?",
+    answer: "If you notice a security flaw or unexpected data behavior, email us directly with the subject Security Report. We investigate all security notices within 24 hours."
+  },
+  {
+    question: "Can I use BeYourTools without an internet connection?",
+    answer: "Most tools require an internet connection to load the initial page assets. Once loaded into your browser tab, tools process your files locally in device memory without needing ongoing network access."
+  }
+];
 
 export const metadata: Metadata = {
   title: "Contact Us - Support & Feedback | BeYourTools",
@@ -37,7 +72,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <JsonLd data={schema} />
+      <JsonLd data={[schema, faqSchema(CONTACT_FAQS)]} />
       <div className="mx-auto w-full max-w-2xl px-4 py-10 sm:px-6 sm:py-14">
         <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-1.5 text-xs" style={{ color: "var(--text-subtle)" }}>
           <Link href="/" className="focus-ring rounded hover-text-primary" style={{ color: "var(--text-muted)" }}>BeYourTools</Link>
@@ -160,6 +195,86 @@ export default function ContactPage() {
             </Link>.
           </p>
         </div>
+
+        {/* Support Channels & Scope */}
+        <section className="mt-10 space-y-4 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+          <h2 className="font-display text-base font-semibold" style={{ color: "var(--text-primary)" }}>
+            Support Channels &amp; Inquiry Scope
+          </h2>
+          <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            Whether you are reporting a technical issue or proposing a fresh idea, here is how we can help:
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2 text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Bug Reports</h3>
+              <p>
+                If a tool does not work as expected in your browser, tell us your device type and operating system. Letting us know which browser you use helps us fix issues quickly.
+              </p>
+            </div>
+            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Feature Requests</h3>
+              <p>
+                We build new tools based on user feedback. If you need a specific file converter, audio tool, or finance calculator, let us know what you need.
+              </p>
+            </div>
+            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Partnerships &amp; Media</h3>
+              <p>
+                For press inquiries, educational use, or collaboration requests, reach out via our email address. We review every note personally.
+              </p>
+            </div>
+            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Privacy &amp; Security</h3>
+              <p>
+                We take security seriously. If you find a security bug or have data concerns, email us right away so our team can resolve it promptly.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Response Times */}
+        <section className="mt-8 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+          <h2 className="font-display text-base font-semibold" style={{ color: "var(--text-primary)" }}>
+            Response Times &amp; Support Hours
+          </h2>
+          <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            Our small team reads every message carefully. We reply from Monday through Friday during regular business hours. Most inquiries receive a response within 2 to 3 business days. Complex bug investigations may take a little longer while we test different browser versions.
+          </p>
+        </section>
+
+        {/* Troubleshooting Tips */}
+        <section className="mt-8 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+          <h2 className="font-display text-base font-semibold" style={{ color: "var(--text-primary)" }}>
+            Troubleshooting Quick Tips
+          </h2>
+          <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            Before submitting a support request, try these quick steps:
+          </p>
+          <ul className="mt-3 space-y-2 text-xs leading-relaxed list-disc pl-5" style={{ color: "var(--text-muted)" }}>
+            <li>
+              <strong style={{ color: "var(--text-secondary)" }}>Reload your page:</strong> Hard reload your browser tab by pressing <kbd className="rounded border px-1 py-0.5" style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)" }}>Ctrl + F5</kbd> or <kbd className="rounded border px-1 py-0.5" style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)" }}>Cmd + Shift + R</kbd>.
+            </li>
+            <li>
+              <strong style={{ color: "var(--text-secondary)" }}>Check file integrity:</strong> Make sure your input file opens normally on your computer and is not password protected or corrupted.
+            </li>
+            <li>
+              <strong style={{ color: "var(--text-secondary)" }}>Try an Incognito window:</strong> Browser extensions like aggressive ad blockers can sometimes block WebAssembly scripts needed for image and video editing.
+            </li>
+          </ul>
+        </section>
+
+        {/* FAQ */}
+        <section className="mt-10 space-y-4">
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+            Contact Support Frequently Asked Questions
+          </h2>
+          {CONTACT_FAQS.map(({ question, answer }) => (
+            <div key={question}>
+              <p className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>{question}</p>
+              <p className="mt-1 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{answer}</p>
+            </div>
+          ))}
+        </section>
       </div>
     </>
   );

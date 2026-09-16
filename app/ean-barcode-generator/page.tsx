@@ -6,7 +6,7 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "EAN-13 Barcode Generator - Create EAN Barcodes | BeYourTools",
+  title: "EAN-13 Barcode Generator - Free Online | BeYourTools",
   description:
     "Generate EAN-13 and EAN-8 barcodes with automatic check digits. Enter your digits and download PNG or SVG. 100% free and browser-based.",
   keywords: "EAN-13 barcode generator, EAN barcode, EAN-8 generator, create EAN barcode, EAN check digit, free EAN generator",

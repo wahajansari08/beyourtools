@@ -6,7 +6,7 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Barcode Generator with Logo - Add Custom Logo | BeYourTools",
+  title: "Barcode Generator with Logo - Free Tool | BeYourTools",
   description:
     "Generate Code 128, EAN & UPC barcodes with a custom or social logo. Free, private, and runs in your browser with no upload required.",
   keywords:

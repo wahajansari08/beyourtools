@@ -91,24 +91,22 @@ export default function VideoToolPage({ tool }: { tool: VideoTool }) {
         {/* Video Standards & Performance Guide */}
         <section className="mt-10 space-y-4 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
           <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
-            Video Encoding Standards &amp; Web Optimization Guide
+            Video Standards &amp; Simple Playback Guide
           </h2>
           <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-            Video processing efficiency relies heavily on balancing compression bitrates, container standards, and decoding speed. 
-            When preparing clips using <strong style={{ color: "var(--text-primary)" }}>{tool.name}</strong>, choosing modern encoding presets (such as H.264 for universal cross-platform playback or WebM/VP9 for lightweight web streaming) significantly improves user experience, lowers CDN delivery costs, and prevents mobile playback buffering.
+            Working with video requires balancing file size with clear playback. Using <strong style={{ color: "var(--text-primary)" }}>{tool.name}</strong> helps you prepare clean video clips that play smoothly on any phone, tablet, or computer. Whether you need smaller clips for email or fast-loading videos for your website, our tool gets the job done quickly.
           </p>
           <div className="grid gap-4 sm:grid-cols-2 text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
             <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
-              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>WebAssembly Acceleration</h3>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Fast Browser Processing</h3>
               <p>
-                Our video engine utilizes optimized FFmpeg WebAssembly modules running directly inside your browser. 
-                Video decoding, frame scaling, slicing, and re-encoding leverage your computer&apos;s local CPU cores without transmitting large video files across the internet.
+                All video slicing, frame capture, and encoding run directly inside your browser. Your computer or phone handles the work locally, so your large video files never upload over the web.
               </p>
             </div>
             <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
-              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Universal Compatibility</h3>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Everyday Compatibility</h3>
               <p>
-                Processed clips maintain standard pixel aspect ratios, consistent chroma subsampling (YUV420p), and universally supported audio codecs (AAC/MP3/Opus), guaranteeing immediate playback on iOS Safari, Android Chrome, and desktop platforms.
+                Your saved clips keep standard screen shapes, true colors, and clean sound. They open immediately in Apple QuickTime, Windows Media Player, Chrome, and Safari without extra plugins.
               </p>
             </div>
           </div>
@@ -119,19 +117,19 @@ export default function VideoToolPage({ tool }: { tool: VideoTool }) {
           {tool.faqs.map((faq) => (
             <div key={faq.question}>
               <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>{faq.question}</p>
-              <p className="mt-1 text-sm" style={{ color: "var(--text-muted)" }}>{faq.answer}</p>
+              <p className="mt-1 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{faq.answer}</p>
             </div>
           ))}
           <div>
             <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>Does processing reduce the quality or resolution of my original video?</p>
             <p className="mt-1 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-              By default, operations like cutting, trimming, and extraction maintain the original video stream resolution and color accuracy. Compression tools allow you to balance smaller file sizes with high visual fidelity according to your bandwidth goals.
+              Trimming, cutting, and frame extraction keep your original video resolution and picture clarity. Our compressor tool lets you choose how much file size to shave off while keeping your picture sharp.
             </p>
           </div>
           <div>
             <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>Are my personal videos uploaded to or viewable by anyone else?</p>
             <p className="mt-1 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-              No. All operations run in your device&apos;s local memory space. Zero bytes of your media are ever sent to BeYourTools servers or third-party cloud providers, making it 100% private and compliant with personal data protection policies.
+              No. All video editing happens right in your browser memory. Your files are never sent to our servers or saved anywhere online. Everything stays safe on your own device.
             </p>
           </div>
         </section>

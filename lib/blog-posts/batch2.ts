@@ -4,6 +4,7 @@ export const batch2: BlogPost[] = [
   {
     slug: "pdf-tools-guide-merge-split-compress",
     title: "The Complete Guide to Working with PDFs Online",
+    seoTitle: "Guide to Working with PDFs Online",
     excerpt: "PDFs are everywhere - contracts, reports, invoices. Work with them efficiently without expensive software or complicated installs.",
     author: "BeYourTools Team",
     publishedAt: "2026-07-29",

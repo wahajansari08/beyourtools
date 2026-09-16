@@ -50,69 +50,88 @@ export default function DisclaimerPage() {
 
         <section>
           <h2>Website Disclaimer</h2>
-          <p>The information and tools provided on BeYourTools (<strong>{SITE.url}</strong>) are for general informational and productivity purposes only. While we strive to keep our tools accurate and up-to-date, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the tools or their output.</p>
+          <p>
+            The tools and guides on BeYourTools (<strong>{SITE.url}</strong>) are provided for general learning and everyday tasks.
+            We work hard to keep our tools accurate and fast. Even so, we cannot promise that all tool outputs will always be complete, error-free, or suited for every purpose.
+          </p>
         </section>
 
         <section>
           <h2>Tool Output Accuracy</h2>
-          <p>Our tools perform technical operations (JSON formatting, image conversion, PDF manipulation) using well-established browser APIs and open-source libraries. However:</p>
+          <p>
+            Our tools format JSON, edit PDFs, and convert images using standard browser tools and open-source code. Please keep the following points in mind:
+          </p>
           <ul>
-            <li>Results should always be verified before use in production systems</li>
-            <li>Token count estimates are approximations, not exact tokenizer counts</li>
-            <li>Image quality after conversion depends on input quality and format limitations</li>
-            <li>PDF text extraction may be incomplete for scanned or complex PDFs</li>
-            <li>SQL, TypeScript, and Python code generation produces a starting point that may require manual refinement</li>
+            <li>Always review outputs before using them in live systems or production databases.</li>
+            <li>Token count results are helpful estimates, not exact counts from specific AI models.</li>
+            <li>Image quality depends on your source file and the output format you pick.</li>
+            <li>Scanned PDFs and complex layouts may not always export clean plain text.</li>
+            <li>Generated code snippets give you a helpful head start, but you should review them before deployment.</li>
           </ul>
         </section>
 
         <section>
           <h2>No Professional Advice</h2>
-          <p>Content on BeYourTools, including blog articles, does not constitute professional legal, financial, security, or technical advice. Blog posts are educational and informational only. For security-critical implementations, consult a qualified professional.</p>
+          <p>
+            The articles and tools on BeYourTools do not replace certified legal, financial, tax, or engineering advice.
+            Our blog posts and guides are written for educational use only. For high-stakes decisions, always speak with a licensed expert.
+          </p>
         </section>
 
         <section>
-          <h2>Financial, Loan, Tax &amp; Calculation Tools Disclaimer</h2>
+          <h2>Financial Calculator Disclaimer</h2>
           <p>
-            BeYourTools provides specialized financial calculators covering loans, mortgages, APR, debt payoff strategies, profit margins, and investment returns. 
-            <strong>Please review the following essential terms regarding all calculation tools:</strong>
+            BeYourTools offers calculators for loans, mortgages, profit margins, and debts. Please review these terms before using our financial tools:
           </p>
           <ul>
-            <li><strong>Educational &amp; Illustrative Only:</strong> All calculators and generated outputs are intended solely for general personal budgeting, educational evaluation, and theoretical modeling. BeYourTools is not a licensed financial advisor, Certified Financial Planner (CFP), mortgage broker, commercial lender, or Certified Public Accountant (CPA).</li>
-            <li><strong>Mathematical Approximations:</strong> Calculations utilize standard mathematical algorithms (such as compound interest formulas, Newton-Raphson iterative approximations for APR, and amortized repayment schedules). Results reflect theoretical values based strictly on user-submitted inputs.</li>
-            <li><strong>Institutional Discretion:</strong> Actual interest rates, loan terms, origination fees, closing costs, and tax liabilities depend upon lender underwriting standards, personal credit history, and regional statutory regulations.</li>
-            <li><strong>No Fiduciary Duty:</strong> Accessing or relying upon outputs from our calculators does not establish any client-advisor, broker, or fiduciary relationship between you and BeYourTools.</li>
-            <li><strong>Professional Consultation Recommended:</strong> Do not execute binding loans, real estate purchases, or commercial debt consolidations without consulting an independent certified financial planner, accountant, or licensed lending officer.</li>
+            <li><strong>Educational use only:</strong> All calculations are meant for personal planning and budgeting estimates. BeYourTools is not a bank, mortgage broker, loan officer, or certified accountant.</li>
+            <li><strong>Standard math estimates:</strong> Our calculators use standard math formulas like compound interest and loan amortization schedules. Results show baseline numbers based strictly on the figures you enter.</li>
+            <li><strong>Bank and lender terms:</strong> Real-world loan terms, interest rates, closing costs, and taxes vary. They depend on your credit score, local laws, and lender rules.</li>
+            <li><strong>No client relationship:</strong> Using our calculators does not create an advisor, broker, or client relationship between you and BeYourTools.</li>
+            <li><strong>Consult a qualified professional:</strong> Do not sign loan contracts or invest money without speaking to an independent financial planner or licensed accountant.</li>
           </ul>
         </section>
 
         <section>
-          <h2>File Safety</h2>
-          <p>Although BeYourTools processes files locally in your browser and does not upload them to servers, you should always maintain independent backups of important files before processing them with any tool. We accept no liability for file loss or corruption.</p>
+          <h2>File Safety and Data Backups</h2>
+          <p>
+            All file editing takes place locally in your web browser. Your private documents are never sent to external servers. Even so, you should always keep a safe backup of your important files before editing them with any software. We are not responsible for lost or broken files.
+          </p>
         </section>
 
         <section>
-          <h2>Advertising Disclaimer</h2>
-          <p>BeYourTools is supported by advertising. Advertisements displayed on this Site are provided by third-party advertising partners. We do not endorse any advertised product, service, or organisation. Advertisers are solely responsible for the accuracy of their advertisements.</p>
+          <h2>Advertising and Third-Party Links</h2>
+          <p>
+            BeYourTools shows ads from third-party advertising partners to keep our tools free. We do not endorse the products or services shown in these ads. Advertisers are responsible for the claims in their advertisements.
+          </p>
         </section>
 
         <section>
-          <h2>Affiliate Links</h2>
-          <p>Occasionally, blog posts or tool pages may contain affiliate or referral links to third-party products or services. These will be clearly disclosed. We only recommend tools we genuinely find useful. Affiliate relationships do not influence our editorial content.</p>
+          <h2>Affiliate Disclosures</h2>
+          <p>
+            Some articles may include referral or affiliate links to helpful third-party software. We disclose these links clearly. We only share products that we trust and find valuable.
+          </p>
         </section>
 
         <section>
-          <h2>External Links</h2>
-          <p>BeYourTools contains links to third-party websites. These are provided for convenience only. We have no control over the content, privacy practices, or availability of external sites and accept no responsibility for them.</p>
+          <h2>External Links and Services</h2>
+          <p>
+            Our pages may link to outside websites for your convenience. We do not control those third-party sites or their privacy practices. We encourage you to read their policies before sharing personal data.
+          </p>
         </section>
 
         <section>
-          <h2>Changes</h2>
-          <p>We may update this Disclaimer at any time. Continued use of the Site after updates constitutes acceptance of the revised Disclaimer.</p>
+          <h2>Updates to This Disclaimer</h2>
+          <p>
+            We may update this page from time to time as our tools grow. By continuing to use BeYourTools, you agree to the latest terms listed on this page.
+          </p>
         </section>
 
         <section>
-          <h2>Contact</h2>
-          <p>Questions about this Disclaimer? <Link href="/contact" style={{ color: "var(--teal)" }}>Contact us</Link>.</p>
+          <h2>Contacting Our Team</h2>
+          <p>
+            If you have questions about this Disclaimer or want to report an issue, please <Link href="/contact" style={{ color: "var(--teal)" }}>contact our team</Link>.
+          </p>
         </section>
 
       </div>

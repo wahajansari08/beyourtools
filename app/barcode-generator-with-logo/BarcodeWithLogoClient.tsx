@@ -378,9 +378,9 @@ export default function BarcodeWithLogoClient() {
           {/* Barcode value + format */}
           <div className="rounded-xl border p-5 space-y-4"
             style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
-            <h2 className="text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>
+            <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>
               Barcode
-            </h2>
+            </p>
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
                 <label htmlFor="blwl-format" className="block mb-1 text-xs font-medium" style={labelSty}>
@@ -465,9 +465,9 @@ export default function BarcodeWithLogoClient() {
           {/* Logo section */}
           <div className="rounded-xl border p-5 space-y-4"
             style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
-            <h3 className="text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>
+            <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>
               Barcode Logo Overlay
-            </h3>
+            </p>
 
             {/* Source selector */}
             <div className="flex flex-wrap gap-2">
@@ -575,9 +575,9 @@ export default function BarcodeWithLogoClient() {
         {/* Right: preview */}
         <div className="space-y-4">
           <div className="sticky top-4">
-            <h2 className="mb-3 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>
+            <p className="mb-3 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>
               Preview
-            </h2>
+            </p>
             <div className="rounded-xl border p-4 flex items-center justify-center min-h-[200px]"
               style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
               {hasResult && pngUrl ? (
