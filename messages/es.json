@@ -1,0 +1,398 @@
+{
+  "blogIndex": {
+    "byAuthor": "Por {name}",
+    "featured": "Destacado",
+    "latest": "Últimos artículos",
+    "minRead": "{count} min de lectura",
+    "next": "Siguiente →",
+    "noMore": "No hay más publicaciones en esta página.",
+    "page": "Página {n}",
+    "paginationLabel": "Paginación del blog",
+    "prev": "← Anterior",
+    "readArticle": "Leer artículo",
+    "readMore": "Leer →",
+    "showing": "Mostrando {a}–{b} de {count} artículos",
+    "subtitle": "Guías prácticas sobre JSON, formatos de imagen, herramientas PDF y productividad para desarrolladores.",
+    "title": "Blog"
+  },
+  "common": {
+    "backHome": "Volver al inicio",
+    "browse": "Explorar archivos",
+    "clear": "Limpiar",
+    "closeDialog": "Cerrar",
+    "copied": "¡Copiado!",
+    "copy": "Copiar",
+    "download": "Descargar",
+    "dragDrop": "Arrastra y suelta tu archivo aquí, o haz clic para explorar",
+    "error": "Algo salió mal. Inténtalo de nuevo.",
+    "faqs": "Preguntas frecuentes",
+    "features": "Características",
+    "howItWorks": "Cómo funciona {title}",
+    "howToUse": "Cómo usar",
+    "insightsTitle": "Análisis y planificación estratégica",
+    "moreIn": "Más en",
+    "openPreview": "Abrir vista previa",
+    "privacyNote": "Todo se ejecuta localmente en tu navegador. Tus archivos nunca se suben a un servidor.",
+    "privacyTitle": "Privado por diseño",
+    "processing": "Procesando…",
+    "relatedTools": "Herramientas relacionadas",
+    "reset": "Restablecer",
+    "showLess": "Mostrar menos",
+    "showMore": "Mostrar más",
+    "converterTitle": "Convertidor de {from} a {to} - Herramienta online gratuita | BeYourTools"
+  },
+  "contact": {
+    "ariaLabel": "Formulario de contacto",
+    "copied": "✓ Copiado",
+    "copiedEmail": "✓ Copiado beyourtools@gmail.com",
+    "copy": "Copiar",
+    "copyEmail": "Copiar dirección de correo",
+    "emailLabel": "Dirección de correo electrónico",
+    "emailPlaceholder": "tu@ejemplo.com",
+    "mailEmail": "Correo",
+    "mailFallback": "Contacto",
+    "mailMessage": "Mensaje",
+    "mailName": "Nombre",
+    "mailSubject": "Asunto",
+    "messageLabel": "Mensaje",
+    "messagePlaceholder": "Describe tu consulta, informe o sugerencia en detalle…",
+    "nameLabel": "Tu nombre",
+    "namePlaceholder": "p. ej., Alex Morgan",
+    "sendAnother": "Enviar otro mensaje",
+    "slaLeft": "⏱️ SLA de respuesta estándar: 24–48 horas",
+    "slaRight": "Soporte dedicado de ingeniería y editorial",
+    "subjectLabel": "Asunto de la consulta",
+    "subjectOptions": {
+      "ads": "Publicidad o colaboración",
+      "bug": "Informe de error o fórmula",
+      "feature": "Solicitud de función",
+      "general": "Consulta general",
+      "other": "Otro tema",
+      "privacy": "Solicitud de privacidad o RGPD"
+    },
+    "subjects": {
+      "ads": "Consulta de publicidad / colaboración",
+      "bug": "Informe de error / fórmula",
+      "feature": "Solicitud de función",
+      "general": "Consulta general",
+      "other": "Otros comentarios",
+      "privacy": "Solicitud de privacidad / RGPD"
+    },
+    "submit": "Enviar mensaje →",
+    "successBody": "Tu mensaje se ha preparado para tu cliente de correo. Si tu aplicación de correo no se abrió automáticamente, puedes enviar tu nota directamente a:",
+    "successNote": "Nuestro equipo de ingeniería y editorial suele responder en un plazo de 24 a 48 horas.",
+    "successTitle": "Gracias por contactarnos"
+  },
+  "cookie": {
+    "accept": "Aceptar",
+    "cookiePolicy": "Política de cookies",
+    "decline": "Rechazar",
+    "learnMore": "Más información",
+    "message": "Utilizamos cookies para recordar tu preferencia de tema y para mostrar anuncios. Consulta nuestra Política de cookies para más detalles.",
+    "privacyPolicy": "Política de privacidad"
+  },
+  "footer": {
+    "browserNote": "Todas las herramientas se ejecutan 100 % en tu navegador",
+    "columns": {
+      "allAudio": "Todas las herramientas de audio",
+      "allConverters": "Todos los conversores",
+      "allDesign": "Todas las herramientas de diseño",
+      "allFinance": "Todas las herramientas de finanzas",
+      "allJson": "Todas las herramientas JSON",
+      "allPdf": "Todas las herramientas PDF",
+      "allQr": "Todos los códigos QR y de barras",
+      "allVideo": "Todas las herramientas de vídeo",
+      "audio": "Herramientas de audio",
+      "blogPages": "Blog y páginas",
+      "finance": "Herramientas de finanzas",
+      "image": "Conversor de imágenes",
+      "json": "Herramientas JSON",
+      "pdf": "Herramientas PDF",
+      "qr": "QR y códigos de barras",
+      "video": "Herramientas de vídeo"
+    },
+    "onLabel": "BeYourTools en {network}",
+    "policies": {
+      "cookies": "Política de cookies",
+      "disclaimer": "Aviso legal",
+      "privacy": "Política de privacidad",
+      "terms": "Términos del servicio"
+    },
+    "rights": "Todos los derechos reservados.",
+    "tagline": "Herramientas gratuitas, privadas y basadas en el navegador para todos. Nada se sube nunca a un servidor.",
+    "allTools": "Todas las herramientas"
+  },
+  "home": {
+    "badge": "100 % del lado del cliente: nada sale de tu navegador",
+    "blogCta": "Todos los artículos",
+    "blogSub": "Guías prácticas sobre JSON, imágenes, PDF y productividad para desarrolladores, escritas por {name}, {role}.",
+    "blogTitle": "Guías y tutoriales",
+    "byAuthor": "Por {name}",
+    "ctaSub": "Ningún dato sale de tu dispositivo. Sin cuentas. Sin límites de uso. BeYourTools es gratis para siempre.",
+    "ctaTitleA": "Todo se ejecuta en",
+    "ctaTitleB": "tu navegador",
+    "faqEyebrow": "FAQ",
+    "faqSub": "Todo lo que quizás quieras saber antes de empezar.",
+    "faqTitle": "Preguntas frecuentes",
+    "faqs": [
+      {
+        "answer": "Sí: todas las herramientas de BeYourTools son completamente gratuitas, no requieren cuenta y no tienen límites de uso.",
+        "question": "¿Todas las herramientas de BeYourTools son gratuitas?"
+      },
+      {
+        "answer": "No: todo el procesamiento ocurre en tu navegador. Los archivos y el texto nunca salen de tu dispositivo.",
+        "question": "¿Mis archivos se suben a un servidor?"
+      },
+      {
+        "answer": "Ofrecemos más de 30 herramientas JSON, incluidos formateador, validador, comparador, generador de esquemas, probador de JSONPath, decodificador de JWT y conversores a CSV, TypeScript, Python, SQL y más.",
+        "question": "¿Qué herramientas JSON hay disponibles?"
+      },
+      {
+        "answer": "Sí: admitimos 118 combinaciones de conversión de imágenes, incluidos JPG, PNG, WebP, AVIF, SVG, ICO, BMP, TIFF, PDF y más, todo ejecutándose en tu navegador.",
+        "question": "¿Puedo convertir imágenes gratis?"
+      },
+      {
+        "answer": "Ofrecemos 30 herramientas PDF, incluidos combinar, dividir, comprimir, rotar, marcas de agua, proteger, desbloquear, visor y eliminador de metadatos, PDF a JPG/PNG/texto/JSON y más.",
+        "question": "¿Qué herramientas PDF hay disponibles?"
+      }
+    ],
+    "financeClusters": {
+      "business": "Finanzas empresariales",
+      "debt": "Deudas y crédito",
+      "loans": "Préstamos",
+      "marketing": "Marketing y ROI",
+      "salary": "Salario e ingresos",
+      "savings": "Ahorros e intereses",
+      "tax": "Impuestos y precios"
+    },
+    "h1a": "Todas las herramientas que necesitas,",
+    "h1b": "aquí mismo.",
+    "minRead": "{count} min de lectura",
+    "perks": [
+      {
+        "body": "Los archivos y el texto permanecen en la pestaña de tu navegador: nada se sube jamás.",
+        "title": "Privado"
+      },
+      {
+        "body": "Sin viajes de ida y vuelta al servidor: los resultados aparecen en el momento en que actúas.",
+        "title": "Instantáneo"
+      },
+      {
+        "body": "Sin muros de pago, sin registros, sin límites. Todas las herramientas, para siempre.",
+        "title": "Gratis"
+      }
+    ],
+    "pills": {
+      "audio": "Herramientas de audio",
+      "finance": "Herramientas financieras",
+      "image": "Herramientas de imagen",
+      "json": "Herramientas JSON",
+      "pdf": "Herramientas PDF",
+      "qr": "QR y códigos de barras",
+      "video": "Herramientas de vídeo"
+    },
+    "readMore": "Leer →",
+    "sections": {
+      "audio": {
+        "cta": "Todas las herramientas de audio",
+        "description": "{count} herramientas de audio: convierte formatos, corta clips, combina pistas y sube el volumen, todo en local.",
+        "title": "Herramientas de audio"
+      },
+      "calc": {
+        "cta": "Todas las calculadoras",
+        "description": "{count} calculadoras de uso diario: porcentajes, IMC, edad, unidades, zonas horarias y más, con respuestas instantáneas.",
+        "title": "Calculadoras"
+      },
+      "design": {
+        "cta": "Todas las herramientas de diseño",
+        "description": "{count} ayudantes de diseño: toma colores de cualquier imagen, crea paletas y genera favicons para tu sitio.",
+        "title": "Herramientas de diseño"
+      },
+      "dev": {
+        "cta": "Todas las herramientas para desarrolladores",
+        "description": "{count} utilidades para desarrolladores: prueba regex, genera UUIDs y contraseñas, calcula hashes y convierte marcas de tiempo.",
+        "title": "Herramientas para desarrolladores"
+      },
+      "finance": {
+        "cta": "Todas las herramientas financieras",
+        "description": "{count} calculadoras financieras: préstamos, márgenes, ahorros, amortización de deudas, ROI e impuestos, explicados en lenguaje sencillo.",
+        "title": "Calculadoras financieras",
+        "viewAll": "Ver todas las herramientas financieras"
+      },
+      "image": {
+        "cta": "Todas las herramientas de imagen",
+        "description": "{count} formas de trabajar con imágenes: conversión a JPG, PNG, WebP, AVIF, SVG, ICO y PDF, además de redimensionar, recortar y comprimir.",
+        "title": "Herramientas de imagen"
+      },
+      "json": {
+        "cta": "Todas las herramientas JSON",
+        "description": "{count} herramientas para formatear, validar, convertir e inspeccionar JSON. Pega tus datos y obtén respuestas en segundos.",
+        "title": "Herramientas JSON"
+      },
+      "pdf": {
+        "cta": "Todas las herramientas PDF",
+        "description": "{count} herramientas PDF que funcionan íntegramente en tu navegador: combina, divide, comprime, protege y más.",
+        "title": "Herramientas PDF"
+      },
+      "qr": {
+        "cta": "Todas las herramientas QR y de códigos de barras",
+        "description": "{count} herramientas de códigos QR y de barras: genera códigos con tu logo, escanea con tu cámara y decodifica imágenes.",
+        "title": "Herramientas QR y de códigos de barras"
+      },
+      "text": {
+        "cta": "Todas las herramientas de texto",
+        "description": "{count} utilidades de texto: cuenta palabras, cambia mayúsculas y minúsculas, genera texto de relleno y codifica URLs.",
+        "title": "Herramientas de texto"
+      },
+      "video": {
+        "cta": "Todas las herramientas de vídeo",
+        "description": "{count} herramientas de vídeo: comprime, corta, convierte, redimensiona y crea GIFs sin subir ni un solo fotograma.",
+        "title": "Herramientas de vídeo"
+      }
+    },
+    "stats": {
+      "audio": "herramientas de audio",
+      "finance": "herramientas financieras",
+      "image": "herramientas de imagen",
+      "json": "herramientas JSON",
+      "pdf": "herramientas PDF",
+      "qr": "QR y códigos de barras",
+      "video": "herramientas de vídeo"
+    },
+    "sub": "Herramientas gratuitas en el navegador para desarrolladores y diseñadores: utilidades JSON, conversores de imágenes, herramientas PDF y mucho más. Sin instalaciones, sin cuentas, sin límites.",
+    "statsBar": {
+      "tools": "{count} herramientas gratuitas",
+      "toolsLabel": "que funcionan en tu navegador",
+      "categories": "{count} categorías",
+      "categoriesLabel": "para tus tareas diarias",
+      "languages": "{count} idiomas",
+      "languagesLabel": "interfaz totalmente traducida",
+      "free": "100 % gratis",
+      "freeLabel": "sin muros de pago ocultos",
+      "noSignup": "Sin registro",
+      "noSignupLabel": "nada sale de tu dispositivo"
+    },
+    "howItWorks": {
+      "eyebrow": "Cómo funciona",
+      "title": "Listo en tres pasos",
+      "steps": [
+        {
+          "title": "Encuentra tu herramienta",
+          "desc": "Busca o explora las categorías hasta dar con justo lo que necesitas."
+        },
+        {
+          "title": "Úsala en tu navegador",
+          "desc": "Todo se ejecuta localmente en tu dispositivo. Sin subidas ni salas de espera."
+        },
+        {
+          "title": "Copia o descarga el resultado",
+          "desc": "Coge tu resultado y sigue con tu día. Ese es todo el truco."
+        }
+      ]
+    }
+  },
+  "nav": {
+    "about": "Acerca de",
+    "allTools": "Todas las herramientas",
+    "blog": "Blog",
+    "browseAll": "Ver todo →",
+    "categories": {
+      "audio": {
+        "description": "Convierte, corta, comprime y graba audio",
+        "label": "Herramientas de audio"
+      },
+      "calc": {
+        "description": "Calculadoras de porcentaje, IMC y edad",
+        "label": "Calculadoras"
+      },
+      "design": {
+        "description": "Selector de color, paletas y favicons",
+        "label": "Herramientas de diseño"
+      },
+      "dev": {
+        "description": "Regex, UUID, contraseñas, hashes y marcas de tiempo",
+        "label": "Herramientas para desarrolladores"
+      },
+      "developer": {
+        "description": "Herramientas Base64, JWT, diff, esquemas y utilidades",
+        "label": "Herramientas para desarrolladores"
+      },
+      "finance": {
+        "description": "Calculadoras de préstamos, márgenes, ahorros y más",
+        "label": "Herramientas financieras"
+      },
+      "image": {
+        "description": "Convierte entre JPG, PNG, WebP, SVG…",
+        "label": "Conversor de imágenes"
+      },
+      "json": {
+        "description": "Formatea, valida, compara y convierte",
+        "label": "Herramientas JSON"
+      },
+      "pdf": {
+        "description": "Combina, divide, comprime y protege PDF",
+        "label": "Herramientas PDF"
+      },
+      "qr": {
+        "description": "Genera y escanea códigos QR y de barras",
+        "label": "QR y códigos de barras"
+      },
+      "text": {
+        "description": "Contador de palabras, mayúsculas y minúsculas, lorem ipsum y herramientas URL",
+        "label": "Herramientas de texto"
+      },
+      "video": {
+        "description": "Comprime, convierte, recorta y extrae vídeo",
+        "label": "Herramientas de vídeo"
+      }
+    },
+    "closeDialog": "Cerrar",
+    "closeMenu": "Cerrar menú",
+    "contact": "Contacto",
+    "home": "Inicio",
+    "language": "Idioma",
+    "megaFootnote": "Todas las herramientas son 100 % gratuitas · Sin registro · Los archivos nunca salen de tu navegador",
+    "megaSubtitle": "Más de 200 herramientas gratuitas en el navegador: nada sale de tu dispositivo",
+    "megaTitle": "Todas las herramientas",
+    "openMenu": "Abrir menú",
+    "search": "Buscar",
+    "searchAria": "Buscar herramientas (⌘K)",
+    "searchAriaMobile": "Buscar herramientas",
+    "toolsSection": "Herramientas"
+  },
+  "notFound": {
+    "backHome": "Volver al inicio",
+    "body": "La página que buscas no existe o se ha movido.",
+    "browseCategories": "Explora las categorías de herramientas más populares",
+    "title": "Página no encontrada"
+  },
+  "search": {
+    "clearSearch": "Borrar búsqueda",
+    "hint": "Prueba «pdf», «json», «qr»…",
+    "noResults": "No se encontraron herramientas para «{query}».",
+    "placeholder": "Busca entre más de 200 herramientas gratuitas…",
+    "results": "{count} resultados"
+  },
+  "allTools": {
+    "title": "Todas las herramientas",
+    "sub": "Todas las herramientas gratuitas de BeYourTools en un solo lugar. Escribe para filtrar la lista al instante.",
+    "searchPlaceholder": "Buscar herramientas...",
+    "searchLabel": "Buscar en todas las herramientas",
+    "showing": "Mostrando {shown} de {total} herramientas",
+    "noResults": "Ninguna herramienta coincide con «{query}». Prueba con otra búsqueda.",
+    "openTool": "Abrir {name}",
+    "groups": {
+      "json": "Herramientas JSON",
+      "image": "Herramientas de imagen",
+      "design": "Herramientas de diseño",
+      "pdf": "Herramientas PDF",
+      "video": "Herramientas de vídeo",
+      "audio": "Herramientas de audio",
+      "qr": "Herramientas QR y de códigos de barras",
+      "finance": "Calculadoras financieras",
+      "text": "Herramientas de texto",
+      "dev": "Herramientas para desarrolladores",
+      "calc": "Calculadoras"
+    }
+  }
+}

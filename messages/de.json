@@ -1,0 +1,398 @@
+{
+  "blogIndex": {
+    "byAuthor": "Von {name}",
+    "featured": "Empfohlen",
+    "latest": "Neueste Artikel",
+    "minRead": "{count} Min. Lesezeit",
+    "next": "Weiter →",
+    "noMore": "Keine weiteren Beiträge auf dieser Seite.",
+    "page": "Seite {n}",
+    "paginationLabel": "Blog-Paginierung",
+    "prev": "← Zurück",
+    "readArticle": "Artikel lesen",
+    "readMore": "Weiterlesen →",
+    "showing": "Zeige {a}–{b} von {count} Artikeln",
+    "subtitle": "Praktische Anleitungen zu JSON, Bildformaten, PDF-Tools und Entwicklerproduktivität.",
+    "title": "Blog"
+  },
+  "common": {
+    "backHome": "Zurück zur Startseite",
+    "browse": "Dateien wählen",
+    "clear": "Leeren",
+    "closeDialog": "Schließen",
+    "converterTitle": "{from}-zu-{to}-Konverter - Kostenloses Online-Tool | BeYourTools",
+    "copied": "Kopiert!",
+    "copy": "Kopieren",
+    "download": "Herunterladen",
+    "dragDrop": "Datei hier ablegen oder klicken, um eine Datei auszuwählen",
+    "error": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+    "faqs": "Häufige Fragen",
+    "features": "Funktionen",
+    "howItWorks": "So funktioniert {title}",
+    "howToUse": "Anleitung",
+    "insightsTitle": "Einblicke & strategische Planung",
+    "moreIn": "Mehr in",
+    "openPreview": "Vorschau öffnen",
+    "privacyNote": "Alles läuft lokal in deinem Browser. Deine Dateien werden niemals auf einen Server hochgeladen.",
+    "privacyTitle": "Von Grund auf privat",
+    "processing": "Wird verarbeitet…",
+    "relatedTools": "Ähnliche Tools",
+    "reset": "Zurücksetzen",
+    "showLess": "Weniger anzeigen",
+    "showMore": "Mehr anzeigen"
+  },
+  "contact": {
+    "ariaLabel": "Kontaktformular",
+    "copied": "✓ Kopiert",
+    "copiedEmail": "✓ beyourtools@gmail.com kopiert",
+    "copy": "Kopieren",
+    "copyEmail": "E-Mail-Adresse kopieren",
+    "emailLabel": "E-Mail-Adresse",
+    "emailPlaceholder": "du@beispiel.de",
+    "mailEmail": "E-Mail",
+    "mailFallback": "Kontakt",
+    "mailMessage": "Nachricht",
+    "mailName": "Name",
+    "mailSubject": "Betreff",
+    "messageLabel": "Nachricht",
+    "messagePlaceholder": "Beschreibe deine Anfrage, Meldung oder Idee im Detail …",
+    "nameLabel": "Dein Name",
+    "namePlaceholder": "z. B. Alex Morgan",
+    "sendAnother": "Weitere Nachricht senden",
+    "slaLeft": "⏱️ Standard-Antwortzeit: 24–48 Stunden",
+    "slaRight": "Engagierte Unterstützung durch Engineering & Redaktion",
+    "subjectLabel": "Betreff der Anfrage",
+    "subjectOptions": {
+      "ads": "Werbung oder Partnerschaft",
+      "bug": "Fehler- oder Formelmeldung",
+      "feature": "Tool-Funktionswunsch",
+      "general": "Allgemeine Anfrage",
+      "other": "Anderes Thema",
+      "privacy": "Datenschutz- oder DSGVO-Anfrage"
+    },
+    "subjects": {
+      "ads": "Werbungs-/Partnerschaftsanfrage",
+      "bug": "Fehler-/Formelmeldung",
+      "feature": "Tool-Funktionswunsch",
+      "general": "Allgemeine Anfrage",
+      "other": "Sonstiges Feedback",
+      "privacy": "Datenschutz-/DSGVO-Anfrage"
+    },
+    "submit": "Nachricht senden →",
+    "successBody": "Deine Nachricht wurde für dein E-Mail-Programm vorbereitet. Falls sich dein E-Mail-Programm nicht automatisch geöffnet hat, kannst du deine Nachricht direkt senden an:",
+    "successNote": "Unser Engineering- und Redaktionsteam antwortet in der Regel innerhalb von 24–48 Stunden.",
+    "successTitle": "Danke für deine Nachricht"
+  },
+  "cookie": {
+    "accept": "Akzeptieren",
+    "cookiePolicy": "Cookie-Richtlinie",
+    "decline": "Ablehnen",
+    "learnMore": "Mehr erfahren",
+    "message": "Wir verwenden Cookies, um deine Theme-Einstellung zu speichern und Werbung anzuzeigen. Details findest du in unserer Cookie-Richtlinie.",
+    "privacyPolicy": "Datenschutzerklärung"
+  },
+  "footer": {
+    "browserNote": "Alle Tools laufen zu 100 % in deinem Browser",
+    "columns": {
+      "allAudio": "Alle Audio-Tools",
+      "allConverters": "Alle Konverter",
+      "allDesign": "Alle Design-Tools",
+      "allFinance": "Alle Finanz-Tools",
+      "allJson": "Alle JSON-Tools",
+      "allPdf": "Alle PDF-Tools",
+      "allQr": "Alle QR & Barcodes",
+      "allVideo": "Alle Video-Tools",
+      "audio": "Audio-Tools",
+      "blogPages": "Blog & Seiten",
+      "finance": "Finanz-Tools",
+      "image": "Bildkonverter",
+      "json": "JSON-Tools",
+      "pdf": "PDF-Tools",
+      "qr": "QR & Barcodes",
+      "video": "Video-Tools"
+    },
+    "onLabel": "BeYourTools auf {network}",
+    "policies": {
+      "cookies": "Cookie-Richtlinie",
+      "disclaimer": "Haftungsausschluss",
+      "privacy": "Datenschutzerklärung",
+      "terms": "Nutzungsbedingungen"
+    },
+    "rights": "Alle Rechte vorbehalten.",
+    "tagline": "Kostenlose, private, browserbasierte Tools für alle. Nichts wird je auf einen Server hochgeladen.",
+    "allTools": "Alle Tools"
+  },
+  "home": {
+    "badge": "100 % clientseitig — nichts verlässt deinen Browser",
+    "blogCta": "Alle Artikel",
+    "blogSub": "Praktische Anleitungen zu JSON, Bildern, PDFs und Entwicklerproduktivität — geschrieben von {name}, {role}.",
+    "blogTitle": "Anleitungen & Tutorials",
+    "byAuthor": "Von {name}",
+    "ctaSub": "Keine Daten verlassen dein Gerät. Keine Konten. Keine Ratenlimits. BeYourTools ist für immer kostenlos.",
+    "ctaTitleA": "Alles läuft in",
+    "ctaTitleB": "deinem Browser",
+    "faqEyebrow": "FAQ",
+    "faqSub": "Alles, was du vor dem Start wissen möchtest.",
+    "faqTitle": "Häufige Fragen",
+    "faqs": [
+      {
+        "answer": "Ja — jedes Tool auf BeYourTools ist völlig kostenlos, erfordert kein Konto und hat keine Nutzungslimits.",
+        "question": "Sind alle BeYourTools-Tools kostenlos?"
+      },
+      {
+        "answer": "Nein — die gesamte Verarbeitung findet in deinem Browser statt. Dateien und Texte verlassen nie dein Gerät.",
+        "question": "Werden meine Dateien auf einen Server hochgeladen?"
+      },
+      {
+        "answer": "Wir bieten über 30 JSON-Tools, darunter Formatierer, Validator, Diff, Schema-Generator, JSONPath-Tester, JWT-Decoder sowie Konverter nach CSV, TypeScript, Python, SQL und mehr.",
+        "question": "Welche JSON-Tools gibt es?"
+      },
+      {
+        "answer": "Ja — wir unterstützen 118 Bildkonvertierungs-Kombinationen, darunter JPG, PNG, WebP, AVIF, SVG, ICO, BMP, TIFF, PDF und mehr, alle direkt in deinem Browser.",
+        "question": "Kann ich Bilder kostenlos konvertieren?"
+      },
+      {
+        "answer": "Wir bieten 30 PDF-Tools, darunter Zusammenführen, Teilen, Komprimieren, Drehen, Wasserzeichen, Schützen, Entsperren, Metadaten-Anzeige und -Entferner, PDF zu JPG/PNG/Text/JSON und mehr.",
+        "question": "Welche PDF-Tools gibt es?"
+      }
+    ],
+    "financeClusters": {
+      "business": "Unternehmensfinanzen",
+      "debt": "Schulden & Kredit",
+      "loans": "Kredite",
+      "marketing": "Marketing & ROI",
+      "salary": "Gehalt & Einkommen",
+      "savings": "Sparen & Zinsen",
+      "tax": "Steuern & Preise"
+    },
+    "h1a": "Jedes Tool, das du brauchst,",
+    "h1b": "genau hier.",
+    "minRead": "{count} Min. Lesezeit",
+    "perks": [
+      {
+        "body": "Dateien und Texte bleiben in deinem Browser-Tab — nichts wird je hochgeladen.",
+        "title": "Privat"
+      },
+      {
+        "body": "Keine Server-Roundtrips — Ergebnisse erscheinen im Moment deiner Aktion.",
+        "title": "Sofort"
+      },
+      {
+        "body": "Keine Paywalls, keine Anmeldungen, keine Limits. Jedes Tool, für immer.",
+        "title": "Kostenlos"
+      }
+    ],
+    "pills": {
+      "audio": "Audio-Tools",
+      "finance": "Finanz-Tools",
+      "image": "Bild-Tools",
+      "json": "JSON-Tools",
+      "pdf": "PDF-Tools",
+      "qr": "QR & Barcodes",
+      "video": "Video-Tools"
+    },
+    "readMore": "Weiterlesen →",
+    "sections": {
+      "audio": {
+        "cta": "Alle Audio-Tools",
+        "description": "{count} Audio-Tools: Formate konvertieren, Clips schneiden, Spuren zusammenführen und Lautstärke erhöhen, alles lokal.",
+        "title": "Audio-Tools"
+      },
+      "calc": {
+        "cta": "Alle Rechner",
+        "description": "{count} Alltagsrechner: Prozent, BMI, Alter, Einheiten, Zeitzonen und mehr, mit sofortigen Antworten.",
+        "title": "Rechner"
+      },
+      "design": {
+        "cta": "Alle Design-Tools",
+        "description": "{count} Design-Helfer: Farben aus jedem Bild picken, Paletten erstellen und Favicons für deine Seite generieren.",
+        "title": "Design-Tools"
+      },
+      "dev": {
+        "cta": "Alle Entwickler-Tools",
+        "description": "{count} Entwickler-Utilities: Regex testen, UUIDs und Passwörter generieren, Text hashen und Timestamps konvertieren.",
+        "title": "Entwickler-Tools"
+      },
+      "finance": {
+        "cta": "Alle Finanz-Tools",
+        "description": "{count} Finanzrechner: Kredite, Margen, Sparen, Schuldentilgung, ROI und Steuern, in einfacher Sprache erklärt.",
+        "title": "Finanzrechner",
+        "viewAll": "Alle Finanz-Tools ansehen"
+      },
+      "image": {
+        "cta": "Alle Bild-Tools",
+        "description": "{count} Möglichkeiten, mit Bildern zu arbeiten: Konvertierung nach JPG, PNG, WebP, AVIF, SVG, ICO und PDF, plus Größenänderung, Zuschneiden und Komprimierung.",
+        "title": "Bild-Tools"
+      },
+      "json": {
+        "cta": "Alle JSON-Tools",
+        "description": "{count} Tools zum Formatieren, Validieren, Konvertieren und Inspizieren von JSON. Füge deine Daten ein und erhalte in Sekunden Antworten.",
+        "title": "JSON-Tools"
+      },
+      "pdf": {
+        "cta": "Alle PDF-Tools",
+        "description": "{count} PDF-Tools, die vollständig in deinem Browser laufen: zusammenführen, teilen, komprimieren, schützen und mehr.",
+        "title": "PDF-Tools"
+      },
+      "qr": {
+        "cta": "Alle QR- & Barcode-Tools",
+        "description": "{count} QR- und Barcode-Tools: Codes mit deinem Logo erstellen, mit der Kamera scannen und Bilder dekodieren.",
+        "title": "QR- & Barcode-Tools"
+      },
+      "text": {
+        "cta": "Alle Text-Tools",
+        "description": "{count} Text-Utilities: Wörter zählen, Groß- und Kleinschreibung ändern, Fülltext generieren und URLs kodieren.",
+        "title": "Text-Tools"
+      },
+      "video": {
+        "cta": "Alle Video-Tools",
+        "description": "{count} Video-Tools: komprimieren, schneiden, konvertieren, skalieren und GIFs erstellen, ohne einen einzigen Frame hochzuladen.",
+        "title": "Video-Tools"
+      }
+    },
+    "stats": {
+      "audio": "Audio-Tools",
+      "finance": "Finanz-Tools",
+      "image": "Bild-Tools",
+      "json": "JSON-Tools",
+      "pdf": "PDF-Tools",
+      "qr": "QR & Barcode",
+      "video": "Video-Tools"
+    },
+    "sub": "Kostenlose browserbasierte Tools für Entwickler und Designer — JSON-Utilities, Bildkonverter, PDF-Tools und mehr. Keine Installation, keine Konten, keine Limits.",
+    "statsBar": {
+      "tools": "{count} kostenlose Tools",
+      "toolsLabel": "laufen in deinem Browser",
+      "categories": "{count} Kategorien",
+      "categoriesLabel": "für deine alltäglichen Aufgaben",
+      "languages": "{count} Sprachen",
+      "languagesLabel": "vollständig übersetzte Oberfläche",
+      "free": "100 % kostenlos",
+      "freeLabel": "keine versteckten Paywalls",
+      "noSignup": "Keine Anmeldung",
+      "noSignupLabel": "nichts verlässt dein Gerät"
+    },
+    "howItWorks": {
+      "eyebrow": "So funktioniert's",
+      "title": "In drei Schritten erledigt",
+      "steps": [
+        {
+          "title": "Finde dein Tool",
+          "desc": "Suche oder stöbere durch die Kategorien, bis du genau das findest, was du brauchst."
+        },
+        {
+          "title": "Nutze es in deinem Browser",
+          "desc": "Alles läuft lokal auf deinem Gerät. Keine Uploads, keine Warteschleifen."
+        },
+        {
+          "title": "Kopiere oder lade das Ergebnis herunter",
+          "desc": "Nimm dein Ergebnis und mach mit deinem Tag weiter. Das ist der ganze Trick."
+        }
+      ]
+    }
+  },
+  "nav": {
+    "about": "Über uns",
+    "allTools": "Alle Tools",
+    "blog": "Blog",
+    "browseAll": "Alle ansehen →",
+    "categories": {
+      "audio": {
+        "description": "Audio konvertieren, schneiden, komprimieren & aufnehmen",
+        "label": "Audio-Tools"
+      },
+      "calc": {
+        "description": "Prozent-, BMI- & Altersrechner",
+        "label": "Rechner"
+      },
+      "design": {
+        "description": "Farbauswahl, Paletten & Favicons",
+        "label": "Design-Tools"
+      },
+      "dev": {
+        "description": "Regex, UUID, Passwörter, Hashes & Zeitstempel",
+        "label": "Entwickler-Tools"
+      },
+      "developer": {
+        "description": "Base64, JWT, Diff, Schema & Hilfs-Tools",
+        "label": "Entwickler-Tools"
+      },
+      "finance": {
+        "description": "Rechner für Kredite, Margen, Ersparnisse & mehr",
+        "label": "Finanz-Tools"
+      },
+      "image": {
+        "description": "Zwischen JPG, PNG, WebP, SVG … konvertieren",
+        "label": "Bildkonverter"
+      },
+      "json": {
+        "description": "Formatieren, validieren, vergleichen & konvertieren",
+        "label": "JSON-Tools"
+      },
+      "pdf": {
+        "description": "PDFs zusammenführen, teilen, komprimieren & schützen",
+        "label": "PDF-Tools"
+      },
+      "qr": {
+        "description": "QR-Codes & Barcodes erstellen und scannen",
+        "label": "QR & Barcodes"
+      },
+      "text": {
+        "description": "Wortzähler, Groß-/Kleinschreibung, Lorem Ipsum & URL-Tools",
+        "label": "Text-Tools"
+      },
+      "video": {
+        "description": "Videos komprimieren, konvertieren, schneiden & extrahieren",
+        "label": "Video-Tools"
+      }
+    },
+    "closeDialog": "Schließen",
+    "closeMenu": "Menü schließen",
+    "contact": "Kontakt",
+    "home": "Start",
+    "language": "Sprache",
+    "megaFootnote": "Alle Tools sind 100 % kostenlos · Keine Anmeldung · Dateien verlassen nie deinen Browser",
+    "megaSubtitle": "Über 200 kostenlose browserbasierte Tools — nichts verlässt dein Gerät",
+    "megaTitle": "Alle Tools",
+    "openMenu": "Menü öffnen",
+    "search": "Suchen",
+    "searchAria": "Tools suchen (⌘K)",
+    "searchAriaMobile": "Tools suchen",
+    "toolsSection": "Tools"
+  },
+  "notFound": {
+    "backHome": "Zurück zur Startseite",
+    "body": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
+    "browseCategories": "Beliebte Tool-Kategorien ansehen",
+    "title": "Seite nicht gefunden"
+  },
+  "search": {
+    "clearSearch": "Suche löschen",
+    "hint": "Versuche „pdf“, „json“, „qr“…",
+    "noResults": "Keine Tools für „{query}“ gefunden.",
+    "placeholder": "Über 200 kostenlose Tools durchsuchen…",
+    "results": "{count} Ergebnisse"
+  },
+  "allTools": {
+    "title": "Alle Tools",
+    "sub": "Alle kostenlosen BeYourTools-Tools an einem Ort. Tippe, um die Liste sofort zu filtern.",
+    "searchPlaceholder": "Tools suchen...",
+    "searchLabel": "Alle Tools durchsuchen",
+    "showing": "{shown} von {total} Tools werden angezeigt",
+    "noResults": "Keine Tools passen zu „{query}“. Versuche es mit einer anderen Suche.",
+    "openTool": "{name} öffnen",
+    "groups": {
+      "json": "JSON-Tools",
+      "image": "Bild-Tools",
+      "design": "Design-Tools",
+      "pdf": "PDF-Tools",
+      "video": "Video-Tools",
+      "audio": "Audio-Tools",
+      "qr": "QR- & Barcode-Tools",
+      "finance": "Finanzrechner",
+      "text": "Text-Tools",
+      "dev": "Entwickler-Tools",
+      "calc": "Rechner"
+    }
+  }
+}
