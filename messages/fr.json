@@ -1,0 +1,398 @@
+{
+  "blogIndex": {
+    "byAuthor": "Par {name}",
+    "featured": "À la une",
+    "latest": "Derniers articles",
+    "minRead": "{count} min de lecture",
+    "next": "Suivant →",
+    "noMore": "Aucun autre article sur cette page.",
+    "page": "Page {n}",
+    "paginationLabel": "Pagination du blog",
+    "prev": "← Précédent",
+    "readArticle": "Lire l'article",
+    "readMore": "Lire →",
+    "showing": "Affichage de {a}–{b} sur {count} articles",
+    "subtitle": "Des guides pratiques sur JSON, les images, les PDF et la productivité des développeurs.",
+    "title": "Blog"
+  },
+  "common": {
+    "backHome": "Retour à l'accueil",
+    "browse": "Parcourir les fichiers",
+    "clear": "Effacer",
+    "closeDialog": "Fermer",
+    "converterTitle": "Convertisseur {from} vers {to} - Outil en ligne gratuit | BeYourTools",
+    "copied": "Copié !",
+    "copy": "Copier",
+    "download": "Télécharger",
+    "dragDrop": "Glissez-déposez votre fichier ici, ou cliquez pour parcourir",
+    "error": "Une erreur s'est produite. Veuillez réessayer.",
+    "faqs": "Questions fréquentes",
+    "features": "Fonctionnalités",
+    "howItWorks": "Comment fonctionne {title}",
+    "howToUse": "Mode d'emploi",
+    "insightsTitle": "Analyses et planification stratégique",
+    "moreIn": "Plus dans",
+    "openPreview": "Ouvrir l'aperçu",
+    "privacyNote": "Tout s'exécute localement dans votre navigateur. Vos fichiers ne sont jamais envoyés vers un serveur.",
+    "privacyTitle": "Privé par conception",
+    "processing": "Traitement en cours…",
+    "relatedTools": "Outils associés",
+    "reset": "Réinitialiser",
+    "showLess": "Afficher moins",
+    "showMore": "Afficher plus"
+  },
+  "contact": {
+    "ariaLabel": "Formulaire de contact",
+    "copied": "✓ Copié",
+    "copiedEmail": "✓ Copié beyourtools@gmail.com",
+    "copy": "Copier",
+    "copyEmail": "Copier l'adresse e-mail",
+    "emailLabel": "Adresse e-mail",
+    "emailPlaceholder": "vous@exemple.com",
+    "mailEmail": "E-mail",
+    "mailFallback": "Contact",
+    "mailMessage": "Message",
+    "mailName": "Nom",
+    "mailSubject": "Objet",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Décrivez votre demande, votre rapport ou votre suggestion en détail...",
+    "nameLabel": "Votre nom",
+    "namePlaceholder": "p. ex. Alex Morgan",
+    "sendAnother": "Envoyer un autre message",
+    "slaLeft": "⏱️ Délai de réponse standard : 24 à 48 heures",
+    "slaRight": "Assistance dédiée d'ingénierie et de rédaction",
+    "subjectLabel": "Objet de la demande",
+    "subjectOptions": {
+      "ads": "Publicité ou partenariat",
+      "bug": "Rapport de bug ou de formule",
+      "feature": "Demande de fonctionnalité d'outil",
+      "general": "Demande générale",
+      "other": "Autre sujet",
+      "privacy": "Demande de confidentialité ou RGPD"
+    },
+    "subjects": {
+      "ads": "Demande de publicité / partenariat",
+      "bug": "Rapport de bug / de formule",
+      "feature": "Demande de fonctionnalité d'outil",
+      "general": "Demande générale",
+      "other": "Autre retour",
+      "privacy": "Demande de confidentialité / RGPD"
+    },
+    "submit": "Envoyer le message →",
+    "successBody": "Votre message a été préparé pour votre client de messagerie. Si votre application de messagerie ne s'est pas ouverte automatiquement, vous pouvez envoyer votre note directement à :",
+    "successNote": "Notre équipe d'ingénierie et de rédaction répond généralement sous 24 à 48 heures.",
+    "successTitle": "Merci de nous avoir contactés"
+  },
+  "cookie": {
+    "accept": "Accepter",
+    "cookiePolicy": "Politique relative aux cookies",
+    "decline": "Refuser",
+    "learnMore": "En savoir plus",
+    "message": "Nous utilisons des cookies pour mémoriser votre préférence de thème et pour diffuser des annonces. Consultez notre politique relative aux cookies pour en savoir plus.",
+    "privacyPolicy": "Politique de confidentialité"
+  },
+  "footer": {
+    "browserNote": "Tous les outils s'exécutent à 100 % dans votre navigateur",
+    "columns": {
+      "allAudio": "Tous les outils audio",
+      "allConverters": "Tous les convertisseurs",
+      "allDesign": "Tous les outils de design",
+      "allFinance": "Tous les outils financiers",
+      "allJson": "Tous les outils JSON",
+      "allPdf": "Tous les outils PDF",
+      "allQr": "Tous les QR et codes-barres",
+      "allVideo": "Tous les outils vidéo",
+      "audio": "Outils audio",
+      "blogPages": "Blog et pages",
+      "finance": "Outils financiers",
+      "image": "Convertisseur d'images",
+      "json": "Outils JSON",
+      "pdf": "Outils PDF",
+      "qr": "QR et codes-barres",
+      "video": "Outils vidéo"
+    },
+    "onLabel": "BeYourTools sur {network}",
+    "policies": {
+      "cookies": "Politique relative aux cookies",
+      "disclaimer": "Avertissement",
+      "privacy": "Politique de confidentialité",
+      "terms": "Conditions d'utilisation"
+    },
+    "rights": "Tous droits réservés.",
+    "tagline": "Des outils gratuits, privés et 100 % navigateur, pour tout le monde. Rien n'est jamais envoyé vers un serveur.",
+    "allTools": "Tous les outils"
+  },
+  "home": {
+    "badge": "100 % côté client — rien ne quitte votre navigateur",
+    "blogCta": "Tous les articles",
+    "blogSub": "Des guides pratiques sur JSON, les images, les PDF et la productivité des développeurs — écrits par {name}, {role}.",
+    "blogTitle": "Guides et tutoriels",
+    "byAuthor": "Par {name}",
+    "ctaSub": "Aucune donnée ne quitte votre appareil. Aucun compte. Aucune limite de débit. BeYourTools est gratuit pour toujours.",
+    "ctaTitleA": "Tout s'exécute dans",
+    "ctaTitleB": "votre navigateur",
+    "faqEyebrow": "FAQ",
+    "faqSub": "Tout ce que vous voudrez peut-être savoir avant de commencer.",
+    "faqTitle": "Questions fréquentes",
+    "faqs": [
+      {
+        "answer": "Oui — chaque outil de BeYourTools est entièrement gratuit, ne nécessite aucun compte et n'a aucune limite d'utilisation.",
+        "question": "Tous les outils BeYourTools sont-ils gratuits ?"
+      },
+      {
+        "answer": "Non — tout le traitement se fait dans votre navigateur. Vos fichiers et vos textes ne quittent jamais votre appareil.",
+        "question": "Mes fichiers sont-ils envoyés vers un serveur ?"
+      },
+      {
+        "answer": "Nous proposons plus de 30 outils JSON, dont un formateur, un validateur, un outil de comparaison (diff), un générateur de schéma, un testeur JSONPath, un décodeur JWT et des convertisseurs vers CSV, TypeScript, Python, SQL et bien plus.",
+        "question": "Quels outils JSON sont disponibles ?"
+      },
+      {
+        "answer": "Oui — nous prenons en charge 118 combinaisons de conversion d'images, dont JPG, PNG, WebP, AVIF, SVG, ICO, BMP, TIFF, PDF et bien plus, le tout directement dans votre navigateur.",
+        "question": "Puis-je convertir des images gratuitement ?"
+      },
+      {
+        "answer": "Nous proposons 30 outils PDF, dont la fusion, la division, la compression, la rotation, le filigrane, la protection, le déverrouillage, la consultation et la suppression des métadonnées, la conversion de PDF vers JPG, PNG, texte et JSON, et bien plus.",
+        "question": "Quels outils PDF sont disponibles ?"
+      }
+    ],
+    "financeClusters": {
+      "business": "Finance d'entreprise",
+      "debt": "Dettes et crédit",
+      "loans": "Prêts",
+      "marketing": "Marketing et ROI",
+      "salary": "Salaire et revenus",
+      "savings": "Épargne et intérêts",
+      "tax": "Impôts et prix"
+    },
+    "h1a": "Tous les outils qu'il vous faut,",
+    "h1b": "ici même.",
+    "minRead": "{count} min de lecture",
+    "perks": [
+      {
+        "body": "Vos fichiers et vos textes restent dans votre onglet de navigateur — rien n'est jamais envoyé vers un serveur.",
+        "title": "Privé"
+      },
+      {
+        "body": "Aucun aller-retour serveur — les résultats apparaissent dès que vous agissez.",
+        "title": "Instantané"
+      },
+      {
+        "body": "Aucun paywall, aucune inscription, aucune limite. Chaque outil, pour toujours.",
+        "title": "Gratuit"
+      }
+    ],
+    "pills": {
+      "audio": "Outils audio",
+      "finance": "Outils financiers",
+      "image": "Outils image",
+      "json": "Outils JSON",
+      "pdf": "Outils PDF",
+      "qr": "QR et codes-barres",
+      "video": "Outils vidéo"
+    },
+    "readMore": "Lire →",
+    "sections": {
+      "audio": {
+        "cta": "Tous les outils audio",
+        "description": "{count} outils audio : convertissez les formats, coupez des extraits, fusionnez des pistes et augmentez le volume, le tout localement.",
+        "title": "Outils audio"
+      },
+      "calc": {
+        "cta": "Tous les calculateurs",
+        "description": "{count} calculatrices du quotidien : pourcentages, IMC, âge, unités, fuseaux horaires et bien plus, avec des réponses instantanées.",
+        "title": "Calculateurs"
+      },
+      "design": {
+        "cta": "Tous les outils de design",
+        "description": "{count} assistants design : prélevez des couleurs sur n'importe quelle image, créez des palettes et générez des favicons pour votre site.",
+        "title": "Outils de design"
+      },
+      "dev": {
+        "cta": "Tous les outils développeur",
+        "description": "{count} utilitaires pour développeurs : testez des regex, générez des UUID et des mots de passe, calculez des hashes et convertissez des horodatages.",
+        "title": "Outils développeur"
+      },
+      "finance": {
+        "cta": "Tous les outils financiers",
+        "description": "{count} calculatrices financières : prêts, marges, épargne, remboursement de dettes, ROI et impôts, expliqués en langage simple.",
+        "title": "Calculateurs financiers",
+        "viewAll": "Voir tous les outils financiers"
+      },
+      "image": {
+        "cta": "Tous les outils image",
+        "description": "{count} façons de travailler avec des images : conversion JPG, PNG, WebP, AVIF, SVG, ICO et PDF, plus redimensionnement, recadrage et compression.",
+        "title": "Outils image"
+      },
+      "json": {
+        "cta": "Tous les outils JSON",
+        "description": "{count} outils pour formater, valider, convertir et inspecter du JSON. Collez vos données et obtenez des réponses en quelques secondes.",
+        "title": "Outils JSON"
+      },
+      "pdf": {
+        "cta": "Tous les outils PDF",
+        "description": "{count} outils PDF qui fonctionnent entièrement dans votre navigateur : fusionner, diviser, compresser, protéger et plus encore.",
+        "title": "Outils PDF"
+      },
+      "qr": {
+        "cta": "Tous les outils QR et codes-barres",
+        "description": "{count} outils QR et codes-barres : générez des codes avec votre logo, scannez avec votre caméra et décodez des images.",
+        "title": "Outils QR et codes-barres"
+      },
+      "text": {
+        "cta": "Tous les outils texte",
+        "description": "{count} utilitaires de texte : comptez les mots, changez la casse, générez du faux texte et encodez des URLs.",
+        "title": "Outils texte"
+      },
+      "video": {
+        "cta": "Tous les outils vidéo",
+        "description": "{count} outils vidéo : compressez, coupez, convertissez, redimensionnez et créez des GIF sans téléverser une seule image.",
+        "title": "Outils vidéo"
+      }
+    },
+    "stats": {
+      "audio": "outils audio",
+      "finance": "outils financiers",
+      "image": "outils image",
+      "json": "outils JSON",
+      "pdf": "outils PDF",
+      "qr": "QR et codes-barres",
+      "video": "outils vidéo"
+    },
+    "sub": "Des outils gratuits 100 % navigateur pour développeurs et designers — utilitaires JSON, convertisseurs d'images, outils PDF et bien plus. Aucune installation, aucun compte, aucune limite.",
+    "statsBar": {
+      "tools": "{count} outils gratuits",
+      "toolsLabel": "qui fonctionnent dans votre navigateur",
+      "categories": "{count} catégories",
+      "categoriesLabel": "pour toutes vos tâches quotidiennes",
+      "languages": "{count} langues",
+      "languagesLabel": "interface entièrement traduite",
+      "free": "100 % gratuit",
+      "freeLabel": "sans paywall caché",
+      "noSignup": "Sans inscription",
+      "noSignupLabel": "rien ne quitte votre appareil"
+    },
+    "howItWorks": {
+      "eyebrow": "Comment ça marche",
+      "title": "Terminé en trois étapes",
+      "steps": [
+        {
+          "title": "Trouvez votre outil",
+          "desc": "Recherchez ou parcourez les catégories jusqu'à trouver exactement ce qu'il vous faut."
+        },
+        {
+          "title": "Utilisez-le dans votre navigateur",
+          "desc": "Tout s'exécute localement sur votre appareil. Aucun envoi, aucune salle d'attente."
+        },
+        {
+          "title": "Copiez ou téléchargez le résultat",
+          "desc": "Récupérez votre résultat et poursuivez votre journée. C'est toute l'astuce."
+        }
+      ]
+    }
+  },
+  "nav": {
+    "about": "À propos",
+    "allTools": "Tous les outils",
+    "blog": "Blog",
+    "browseAll": "Tout parcourir →",
+    "categories": {
+      "audio": {
+        "description": "Convertir, découper, compresser et enregistrer de l'audio",
+        "label": "Outils audio"
+      },
+      "calc": {
+        "description": "Calculateurs de pourcentage, IMC et âge",
+        "label": "Calculateurs"
+      },
+      "design": {
+        "description": "Pipette à couleurs, palettes et favicons",
+        "label": "Outils de design"
+      },
+      "dev": {
+        "description": "Regex, UUID, mots de passe, hachages et horodatages",
+        "label": "Outils développeur"
+      },
+      "developer": {
+        "description": "Outils Base64, JWT, diff, schéma et utilitaires",
+        "label": "Outils développeur"
+      },
+      "finance": {
+        "description": "Calculateurs de prêts, marges, épargne et plus",
+        "label": "Outils financiers"
+      },
+      "image": {
+        "description": "Convertir entre JPG, PNG, WebP, SVG…",
+        "label": "Convertisseur d'images"
+      },
+      "json": {
+        "description": "Formater, valider, comparer et convertir",
+        "label": "Outils JSON"
+      },
+      "pdf": {
+        "description": "Fusionner, diviser, compresser et protéger des PDF",
+        "label": "Outils PDF"
+      },
+      "qr": {
+        "description": "Générer et scanner des QR codes et codes-barres",
+        "label": "QR et codes-barres"
+      },
+      "text": {
+        "description": "Compteur de mots, casse, lorem ipsum et outils URL",
+        "label": "Outils texte"
+      },
+      "video": {
+        "description": "Compresser, convertir, découper et extraire de la vidéo",
+        "label": "Outils vidéo"
+      }
+    },
+    "closeDialog": "Fermer",
+    "closeMenu": "Fermer le menu",
+    "contact": "Contact",
+    "home": "Accueil",
+    "language": "Langue",
+    "megaFootnote": "Tous les outils sont 100 % gratuits · Sans inscription · Vos fichiers ne quittent jamais votre navigateur",
+    "megaSubtitle": "Plus de 200 outils gratuits 100 % navigateur — rien ne quitte votre appareil",
+    "megaTitle": "Tous les outils",
+    "openMenu": "Ouvrir le menu",
+    "search": "Rechercher",
+    "searchAria": "Rechercher des outils (⌘K)",
+    "searchAriaMobile": "Rechercher des outils",
+    "toolsSection": "Outils"
+  },
+  "notFound": {
+    "backHome": "Retour à l'accueil",
+    "body": "La page que vous cherchez n'existe pas ou a été déplacée.",
+    "browseCategories": "Parcourir les catégories d'outils populaires",
+    "title": "Page introuvable"
+  },
+  "search": {
+    "clearSearch": "Effacer la recherche",
+    "hint": "Essayez « pdf », « json », « qr »…",
+    "noResults": "Aucun outil trouvé pour « {query} ».",
+    "placeholder": "Rechercher parmi plus de 200 outils gratuits…",
+    "results": "{count} résultats"
+  },
+  "allTools": {
+    "title": "Tous les outils",
+    "sub": "Tous les outils gratuits de BeYourTools au même endroit. Tapez pour filtrer la liste instantanément.",
+    "searchPlaceholder": "Rechercher des outils...",
+    "searchLabel": "Rechercher dans tous les outils",
+    "showing": "Affichage de {shown} outils sur {total}",
+    "noResults": "Aucun outil ne correspond à « {query} ». Essayez une autre recherche.",
+    "openTool": "Ouvrir {name}",
+    "groups": {
+      "json": "Outils JSON",
+      "image": "Outils d'image",
+      "design": "Outils de design",
+      "pdf": "Outils PDF",
+      "video": "Outils vidéo",
+      "audio": "Outils audio",
+      "qr": "Outils QR et codes-barres",
+      "finance": "Calculatrices financières",
+      "text": "Outils de texte",
+      "dev": "Outils développeur",
+      "calc": "Calculatrices"
+    }
+  }
+}

@@ -1,0 +1,398 @@
+{
+  "common": {
+    "backHome": "Back to homepage",
+    "browse": "Browse files",
+    "clear": "Clear",
+    "copied": "Copied!",
+    "copy": "Copy",
+    "download": "Download",
+    "dragDrop": "Drag & drop your file here, or click to browse",
+    "error": "Something went wrong. Please try again.",
+    "faqs": "Frequently asked questions",
+    "features": "Features",
+    "howToUse": "How to use",
+    "privacyNote": "Everything runs locally in your browser. Your files are never uploaded to a server.",
+    "privacyTitle": "Private by design",
+    "processing": "Processing…",
+    "relatedTools": "Related tools",
+    "reset": "Reset",
+    "showLess": "Show less",
+    "showMore": "Show more",
+    "moreIn": "More in",
+    "closeDialog": "Close",
+    "openPreview": "Open preview",
+    "howItWorks": "How the {title} Works",
+    "insightsTitle": "Insights & Strategic Planning",
+    "converterTitle": "{from} to {to} Converter - Free Online Tool | BeYourTools"
+  },
+  "cookie": {
+    "accept": "Accept",
+    "decline": "Decline",
+    "learnMore": "Learn more",
+    "message": "We use cookies to remember your theme preference and to serve ads. See our Cookie Policy for details.",
+    "cookiePolicy": "Cookie Policy",
+    "privacyPolicy": "Privacy Policy"
+  },
+  "footer": {
+    "browserNote": "All tools run 100% in your browser",
+    "columns": {
+      "allAudio": "All Audio Tools",
+      "allConverters": "All Converters",
+      "allDesign": "All Design Tools",
+      "allFinance": "All Finance Tools",
+      "allJson": "All JSON Tools",
+      "allPdf": "All PDF Tools",
+      "allQr": "All QR & Barcodes",
+      "allVideo": "All Video Tools",
+      "audio": "Audio Tools",
+      "blogPages": "Blog & Pages",
+      "finance": "Finance Tools",
+      "image": "Image Converter",
+      "json": "JSON Tools",
+      "pdf": "PDF Tools",
+      "qr": "QR & Barcodes",
+      "video": "Video Tools"
+    },
+    "onLabel": "BeYourTools on {network}",
+    "policies": {
+      "cookies": "Cookie Policy",
+      "disclaimer": "Disclaimer",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    },
+    "rights": "All rights reserved.",
+    "tagline": "Free, private, browser-based tools for everyone. Nothing is ever uploaded to a server.",
+    "allTools": "All Tools"
+  },
+  "nav": {
+    "about": "About",
+    "allTools": "All Tools",
+    "blog": "Blog",
+    "browseAll": "Browse all →",
+    "categories": {
+      "audio": {
+        "description": "Convert, cut, compress & record audio",
+        "label": "Audio Tools"
+      },
+      "design": {
+        "label": "Design Tools",
+        "description": "Color picker, palettes & favicons"
+      },
+      "developer": {
+        "description": "Base64, JWT, diff, schema & utility tools",
+        "label": "Developer Tools"
+      },
+      "finance": {
+        "description": "Calculators for loans, margins, savings & more",
+        "label": "Finance Tools"
+      },
+      "image": {
+        "description": "Convert between JPG, PNG, WebP, SVG…",
+        "label": "Image Converter"
+      },
+      "json": {
+        "description": "Format, validate, diff & convert",
+        "label": "JSON Tools"
+      },
+      "pdf": {
+        "description": "Merge, split, compress & protect PDFs",
+        "label": "PDF Tools"
+      },
+      "qr": {
+        "description": "Generate and scan QR codes & barcodes",
+        "label": "QR & Barcodes"
+      },
+      "video": {
+        "description": "Compress, convert, trim & extract video",
+        "label": "Video Tools"
+      },
+      "text": {
+        "label": "Text Tools",
+        "description": "Word count, case, lorem ipsum & URL tools"
+      },
+      "dev": {
+        "label": "Developer Tools",
+        "description": "Regex, UUID, passwords, hashes & timestamps"
+      },
+      "calc": {
+        "label": "Calculators",
+        "description": "Percentage, BMI & age calculators"
+      }
+    },
+    "closeDialog": "Close",
+    "closeMenu": "Close menu",
+    "contact": "Contact",
+    "home": "Home",
+    "language": "Language",
+    "megaFootnote": "All tools are 100% free · No sign-up · Files never leave your browser",
+    "megaSubtitle": "200+ free browser-based tools, nothing leaves your device",
+    "megaTitle": "All Tools",
+    "openMenu": "Open menu",
+    "search": "Search",
+    "searchAria": "Search tools (⌘K)",
+    "searchAriaMobile": "Search tools",
+    "toolsSection": "Tools"
+  },
+  "notFound": {
+    "backHome": "Back to homepage",
+    "body": "The page you're looking for doesn't exist or was moved.",
+    "title": "Page not found",
+    "browseCategories": "Browse popular tool categories"
+  },
+  "search": {
+    "clearSearch": "Clear search",
+    "hint": "Try “pdf”, “json”, “qr”…",
+    "noResults": "No tools found for “{query}”.",
+    "placeholder": "Search 200+ free tools…",
+    "results": "{count} results"
+  },
+  "home": {
+    "badge": "100% client-side: nothing leaves your browser",
+    "h1a": "Every tool you need,",
+    "h1b": "right here.",
+    "sub": "Free browser-based tools for developers and designers: JSON utilities, image converters, PDF tools and more. No installs, no accounts, no limits.",
+    "pills": {
+      "json": "JSON Tools",
+      "image": "Image Tools",
+      "pdf": "PDF Tools",
+      "video": "Video Tools",
+      "audio": "Audio Tools",
+      "qr": "QR & Barcodes",
+      "finance": "Finance Tools"
+    },
+    "stats": {
+      "json": "JSON tools",
+      "image": "Image tools",
+      "pdf": "PDF tools",
+      "video": "Video tools",
+      "audio": "Audio tools",
+      "qr": "QR & Barcode",
+      "finance": "Finance tools"
+    },
+    "sections": {
+      "json": {
+        "title": "JSON Tools",
+        "description": "{count} tools for formatting, validating, converting and inspecting JSON. Paste your data and get answers in seconds.",
+        "cta": "All JSON Tools"
+      },
+      "image": {
+        "title": "Image Tools",
+        "description": "{count} ways to work with images: JPG, PNG, WebP, AVIF, SVG, ICO and PDF conversion, plus resizing, cropping and compression.",
+        "cta": "All Image Tools"
+      },
+      "design": {
+        "title": "Design Tools",
+        "description": "{count} design helpers: pick colors from any image, build palettes and generate favicons for your site.",
+        "cta": "All Design Tools"
+      },
+      "pdf": {
+        "title": "PDF Tools",
+        "description": "{count} PDF tools that run entirely in your browser: merge, split, compress, protect and more.",
+        "cta": "All PDF Tools"
+      },
+      "video": {
+        "title": "Video Tools",
+        "description": "{count} video tools: compress, cut, convert, resize and make GIFs without uploading a single frame.",
+        "cta": "All Video Tools"
+      },
+      "audio": {
+        "title": "Audio Tools",
+        "description": "{count} audio tools: convert formats, cut clips, merge tracks and boost volume, all locally.",
+        "cta": "All Audio Tools"
+      },
+      "qr": {
+        "title": "QR & Barcode Tools",
+        "description": "{count} QR and barcode tools: generate codes with your logo, scan with your camera and decode images.",
+        "cta": "All QR & Barcode Tools"
+      },
+      "finance": {
+        "title": "Finance Calculators",
+        "description": "{count} finance calculators: loans, margins, savings, debt payoff, ROI and taxes, explained in plain language.",
+        "cta": "All Finance Tools",
+        "viewAll": "View all Finance Tools"
+      },
+      "text": {
+        "title": "Text Tools",
+        "description": "{count} text utilities: count words, change case, generate filler text and encode URLs.",
+        "cta": "All Text Tools"
+      },
+      "dev": {
+        "title": "Developer Tools",
+        "description": "{count} developer utilities: test regex, generate UUIDs and passwords, hash text and convert timestamps.",
+        "cta": "All Developer Tools"
+      },
+      "calc": {
+        "title": "Calculators",
+        "description": "{count} everyday calculators: percentages, BMI, age, units, time zones and more, with instant answers.",
+        "cta": "All Calculators"
+      }
+    },
+    "financeClusters": {
+      "business": "Business Finance",
+      "salary": "Salary & Income",
+      "loans": "Loans",
+      "debt": "Debt & Credit",
+      "savings": "Savings & Interest",
+      "tax": "Tax & Pricing",
+      "marketing": "Marketing & ROI"
+    },
+    "faqEyebrow": "FAQ",
+    "faqTitle": "Frequently asked questions",
+    "faqSub": "Everything you might want to know before you start.",
+    "faqs": [
+      {
+        "question": "Are all BeYourTools tools free?",
+        "answer": "Yes. Every tool on BeYourTools is completely free, requires no account, and has no usage limits."
+      },
+      {
+        "question": "Do my files get uploaded to a server?",
+        "answer": "No. All processing happens in your browser. Files and text never leave your device."
+      },
+      {
+        "question": "What JSON tools are available?",
+        "answer": "We offer 30+ JSON tools including formatter, validator, diff, schema generator, JSONPath tester, JWT decoder, and converters to CSV, TypeScript, Python, SQL, and more."
+      },
+      {
+        "question": "Can I convert images for free?",
+        "answer": "Yes. We support 118 image conversion combinations including JPG, PNG, WebP, AVIF, SVG, ICO, BMP, TIFF, PDF and more, all running in your browser."
+      },
+      {
+        "question": "What PDF tools are available?",
+        "answer": "We offer 30 PDF tools including merge, split, compress, rotate, watermark, protect, unlock, metadata viewer/remover, PDF to JPG/PNG/text/JSON, and more."
+      }
+    ],
+    "blogTitle": "Guides & tutorials",
+    "blogSub": "Practical guides on JSON, images, PDFs and developer productivity, written by {name}, {role}.",
+    "blogCta": "All articles",
+    "minRead": "{count} min read",
+    "readMore": "Read →",
+    "byAuthor": "By {name}",
+    "ctaTitleA": "Everything runs in",
+    "ctaTitleB": "your browser",
+    "ctaSub": "No data leaves your device. No accounts. No rate limits. BeYourTools is free forever.",
+    "perks": [
+      {
+        "title": "Private",
+        "body": "Files and text stay in your browser tab. Nothing is ever uploaded."
+      },
+      {
+        "title": "Instant",
+        "body": "No server round-trips. Results appear the moment you act."
+      },
+      {
+        "title": "Free",
+        "body": "No paywalls, no sign-ups, no limits. Every tool, forever."
+      }
+    ],
+    "statsBar": {
+      "tools": "{count} free tools",
+      "toolsLabel": "run in your browser",
+      "categories": "{count} categories",
+      "categoriesLabel": "everyday tasks covered",
+      "languages": "{count} languages",
+      "languagesLabel": "fully translated UI",
+      "free": "100% free",
+      "freeLabel": "no hidden paywalls",
+      "noSignup": "No sign-up",
+      "noSignupLabel": "nothing leaves your device"
+    },
+    "howItWorks": {
+      "eyebrow": "How it works",
+      "title": "Done in three steps",
+      "steps": [
+        {
+          "title": "Find your tool",
+          "desc": "Search or browse the categories until you spot exactly what you need."
+        },
+        {
+          "title": "Use it in your browser",
+          "desc": "Everything runs locally on your device. No uploads, no waiting rooms."
+        },
+        {
+          "title": "Copy or download the result",
+          "desc": "Grab your output and get on with your day. That's the whole trick."
+        }
+      ]
+    }
+  },
+  "blogIndex": {
+    "title": "Blog",
+    "subtitle": "Practical guides on JSON, images, PDFs and developer productivity.",
+    "featured": "Featured",
+    "latest": "Latest articles",
+    "minRead": "{count} min read",
+    "byAuthor": "By {name}",
+    "readMore": "Read →",
+    "page": "Page {n}",
+    "prev": "← Previous",
+    "next": "Next →",
+    "showing": "Showing {a}–{b} of {count} articles",
+    "paginationLabel": "Blog pagination",
+    "readArticle": "Read article",
+    "noMore": "No more posts on this page."
+  },
+  "contact": {
+    "ariaLabel": "Contact form",
+    "nameLabel": "Your Name",
+    "namePlaceholder": "e.g. Alex Morgan",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "you@example.com",
+    "subjectLabel": "Inquiry Subject",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Describe your inquiry, report, or suggestion in detail...",
+    "submit": "Send Message →",
+    "copyEmail": "Copy email address",
+    "copiedEmail": "✓ Copied beyourtools@gmail.com",
+    "subjects": {
+      "general": "General enquiry",
+      "bug": "Bug / Formula report",
+      "feature": "Tool feature request",
+      "privacy": "Privacy / GDPR request",
+      "ads": "Advertising / Partnership enquiry",
+      "other": "Other feedback"
+    },
+    "subjectOptions": {
+      "general": "General enquiry",
+      "bug": "Bug or formula report",
+      "feature": "Tool feature request",
+      "privacy": "Privacy or GDPR request",
+      "ads": "Advertising or partnership",
+      "other": "Other topic"
+    },
+    "successTitle": "Thank You for Contacting Us",
+    "successBody": "Your message has been prepared for your email client. If your email application did not launch automatically, you can send your note directly to:",
+    "successNote": "Our engineering and editorial team typically responds within 24–48 hours.",
+    "sendAnother": "Send another message",
+    "copy": "Copy",
+    "copied": "✓ Copied",
+    "slaLeft": "⏱️ Standard response SLA: 24–48 hours",
+    "slaRight": "Dedicated engineering & editorial support",
+    "mailName": "Name",
+    "mailEmail": "Email",
+    "mailSubject": "Subject",
+    "mailMessage": "Message",
+    "mailFallback": "Contact"
+  },
+  "allTools": {
+    "title": "All Tools",
+    "sub": "Every free tool on BeYourTools in one place. Type to filter the list instantly.",
+    "searchPlaceholder": "Search tools...",
+    "searchLabel": "Search all tools",
+    "showing": "Showing {shown} of {total} tools",
+    "noResults": "No tools match \"{query}\". Try a different search.",
+    "openTool": "Open {name}",
+    "groups": {
+      "json": "JSON Tools",
+      "image": "Image Tools",
+      "design": "Design Tools",
+      "pdf": "PDF Tools",
+      "video": "Video Tools",
+      "audio": "Audio Tools",
+      "qr": "QR & Barcode Tools",
+      "finance": "Finance Calculators",
+      "text": "Text Tools",
+      "dev": "Developer Tools",
+      "calc": "Calculators"
+    }
+  }
+}
