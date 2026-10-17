@@ -1,0 +1,153 @@
+import { localizeMetadata } from "@/lib/i18n-content";
+import type { Metadata } from "next";
+import { Link } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
+import { contentLocale, getToolCopy } from "@/lib/i18n-content";
+import BarcodeGeneratorClient from "./BarcodeGeneratorClient";
+import QRRelatedTools from "@/components/qr/QRRelatedTools";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
+
+const __enMetadata: Metadata = {
+  title: "Barcode Generator - Create Barcodes Online | BeYourTools",
+  description:
+    "Generate barcodes online for free - Code 128, Code 39, EAN-13, EAN-8, UPC-A, ITF-14, MSI and Codabar. Customize size, colors and download as PNG or SVG.",
+  keywords: "barcode generator, free barcode generator, code 128 generator, EAN barcode, UPC barcode, online barcode maker",
+  alternates: { canonical: `${SITE.url}/barcode-generator` },
+  openGraph: {
+    type: "website",
+    url: `${SITE.url}/barcode-generator`,
+    title: "Barcode Generator - Create Barcodes Free | BeYourTools",
+    description: "Create Code 128, EAN-13, UPC and more - free, instant, browser-based.",
+    images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "Barcode Generator" }],
+  },
+};
+
+
+
+export default async function BarcodeGeneratorPage() {
+  const locale = await contentLocale();
+  const t = await getTranslations({ locale, namespace: "common" });
+  const copy = await getToolCopy(locale, "barcode-generator");
+  const tName = copy.name ?? "";
+  const tDescription = copy.description ?? "";
+  const tFaqs = copy.faqs;
+  const schemas = [
+  breadcrumbSchema([
+    { name: "BeYourTools", url: SITE.url },
+    { name: "QR & Barcode Tools", url: canonical("/qr-barcode-tools") },
+    { name: tName, url: canonical("/barcode-generator") },
+  ]),
+  softwareApplicationSchema({
+    name: "Barcode Generator",
+    description: "Free browser-based barcode generator supporting Code 128, Code 39, EAN-13, EAN-8, UPC-A, ITF-14, MSI and Codabar.",
+    url: canonical("/barcode-generator"),
+    category: "UtilitiesApplication",
+  }),
+  faqSchema(tFaqs),
+];
+
+  return (
+    <>
+      <JsonLd data={schemas} />
+      <div className="mx-auto w-full max-w-3xl px-4 py-8 sm:px-6 sm:py-12">
+        <div className="mb-4 flex items-center gap-1.5 text-xs" style={{ color: "var(--text-subtle)" }}>
+          <Link href="/" className="focus-ring rounded hover:underline" style={{ color: "var(--text-muted)" }}>BeYourTools</Link>
+          <span>/</span>
+          <Link href="/qr-barcode-tools" className="focus-ring rounded hover:underline" style={{ color: "var(--text-muted)" }}>QR &amp; Barcode Tools</Link>
+          <span>/</span>
+          <span style={{ color: "var(--text-secondary)" }}>Barcode Generator</span>
+        </div>
+
+        <div className="mb-8">
+          <p className="mb-1 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--accent-text)" }}>Barcode Tools</p>
+          <h1 className="font-display text-2xl font-semibold sm:text-3xl" style={{ color: "var(--text-primary)" }}>{tName}</h1>
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            Create barcodes in 8 popular formats - Code 128, Code 39, EAN-13, EAN-8, UPC-A, ITF-14, MSI and Codabar.
+            Customize size, colors and download as PNG or SVG instantly in your browser.
+          </p>
+        </div>
+
+        <BarcodeGeneratorClient />
+
+        <section className="mt-12 space-y-3">
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>How to Generate Barcodes</h2>
+          <ol className="space-y-2 text-sm" style={{ color: "var(--text-muted)" }}>
+            <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--accent-text)" }}>1.</span> Choose a barcode format from the dropdown.</li>
+            <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--accent-text)" }}>2.</span> Enter the value to encode - the hint below the field shows what characters are allowed.</li>
+            <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--accent-text)" }}>3.</span> Optionally expand <strong>Customize barcode</strong> to adjust width, height, colors and text.</li>
+            <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--accent-text)" }}>4.</span> Click <strong>Generate Barcode</strong> and download as PNG or SVG.</li>
+          </ol>
+        </section>
+
+        <section className="mt-10 space-y-3">
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>Supported Barcode Formats</h2>
+          <div className="grid gap-2 sm:grid-cols-2">
+            {[
+              ["Code 128", "Full ASCII, variable length. Widely used in shipping and logistics."],
+              ["Code 39", "Uppercase A-Z, digits, and special chars. Common in manufacturing."],
+              ["EAN-13", "13-digit European Article Number. Used on retail products globally."],
+              ["EAN-8", "8-digit compact EAN for small packages."],
+              ["UPC-A", "12-digit Universal Product Code. Standard for North American retail."],
+              ["ITF-14", "14-digit format for outer cartons and shipping containers."],
+              ["MSI", "Digits only. Used in library and inventory systems."],
+              ["Codabar", "Used in blood banks, FedEx and libraries. Alphanumeric with start/stop."],
+            ].map(([name, desc]) => (
+              <div key={name} className="rounded-lg border p-3" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+                <p className="text-xs font-semibold" style={{ color: "var(--text-secondary)" }}>{name}</p>
+                <p className="mt-0.5 text-xs" style={{ color: "var(--text-muted)" }}>{desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Optical Scanning & Symbology Architecture Guide */}
+        <section className="mt-10 space-y-4 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+            Linear Symbologies &amp; Optical Scanning Standards
+          </h2>
+          <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            One-dimensional (1D) barcodes represent data through alternating parallel black bars and white spaces of varying widths. 
+            When scanned by laser or CCD optical readers, the reflected light patterns are translated into binary signals that match standardized lookup tables. 
+            Choosing the correct symbology ensures high read rates across handheld scanners, automated conveyor belt sorters, and mobile optical cameras.
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2 text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Quiet Zones &amp; Contrast Ratio</h3>
+              <p>
+                Every standard linear barcode requires an unprinted margin (the &quot;quiet zone&quot;) on both the left and right edges. 
+                Maintaining a minimum quiet zone equal to at least 10 times the width of the narrowest bar prevents scanner timing errors and misreads.
+              </p>
+            </div>
+            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Mathematical Check Digits</h3>
+              <p>
+                Retail and industrial symbologies (including EAN-13, UPC-A, and Code 128) feature mandatory modulo-10 or modulo-103 check digits. 
+                Our generator automatically computes and verifies these checksums, ensuring your barcodes never fail validation at point-of-sale terminals.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="mt-10 space-y-4">
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>{tName} {t("faqs")}</h2>
+          {tFaqs.map(({ question: q, answer: a }) => (
+            <div key={q as string}>
+              <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>{q}</p>
+              <p className="mt-1 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{a}</p>
+            </div>
+          ))}
+        </section>
+
+        <QRRelatedTools currentSlug="barcode-generator" />
+      </div>
+    </>
+  );
+}
+
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  return localizeMetadata(locale, "barcode-generator", __enMetadata);
+}
