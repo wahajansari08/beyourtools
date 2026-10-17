@@ -1,0 +1,398 @@
+{
+  "common": {
+    "backHome": "返回首页",
+    "browse": "浏览文件",
+    "clear": "清除",
+    "copied": "已复制！",
+    "copy": "复制",
+    "download": "下载",
+    "dragDrop": "将文件拖放到此处，或点击浏览",
+    "error": "出错了，请重试。",
+    "faqs": "常见问题",
+    "features": "功能",
+    "howToUse": "使用方法",
+    "privacyNote": "所有操作都在您的浏览器本地运行，文件绝不会上传到服务器。",
+    "privacyTitle": "隐私设计",
+    "processing": "处理中…",
+    "relatedTools": "相关工具",
+    "reset": "重置",
+    "showLess": "收起",
+    "showMore": "展开更多",
+    "moreIn": "更多：",
+    "closeDialog": "关闭",
+    "openPreview": "打开预览",
+    "howItWorks": "{title} 使用原理",
+    "insightsTitle": "洞察与战略规划",
+    "converterTitle": "{from} 转 {to} 转换器——免费在线工具 | BeYourTools"
+  },
+  "cookie": {
+    "accept": "接受",
+    "decline": "拒绝",
+    "learnMore": "了解更多",
+    "message": "我们使用 Cookie 来记住您的主题偏好并投放广告，详情请参阅我们的 Cookie 政策。",
+    "cookiePolicy": "Cookie 政策",
+    "privacyPolicy": "隐私政策"
+  },
+  "footer": {
+    "browserNote": "所有工具 100% 在您的浏览器中运行",
+    "columns": {
+      "allAudio": "全部音频工具",
+      "allConverters": "全部转换器",
+      "allDesign": "全部设计工具",
+      "allFinance": "全部财务工具",
+      "allJson": "全部 JSON 工具",
+      "allPdf": "全部 PDF 工具",
+      "allQr": "全部二维码与条形码",
+      "allVideo": "全部视频工具",
+      "audio": "音频工具",
+      "blogPages": "博客与页面",
+      "finance": "财务工具",
+      "image": "图片转换器",
+      "json": "JSON 工具",
+      "pdf": "PDF 工具",
+      "qr": "二维码与条形码",
+      "video": "视频工具"
+    },
+    "onLabel": "BeYourTools 在 {network} 上",
+    "policies": {
+      "cookies": "Cookie 政策",
+      "disclaimer": "免责声明",
+      "privacy": "隐私政策",
+      "terms": "服务条款"
+    },
+    "rights": "版权所有。",
+    "tagline": "免费、私密、基于浏览器的工具，人人可用。任何内容都不会上传到服务器。",
+    "allTools": "全部工具"
+  },
+  "nav": {
+    "about": "关于我们",
+    "allTools": "全部工具",
+    "blog": "博客",
+    "browseAll": "浏览全部 →",
+    "categories": {
+      "audio": {
+        "description": "转换、剪辑、压缩与录制音频",
+        "label": "音频工具"
+      },
+      "design": {
+        "label": "设计工具",
+        "description": "取色器、配色方案与网站图标"
+      },
+      "developer": {
+        "description": "Base64、JWT、对比、Schema 及实用工具",
+        "label": "开发者工具"
+      },
+      "finance": {
+        "description": "贷款、利润、储蓄等计算器",
+        "label": "财务工具"
+      },
+      "image": {
+        "description": "在 JPG、PNG、WebP、SVG 等格式间转换",
+        "label": "图片转换器"
+      },
+      "json": {
+        "description": "格式化、校验、对比与转换",
+        "label": "JSON 工具"
+      },
+      "pdf": {
+        "description": "合并、拆分、压缩与加密 PDF",
+        "label": "PDF 工具"
+      },
+      "qr": {
+        "description": "生成与扫描二维码和条形码",
+        "label": "二维码与条形码"
+      },
+      "video": {
+        "description": "压缩、转换、剪辑与提取视频",
+        "label": "视频工具"
+      },
+      "text": {
+        "label": "文本工具",
+        "description": "字数统计、大小写转换、Lorem Ipsum 与 URL 工具"
+      },
+      "dev": {
+        "label": "开发者工具",
+        "description": "正则表达式、UUID、密码、哈希与时间戳"
+      },
+      "calc": {
+        "label": "计算器",
+        "description": "百分比、BMI 与年龄计算器"
+      }
+    },
+    "closeDialog": "关闭",
+    "closeMenu": "关闭菜单",
+    "contact": "联系我们",
+    "home": "首页",
+    "language": "语言",
+    "megaFootnote": "所有工具 100% 免费 · 无需注册 · 文件永不离开您的浏览器",
+    "megaSubtitle": "200+ 免费浏览器工具，数据不出您的设备",
+    "megaTitle": "全部工具",
+    "openMenu": "打开菜单",
+    "search": "搜索",
+    "searchAria": "搜索工具 (⌘K)",
+    "searchAriaMobile": "搜索工具",
+    "toolsSection": "工具"
+  },
+  "notFound": {
+    "backHome": "返回首页",
+    "body": "您要找的页面不存在或已被移动。",
+    "title": "页面未找到",
+    "browseCategories": "浏览热门工具分类"
+  },
+  "search": {
+    "clearSearch": "清除搜索",
+    "hint": "试试 “pdf”、“json”、“qr”…",
+    "noResults": "未找到与 “{query}” 相关的工具。",
+    "placeholder": "搜索 200+ 免费工具…",
+    "results": "{count} 个结果"
+  },
+  "home": {
+    "badge": "100% 客户端运行：数据绝不离开您的浏览器",
+    "h1a": "您需要的每一个工具，",
+    "h1b": "都在这里。",
+    "sub": "面向开发者与设计师的免费浏览器工具：JSON 实用工具、图片转换器、PDF 工具等。无需安装、无需注册、没有限制。",
+    "pills": {
+      "json": "JSON 工具",
+      "image": "图片工具",
+      "pdf": "PDF 工具",
+      "video": "视频工具",
+      "audio": "音频工具",
+      "qr": "二维码与条形码",
+      "finance": "财务工具"
+    },
+    "stats": {
+      "json": "JSON 工具",
+      "image": "图片工具",
+      "pdf": "PDF 工具",
+      "video": "视频工具",
+      "audio": "音频工具",
+      "qr": "二维码与条形码",
+      "finance": "财务工具"
+    },
+    "sections": {
+      "json": {
+        "title": "JSON 工具",
+        "description": "{count} 款 JSON 工具：格式化、校验、转换和查看 JSON。粘贴数据，几秒钟内获得答案。",
+        "cta": "全部 JSON 工具"
+      },
+      "image": {
+        "title": "图片工具",
+        "description": "{count} 种图片处理方式：JPG、PNG、WebP、AVIF、SVG、ICO 与 PDF 格式转换，外加调整尺寸、裁剪和压缩。",
+        "cta": "全部图片工具"
+      },
+      "design": {
+        "title": "设计工具",
+        "description": "{count} 个设计小帮手：从任意图片取色、搭配色板、为您的网站生成网站图标（favicon）。",
+        "cta": "全部设计工具"
+      },
+      "pdf": {
+        "title": "PDF 工具",
+        "description": "{count} 款 PDF 工具，全部在您的浏览器中运行：合并、拆分、压缩、加密等。",
+        "cta": "全部 PDF 工具"
+      },
+      "video": {
+        "title": "视频工具",
+        "description": "{count} 款视频工具：压缩、剪辑、转换、调整尺寸、制作 GIF，全程无需上传任何画面。",
+        "cta": "全部视频工具"
+      },
+      "audio": {
+        "title": "音频工具",
+        "description": "{count} 款音频工具：格式转换、片段剪切、音轨合并、音量增强，全部在本地完成。",
+        "cta": "全部音频工具"
+      },
+      "qr": {
+        "title": "二维码与条形码工具",
+        "description": "{count} 款二维码和条形码工具：带您品牌 Logo 生成二维码、用摄像头扫描、解码图片。",
+        "cta": "全部二维码与条形码工具"
+      },
+      "finance": {
+        "title": "财务计算器",
+        "description": "{count} 个财务计算器：贷款、利润率、储蓄、还债、ROI 和税费，用通俗的语言解释。",
+        "cta": "全部财务工具",
+        "viewAll": "查看全部财务工具"
+      },
+      "text": {
+        "title": "文本工具",
+        "description": "{count} 个文本工具：字数统计、大小写转换、生成占位文本、URL 编码。",
+        "cta": "全部文本工具"
+      },
+      "dev": {
+        "title": "开发者工具",
+        "description": "{count} 个开发者工具：正则测试、生成 UUID 和密码、文本哈希、时间戳转换。",
+        "cta": "全部开发者工具"
+      },
+      "calc": {
+        "title": "计算器",
+        "description": "{count} 个日常计算器：百分比、BMI、年龄、单位换算、时区等，即时出结果。",
+        "cta": "全部计算器"
+      }
+    },
+    "financeClusters": {
+      "business": "企业财务",
+      "salary": "工资与收入",
+      "loans": "贷款",
+      "debt": "债务与信用",
+      "savings": "储蓄与利息",
+      "tax": "税务与定价",
+      "marketing": "营销与 ROI"
+    },
+    "faqEyebrow": "常见问题",
+    "faqTitle": "常见问题",
+    "faqSub": "开始之前，您可能想了解的一切。",
+    "faqs": [
+      {
+        "question": "BeYourTools 的所有工具都免费吗？",
+        "answer": "是的。BeYourTools 上的每个工具都完全免费，无需注册，也没有任何使用限制。"
+      },
+      {
+        "question": "我的文件会被上传到服务器吗？",
+        "answer": "不会。所有处理都在您的浏览器中完成，文件和文本永不离开您的设备。"
+      },
+      {
+        "question": "有哪些 JSON 工具？",
+        "answer": "我们提供 30+ 款 JSON 工具，包括格式化、校验、对比、Schema 生成器、JSONPath 测试、JWT 解码，以及转换为 CSV、TypeScript、Python、SQL 等格式的工具。"
+      },
+      {
+        "question": "图片转换免费吗？",
+        "answer": "免费。我们支持 118 种图片转换组合，包括 JPG、PNG、WebP、AVIF、SVG、ICO、BMP、TIFF、PDF 等，全部在您的浏览器中运行。"
+      },
+      {
+        "question": "有哪些 PDF 工具？",
+        "answer": "我们提供 30 款 PDF 工具，包括合并、拆分、压缩、旋转、加水印、加密、解密、元数据查看/清除，以及 PDF 转 JPG/PNG/文本/JSON 等。"
+      }
+    ],
+    "blogTitle": "指南与教程",
+    "blogSub": "{name}（{role}）撰写的 JSON、图片、PDF 与开发者效率实用指南。",
+    "blogCta": "全部文章",
+    "minRead": "阅读约 {count} 分钟",
+    "readMore": "阅读 →",
+    "byAuthor": "作者：{name}",
+    "ctaTitleA": "一切都在",
+    "ctaTitleB": "您的浏览器中运行",
+    "ctaSub": "数据不出您的设备，无需注册，没有频率限制。BeYourTools 永久免费。",
+    "perks": [
+      {
+        "title": "私密",
+        "body": "文件和文本只留在您的浏览器标签页中，绝不会被上传。"
+      },
+      {
+        "title": "即时",
+        "body": "无需服务器往返，操作即出结果。"
+      },
+      {
+        "title": "免费",
+        "body": "没有付费墙，没有注册，没有限制。所有工具，永远免费。"
+      }
+    ],
+    "statsBar": {
+      "tools": "{count} 款免费工具",
+      "toolsLabel": "在浏览器中直接运行",
+      "categories": "{count} 个分类",
+      "categoriesLabel": "覆盖日常任务",
+      "languages": "{count} 种语言",
+      "languagesLabel": "界面已完全翻译",
+      "free": "100% 免费",
+      "freeLabel": "没有隐藏的付费墙",
+      "noSignup": "无需注册",
+      "noSignupLabel": "数据不离开您的设备"
+    },
+    "howItWorks": {
+      "eyebrow": "使用方法",
+      "title": "三步搞定",
+      "steps": [
+        {
+          "title": "找到您的工具",
+          "desc": "在分类中搜索或浏览，直到找到您真正需要的工具。"
+        },
+        {
+          "title": "在浏览器中直接使用",
+          "desc": "所有操作都在您的设备上本地运行。无需上传，没有等待。"
+        },
+        {
+          "title": "复制或下载结果",
+          "desc": "获取结果，继续您的一天。秘诀就是这么简单。"
+        }
+      ]
+    }
+  },
+  "blogIndex": {
+    "title": "博客",
+    "subtitle": "关于 JSON、图片、PDF 与开发者效率的实用指南。",
+    "featured": "精选",
+    "latest": "最新文章",
+    "minRead": "阅读约 {count} 分钟",
+    "byAuthor": "作者：{name}",
+    "readMore": "阅读 →",
+    "page": "第 {n} 页",
+    "prev": "← 上一页",
+    "next": "下一页 →",
+    "showing": "共 {count} 篇，显示第 {a}–{b} 篇",
+    "paginationLabel": "博客分页",
+    "readArticle": "阅读文章",
+    "noMore": "本页没有更多文章了。"
+  },
+  "contact": {
+    "ariaLabel": "联系表单",
+    "nameLabel": "您的姓名",
+    "namePlaceholder": "例如：Alex Morgan",
+    "emailLabel": "电子邮箱",
+    "emailPlaceholder": "you@example.com",
+    "subjectLabel": "咨询主题",
+    "messageLabel": "留言内容",
+    "messagePlaceholder": "请详细描述您的咨询、问题报告或建议……",
+    "submit": "发送留言 →",
+    "copyEmail": "复制邮箱地址",
+    "copiedEmail": "✓ 已复制 beyourtools@gmail.com",
+    "subjects": {
+      "general": "一般咨询",
+      "bug": "Bug / 公式问题报告",
+      "feature": "工具功能建议",
+      "privacy": "隐私 / GDPR 请求",
+      "ads": "广告 / 合作咨询",
+      "other": "其他反馈"
+    },
+    "subjectOptions": {
+      "general": "一般咨询",
+      "bug": "Bug 或公式问题报告",
+      "feature": "工具功能建议",
+      "privacy": "隐私或 GDPR 请求",
+      "ads": "广告或合作",
+      "other": "其他主题"
+    },
+    "successTitle": "感谢您的来信",
+    "successBody": "您的留言已在您的邮件客户端中准备就绪。如果邮件应用没有自动启动，您可以直接发送到：",
+    "successNote": "我们的工程与编辑团队通常会在 24–48 小时内回复。",
+    "sendAnother": "再发一条留言",
+    "copy": "复制",
+    "copied": "✓ 已复制",
+    "slaLeft": "⏱️ 标准回复时效：24–48 小时",
+    "slaRight": "专业工程与编辑支持",
+    "mailName": "姓名",
+    "mailEmail": "邮箱",
+    "mailSubject": "主题",
+    "mailMessage": "留言",
+    "mailFallback": "联系我们"
+  },
+  "allTools": {
+    "title": "全部工具",
+    "sub": "BeYourTools 上的所有免费工具都在这里。输入即可即时筛选列表。",
+    "searchPlaceholder": "搜索工具...",
+    "searchLabel": "搜索所有工具",
+    "showing": "共 {total} 款工具，当前显示 {shown} 款",
+    "noResults": "没有与“{query}”匹配的工具。换个关键词试试。",
+    "openTool": "打开 {name}",
+    "groups": {
+      "json": "JSON 工具",
+      "image": "图片工具",
+      "design": "设计工具",
+      "pdf": "PDF 工具",
+      "video": "视频工具",
+      "audio": "音频工具",
+      "qr": "二维码与条形码工具",
+      "finance": "财务计算器",
+      "text": "文本工具",
+      "dev": "开发者工具",
+      "calc": "计算器"
+    }
+  }
+}
