@@ -1,0 +1,262 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { Link } from "@/i18n/navigation";
+import { getPdfTool, pdfTools, pdfToolsByCategory } from "@/lib/pdf-tools-config";
+import PdfToolClient from "./PdfToolClient";
+import Btn from "@/components/Btn";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbSchema, webAppSchema, faqSchema, SITE, canonical } from "@/lib/seo";
+import { routing } from "@/i18n/routing";
+import { setRequestLocale } from "next-intl/server";
+import { getTranslatedToolContent, localeCanonical, hreflangAlternates } from "@/lib/i18n-content";
+
+interface Props {
+  params: Promise<{ tool: string; locale: string }>;
+}
+
+export async function generateStaticParams() {
+  return routing.locales.flatMap((locale) =>
+    pdfTools.map((t) => ({ locale, tool: t.slug }))
+  );
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { tool, locale } = await params;
+  const def = getPdfTool(tool);
+  if (!def) return { title: "Not Found" };
+  const tc = await getTranslatedToolContent(locale, `pdf:${def.slug}`);
+  const url = localeCanonical(locale, `/pdf-tools/${def.slug}`);
+  const title = tc?.title ?? `${def.name} - Free Online PDF Tool | BeYourTools`;
+  const description = tc?.description ?? `${def.description} Free, browser-based, no file upload required.`;
+  const image = `${SITE.url}/og-default.png`;
+
+  const path = `/pdf-tools/${def.slug}`;
+  return {
+    title,
+    description,
+    alternates: { canonical: url, languages: hreflangAlternates(locale, path) },
+    keywords: `${def.name}, free online ${def.name.toLowerCase()}, pdf tool, browser pdf editor, client side pdf`,
+    robots: { index: true, follow: true },
+    openGraph: {
+      type: "website",
+      url,
+      title,
+      description,
+      siteName: SITE.name,
+      images: [{ url: image, width: 1200, height: 630, alt: `${def.name} - BeYourTools` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      site: SITE.twitter,
+      images: [image],
+    },
+  };
+}
+
+export default async function Page({ params }: Props) {
+  const { tool, locale } = await params;
+  setRequestLocale(locale);
+  const def = getPdfTool(tool);
+  if (!def) notFound();
+  const tc = await getTranslatedToolContent(locale, `pdf:${def.slug}`);
+  const toolName = tc?.name ?? def.name;
+  const toolDescription = tc?.description ?? def.description;
+  const toolInputLabel = tc?.inputLabel ?? def.inputLabel;
+
+  const related = pdfToolsByCategory(def.category)
+    .filter((t) => t.slug !== def.slug)
+    .slice(0, 8);
+
+  const url = localeCanonical(locale, `/pdf-tools/${def.slug}`);
+
+  const faqs = [
+    {
+      question: `How does the ${toolName} tool work?`,
+      answer: def.engine === "limited"
+        ? `${toolName} evaluates your document format and explains the best local conversion approach or recommends free desktop software for high-fidelity conversion.`
+        : `Select or drop your ${toolInputLabel.toLowerCase()} into the tool. Processing takes place directly inside your browser using client-side JavaScript, and your processed file is ready for download immediately.`,
+    },
+    {
+      question: "Are my PDF files uploaded to any server?",
+      answer: "No. All PDF processing happens locally in your browser memory. Your documents and sensitive data never leave your device.",
+    },
+    {
+      question: `Is ${toolName} free with no limits?`,
+      answer: "Yes, every tool on BeYourTools is 100% free with no account registration, no paywall, and no watermarks added.",
+    },
+    {
+      question: "Can I use this tool on my phone or tablet?",
+      answer: "Yes. BeYourTools is fully responsive and functions on modern mobile and desktop browsers including Chrome, Safari, Firefox, and Edge.",
+    },
+    ...(def.slug.includes("metadata")
+      ? [
+          {
+            question: `Why is PDF metadata important to check or remove?`,
+            answer:
+              "PDF metadata often holds hidden details like author names, computer file paths, software versions, and edit dates. Viewing or stripping this information before sharing prevents accidental data leaks and protects your personal privacy.",
+          },
+          {
+            question: `What hidden properties can PDF documents store?`,
+            answer:
+              "PDF files can store standard properties like titles and keywords, plus extended XMP packets with software build numbers and editing timestamps. Inspecting or clearing these fields keeps your shared files clean and safe.",
+          },
+        ]
+      : []),
+  ];
+
+  const schemas = [
+    breadcrumbSchema([
+      { name: "BeYourTools", url: SITE.url },
+      { name: "PDF Tools",   url: canonical("/pdf-tools") },
+      { name: toolName,      url },
+    ]),
+    webAppSchema({
+      name: toolName,
+      description: toolDescription,
+      url,
+    }),
+    faqSchema(faqs),
+  ];
+
+  return (
+    <>
+      <JsonLd data={schemas} />
+      <div className="mx-auto w-full max-w-4xl px-4 py-8 sm:px-6 sm:py-12">
+        {/* Breadcrumb */}
+        <nav aria-label="Breadcrumb" className="mb-5 flex items-center gap-1.5 text-xs" style={{ color: "var(--text-subtle)" }}>
+          <Link href="/" className="focus-ring rounded hover:underline" style={{ color: "var(--text-muted)" }}>BeYourTools</Link>
+          <span>/</span>
+          <Link href="/pdf-tools" className="focus-ring rounded hover:underline" style={{ color: "var(--text-muted)" }}>PDF Tools</Link>
+          <span>/</span>
+          <span style={{ color: "var(--text-secondary)" }}>{toolName}</span>
+        </nav>
+
+        {/* Header */}
+        <div className="mb-8">
+          <div className="mb-2 flex items-center gap-2">
+            <span className="text-2xl" aria-hidden="true">{def.icon}</span>
+            <h1 className="font-display text-2xl font-semibold sm:text-3xl" style={{ color: "var(--text-primary)" }}>{toolName}</h1>
+          </div>
+          <p className="text-sm" style={{ color: "var(--text-muted)" }}>{toolDescription}</p>
+        </div>
+
+        {/* Tool UI */}
+        <PdfToolClient slug={def.slug} />
+
+        {/* Privacy Note */}
+        <p className="mt-4 text-[11px]" style={{ color: "var(--text-subtle)" }}>
+          🔒 Client-side security: Your PDF documents remain in your browser memory and are never uploaded to any remote server.
+        </p>
+
+        {/* How to use */}
+        <section className="mt-10 space-y-3" aria-labelledby="howto-heading">
+          <h2 id="howto-heading" className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+            How to use {def.name}
+          </h2>
+          <ol className="space-y-2 text-sm" style={{ color: "var(--text-muted)" }}>
+            <li className="flex gap-2">
+              <span className="shrink-0 font-semibold" style={{ color: "var(--accent-text)" }}>1.</span>
+              <span>Upload or drag-and-drop your <strong>{def.inputLabel}</strong> into the workspace above.</span>
+            </li>
+            <li className="flex gap-2">
+              <span className="shrink-0 font-semibold" style={{ color: "var(--accent-text)" }}>2.</span>
+              <span>Configure any required options and click the action button to process your document.</span>
+            </li>
+            <li className="flex gap-2">
+              <span className="shrink-0 font-semibold" style={{ color: "var(--accent-text)" }}>3.</span>
+              <span>Download your finished document directly to your device.</span>
+            </li>
+          </ol>
+        </section>
+
+        {def.slug.includes("metadata") && (
+          <section className="mt-10 space-y-3 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+            <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+              {def.name} Document Privacy Tips
+            </h2>
+            <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+              Before sharing PDFs with clients, government agencies, or public audiences, check for hidden data.
+              Everyday word processors often save internal usernames, editing times, and company file paths into document properties.
+              Reviewing or clearing this data protects your privacy and keeps your shared files clean and safe.
+            </p>
+          </section>
+        )}
+
+        {/* PDF Architecture & Privacy Standards */}
+        <section className="mt-10 space-y-4 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+            {def.name} Security &amp; Architecture
+          </h2>
+          <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            Most online PDF tools upload your private files to cloud servers. This puts your contracts, statements, and personal records at risk.
+            The <strong style={{ color: "var(--text-primary)" }}>{def.name}</strong> runs directly in your browser. Your files are read and processed in local device memory, and they never leave your hands.
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2 text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Standard PDF Quality</h3>
+              <p>
+                Every PDF generated follows international ISO standards. Your fonts, layout, and images look crisp and clean in any PDF viewer.
+              </p>
+            </div>
+            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Fast and Private</h3>
+              <p>
+                Because no files travel across the internet, your documents process instantly without waiting in line or using extra data.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQs */}
+        <section className="mt-10 space-y-3" aria-labelledby="faq-heading">
+          <h2 id="faq-heading" className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+            {def.name} Frequently Asked Questions
+          </h2>
+          <div className="space-y-4">
+            {faqs.map(({ question, answer }) => (
+              <div key={question}>
+                <p className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>{question}</p>
+                <p className="mt-1 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{answer}</p>
+              </div>
+            ))}
+            <div>
+              <p className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>Does using {def.name} alter my original document formatting?</p>
+              <p className="mt-1 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                No. Our tool keeps all fonts, vector graphics, links, and colors intact. It never lowers your document quality.
+              </p>
+            </div>
+            <div>
+              <p className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>Is there any document page or file size limit?</p>
+              <p className="mt-1 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                There is no hard limit on file size. Because processing runs in your browser, performance depends on your device memory. Most common PDFs process in just a few seconds.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Related */}
+        {related.length > 0 && (
+          <div className="mt-12 border-t pt-6" style={{ borderColor: "var(--border)" }}>
+            <h2 className="mb-3 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>
+              More {def.category} tools
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {related.map((t) => (
+                <Btn key={t.slug} variant="pill" href={`/pdf-tools/${t.slug}`}>
+                  <span aria-hidden="true">{t.icon}</span> {t.name}
+                </Btn>
+              ))}
+            </div>
+            <div className="mt-4">
+              <Btn variant="ghost" size="sm" href="/pdf-tools">
+                ← All PDF Tools
+              </Btn>
+            </div>
+          </div>
+        )}
+      </div>
+    </>
+  );
+}

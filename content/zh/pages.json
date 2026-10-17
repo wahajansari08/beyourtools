@@ -1,0 +1,649 @@
+{
+  "json-tools": {
+    "title": "JSON 工具",
+    "intro": "处理 JSON 所需的一切——格式化、校验、对比、转换、变换与生成。所有工具完全在您的浏览器中运行，无需上传文件。",
+    "faqs": [
+      {
+        "question": "如何在线格式化 JSON？",
+        "answer": "使用我们免费的 JSON 格式化工具——粘贴 JSON，选择缩进风格（2 空格、4 空格或制表符），即刻得到格式化结果。"
+      },
+      {
+        "question": "如何校验 JSON？",
+        "answer": "我们的 JSON 校验工具会检查语法，并报告每个错误的准确行号与列号，支持 JSON 和 JSONL 两种格式。"
+      },
+      {
+        "question": "什么是 JSONPath？",
+        "answer": "JSONPath 是 JSON 的查询语言，类似于 XML 的 XPath。用我们的 JSONPath 测试工具，可对任意 JSON 文档运行 $.users[*].email 这样的表达式。"
+      }
+    ]
+  },
+  "image-converter": {
+    "title": "图片转换器",
+    "intro": "在任意格式间转换图片——完全在您的浏览器中完成，不会上传到任何服务器。支持 JPG、PNG、WebP、AVIF、GIF、BMP、SVG、ICO、PDF 等。",
+    "faqs": [
+      {
+        "question": "如何免费把 JPG 转成 WebP？",
+        "answer": "使用我们免费的 JPG 转 WebP 工具——把 JPG 拖进来，即刻下载 WebP。无需上传到任何服务器，无需注册。"
+      },
+      {
+        "question": "在线可以转换哪些图片格式？",
+        "answer": "我们支持 118 种转换组合，包括 JPG、PNG、WebP、AVIF、GIF、BMP、SVG、ICO、TIFF、HEIC、JXL、PSD、TGA 和 PDF。"
+      },
+      {
+        "question": "转换图片会降低画质吗？",
+        "answer": "无损转换（PNG 转无损 WebP、PNG 转 BMP）会保留每一个像素。有损转换（JPG、有损 WebP）带有画质设置——用 80–85% 即可几乎看不出画质损失。"
+      },
+      {
+        "question": "我的图片会被上传到服务器吗？",
+        "answer": "不会——所有图片转换都在您的浏览器本地完成，图片永不离开您的设备。"
+      },
+      {
+        "question": "这里还能缩放、裁剪或压缩图片吗？",
+        "answer": "可以——免费的图片缩放、图片裁剪与图片压缩工具就在上方「图片编辑工具」区。和转换器一样，它们完全在您的浏览器中运行。"
+      }
+    ]
+  },
+  "pdf-tools": {
+    "title": "PDF 工具",
+    "intro": "处理 PDF 所需的一切——转换、编辑、压缩、加密等。大多数工具完全在您的浏览器中运行，无需上传文件。",
+    "faqs": [
+      {
+        "question": "如何免费合并 PDF 文件？",
+        "answer": "使用我们免费的 PDF 合并工具——上传多个 PDF，调整顺序，即可下载合并后的文件。无需注册，文件永不离开您的浏览器。"
+      },
+      {
+        "question": "如何压缩 PDF？",
+        "answer": "我们的 PDF 压缩器会重新序列化 PDF 内部的对象流，通常能将标准 PDF 缩小 10–40%，且不损失画质。"
+      },
+      {
+        "question": "如何给 PDF 加密码保护？",
+        "answer": "我们的 PDF 加密工具采用 AES-256 加密。输入用户密码，上传 PDF，即刻下载加密后的版本。"
+      },
+      {
+        "question": "在线 PDF 工具安全吗？",
+        "answer": "在 BeYourTools，您的 PDF 文件永不离开您的设备。所有处理都在您的浏览器本地完成——没有任何内容上传到服务器。"
+      }
+    ]
+  },
+  "video-tools": {
+    "title": "视频工具",
+    "intro": "在浏览器本地压缩、剪辑、裁剪、转换、调整尺寸、合并视频，制作 GIF、抽取视频帧、编辑视频音频。文件不会被上传或存储。",
+    "faqs": [
+      {
+        "question": "这些视频工具免费吗？",
+        "answer": "免费。视频工具可在浏览器中免费使用，无需注册。"
+      },
+      {
+        "question": "视频会被上传吗？",
+        "answer": "不会。所有视频处理都在您的浏览器本地完成，文件永不离开您的设备。"
+      },
+      {
+        "question": "哪些工具最快？",
+        "answer": "缩略图生成器和抽帧工具直接从视频预览中抓取画面——几乎是即时的。转换、压缩与编辑工具则需要稍长时间，具体取决于文件大小。"
+      }
+    ]
+  },
+  "audio-tools": {
+    "title": "音频工具",
+    "intro": "转换、剪辑、压缩、合并与处理音频文件——完全在您的浏览器中完成。无需上传文件、无需注册、没有限制。支持 MP3、WAV、FLAC、M4A、OGG 等。",
+    "faqs": [
+      {
+        "question": "这些音频工具真的免费吗？",
+        "answer": "真的——全部 20 款工具完全免费，无需注册、无水印、没有使用限制。"
+      },
+      {
+        "question": "我的音频文件会被上传到服务器吗？",
+        "answer": "不会。所有音频处理都在您的浏览器中完成，文件永不离开您的设备。"
+      },
+      {
+        "question": "支持哪些格式？",
+        "answer": "MP3、WAV、M4A、AAC、FLAC、OGG、Opus、WebM 和 MP4（用于提取音频）。具体支持的格式取决于所用工具。"
+      },
+      {
+        "question": "需要安装什么软件吗？",
+        "answer": "无需安装。工具直接在桌面和手机的浏览器中运行。"
+      }
+    ]
+  },
+  "qr-barcode-tools": {
+    "title": "二维码与条形码工具",
+    "intro": "生成、扫描与解码二维码和条形码——完全在您的浏览器中完成。无需上传文件、无需注册。支持 WiFi 二维码、EAN-13、UPC-A、Code 128 等多种格式。",
+    "faqs": [
+      {
+        "question": "这些二维码和条形码工具免费吗？",
+        "answer": "免费——所有工具完全免费，无需注册、无水印、没有使用限制。"
+      },
+      {
+        "question": "这些工具会把我的数据上传到服务器吗？",
+        "answer": "不会。二维码生成、条形码生成与图片解码全部在您的浏览器中完成，绝不会发送到服务器。"
+      },
+      {
+        "question": "不装 App 也能扫码吗？",
+        "answer": "可以。二维码扫描和条形码扫描工具直接在浏览器中调用您设备的摄像头——无需下载 App。"
+      },
+      {
+        "question": "支持哪些条形码格式？",
+        "answer": "生成支持 Code 128、Code 39、EAN-13、EAN-8、UPC-A、ITF-14、MSI、Codabar 等。解码器和扫描器可从任意图片自动识别格式。"
+      }
+    ]
+  },
+  "finance-tools": {
+    "title": "财务计算器",
+    "intro": "{count} 款免费计算器，涵盖企业盈利、贷款、债务清偿、储蓄增长、工资规划、税务与营销 ROI——全部在您的浏览器中私密运行，数据不会发送到任何地方。",
+    "faqs": [
+      {
+        "question": "这些财务计算器免费吗？",
+        "answer": "免费——全部 40 款计算器完全免费，无需注册、无需登录、没有使用限制。"
+      },
+      {
+        "question": "这些计算器会把我的数据发到别处吗？",
+        "answer": "不会。每一次计算都完全在您的浏览器中用 JavaScript 完成，数字、工资、财务细节绝不会发送到服务器。"
+      },
+      {
+        "question": "结果有多准确？",
+        "answer": "计算器采用标准财务公式（如等额本息、复利、利润率），结果可用于规划参考，但不能替代持证财务专业人士的建议。"
+      },
+      {
+        "question": "涵盖哪些财务主题？",
+        "answer": "企业财务（利润率、加价率、盈亏平衡）、工资与收入（时薪/月薪换算、加班、工资单）、贷款（月供、还款计划）、债务与信用（雪球法、雪崩法、信用卡还款）、储蓄与利息（APY、APR、复利储蓄）、税务与定价（销售税、折扣）、营销与 ROI（ROI、ROAS、收入增长）。"
+      }
+    ]
+  },
+  "design-tools": {
+    "title": "设计工具",
+    "intro": "从照片取色、搭建配色方案、生成网站图标——完全在您的浏览器中完成。无需上传、无需注册、没有限制。",
+    "faqs": [
+      {
+        "question": "这些设计工具真的免费吗？",
+        "answer": "真的——全部 3 款工具完全免费，无需注册、无水印、没有使用限制。"
+      },
+      {
+        "question": "我的图片会被上传到服务器吗？",
+        "answer": "不会。所有处理都在您的浏览器中通过 Canvas API 完成，文件永不离开您的设备。"
+      },
+      {
+        "question": "包含哪些工具？",
+        "answer": "取色器、配色方案生成器与网站图标生成器。缩放、裁剪与压缩图片请看「图片工具」区。"
+      },
+      {
+        "question": "需要安装什么软件吗？",
+        "answer": "无需安装。工具直接在桌面和手机的浏览器中运行。"
+      }
+    ]
+  },
+  "text-tools": {
+    "faqs": [
+      {
+        "question": "这些文本工具免费吗？",
+        "answer": "免费——所有文本工具完全免费，无需注册、没有使用限制。"
+      },
+      {
+        "question": "我的文本会被上传到服务器吗？",
+        "answer": "不会。所有内容都在您的浏览器标签页本地处理，文本永不离开您的设备。"
+      },
+      {
+        "question": "有哪些文本工具？",
+        "answer": "字数统计、大小写转换、Lorem Ipsum 生成器与 URL 编码/解码。"
+      },
+      {
+        "question": "工具可以离线使用吗？",
+        "answer": "页面加载完成后，工具本身无需网络——统计、转换与生成都在本地完成。"
+      }
+    ],
+    "name": "文本工具",
+    "tagline": "日常文本小工具——统计字数、转换大小写、编码 URL、生成占位文案。免费、即时、私密。",
+    "description": "所有文本工具完全在您的浏览器中运行。您输入的任何内容都不会被上传或存储。"
+  },
+  "developer-tools": {
+    "faqs": [
+      {
+        "question": "这些开发者工具免费吗？",
+        "answer": "免费——所有开发者工具完全免费，无需注册、没有使用限制。"
+      },
+      {
+        "question": "生成的密码和 UUID 在密码学上安全吗？",
+        "answer": "安全。两者都使用 Web Crypto API（crypto.getRandomValues / crypto.randomUUID），即浏览器的安全随机源——绝不用 Math.random()。"
+      },
+      {
+        "question": "有哪些开发者工具？",
+        "answer": "密码生成器、正则测试、UUID 生成器、哈希生成器与时间戳转换器。"
+      },
+      {
+        "question": "我的数据会被发送到别处吗？",
+        "answer": "不会。哈希、生成与测试全部在您的浏览器本地完成。"
+      }
+    ],
+    "name": "开发者工具",
+    "tagline": "为开发者打造的小而精的工具——测试正则、生成 UUID 与密码、计算哈希、转换时间戳。无需注册，不追踪。",
+    "description": "所有开发者工具完全在您的浏览器中运行，包括通过 Web Crypto 进行的加密运算。任何内容都不会被上传或存储。"
+  },
+  "calculators": {
+    "faqs": [
+      {
+        "question": "这些计算器免费吗？",
+        "answer": "免费——所有计算器完全免费，无需注册、没有使用限制。"
+      },
+      {
+        "question": "有哪些计算器？",
+        "answer": "百分比计算器、BMI 计算器与年龄计算器。"
+      },
+      {
+        "question": "我的数据私密吗？",
+        "answer": "私密。每一次计算都在您的浏览器本地完成——不会发送到服务器，也不会存储。"
+      },
+      {
+        "question": "结果有多准确？",
+        "answer": "给定输入下数学计算是精确的（年龄计算已考虑闰年）。BMI 分类遵循 WHO 标准区间，仅用于筛查参考，不是医学诊断。"
+      }
+    ],
+    "name": "计算器",
+    "tagline": "日常速算——百分比、BMI 与年龄，附精确明细。输入即得答案。",
+    "description": "所有计算器完全在您的浏览器中运行。您的数字绝不会被上传或存储。"
+  },
+  "privacy-policy": {
+    "title": "隐私政策",
+    "effectiveLabel": "生效日期：{date}",
+    "effectiveDate": "2026 年 8 月 1 日",
+    "sections": [
+      {
+        "heading": "1. 概述",
+        "html": "<p>BeYourTools（「我们」）致力于保护您的隐私。本政策说明我们收集哪些信息、如何使用，以及您对个人数据的权利。</p><p><strong>关键事实：</strong>所有工具处理（JSON、图片转换、PDF 操作）完全在您的浏览器中完成。您粘贴到工具中的文件、JSON 数据与文本<strong>绝不会传输到我们的服务器</strong>。</p>"
+      },
+      {
+        "heading": "2. 我们收集的信息",
+        "html": "<h3>2.1 自动收集的数据</h3><p>当您访问 BeYourTools 时，我们的托管服务商与分析工具可能会自动收集：</p><ul><li>IP 地址（已匿名化）</li><li>浏览器类型与版本</li><li>操作系统</li><li>访问的页面与停留时间</li><li>来源网站</li><li>设备类型（桌面、手机、平板）</li></ul><p>这些数据以汇总形式收集，无法用于单独识别您个人。</p><h3>2.2 Cookie 与追踪</h3><p>我们将 Cookie 用于：网站偏好（主题设置）、分析与广告。完整详情请参阅<a href=\"/cookie-policy\">Cookie 政策</a>。</p><h3>2.3 您主动提供的信息</h3><p>如果您通过邮件联系我们，我们仅为回复您的咨询而收集您的邮箱地址与留言内容。</p>"
+      },
+      {
+        "heading": "3. 我们如何使用您的信息",
+        "html": "<ul><li><strong>分析：</strong>了解哪些工具最受欢迎，改进性能与易用性</li><li><strong>广告：</strong>通过广告合作伙伴展示相关广告，以维持免费服务</li><li><strong>偏好存储：</strong>通过 localStorage 记住您的主题（深色/浅色/跟随系统）</li><li><strong>客服：</strong>回复联系表单留言</li></ul><p>我们不会出售、交易或出租您的个人信息给第三方。</p>"
+      },
+      {
+        "heading": "4. 在线广告",
+        "html": "<p>我们展示广告以维持免费服务。包括 Google 在内的第三方供应商会使用 Cookie，根据用户此前对我们网站或互联网上其他网站的访问来投放广告。</p><p>Google 使用广告 Cookie，使其及合作伙伴能够根据用户对 BeYourTools 和/或互联网上其他网站的访问向用户投放广告。</p><p>您可以随时退出个性化广告：</p><ul><li><a href=\"https://www.google.com/settings/ads\" target=\"_blank\" rel=\"noopener noreferrer\">Google 广告设置</a></li><li><a href=\"https://www.aboutads.info/choices\" target=\"_blank\" rel=\"noopener noreferrer\">数字广告联盟（aboutads.info）</a></li><li><a href=\"https://optout.networkadvertising.org\" target=\"_blank\" rel=\"noopener noreferrer\">网络广告促进会（NAI）退出</a></li></ul><p>关于 Google 如何处理数据的更多详情，请参阅 <a href=\"https://policies.google.com/technologies/ads\" target=\"_blank\" rel=\"noopener noreferrer\">Google 广告隐私权与条款页面</a>。</p>"
+      },
+      {
+        "heading": "5. 数据分析",
+        "html": "<p>我们使用分析服务来了解网站使用情况。它使用 Cookie 并收集匿名化的使用数据，已启用 IP 匿名化。您可以使用 <a href=\"https://tools.google.com/dlpage/gaoptout\" target=\"_blank\" rel=\"noopener noreferrer\">分析停用浏览器插件</a>退出。</p>"
+      },
+      {
+        "heading": "6. 数据保留",
+        "html": "<p>分析数据保留 14 个月。联系邮件仅在解决您的咨询所需期间保留。</p>"
+      },
+      {
+        "heading": "7. 您的权利",
+        "html": "<p>根据您所在地区，您可能享有以下权利：</p><ul><li><strong>访问权：</strong>要求获取我们持有的您的个人数据的副本</li><li><strong>更正权：</strong>要求更正不准确的数据</li><li><strong>删除权：</strong>要求删除您的个人数据</li><li><strong>反对权：</strong>反对为直接营销而处理您的数据</li><li><strong>可携带权：</strong>要求转移您的数据</li><li><strong>退出权（CCPA）：</strong>加州居民可选择退出个人信息的出售（我们不出售个人信息）</li></ul><p>要行使这些权利，请<a href=\"/contact\">联系我们</a>。</p>"
+      },
+      {
+        "heading": "8. 儿童隐私",
+        "html": "<p>BeYourTools 不面向 13 岁以下儿童。我们不会有意收集 13 岁以下儿童的个人信息。如果您认为有儿童向我们提供了个人信息，请立即联系我们。</p>"
+      },
+      {
+        "heading": "9. 第三方链接",
+        "html": "<p>本站包含第三方网站的链接。我们对这些网站的隐私做法不承担责任，建议您查阅它们的隐私政策。</p>"
+      },
+      {
+        "heading": "10. 本政策的变更",
+        "html": "<p>我们可能会定期更新本隐私政策。变更将发布在本页面并更新生效日期。继续使用本站即表示接受修订后的政策。</p>"
+      },
+      {
+        "heading": "11. 联系我们",
+        "html": "<p>如有隐私相关问题，请<a href=\"/contact\">联系我们</a>。</p>"
+      }
+    ]
+  },
+  "terms": {
+    "title": "条款与条件",
+    "effectiveLabel": "生效日期：{date}",
+    "effectiveDate": "2026 年 8 月 1 日",
+    "sections": [
+      {
+        "heading": "1. 接受条款",
+        "html": "<p>访问或使用 <strong>https://beyourtools.com</strong> 上的 BeYourTools（「本站」、「我们」），即表示您同意受这些条款与条件的约束。如不同意，请勿使用本站。</p>"
+      },
+      {
+        "heading": "2. 本站的使用",
+        "html": "<p>BeYourTools 为开发者与设计师提供免费的浏览器工具，包括 JSON 实用工具、图片转换器与 PDF 工具。您仅可将本站用于合法目的。您同意不：</p><ul><li>将本站用于任何非法或未经授权的目的</li><li>试图破坏、超载或干扰本站基础设施</li><li>抓取或系统性地提取本站数据</li><li>冒充他人身份或隶属关系</li><li>上传恶意文件或代码</li></ul>"
+      },
+      {
+        "heading": "3. 知识产权",
+        "html": "<p>BeYourTools 上的所有内容——包括文本、代码、设计、标识与博客文章——均归 BeYourTools 所有或经其授权，受相关著作权与知识产权法律保护。</p><p>未经事先书面许可，您不得复制、分发本站内容或据此创作衍生作品，注明出处的合理引用除外。</p>"
+      },
+      {
+        "heading": "4. 无担保",
+        "html": "<p>BeYourTools 按<strong>「现状」</strong>和<strong>「可用状态」</strong>提供，不作任何明示或暗示的担保。我们不保证：</p><ul><li>工具始终可用、无错误或结果准确</li><li>处理的文件不会丢失或损坏</li><li>本站能满足您的特定需求</li></ul><p>您使用本站的风险由您自行承担。处理重要文件前请务必备份。</p>"
+      },
+      {
+        "heading": "5. 责任限制",
+        "html": "<p>在法律允许的最大范围内，BeYourTools 及其团队不对任何间接、附带、特殊、后果性或惩罚性损害承担责任——包括数据、利润或业务损失——即使我们已被告知可能发生此类损害。</p><p>因使用本站而产生的任何索赔，我们的总责任不超过零美元（USD $0），因为本站完全免费提供。</p>"
+      },
+      {
+        "heading": "6. 隐私",
+        "html": "<p>您的隐私对我们很重要。BeYourTools 上的所有工具处理都在您的浏览器客户端完成——文件和文本绝不会上传到我们的服务器。关于数据处理的完整详情，请参阅我们的<a href=\"/privacy-policy\" style=\"color: var(--accent-text)\">隐私政策</a>和<a href=\"/cookie-policy\" style=\"color: var(--accent-text)\">Cookie 政策</a>。</p>"
+      },
+      {
+        "heading": "7. 第三方服务",
+        "html": "<p>本站可能使用第三方服务，包括分析（使用统计）与广告网络。这些服务遵循各自的隐私政策，并可能使用 Cookie。详情请参阅我们的<a href=\"/cookie-policy\" style=\"color: var(--accent-text)\">Cookie 政策</a>。</p>"
+      },
+      {
+        "heading": "8. 广告",
+        "html": "<p>BeYourTools 展示第三方广告合作伙伴提供的广告，这些广告让本站得以免费运营。广告主对其自身内容负责，我们不为任何广告产品或服务背书。</p><p>第三方供应商使用 Cookie，根据此前对本站及其他网站的访问来投放广告。您可以访问 <a href=\"https://www.google.com/settings/ads\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: var(--accent-text)\">广告设置</a>或 <a href=\"https://www.aboutads.info/choices\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: var(--accent-text)\">AboutAds.info</a> 退出个性化广告。</p>"
+      },
+      {
+        "heading": "9. 外部链接",
+        "html": "<p>本站包含第三方网站的链接，这些链接仅为方便您使用。我们无法控制第三方内容，对其不承担责任。访问外部链接的风险由您自行承担。</p>"
+      },
+      {
+        "heading": "10. 条款的变更",
+        "html": "<p>我们保留随时修改这些条款的权利。变更自发布时生效。变更后继续使用本站即表示接受修订后的条款，建议您定期查阅本页面。</p>"
+      },
+      {
+        "heading": "11. 适用法律",
+        "html": "<p>这些条款受适用法律管辖并依其解释。任何争议应在有管辖权的相应法院解决。</p>"
+      },
+      {
+        "heading": "12. 联系我们",
+        "html": "<p>如对这些条款有任何疑问，请<a href=\"/contact\" style=\"color: var(--accent-text)\">联系我们</a>。</p>"
+      }
+    ]
+  },
+  "cookie-policy": {
+    "title": "Cookie 政策",
+    "effectiveLabel": "生效日期：{date}",
+    "effectiveDate": "2026 年 8 月 1 日",
+    "sections": [
+      {
+        "heading": "1. 什么是 Cookie？",
+        "html": "<p>Cookie 是您访问的网站放置在您设备上的小型文本文件，广泛用于让网站高效运行并向网站所有者提供信息。有些 Cookie 在您关闭浏览器时过期，另一些则保留更长时间。</p>"
+      },
+      {
+        "heading": "2. 我们使用的 Cookie",
+        "html": "<h3>2.1 严格必要 Cookie</h3><p>这些 Cookie 对本站正常运行必不可少，无法禁用。</p><table><thead><tr><th>名称</th><th>用途</th><th>有效期</th></tr></thead><tbody><tr><td><code>byt-theme</code></td><td>存储您的深色/浅色/跟随系统主题偏好（localStorage）</td><td>长期</td></tr><tr><td><code>cookie_consent</code></td><td>记住您的 Cookie 同意选择</td><td>1 年</td></tr></tbody></table><h3>2.2 分析 Cookie</h3><p>这些 Cookie 帮助我们了解访客如何使用本站，以便改进。</p><table><thead><tr><th>名称</th><th>提供方</th><th>用途</th><th>有效期</th></tr></thead><tbody><tr><td><code>_ga</code></td><td>Google Analytics</td><td>区分用户</td><td>2 年</td></tr><tr><td><code>_ga_*</code></td><td>Google Analytics</td><td>维持会话状态</td><td>2 年</td></tr><tr><td><code>_gid</code></td><td>Google Analytics</td><td>区分用户（会话）</td><td>24 小时</td></tr></tbody></table><h3>2.3 广告 Cookie</h3><p>这些 Cookie 由我们的广告合作伙伴设置，用于投放相关广告并衡量广告效果。</p><table><thead><tr><th>名称</th><th>提供方</th><th>用途</th><th>有效期</th></tr></thead><tbody><tr><td><code>IDE</code></td><td>Google DoubleClick</td><td>个性化广告定向</td><td>13 个月</td></tr><tr><td><code>test_cookie</code></td><td>Google DoubleClick</td><td>检测是否支持 Cookie</td><td>15 分钟</td></tr><tr><td><code>DSID</code></td><td>Google</td><td>识别已登录的 Google 用户以实现广告个性化</td><td>2 周</td></tr><tr><td><code>NID</code></td><td>Google</td><td>针对未登录用户的广告个性化</td><td>6 个月</td></tr></tbody></table>"
+      },
+      {
+        "heading": "3. 如何管理 Cookie",
+        "html": "<p>您可以通过多种方式管理 Cookie：</p><ul><li><strong>浏览器设置：</strong>大多数浏览器允许阻止或删除 Cookie，具体操作请参阅浏览器的帮助文档。</li><li><strong>广告：</strong>在 <a href=\"https://www.google.com/settings/ads\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: var(--accent-text)\">广告设置</a>中退出</li><li><strong>网络广告促进会：</strong>在 <a href=\"https://www.aboutads.info/choices\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: var(--accent-text)\">aboutads.info/choices</a> 退出</li><li><strong>分析退出：</strong>安装 <a href=\"https://tools.google.com/dlpage/gaoptout\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: var(--accent-text)\">分析停用浏览器插件</a></li></ul><p>注意：阻止某些 Cookie 可能影响本站功能（例如主题偏好将无法保存）。</p>"
+      },
+      {
+        "heading": "4. LocalStorage",
+        "html": "<p>除 Cookie 外，我们还使用浏览器 localStorage 存储您的主题偏好（<code>byt-theme</code>）与 Cookie 同意状态。这些数据保留在您的设备上，绝不会传输到我们的服务器。清除浏览器网站数据即可清除它们。</p>"
+      },
+      {
+        "heading": "5. 本政策的变更",
+        "html": "<p>我们可能会定期更新本 Cookie 政策。变更将发布在本页面并更新生效日期。</p>"
+      },
+      {
+        "heading": "6. 联系我们",
+        "html": "<p>对我们的 Cookie 使用有疑问？<a href=\"/contact\" style=\"color: var(--accent-text)\">联系我们</a>。</p>"
+      }
+    ]
+  },
+  "disclaimer": {
+    "title": "免责声明",
+    "effectiveLabel": "最后更新：{date}",
+    "effectiveDate": "2026 年 8 月 1 日",
+    "sections": [
+      {
+        "heading": "网站免责声明",
+        "html": "<p>BeYourTools（<strong>https://beyourtools.com</strong>）上的工具与指南用于一般学习与日常任务。我们努力保持工具准确、快速，但无法保证所有工具输出始终完整、无误或适用于一切用途。</p>"
+      },
+      {
+        "heading": "工具输出的准确性",
+        "html": "<p>我们的工具使用标准浏览器工具与开源代码来格式化 JSON、编辑 PDF、转换图片。请注意以下几点：</p><ul><li>在生产系统或生产数据库中使用输出前，请务必检查。</li><li>Token 计数结果是有用的估算，并非特定 AI 模型的精确计数。</li><li>图片画质取决于您的源文件和所选输出格式。</li><li>扫描版 PDF 与复杂版式不一定能导出干净的纯文本。</li><li>生成的代码片段是很好的起点，部署前请先检查。</li></ul>"
+      },
+      {
+        "heading": "不构成专业建议",
+        "html": "<p>BeYourTools 上的文章与工具不能替代持证法律、财务、税务或工程专业人士的建议。我们的博客文章与指南仅用于教育目的。涉及重大决策时，请务必咨询持证专家。</p>"
+      },
+      {
+        "heading": "财务计算器免责声明",
+        "html": "<p>BeYourTools 提供贷款、房贷、利润率与债务计算器。使用我们的财务工具前请阅读以下条款：</p><ul><li><strong>仅用于教育：</strong>所有计算仅用于个人规划与预算估算。BeYourTools 不是银行、房贷经纪人、贷款专员或注册会计师。</li><li><strong>标准数学估算：</strong>我们的计算器使用复利、贷款还款计划等标准数学公式，结果是严格基于您输入数字的基准值。</li><li><strong>银行与贷款条款：</strong>实际贷款条款、利率、过户费用与税费各不相同，取决于您的信用评分、地方法规与贷款机构规则。</li><li><strong>无客户关系：</strong>使用我们的计算器不会在您与 BeYourTools 之间建立顾问、经纪人或客户关系。</li><li><strong>咨询合格专业人士：</strong>签署贷款合同或投资前，请先咨询独立理财规划师或持证会计师。</li></ul>"
+      },
+      {
+        "heading": "文件安全与数据备份",
+        "html": "<p>所有文件编辑都在您的网页浏览器本地完成，您的私人文档绝不会发送到外部服务器。即便如此，编辑重要文件前请务必做好安全备份。我们对丢失或损坏的文件不承担责任。</p>"
+      },
+      {
+        "heading": "广告与第三方链接",
+        "html": "<p>BeYourTools 展示第三方广告合作伙伴的广告，以保持工具免费。我们不为这些广告中的产品或服务背书，广告主对其广告中的宣传负责。</p>"
+      },
+      {
+        "heading": "关联披露",
+        "html": "<p>部分文章可能包含指向有用的第三方软件的推荐或联盟链接，我们会明确披露。我们只分享我们信任并认为有价值的产品。</p>"
+      },
+      {
+        "heading": "外部链接与服务",
+        "html": "<p>我们的页面可能为方便您使用而链接到外部网站。我们无法控制这些第三方网站及其隐私做法，建议您在分享个人数据前阅读它们的政策。</p>"
+      },
+      {
+        "heading": "本免责声明的更新",
+        "html": "<p>随着工具的成长，我们会不时更新本页面。继续使用 BeYourTools 即表示您同意本页面列出的最新条款。</p>"
+      },
+      {
+        "heading": "联系我们的团队",
+        "html": "<p>如果您对本免责声明有疑问或想报告问题，请<a href=\"/contact\" style=\"color: var(--accent-text)\">联系我们的团队</a>。</p>"
+      }
+    ]
+  },
+  "about": {
+    "breadcrumb": "关于我们",
+    "eyebrow": "关于我们",
+    "title": "关于 BeYourTools",
+    "intro": "我是 Be，BeYourTools 的创建者：为所有人打造快速、私密、基于浏览器的工具。零文件上传、零注册、零付费墙。",
+    "who": {
+      "heading": "谁在运营 BeYourTools",
+      "name": "Be，创始人兼主编",
+      "bio": "大家好，我是 Be。我创办 BeYourTools，是因为受够了那些号称「免费」的在线工具——它们要求注册账号、订阅付费，还要把我的私人文件上传到别人的服务器。于是我自己动手做了替代方案：本站的每个工具都完全在您的浏览器中运行，博客上的指南都来自我的真实测试。如果哪里坏了，或者您想要新工具，您可以直接跟打造它的人对话——就是我。"
+    },
+    "why": {
+      "heading": "为什么创建它",
+      "html": "<p>转换图片、压缩 PDF、格式化 JSON 这样的日常任务，本该又快又简单。但大多数网站逼您注册账号、付费订阅，或把私人文件上传到远程服务器。</p><p>我创建 <strong>BeYourTools</strong> 就是为了扫除这些障碍。我相信好用的工具就该默认免费、快速、私密。借助现代浏览器技术、WebAssembly 与本地处理，每个工具都直接在您的设备上运行。您的文档、照片、代码与财务数据，始终掌握在您自己手中。</p>"
+    },
+    "what": {
+      "heading": "我们在做什么",
+      "introHtml": "<p class=\"mb-4\">BeYourTools 提供 <strong>320+ 款免费工具</strong>，覆盖七大分类，全部即刻在您的浏览器中运行：</p>",
+      "categories": [
+        {
+          "label": "JSON 与开发者工具",
+          "href": "/json-tools",
+          "count": "30+ 浏览器实用工具",
+          "desc": "在浏览器中格式化、校验、对比 JSON 数据。解码 JWT 令牌，将 JSON 转换为 CSV、YAML、Python 与 SQL，无需上传服务器。",
+          "icon": "{ }",
+          "iconBg": "color-mix(in srgb, var(--accent-text) 15%, transparent)",
+          "iconColor": "var(--accent-text)",
+          "wide": false
+        },
+        {
+          "label": "图片转换套件",
+          "href": "/image-converter",
+          "count": "118 种转换组合",
+          "desc": "在 JPG、PNG、WebP、AVIF、SVG、ICO 与 PDF 间转换图片。可一次转换多个文件，即时预览更改，并打包下载为 ZIP。",
+          "icon": "🖼",
+          "iconBg": "color-mix(in srgb, var(--accent) 15%, transparent)",
+          "iconColor": "var(--accent)",
+          "wide": false
+        },
+        {
+          "label": "PDF 文档套件",
+          "href": "/pdf-tools",
+          "count": "30 款客户端工具",
+          "desc": "直接在您的设备上合并、拆分、压缩 PDF 文件。添加密码、旋转页面，或提取文本与图片，无需上传到任何服务器。",
+          "icon": "📄",
+          "iconBg": "color-mix(in srgb, var(--coral) 15%, transparent)",
+          "iconColor": "var(--coral)",
+          "wide": false
+        },
+        {
+          "label": "视频工具套件",
+          "href": "/video-tools",
+          "count": "20 款媒体工具",
+          "desc": "直接在浏览器中压缩、剪辑视频。转换 MP4、WebM、MKV 文件，制作动态 GIF，抓取清晰的视频帧。",
+          "icon": "🎬",
+          "iconBg": "color-mix(in srgb, #8b5cf6 15%, transparent)",
+          "iconColor": "#8b5cf6",
+          "wide": false
+        },
+        {
+          "label": "音频工具套件",
+          "href": "/audio-tools",
+          "count": "20 款声音工具",
+          "desc": "轻松剪辑、拼接、压缩音频文件。增强音量，转换 MP3、WAV 等格式，或直接在网页浏览器中录音。",
+          "icon": "🎵",
+          "iconBg": "color-mix(in srgb, var(--accent-text) 15%, transparent)",
+          "iconColor": "var(--accent-text)",
+          "wide": false
+        },
+        {
+          "label": "二维码与条形码套件",
+          "href": "/qr-barcode-tools",
+          "count": "12 款扫描与生成工具",
+          "desc": "制作带 Logo 的自定义二维码、WiFi 二维码，用摄像头扫码，创建 UPC-A、Code 128 等零售条形码。",
+          "icon": "▦",
+          "iconBg": "color-mix(in srgb, var(--accent) 15%, transparent)",
+          "iconColor": "var(--accent-text)",
+          "wide": false
+        },
+        {
+          "label": "财务与商业计算器",
+          "href": "/finance-tools",
+          "count": "40+ 款财务计算器",
+          "desc": "计算贷款还款、还清日期、利息与利润率。规划预算、比较债务、估算到手工资。",
+          "icon": "💰",
+          "iconBg": "color-mix(in srgb, #10b981 15%, transparent)",
+          "iconColor": "#10b981",
+          "wide": true
+        }
+      ]
+    },
+    "tech": {
+      "heading": "技术原理（客户端架构）",
+      "html": "<p>大多数在线工具会把您的文件上传到远程服务器处理，再把文件传回来。这既慢，又让隐私面临风险。</p><p>我打造 BeYourTools 的方式不同：一切直接在您的设备上运行：</p><ul><li><strong>内存内处理：</strong>工具在浏览器内存中运行，使用本地 Web Worker 与 WebAssembly。</li><li><strong>零外部存储：</strong>我从不存储您的文件、文本或结果。关闭标签页，一切即消失。</li><li><strong>极速性能：</strong>本地处理利用您设备的算力，您再也不用等待缓慢的上传。</li></ul>"
+    },
+    "principles": {
+      "heading": "我们的核心理念",
+      "items": [
+        {
+          "icon": "🔒",
+          "title": "默认私密",
+          "body": "您的文件和文本只留在您的设备上。我们绝不会把您的文档、照片或代码发到任何云服务器。"
+        },
+        {
+          "icon": "🆓",
+          "title": "免费使用",
+          "body": "所有核心工具 100% 免费。无付费墙、无订阅、无每日限制、无隐藏费用，完整使用。"
+        },
+        {
+          "icon": "⚡",
+          "title": "快速简单",
+          "body": "无需注册。打开任意工具，放入文件，几秒钟即可下载结果。"
+        },
+        {
+          "icon": "🌍",
+          "title": "随处可用",
+          "body": "在手机、平板和笔记本上使用我们的工具。界面清爽，支持浅色与深色模式。"
+        }
+      ]
+    },
+    "advertising": {
+      "heading": "可持续的透明广告",
+      "html": "<p>BeYourTools 因简洁干净的广告而完全免费。广告收入用于支付托管、高速全球网络与持续的工具更新。</p><p>我们遵循明确的道德广告准则：</p><ul><li>没有欺骗性的「假下载」按钮或误导性广告。</li><li>没有侵入式弹窗、音频自动播放广告或遮屏浮层。</li><li>完全遵守 Google AdSense 的质量与投放规范。</li></ul><p>要了解我们的广告做法与隐私保障，请参阅我们的<a href=\"/privacy-policy\" style=\"color: var(--accent-text)\">隐私政策</a>和<a href=\"/cookie-policy\" style=\"color: var(--accent-text)\">Cookie 政策</a>。</p>"
+    },
+    "engineering": {
+      "heading": "工程标准与公式验证",
+      "html": "<p>我们按严格的 Web 标准与精确的数学公式打造每个工具：</p><ul><li><strong>数据格式：</strong>我们的 JSON 工具遵循官方 RFC 8259 规范，格式化与校验代码可在所有现代应用中通用。</li><li><strong>PDF 文档：</strong>我们的 PDF 工具遵循 ISO 32000 规范，字体、线条与版式在任何设备上都清晰锐利。</li><li><strong>财务数学：</strong>每个计算器都使用经过验证的数学公式，我们的贷款、利息、税务计算均对照标准银行规则测试。</li><li><strong>媒体处理：</strong>音频与视频工具使用现代浏览器 WebAssembly 在本地运行，媒体转换快速，无网络延迟。</li></ul>"
+    },
+    "editorial": {
+      "heading": "编辑诚信与质量准则",
+      "intro": "我撰写本站指南，是为了给您清晰、诚实、实用的帮助——每一篇都经我本人在工具中实测。没有虚假的填充文字，没有垃圾营销内容。",
+      "items": [
+        {
+          "title": "技术精准",
+          "body": "每篇指南和教程都由我亲自审核，并在发布前于实际工具中测试步骤。"
+        },
+        {
+          "title": "定期更新",
+          "body": "我会定期复查工具与计算器公式。当浏览器标准或税法变化时，我会同步更新工具。"
+        }
+      ]
+    },
+    "contactSection": {
+      "heading": "联系与反馈",
+      "html": "<p>我会亲自阅读每一条留言。如果您发现 Bug、有新工具的想法，或需要公式方面的帮助，请告诉我。</p><p>可通过<a href=\"/contact\" style=\"color: var(--accent-text)\">联系页面</a>或邮件 <a href=\"mailto:beyourtools@gmail.com\" style=\"color: var(--accent-text)\">beyourtools@gmail.com</a> 找到我。我每天查看反馈，快速修复问题。</p>"
+    }
+  },
+  "contact": {
+    "breadcrumb": "联系我们",
+    "title": "联系我们",
+    "intro": "有问题、发现 Bug，或想推荐新工具？我们很乐意听到您的声音。",
+    "otherWaysHeading": "其他联系方式",
+    "emailLabel": "邮箱",
+    "emailNote": "我们通常在 2–3 个工作日内回复。",
+    "followLabel": "关注我们",
+    "privacyNoteHtml": "关于隐私或 GDPR 请求，请参阅我们的<a href=\"/privacy-policy\" class=\"hover:underline\" style=\"color: var(--accent-text)\">隐私政策</a>。",
+    "support": {
+      "heading": "支持渠道与咨询范围",
+      "intro": "无论您是报告技术问题还是提出新想法，我们都能这样帮您：",
+      "cards": [
+        {
+          "title": "Bug 报告",
+          "body": "如果某个工具在您的浏览器中不如预期，请告诉我们您的设备类型与操作系统。告知您使用的浏览器有助于我们快速修复问题。"
+        },
+        {
+          "title": "功能建议",
+          "body": "我们根据用户反馈开发新工具。如果您需要特定的文件转换器、音频工具或财务计算器，请告诉我们您的需求。"
+        },
+        {
+          "title": "合作与媒体",
+          "body": "媒体采访、教育用途或合作请求，请通过我们的邮箱联系。我们会亲自阅读每一封来信。"
+        },
+        {
+          "title": "隐私与安全",
+          "body": "我们高度重视安全。如果您发现安全漏洞或有数据方面的顾虑，请立即发邮件给我们，团队会尽快解决。"
+        }
+      ]
+    },
+    "response": {
+      "heading": "回复时效与支持时间",
+      "body": "我们的小团队会认真阅读每一条留言。周一至周五的正常工作时间回复。大多数咨询会在 2–3 个工作日内得到回复，复杂的 Bug 排查可能需要稍长时间测试不同浏览器版本。"
+    },
+    "troubleshooting": {
+      "heading": "故障排查小贴士",
+      "intro": "在提交支持请求前，不妨先试试这几个快速步骤：",
+      "html": "<li><strong style=\"color: var(--text-secondary)\">刷新页面：</strong>按 <kbd class=\"rounded border px-1 py-0.5\" style=\"border-color: var(--border-strong); background-color: var(--bg-elevated)\">Ctrl + F5</kbd> 或 <kbd class=\"rounded border px-1 py-0.5\" style=\"border-color: var(--border-strong); background-color: var(--bg-elevated)\">Cmd + Shift + R</kbd> 硬刷新浏览器标签页。</li><li><strong style=\"color: var(--text-secondary)\">检查文件完整性：</strong>确保输入文件能在您的电脑上正常打开，且未被加密或损坏。</li><li><strong style=\"color: var(--text-secondary)\">试试无痕窗口：</strong>激进的广告拦截等浏览器扩展有时会屏蔽图片与视频编辑所需的 WebAssembly 脚本。</li>"
+    },
+    "faqHeading": "联系客服常见问题",
+    "faqs": [
+      {
+        "question": "BeYourTools 团队多久回复？",
+        "answer": "我们力争在 2–3 个工作日内回复所有留言。安全报告与工具故障通知会得到最高优先级处理。"
+      },
+      {
+        "question": "如何提交一份有效的 Bug 报告？",
+        "answer": "请提供工具名称、浏览器品牌与版本，以及屏幕上显示的错误信息。描述复现问题的步骤能帮我们更快修复 Bug。"
+      },
+      {
+        "question": "可以推荐新的浏览器工具或格式吗？",
+        "answer": "当然欢迎。请告诉我们您想转换的输入格式、期望的输出格式，以及这个工具将如何帮助您的工作流。"
+      },
+      {
+        "question": "BeYourTools 会记录或存储我的联系留言吗？",
+        "answer": "我们仅用您的姓名和邮箱来回复您的咨询，绝不会出售您的联系方式，也不会未经您同意将其用于营销邮件。"
+      },
+      {
+        "question": "工具处理我的文件失败了怎么办？",
+        "answer": "首先确认文件没有被加密或损坏。试试刷新浏览器标签页，或禁用会屏蔽 WebAssembly 脚本的浏览器扩展。"
+      },
+      {
+        "question": "为什么 BeYourTools 直接在浏览器中运行工具？",
+        "answer": "本地处理确保您的照片、PDF 与私人文档永不离开您的电脑。这带来最快的速度、零上传等待与完整的数据隐私。"
+      },
+      {
+        "question": "如何报告安全问题或隐私顾虑？",
+        "answer": "如果您发现安全漏洞或异常的数据行为，请直接发邮件给我们，主题注明 Security Report。我们会在 24 小时内调查所有安全报告。"
+      },
+      {
+        "question": "没有网络也能用 BeYourTools 吗？",
+        "answer": "大多数工具需要联网来加载初始页面资源。页面加载到浏览器标签页后，工具在设备内存中本地处理文件，无需持续联网。"
+      }
+    ]
+  }
+}

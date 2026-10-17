@@ -1,0 +1,82 @@
+{
+  "about": {
+    "description": "了解 BeYourTools：我们的使命、客户端技术，以及 290+ 款免费浏览器工具，涵盖 JSON、图片、PDF、音频、视频与财务。",
+    "title": "关于 BeYourTools——免费的浏览器在线工具"
+  },
+  "allTools": {
+    "description": "浏览 300+ 款免费在线工具：JSON、图片、PDF、视频、音频、二维码、财务、文本、开发者工具和计算器。无需注册，100% 私密。",
+    "title": "全部工具 - 浏览所有免费在线工具 | BeYourTools"
+  },
+  "audio-tools": {
+    "description": "20 款免费的浏览器音频工具：转换、剪辑、压缩、合并、音量增强与录音。快速、私密，无需上传文件。",
+    "title": "音频工具——免费在线音频转换器 | BeYourTools"
+  },
+  "blog": {
+    "description": "关于 JSON、图片格式、PDF 工具、音频、视频与开发者效率的实用指南。",
+    "title": "博客——免费开发者指南与教程 | BeYourTools"
+  },
+  "calculators": {
+    "description": "所有计算器完全在您的浏览器中运行。您的数字绝不会被上传或存储。",
+    "title": "计算器——百分比、BMI、年龄 | BeYourTools"
+  },
+  "contact": {
+    "description": "联系 BeYourTools 团队。报告 Bug、推荐新工具或提出问题。",
+    "title": "联系我们——支持与反馈 | BeYourTools"
+  },
+  "cookie-policy": {
+    "description": "BeYourTools Cookie 政策。了解我们使用哪些 Cookie、用途以及如何管理。",
+    "title": "Cookie 政策与追踪偏好 | BeYourTools"
+  },
+  "design-tools": {
+    "description": "3 款免费的浏览器设计工具：从任意图片取色、生成配色方案、制作网站图标。快速、私密，无需上传文件。",
+    "title": "设计工具——免费取色器、配色与网站图标生成器 | BeYourTools"
+  },
+  "developer-tools": {
+    "description": "所有开发者工具完全在您的浏览器中运行，包括通过 Web Crypto 进行的加密运算。任何内容都不会被上传或存储。",
+    "title": "开发者工具——正则、UUID、密码、哈希 | BeYourTools"
+  },
+  "disclaimer": {
+    "description": "BeYourTools 免责声明。关于我们工具的局限性与内容准确性的说明。",
+    "title": "免责声明与服务条款 | BeYourTools"
+  },
+  "finance-tools": {
+    "description": "40 款免费的浏览器财务计算器：利润率、贷款还款、债务清偿、储蓄与税务。100% 私密，无需注册。",
+    "title": "财务计算器——40 款免费在线工具 | BeYourTools"
+  },
+  "home": {
+    "description": "200+ 款免费的浏览器开发者与实用工具：JSON、图片转换、PDF、音频、视频与二维码。快速、私密、无需注册。",
+    "title": "BeYourTools——人人可用的免费在线工具"
+  },
+  "image-converter": {
+    "description": "免费的浏览器图片转换器。在 JPG、PNG、WebP、AVIF、SVG 等格式间转换，共 118 种组合。无需上传、无需注册。",
+    "title": "图片转换器——转换 JPG、PNG 与 WebP | BeYourTools"
+  },
+  "json-tools": {
+    "description": "30+ 款免费的浏览器 JSON 工具：格式化、校验、对比、转换、生成与查看 JSON——无需上传、无需注册、100% 私密。",
+    "title": "JSON 工具——免费在线格式化与校验 | BeYourTools"
+  },
+  "pdf-tools": {
+    "description": "免费的浏览器 PDF 工具：合并、拆分、压缩、旋转、加水印、加密、PDF 转 JPG/PNG/文本——无需上传、无需注册、无水印、100% 私密。",
+    "title": "PDF 工具——免费在线 PDF 编辑器 | BeYourTools"
+  },
+  "privacy-policy": {
+    "description": "BeYourTools 隐私政策。所有工具处理都在您的浏览器本地完成——文件和数据绝不会上传到我们的服务器。",
+    "title": "隐私政策——数据安全与隐私 | BeYourTools"
+  },
+  "qr-barcode-tools": {
+    "description": "免费的浏览器二维码与条形码工具：生成、扫描与解码 Code 128、EAN、UPC、WiFi 码。100% 私密，无需注册。",
+    "title": "二维码与条形码工具——免费在线生成器 | BeYourTools"
+  },
+  "terms": {
+    "description": "阅读 BeYourTools 的条款与条件，了解使用我们免费在线工具时的权利与责任。",
+    "title": "条款与条件——BeYourTools"
+  },
+  "text-tools": {
+    "description": "所有文本工具完全在您的浏览器中运行。您输入的任何内容都不会被上传或存储。",
+    "title": "文本工具——字数统计、大小写转换等 | BeYourTools"
+  },
+  "video-tools": {
+    "description": "20 款免费的浏览器视频工具：压缩、剪辑、裁剪、转换、调整尺寸、合并、制作 GIF、抽帧，并在本地编辑音频。",
+    "title": "视频工具——免费在线编辑与转换 | BeYourTools"
+  }
+}

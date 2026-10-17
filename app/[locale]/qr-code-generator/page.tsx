@@ -1,0 +1,172 @@
+import { localizeMetadata } from "@/lib/i18n-content";
+import type { Metadata } from "next";
+import { Link } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
+import { contentLocale, getToolCopy } from "@/lib/i18n-content";
+import QRGeneratorClient from "./QRGeneratorClient";
+import QRRelatedTools from "@/components/qr/QRRelatedTools";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbSchema, softwareApplicationSchema, faqSchema, howToSchema, SITE, canonical } from "@/lib/seo";
+
+const __enMetadata: Metadata = {
+  title: "QR Code Generator - Create Free QR Codes | BeYourTools",
+  description:
+    "Create free QR codes for URLs, WiFi, email, and contacts. Customize colors and error correction. Download as PNG or SVG.",
+  keywords:
+    "QR code generator, free QR code, create QR code, WiFi QR code, vCard QR code, URL QR code, custom QR code",
+  alternates: { canonical: `${SITE.url}/qr-code-generator` },
+  openGraph: {
+    type: "website",
+    url: `${SITE.url}/qr-code-generator`,
+    title: "QR Code Generator - Create Free QR Codes | BeYourTools",
+    description: "Generate QR codes for URLs, WiFi, vCards and more - free, instant, no sign-up.",
+    images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "QR Code Generator" }],
+  },
+};
+
+
+
+export default async function QRCodeGeneratorPage() {
+  const locale = await contentLocale();
+  const t = await getTranslations({ locale, namespace: "common" });
+  const copy = await getToolCopy(locale, "qr-code-generator");
+  const tName = copy.name ?? "";
+  const tDescription = copy.description ?? "";
+  const tFaqs = copy.faqs;
+  const schemas = [
+  breadcrumbSchema([
+    { name: "BeYourTools", url: SITE.url },
+    { name: "QR & Barcode Tools", url: canonical("/qr-barcode-tools") },
+    { name: tName, url: canonical("/qr-code-generator") },
+  ]),
+  softwareApplicationSchema({
+    name: "QR Code Generator",
+    description: "Free browser-based QR code generator supporting URLs, text, WiFi, email, phone, vCard and location.",
+    url: canonical("/qr-code-generator"),
+    category: "UtilitiesApplication",
+  }),
+  howToSchema({
+    name: "How to generate a QR code",
+    description: "Steps to create a free QR code using BeYourTools.",
+    steps: [
+      { name: "Choose content type", text: "Select the type of content: URL, Text, WiFi, Email, Phone, SMS, vCard, or Location." },
+      { name: "Enter your data", text: "Fill in the required fields for your chosen content type." },
+      { name: "Customize (optional)", text: "Adjust size, colors, margin, and error correction level." },
+      { name: "Generate", text: 'Click "Generate QR Code" to create your QR code instantly.' },
+      { name: "Download", text: "Download as PNG or SVG, or copy the encoded value." },
+    ],
+  }),
+  faqSchema(tFaqs),
+];
+
+  return (
+    <>
+      <JsonLd data={schemas} />
+      <div className="mx-auto w-full max-w-3xl px-4 py-8 sm:px-6 sm:py-12">
+        {/* Breadcrumb */}
+        <div className="mb-4 flex items-center gap-1.5 text-xs" style={{ color: "var(--text-subtle)" }}>
+          <Link href="/" className="focus-ring rounded hover:underline" style={{ color: "var(--text-muted)" }}>BeYourTools</Link>
+          <span>/</span>
+          <Link href="/qr-barcode-tools" className="focus-ring rounded hover:underline" style={{ color: "var(--text-muted)" }}>QR &amp; Barcode Tools</Link>
+          <span>/</span>
+          <span style={{ color: "var(--text-secondary)" }}>QR Code Generator</span>
+        </div>
+
+        {/* Header */}
+        <div className="mb-8">
+          <p className="mb-1 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--accent-text)" }}>
+            QR Tools
+          </p>
+          <h1 className="font-display text-2xl font-semibold sm:text-3xl" style={{ color: "var(--text-primary)" }}>{tName}</h1>
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            Create free QR codes for URLs, text, WiFi credentials, email, phone, SMS, vCards, and GPS locations.
+            Customize colors and download as PNG or SVG - everything happens in your browser.
+          </p>
+        </div>
+
+        {/* Tool */}
+        <QRGeneratorClient />
+
+        {/* How to use */}
+        <section className="mt-12 space-y-4">
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+            How to Generate QR Codes
+          </h2>
+          <ol className="space-y-2 text-sm" style={{ color: "var(--text-muted)" }}>
+            <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--accent-text)" }}>1.</span> Select the content type (URL, WiFi, vCard, etc.).</li>
+            <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--accent-text)" }}>2.</span> Fill in the required fields.</li>
+            <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--accent-text)" }}>3.</span> Optionally expand &quot;Customize QR code&quot; to change size, colors and error correction.</li>
+            <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--accent-text)" }}>4.</span> Click <strong>Generate QR Code</strong>.</li>
+            <li className="flex gap-2"><span className="font-semibold" style={{ color: "var(--accent-text)" }}>5.</span> Download PNG or SVG, or copy the encoded value.</li>
+          </ol>
+        </section>
+
+        {/* Features */}
+        <section className="mt-10">
+          <h2 className="mb-3 font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>QR Code Generator Features</h2>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {[
+              ["8 content types", "URL, Text, Email, Phone, SMS, WiFi, vCard, Location"],
+              ["Custom colors", "Set foreground and background colors freely"],
+              ["Adjustable size", "128 px to 512 px output"],
+              ["Error correction", "L / M / Q / H levels"],
+              ["PNG & SVG download", "Pixel-perfect PNG and infinitely scalable SVG"],
+              ["100% private", "No server upload - generated entirely in your browser"],
+            ].map(([title, desc]) => (
+              <div key={title} className="rounded-lg border p-3" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+                <p className="text-xs font-semibold" style={{ color: "var(--text-secondary)" }}>{title}</p>
+                <p className="mt-0.5 text-xs" style={{ color: "var(--text-muted)" }}>{desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* QR Standards & Architecture Guide */}
+        <section className="mt-10 space-y-4 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+            ISO/IEC 18004 Standards &amp; Reed-Solomon Error Correction
+          </h2>
+          <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            Quick Response (QR) codes are two-dimensional matrix symbologies standardized under <strong>ISO/IEC 18004</strong>. 
+            Unlike traditional linear barcodes that encode data solely along a single horizontal axis, QR codes store data in both vertical and horizontal module arrangements, enabling thousands of alphanumeric characters to be compacted into a small footprint.
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2 text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Reed-Solomon Resilience</h3>
+              <p>
+                QR codes incorporate Reed-Solomon algebraic error correction algorithms across four standard levels: Level L (7% recovery), Level M (15%), Level Q (25%), and Level H (30%). 
+                Level H allows codes to remain fully readable even if up to nearly a third of the graphic is obscured, smudged, or stamped with a center brand logo.
+              </p>
+            </div>
+            <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Position Detection Patterns</h3>
+              <p>
+                The distinctive three square finder patterns in the corners establish rotation, scale, and skew angles. 
+                This optical geometry enables omnidirectional 360-degree scanning from any angle, even on high-speed mobile smartphone cameras and industrial fixed-mount optical readers.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="mt-10 space-y-4">
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>{tName} {t("faqs")}</h2>
+          {tFaqs.map(({ question: q, answer: a }) => (
+            <div key={q as string}>
+              <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>{q}</p>
+              <p className="mt-1 text-sm" style={{ color: "var(--text-muted)" }}>{a}</p>
+            </div>
+          ))}
+        </section>
+
+        <QRRelatedTools currentSlug="qr-code-generator" />
+      </div>
+    </>
+  );
+}
+
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  return localizeMetadata(locale, "qr-code-generator", __enMetadata);
+}

@@ -1,0 +1,5804 @@
+{
+  "json:json-formatter": {
+    "name": "JSON 格式化工具",
+    "description": "用自定义缩进美化打印 JSON。",
+    "category": "格式化与校验",
+    "tagline": "粘贴压缩或杂乱的 JSON，即刻得到整洁的缩进版本，支持 2 空格、4 空格或制表符缩进。",
+    "keywords": "JSON 格式化, JSON 美化打印, 在线格式化 JSON, JSON 美化工具, JSON 缩进, 整洁的 JSON",
+    "howTo": [
+      {
+        "title": "粘贴您的 JSON",
+        "text": "将原始、压缩或杂乱的 JSON 粘贴到左侧输入面板。"
+      },
+      {
+        "title": "选择缩进风格",
+        "text": "从工具栏选择 2 空格、4 空格或制表符——也可保持默认。"
+      },
+      {
+        "title": "查看结果",
+        "text": "格式化后的 JSON 即刻显示在右侧输出面板。"
+      },
+      {
+        "title": "复制或下载",
+        "text": "点击「复制」复制到剪贴板，或点击「下载」保存为 .json 文件。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "什么是 JSON 格式化？",
+        "answer": "JSON 格式化（美化打印）通过添加统一的缩进与换行，让 JSON 便于人阅读。压缩后的 JSON 数据内容完全相同，只是去掉了所有空白以减小文件体积。"
+      },
+      {
+        "question": "这个格式化工具会改变我的数据吗？",
+        "answer": "不会。格式化只添加空白字符，所有键、值、顺序与结构都原样保留。您可以放心地格式化再压缩，不会丢失任何数据。"
+      },
+      {
+        "question": "无效的 JSON 能格式化吗？",
+        "answer": "不能。JSON 必须语法有效才能格式化。如果 JSON 已损坏，请先用 JSON 修复工具处理，再格式化修复后的输出。"
+      },
+      {
+        "question": "能格式化的 JSON 最大有多大？",
+        "answer": "格式化工具完全在您的浏览器中运行。在现代设备上，实际可处理几十 MB 的 JSON。超大文件在浏览器处理文本时可能会有短暂延迟。"
+      },
+      {
+        "question": "JSON 格式化工具和 JSON 美化工具有什么区别？",
+        "answer": "它们做的是同一件事：添加缩进来让 JSON 易读。本站的美化工具提供相同的核心功能，只是界面布局略有不同。"
+      },
+      {
+        "question": "JSON 格式化工具免费吗？需要注册吗？",
+        "answer": "免费，完全免费，无需注册、无需登录、没有使用限制。您的 JSON 完全在浏览器中处理，绝不会被上传或存储。"
+      }
+    ]
+  },
+  "json:json-beautifier": {
+    "name": "JSON 美化工具",
+    "description": "把杂乱的 JSON 整理成易读的版式。",
+    "category": "格式化与校验",
+    "tagline": "把紧凑或结构混乱的 JSON 整理成缩进整齐、易于阅读的格式。",
+    "keywords": "JSON 美化工具, 美化 JSON, JSON 美化打印, 格式化 JSON, 易读的 JSON",
+    "howTo": [
+      {
+        "title": "粘贴或输入 JSON",
+        "text": "在输入区输入 JSON——压缩的、半格式化的或完全原始的都可以。"
+      },
+      {
+        "title": "选择缩进大小",
+        "text": "为输出缩进选择 2 空格、4 空格或制表符。"
+      },
+      {
+        "title": "阅读输出",
+        "text": "美化后的 JSON 会立即显示，每个键和值各占一行。"
+      },
+      {
+        "title": "复制结果",
+        "text": "用「复制」按钮把输出复制到剪贴板。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "JSON 的「美化」是什么意思？",
+        "answer": "美化 JSON 就是添加统一的缩进、换行与空格，让结构一目了然。它与压缩正好相反——压缩会去掉所有这类空白。"
+      },
+      {
+        "question": "美化会影响 JSON 解析吗？",
+        "answer": "不会。JSON 解析器把空白视为无意义字符。同一份 JSON 的美化版和压缩版在语义上完全相同，会解析成相同的数据结构。"
+      },
+      {
+        "question": "可以粘贴浏览器网络面板里的 JSON 吗？",
+        "answer": "可以。从浏览器开发者工具网络响应中直接复制的 JSON 通常是压缩或半格式化的，粘贴到这里会立刻变得完全易读。"
+      },
+      {
+        "question": "支持 JSON 数组吗？",
+        "answer": "支持。JSON 对象（花括号）和 JSON 数组（方括号）都能正确格式化，包括深层嵌套的组合。"
+      }
+    ]
+  },
+  "json:json-validator": {
+    "name": "JSON 校验工具",
+    "description": "检查 JSON 语法，精确定位错误位置。",
+    "category": "格式化与校验",
+    "tagline": "检查您的 JSON 语法是否有效，并精确定位每个错误的行号与列号。",
+    "keywords": "JSON 校验工具, 在线校验 JSON, JSON 语法检查, JSON 错误检查, 无效的 JSON, JSON lint",
+    "howTo": [
+      {
+        "title": "粘贴您的 JSON",
+        "text": "把要检查的 JSON 粘贴到输入区。"
+      },
+      {
+        "title": "即时校验",
+        "text": "校验器在您输入或粘贴时实时检查——无需点击按钮。"
+      },
+      {
+        "title": "读取结果",
+        "text": "有效会显示绿色确认；无效则显示准确的行号、列号与错误信息。"
+      },
+      {
+        "title": "修复错误",
+        "text": "根据报告的行列号找到问题，或粘贴到 JSON 修复工具自动修复。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "什么会让 JSON 无效？",
+        "answer": "常见原因包括：对象或数组最后一项后有多余逗号、字符串用了单引号而非双引号、键没有加引号、项之间缺少逗号、括号或花括号嵌套错误、字符串中有未转义的控制字符。"
+      },
+      {
+        "question": "这个校验工具支持 JSON5 或 JSONC 吗？",
+        "answer": "不支持。本工具按 RFC 8259 校验严格 JSON。JSON5（允许注释和尾随逗号）和 JSONC（带注释的 JSON）都不是合法 JSON。请用 JSON 修复工具去掉这些扩展，生成合法 JSON。"
+      },
+      {
+        "question": "可以校验 JSON Schema 文件吗？",
+        "answer": "JSON Schema 文件本身就是一份 JSON 文档。JSON 校验工具检查它在语法上是否为合法 JSON。要按 JSON Schema 规范校验 Schema 本身，请使用 JSON Schema 校验工具。"
+      },
+      {
+        "question": "有大小限制吗？",
+        "answer": "校验器在您的浏览器中运行，无需上传。任何大小的 JSON 文件都可以校验，超大文件处理时可能需要一点时间。"
+      },
+      {
+        "question": "JSON 看起来没问题，为什么显示无效？",
+        "answer": "请检查：对象或数组最后一个属性后有多余逗号、键没有引号、值用了 undefined 或 JavaScript 函数、文本开头有 BOM（字节顺序标记）。对照报错的行号即可找到确切问题。"
+      }
+    ]
+  },
+  "json:json-minifier": {
+    "name": "JSON 压缩工具",
+    "description": "去掉空白，缩小 JSON 体积。",
+    "category": "格式化与校验",
+    "tagline": "去掉 JSON 中的所有空白，生成最小的文件，用于 API 响应与数据传输。",
+    "keywords": "JSON 压缩工具, 压缩 JSON, JSON 精简, JSON 空白移除, JSON 紧凑, 缩小 JSON",
+    "howTo": [
+      {
+        "title": "粘贴格式化后的 JSON",
+        "text": "把带缩进或美化打印的 JSON 粘贴到输入区。"
+      },
+      {
+        "title": "即时生成压缩输出",
+        "text": "输出面板显示去掉所有空白的紧凑单行版本。"
+      },
+      {
+        "title": "复制或下载",
+        "text": "复制压缩后的 JSON，用于代码、配置文件或 API 请求体。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "JSON 压缩是做什么的？",
+        "answer": "压缩会去掉所有不在字符串值内的空白字符（空格、制表符、换行）。压缩后的 JSON 数据内容完全相同，但体积更小，能减小网络传输量并加快解析。"
+      },
+      {
+        "question": "压缩后能小多少？",
+        "answer": "取决于原文件的缩进程度，压缩通常能减小 20–40%。对于 4 空格缩进的深层嵌套对象，最高可省 50%。"
+      },
+      {
+        "question": "压缩会去掉注释吗？",
+        "answer": "标准 JSON 不允许注释，所以合法的 JSON 文件本来就没有注释。如果您的 JSON 带注释（JSONC 风格），需先用 JSON 修复工具去掉再压缩。"
+      },
+      {
+        "question": "压缩后的 JSON 还能正常解析吗？",
+        "answer": "能。所有 JSON 解析器都能正确处理压缩后的 JSON，按 JSON 规范，字符串值之外的空白永远是可选的。"
+      }
+    ]
+  },
+  "json:json-viewer": {
+    "name": "JSON 查看器 / 树形",
+    "description": "以可折叠树形结构浏览 JSON。",
+    "category": "格式化与校验",
+    "tagline": "以交互式可折叠树形结构浏览 JSON——展开、折叠节点，浏览任意结构。",
+    "keywords": "JSON 查看器, JSON 树形查看器, JSON 浏览器, JSON 可视化, JSON 树, JSON 检查器, 交互式 JSON",
+    "howTo": [
+      {
+        "title": "粘贴您的 JSON",
+        "text": "粘贴任意合法 JSON——对象、数组或原始值——到输入框。"
+      },
+      {
+        "title": "浏览树形结构",
+        "text": "JSON 会渲染成可折叠的树。点击任意有子节点的节点即可展开或折叠。"
+      },
+      {
+        "title": "查看值",
+        "text": "叶子值（字符串、数字、布尔值、null）会以按类型着色的标签显示。"
+      },
+      {
+        "title": "搜索或导航",
+        "text": "用搜索栏按 key 名或 value 筛选可见节点。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "什么是 JSON 树形查看器？",
+        "answer": "JSON 树形查看器把 JSON 渲染成由可展开节点组成的层级树，类似浏览器开发者工具中的视图。相比阅读纯文本，深层嵌套的结构更容易浏览。"
+      },
+      {
+        "question": "可以在查看器中编辑值吗？",
+        "answer": "查看器是只读的，用于浏览。要编辑 JSON，请使用 JSON 编辑器工具，它提供并排的树形编辑器与文本输入。"
+      },
+      {
+        "question": "超大 JSON 文件能用吗？",
+        "answer": "查看器会把整个 JSON 加载到浏览器。对于超大文件（几 MB 以上），一次渲染所有节点可能很慢。先折叠顶层节点，再按需展开，是最高效的做法。"
+      },
+      {
+        "question": "支持循环引用吗？",
+        "answer": "循环引用不是合法 JSON（JSON 必须可序列化），所以合法的 JSON 文件不会包含它们。查看器能处理所有合法 JSON 结构。"
+      }
+    ]
+  },
+  "json:json-editor": {
+    "name": "JSON 编辑器",
+    "description": "带实时树形预览的 JSON 编辑。",
+    "category": "格式化与校验",
+    "tagline": "带实时并排树形预览的 JSON 编辑——文本中的修改会即时同步到树形视图。",
+    "keywords": "JSON 编辑器, 在线 JSON 编辑器, 编辑 JSON, JSON 树形编辑器, JSON 实时编辑器, JSON 代码编辑器",
+    "howTo": [
+      {
+        "title": "打开或粘贴 JSON",
+        "text": "把已有 JSON 粘贴到文本面板，或开始输入一份新的 JSON 文档。"
+      },
+      {
+        "title": "在文本或树形视图中编辑",
+        "text": "直接在文本面板中编辑，树形视图会随输入实时更新。点击树中的节点可跳转到对应文本。"
+      },
+      {
+        "title": "内联修复错误",
+        "text": "输入时语法错误会被高亮，方便您在保存前修复。"
+      },
+      {
+        "title": "复制编辑后的 JSON",
+        "text": "完成后从文本面板复制 JSON，或下载为文件。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "它和普通文本编辑器有什么区别？",
+        "answer": "JSON 编辑器在文本输入旁显示实时树形视图。输入时树会实时更新，无需手动数括号就能看清结构，语法错误也会内联高亮。"
+      },
+      {
+        "question": "可以在树形视图中增删 key 吗？",
+        "answer": "树形视图主要用于浏览与查看，编辑请用文本面板。文本中的修改会立即反映到树上。"
+      },
+      {
+        "question": "编辑时支持按 JSON Schema 校验吗？",
+        "answer": "要在输入时按 Schema 校验，请使用 JSON Schema 校验工具，并分别提供 JSON 与 Schema。"
+      },
+      {
+        "question": "我的 JSON 会保存在哪里吗？",
+        "answer": "不会。一切都在您的浏览器中运行，不会发送到任何服务器。关闭标签页后 JSON 即消失，除非您先复制或下载。"
+      }
+    ]
+  },
+  "json:json-repair": {
+    "name": "JSON 修复工具",
+    "description": "自动修复常见的 JSON 错误。",
+    "category": "格式化与校验",
+    "tagline": "自动修复常见 JSON 错误——尾随逗号、单引号、缺失引号等。",
+    "keywords": "JSON 修复, 修复 JSON, 损坏的 JSON, JSON 修复器, 无效 JSON 修复, JSON 自动修复, 纠正 JSON 错误",
+    "howTo": [
+      {
+        "title": "粘贴损坏的 JSON",
+        "text": "粘贴无效的 JSON——可以有尾随逗号、单引号字符串、无引号 key 或其他常见问题。"
+      },
+      {
+        "title": "点击「修复」",
+        "text": "工具分析 JSON 并针对性修复，生成合法的 JSON 输出。"
+      },
+      {
+        "title": "检查结果",
+        "text": "在输出面板查看修复后的 JSON，应用的修改会列出来，让您知道修复了什么。"
+      },
+      {
+        "title": "复制修复后的 JSON",
+        "text": "复制修复后的 JSON，用于您的项目。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "能修复哪些类型的 JSON 错误？",
+        "answer": "JSON 修复工具可处理：对象或数组最后一项后的尾随逗号、单引号字符串（转为双引号）、无引号的对象 key（加上双引号）、项之间缺失的逗号（尝试补上）、多余的引号，以及部分截断的 JSON 结构。"
+      },
+      {
+        "question": "完全乱码的 JSON 能修吗？",
+        "answer": "修复工具最适合处理人工或工具引入的常见错误。彻底乱码或损坏的文本（如标为 JSON 的二进制数据）无法修复，因为没有正确的结构可以恢复。"
+      },
+      {
+        "question": "修复会改变我的数据值吗？",
+        "answer": "不会。修复只处理结构与语法问题——标点、引号类型、括号配对。您的 key 名、字符串值、数字与布尔值都不会被改动。"
+      },
+      {
+        "question": "输入支持 JSON5 或 JavaScript 对象语法吗？",
+        "answer": "JSON 修复工具能处理多种 JS 风格写法（无引号 key、单引号、尾随逗号），这些在从 JS 源文件复制时很常见。带注释的完整 JSON5 也支持，会去掉注释行。"
+      }
+    ]
+  },
+  "json:jsonl-formatter": {
+    "name": "JSONL 格式化工具",
+    "description": "逐行美化打印 JSONL 文件。",
+    "category": "格式化与校验",
+    "tagline": "把 JSONL（JSON Lines）文件的每一行美化打印成易读的缩进 JSON，同时保持行与行分开。",
+    "keywords": "JSONL 格式化工具, JSON Lines 格式化, NDJSON 格式化, 格式化 JSONL, 美化打印 JSONL",
+    "howTo": [
+      {
+        "title": "粘贴您的 JSONL",
+        "text": "粘贴 JSONL 文件，每行是一个独立的 JSON 值，混合格式的文件也可以。"
+      },
+      {
+        "title": "选择缩进风格",
+        "text": "为每个格式化 JSON 块内的缩进选择 2 空格、4 空格或制表符。"
+      },
+      {
+        "title": "查看格式化输出",
+        "text": "每一行被格式化成独立的缩进 JSON 块，块之间用空行分隔以便阅读。"
+      },
+      {
+        "title": "复制或下载",
+        "text": "复制格式化输出，或下载为 .jsonl 文件。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "什么是 JSONL（JSON Lines）？",
+        "answer": "JSONL（也叫 NDJSON，即换行分隔的 JSON）是一种每行包含一个完整独立 JSON 值的文件格式。它流行于日志文件、数据流与大数据集，因为每一行都可以独立读取解析，无需加载整个文件。"
+      },
+      {
+        "question": "JSONL 和 JSON 数组是一回事吗？",
+        "answer": "不是。JSON 数组是单个 JSON 文档，用方括号包含多个值。JSONL 则是一连串完全独立的 JSON 值，每行一个，没有外层方括号。"
+      },
+      {
+        "question": "可以只格式化部分行吗？",
+        "answer": "格式化工具会处理每一行。无效的行会原样保留（或按设置标记），有效的行一定会被格式化。"
+      },
+      {
+        "question": "输入中的空行会怎样？",
+        "answer": "空行会在输出中保留。只含空白的行视为空白行，格式化时跳过。"
+      }
+    ]
+  },
+  "json:jsonl-validator": {
+    "name": "JSONL 校验工具",
+    "description": "逐行独立校验 JSONL 文件。",
+    "category": "格式化与校验",
+    "tagline": "逐行独立校验 JSONL 文件，并给出每个错误的确切行号。",
+    "keywords": "JSONL 校验工具, 校验 JSONL, JSON Lines 校验, NDJSON 校验, JSONL 错误检查, 逐行校验 JSON",
+    "howTo": [
+      {
+        "title": "粘贴您的 JSONL",
+        "text": "粘贴 JSONL 内容——每行都应是一个完整有效的 JSON 值。"
+      },
+      {
+        "title": "逐行校验",
+        "text": "每个非空行都会作为独立 JSON 校验，结果逐行显示。"
+      },
+      {
+        "title": "检查错误",
+        "text": "无效的行会高亮，并标注行号与具体错误信息。"
+      },
+      {
+        "title": "修复并重新校验",
+        "text": "根据错误信息修改无效行，再粘贴确认全部通过。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "JSONL 校验和 JSON 校验有什么区别？",
+        "answer": "JSON 校验器一次只检查一个文档，JSONL 校验器把文件的每一行都当作独立 JSON 文档检查。某一行无效不会影响其他行。"
+      },
+      {
+        "question": "什么算合法的 JSONL 行？",
+        "answer": "单行上任何完整合法的 JSON 值都算：对象、数组、字符串、数字、布尔值或 null。该行必须语法完整——不完整的 JSON 在 JSONL 中不合法。"
+      },
+      {
+        "question": "JSONL 允许空行吗？",
+        "answer": "空行在技术上不属于 JSONL 规范，但大多数解析器会跳过。校验器会忽略空行，只检查非空行。"
+      },
+      {
+        "question": "可以用它校验日志文件吗？",
+        "answer": "可以。JSONL 格式的应用日志可以直接粘贴，校验器能找出哪些日志行的 JSON 格式有误，方便调试日志链路。"
+      }
+    ]
+  },
+  "json:json-diff": {
+    "name": "JSON 对比 / 比较",
+    "description": "并排比较两份 JSON 文档。",
+    "category": "对比与操作",
+    "tagline": "并排比较两份 JSON 文档，所有新增、删除与修改都会高亮显示。",
+    "keywords": "JSON 对比, JSON 比较, JSON 差异, 比较 JSON 文件, JSON delta, JSON 变更, JSON 比较工具",
+    "howTo": [
+      {
+        "title": "粘贴原始 JSON",
+        "text": "把原始（基准）JSON 输入左侧面板。"
+      },
+      {
+        "title": "粘贴修改后的 JSON",
+        "text": "把修改后的 JSON 输入右侧面板。"
+      },
+      {
+        "title": "点击「对比」",
+        "text": "对比运行后，新增标绿、删除标红、值变更标琥珀色。"
+      },
+      {
+        "title": "检查变更",
+        "text": "滚动浏览高亮的对比结果，找出两份文档的每一处差异。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "JSON 对比在意 key 的顺序吗？",
+        "answer": "不在意。JSON 对象按定义是无序的。对比按 key 名比较值，而非位置。key 顺序不同但值相同的两份文档不会显示差异。"
+      },
+      {
+        "question": "支持嵌套对象和数组的对比吗？",
+        "answer": "支持。对比是递归的，会深入嵌套的对象与数组，深层结构中的变更会精确高亮。"
+      },
+      {
+        "question": "数组变更会如何显示？",
+        "answer": "数组项按位置比较——第 0 项和第 0 项比，第 1 项和第 1 项比，以此类推。如果插入或删除了某一项，其后所有项都会显示为变更。如需语义化的数组对比，对对象属性做基于 key 的比较可能更合适。"
+      },
+      {
+        "question": "可以对比 API 响应吗？",
+        "answer": "可以。从浏览器开发者工具网络面板复制 JSON 响应，分别粘贴到两个面板。这是验证代码变更没有意外改变 API 响应的常用做法。"
+      },
+      {
+        "question": "有大小限制吗？",
+        "answer": "对比完全在您的浏览器中运行。大 JSON 文件可用，但对比算法完成可能需要几秒。超大文件（几 MB 以上）建议先对比有代表性的样本。"
+      }
+    ]
+  },
+  "json:json-sorter": {
+    "name": "JSON 排序工具",
+    "description": "递归地按字母顺序排列对象 key。",
+    "category": "对比与操作",
+    "tagline": "对整份 JSON 文档中的所有对象 key 按字母顺序排序，包括嵌套对象。",
+    "keywords": "JSON 排序工具, JSON key 排序, 字母顺序 JSON, JSON key 排序, JSON key 排列, JSON 规范化",
+    "howTo": [
+      {
+        "title": "粘贴您的 JSON",
+        "text": "粘贴要排序的 JSON 对象或数组。"
+      },
+      {
+        "title": "选择排序方向",
+        "text": "选择升序（A–Z）或降序（Z–A）的 key 排列。"
+      },
+      {
+        "title": "点击「排序」",
+        "text": "文档中的所有对象 key——包括深层嵌套的——都会被排序。"
+      },
+      {
+        "title": "复制排序后的 JSON",
+        "text": "复制结果，用于项目或版本控制。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "为什么要给 JSON key 排序？",
+        "answer": "排序后的 key 更便于肉眼扫描，简化文档间的手动对比，还能让版本控制的对比结果更一致——数据相同但 key 顺序不同的两份 JSON 对象，排序后在对比中会显示为一致。"
+      },
+      {
+        "question": "排序会改变数据吗？",
+        "answer": "不会。JSON 对象的 key 在语义上是无序的，重新排列不会改变 JSON 所表达的内容，所有值仍与正确的 key 对应。"
+      },
+      {
+        "question": "数组会被排序吗？",
+        "answer": "不会。数组项的顺序是有意义的，会原样保留。只有对象的 key（属性名）会按字母重新排列。如需给数组项排序，需要更专门的工具。"
+      },
+      {
+        "question": "嵌套对象也会排序吗？",
+        "answer": "会。排序会递归应用到整份文档，包括数组内或其他对象内的对象。"
+      }
+    ]
+  },
+  "json:json-merge": {
+    "name": "JSON 合并工具",
+    "description": "把两个 JSON 对象深度合并为一个。",
+    "category": "对比与操作",
+    "tagline": "把两个 JSON 对象深度合并为一个——嵌套对象会合并，冲突时以后者为准。",
+    "keywords": "JSON 合并, 合并 JSON 对象, JSON 深度合并, 组合 JSON, JSON 对象合并, JSON 并集",
+    "howTo": [
+      {
+        "title": "粘贴基准 JSON",
+        "text": "在左侧面板输入第一份（基准）JSON 对象。"
+      },
+      {
+        "title": "粘贴覆盖 JSON",
+        "text": "输入第二份 JSON 对象，key 冲突时它的值优先。"
+      },
+      {
+        "title": "点击「合并」",
+        "text": "工具执行深度合并并显示合并结果。"
+      },
+      {
+        "title": "复制合并结果",
+        "text": "复制合并后的 JSON，用于代码或配置。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "什么是深度合并？",
+        "answer": "深度合并是递归地合并两个对象。当两个对象有相同 key 且值都是对象时，嵌套对象也会合并，而不是一个替换另一个。浅合并则会直接整个替换嵌套对象。"
+      },
+      {
+        "question": "两个对象有相同 key 时会怎样？",
+        "answer": "以第二个对象的值为准。如果两个值都是对象，则递归合并；如果任一值是原始值、数组或 null，则第二个值替换第一个。"
+      },
+      {
+        "question": "数组如何合并？",
+        "answer": "数组是替换而非逐项合并。如果两个对象在同一 key 下都有数组，第二个对象的数组会完全替换第一个，不会自动拼接。"
+      },
+      {
+        "question": "可以合并两个以上的对象吗？",
+        "answer": "工具一次合并两个对象。要合并三个或更多，先合并前两个，再把结果作为基准与第三个合并。"
+      }
+    ]
+  },
+  "json:json-flatten": {
+    "name": "JSON 扁平化 / 还原",
+    "description": "把嵌套 JSON 展平为点路径，或还原回去。",
+    "category": "对比与操作",
+    "tagline": "把嵌套 JSON 展平为点路径键值对，或把扁平 JSON 还原为嵌套结构。",
+    "keywords": "JSON 扁平化, 展平 JSON, JSON 转扁平, 点表示法 JSON, JSON 还原, 嵌套 JSON 转扁平, JSON 路径展平",
+    "howTo": [
+      {
+        "title": "粘贴嵌套 JSON",
+        "text": "粘贴任意层级嵌套的 JSON 对象。"
+      },
+      {
+        "title": "选择「扁平化」或「还原」",
+        "text": "选择「扁平化」折叠为点路径键值对，或选择「还原」从扁平 key 重建嵌套结构。"
+      },
+      {
+        "title": "查看结果",
+        "text": "输出显示转换后的 JSON。"
+      },
+      {
+        "title": "复制结果",
+        "text": "复制扁平化或还原后的 JSON，用于项目。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "把 JSON 扁平化是什么意思？",
+        "answer": "扁平化把 {\"a\":{\"b\":{\"c\":1}}} 这样的嵌套 JSON 转成 {\"a.b.c\":1} 这样的扁平对象。原 JSON 中无论嵌套多深的每个值，都会变成顶层的一个 key，key 名就是它的完整路径。"
+      },
+      {
+        "question": "什么是还原？",
+        "answer": "还原是反向操作：把带点路径 key 的扁平对象重建为嵌套结构。它是扁平化的逆操作。"
+      },
+      {
+        "question": "扁平 key 用什么分隔符？",
+        "answer": "工具默认用点（.）作分隔符，生成 user.address.city 这样的 key。有些变体用斜杠或下划线，分隔符可在工具选项中配置。"
+      },
+      {
+        "question": "扁平化时数组如何处理？",
+        "answer": "数组下标会成为路径的一部分。例如 {\"items\":[{\"id\":1}]} 会展平为 {\"items.0.id\":1}。还原时能根据路径中的数字下标正确重建数组。"
+      }
+    ]
+  },
+  "json:jsonpath-tester": {
+    "name": "JSONPath 测试工具",
+    "description": "对您的 JSON 运行 JSONPath 表达式。",
+    "category": "对比与操作",
+    "tagline": "对任意 JSON 文档运行 JSONPath 表达式，匹配结果实时高亮显示。",
+    "keywords": "JSONPath 测试, JSONPath 在线, 测试 JSONPath, JSONPath 查询, JSONPath 表达式, JSON 查询工具, JSONPath 求值",
+    "howTo": [
+      {
+        "title": "粘贴您的 JSON",
+        "text": "在输入面板输入要查询的 JSON 文档。"
+      },
+      {
+        "title": "输入 JSONPath 表达式",
+        "text": "在查询框输入 JSONPath 表达式，例如 $.users[*].email 或 $.store.book[?(@.price < 10)]。"
+      },
+      {
+        "title": "查看结果",
+        "text": "匹配的节点显示在结果面板，并在源 JSON 中高亮。"
+      },
+      {
+        "title": "优化查询",
+        "text": "调整表达式，结果会即时更新，直到拿到需要的数据。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "什么是 JSONPath？",
+        "answer": "JSONPath 是 JSON 的查询语言，类似于 XML 的 XPath。它用路径表达式在 JSON 中导航并提取值，广泛用于 API、测试工具与配置系统。"
+      },
+      {
+        "question": "支持哪些 JSONPath 语法？",
+        "answer": "本工具支持标准 JSONPath 操作符：$（根）、.（子节点）、..（递归下降）、*（通配符）、[n]（数组下标）、[start:end]（切片）、[?(expression)]（过滤器）与 @（过滤器中的当前节点）。"
+      },
+      {
+        "question": "$..price 返回什么？",
+        "answer": ".. 是递归下降操作符。$..price 返回文档中所有 key 为 'price' 的值，无论层级多深。"
+      },
+      {
+        "question": "可以用过滤表达式吗？",
+        "answer": "可以。过滤表达式用 [?(@.property operator value)] 语法，例如 $.books[?(@.price < 20)] 返回所有 price 小于 20 的 book 对象。"
+      },
+      {
+        "question": "结果是以 JSON 数组形式展示吗？",
+        "answer": "是。结果面板把匹配的值显示为 JSON 数组。单个值匹配时会显示为单元素数组，没有匹配则返回空数组。"
+      }
+    ]
+  },
+  "json:json-to-csv": {
+    "name": "JSON → CSV",
+    "description": "把 JSON 数组转成 CSV 文件。",
+    "category": "转换",
+    "tagline": "把由对象组成的 JSON 数组转成 CSV 文件，列头自动识别。",
+    "keywords": "JSON 转 CSV, JSON 转换为 CSV, JSON 数组转 CSV, JSON 导出 CSV, JSON 转电子表格, JSON 转 Excel CSV",
+    "howTo": [
+      {
+        "title": "粘贴 JSON 数组",
+        "text": "粘贴由对象组成的 JSON 数组——每个对象成为 CSV 的一行。"
+      },
+      {
+        "title": "检查列头",
+        "text": "列头根据对象的 key 自动识别，如需可自定义。"
+      },
+      {
+        "title": "点击「转换」",
+        "text": "CSV 输出即时生成，第一行为表头。"
+      },
+      {
+        "title": "复制或下载",
+        "text": "复制 CSV 粘贴到电子表格，或下载为 .csv 文件。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "CSV 转换需要什么样的 JSON 结构？",
+        "answer": "输入应为 key 集合相同的对象数组，例如：[{\"name\":\"Alice\",\"age\":30},{\"name\":\"Bob\",\"age\":25}]。每个对象成为 CSV 的一行。"
+      },
+      {
+        "question": "JSON 中的嵌套对象怎么处理？",
+        "answer": "嵌套对象用点表示法展平。{\"address\":{\"city\":\"London\"}} 这样的 key 会变成名为 address.city 的列，值为 London。"
+      },
+      {
+        "question": "支持不同的分隔符吗？",
+        "answer": "工具输出标准的逗号分隔值（CSV）。如需制表符分隔（TSV）或欧洲常用的分号分隔，可在工具设置中选择分隔符。"
+      },
+      {
+        "question": "可以转换单个 JSON 对象而非数组吗？",
+        "answer": "单个对象会转成两列 CSV：一列 key，一列值。要得到关系型 CSV 输出，应输入对象数组。"
+      }
+    ]
+  },
+  "json:csv-to-json": {
+    "name": "CSV → JSON",
+    "description": "把 CSV 行转成 JSON 数组。",
+    "category": "转换",
+    "tagline": "把 CSV 文件转成由对象组成的 JSON 数组，数字与布尔值自动识别类型。",
+    "keywords": "CSV 转 JSON, CSV 转换为 JSON, CSV 转 JSON 数组, CSV 解析器, 电子表格转 JSON, CSV 转换器",
+    "howTo": [
+      {
+        "title": "粘贴您的 CSV",
+        "text": "粘贴 CSV 内容——第一行应为列头。"
+      },
+      {
+        "title": "检查分隔符识别",
+        "text": "工具自动识别逗号、制表符或分号作分隔符，如需可手动指定。"
+      },
+      {
+        "title": "点击「转换」",
+        "text": "每一行 CSV 变成一个 JSON 对象，属性名取自表头行。"
+      },
+      {
+        "title": "复制 JSON 数组",
+        "text": "复制或下载生成的 JSON 数组。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "CSV 没有表头怎么办？",
+        "answer": "如果 CSV 没有表头行，列名默认为 col1、col2、col3 等。在工具中启用「无表头」选项即可用此模式。"
+      },
+      {
+        "question": "数字和布尔值会自动转换吗？",
+        "answer": "会。看起来像整数、浮点数、true、false 或 null 的值会自动转成对应的 JSON 类型，字符串保持为字符串。"
+      },
+      {
+        "question": "引号内含逗号的 CSV 能处理吗？",
+        "answer": "能。解析器正确处理 RFC 4180 引号规则——含逗号、换行或双引号的值在合法 CSV 中会用双引号包裹，这里能正确解析。"
+      },
+      {
+        "question": "转换器支持什么编码？",
+        "answer": "转换器处理 UTF-8 编码的 CSV，覆盖大多数电子表格导出。如 CSV 含特殊字符，粘贴前请确保文件已存为 UTF-8。"
+      }
+    ]
+  },
+  "json:json-to-yaml": {
+    "name": "JSON → YAML",
+    "description": "把 JSON 转成易读的 YAML。",
+    "category": "转换",
+    "tagline": "把 JSON 转成干净易读的 YAML，类型处理正确，缩进规范。",
+    "keywords": "JSON 转 YAML, JSON 转换为 YAML, JSON YAML 转换器, 在线 JSON 转 YAML, JSON2YAML",
+    "howTo": [
+      {
+        "title": "粘贴您的 JSON",
+        "text": "输入要转换的 JSON 对象或数组。"
+      },
+      {
+        "title": "点击「转换」",
+        "text": "YAML 输出即时生成，缩进规范、语法友好。"
+      },
+      {
+        "title": "检查类型",
+        "text": "数字、布尔值和 null 在 YAML 中不加引号。可能被误认成其他类型的字符串会自动加引号。"
+      },
+      {
+        "title": "复制 YAML",
+        "text": "复制 YAML 输出，用于配置文件、CI/CD 流水线或 Kubernetes 清单。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "JSON 转 YAML 会保留所有数据类型吗？",
+        "answer": "会。字符串、数字、布尔值、null、对象、数组都能正确往返。看起来像数字或布尔值的字符串（如 \"true\" 或 \"1.0\"）会在 YAML 输出中加引号以避免歧义。"
+      },
+      {
+        "question": "能把 YAML 转回 JSON 吗？",
+        "answer": "能。用本站的 YAML 转 JSON 转换器反向转换即可。"
+      },
+      {
+        "question": "输出用的是哪个 YAML 版本？",
+        "answer": "输出遵循 YAML 1.2，这是最常用的版本，与 Kubernetes、Docker Compose、Ansible 等工具兼容。"
+      },
+      {
+        "question": "为什么 YAML 输出中有些字符串带引号？",
+        "answer": "YAML 有很多保留关键字（yes、no、true、false、on、off、null、~）。与这些关键字相同的字符串会被加引号，确保按字符串而非 YAML 布尔值或 null 处理。"
+      }
+    ]
+  },
+  "json:yaml-to-json": {
+    "name": "YAML → JSON",
+    "description": "把 YAML 文档转成 JSON。",
+    "category": "转换",
+    "tagline": "把 YAML 配置或数据文件转成合法 JSON，类型处理正确。",
+    "keywords": "YAML 转 JSON, YAML 转换为 JSON, YAML JSON 转换器, 在线 YAML 转 JSON, YAML2JSON, 解析 YAML",
+    "howTo": [
+      {
+        "title": "粘贴您的 YAML",
+        "text": "粘贴 YAML 内容——单个文档或用 --- 分隔的多文档都可以。"
+      },
+      {
+        "title": "点击「转换」",
+        "text": "工具解析 YAML 并输出等价的 JSON。"
+      },
+      {
+        "title": "检查结果",
+        "text": "检查类型（尤其是布尔值和 null）是否按预期转换。"
+      },
+      {
+        "title": "复制 JSON",
+        "text": "复制 JSON 输出，用于代码或工具。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "支持哪些 YAML 特性？",
+        "answer": "转换器处理最常见的 YAML 特性：嵌套映射与序列、多行字符串（块标量）、锚点与别名、显式类型标签（!str、!int），以及注释（在 JSON 输出中会被去掉）。"
+      },
+      {
+        "question": "YAML 注释会怎样？",
+        "answer": "JSON 不支持注释，所以 YAML 注释都会从输出中去掉，数据内容不受影响。"
+      },
+      {
+        "question": "支持 YAML 锚点和别名吗？",
+        "answer": "支持。YAML 锚点（&name）与别名（*name）会在转换前解析，生成的 JSON 包含完整展开的值，而非引用。"
+      },
+      {
+        "question": "YAML 的 yes/no/on/off 布尔值怎么处理？",
+        "answer": "YAML 1.1 中 yes、no、on、off 是布尔值，YAML 1.2 中只有 true 和 false 是布尔值。转换器默认用 YAML 1.2，yes 和 no 按字符串处理，除非加了引号。"
+      }
+    ]
+  },
+  "json:json-to-xml": {
+    "name": "JSON → XML",
+    "description": "把 JSON 对象转成 XML 标记。",
+    "category": "转换",
+    "tagline": "把 JSON 对象和数组转成格式良好的 XML 标记，根元素名可配置。",
+    "keywords": "JSON 转 XML, JSON 转换为 XML, JSON XML 转换器, 在线 JSON 转 XML, JSON2XML",
+    "howTo": [
+      {
+        "title": "粘贴您的 JSON",
+        "text": "输入要转成 XML 的 JSON 对象。"
+      },
+      {
+        "title": "设置根元素名",
+        "text": "为 XML 根元素取个名字（默认为 'root'）。"
+      },
+      {
+        "title": "点击「转换」",
+        "text": "XML 输出即时生成，每个 JSON key 成为一个 XML 元素。"
+      },
+      {
+        "title": "复制 XML",
+        "text": "复制 XML 输出，用于您的系统。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "JSON key 如何转成 XML 元素？",
+        "answer": "每个 JSON key 成为一个 XML 元素名，例如 {\"name\":\"Alice\"} 变成 <name>Alice</name>。嵌套对象变成嵌套元素，JSON 数组变成同名重复元素。"
+      },
+      {
+        "question": "key 不是合法 XML 元素名怎么办？",
+        "answer": "XML 元素名不能以数字开头，也不能含空格。会生成非法 XML 名的 key 会被处理：在前面加下划线或替换非法字符。"
+      },
+      {
+        "question": "JSON 数组能正确转成 XML 吗？",
+        "answer": "能。JSON 数组会展开成同标签的重复 XML 元素，例如 {\"item\":[\"a\",\"b\"]} 变成 <item>a</item><item>b</item>。"
+      },
+      {
+        "question": "能把 XML 转回 JSON 吗？",
+        "answer": "能。用本站的 XML 转 JSON 转换器即可。"
+      }
+    ]
+  },
+  "json:xml-to-json": {
+    "name": "XML → JSON",
+    "description": "把 XML 文档转成 JSON。",
+    "category": "转换",
+    "tagline": "解析 XML 文档并转成干净的 JSON 对象，属性处理方式可配置。",
+    "keywords": "XML 转 JSON, XML 转换为 JSON, XML JSON 转换器, XML 解析器, 在线 XML 转 JSON, 解析 XML",
+    "howTo": [
+      {
+        "title": "粘贴您的 XML",
+        "text": "在输入面板输入 XML 文档。"
+      },
+      {
+        "title": "选择属性处理方式",
+        "text": "选择 XML 属性变成属性还是加前缀（如 @name）出现在 JSON 中。"
+      },
+      {
+        "title": "点击「转换」",
+        "text": "显示解析后的 XML 的 JSON 表示。"
+      },
+      {
+        "title": "复制 JSON",
+        "text": "复制生成的 JSON，用于代码。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "XML 属性在 JSON 输出中如何处理？",
+        "answer": "默认情况下，XML 元素的属性会作为加 @ 前缀的属性出现在 JSON 中（如 @id、@class）。您可以禁用此项以忽略属性，或将其视为普通子属性。"
+      },
+      {
+        "question": "文本节点和元素子节点怎么处理？",
+        "answer": "如果 XML 元素既有文本内容又有子元素，文本内容存放在特殊 key 下（通常是 #text 或 _），子元素各自存放为独立 key。"
+      },
+      {
+        "question": "XML 命名空间会保留吗？",
+        "answer": "命名空间前缀（如 ns:element）会原样保留在 JSON key 名中。命名空间声明（xmlns:）默认作为属性包含。"
+      },
+      {
+        "question": "能转换复杂的 SOAP 或 API XML 响应吗？",
+        "answer": "能。转换器处理任何格式良好的 XML，包括 SOAP 信封、RSS 源与 API 响应。生成的 JSON 可能因 XML 结构而深层嵌套。"
+      }
+    ]
+  },
+  "json:json-to-typescript": {
+    "name": "JSON → TypeScript",
+    "description": "从 JSON 生成 TypeScript 接口。",
+    "category": "转换",
+    "tagline": "从任意 JSON 样本生成 TypeScript 接口定义，类型自动正确推断。",
+    "keywords": "JSON 转 TypeScript, JSON 转 TypeScript 接口, 从 JSON 生成 TypeScript, JSON 类型, TypeScript 生成器, JSON schema 转 TypeScript",
+    "howTo": [
+      {
+        "title": "粘贴您的 JSON",
+        "text": "粘贴有代表性的 JSON 样本——对象、对象数组或嵌套结构。"
+      },
+      {
+        "title": "设置接口名",
+        "text": "为根接口输入名称（默认为 'Root'）。"
+      },
+      {
+        "title": "点击「生成」",
+        "text": "生成 TypeScript 接口定义，所有字段类型正确。"
+      },
+      {
+        "title": "复制接口",
+        "text": "复制 TypeScript，直接粘贴到项目中。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "类型推断如何工作？",
+        "answer": "生成器检查 JSON 样本中的每个值来确定其 TypeScript 类型：string、number、boolean、null、数组（推断元素类型）、嵌套对象（作为命名接口）。当某值在不同样本中可能是多种类型时使用联合类型。"
+      },
+      {
+        "question": "可空字段怎么处理？",
+        "answer": "样本中为 null 的字段类型为推断类型 | null。如果想用可选字段（property?: Type），可在选项中把可空或缺失字段标为可选。"
+      },
+      {
+        "question": "能为对象数组生成类型吗？",
+        "answer": "能。对象数组会生成条目接口，父属性类型为 ItemInterface[]。任意深度的嵌套数组与对象都能处理。"
+      },
+      {
+        "question": "该用 interface 还是 type？",
+        "answer": "工具默认生成 interface 声明，可在选项中切换为 type 别名。在 TypeScript 中，对象结构一般推荐 interface，因为它支持声明合并且报错信息更清晰。"
+      }
+    ]
+  },
+  "json:json-to-python": {
+    "name": "JSON → Python",
+    "description": "从 JSON 生成 Python 数据类。",
+    "category": "转换",
+    "tagline": "从任意 JSON 样本生成 Python dataclass 或 TypedDict 定义。",
+    "keywords": "JSON 转 Python, JSON 转 Python 数据类, JSON 转 TypedDict, 从 JSON 生成 Python, Python 类型注解, JSON Python 类型",
+    "howTo": [
+      {
+        "title": "粘贴您的 JSON",
+        "text": "粘贴 JSON 对象或对象数组。"
+      },
+      {
+        "title": "选择输出风格",
+        "text": "根据用途选择 Python dataclass（@dataclass）或 TypedDict。"
+      },
+      {
+        "title": "设置类名",
+        "text": "为根类输入名称（默认为 'Root'）。"
+      },
+      {
+        "title": "复制 Python 代码",
+        "text": "复制生成的类定义，粘贴到 Python 项目中。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "dataclass 和 TypedDict 输出有什么区别？",
+        "answer": "Python dataclass 生成带类型注解的可变类实例，适合面向对象用法。TypedDict 生成类型化字典定义，适合处理 API 返回的原始 dict 数据而无需转成实例。"
+      },
+      {
+        "question": "嵌套对象能处理吗？",
+        "answer": "能。每个嵌套 JSON 对象生成独立的命名类或 TypedDict。根类按名称引用嵌套类，所有生成的定义都包含在输出中。"
+      },
+      {
+        "question": "输出兼容哪个 Python 版本？",
+        "answer": "生成的代码面向 Python 3.7+（dataclass）与 Python 3.8+（TypedDict）。更老的 Python 版本需添加 from __future__ import annotations，并用 typing.TypedDict 代替内置版本。"
+      },
+      {
+        "question": "会生成 Optional 字段吗？",
+        "answer": "样本中值为 null 的字段类型为 Optional[type]（Python 3.10+ 语法中为 type | None）。可选风格可在输出设置中配置。"
+      }
+    ]
+  },
+  "json:json-to-sql": {
+    "name": "JSON → SQL",
+    "description": "生成 SQL CREATE TABLE + INSERT 语句。",
+    "category": "转换",
+    "tagline": "从由对象组成的 JSON 数组生成 SQL CREATE TABLE 与 INSERT 语句。",
+    "keywords": "JSON 转 SQL, JSON 转换为 SQL, JSON 转 SQL insert, 从 JSON 生成 SQL, JSON 转数据库, JSON 转数据表",
+    "howTo": [
+      {
+        "title": "粘贴 JSON 数组",
+        "text": "粘贴由对象组成的 JSON 数组——每个对象成为表的一行。"
+      },
+      {
+        "title": "设置表名",
+        "text": "为 SQL 表输入名称（默认为 'items'）。"
+      },
+      {
+        "title": "选择 SQL 方言",
+        "text": "选择 MySQL、PostgreSQL 或 SQLite 以使用方言特定语法。"
+      },
+      {
+        "title": "复制 SQL",
+        "text": "复制 CREATE TABLE 与 INSERT 语句，在数据库中运行。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "支持哪些 SQL 方言？",
+        "answer": "生成器输出兼容 MySQL、PostgreSQL 与 SQLite 的标准 SQL。方言特定选项包括反引号与双引号的标识符引用，以及数据类型选择（如 TEXT 与 VARCHAR）。"
+      },
+      {
+        "question": "JSON 类型如何映射到 SQL 类型？",
+        "answer": "JSON 字符串变成 VARCHAR 或 TEXT，数字变成 INT 或 NUMERIC（取决于整数还是浮点数），布尔值变成 BOOLEAN 或 TINYINT(1)，null 存为 NULL。嵌套对象序列化为 JSON 文本。"
+      },
+      {
+        "question": "JSON 中的嵌套对象呢？",
+        "answer": "嵌套对象和数组无法直接存入扁平的关系表。生成器把它们序列化为 JSON 文本存入 TEXT 列。要得到规范化 Schema，需手动把嵌套对象拆成独立表。"
+      },
+      {
+        "question": "SQL 能直接导入数据库吗？",
+        "answer": "能。输出是标准 SQL，可在任何 SQL 客户端中执行。大数据集建议分块执行 INSERT 语句或使用批量导入工具。"
+      }
+    ]
+  },
+  "json:json-to-excel": {
+    "name": "JSON → Excel",
+    "description": "把 JSON 数组导出为 .xlsx 工作簿。",
+    "category": "转换",
+    "tagline": "把由对象组成的 JSON 数组导出为可下载的 .xlsx Excel 工作簿，列宽自动调整。",
+    "keywords": "JSON 转 Excel, JSON 转 XLSX, JSON 转换为 Excel, 导出 JSON 电子表格, JSON 转 Excel 文件, JSON Excel 转换器",
+    "howTo": [
+      {
+        "title": "粘贴 JSON 数组",
+        "text": "粘贴由对象组成的 JSON 数组——每个对象成为电子表格的一行。"
+      },
+      {
+        "title": "点击「导出」",
+        "text": "工具在您的浏览器中生成 Excel .xlsx 文件。"
+      },
+      {
+        "title": "下载文件",
+        "text": ".xlsx 文件自动下载，可在 Excel、Google Sheets 或 LibreOffice Calc 中打开。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Excel 输出含列头吗？",
+        "answer": "含。列头根据 JSON 对象的 key 自动生成，放在电子表格第一行并加粗。"
+      },
+      {
+        "question": "Excel 中数字和布尔值格式正确吗？",
+        "answer": "正确。JSON 数字存为 Excel 数字（而非文本），可直接在 Excel 中运算。布尔值变成 TRUE/FALSE，null 变成空单元格。"
+      },
+      {
+        "question": "可以导出多个工作表吗？",
+        "answer": "如果 JSON 含嵌套的对象数组，工具可为每个嵌套数组创建独立工作表。扁平数组生成单个工作表。"
+      },
+      {
+        "question": "Excel 生成用的是什么库？",
+        "answer": "Excel 文件用运行在浏览器中的 SheetJS（xlsx）库生成，数据不会发送到任何服务器。"
+      }
+    ]
+  },
+  "json:json-schema-generator": {
+    "name": "JSON Schema 生成器",
+    "description": "从样本数据推断 JSON Schema。",
+    "category": "生成与 Schema",
+    "tagline": "从任意 JSON 样本推断 JSON Schema——得到可直接用于校验与文档的 Schema。",
+    "keywords": "JSON Schema 生成器, 生成 JSON Schema, JSON 转 Schema, 推断 JSON Schema, 从 JSON 生成 JSON Schema, JSON Schema 创建器",
+    "howTo": [
+      {
+        "title": "粘贴您的 JSON 样本",
+        "text": "粘贴有代表性的 JSON 对象或数组，样本越丰富，Schema 越准确。"
+      },
+      {
+        "title": "选择草案版本",
+        "text": "选择 JSON Schema 草案（draft-07 兼容性最广）。"
+      },
+      {
+        "title": "点击「生成」",
+        "text": "根据样本的结构与值推断出 JSON Schema。"
+      },
+      {
+        "title": "复制或完善",
+        "text": "复制 Schema，并补充单样本推断不出的约束（minLength、pattern、enum）。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "什么是 JSON Schema？",
+        "answer": "JSON Schema 是一种用于注解与校验 JSON 文档的词汇表，描述 JSON 文档的结构、必填字段、数据类型与约束，广泛用于 API 请求/响应校验与文档。"
+      },
+      {
+        "question": "生成的 Schema 有多准确？",
+        "answer": "生成器能从样本正确推断类型，但推断不出最小字符串长度、允许的枚举值、正则模式等约束——需手动补充。请把生成的 Schema 当作起点。"
+      },
+      {
+        "question": "支持哪个 JSON Schema 草案？",
+        "answer": "生成器默认输出 draft-07，兼容性最广。也有 draft 2019-09 与 2020-12 选项，三者结构相似、逐步增补。"
+      },
+      {
+        "question": "能从多个 JSON 样本生成 Schema 吗？",
+        "answer": "可以。把多个样本包在数组里粘贴，生成器会合并所有条目的类型信息，生成能校验其中任意一个的 Schema。"
+      }
+    ]
+  },
+  "json:json-schema-validator": {
+    "name": "JSON Schema 校验工具",
+    "description": "按 JSON Schema 校验 JSON。",
+    "category": "生成与 Schema",
+    "tagline": "按任意 JSON Schema 校验 JSON，清晰列出每个校验错误及其路径。",
+    "keywords": "JSON Schema 校验工具, 校验 JSON Schema, JSON Schema 检查, JSON Schema 测试, 按 Schema 校验, JSON Schema 错误",
+    "howTo": [
+      {
+        "title": "粘贴您的 JSON Schema",
+        "text": "在左侧面板输入 JSON Schema。"
+      },
+      {
+        "title": "粘贴要校验的 JSON",
+        "text": "在右侧面板输入要按 Schema 校验的 JSON 文档。"
+      },
+      {
+        "title": "点击「校验」",
+        "text": "工具运行 Schema 校验，列出每个错误及其确切 JSON 路径。"
+      },
+      {
+        "title": "修复错误",
+        "text": "根据错误路径与信息修正 JSON 文档。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "支持哪些 JSON Schema 草案？",
+        "answer": "校验器支持 draft-04、draft-06、draft-07、draft 2019-09 与 draft 2020-12，会根据 Schema 文件中的 $schema 属性自动识别。"
+      },
+      {
+        "question": "错误信息包含哪些内容？",
+        "answer": "每个错误包含出错值的 JSON 路径（如 /users/0/email）、Schema 路径（如 /properties/email/format），以及描述违反了哪条规则的可读信息。"
+      },
+      {
+        "question": "可以校验由对象组成的数组吗？",
+        "answer": "可以。如果 JSON 是数组，Schema 应设 type: array 并定义 items。数组中每一项都会按 items Schema 校验。"
+      },
+      {
+        "question": "支持自定义校验关键字吗？",
+        "answer": "校验器使用 AJV 库，支持标准 JSON Schema 关键字。不支持用自定义校验器定义的自定义词汇关键字。"
+      }
+    ]
+  },
+  "json:json-generator": {
+    "name": "JSON 生成器",
+    "description": "从模板生成模拟 JSON 数据。",
+    "category": "生成与 Schema",
+    "tagline": "用 Faker 风格的辅助函数（姓名、邮箱、日期等）从模板生成逼真的模拟 JSON 数据。",
+    "keywords": "JSON 生成器, 模拟 JSON 数据, 生成 JSON, 假 JSON 数据, JSON 数据生成器, 随机 JSON, 测试数据生成器",
+    "howTo": [
+      {
+        "title": "编写 JSON 模板",
+        "text": "创建 JSON 对象模板，在需要生成值的地方使用 {{faker.helper}} 占位符。"
+      },
+      {
+        "title": "设置数量",
+        "text": "生成对象数组时，设置要生成多少条。"
+      },
+      {
+        "title": "点击「生成」",
+        "text": "工具把每个占位符替换为逼真的随机值。"
+      },
+      {
+        "title": "复制或下载",
+        "text": "复制生成的 JSON，用作测试夹具、种子数据或 API 模拟响应。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "有哪些可用的生成辅助函数？",
+        "answer": "可用辅助函数包括：name.fullName、internet.email、internet.url、phone.number、address.city、address.country、datatype.number、datatype.float、datatype.boolean、date.past、date.future、lorem.sentence、company.name 等。"
+      },
+      {
+        "question": "能生成嵌套对象吗？",
+        "answer": "能。模板可任意嵌套，每一层都可包含辅助函数、静态值、嵌套对象或嵌套数组。"
+      },
+      {
+        "question": "能生成由对象组成的数组吗？",
+        "answer": "能。把模板包在数组里并设置重复次数，数组中每一项用同一模板但生成全新的随机值。"
+      },
+      {
+        "question": "生成的数据是确定性的吗？",
+        "answer": "不是——每次点击「生成」都会产生全新的随机值。如需可复现的数据，可用带种子的随机函数，高级选项中有提供。"
+      }
+    ]
+  },
+  "json:base64": {
+    "name": "Base64 编码/解码",
+    "description": "编码或解码 Base64 文本。",
+    "category": "编码与查看",
+    "tagline": "把文本编码为 Base64，或把 Base64 字符串解码回纯文本——在浏览器中即时完成。",
+    "keywords": "Base64 编码, Base64 解码, Base64 在线, 编码 Base64, 解码 Base64, Base64 转换器, 文本转 Base64",
+    "howTo": [
+      {
+        "title": "选择「编码」或「解码」",
+        "text": "选择要把纯文本编码为 Base64，还是解码 Base64 字符串。"
+      },
+      {
+        "title": "粘贴输入",
+        "text": "输入要编码的文本，或要解码的 Base64 字符串。"
+      },
+      {
+        "title": "查看输出",
+        "text": "结果即时显示在输出面板。"
+      },
+      {
+        "title": "复制结果",
+        "text": "点击「复制」把编码或解码后的值复制到剪贴板。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "什么是 Base64？",
+        "answer": "Base64 是一种二进制转文本编码方案，用 64 个可打印 ASCII 字符（A–Z、a–z、0–9、+、/）表示二进制数据。它把二进制数据（如图片或文件）编码成文本形式，以便在邮件、HTML、JSON 等基于文本的系统中安全传输。"
+      },
+      {
+        "question": "Base64 是加密吗？",
+        "answer": "不是。Base64 是编码而非加密，任何人无需密钥即可完全逆转。绝不要用 Base64 保护敏感数据——请用真正的加密算法。"
+      },
+      {
+        "question": "什么是 URL 安全的 Base64？",
+        "answer": "标准 Base64 用的 + 和 / 在 URL 中有特殊含义。URL 安全的 Base64 用 - 代替 +、用 _ 代替 /，使编码后的字符串可直接放入 URL，无需百分号编码。"
+      },
+      {
+        "question": "为什么 Base64 输出以 = 或 == 结尾？",
+        "answer": "Base64 按 3 字节一组编码数据。输入长度不是 3 的倍数时，会加填充字符（=）补齐最后一组。一个 = 表示补了一个填充字节，== 表示补了两个。"
+      }
+    ]
+  },
+  "json:jwt-decoder": {
+    "name": "JWT 解码器",
+    "description": "解码 JWT 的头部与载荷。",
+    "category": "编码与查看",
+    "tagline": "解码任意 JWT 令牌，查看其头部与载荷声明，无需签名密钥。",
+    "keywords": "JWT 解码器, 解码 JWT, JWT 查看器, JWT 头部载荷, JSON Web Token 解码器, JWT 声明, JWT 在线",
+    "howTo": [
+      {
+        "title": "粘贴 JWT",
+        "text": "粘贴完整的 JWT 令牌（三段 Base64url 编码，用点分隔）。"
+      },
+      {
+        "title": "查看头部与载荷",
+        "text": "头部（算法、类型）与载荷（声明、过期时间）会被解码并显示为格式化 JSON。"
+      },
+      {
+        "title": "检查过期与声明",
+        "text": "exp、iat、nbf 时间戳会自动转成可读日期。"
+      },
+      {
+        "title": "复制解码后的部分",
+        "text": "复制解码后的头部或载荷 JSON，用于调试。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "在这里粘贴 JWT 安全吗？",
+        "answer": "解码器完全在您的浏览器中运行——JWT 不会被发送到任何地方。但请把 JWT 当作敏感令牌，不要把生产环境长有效期的令牌粘贴到任何在线工具中。"
+      },
+      {
+        "question": "解码器会验证 JWT 签名吗？",
+        "answer": "不会。解码器只解码 Base64url 编码的头部与载荷，不验证签名——验证签名需要签名密钥或公钥。本工具仅用于查看，不用于安全校验。"
+      },
+      {
+        "question": "什么是 JWT 声明？",
+        "answer": "声明是 JWT 载荷中的键值对。标准声明包括：iss（签发方）、sub（主题）、aud（受众）、exp（过期时间）、nbf（生效时间）、iat（签发时间）、jti（JWT ID）。自定义声明是签发应用添加的其他属性。"
+      },
+      {
+        "question": "头部 alg 字段指哪些算法？",
+        "answer": "常见值：HS256（HMAC-SHA256，对称）、RS256（RSA-SHA256，非对称）、ES256（ECDSA-SHA256，非对称）。HS256 用共享密钥，RS256 与 ES256 用公私钥对。"
+      },
+      {
+        "question": "为什么我的令牌显示无效？",
+        "answer": "请确保粘贴了完整令牌，包括用点分隔的三段。如果令牌是从 URL 复制的，检查是否混入了 URL 编码（如 %3D 而不是 =）。"
+      }
+    ]
+  },
+  "json:json-token-counter": {
+    "name": "JSON Token 计数器",
+    "description": "估算 JSON 载荷的 LLM token 数。",
+    "category": "编码与查看",
+    "tagline": "在发送给 AI API 之前，估算 JSON 载荷会消耗多少 LLM token。",
+    "keywords": "JSON token 计数器, LLM token 计数, 统计 token, JSON token, GPT token 计数器, LLM token 估算, AI token 计算器",
+    "howTo": [
+      {
+        "title": "粘贴您的 JSON",
+        "text": "粘贴计划发送给 LLM API 的 JSON 载荷。"
+      },
+      {
+        "title": "选择模型",
+        "text": "选择模型系列（GPT-4、GPT-3.5、Claude 等），按分词器分别计数。"
+      },
+      {
+        "title": "查看 token 数",
+        "text": "估算的 token 数即时显示，并附大约的 API 费用。"
+      },
+      {
+        "title": "按需优化",
+        "text": "如果数量太高，可考虑压缩 JSON 或删除无用字段以减少 token。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "为什么 token 数对 LLM 重要？",
+        "answer": "LLM API 按 token 收费且有最大上下文窗口。了解 JSON 载荷的 token 数有助于控制在限额内、预估费用，避免生产环境触发上下文窗口错误。"
+      },
+      {
+        "question": "什么是 token？",
+        "answer": "token 是 LLM 处理的基本单位。token 不等于单词或字符——它是模型分词器决定的变长文本块。常见英文单词通常是一个 token，长单词、JSON 语法与非英文字符可能是多个 token。"
+      },
+      {
+        "question": "估算有多准？",
+        "answer": "计数器使用模型提供方同款分词库（OpenAI 模型用 tiktoken，其他模型用近似估算）。OpenAI 模型的计数是精确的，其他模型为几百分点内的估算。"
+      },
+      {
+        "question": "压缩 JSON 能减少 token 数吗？",
+        "answer": "能。压缩去掉空白，字符更少，token 也就更少。大 JSON 载荷压缩后 token 数可减少 15–30%。"
+      }
+    ]
+  },
+  "pdf:pdf-to-jpg": {
+    "name": "PDF 转 JPG",
+    "description": "把 PDF 每一页转成 JPG 图片。",
+    "inputLabel": "PDF 文件",
+    "category": "转换"
+  },
+  "pdf:jpg-to-pdf": {
+    "name": "JPG 转 PDF",
+    "description": "把一张或多张 JPG 图片合并为单个 PDF。",
+    "inputLabel": "JPG 图片",
+    "category": "转换"
+  },
+  "pdf:pdf-to-png": {
+    "name": "PDF 转 PNG",
+    "description": "把 PDF 每一页转成 PNG 图片。",
+    "inputLabel": "PDF 文件",
+    "category": "转换"
+  },
+  "pdf:png-to-pdf": {
+    "name": "PNG 转 PDF",
+    "description": "把一张或多张 PNG 图片合并为单个 PDF。",
+    "inputLabel": "PNG 图片",
+    "category": "转换"
+  },
+  "pdf:pdf-to-word": {
+    "name": "PDF 转 Word",
+    "description": "把 PDF 内容提取为 .docx 文档。",
+    "inputLabel": "PDF 文件",
+    "category": "转换"
+  },
+  "pdf:word-to-pdf": {
+    "name": "Word 转 PDF",
+    "description": "把 Word 文档（.docx）转成 PDF。",
+    "inputLabel": "Word 文档",
+    "category": "转换"
+  },
+  "pdf:pdf-to-excel": {
+    "name": "PDF 转 Excel",
+    "description": "把 PDF 中的表格提取到 Excel 电子表格。",
+    "inputLabel": "PDF 文件",
+    "category": "转换"
+  },
+  "pdf:excel-to-pdf": {
+    "name": "Excel 转 PDF",
+    "description": "把 Excel 电子表格（.xlsx）转成 PDF。",
+    "inputLabel": "Excel 文件",
+    "category": "转换"
+  },
+  "pdf:pdf-to-powerpoint": {
+    "name": "PDF 转 PowerPoint",
+    "description": "把 PDF 转成 PowerPoint 演示文稿。",
+    "inputLabel": "PDF 文件",
+    "category": "转换"
+  },
+  "pdf:powerpoint-to-pdf": {
+    "name": "PowerPoint 转 PDF",
+    "description": "把 PowerPoint 文件（.pptx）转成 PDF。",
+    "inputLabel": "PowerPoint 文件",
+    "category": "转换"
+  },
+  "pdf:pdf-to-html": {
+    "name": "PDF 转 HTML",
+    "description": "把 PDF 文本内容转成 HTML 文档。",
+    "inputLabel": "PDF 文件",
+    "category": "转换"
+  },
+  "pdf:html-to-pdf": {
+    "name": "HTML 转 PDF",
+    "description": "把 HTML 片段或文件转成 PDF 文档。",
+    "inputLabel": "HTML 文件",
+    "category": "转换"
+  },
+  "pdf:pdf-to-text": {
+    "name": "PDF 转文本",
+    "description": "从 PDF 文件提取全部纯文本。",
+    "inputLabel": "PDF 文件",
+    "category": "转换"
+  },
+  "pdf:pdf-to-json": {
+    "name": "PDF 转 JSON",
+    "description": "把 PDF 结构与文本提取为 JSON 对象。",
+    "inputLabel": "PDF 文件",
+    "category": "转换"
+  },
+  "pdf:pdf-to-csv": {
+    "name": "PDF 转 CSV",
+    "description": "把每页 PDF 的文本提取到 CSV 文件。",
+    "inputLabel": "PDF 文件",
+    "category": "转换"
+  },
+  "pdf:merge-pdf": {
+    "name": "合并 PDF",
+    "description": "把多个 PDF 文件合并为一个文档。",
+    "inputLabel": "PDF 文件",
+    "category": "编辑与整理"
+  },
+  "pdf:split-pdf": {
+    "name": "拆分 PDF",
+    "description": "把 PDF 按页拆分或按自定义范围拆分。",
+    "inputLabel": "PDF 文件",
+    "category": "编辑与整理"
+  },
+  "pdf:pdf-editor": {
+    "name": "PDF 编辑器",
+    "description": "在浏览器中查看、批注与检查 PDF。",
+    "inputLabel": "PDF 文件",
+    "category": "编辑与整理"
+  },
+  "pdf:extract-pdf-pages": {
+    "name": "提取 PDF 页面",
+    "description": "从 PDF 中抽取指定页面生成新文件。",
+    "inputLabel": "PDF 文件",
+    "category": "编辑与整理"
+  },
+  "pdf:delete-pdf-pages": {
+    "name": "删除 PDF 页面",
+    "description": "从 PDF 中删除指定页面。",
+    "inputLabel": "PDF 文件",
+    "category": "编辑与整理"
+  },
+  "pdf:rotate-pdf": {
+    "name": "旋转 PDF",
+    "description": "旋转单个页面或整个 PDF。",
+    "inputLabel": "PDF 文件",
+    "category": "编辑与整理"
+  },
+  "pdf:pdf-watermark": {
+    "name": "PDF 水印",
+    "description": "给 PDF 每一页添加文字水印。",
+    "inputLabel": "PDF 文件",
+    "category": "编辑与整理"
+  },
+  "pdf:pdf-compressor": {
+    "name": "PDF 压缩器",
+    "description": "通过重新编码嵌入内容来减小 PDF 体积。",
+    "inputLabel": "PDF 文件",
+    "category": "编辑与整理"
+  },
+  "pdf:protect-pdf": {
+    "name": "PDF 加密",
+    "description": "添加密码，防止未授权访问。",
+    "inputLabel": "PDF 文件",
+    "category": "安全"
+  },
+  "pdf:unlock-pdf": {
+    "name": "PDF 解密",
+    "description": "移除 PDF 的所有者密码（需要知道密码）。",
+    "inputLabel": "受保护的 PDF",
+    "category": "安全"
+  },
+  "pdf:pdf-ocr": {
+    "name": "PDF OCR",
+    "description": "对扫描版 PDF 运行 OCR 提取文本。",
+    "inputLabel": "扫描版 PDF",
+    "category": "提取与分析"
+  },
+  "pdf:pdf-metadata-viewer": {
+    "name": "PDF 元数据查看器",
+    "description": "查看标题、作者、日期等元数据。",
+    "inputLabel": "PDF 文件",
+    "category": "提取与分析"
+  },
+  "pdf:pdf-metadata-remover": {
+    "name": "PDF 元数据清除器",
+    "description": "分享前清除 PDF 的所有元数据。",
+    "inputLabel": "PDF 文件",
+    "category": "提取与分析"
+  },
+  "pdf:pdf-repair": {
+    "name": "PDF 修复工具",
+    "description": "尝试恢复并重新保存损坏的 PDF。",
+    "inputLabel": "损坏的 PDF",
+    "category": "修复与对比"
+  },
+  "pdf:pdf-compare": {
+    "name": "PDF 对比",
+    "description": "对比两份 PDF 并高亮文本差异。",
+    "inputLabel": "PDF 文件",
+    "category": "修复与对比"
+  },
+  "video:video-compressor": {
+    "name": "视频压缩器",
+    "description": "用画质、分辨率与格式控制来减小视频体积。",
+    "title": "视频压缩器——免费在线压缩视频 | BeYourTools",
+    "metaDescription": "免费在线压缩视频。在保持画质的同时减小视频体积，直接在您的浏览器中处理视频。",
+    "tagline": "在本地压缩 MP4、WebM、MOV 等视频，预设兼顾体积与画质。",
+    "acceptLabel": "MP4、MOV、MKV、WebM、AVI、M4V",
+    "processLabel": "压缩视频",
+    "howTo": [
+      {
+        "title": "上传",
+        "text": "拖入视频文件，或从设备中选择。"
+      },
+      {
+        "title": "选择设置",
+        "text": "选择压缩预设、可选分辨率与输出格式。"
+      },
+      {
+        "title": "压缩",
+        "text": "在本地处理视频，等待输出预览。"
+      },
+      {
+        "title": "下载",
+        "text": "对比文件大小，保存压缩后的视频。"
+      }
+    ],
+    "features": [
+      "基于 CRF 的画质预设",
+      "默认不放大、可选缩小分辨率",
+      "压缩前后体积对比",
+      "下载前预览输出"
+    ],
+    "faqs": [
+      {
+        "question": "文件一定会变小吗？",
+        "answer": "通常会，但不总是。已优化过的视频如果选了高质量预设，偶尔会变大。"
+      },
+      {
+        "question": "CRF 是什么意思？",
+        "answer": "CRF 控制视觉画质。值越低保留细节越多、文件越大；值越高压缩越激进。"
+      },
+      {
+        "question": "我的视频会被上传到服务器吗？",
+        "answer": "不会。本工具在您的浏览器本地处理文件，BeYourTools 不会上传、存储视频，也不会把媒体发给处理 API。"
+      }
+    ]
+  },
+  "video:video-cutter": {
+    "name": "视频剪辑器",
+    "description": "用起止时间从视频中精确截取片段。",
+    "title": "视频剪辑器——免费在线剪辑视频 | BeYourTools",
+    "metaDescription": "免费在线剪辑视频。选择要保留的精确片段，下载剪好的视频。",
+    "tagline": "选择精确的起止点，预览所选范围，只导出该片段。",
+    "acceptLabel": "MP4、MOV、MKV、WebM、AVI、M4V",
+    "processLabel": "剪辑视频",
+    "howTo": [
+      {
+        "title": "上传",
+        "text": "选择视频，等待时长加载完成。"
+      },
+      {
+        "title": "设置范围",
+        "text": "移动起止控件，或直接输入精确时间戳。"
+      },
+      {
+        "title": "预览",
+        "text": "跳到所选片段确认剪辑位置。"
+      },
+      {
+        "title": "导出",
+        "text": "在本地剪辑该范围并下载结果。"
+      }
+    ],
+    "features": [
+      "起止时间校验",
+      "所选时长显示",
+      "响应式时间轴控件",
+      "仅在浏览器中导出"
+    ],
+    "faqs": [
+      {
+        "question": "可以不重编码直接剪辑吗？",
+        "answer": "本工具重编码为 MP4，以保证浏览器播放与编码兼容的可预期性。"
+      },
+      {
+        "question": "可以输入精确时间吗？",
+        "answer": "可以。用时间戳输入框可精确到秒。"
+      },
+      {
+        "question": "我的视频会被上传到服务器吗？",
+        "answer": "不会。本工具在您的浏览器本地处理文件，BeYourTools 不会上传、存储视频，也不会把媒体发给处理 API。"
+      }
+    ]
+  },
+  "video:video-trimmer": {
+    "name": "视频裁剪器",
+    "description": "用精确手柄去掉视频多余的开头与结尾。",
+    "title": "视频裁剪器——免费在线裁剪视频 | BeYourTools",
+    "metaDescription": "免费在线裁剪视频。去掉多余的开头或结尾，在浏览器中导出所选片段。",
+    "tagline": "专注修剪工作区，清理片段的开头或结尾。",
+    "acceptLabel": "MP4、MOV、MKV、WebM、AVI、M4V",
+    "processLabel": "裁剪视频",
+    "howTo": [
+      {
+        "title": "上传",
+        "text": "加载要裁剪的片段。"
+      },
+      {
+        "title": "移动手柄",
+        "text": "用范围控件设置要保留的片段。"
+      },
+      {
+        "title": "预览",
+        "text": "导出前检查所选片段。"
+      },
+      {
+        "title": "下载",
+        "text": "把裁剪后的片段导出为 MP4。"
+      }
+    ],
+    "features": [
+      "专用裁剪界面",
+      "精确的起止输入",
+      "输出时长预览",
+      "本地浏览器处理"
+    ],
+    "faqs": [
+      {
+        "question": "裁剪和剪辑有什么区别？",
+        "answer": "裁剪专注于保留干净的中间部分，通常是去掉开头或结尾；剪辑可用于任意所选范围。"
+      },
+      {
+        "question": "裁剪会改变画质吗？",
+        "answer": "输出用均衡的 MP4 配置编码，在现代浏览器中播放可靠。"
+      },
+      {
+        "question": "我的视频会被上传到服务器吗？",
+        "answer": "不会。本工具在您的浏览器本地处理文件，BeYourTools 不会上传、存储视频，也不会把媒体发给处理 API。"
+      }
+    ]
+  },
+  "video:video-converter": {
+    "name": "视频转换器",
+    "description": "在 MP4、WebM、MOV、MKV 间转换视频，带画质控制。",
+    "title": "视频转换器——免费在线转换视频 | BeYourTools",
+    "metaDescription": "免费在线转换视频，支持 MP4、WebM 等格式互转。本地浏览器处理，无需上传。",
+    "tagline": "把常见视频文件转成浏览器友好的格式，不发送到服务器。",
+    "acceptLabel": "MP4、MOV、MKV、WebM、AVI、M4V",
+    "processLabel": "转换视频",
+    "howTo": [
+      {
+        "title": "上传",
+        "text": "选择源视频。"
+      },
+      {
+        "title": "选择输出",
+        "text": "选择 MP4、WebM、MOV 或 MKV，以及可选的画质/分辨率设置。"
+      },
+      {
+        "title": "转换",
+        "text": "在浏览器本地转换视频。"
+      },
+      {
+        "title": "下载",
+        "text": "预览并下载转换后的文件。"
+      }
+    ],
+    "features": [
+      "按文件名识别格式",
+      "输出格式可选",
+      "画质与分辨率控制",
+      "本地转换"
+    ],
+    "faqs": [
+      {
+        "question": "该选哪种输出格式？",
+        "answer": "MP4 是兼容性最好的默认选择。WebM 适合现代网页分发。需要特定容器时可选 MOV 或 MKV。"
+      },
+      {
+        "question": "所有编码都能转吗？",
+        "answer": "常见编码大多可以，但特殊或 DRM 保护的文件在本地浏览器处理中可能失败。"
+      },
+      {
+        "question": "我的视频会被上传到服务器吗？",
+        "answer": "不会。本工具在您的浏览器本地处理文件，BeYourTools 不会上传、存储视频，也不会把媒体发给处理 API。"
+      }
+    ]
+  },
+  "video:mp4-to-mp3": {
+    "name": "MP4 转 MP3",
+    "description": "从 MP4 等视频文件提取 MP3 音频。",
+    "title": "MP4 转 MP3 转换器——在线提取音频 | BeYourTools",
+    "metaDescription": "从 MP4 视频提取音频并保存为 MP3。可选码率，在浏览器本地处理文件。",
+    "tagline": "把视频的音轨转成 MP3 文件，码率可调。",
+    "acceptLabel": "MP4、MOV、MKV、WebM、M4V",
+    "processLabel": "提取 MP3 音频",
+    "howTo": [
+      {
+        "title": "选择码率",
+        "text": "按画质需求选择 96 kbps 到 320 kbps。"
+      },
+      {
+        "title": "上传视频",
+        "text": "拖入 MP4 或其他支持的视频文件。"
+      },
+      {
+        "title": "提取",
+        "text": "工具提取音轨并丢弃视频。"
+      },
+      {
+        "title": "下载",
+        "text": "预览音频并下载 MP3。"
+      }
+    ],
+    "features": [
+      "MP3 码率选择",
+      "提取前预览视频",
+      "转换后预览音频",
+      "无需上传"
+    ],
+    "faqs": [
+      {
+        "question": "视频没有音频怎么办？",
+        "answer": "工具会显示友好的处理错误提示，请选择含音轨的视频。"
+      },
+      {
+        "question": "会保留视频吗？",
+        "answer": "不会。输出只有 MP3 音频文件。"
+      },
+      {
+        "question": "我的视频会被上传到服务器吗？",
+        "answer": "不会。本工具在您的浏览器本地处理文件，BeYourTools 不会上传、存储视频，也不会把媒体发给处理 API。"
+      }
+    ]
+  },
+  "video:mov-to-mp4": {
+    "name": "MOV 转 MP4",
+    "description": "把苹果 MOV 视频转成兼容性广的 MP4。",
+    "title": "MOV 转 MP4 转换器——在线转换视频 | BeYourTools",
+    "metaDescription": "免费在线把 MOV 视频转成 MP4。画质、分辨率可调，浏览器端快速转换。",
+    "tagline": "把苹果 QuickTime MOV 文件转成兼容性广的 MP4 视频，无需上传服务器。",
+    "acceptLabel": "QuickTime MOV 文件",
+    "processLabel": "转为 MP4",
+    "howTo": [
+      {
+        "title": "上传 MOV",
+        "text": "从设备选择 .mov 文件。"
+      },
+      {
+        "title": "调整画质",
+        "text": "用均衡设置，或选择更小/更大的输出。"
+      },
+      {
+        "title": "转换",
+        "text": "在本地重编码为 MP4。"
+      },
+      {
+        "title": "下载",
+        "text": "保存 MP4 结果。"
+      }
+    ],
+    "features": [
+      "QuickTime 兼容性修复",
+      "CRF 画质调优",
+      "本地处理，不限体积",
+      "即时预览"
+    ],
+    "faqs": [
+      {
+        "question": "为什么要把 MOV 转成 MP4？",
+        "answer": "MOV 文件通常更大，在很多 Windows 电脑、安卓手机或网站上播不了，MP4 则处处支持。"
+      },
+      {
+        "question": "我的视频会被上传到服务器吗？",
+        "answer": "不会。本工具在您的浏览器本地处理文件，BeYourTools 不会上传、存储视频，也不会把媒体发给处理 API。"
+      }
+    ]
+  },
+  "video:mkv-to-mp4": {
+    "name": "MKV 转 MP4 转换器",
+    "description": "把 MKV 视频转成兼容性广的 MP4。",
+    "title": "MKV 转 MP4 转换器——在线转换视频 | BeYourTools",
+    "metaDescription": "免费在线把 MKV 转成 MP4，在任何设备上播放。100% 浏览器端处理。",
+    "tagline": "在浏览器中把 MKV 视频重新封装或转码为可播放的 MP4 文件。",
+    "acceptLabel": "Matroska MKV 文件",
+    "processLabel": "转为 MP4",
+    "howTo": [
+      {
+        "title": "上传 MKV",
+        "text": "选择要转换的 MKV 文件。"
+      },
+      {
+        "title": "选择设置",
+        "text": "选择画质与可选分辨率。"
+      },
+      {
+        "title": "转换",
+        "text": "文件在您的浏览器本地转成 MP4。"
+      },
+      {
+        "title": "下载",
+        "text": "保存 MP4 输出。"
+      }
+    ],
+    "features": [
+      "Matroska 容器转码",
+      "保持高视觉画质",
+      "安全的浏览器内转换",
+      "就绪即下载"
+    ],
+    "faqs": [
+      {
+        "question": "为什么我的 MKV 播不了？",
+        "answer": "很多智能电视、手机浏览器和播放器原生不支持 MKV 容器，转成 MP4 就解决了。"
+      },
+      {
+        "question": "我的视频会被上传到服务器吗？",
+        "answer": "不会。本工具在您的浏览器本地处理文件，BeYourTools 不会上传、存储视频，也不会把媒体发给处理 API。"
+      }
+    ]
+  },
+  "video:webm-to-mp4": {
+    "name": "WebM 转 MP4 转换器",
+    "description": "把 WebM 视频转成标准 MP4，兼容性更好。",
+    "title": "WebM 转 MP4 转换器——在线转换视频 | BeYourTools",
+    "metaDescription": "免费在线把 WebM 转成 MP4。浏览器端转换，无需上传文件。",
+    "tagline": "把 WebM 录制或下载的视频转成 MP4，兼容性更广。",
+    "acceptLabel": "WebM 视频文件",
+    "processLabel": "转为 MP4",
+    "howTo": [
+      {
+        "title": "上传 WebM",
+        "text": "选择您的 WebM 视频。"
+      },
+      {
+        "title": "选择画质",
+        "text": "用均衡输出，或自定义分辨率。"
+      },
+      {
+        "title": "转换",
+        "text": "在浏览器本地转成 MP4。"
+      },
+      {
+        "title": "下载",
+        "text": "预览并保存 MP4 文件。"
+      }
+    ],
+    "features": ["WebM 转 MP4", "画质预设", "可选缩放", "本地处理"],
+    "faqs": [
+      {
+        "question": "为什么要把 WebM 转成 MP4？",
+        "answer": "MP4 被更多 App、社交平台和老设备接受。"
+      },
+      {
+        "question": "透明度会保留吗？",
+        "answer": "MP4 一般不保留 Alpha 透明通道。需要透明请用 WebM。"
+      },
+      {
+        "question": "我的视频会被上传到服务器吗？",
+        "answer": "不会。本工具在您的浏览器本地处理文件，BeYourTools 不会上传、存储视频，也不会把媒体发给处理 API。"
+      }
+    ]
+  },
+  "video:video-resizer": {
+    "name": "视频缩放器",
+    "description": "调整视频尺寸，支持宽高比锁定与预设。",
+    "title": "视频缩放器——免费在线调整视频尺寸 | BeYourTools",
+    "metaDescription": "免费在线调整视频尺寸。保持宽高比修改宽高，直接在浏览器中完成。",
+    "tagline": "为网页、社交或存储调整视频尺寸，无需上传文件。",
+    "acceptLabel": "MP4、MOV、MKV、WebM、AVI、M4V",
+    "processLabel": "缩放视频",
+    "howTo": [
+      {
+        "title": "上传",
+        "text": "加载源视频并查看当前尺寸。"
+      },
+      {
+        "title": "选择尺寸",
+        "text": "选择预设，或输入自定义宽高。"
+      },
+      {
+        "title": "缩放",
+        "text": "在本地导出缩放后的视频。"
+      },
+      {
+        "title": "下载",
+        "text": "预览并保存 MP4 结果。"
+      }
+    ],
+    "features": [
+      "1920x1080、1280x720、854x480、640x360 预设",
+      "宽高比锁定",
+      "默认不放大",
+      "原始与输出尺寸对照"
+    ],
+    "faqs": [
+      {
+        "question": "会把视频放大吗？",
+        "answer": "默认不会。如果您选的尺寸大于源视频，工具会保持原始尺寸，除非您明确开启放大。"
+      },
+      {
+        "question": "缩放会裁剪视频吗？",
+        "answer": "不会。缩放是整体缩放整个画面。要去掉边缘或改构图，请用视频裁剪器。"
+      },
+      {
+        "question": "我的视频会被上传到服务器吗？",
+        "answer": "不会。本工具在您的浏览器本地处理文件，BeYourTools 不会上传、存储视频，也不会把媒体发给处理 API。"
+      }
+    ]
+  },
+  "video:video-cropper": {
+    "name": "视频裁剪器",
+    "description": "可视化裁剪视频，支持宽高比预设，导出 MP4。",
+    "title": "视频裁剪器——免费在线裁剪视频 | BeYourTools",
+    "metaDescription": "免费在线裁剪视频。选择裁剪区域与宽高比，在浏览器本地导出。",
+    "tagline": "通过裁剪边缘，或切换到正方形、竖屏、宽屏格式来聚焦画面。",
+    "acceptLabel": "MP4、MOV、MKV、WebM、AVI、M4V",
+    "processLabel": "裁剪视频",
+    "howTo": [
+      {
+        "title": "上传",
+        "text": "选择视频，等待尺寸加载。"
+      },
+      {
+        "title": "选择裁剪区",
+        "text": "拖动裁剪框，或用数字控件精确设定尺寸。"
+      },
+      {
+        "title": "选择比例",
+        "text": "可用自由、16:9、4:3、1:1、9:16。"
+      },
+      {
+        "title": "导出",
+        "text": "裁剪并下载 MP4 结果。"
+      }
+    ],
+    "features": [
+      "可视化裁剪叠加层",
+      "宽高比预设",
+      "像素尺寸显示",
+      "内置裁剪处理"
+    ],
+    "faqs": [
+      {
+        "question": "能做竖屏视频吗？",
+        "answer": "能。选择 9:16 预设，把裁剪框放到主体上即可。"
+      },
+      {
+        "question": "裁剪会拉伸视频吗？",
+        "answer": "不会。裁剪是去掉所选矩形之外的像素，不会扭曲所选区域。"
+      },
+      {
+        "question": "我的视频会被上传到服务器吗？",
+        "answer": "不会。本工具在您的浏览器本地处理文件，BeYourTools 不会上传、存储视频，也不会把媒体发给处理 API。"
+      }
+    ]
+  },
+  "video:video-to-gif": {
+    "name": "视频转 GIF",
+    "description": "把短视频片段转成动态 GIF。",
+    "title": "视频转 GIF 转换器——从视频制作 GIF | BeYourTools",
+    "metaDescription": "免费在线把视频片段转成 GIF。在浏览器中选择起止、宽度、帧率与画质。",
+    "tagline": "从视频片段制作短 GIF，默认设置合理，避免文件过大。",
+    "acceptLabel": "MP4、MOV、MKV、WebM、AVI、M4V",
+    "processLabel": "制作 GIF",
+    "howTo": [
+      {
+        "title": "上传",
+        "text": "加载视频并选择一小段。"
+      },
+      {
+        "title": "设置 GIF 选项",
+        "text": "选择宽度、帧率与画质。"
+      },
+      {
+        "title": "转换",
+        "text": "在本地生成 GIF。"
+      },
+      {
+        "title": "下载",
+        "text": "预览并保存动态 GIF。"
+      }
+    ],
+    "features": [
+      "短片段默认设置",
+      "GIF 宽度与帧率控制",
+      "调色板生成以优化色彩",
+      "大文件警告"
+    ],
+    "faqs": [
+      {
+        "question": "为什么 GIF 文件这么大？",
+        "answer": "GIF 是较老的动画格式。片段短、宽度小、帧率低，输出体积就可控。"
+      },
+      {
+        "question": "片段多长合适？",
+        "answer": "几秒钟最好，对浏览器内存和下载体积都友好。"
+      },
+      {
+        "question": "我的视频会被上传到服务器吗？",
+        "answer": "不会。本工具在您的浏览器本地处理文件，BeYourTools 不会上传、存储视频，也不会把媒体发给处理 API。"
+      }
+    ]
+  },
+  "video:gif-to-mp4": {
+    "name": "GIF 转 MP4",
+    "description": "把动态 GIF 转成更小的 MP4 视频文件。",
+    "title": "GIF 转 MP4 转换器——免费在线转换 GIF | BeYourTools",
+    "metaDescription": "免费在线把 GIF 转成 MP4。在浏览器中生成更小、更易分享的视频文件。",
+    "tagline": "把动态 GIF 转成 MP4 文件，通常小得多、播放更流畅。",
+    "acceptLabel": "GIF 图片",
+    "processLabel": "GIF 转 MP4",
+    "howTo": [
+      {
+        "title": "上传 GIF",
+        "text": "选择动态 GIF 文件。"
+      },
+      {
+        "title": "选择设置",
+        "text": "选择画质与可选分辨率。"
+      },
+      {
+        "title": "转换",
+        "text": "在本地生成 MP4 视频。"
+      },
+      {
+        "title": "下载",
+        "text": "保存 MP4 输出。"
+      }
+    ],
+    "features": [
+      "GIF 输入预览",
+      "MP4 输出",
+      "画质与分辨率控制",
+      "仅浏览器处理"
+    ],
+    "faqs": [
+      {
+        "question": "为什么要把 GIF 转成 MP4？",
+        "answer": "MP4 通常比 GIF 小得多，在现代浏览器和 App 中播放流畅。"
+      },
+      {
+        "question": "MP4 会循环吗？",
+        "answer": "导出的 MP4 只包含一遍动画帧。是否循环取决于播放器或使用平台。"
+      },
+      {
+        "question": "我的视频会被上传到服务器吗？",
+        "answer": "不会。本工具在您的浏览器本地处理文件，BeYourTools 不会上传、存储视频，也不会把媒体发给处理 API。"
+      }
+    ]
+  },
+  "video:video-merger": {
+    "name": "视频合并器",
+    "description": "在浏览器中把多个视频合并为一个 MP4 文件。",
+    "title": "视频合并器——免费在线合并视频 | BeYourTools",
+    "metaDescription": "免费在线合并视频。调整片段顺序，在浏览器本地合并为一个 MP4 文件。",
+    "tagline": "把多个片段合并为连续的一个 MP4，带队列控制与本地处理。",
+    "acceptLabel": "MP4、MOV、MKV、WebM、AVI、M4V",
+    "processLabel": "合并视频",
+    "howTo": [
+      {
+        "title": "添加片段",
+        "text": "上传两个或更多视频文件。"
+      },
+      {
+        "title": "排序",
+        "text": "在队列中上下移动片段。"
+      },
+      {
+        "title": "合并",
+        "text": "规范化并拼接文件为一个 MP4。"
+      },
+      {
+        "title": "下载",
+        "text": "预览并保存合并后的视频。"
+      }
+    ],
+    "features": [
+      "多文件队列",
+      "排序与删除片段",
+      "总时长与体积显示",
+      "拼接前规范化"
+    ],
+    "faqs": [
+      {
+        "question": "片段尺寸不同能合并吗？",
+        "answer": "能。合并器在拼接前会把片段规范化为统一的 MP4 配置。"
+      },
+      {
+        "question": "最多能合并多少片段？",
+        "answer": "没有固定的小数限制，但浏览器内存是实际限制，片段又大又多时会受限。"
+      },
+      {
+        "question": "我的视频会被上传到服务器吗？",
+        "answer": "不会。本工具在您的浏览器本地处理文件，BeYourTools 不会上传、存储视频，也不会把媒体发给处理 API。"
+      }
+    ]
+  },
+  "video:video-joiner": {
+    "name": "视频拼接器",
+    "description": "用同样的本地合并引擎按顺序拼接视频片段。",
+    "title": "视频拼接器——免费在线拼接视频 | BeYourTools",
+    "metaDescription": "免费在线拼接视频。排列多个片段，导出合并后的视频，无需上传文件。",
+    "tagline": "按顺序排好片段，导出单个拼接视频用于分享或编辑。",
+    "acceptLabel": "MP4、MOV、MKV、WebM、AVI、M4V",
+    "processLabel": "拼接视频",
+    "howTo": [
+      {
+        "title": "上传视频",
+        "text": "添加至少两个片段。"
+      },
+      {
+        "title": "设置顺序",
+        "text": "用队列控件按顺序排列片段。"
+      },
+      {
+        "title": "拼接",
+        "text": "在浏览器中生成一个 MP4 文件。"
+      },
+      {
+        "title": "下载",
+        "text": "保存最终拼接好的片段。"
+      }
+    ],
+    "features": ["顺序拼接片段", "队列预览", "删除与排序控件", "本地规范化"],
+    "faqs": [
+      {
+        "question": "拼接器和合并器有区别吗？",
+        "answer": "引擎是共用的，但本页面专为简单的顺序排列做了优化。"
+      },
+      {
+        "question": "会包含音频吗？",
+        "answer": "源片段有兼容音轨时会有。特殊文件可能需要先转换。"
+      },
+      {
+        "question": "我的视频会被上传到服务器吗？",
+        "answer": "不会。本工具在您的浏览器本地处理文件，BeYourTools 不会上传、存储视频，也不会把媒体发给处理 API。"
+      }
+    ]
+  },
+  "video:video-speed-changer": {
+    "name": "视频变速器",
+    "description": "把视频加速或减速，0.25x 到 2x。",
+    "title": "视频变速器——在线变速 | BeYourTools",
+    "metaDescription": "免费在线改变视频速度。放慢或加快片段，在浏览器本地导出。",
+    "tagline": "制作慢动作或快进片段，实时看到时长变化。",
+    "acceptLabel": "MP4、MOV、MKV、WebM、AVI、M4V",
+    "processLabel": "变速",
+    "howTo": [
+      {
+        "title": "上传",
+        "text": "选择源视频。"
+      },
+      {
+        "title": "选择速度",
+        "text": "从 0.25x 到 2x 选择预设，或输入自定义值。"
+      },
+      {
+        "title": "预览",
+        "text": "播放器更新播放速度以便快速检查。"
+      },
+      {
+        "title": "导出",
+        "text": "处理并下载变速后的视频。"
+      }
+    ],
+    "features": [
+      "0.25x 到 2x 预设",
+      "自定义速度输入",
+      "时长预估",
+      "音频变调调整"
+    ],
+    "faqs": [
+      {
+        "question": "变速会改变时长吗？",
+        "answer": "会。2x 的视频时长约减半，0.5x 的约翻倍。"
+      },
+      {
+        "question": "音调会保持吗？",
+        "answer": "常用速度用 FFmpeg 音频变调滤镜，但极端设置与源编码不同，音调保持效果可能有差异。"
+      },
+      {
+        "question": "我的视频会被上传到服务器吗？",
+        "answer": "不会。本工具在您的浏览器本地处理文件，BeYourTools 不会上传、存储视频，也不会把媒体发给处理 API。"
+      }
+    ]
+  },
+  "video:video-to-webm": {
+    "name": "视频转 WebM",
+    "description": "把视频转成 WebM，适合现代网页分发。",
+    "title": "视频转 WebM 转换器——在线转换视频 | BeYourTools",
+    "metaDescription": "免费在线把视频转成 WebM。可选画质、分辨率与帧率，本地浏览器处理。",
+    "tagline": "为网页、现代浏览器与高效在线播放制作 WebM 文件。",
+    "acceptLabel": "MP4、MOV、MKV、WebM、AVI、M4V",
+    "processLabel": "转为 WebM",
+    "howTo": [
+      {
+        "title": "上传",
+        "text": "选择视频文件。"
+      },
+      {
+        "title": "选择 WebM 设置",
+        "text": "选择画质、可选分辨率与帧率。"
+      },
+      {
+        "title": "转换",
+        "text": "在浏览器本地编码为 WebM。"
+      },
+      {
+        "title": "下载",
+        "text": "预览并保存 WebM 文件。"
+      }
+    ],
+    "features": ["WebM 输出", "画质与帧率控制", "可选缩放", "高效的浏览器播放"],
+    "faqs": [
+      {
+        "question": "什么时候用 WebM？",
+        "answer": "现代网页播放用 WebM，尤其当您掌控展示视频的网站或 App 时。"
+      },
+      {
+        "question": "Safari 支持 WebM 吗？",
+        "answer": "现代 Safari 支持已改善，但 MP4 仍是兼容性最稳妥的格式。"
+      },
+      {
+        "question": "我的视频会被上传到服务器吗？",
+        "answer": "不会。本工具在您的浏览器本地处理文件，BeYourTools 不会上传、存储视频，也不会把媒体发给处理 API。"
+      }
+    ]
+  },
+  "video:video-thumbnail-generator": {
+    "name": "视频缩略图生成器",
+    "description": "从任意时间戳抓取 PNG 或 JPG 缩略图。",
+    "title": "视频缩略图生成器——免费在线 | BeYourTools",
+    "metaDescription": "免费在线生成视频缩略图。选择时间戳，用浏览器 Canvas 下载 PNG 或 JPG 图片。",
+    "tagline": "从视频中挑选完美的一帧，保存为 PNG 或 JPG，无需加载 FFmpeg。",
+    "acceptLabel": "浏览器可播放的视频，如 MP4 和 WebM",
+    "processLabel": "生成缩略图",
+    "howTo": [
+      {
+        "title": "上传",
+        "text": "选择浏览器能预览的视频。"
+      },
+      {
+        "title": "选择时间戳",
+        "text": "移动滑块或输入精确秒数。"
+      },
+      {
+        "title": "生成",
+        "text": "从视频抓取当前帧。"
+      },
+      {
+        "title": "下载",
+        "text": "把缩略图保存为 PNG 或 JPG。"
+      }
+    ],
+    "features": [
+      "无需重型处理",
+      "精确的时间戳输入",
+      "PNG 与 JPG 下载",
+      "轻量 Canvas 抓取"
+    ],
+    "faqs": [
+      {
+        "question": "为什么这个工具用 Canvas？",
+        "answer": "单帧抓取时，浏览器 video 元素加 Canvas API 比加载 FFmpeg 更快更轻。"
+      },
+      {
+        "question": "视频无法预览怎么办？",
+        "answer": "浏览器可能不支持源编码。先转成 MP4 再生成缩略图。"
+      },
+      {
+        "question": "我的视频会被上传到服务器吗？",
+        "answer": "不会。本工具在您的浏览器本地处理文件，BeYourTools 不会上传、存储视频，也不会把媒体发给处理 API。"
+      }
+    ]
+  },
+  "video:extract-video-frames": {
+    "name": "提取视频帧",
+    "description": "从浏览器可播放的视频抓取一帧或多帧静帧。",
+    "title": "提取视频帧——从视频保存静帧 | BeYourTools",
+    "metaDescription": "免费在线从视频提取帧。选择时间戳，用浏览器 Canvas 下载 PNG 或 JPG 图片。",
+    "tagline": "从视频保存单帧或一组等间隔的帧。",
+    "acceptLabel": "浏览器可播放的视频，如 MP4 和 WebM",
+    "processLabel": "提取帧",
+    "howTo": [
+      {
+        "title": "上传",
+        "text": "加载浏览器可播放的视频。"
+      },
+      {
+        "title": "选择帧",
+        "text": "选择时间戳或一小批间隔。"
+      },
+      {
+        "title": "提取",
+        "text": "Canvas 从 video 元素抓取帧。"
+      },
+      {
+        "title": "下载",
+        "text": "保存 PNG 或 JPG 图片。"
+      }
+    ],
+    "features": [
+      "单帧提取",
+      "可选小批量提取",
+      "PNG 与 JPG 输出",
+      "轻量使用无需 FFmpeg"
+    ],
+    "faqs": [
+      {
+        "question": "能提取几百帧吗？",
+        "answer": "本工具为小批量设计。一次提取太多帧会拖慢浏览器标签页。"
+      },
+      {
+        "question": "为什么 MKV 可能不行？",
+        "answer": "帧抓取依赖浏览器原生视频播放器。如果浏览器不能直接播放 MKV，请先转成 MP4。"
+      },
+      {
+        "question": "我的视频会被上传到服务器吗？",
+        "answer": "不会。本工具在您的浏览器本地处理文件，BeYourTools 不会上传、存储视频，也不会把媒体发给处理 API。"
+      }
+    ]
+  },
+  "video:remove-audio-from-video": {
+    "name": "去除视频音频",
+    "description": "去掉音轨，制作静音视频。",
+    "title": "去除视频音频——在线静音视频 | BeYourTools",
+    "metaDescription": "免费在线去除视频音频。在浏览器本地制作静音 MP4，无需上传文件。",
+    "tagline": "去掉视频的音轨，保留画面流，得到静音 MP4。",
+    "acceptLabel": "MP4、MOV、MKV、WebM、AVI、M4V",
+    "processLabel": "去除音频",
+    "howTo": [
+      {
+        "title": "上传",
+        "text": "选择要静音的视频。"
+      },
+      {
+        "title": "预览",
+        "text": "确认所选文件。"
+      },
+      {
+        "title": "去除音频",
+        "text": "FFmpeg 导出无音轨的副本。"
+      },
+      {
+        "title": "下载",
+        "text": "保存静音 MP4。"
+      }
+    ],
+    "features": ["音轨移除", "安全时用流复制", "MP4 回退编码", "预览结果"],
+    "faqs": [
+      {
+        "question": "会重编码视频吗？",
+        "answer": "工具先尝试无音频的流复制式输出。如果源容器需要兼容处理，FFmpeg 会负责导出。"
+      },
+      {
+        "question": "能只去掉部分音频吗？",
+        "answer": "本工具去掉整条音轨。要替换或混入单独的音频文件，请用「添加音频」。"
+      },
+      {
+        "question": "我的视频会被上传到服务器吗？",
+        "answer": "不会。本工具在您的浏览器本地处理文件，BeYourTools 不会上传、存储视频，也不会把媒体发给处理 API。"
+      }
+    ]
+  },
+  "video:add-audio-to-video": {
+    "name": "给视频添加音频",
+    "description": "给视频添加、替换或混入音频文件。",
+    "title": "给视频添加音频——在线给视频加音乐 | BeYourTools",
+    "metaDescription": "免费在线给视频添加音频。替换或混入音轨，在浏览器本地导出。",
+    "tagline": "用替换或混音模式，把视频与音乐、旁白或音效文件结合。",
+    "acceptLabel": "MP4、MOV、MKV、WebM、AVI、M4V",
+    "processLabel": "添加音频",
+    "howTo": [
+      {
+        "title": "上传视频",
+        "text": "选择基础视频。"
+      },
+      {
+        "title": "上传音频",
+        "text": "添加音乐、人声或音效的音频文件。"
+      },
+      {
+        "title": "选择混音模式",
+        "text": "替换原音频，或用音量控制混入两条音轨。"
+      },
+      {
+        "title": "导出",
+        "text": "渲染并下载 MP4 结果。"
+      }
+    ],
+    "features": [
+      "视频与音频分别上传",
+      "替换或混音模式",
+      "视频与音频音量控制",
+      "音频起始偏移"
+    ],
+    "faqs": [
+      {
+        "question": "音频比视频短会怎样？",
+        "answer": "输出按视频时长，视频结束自然收尾。短音频播到自己结尾即停止。"
+      },
+      {
+        "question": "能保留原音频吗？",
+        "answer": "能。选择混音模式并调整视频与音频音量。"
+      },
+      {
+        "question": "我的视频会被上传到服务器吗？",
+        "answer": "不会。本工具在您的浏览器本地处理文件，BeYourTools 不会上传、存储视频，也不会把媒体发给处理 API。"
+      }
+    ]
+  },
+  "video:social-video-resizer": {
+    "name": "社交视频尺寸器",
+    "description": "为 Reels、Shorts、TikTok 和动态调整视频尺寸，带宽高比预设与模糊填充。",
+    "title": "社交视频尺寸器——为 Reels 和 Shorts 调整视频 | BeYourTools",
+    "metaDescription": "免费为社交媒体调整视频尺寸：Reels/Shorts 用 9:16、正方形 1:1、竖版 4:5、横版 16:9。裁剪填充或模糊背景，直接在浏览器中完成。",
+    "tagline": "一个视频，适配所有动态。把任意片段重构为 Reels、Shorts、TikTok 或正方形帖子，无需重拍。",
+    "acceptLabel": "MP4、MOV、MKV、WebM、AVI、M4V",
+    "processLabel": "调整视频",
+    "howTo": [
+      {
+        "title": "上传视频",
+        "text": "拖入视频文件或点击浏览——它永不离开您的设备。"
+      },
+      {
+        "title": "选择宽高比",
+        "text": "Reels/Shorts 选 9:16，正方形动态选 1:1，竖版帖子选 4:5，横版选 16:9。"
+      },
+      {
+        "title": "选择填充或模糊",
+        "text": "裁剪填充会放大裁剪以填满画面；模糊背景保留完整视频，背景用模糊副本填充。"
+      },
+      {
+        "title": "设置画质并调整",
+        "text": "选择画质预设后处理，对比输出体积并下载 MP4。"
+      }
+    ],
+    "features": [
+      "9:16、1:1、4:5 与 16:9 预设",
+      "裁剪填充或模糊背景适配",
+      "从草稿到最佳的画质预设",
+      "下载前显示输出文件体积",
+      "100% 浏览器内运行（ffmpeg）"
+    ],
+    "faqs": [
+      {
+        "question": "9:16 视频尺寸是多大？",
+        "answer": "9:16 导出为 1080x1920，1:1 为 1080x1080，4:5 为 1080x1350，16:9 为 1920x1080——各平台的标准全画质尺寸。"
+      },
+      {
+        "question": "裁剪填充和模糊背景有什么区别？",
+        "answer": "裁剪填充会放大视频并裁掉边缘，让每一像素都填满画面——适合有冲击力的竖屏片段。模糊背景把整个视频按比例放入，用自身的模糊副本填充空白，画面不会被裁掉。"
+      },
+      {
+        "question": "调整尺寸会降低画质吗？",
+        "answer": "重编码总有画质折损。选高或最佳画质预设可降到最低。不要把小源视频放大到大预设——选最接近源分辨率的预设。"
+      },
+      {
+        "question": "能一次为 TikTok、Reels、Shorts 调整吗？",
+        "answer": "三者都用 9:16 竖屏格式，所以一个 9:16 导出即可用于 TikTok、Instagram Reels 和 YouTube Shorts。"
+      },
+      {
+        "question": "我的视频会被上传到别处吗？",
+        "answer": "不会。调整完全在您的浏览器中运行，用的是编译为 WebAssembly 的 ffmpeg。视频永不离开您的设备。"
+      },
+      {
+        "question": "能从 YouTube 或 Instagram 下载视频吗？",
+        "answer": "不能——本工具调整的是您已有的视频文件，无法从 YouTube、Instagram、TikTok 或 Facebook 下载视频。"
+      }
+    ]
+  },
+  "audio:mp3-converter": {
+    "name": "MP3 转换器",
+    "description": "把任意音频文件转成 MP3，码率可选。",
+    "category": "转换器"
+  },
+  "audio:audio-converter": {
+    "name": "音频转换器",
+    "description": "在 MP3、WAV、OGG、FLAC、M4A、AAC 等格式间转换。",
+    "category": "转换器"
+  },
+  "audio:mp4-to-mp3": {
+    "name": "MP4 转 MP3",
+    "description": "从 MP4 视频提取音轨并保存为 MP3。",
+    "category": "转换器"
+  },
+  "audio:mp3-to-wav": {
+    "name": "MP3 转 WAV",
+    "description": "把 MP3 音频转成无损 WAV 格式。",
+    "category": "转换器"
+  },
+  "audio:wav-to-mp3": {
+    "name": "WAV 转 MP3",
+    "description": "把 WAV 音频转成压缩 MP3，码率可调。",
+    "category": "转换器"
+  },
+  "audio:m4a-to-mp3": {
+    "name": "M4A 转 MP3",
+    "description": "把 M4A（苹果音频）文件转成兼容性广的 MP3。",
+    "category": "转换器"
+  },
+  "audio:flac-to-mp3": {
+    "name": "FLAC 转 MP3",
+    "description": "把无损 FLAC 文件转成压缩 MP3 格式。",
+    "category": "转换器"
+  },
+  "audio:ogg-to-mp3": {
+    "name": "OGG 转 MP3",
+    "description": "把 OGG Vorbis 音频文件转成 MP3 格式。",
+    "category": "转换器"
+  },
+  "audio:mp3-cutter": {
+    "name": "MP3 剪辑器",
+    "description": "剪辑 MP3 文件——选择起止点并保存该片段。",
+    "category": "剪辑与裁剪器"
+  },
+  "audio:audio-cutter": {
+    "name": "音频剪辑器",
+    "description": "按范围剪辑任意支持格式的音频文件。",
+    "category": "剪辑与裁剪器"
+  },
+  "audio:mp3-trimmer": {
+    "name": "MP3 裁剪器",
+    "description": "去掉 MP3 开头或结尾的静音或多余部分。",
+    "category": "剪辑与裁剪器"
+  },
+  "audio:mp3-compressor": {
+    "name": "MP3 压缩器",
+    "description": "以更低码率重编码来减小 MP3 体积。",
+    "category": "压缩器"
+  },
+  "audio:audio-compressor": {
+    "name": "音频压缩器",
+    "description": "压缩音频文件，在保证音质的同时减小体积。",
+    "category": "压缩器"
+  },
+  "audio:mp3-merger": {
+    "name": "MP3 合并器",
+    "description": "把多个 MP3 文件合并为单个音频文件。",
+    "category": "合并器"
+  },
+  "audio:audio-joiner": {
+    "name": "音频拼接器",
+    "description": "把多个任意格式的音频文件拼接为单个输出。",
+    "category": "合并器"
+  },
+  "audio:mp3-volume-booster": {
+    "name": "MP3 音量增强器",
+    "description": "用增益控制提高 MP3 文件的音量。",
+    "category": "音效与处理"
+  },
+  "audio:audio-normalizer": {
+    "name": "音频标准化器",
+    "description": "把音频电平标准化为一致的峰值或动态电平。",
+    "category": "音效与处理"
+  },
+  "audio:change-audio-speed": {
+    "name": "音频变速器",
+    "description": "加速或减速音频，无需重新上传。",
+    "category": "音效与处理"
+  },
+  "audio:remove-silence-from-audio": {
+    "name": "去除静音",
+    "description": "自动检测并去除音频中的静音部分。",
+    "category": "音效与处理"
+  },
+  "audio:audio-recorder": {
+    "name": "音频录制器",
+    "description": "直接用麦克风录音并下载结果。",
+    "category": "录音机"
+  },
+  "qr:qr-code-generator": {
+    "name": "二维码生成器",
+    "description": "为网址、文本、WiFi、邮箱、电话、vCard 等生成二维码。",
+    "category": "二维码工具"
+  },
+  "qr:qr-code-generator-with-logo": {
+    "name": "带 Logo 的二维码生成器",
+    "description": "为网址、文本、WiFi 等生成带自定义或社交 Logo 叠加的二维码。",
+    "category": "二维码工具"
+  },
+  "qr:qr-code-scanner": {
+    "name": "二维码扫描器",
+    "description": "用设备摄像头实时扫描二维码。",
+    "category": "二维码工具"
+  },
+  "qr:qr-code-decoder": {
+    "name": "二维码解码器",
+    "description": "上传二维码图片，即时解码其内容。",
+    "category": "二维码工具"
+  },
+  "qr:wifi-qr-code-generator": {
+    "name": "WiFi 二维码生成器",
+    "description": "生成访客扫码即可加入 WiFi 的二维码。",
+    "category": "二维码工具"
+  },
+  "qr:barcode-generator": {
+    "name": "条形码生成器",
+    "description": "生成 CODE128、CODE39、EAN-13、UPC、ITF-14 等条形码。",
+    "category": "条形码工具"
+  },
+  "qr:barcode-generator-with-logo": {
+    "name": "带 Logo 的条形码生成器",
+    "description": "生成带自定义或社交 Logo 叠加的 Code 128、EAN-13、EAN-8、UPC-A 或 Code 39 条形码。",
+    "category": "条形码工具"
+  },
+  "qr:barcode-scanner": {
+    "name": "条形码扫描器",
+    "description": "用设备摄像头实时扫描条形码。",
+    "category": "条形码工具"
+  },
+  "qr:barcode-decoder": {
+    "name": "条形码解码器",
+    "description": "上传条形码图片，自动解码其值。",
+    "category": "条形码工具"
+  },
+  "qr:upc-barcode-generator": {
+    "name": "UPC 条形码生成器",
+    "description": "生成合法的 UPC-A 条形码，自动计算校验位。",
+    "category": "条形码工具"
+  },
+  "qr:ean-barcode-generator": {
+    "name": "EAN 条形码生成器",
+    "description": "生成 EAN-13（及 EAN-8）条形码，校验位正确。",
+    "category": "条形码工具"
+  },
+  "qr:code-128-barcode-generator": {
+    "name": "Code 128 生成器",
+    "description": "生成支持完整 ASCII 文本的 Code 128 条形码。",
+    "category": "条形码工具"
+  },
+  "finance:profit-margin-calculator": {
+    "name": "利润率计算器",
+    "description": "按占营收的百分比计算毛利率、营业利润率或净利率。",
+    "cluster": "企业财务",
+    "keywords": ["利润率", "毛利率", "净利率", "盈利能力", "营收"]
+  },
+  "finance:markup-calculator": {
+    "name": "加价率计算器",
+    "description": "找出达到目标利润率所需的加价百分比或售价。",
+    "cluster": "企业财务",
+    "keywords": ["加价率", "售价", "成本", "利润率", "定价"]
+  },
+  "finance:break-even-calculator": {
+    "name": "盈亏平衡计算器",
+    "description": "算出需要卖出多少件才能覆盖固定与变动成本。",
+    "cluster": "企业财务",
+    "keywords": ["盈亏平衡", "固定成本", "变动成本", "销量", "边际贡献"]
+  },
+  "finance:discount-calculator": {
+    "name": "折扣计算器",
+    "description": "计算任意商品的折后价、节省金额与折扣百分比。",
+    "cluster": "企业财务",
+    "keywords": ["折扣", "售价", "节省", "折扣百分比", "原价"]
+  },
+  "finance:commission-calculator": {
+    "name": "佣金计算器",
+    "description": "按费率、销售额或阶梯结构计算销售佣金收入。",
+    "cluster": "企业财务",
+    "keywords": ["佣金", "销售", "收入", "费率", "阶梯"]
+  },
+  "finance:gross-profit-calculator": {
+    "name": "毛利润计算器",
+    "description": "用营收与销售成本算出毛利润与毛利率。",
+    "cluster": "企业财务",
+    "keywords": ["毛利润", "销售成本", "销货成本", "营收", "毛利率"]
+  },
+  "finance:net-profit-calculator": {
+    "name": "净利润计算器",
+    "description": "从总营收中减去所有成本、费用与税，得出净利润。",
+    "cluster": "企业财务",
+    "keywords": ["净利润", "净收入", "费用", "税", "底线利润"]
+  },
+  "finance:operating-margin-calculator": {
+    "name": "营业利润率计算器",
+    "description": "用营收与营业费用计算营业利润率（EBIT 利润率）。",
+    "cluster": "企业财务",
+    "keywords": ["营业利润率", "EBIT", "营业收入", "营收", "费用"]
+  },
+  "finance:business-margin-calculator": {
+    "name": "企业利润率计算器",
+    "description": "并排对比毛利率、营业利润率与净利率，全面了解盈利状况。",
+    "cluster": "企业财务",
+    "keywords": ["企业利润率", "盈利能力", "毛利", "营业利润", "净利"]
+  },
+  "finance:hourly-to-salary-calculator": {
+    "name": "时薪转年薪计算器",
+    "description": "把时薪换算成年薪、月薪、双周薪与周薪。",
+    "cluster": "工资与收入",
+    "keywords": ["时薪转年薪", "年薪", "时薪", "收入", "换算"]
+  },
+  "finance:salary-to-hourly-calculator": {
+    "name": "年薪转时薪计算器",
+    "description": "按每周工作小时把年薪换算成等值时薪。",
+    "cluster": "工资与收入",
+    "keywords": ["年薪转时薪", "时薪", "年薪", "收入", "换算"]
+  },
+  "finance:overtime-calculator": {
+    "name": "加班费计算器",
+    "description": "按 1.5 倍或自定义倍率计算常规与加班工时的加班费。",
+    "cluster": "工资与收入",
+    "keywords": ["加班", "加班费", "1.5 倍工资", "时薪", "工资单"]
+  },
+  "finance:pay-raise-calculator": {
+    "name": "加薪计算器",
+    "description": "算出加薪按年、按月或按次发薪值多少钱。",
+    "cluster": "工资与收入",
+    "keywords": ["加薪", "薪资增长", "加薪百分比", "收入", "年薪"]
+  },
+  "finance:paycheck-calculator": {
+    "name": "工资单计算器",
+    "description": "扣除联邦税、州税、FICA 与各项扣款后，估算到手工资。",
+    "cluster": "工资与收入",
+    "keywords": ["工资单", "到手工资", "净工资", "税", "扣款"]
+  },
+  "finance:freelance-rate-calculator": {
+    "name": "自由职业报价计算器",
+    "description": "按期望收入、工时与开支，算出可持续的自由职业时薪。",
+    "cluster": "工资与收入",
+    "keywords": ["自由职业报价", "时薪", "自雇", "收入", "开支"]
+  },
+  "finance:hourly-rate-calculator": {
+    "name": "时薪计算器",
+    "description": "算出满足收入目标、覆盖所有成本所需的最低时薪。",
+    "cluster": "工资与收入",
+    "keywords": ["时薪", "最低时薪", "收入目标", "成本", "自雇"]
+  },
+  "finance:loan-payment-calculator": {
+    "name": "贷款月供计算器",
+    "description": "按本金、利率与贷款期限计算月供。",
+    "cluster": "贷款",
+    "keywords": ["贷款还款", "月供", "本金", "利率", "期限"]
+  },
+  "finance:loan-interest-calculator": {
+    "name": "贷款利息计算器",
+    "description": "算出贷款全周期的总利息，附完整还款明细。",
+    "cluster": "贷款",
+    "keywords": ["贷款利息", "总利息", "还款计划", "本金", "利率"]
+  },
+  "finance:loan-payoff-calculator": {
+    "name": "贷款还清计算器",
+    "description": "看看按当前还款额多久能还清贷款、总成本多少。",
+    "cluster": "贷款",
+    "keywords": ["贷款还清", "还清日期", "剩余本金", "还款", "总成本"]
+  },
+  "finance:extra-payment-loan-calculator": {
+    "name": "提前还款计算器",
+    "description": "计算每月多还或一次性多还如何缩短贷款期限、减少总利息。",
+    "cluster": "贷款",
+    "keywords": ["提前还款", "贷款", "多还", "节省利息", "提前还清"]
+  },
+  "finance:loan-amortization-calculator": {
+    "name": "贷款还款计划计算器",
+    "description": "为任意贷款生成完整的逐月还款计划表。",
+    "cluster": "贷款",
+    "keywords": ["还款计划", "计划表", "贷款", "本金", "利息明细"]
+  },
+  "finance:debt-payoff-calculator": {
+    "name": "债务清偿计算器",
+    "description": "计算还清多笔债务需要多久、总利息成本多少。",
+    "cluster": "债务与信用",
+    "keywords": ["债务清偿", "多笔债务", "还清时间", "利息", "最低还款"]
+  },
+  "finance:debt-snowball-calculator": {
+    "name": "债务雪球法计算器",
+    "description": "用债务雪球法——先还余额最小的债务，越还越有动力。",
+    "cluster": "债务与信用",
+    "keywords": ["债务雪球法", "最小余额", "还款顺序", "无债一身轻", "方法"]
+  },
+  "finance:debt-avalanche-calculator": {
+    "name": "债务雪崩法计算器",
+    "description": "用债务雪崩法——先还利率最高的债务，总成本最低。",
+    "cluster": "债务与信用",
+    "keywords": ["债务雪崩法", "最高利率", "还款顺序", "省钱", "方法"]
+  },
+  "finance:credit-card-payoff-calculator": {
+    "name": "信用卡还款计算器",
+    "description": "算出还清信用卡欠款需要多久、总利息多少。",
+    "cluster": "债务与信用",
+    "keywords": ["信用卡还款", "欠款", "利息", "最低还款", "还清时间"]
+  },
+  "finance:credit-card-minimum-payment-calculator": {
+    "name": "信用卡最低还款计算器",
+    "description": "看看只还最低还款额，长期下来真实成本有多高。",
+    "cluster": "债务与信用",
+    "keywords": ["最低还款", "信用卡", "利息", "还款年限", "成本"]
+  },
+  "finance:debt-to-income-calculator": {
+    "name": "负债收入比计算器",
+    "description": "计算负债收入比（DTI），了解您的借款能力。",
+    "cluster": "债务与信用",
+    "keywords": ["负债收入比", "DTI", "比率", "月负债", "月总收入"]
+  },
+  "finance:savings-calculator": {
+    "name": "储蓄计算器",
+    "description": "预测定期存入与复利下，储蓄随时间如何增长。",
+    "cluster": "储蓄与利息",
+    "keywords": ["储蓄", "复利", "存入", "余额", "增长"]
+  },
+  "finance:savings-goal-calculator": {
+    "name": "储蓄目标计算器",
+    "description": "算出每月存多少，才能在目标日期前达成具体财务目标。",
+    "cluster": "储蓄与利息",
+    "keywords": ["储蓄目标", "每月储蓄", "目标", "未来价值", "截止日期"]
+  },
+  "finance:simple-interest-calculator": {
+    "name": "单利计算器",
+    "description": "按本金、利率与时间计算单利收益或应付利息。",
+    "cluster": "储蓄与利息",
+    "keywords": ["单利", "本金", "利率", "时间", "利息公式"]
+  },
+  "finance:apy-calculator": {
+    "name": "APY 计算器",
+    "description": "把年利率（APR）按复利换算成年收益率（APY）。",
+    "cluster": "储蓄与利息",
+    "keywords": ["APY", "年收益率", "复利", "APR", "实际利率"]
+  },
+  "finance:apr-calculator": {
+    "name": "APR 计算器",
+    "description": "计算含费用在内的贷款真实年利率（APR）。",
+    "cluster": "储蓄与利息",
+    "keywords": ["APR", "年利率", "贷款", "费用", "真实成本"]
+  },
+  "finance:sales-tax-calculator": {
+    "name": "销售税计算器",
+    "description": "给任意价格加税或去税，算出税前或税后金额。",
+    "cluster": "税务与定价",
+    "keywords": ["销售税", "税率", "税前", "税后", "价格"]
+  },
+  "finance:price-after-discount-calculator": {
+    "name": "折后价计算器",
+    "description": "快速算出按百分比或固定金额折扣后的最终价格。",
+    "cluster": "税务与定价",
+    "keywords": ["折后价", "最终价格", "折扣", "促销", "节省"]
+  },
+  "finance:tax-inclusive-price-calculator": {
+    "name": "含税价计算器",
+    "description": "从净价算出已含税的价格（含税价/毛价）。",
+    "cluster": "税务与定价",
+    "keywords": ["含税", "含税价", "含增值税", "含税价格", "税"]
+  },
+  "finance:tax-exclusive-price-calculator": {
+    "name": "去税价计算器",
+    "description": "从含税价中去掉税，算出原始净价（去税价）。",
+    "cluster": "税务与定价",
+    "keywords": ["去税", "净价", "去税", "不含增值税", "税前价"]
+  },
+  "finance:roi-calculator": {
+    "name": "ROI 计算器",
+    "description": "计算任意投资的投资回报率（ROI）百分比与净收益。",
+    "cluster": "营销与 ROI",
+    "keywords": ["ROI", "投资回报率", "收益", "成本", "百分比"]
+  },
+  "finance:roas-calculator": {
+    "name": "ROAS 计算器",
+    "description": "计算广告支出回报率（ROAS），衡量广告投放效率。",
+    "cluster": "营销与 ROI",
+    "keywords": ["ROAS", "广告支出回报率", "广告", "营收", "广告成本"]
+  },
+  "finance:cash-flow-calculator": {
+    "name": "现金流计算器",
+    "description": "用经营、投资、筹资活动总额计算净现金流。",
+    "cluster": "营销与 ROI",
+    "keywords": ["现金流", "净现金流", "经营", "投资", "筹资"]
+  },
+  "finance:revenue-growth-calculator": {
+    "name": "营收增长计算器",
+    "description": "按百分比计算同比或环比营收增长率。",
+    "cluster": "营销与 ROI",
+    "keywords": ["营收增长", "增长率", "同比", "时期", "百分比"]
+  },
+  "finance:invoice-generator": {
+    "name": "发票生成器",
+    "description": "创建专业发票：明细行、税与折扣，可下载为 PDF。",
+    "cluster": "企业财务",
+    "keywords": [
+      "发票生成器",
+      "免费发票",
+      "发票制作",
+      "发票 PDF",
+      "开票",
+      "自由职业发票"
+    ]
+  },
+  "finance:sip-calculator": {
+    "name": "SIP 计算器",
+    "description": "估算每月 SIP 投资的未来价值，含复利增长、增长图表与年度明细。",
+    "cluster": "储蓄与利息",
+    "keywords": [
+      "SIP 计算器",
+      "SIP 收益",
+      "共同基金 SIP",
+      "定期定额投资计划",
+      "SIP 增长",
+      "每月投资计算器"
+    ]
+  },
+  "_financeClusters": {
+    "Business Finance": "利润率、加价率、盈亏平衡与企业成本分析。",
+    "Salary & Income": "时薪/年薪换算、加班、工资单与自由职业报价工具。",
+    "Loans": "月供、还款计划、利息成本与还清时间线。",
+    "Debt & Credit": "债务雪球法、雪崩法、信用卡还款与负债收入比。",
+    "Savings & Interest": "复利储蓄预测、储蓄目标、APY、APR 与单利。",
+    "Tax & Pricing": "销售税、折扣、含税/去税价格与定价工具。",
+    "Marketing & ROI": "ROI、ROAS、现金流、营收增长与盈利指标。"
+  },
+  "design:color-picker": {
+    "name": "取色器",
+    "description": "从图片取色——点击即可获得 HEX、RGB、HSL，带复制按钮与放大镜。",
+    "title": "免费图片取色器——取任意颜色 | BeYourTools",
+    "metaDescription": "在线从任意图片取色。点击采样像素，获得 HEX、RGB、HSL 值，带复制按钮、放大镜与取色历史。",
+    "tagline": "在照片里看到喜欢的颜色却叫不上名？上传图片，点击像素，一键拿到精确的 HEX 色值。",
+    "keywords": [
+      "图片取色器",
+      "取色工具",
+      "从照片取色",
+      "图片颜色采样器",
+      "HEX 取色器",
+      "RGB 取色器",
+      "HSL 取色器"
+    ],
+    "howTo": {
+      "name": "如何从图片取色",
+      "description": "用 BeYourTools 取色的步骤。",
+      "steps": [
+        {
+          "name": "上传图片",
+          "text": "拖入任意照片、截图或设计文件。"
+        },
+        {
+          "name": "点击任意像素",
+          "text": "点击（或触摸）图片任意位置，采样该像素的确切颜色。"
+        },
+        {
+          "name": "读取色值",
+          "text": "以 HEX、RGB、HSL 查看颜色，附实时色块。"
+        },
+        {
+          "name": "复制色值",
+          "text": "点击任意复制按钮，拿到设计工具或 CSS 需要的格式。"
+        },
+        {
+          "name": "使用放大镜",
+          "text": "悬停图片可放大光标周围区域，实现像素级精确取色。"
+        }
+      ]
+    },
+    "features": [
+      {
+        "title": "像素级精确采样",
+        "desc": "通过 Canvas 读取真实像素颜色——不猜测、不近似。"
+      },
+      {
+        "title": "HEX、RGB 与 HSL",
+        "desc": "三种格式同时显示，每种都有一键复制按钮。"
+      },
+      {
+        "title": "放大镜预览",
+        "desc": "放大的放大镜显示光标周围的像素网格，取色更精确。"
+      },
+      {
+        "title": "取色历史",
+        "desc": "最近的颜色排成一排，方便回头重新复制。"
+      },
+      {
+        "title": "任何图片都可用",
+        "desc": "照片、截图、Logo——只要能在浏览器打开，就能取色。"
+      },
+      {
+        "title": "100% 私密",
+        "desc": "图片在您的浏览器中处理，绝不上传。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "取色器有多准？",
+        "answer": "完全准确——它用 Canvas 像素 API 读取您点击像素的精确 RGB 值，所见即所得。"
+      },
+      {
+        "question": "能从截图取色吗？",
+        "answer": "能。截个图，上传到这里，点击任意像素，这是从屏幕上抓取颜色最快的方式。"
+      },
+      {
+        "question": "HEX、RGB、HSL 有什么区别？",
+        "answer": "HEX 和 RGB 描述的是屏幕与 CSS 用的同一种颜色。HSL 按色相、饱和度、明度描述，调色时凭肉眼调整更直观。"
+      },
+      {
+        "question": "为什么取到的颜色在 Photoshop 里看起来不一样？",
+        "answer": "支持色彩管理的应用对配置文件的解读可能不同，JPEG 压缩也可能让边缘像素轻微偏移。取色器报告的是像素的实际存储值，这才是真相。"
+      },
+      {
+        "question": "取色器免费吗？",
+        "answer": "免费——无限次取色，无需注册，全部在浏览器中运行。"
+      }
+    ]
+  },
+  "design:color-palette-generator": {
+    "name": "配色方案生成器",
+    "description": "从任意图片提取 6 个主色，复制 HEX，导出 CSS 变量或 PNG 色条。",
+    "title": "免费图片配色方案生成器 | BeYourTools",
+    "metaDescription": "从任意图片生成配色方案。提取 6 个主色，点击复制 HEX，导出为 CSS 变量或下载 PNG 色条。",
+    "tagline": "喜欢一张照片的氛围？一键提取它的 6 个主色，直接用到您的下一个设计中。",
+    "keywords": [
+      "配色方案生成器",
+      "从图片生成配色",
+      "主色",
+      "图片颜色提取器",
+      "CSS 变量配色",
+      "配色方案生成器"
+    ],
+    "howTo": {
+      "name": "如何生成配色方案",
+      "description": "用 BeYourTools 提取配色的步骤。",
+      "steps": [
+        {
+          "name": "上传图片",
+          "text": "任意照片、插画或截图都可以——色彩丰富的图片配色效果最好。"
+        },
+        {
+          "name": "生成配色",
+          "text": "工具采样图片像素并量化为 6 个主色。"
+        },
+        {
+          "name": "点击复制",
+          "text": "点击任意色块即时复制其 HEX 色值。"
+        },
+        {
+          "name": "复制 CSS 变量",
+          "text": "一键拿到六个颜色的 CSS 自定义属性，开箱即用。"
+        },
+        {
+          "name": "下载色条",
+          "text": "把配色保存为 PNG 色条，分享给客户或同事。"
+        }
+      ]
+    },
+    "features": [
+      {
+        "title": "6 个主色",
+        "desc": "智能量化找出真正定义您图片的颜色。"
+      },
+      {
+        "title": "点击复制 HEX",
+        "desc": "点任意色块即复制其 HEX 色值到剪贴板。"
+      },
+      {
+        "title": "CSS 变量导出",
+        "desc": "一键复制六个颜色为 --color-1 … --color-6 自定义属性。"
+      },
+      {
+        "title": "PNG 色条下载",
+        "desc": "保存可分享的配色色条图片，用于情绪板与演示。"
+      },
+      {
+        "title": "即时重新生成",
+        "desc": "上传另一张图片，几秒钟得到全新配色。"
+      },
+      {
+        "title": "100% 私密",
+        "desc": "像素分析在您的浏览器本地运行，图片绝不上传。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "配色生成器如何找到主色？",
+        "answer": "它从您的图片采样数千像素，把相似颜色归组（量化），按出现频率排序——胜出的六个颜色真正代表这张图片。"
+      },
+      {
+        "question": "为什么我的 6 个颜色这么相似？",
+        "answer": "色彩范围窄的图片（如雾蒙蒙的风景）自然产生相近的色调。换一张色彩更丰富的图片，配色会更多样。"
+      },
+      {
+        "question": "「复制为 CSS 变量」会给我什么？",
+        "answer": "一段开箱即用的代码片段，如 :root { --color-1: #a3b18a; ... }，可放入任意样式表并在 CSS 中引用。"
+      },
+      {
+        "question": "这些配色可以商用吗？",
+        "answer": "可以——颜色不受著作权保护，工具只是读取您自己图片的像素。配色可任意使用。"
+      },
+      {
+        "question": "我的图片会被上传吗？",
+        "answer": "不会。分析完全在您浏览器的 Canvas 上运行，图片永不离开您的设备。"
+      }
+    ]
+  },
+  "design:favicon-generator": {
+    "name": "网站图标生成器",
+    "description": "把任意图片转成网站图标：16/32/48/180/192/512 PNG 加多尺寸 ICO，或打包为 ZIP。",
+    "title": "免费网站图标生成器——制作 ICO 与 PNG 图标 | BeYourTools",
+    "metaDescription": "在线从任意图片制作网站图标。生成 16、32、48、180、192、512 px PNG 与多尺寸 ICO 文件，可单独下载或打包 ZIP。",
+    "tagline": "一个 Logo，搞定所有图标尺寸。上传图片，几秒钟得到浏览器可用的 ICO 与 PNG 网站图标——无需设计软件。",
+    "keywords": [
+      "网站图标生成器",
+      "网站图标制作",
+      "制作网站图标",
+      "PNG 转 ICO",
+      "ICO 生成器",
+      "网站图标尺寸",
+      "苹果触摸图标",
+      "网站图标生成器"
+    ],
+    "howTo": {
+      "name": "如何生成网站图标",
+      "description": "用 BeYourTools 生成网站图标的步骤。",
+      "steps": [
+        {
+          "name": "上传图片",
+          "text": "正方形 Logo 或图标效果最好——会自动缩放到每种尺寸。"
+        },
+        {
+          "name": "预览尺寸",
+          "text": "查看图标在 16、32、48、180、192、512 px 下的渲染效果，包括浏览器标签页中的极小显示。"
+        },
+        {
+          "name": "单独下载",
+          "text": "下载任意单个 PNG 尺寸，或多尺寸 favicon.ico 文件。"
+        },
+        {
+          "name": "或下载 ZIP",
+          "text": "一次拿到所有 PNG 加 ICO，打包部署更方便。"
+        },
+        {
+          "name": "添加到网站",
+          "text": "把 favicon.ico 放到网站根目录，在 HTML head 中链接 PNG。"
+        }
+      ]
+    },
+    "features": [
+      {
+        "title": "6 种 PNG 尺寸",
+        "desc": "16、32、48、180、192、512 px——覆盖标签页、快捷方式与手机图标。"
+      },
+      {
+        "title": "真正的多尺寸 ICO",
+        "desc": "标准的 favicon.ico，含 16、32、48 px 图层，在您的浏览器中构建。"
+      },
+      {
+        "title": "实时尺寸预览",
+        "desc": "下载前精确看到图标在浏览器标签页尺寸下的样子。"
+      },
+      {
+        "title": "ZIP 下载",
+        "desc": "所有 PNG 加 ICO 打包在一个压缩包中。"
+      },
+      {
+        "title": "正方形友好缩放",
+        "desc": "非正方形图片会居中缩放——上传正方形 Logo 效果最好。"
+      },
+      {
+        "title": "100% 私密",
+        "desc": "一切在您浏览器的 Canvas 上渲染，不上传。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "什么是 favicon.ico 文件？",
+        "answer": "它是经典的浏览器标签页图标格式。单个 favicon.ico 可包含多种尺寸（16、32、48 px），浏览器会自动选用合适的。它仍是兼容性最广的网站图标格式。"
+      },
+      {
+        "question": "该上传什么样的图片？",
+        "answer": "正方形图片（如 512 x 512）、简洁醒目的设计效果最好。16 px 下微小细节会消失，粗线条高对比最吃香。"
+      },
+      {
+        "question": "需要所有这些尺寸吗？",
+        "answer": "不全需要，但它们覆盖常见场景：16/32 用于浏览器标签页，180 用于苹果触摸图标，192/512 用于安卓与 PWA 清单，ICO 覆盖老浏览器。"
+      },
+      {
+        "question": "如何把网站图标加到网站？",
+        "answer": "把 favicon.ico 放到网站根目录，然后在页面 <head> 中添加 <link rel=\"icon\" href=\"/favicon.ico\"> 与 <link rel=\"apple-touch-icon\" href=\"/icon-180.png\">。"
+      },
+      {
+        "question": "网站图标生成器免费吗？",
+        "answer": "免费——无限次生成，无需注册，无水印。一切渲染都在您的浏览器中完成。"
+      }
+    ]
+  },
+  "design:signature-maker": {
+    "name": "签名制作器",
+    "description": "用鼠标或手指手写签名，或用花体输入名字，然后下载透明 PNG。",
+    "title": "免费签名制作器——手写或输入签名 | BeYourTools",
+    "metaDescription": "在线制作签名：用鼠标或手指手写，或用花体输入名字。透明 PNG 下载，常规与 2x 尺寸。",
+    "tagline": "需要给文档签名？手写或用花体输入，然后下载透明 PNG，直接贴到任何表格上。",
+    "keywords": [
+      "签名制作器",
+      "在线签名",
+      "手写签名",
+      "电子签名 PNG",
+      "签名生成器",
+      "透明签名"
+    ],
+    "howTo": {
+      "name": "如何制作签名",
+      "description": "用 BeYourTools 制作签名的步骤。",
+      "steps": [
+        {
+          "name": "选择手写或输入",
+          "text": "手写模式自由签名，输入模式呈现干净的花体效果。"
+        },
+        {
+          "name": "创作",
+          "text": "用鼠标、触控板或手指签名——或输入名字选择字体。"
+        },
+        {
+          "name": "调整墨迹",
+          "text": "调整笔画粗细与墨水颜色，匹配您的风格。"
+        },
+        {
+          "name": "下载 PNG",
+          "text": "保存透明背景，常规尺寸或 2x 更清晰。"
+        }
+      ]
+    },
+    "features": [
+      {
+        "title": "手写模式",
+        "desc": "用鼠标、触控板、手写笔或手指自由签名，指针事件平滑。"
+      },
+      {
+        "title": "输入模式",
+        "desc": "输入名字，用多种花体与手写风格渲染。"
+      },
+      {
+        "title": "可调墨迹",
+        "desc": "控制笔画粗细与墨水颜色，得到想要的确切效果。"
+      },
+      {
+        "title": "透明 PNG",
+        "desc": "下载无背景，签名干净地落在任何文档上。"
+      },
+      {
+        "title": "2x 尺寸选项",
+        "desc": "以双倍分辨率导出，打印与高清屏更锐利。"
+      },
+      {
+        "title": "100% 私密",
+        "desc": "您的签名在浏览器 Canvas 上绘制，绝不上传。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "手写签名有法律效力吗？",
+        "answer": "很多地方有——电子签名在美国（ESIGN 法案）、欧盟（eIDAS）及许多其他地区对大多数日常文件具有法律效力。具体规则因文件类型和国家而异，请确认适用于您的文件。"
+      },
+      {
+        "question": "为什么 PNG 背景是透明的？",
+        "answer": "透明背景让您可以把签名直接盖在合同、PDF 和表格上，周围没有白框，就像数字印章。"
+      },
+      {
+        "question": "手写和输入哪种更好看？",
+        "answer": "手写像真实的手写签名，更难伪造；输入呈现干净统一的花体风格。正式文件多数人更喜欢手写签名。"
+      },
+      {
+        "question": "签名能用在 Word 或 Google Docs 里吗？",
+        "answer": "能。下载 PNG 后作为图片插入文档。背景透明，看起来就像直接签在纸上。"
+      },
+      {
+        "question": "我的签名会存在哪里吗？",
+        "answer": "不会。它只存在于浏览器标签页的 Canvas 上，清空画布或关闭标签页即消失。"
+      }
+    ]
+  },
+  "general:word-counter": {
+    "name": "字数统计器",
+    "description": "统计字数、字符数、句子数与段落数，附阅读时间与关键词密度。",
+    "category": "文本工具",
+    "hub": "/text-tools",
+    "title": "字数统计器——在线统计字数与字符 | BeYourTools",
+    "metaDescription": "免费在线字数统计：字数、字符数、句子数、段落数、阅读时间与关键词密度。输入即实时统计——无需注册。",
+    "tagline": "有字数限制要赶？粘贴文本，字数、字符数、句子数与阅读时间随输入实时更新。",
+    "keywords": [
+      "字数统计器",
+      "字符数统计",
+      "在线统计字数",
+      "字数统计工具",
+      "阅读时间计算器",
+      "关键词密度检查"
+    ],
+    "howTo": [
+      {
+        "title": "粘贴或输入",
+        "text": "把文本放入编辑器——小说章节、论文、推文草稿，什么都行。"
+      },
+      {
+        "title": "查看实时统计",
+        "text": "字数、字符数（含/不含空格）、句子数、段落数随每次按键更新。"
+      },
+      {
+        "title": "查看阅读时间",
+        "text": "按平均速度估算阅读与朗读时间。"
+      },
+      {
+        "title": "检查关键词",
+        "text": "Top 5 关键词密度表显示哪些词在文本中占主导。"
+      }
+    ],
+    "features": [
+      "实时字数、字符数、句子数统计",
+      "含空格与不含空格的字符数",
+      "阅读与朗读时间估算",
+      "Top 5 关键词密度分析",
+      "段落与句子明细",
+      "私密——文本永不离开您的浏览器"
+    ],
+    "faqs": [
+      {
+        "question": "字数怎么统计？",
+        "answer": "单词是被空白分隔的字符序列。连字符复合词计为一个词，和大多数编辑器与发布平台的计数方式一致。"
+      },
+      {
+        "question": "什么是关键词密度？为什么重要？",
+        "answer": "关键词密度是某词出现频率占总词数的比例。写作者用它发现无意重复，SEO 用它粗略检查目标短语是否自然出现而非堆砌。"
+      },
+      {
+        "question": "阅读时间如何估算？",
+        "answer": "默读按每分钟 200 词、朗读按 130 词估算——这是广泛使用的平均值。密集的技术文本多数人会读得慢一些。"
+      },
+      {
+        "question": "有文本长度限制吗？",
+        "answer": "没有硬性限制。一切在浏览器本地运行，计数器处理书稿长度的文本也很轻松。"
+      },
+      {
+        "question": "我的文本会被上传到别处吗？",
+        "answer": "不会。统计完全在您的浏览器标签页中完成，文本绝不会发送到服务器或存储。"
+      }
+    ]
+  },
+  "general:case-converter": {
+    "name": "大小写转换器",
+    "description": "在 UPPER、小写、Title、camelCase、snake_case、kebab-case 等之间转换文本。",
+    "category": "文本工具",
+    "hub": "/text-tools",
+    "title": "大小写转换器——UPPER、小写、camelCase、snake_case | BeYourTools",
+    "metaDescription": "免费大小写转换器：UPPER CASE、小写、Title Case、camelCase、snake_case、kebab-case、aLtErNaTiNg 与 InVeRsE。即时，浏览器内完成。",
+    "tagline": "不小心全打成大写了？把任意文本转成真正需要的大小写——从代码标识符到规范标题。",
+    "keywords": [
+      "大小写转换器",
+      "大写转小写",
+      "camelcase 转换器",
+      "snake case 转换器",
+      "title case 转换器",
+      "文本大小写切换"
+    ],
+    "howTo": [
+      {
+        "title": "粘贴文本",
+        "text": "放入要转换的文本。"
+      },
+      {
+        "title": "选择大小写",
+        "text": "可选 UPPER、小写、Title、Sentence、camelCase、PascalCase、snake_case、kebab-case、aLtErNaTiNg 或 InVeRsE。"
+      },
+      {
+        "title": "复制结果",
+        "text": "转换后的文本即时显示——一键复制。"
+      }
+    ],
+    "features": [
+      "10 种大小写风格，含代码规范",
+      "camelCase、PascalCase、snake_case、kebab-case",
+      "散文用 Sentence 与 Title 大小写",
+      "输入即时转换",
+      "一键复制"
+    ],
+    "faqs": [
+      {
+        "question": "camelCase 和 PascalCase 有什么区别？",
+        "answer": "camelCase 首字母小写（myVariableName），JavaScript 常用；PascalCase 首字母大写（MyClassName），类名常用。snake_case（my_variable）是 Python 典型风格，kebab-case（my-variable）用于 URL 与 CSS。"
+      },
+      {
+        "question": "Title Case 如何处理小词？",
+        "answer": "我们的 Title Case 除短冠词、介词、连词（a、an、the、and、of、in…）外每个词首字母大写，遵循标准标题风格。"
+      },
+      {
+        "question": "aLtErNaTiNg 和 InVeRsE 是做什么的？",
+        "answer": "aLtErNaTiNg 按字母交替大小写，就是那个嘲讽海绵宝宝 meme 风格。InVeRsE 翻转每个字母的大小写：'Hello' 变成 'hELLO'——适合修复开了大写锁定打出的文本。"
+      },
+      {
+        "question": "大文档能用吗？",
+        "answer": "能——转换只是本地字符串操作，再长的文本也能即时转换。"
+      }
+    ]
+  },
+  "general:lorem-ipsum-generator": {
+    "name": "Lorem Ipsum 生成器",
+    "description": "按段落、句子或单词生成占位文本，用于原型与版式。",
+    "category": "文本工具",
+    "hub": "/text-tools",
+    "title": "Lorem Ipsum 生成器——占位文本 | BeYourTools",
+    "metaDescription": "免费 Lorem Ipsum 生成器：按段落、句子或单词生成占位文本。可选经典「Lorem ipsum…」开头，复制或下载。",
+    "tagline": "在设计需要逼真文本的版式？按需生成正好够用的 Lorem Ipsum——不多不少。",
+    "keywords": [
+      "Lorem Ipsum 生成器",
+      "占位文本生成器",
+      "虚拟文本生成器",
+      "Lorem Ipsum 段落"
+    ],
+    "howTo": [
+      {
+        "title": "选择单位",
+        "text": "按段落、句子或单词生成。"
+      },
+      {
+        "title": "设置数量",
+        "text": "精确设定原型需要的填充文本量。"
+      },
+      {
+        "title": "切换经典开头",
+        "text": "以传统的「Lorem ipsum dolor sit amet…」开头，或从中间开始。"
+      },
+      {
+        "title": "复制或下载",
+        "text": "复制到剪贴板或下载为 .txt 文件。"
+      }
+    ],
+    "features": [
+      "段落、句子、单词三种模式",
+      "经典开头开关",
+      "句子长短不一，更逼真",
+      "一键复制到剪贴板",
+      "下载为 .txt"
+    ],
+    "faqs": [
+      {
+        "question": "什么是 Lorem Ipsum？",
+        "answer": "Lorem Ipsum 是源自拉丁文的乱序占位文本，自 1960 年代起用于设计。它看起来像真实文案，评审排版与间距时不会被可读内容分散注意力。"
+      },
+      {
+        "question": "为什么不用真实文本？",
+        "answer": "真实文本会引人去评论文字而非设计。占位文本让反馈聚焦版式，而且填充空间比重复「test test test」更逼真。"
+      },
+      {
+        "question": "每次生成的文本都一样吗？",
+        "answer": "词库固定但句子随机组装，所以每次生成都独一无二。关掉经典开头可得到全新段落。"
+      },
+      {
+        "question": "Lorem Ipsum 可以商用吗？",
+        "answer": "可以——Lorem Ipsum 是公有领域的填充文本，无版权顾虑。发布前记得换成真实文案。"
+      }
+    ]
+  },
+  "general:url-encoder-decoder": {
+    "name": "URL 编码 / 解码",
+    "description": "用 encodeURIComponent 与完整 URI 模式对 URL 做百分号编码与解码。",
+    "category": "文本工具",
+    "hub": "/text-tools",
+    "title": "URL 编码解码器——在线百分号编码 URL | BeYourTools",
+    "metaDescription": "免费 URL 编码/解码：用 encodeURIComponent 对查询字符串做百分号编码，或编码完整 URI。即时解码回 URL，浏览器内完成。",
+    "tagline": "查询参数搞坏了链接？正确编码它们——或把满是 %20 的乱码 URL 解码回可读文本。",
+    "keywords": [
+      "URL 编码器",
+      "URL 解码器",
+      "百分号编码 URL",
+      "encodeURIComponent 在线",
+      "在线解码 URL"
+    ],
+    "howTo": [
+      {
+        "title": "粘贴文本或 URL",
+        "text": "放入完整 URL，或只需编码的查询字符串。"
+      },
+      {
+        "title": "选择编码或解码",
+        "text": "按方向切换标签页。"
+      },
+      {
+        "title": "选择模式",
+        "text": "查询值用 Component 模式（编码 / ? & =），完整 URL 用 Full URI 模式以保持 URL 结构完整。"
+      },
+      {
+        "title": "复制结果",
+        "text": "输出实时更新——看着对了就复制。"
+      }
+    ],
+    "features": [
+      "encodeURIComponent 与 encodeURI 模式",
+      "输入即实时编码/解码",
+      "正确处理 Unicode 与 Emoji",
+      "一键复制"
+    ],
+    "faqs": [
+      {
+        "question": "两种编码模式有什么区别？",
+        "answer": "Component 模式（encodeURIComponent）除保留字符外全部编码——用于单个查询值。Full URI 模式（encodeURI）保留 : / ? & = # 不动，完整 URL 仍是合法 URL。"
+      },
+      {
+        "question": "什么时候需要 URL 编码？",
+        "answer": "文本进入 URL 查询字符串时：空格、&、问号、Unicode 字符、Emoji 都需要百分号编码，否则会破坏 URL 结构。"
+      },
+      {
+        "question": "为什么我的 URL 显示 %20 而不是空格？",
+        "answer": "%20 是空格的百分号编码形式。把 URL 粘贴到解码标签页即可转回可读文本。"
+      },
+      {
+        "question": "非英文字符能处理吗？",
+        "answer": "能——Unicode 字符先按 UTF-8 编码再做百分号编码，这是 Web 标准，Emoji 也可以。"
+      }
+    ]
+  },
+  "general:password-generator": {
+    "name": "密码生成器",
+    "description": "用 Web Crypto 生成强随机密码——长度、字符集、熵值仪表。",
+    "category": "开发者工具",
+    "hub": "/developer-tools",
+    "title": "密码生成器——强随机密码 | BeYourTools",
+    "metaDescription": "免费安全密码生成器，用 Web Crypto（绝不用 Math.random）。长度滑块、字符集、排除易混淆字符选项、熵值仪表，100% 离线。",
+    "tagline": "别再重复用密码了。用真随机生成密码学强度的密码——在浏览器中生成，绝不发送到任何地方。",
+    "keywords": [
+      "密码生成器",
+      "强密码生成器",
+      "随机密码",
+      "安全密码生成器",
+      "生成强密码"
+    ],
+    "howTo": [
+      {
+        "title": "设置长度",
+        "text": "拖动滑块——重要账号用 16+ 字符是稳妥的默认选择。"
+      },
+      {
+        "title": "选择字符集",
+        "text": "开关大写、小写、数字、符号。字符集越多，每字符熵越高。"
+      },
+      {
+        "title": "排除易混淆字符",
+        "text": "可选去掉 0/O、1/l/I 这类形近字符，适合可能手打的密码。"
+      },
+      {
+        "title": "生成并复制",
+        "text": "生成一个或一批，查看强度仪表，复制需要的。"
+      }
+    ],
+    "features": [
+      "crypto.getRandomValues——绝不用 Math.random",
+      "长度滑块，最长 128 字符",
+      "大写、小写、数字、符号开关",
+      "排除易混淆字符选项",
+      "批量生成（最多 50 个）",
+      "实时熵值强度仪表",
+      "完全离线可用"
+    ],
+    "faqs": [
+      {
+        "question": "这些密码真的随机吗？",
+        "answer": "真的。生成器用 crypto.getRandomValues()，即浏览器密码学安全的随机数生成器——和 TLS 密钥同源。绝不用可预测、不安全的 Math.random()。"
+      },
+      {
+        "question": "密码多长合适？",
+        "answer": "全字符集的随机密码，16 字符约有 105 bit 熵——远超暴力破解能力。20+ 属于舒适的过度配置。长度胜过复杂度：长的简单密码胜过短的复杂密码。"
+      },
+      {
+        "question": "熵值仪表是什么意思？",
+        "answer": "熵（bit）衡量攻击者平均需要猜多少次：bit = 长度 × log2(字符池大小)。80+ 算强，100+ 算优秀。仪表随选项实时更新。"
+      },
+      {
+        "question": "生成的密码会被存储或发送到别处吗？",
+        "answer": "不会。生成在浏览器内存中用 Web Crypto 完成，不传输、不记录、不存储——关闭标签页即消失，除非您已保存。"
+      },
+      {
+        "question": "每个网站都用同一个生成的密码吗？",
+        "answer": "不——每个网站生成唯一密码，存到密码管理器。这个工具让这件事很轻松：批量生成，逐个保存。"
+      }
+    ]
+  },
+  "general:regex-tester": {
+    "name": "正则测试器",
+    "description": "实时测试正则表达式，匹配高亮、捕获组与速查表。",
+    "category": "开发者工具",
+    "hub": "/developer-tools",
+    "title": "正则测试器——在线测试正则表达式 | BeYourTools",
+    "metaDescription": "免费正则测试：实时匹配高亮、捕获组列表、标志位、常用模式预设与速查表。浏览器中的 JavaScript 正则。",
+    "tagline": "正则不匹配却看不出原因？粘贴模式与测试字符串——匹配会实时亮起，方便调试。",
+    "keywords": [
+      "正则测试器",
+      "正则表达式测试器",
+      "在线测试正则",
+      "正则调试器",
+      "正则速查表"
+    ],
+    "howTo": [
+      {
+        "title": "输入模式",
+        "text": "输入不带斜杠的正则，按需开关标志位（g、i、m、s、u）。"
+      },
+      {
+        "title": "添加测试文本",
+        "text": "粘贴要匹配的字符串——日志、表单输入，什么都行。"
+      },
+      {
+        "title": "检查匹配",
+        "text": "匹配在文本中高亮，下方面板列出每个匹配及其捕获组。"
+      },
+      {
+        "title": "试试预设",
+        "text": "卡住了？加载常用模式（邮箱、URL、日期…）再改。"
+      }
+    ],
+    "features": [
+      "实时匹配高亮",
+      "每个匹配的捕获组列表",
+      "标志位开关（g i m s u y）",
+      "常用模式预设",
+      "内置正则速查表",
+      "清晰的无效模式报错"
+    ],
+    "faqs": [
+      {
+        "question": "这是什么正则风格？",
+        "answer": "JavaScript（和您的浏览器同款引擎）。多数语法可迁移到 Python、Java、PCRE，但后行断言和一些高级特性在不同风格间有差异——务必在目标语言中重新测试。"
+      },
+      {
+        "question": "为什么我的模式被标为无效？",
+        "answer": "报错信息会显示浏览器的确切抱怨——通常是未闭合的括号、多余的反斜杠或错误的量词。在模式框中修复，高亮即时恢复。"
+      },
+      {
+        "question": "g 和 m 标志位有什么区别？",
+        "answer": "g（全局）找到所有匹配而非停在第一个；m（多行）让 ^ 和 $ 匹配行边界而非仅字符串起止。两者独立——通常两个都要。"
+      },
+      {
+        "question": "这里的捕获组如何工作？",
+        "answer": "括号创建编号组。每个匹配行展开显示组 1、2、3…及其捕获文本——不需要值时用 (?:…) 表示非捕获组。"
+      },
+      {
+        "question": "灾难性回溯有风险吗？",
+        "answer": "在这个测试器里，失控的模式最多让标签页短暂卡住——需要时关掉即可。生产代码中避免 (a+)+ 这类嵌套量词，目标风格支持的话优先用原子组或占有量词。"
+      }
+    ]
+  },
+  "general:uuid-generator": {
+    "name": "UUID 生成器",
+    "description": "用 Web Crypto 批量生成 v4 UUID——大小写、连字符开关、一键全复制。",
+    "category": "开发者工具",
+    "hub": "/developer-tools",
+    "title": "UUID 生成器——在线批量 v4 UUID | BeYourTools",
+    "metaDescription": "免费 UUID 生成器：通过 crypto.randomUUID() 批量生成 v4 UUID。大小写、连字符开关、一键全复制。无需注册，浏览器内运行。",
+    "tagline": "数据库种子或测试夹具需要一批 ID？一键生成数百个 v4 UUID。",
+    "keywords": [
+      "UUID 生成器",
+      "GUID 生成器",
+      "生成 UUID v4",
+      "批量 UUID 生成器",
+      "在线 UUID v4"
+    ],
+    "howTo": [
+      {
+        "title": "设置数量",
+        "text": "选择需要多少个 UUID——1 到 1000。"
+      },
+      {
+        "title": "选择格式",
+        "text": "开关大写与连字符，匹配系统期望的格式。"
+      },
+      {
+        "title": "生成",
+        "text": "一键即时生成整批。"
+      },
+      {
+        "title": "复制",
+        "text": "复制单个 UUID，或用「全复制」拿到整个列表。"
+      }
+    ],
+    "features": [
+      "crypto.randomUUID()——真正的 v4 随机",
+      "批量生成最多 1000 个",
+      "大写 / 小写切换",
+      "连字符开关",
+      "复制单个或全复制",
+      "每行一个，方便粘贴"
+    ],
+    "faqs": [
+      {
+        "question": "生成的是哪个 UUID 版本？",
+        "answer": "版本 4（随机）。每个 UUID 有 122 个随机 bit，由浏览器的 crypto.randomUUID() 生成——安全系统同款 API，不是 Math.random() 的野路子。"
+      },
+      {
+        "question": "UUID 会碰撞吗？",
+        "answer": "实际不会。122 个随机 bit 下，需要每秒生成约十亿个 UUID、持续 85 年，碰撞概率才到 50%。作 ID 用，v4 实际唯一。"
+      },
+      {
+        "question": "该用 UUID 作数据库主键吗？",
+        "answer": "可以，但随机 UUID 在某些数据库中会打散索引。需要可排序 ID 可考虑 UUIDv7（时间有序）——本工具生成 v4，最适合令牌、请求 ID 与测试数据。"
+      },
+      {
+        "question": "UUID 和 GUID 有什么区别？",
+        "answer": "同一种 128 位格式——GUID 只是微软对 UUID 的叫法。v4 UUID 在需要 GUID 的地方都能用。"
+      }
+    ]
+  },
+  "general:hash-generator": {
+    "name": "哈希生成器",
+    "description": "在浏览器中用 MD5、SHA-1、SHA-256、SHA-384、SHA-512 对文本或文件做哈希。",
+    "category": "开发者工具",
+    "hub": "/developer-tools",
+    "title": "哈希生成器——在线 MD5、SHA-256、SHA-512 | BeYourTools",
+    "metaDescription": "免费哈希生成器：文本或文件的 MD5、SHA-1、SHA-256、SHA-384、SHA-512。SHA 系列用 Web Crypto，本地计算——不上传。",
+    "tagline": "验证下载或给字符串做指纹——对文本或整个文件用五种算法做哈希，全部在您的设备上计算。",
+    "keywords": [
+      "哈希生成器",
+      "MD5 生成器",
+      "在线 SHA256",
+      "SHA512 哈希",
+      "文件哈希检查器",
+      "校验和计算器"
+    ],
+    "howTo": [
+      {
+        "title": "输入文本或拖入文件",
+        "text": "输入/粘贴文本，或拖入文件对其精确字节做哈希。"
+      },
+      {
+        "title": "哈希即时计算",
+        "text": "五种算法同时运行——MD5、SHA-1、SHA-256、SHA-384、SHA-512。"
+      },
+      {
+        "title": "对比或复制",
+        "text": "为老系统切换大写，一键复制任意哈希。"
+      }
+    ],
+    "features": [
+      "MD5、SHA-1、SHA-256、SHA-384、SHA-512",
+      "文本与文件输入",
+      "SHA 系列用 Web Crypto",
+      "大写切换",
+      "每个哈希独立复制按钮",
+      "文件在本地做哈希——绝不上传"
+    ],
+    "faqs": [
+      {
+        "question": "该用哪个哈希？",
+        "answer": "安全用途（密码、签名）：用 SHA-256 或 SHA-512。校验和与兼容老系统：MD5 或 SHA-1 可用于非对抗的完整性检查，但两者都已被攻破——绝不要用于密码或签名。"
+      },
+      {
+        "question": "为什么没有 SHA-3？",
+        "answer": "浏览器的 Web Crypto API 不含 SHA-3，本工具只用内置加密（加一个精简审计过的 MD5 实现），所以能完全离线工作。SHA-256/512 覆盖同样的使用场景。"
+      },
+      {
+        "question": "大文件能做哈希吗？",
+        "answer": "能——文件分块流式进入哈希，几 GB 的文件无需全部载入内存，只是慢一点。"
+      },
+      {
+        "question": "哈希和加密是一回事吗？",
+        "answer": "不是。哈希单向：从哈希无法还原原文。这正是哈希适合校验与（加盐后）密码存储的原因。"
+      },
+      {
+        "question": "计算哈希会上传我的文件吗？",
+        "answer": "不会。哈希完全在您的浏览器中运行——文件字节在本地读取，只显示摘要。"
+      }
+    ]
+  },
+  "general:timestamp-converter": {
+    "name": "时间戳转换器",
+    "description": "Unix 时间戳（秒/毫秒自动识别）与日期互转，UTC/本地、相对时间。",
+    "category": "开发者工具",
+    "hub": "/developer-tools",
+    "title": "时间戳转换器——Unix 时间转日期 | BeYourTools",
+    "metaDescription": "免费时间戳转换器：Unix 秒/毫秒自动识别转人类可读日期，也可反向。UTC/本地切换、「现在」按钮、相对时间（「3 小时前」）。",
+    "tagline": "盯着 1729185600 不知道是何时？把 Unix 时间戳转成可读日期——或把日期转回时间戳。",
+    "keywords": [
+      "时间戳转换器",
+      "Unix 时间戳转日期",
+      "Epoch 转换器",
+      "Unix 时间转换器",
+      "日期时间转时间戳"
+    ],
+    "howTo": [
+      {
+        "title": "粘贴时间戳",
+        "text": "秒或毫秒——工具自动识别（10 位或 13 位）。"
+      },
+      {
+        "title": "读取日期",
+        "text": "以本地时区与 UTC 显示完整日期，外加「3 小时前」这样的相对时间。"
+      },
+      {
+        "title": "或反向转换",
+        "text": "选择日期/时间，得到两种精度的 Unix 时间戳。"
+      },
+      {
+        "title": "用「现在」",
+        "text": "一键填入当前时间戳。"
+      }
+    ],
+    "features": [
+      "秒/毫秒自动识别",
+      "本地时区与 UTC 显示",
+      "相对时间（「2 天后」「3 小时前」）",
+      "反向转换的日期选择器",
+      "当前时间戳的「现在」按钮",
+      "一键复制任意值"
+    ],
+    "faqs": [
+      {
+        "question": "秒和毫秒怎么区分？",
+        "answer": "数位数：10 位是秒（用到 2286 年），13 位是毫秒。工具按量级自动判断，两种都可直接粘贴。"
+      },
+      {
+        "question": "结果显示的是哪个时区？",
+        "answer": "两个都显示：浏览器本地时区与 UTC，可切换。服务器和日志一般要 UTC，人看一般要本地。"
+      },
+      {
+        "question": "什么是 2038 年问题？",
+        "answer": "32 位系统用有符号 32 位整数存 Unix 时间，2038 年 1 月 19 日会溢出。现代 64 位系统与 JavaScript（用浮点毫秒）不受影响。"
+      },
+      {
+        "question": "为什么 API 用 Unix 时间戳？",
+        "answer": "一个数字无歧义：没有时区困惑，没有格式之争（MM/DD 还是 DD/MM），比较排序都简单。本工具把它翻译回人类语言。"
+      }
+    ]
+  },
+  "general:percentage-calculator": {
+    "name": "百分比计算器",
+    "description": "X% 的 Y、X 是 Y 的百分之几、百分比增减——三种模式。",
+    "category": "计算器",
+    "hub": "/calculators",
+    "title": "百分比计算器——百分之几、百分比变化 | BeYourTools",
+    "metaDescription": "免费百分比计算器：X% 的 Y、X 是 Y 的百分之几、百分比增减。即时出答案，无需注册。",
+    "tagline": "小费、折扣、加价、考试分数——三个小模式回答所有「百分之几…？」问题。",
+    "keywords": [
+      "百分比计算器",
+      "百分之几计算器",
+      "百分比增长计算器",
+      "占百分之几",
+      "百分比变化计算器"
+    ],
+    "howTo": [
+      {
+        "title": "选择模式",
+        "text": "「X% 的 Y」用于折扣和小费，「X 是 Y 的百分之几」用于分数和占比，「变化」用于增长或下降。"
+      },
+      {
+        "title": "输入数字",
+        "text": "输入两个值——结果随输入更新。"
+      },
+      {
+        "title": "读取答案",
+        "text": "得到结果与所用公式，方便验算。"
+      }
+    ],
+    "features": [
+      "三种模式：占 / 是百分之几 / 变化",
+      "输入即实时出结果",
+      "显示每个答案背后的公式",
+      "处理增长与下降",
+      "支持小数"
+    ],
+    "faqs": [
+      {
+        "question": "20% 的小费怎么算？",
+        "answer": "用「X% 的 Y」：X=20，Y=账单金额。工具显示小费金额——加到账单上即总额。同样模式算折扣：20% 折扣即付 80%。"
+      },
+      {
+        "question": "百分比变化和百分点有什么区别？",
+        "answer": "从 20% 到 25% 是 5 个百分点的增长，但相对增长 25%。变化模式算的是相对变化：(新值 − 旧值) / 旧值 × 100。"
+      },
+      {
+        "question": "一个数是另一个数的百分之几怎么算？",
+        "answer": "用第二种模式：如 45 是 60 的百分之几？45 除以 60 再乘 100 = 75%。算考试分数和完成率很方便。"
+      },
+      {
+        "question": "能处理降价这种下降吗？",
+        "answer": "能——变化模式接受新值小于旧值，报告负百分比，如 −30%。"
+      }
+    ]
+  },
+  "general:bmi-calculator": {
+    "name": "BMI 计算器",
+    "description": "身体质量指数，公制/英制切换，附分类与健康范围指示。",
+    "category": "计算器",
+    "hub": "/calculators",
+    "title": "BMI 计算器——身体质量指数 | BeYourTools",
+    "metaDescription": "免费 BMI 计算器，公制/英制切换。查看 BMI、分类（偏瘦到肥胖）与健康体重范围，无需注册。",
+    "tagline": "一个数字让体重有参照——给出您身高的健康范围，而不只是一个标签。",
+    "keywords": [
+      "BMI 计算器",
+      "身体质量指数计算器",
+      "计算 BMI",
+      "BMI 表",
+      "健康 BMI 范围"
+    ],
+    "howTo": [
+      {
+        "title": "选择单位",
+        "text": "公制（kg/cm）或英制（lb/ft/in）——随时切换。"
+      },
+      {
+        "title": "输入身高体重",
+        "text": "输入测量值，结果即时更新。"
+      },
+      {
+        "title": "读取结果",
+        "text": "查看 BMI 值、分类，以及您身高的健康体重范围。"
+      }
+    ],
+    "features": [
+      "公制与英制单位",
+      "即时 BMI 与分类",
+      "您身高的健康体重范围",
+      "可视化仪表指示",
+      "不存数据——完全私密"
+    ],
+    "faqs": [
+      {
+        "question": "BMI 怎么算？",
+        "answer": "BMI = 体重(kg) ÷ 身高(m)²。英制则是 703 × 体重(lb) ÷ 身高(in)²，工具帮您换算。"
+      },
+      {
+        "question": "BMI 分类是什么意思？",
+        "answer": "18.5 以下偏瘦，18.5–24.9 健康，25–29.9 超重，30+ 肥胖（WHO 标准）。这是人群筛查区间，不是诊断。"
+      },
+      {
+        "question": "BMI 对运动员准吗？",
+        "answer": "不总是——BMI 分不清肌肉和脂肪，肌肉发达的人可能被判「超重」但其实很精瘦。把它当粗略筛查工具而非定论，腰围与体脂估算可补充参考。"
+      },
+      {
+        "question": "显示的健康体重范围是什么？",
+        "answer": "在您身高下能让 BMI 落在 18.5–24.9 的体重区间——给的是具体目标带，而非单个理想数字。"
+      },
+      {
+        "question": "我的健康数据会被存储吗？",
+        "answer": "不会。一切在浏览器中计算，不记录、不传输。"
+      }
+    ]
+  },
+  "general:age-calculator": {
+    "name": "年龄计算器",
+    "description": "按出生日期算出年/月/日的年龄，附总计、出生星期几、下个生日倒计时。",
+    "category": "计算器",
+    "hub": "/calculators",
+    "title": "年龄计算器——我多大了？ | BeYourTools",
+    "metaDescription": "免费年龄计算器：精确到年、月、日的年龄，总月数/周数/天数，出生那天是星期几，下个生日倒计时。",
+    "tagline": "不只是一个数字——精确到天的年龄，外加有趣的周边数据。",
+    "keywords": [
+      "年龄计算器",
+      "我多大了",
+      "按出生日期算年龄",
+      "生日倒计时",
+      "按天算年龄计算器"
+    ],
+    "howTo": [
+      {
+        "title": "输入出生日期",
+        "text": "从日历选择器选日期或直接输入。"
+      },
+      {
+        "title": "查看精确年龄",
+        "text": "截至今天的年、月、日——精确计算，含闰年。"
+      },
+      {
+        "title": "探索更多数据",
+        "text": "总月数、周数、天数、小时数，出生星期几，以及到下个生日的实时倒计时。"
+      }
+    ],
+    "features": [
+      "精确年 / 月 / 日",
+      "总月数、周数、天数、小时数",
+      "出生星期几",
+      "下个生日倒计时",
+      "闰年正确的计算",
+      "可选的「某日期年龄」对比"
+    ],
+    "faqs": [
+      {
+        "question": "精确年龄怎么算？",
+        "answer": "按日历算而非除法：先算整年，再算剩余月数，最后算天数——闰年按真实日历处理。这就是它精确的原因，不像天数除以 365 那样粗糙。"
+      },
+      {
+        "question": "我出生那天是星期几？",
+        "answer": "输入出生日期工具就会显示——生日冷知识和派对策划都用得上。"
+      },
+      {
+        "question": "能算某特定日期的年龄吗？",
+        "answer": "能——设一个自定义的「截至」日期，算出某人在过去或未来某天的年龄，适合资格截止与纪念日。"
+      },
+      {
+        "question": "下个生日倒计时有什么用？",
+        "answer": "其实没啥用——但看着它实时跳向你的下个生日很满足。"
+      }
+    ]
+  },
+  "general:unit-converter": {
+    "name": "单位换算器",
+    "description": "在公制与英制间换算长度、重量、温度、面积、体积与速度。",
+    "category": "计算器",
+    "hub": "/calculators",
+    "title": "单位换算器——长度、重量、温度等 | BeYourTools",
+    "metaDescription": "免费单位换算器：长度、重量、温度、面积、体积与速度。公制英制互换，即时出结果，全部在浏览器中完成。",
+    "tagline": "5 英里等于多少公里？350°F 等于多少摄氏度？选个类别，输入数值，即时出答案。",
+    "keywords": [
+      "单位换算器",
+      "长度换算",
+      "重量换算",
+      "温度换算",
+      "公制转英制",
+      "公里转英里",
+      "摄氏度转华氏度",
+      "面积换算"
+    ],
+    "howTo": [
+      {
+        "title": "选择类别",
+        "text": "选择长度、重量、温度、面积、体积或速度。"
+      },
+      {
+        "title": "输入数值",
+        "text": "输入要换算的数字。"
+      },
+      {
+        "title": "选择单位",
+        "text": "设置从哪个单位换、换到哪个单位。"
+      },
+      {
+        "title": "读取结果",
+        "text": "换算值即时显示，下方列出常用等值。"
+      }
+    ],
+    "features": [
+      "6 大类别：长度、重量、温度、面积、体积与速度",
+      "公制与英制单位并排",
+      "°C、°F 与开尔文的正确温度计算",
+      "每个结果附常用等值",
+      "一键互换单位",
+      "完全在浏览器中运行——无需注册"
+    ],
+    "faqs": [
+      {
+        "question": "换算有多准？",
+        "answer": "在常规浮点舍入内精确。长度、重量、面积、体积、速度用标准换算系数，温度用正确的公式（而非系数）处理摄氏度、华氏度与开尔文。"
+      },
+      {
+        "question": "为什么温度需要特殊公式？",
+        "answer": "多数单位用简单乘数换算，但温度标尺零点不同。°F 转 °C 需要 (°F − 32) × 5/9，不能直接乘系数——本工具自动处理。"
+      },
+      {
+        "question": "能换算烹饪用量吗？",
+        "answer": "能。体积类别含杯、汤匙、茶匙、液盎司、毫升与升，覆盖多数烹饪换算。"
+      },
+      {
+        "question": "换算器能离线用吗？",
+        "answer": "页面加载后可以。所有计算在浏览器中运行，之后无需联网。"
+      },
+      {
+        "question": "单位换算器免费吗？",
+        "answer": "免费——无限次换算，无需注册，工具本身无广告。"
+      }
+    ]
+  },
+  "general:text-to-speech": {
+    "name": "文字转语音",
+    "description": "把文本转成自然语音，语速语调可调，直接在浏览器中完成。",
+    "category": "文本工具",
+    "hub": "/text-tools",
+    "title": "文字转语音——免费在线 TTS 朗读 | BeYourTools",
+    "metaDescription": "免费文字转语音朗读器：粘贴文本、选声音、收听。语速语调可调，播放、暂停、停止——一切在浏览器中运行。",
+    "tagline": "粘贴任意文本，选个声音，收听。校对草稿、免提读文章、查发音。",
+    "keywords": [
+      "文字转语音",
+      "在线 TTS",
+      "文本朗读器",
+      "大声朗读文本",
+      "语音朗读器",
+      "朗读我的文本"
+    ],
+    "howTo": [
+      {
+        "title": "粘贴文本",
+        "text": "放入文章、草稿，或任何想听的内容。"
+      },
+      {
+        "title": "选择声音",
+        "text": "从设备自带的声音中选择，通常有多种语言。"
+      },
+      {
+        "title": "调整语速语调",
+        "text": "滑动控件，直到声音适合您的文本。"
+      },
+      {
+        "title": "按播放",
+        "text": "用播放、暂停、停止控件收听，文本保留在您的设备上。"
+      }
+    ],
+    "features": [
+      "用设备内置声音——无需下载",
+      "声音选择器自动加载",
+      "语速语调滑块，全权掌控",
+      "播放、暂停、停止控件",
+      "输入即显示字数",
+      "100% 私密——文本永不离开浏览器"
+    ],
+    "faqs": [
+      {
+        "question": "有哪些声音可选？",
+        "answer": "工具用设备与浏览器自带的语音。桌面 Chrome 通常有几个英文声音及其他语言；手机多含系统多语言声音。列表若为空稍等片刻——有些浏览器在页面打开几秒后才加载声音。"
+      },
+      {
+        "question": "为什么听起来像机器人？",
+        "answer": "音质取决于系统提供的声音。新版操作系统自带好得多的神经网络声音。换个声音试试，语速稍放慢——慢一点通常更自然。"
+      },
+      {
+        "question": "能下载音频吗？",
+        "answer": "本工具不行。它通过设备扬声器实时播放，专为收听与校对设计，不是生成音频文件用的。"
+      },
+      {
+        "question": "有文本长度限制吗？",
+        "answer": "浏览器可能截断超长段落，工具一次朗读约 5000 字符以内。长文档请分段读。"
+      },
+      {
+        "question": "我的文本会被发到服务器吗？",
+        "answer": "不会。语音由设备内置语音引擎生成，文本永不离开您的浏览器。"
+      }
+    ]
+  },
+  "general:stopwatch": {
+    "name": "秒表",
+    "description": "免费在线秒表，毫秒精度，带单圈计时，加倒计时模式。",
+    "category": "计算器",
+    "hub": "/calculators",
+    "title": "秒表与倒计时——免费在线 | BeYourTools",
+    "metaDescription": "免费在线秒表，毫秒精度与单圈计时，加带提示音的倒计时。浏览器内运行——无需注册。",
+    "tagline": "给锻炼、演讲或做饭计时，毫秒精度。单圈分段、倒计时模式，零下载。",
+    "keywords": [
+      "秒表",
+      "在线秒表",
+      "倒计时",
+      "在线计时器",
+      "单圈计时器",
+      "毫秒秒表"
+    ],
+    "howTo": [
+      {
+        "title": "选择模式",
+        "text": "选秒表向上计时，或选计时器从设定时间倒数。"
+      },
+      {
+        "title": "开始计时",
+        "text": "按开始——显示屏每几毫秒更新。"
+      },
+      {
+        "title": "记录单圈",
+        "text": "秒表模式下按「单圈」记录分段，附每圈差值。"
+      },
+      {
+        "title": "完成后重置",
+        "text": "停止并重置，清空显示与单圈列表。"
+      }
+    ],
+    "features": [
+      "毫秒精度显示",
+      "带每圈差值的单圈计时",
+      "带提示音的倒计时",
+      "键盘快捷键（空格开始/停止）",
+      "暂停续跑不丢时间",
+      "后台标签页也能跑"
+    ],
+    "faqs": [
+      {
+        "question": "秒表有多准？",
+        "answer": "显示屏约每 10 毫秒更新，流逝时间以系统时钟为准，所以暂停、切换标签页或浏览器繁忙都不会影响结果。锻炼、做饭、演讲够用，但达不到认证体育计时标准。"
+      },
+      {
+        "question": "单圈和分段有什么区别？",
+        "answer": "单圈列表两者都显示：每圈自身时长，以及该圈结束时的总流逝时间。差值告诉您最新一圈比上一圈快还是慢。"
+      },
+      {
+        "question": "计时会响铃吗？",
+        "answer": "会。倒计时归零时工具播放短促提示音并显示「时间到」横幅。保持标签页打开、音量调大以便听到。"
+      },
+      {
+        "question": "切换标签页还会继续跑吗？",
+        "answer": "会。时间按系统时钟计算而非数滴答，切换标签页或最小化窗口不影响精度。"
+      }
+    ]
+  },
+  "general:markdown-previewer": {
+    "name": "Markdown 预览器",
+    "description": "写 Markdown 并排实时预览，浏览器内安全渲染。",
+    "category": "开发者工具",
+    "hub": "/developer-tools",
+    "title": "Markdown 预览器——在线实时编辑器 | BeYourTools",
+    "metaDescription": "免费 Markdown 预览器：左侧输入，右侧看格式化输出。标题、列表、代码块、表格、链接等——在浏览器中安全渲染。",
+    "tagline": "左侧写 Markdown，右侧看格式化输出。标题、列表、代码、表格等。",
+    "keywords": [
+      "Markdown 预览器",
+      "Markdown 编辑器",
+      "Markdown 实时预览",
+      "MD 转 HTML",
+      "Markdown 查看器",
+      "Markdown 测试器"
+    ],
+    "howTo": [
+      {
+        "title": "输入 Markdown",
+        "text": "在左面板写——或加载示例看看支持哪些。"
+      },
+      {
+        "title": "查看预览",
+        "text": "右面板随输入实时渲染格式。"
+      },
+      {
+        "title": "复制或清空",
+        "text": "用工具栏按钮复制 Markdown 或重新开始。"
+      }
+    ],
+    "features": [
+      "实时并排预览",
+      "标题、粗体、斜体、删除线",
+      "代码块与行内代码",
+      "列表、引用与表格",
+      "链接渲染为可点击链接",
+      "安全渲染——原始 HTML 会转义，绝不执行"
+    ],
+    "faqs": [
+      {
+        "question": "我的 Markdown 会发到服务器吗？",
+        "answer": "不会。渲染完全在浏览器中用内置小解析器完成，您输入的任何内容都不离开设备。"
+      },
+      {
+        "question": "为什么我的 HTML 显示为文本而不渲染？",
+        "answer": "故意的。预览器转义原始 HTML，粘贴的内容永远无法运行脚本或破坏页面。这是安全特性，不是 Bug。"
+      },
+      {
+        "question": "支持哪些 Markdown 特性？",
+        "answer": "标题、粗体、斜体、删除线、行内代码、围栏代码块、链接、图片、无序/有序列表、引用、水平线与简单表格。嵌套列表与任务复选框不支持。"
+      },
+      {
+        "question": "能导出预览吗？",
+        "answer": "可用工具栏按钮复制 Markdown 源码。要保留渲染效果，可用浏览器打印对话框打印为 PDF。"
+      }
+    ]
+  },
+  "general:pomodoro-timer": {
+    "name": "番茄钟",
+    "description": "番茄专注计时器，会话时长可调，带周期计数、内置任务清单与结束提示音。",
+    "category": "计算器",
+    "hub": "/calculators",
+    "title": "番茄钟——免费专注计时器，带任务清单 | BeYourTools",
+    "metaDescription": "免费番茄钟：专注、短休息、长休息时长可调，周期计数器，任务清单保存在浏览器，标签页倒计时。无需注册。",
+    "tagline": "专注工作，好好休息。设好会话时长，按开始，计时器帮您数周期，您逐项勾掉任务。",
+    "keywords": [
+      "番茄钟",
+      "专注计时器",
+      "番茄工作法",
+      "效率计时器",
+      "学习计时器",
+      "工作计时器",
+      "25 分钟计时器",
+      "在线番茄钟"
+    ],
+    "howTo": [
+      {
+        "title": "设置时长",
+        "text": "选择专注、短休息、长休息时长，以及几次专注后进入长休息。默认经典 25 / 5 / 15。"
+      },
+      {
+        "title": "添加任务",
+        "text": "在清单中输入任务，完成后勾掉，一切自动保存在设备上。"
+      },
+      {
+        "title": "开始会话",
+        "text": "按开始，投入工作。剩余时间显示在浏览器标签页标题，任何标签页都能瞥见。"
+      },
+      {
+        "title": "响铃即休息",
+        "text": "每次会话结束有短促提示音，计时器自动带您进入正确的休息。"
+      }
+    ],
+    "features": [
+      "专注、短休息、长休息模式，时长可调",
+      "显示已完成番茄数的周期计数器",
+      "任务清单：勾选、删除、自动保存",
+      "浏览器标签页标题实时倒计时",
+      "Web Audio 生成的可选结束提示音",
+      "专注与休息会话自动切换"
+    ],
+    "faqs": [
+      {
+        "question": "什么是番茄工作法？",
+        "answer": "一种时间管理法：专注工作 25 分钟（一个番茄），休息 5 分钟，四轮后长休息 15 到 30 分钟。结构对抗疲劳，让大任务变可控。"
+      },
+      {
+        "question": "为什么是 25 分钟？",
+        "answer": "25 分钟足够进入心流，又短到注意力很少先崩溃。工作需要更长专注可调高专注时长，方法依然有效。"
+      },
+      {
+        "question": "切换标签页计时器还跑吗？",
+        "answer": "跑。计时器锚定应结束的时钟时间而非逐秒计数，标签页在后台或笔记本短暂睡眠都不影响精度。"
+      },
+      {
+        "question": "我的任务存在哪里？",
+        "answer": "存在浏览器本地存储，只在您的设备上。绝不上传，所以同浏览器下次访问还在，但无法跟到别的设备。"
+      },
+      {
+        "question": "会话中途能改时长吗？",
+        "answer": "能。计时器没运行时，当前会话立即按新时长重置；运行时，新时长从下个会话生效。"
+      }
+    ]
+  },
+  "general:random-number-generator": {
+    "name": "随机数生成器",
+    "description": "在任意范围生成随机数，密码学级随机。可设数量、允许/禁止重复、排序结果。",
+    "category": "计算器",
+    "hub": "/calculators",
+    "title": "随机数生成器——安全随机数 | BeYourTools",
+    "metaDescription": "免费随机数生成器，密码学级随机。设任意范围、选数量、允许/禁止重复、排序结果。浏览器内运行。",
+    "tagline": "需要公平抽取？设个范围，抽任意多个数，每个结果都来自浏览器的密码学随机源。",
+    "keywords": [
+      "随机数生成器",
+      "随机数抽取器",
+      "安全随机数",
+      "随机整数生成器",
+      "抽奖号码抽取器",
+      "随机抽取工具",
+      "号码抽取转盘",
+      "密码学随机"
+    ],
+    "howTo": [
+      {
+        "title": "设置范围",
+        "text": "输入最小值和最大值。两端都包含，1 到 100 可能抽到 1 或 100。"
+      },
+      {
+        "title": "选择数量",
+        "text": "输入要抽几个数，每个独立生成。"
+      },
+      {
+        "title": "选择选项",
+        "text": "抽奖不重复请关闭重复，排序请开启升序。"
+      },
+      {
+        "title": "抽取并复制",
+        "text": "按生成，一键复制结果粘贴到别处。"
+      }
+    ],
+    "features": [
+      "用 crypto.getRandomValues，绝不用 Math.random",
+      "任意整数范围，两端都包含",
+      "可选无重复模式，唯一抽取",
+      "可选结果升序排列",
+      "一键复制完整结果列表",
+      "每次点击最多抽 1000 个数"
+    ],
+    "faqs": [
+      {
+        "question": "这到底有多随机？",
+        "answer": "每个数都来自 crypto.getRandomValues，即操作系统密码学安全的随机源，并用拒绝采样消除取模偏差。和密码、密钥生成同源，比 Math.random 强得多。"
+      },
+      {
+        "question": "要抽的不重复数超过范围怎么办？",
+        "answer": "您会看到明确提示而非错误输出。例如 1 到 5 之间抽 10 个不重复数是不可能的，工具会请您扩大范围或允许重复。"
+      },
+      {
+        "question": "能用于抽奖吗？",
+        "answer": "朋友、社团、课堂的非正式抽奖可以。受监管的彩票或赌博不行：那些需要认证审计的系统，通常还要见证抽取。"
+      },
+      {
+        "question": "范围能有多大？",
+        "answer": "32 位整数能装下的任意范围，约 −21 亿到 +21 亿，覆盖几乎所有日常需求。"
+      },
+      {
+        "question": "结果会被发到别处吗？",
+        "answer": "不会。生成完全在您的浏览器中完成，不记录、不存储、不传输。"
+      }
+    ]
+  },
+  "general:scientific-calculator": {
+    "name": "科学计算器",
+    "description": "带三角函数、对数、幂、平方根与常量的科学计算器，真正的表达式解析器、计算历史与完整键盘支持。",
+    "category": "计算器",
+    "hub": "/calculators",
+    "title": "科学计算器——免费在线，带历史 | BeYourTools",
+    "metaDescription": "免费在线科学计算器：三角函数、log、ln、幂、平方根、阶乘、π 与 e 常量、Ans 键、计算历史与键盘支持。安全表达式解析器，不用 eval。",
+    "tagline": "输入或点按完整表达式即时出答案，带三角函数、对数、幂与常量，所有计算都有历史，运算顺序正确。",
+    "keywords": [
+      "科学计算器",
+      "在线计算器",
+      "三角函数计算器",
+      "对数计算器",
+      "平方根计算器",
+      "带历史的计算器",
+      "指数计算器",
+      "数学表达式求值器"
+    ],
+    "howTo": [
+      {
+        "title": "输入或点按",
+        "text": "用键盘输入 sin(30)+2^3 这样的表达式，或用按钮面板拼。"
+      },
+      {
+        "title": "用函数",
+        "text": "sin、cos、tan、log、ln、sqrt、阶乘与 π、e 常量都可用。三角函数可在角度/弧度间切换。"
+      },
+      {
+        "title": "按回车或 =",
+        "text": "答案显示在表达式下方。下次计算按 Ans 可复用上次结果。"
+      },
+      {
+        "title": "查看历史",
+        "text": "每次计算都保留在历史列表，点击任意条目载回输入框。"
+      }
+    ],
+    "features": [
+      "真正的分词器与解析器，绝不用 eval()",
+      "三角、反三角、对数、自然对数、幂、根、阶乘",
+      "π 与 e 常量，支持隐式乘法（2pi）",
+      "角度与弧度模式",
+      "Ans 键复用上次结果",
+      "点击历史条目即可复用",
+      "完整键盘支持，含退格与回车"
+    ],
+    "faqs": [
+      {
+        "question": "这个计算器安全吗？",
+        "answer": "安全。它用专门的分词器与文法解析表达式，没有 eval 或 Function 构造器能运行任意代码。您输入的只被当作数学处理。"
+      },
+      {
+        "question": "用角度还是弧度？",
+        "answer": "都行。DEG/RAD 开关切换 sin、cos、tan 对输入的解读。反函数（asin、acos、atan）按当前单位返回角度。"
+      },
+      {
+        "question": "% 按钮是做什么的？",
+        "answer": "它是后缀百分号运算符：50% 即 0.5。所以 200+10% 得 201，200 的 10% 写成 200*10%。"
+      },
+      {
+        "question": "乘方怎么处理？",
+        "answer": "^ 运算符右结合，优先级高于乘法，所以 2^3^2 即 2^(3^2) = 512，符合标准数学记法。"
+      },
+      {
+        "question": "Ans 键是做什么的？",
+        "answer": "Ans 插入上次计算的结果。适合连算：算出一个值，下个表达式直接用，无需重输。"
+      }
+    ]
+  },
+  "general:timezone-converter": {
+    "name": "时区转换器",
+    "description": "在任意时区间转换日期时间，可建自定义目标时区列表，附主要城市实时世界时钟。",
+    "category": "计算器",
+    "hub": "/calculators",
+    "title": "时区转换器——时区间转换时间 | BeYourTools",
+    "metaDescription": "免费时区转换器：输入日期时间，在任意时区间转换，夏令时自动处理，附 12 个主要城市的实时世界时钟。无需注册。",
+    "tagline": "跨国安排日程？选日期、源时区与目标时区，夏令时自动处理，每个转换都对。",
+    "keywords": [
+      "时区转换器",
+      "时区换算器",
+      "世界时钟",
+      "转换时区",
+      "会议时间换算器",
+      "GMT 换算器",
+      "UTC 换算器",
+      "时差计算器"
+    ],
+    "howTo": [
+      {
+        "title": "输入日期与时间",
+        "text": "用日期时间选择器，或保持「现在」。然后选择这个时刻属于哪个时区。"
+      },
+      {
+        "title": "添加目标时区",
+        "text": "从列表添加关心的时区：办公室、家人、客户，删除同样方便。"
+      },
+      {
+        "title": "读取结果",
+        "text": "每个时区显示转换后的当地时间与 UTC 偏移，夏令时已计入。"
+      },
+      {
+        "title": "瞥一眼世界时钟",
+        "text": "底部面板显示 12 个主要城市的当前时间，实时跳动。"
+      }
+    ],
+    "features": [
+      "任意 IANA 时区间转换",
+      "通过 Intl 自动调整夏令时",
+      "添加、删除不限数量的目标时区",
+      "12 个主要城市的实时世界时钟",
+      "每次转换显示 UTC 偏移",
+      "浏览器内完全离线可用"
+    ],
+    "faqs": [
+      {
+        "question": "夏令时怎么处理？",
+        "answer": "通过浏览器内置的 Intl 时区数据库，它跟踪每个时区的历史与未来夏令时规则。您无需知道某地区何时切换，转换后的时间本来就是对的。"
+      },
+      {
+        "question": "为什么换算结果比上个月差了一小时？",
+        "answer": "某个时区进入或退出了夏令时。转换器反映的是您输入日期当天生效的规则，这正是它胜过固定偏移表的原因。"
+      },
+      {
+        "question": "支持哪些时区？",
+        "answer": "浏览器知道的所有 IANA 时区，几百个，覆盖所有有人居住的地区。缺了某个时区说明浏览器时区数据过旧，更新浏览器即可。"
+      },
+      {
+        "question": "世界时钟实时更新吗？",
+        "answer": "是，每秒更新。和转换器用的是同一份 Intl 数据，显示与换算完全一致。"
+      },
+      {
+        "question": "需要联网吗？",
+        "answer": "不需要。一切用浏览器已有的数据，页面加载后断网也能换算时间。"
+      }
+    ]
+  },
+  "general:meta-tag-generator": {
+    "name": "Meta 标签生成器",
+    "description": "从简单表单生成 SEO Meta 标签、Open Graph 与 Twitter Card 代码，附实时 Google 搜索结果预览与字符计数。",
+    "category": "开发者工具",
+    "hub": "/developer-tools",
+    "title": "Meta 标签生成器——SEO 与社交标签 | BeYourTools",
+    "metaDescription": "免费 Meta 标签生成器：从表单构建 SEO 标题与描述、Open Graph 与 Twitter Card 标签，实时预览 Google 搜索结果，复制干净 HTML。",
+    "tagline": "填个表单，拿到干净的 Meta 标签。输入时实时看 Google 风格预览，字符计数在被截断前预警。",
+    "keywords": [
+      "Meta 标签生成器",
+      "SEO Meta 标签",
+      "Open Graph 生成器",
+      "Twitter Card 生成器",
+      "Meta 描述生成器",
+      "OG 标签生成器",
+      "SERP 预览",
+      "HTML Meta 标签"
+    ],
+    "howTo": [
+      {
+        "title": "填写表单",
+        "text": "输入标题、描述、关键词、作者、robots 规则、规范 URL 与社交字段。"
+      },
+      {
+        "title": "查看预览",
+        "text": "Google 风格结果随输入更新。标题超 ~60 字符、描述超 ~160 字符会变红。"
+      },
+      {
+        "title": "设置社交卡片",
+        "text": "选择 Twitter 卡片类型，添加 Open Graph 图片 URL 以获得富链接预览。"
+      },
+      {
+        "title": "复制 HTML",
+        "text": "一键复制所有生成的标签，粘贴到页面 head 区。"
+      }
+    ],
+    "features": [
+      "SEO 标题、描述、关键词、作者与 robots 标签",
+      "Facebook 与 LinkedIn 预览用的 Open Graph 标签",
+      "Twitter Card 标签，带卡片类型选择",
+      "实时 Google SERP 预览，截断预警",
+      "字符计数：标题 ~60、描述 ~160",
+      "每个值都正确 HTML 转义",
+      "一键复制生成的代码"
+    ],
+    "faqs": [
+      {
+        "question": "哪些 Meta 标签对 SEO 真的重要？",
+        "answer": "标题标签与 Meta 描述。标题是排名因素，也是搜索结果的标题；描述不直接影响排名，但控制点击前看到的摘要，影响点击率。"
+      },
+      {
+        "question": "Meta keywords 还有用吗？",
+        "answer": "主流搜索引擎都不用它排名，Google 完全忽略。生成器保留它只是因为有些站内搜索工具还在读。"
+      },
+      {
+        "question": "Open Graph 图片是做什么的？",
+        "answer": "页面分享到 Facebook、LinkedIn、Slack、Discord 与多数聊天 App 时显示的图片。没有 og:image，平台会随机挑图或不配图。用 1200x630 的图片效果最好。"
+      },
+      {
+        "question": "该选哪种 Twitter 卡片类型？",
+        "answer": "文章与落地页配强视觉用 summary_large_image，个人主页或工具页这类紧凑卡片用 summary。大卡片在链接分享中的互动明显更高。"
+      },
+      {
+        "question": "规范 URL 该填什么？",
+        "answer": "页面的唯一首选 URL，绝对地址，含 https。它告诉搜索引擎内容有多个地址时索引哪个版本，避免重复内容问题。"
+      }
+    ]
+  },
+  "imagetool:image-resizer": {
+    "name": "图片缩放器",
+    "description": "按精确像素或百分比缩放图片，宽高比锁定，带社交预设。",
+    "title": "免费图片缩放器——在线缩放照片 | BeYourTools",
+    "metaDescription": "免费在线按像素或百分比缩放图片，宽高比锁定，附 Instagram、YouTube、X 预设。浏览器内运行——不上传。",
+    "tagline": "照片太大传不上去？几秒钟把任意图片缩放到需要的精确尺寸——文件永不离开您的浏览器。",
+    "keywords": [
+      "图片缩放器",
+      "在线缩放图片",
+      "缩放照片",
+      "图片缩放工具",
+      "缩放 PNG",
+      "缩放 JPG",
+      "社交媒体图片尺寸",
+      "图片尺寸"
+    ],
+    "howTo": {
+      "name": "如何缩放图片",
+      "description": "用 BeYourTools 缩放图片的步骤。",
+      "steps": [
+        {
+          "name": "上传图片",
+          "text": "拖放图片文件或点击浏览设备。"
+        },
+        {
+          "name": "设置新尺寸",
+          "text": "输入像素宽高，或切换到百分比模式按比例缩放。"
+        },
+        {
+          "name": "锁定宽高比",
+          "text": "保持锁定开启，改一边尺寸另一边不拉伸。"
+        },
+        {
+          "name": "选择预设（可选）",
+          "text": "为 Instagram 帖子、快拍、YouTube 缩略图、X 头图或 Facebook 帖子选现成尺寸。"
+        },
+        {
+          "name": "下载",
+          "text": "选择 PNG、JPEG 或 WebP，即时下载缩放后的图片。"
+        }
+      ]
+    },
+    "features": [
+      {
+        "title": "像素或百分比模式",
+        "desc": "输入精确宽高，或按百分比整体缩放。"
+      },
+      {
+        "title": "宽高比锁定",
+        "desc": "一键锁定保持比例正确，不拉伸。"
+      },
+      {
+        "title": "社交媒体预设",
+        "desc": "内置 Instagram 帖子与快拍、YouTube 缩略图、X 头图、Facebook 帖子尺寸。"
+      },
+      {
+        "title": "3 种输出格式",
+        "desc": "PNG 清晰、JPEG 适合照片、WebP 文件最小。"
+      },
+      {
+        "title": "实时预览",
+        "desc": "下载前看到缩放结果——不猜。"
+      },
+      {
+        "title": "100% 私密",
+        "desc": "在浏览器 Canvas 上缩放，不上传、不等待。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "缩放会让图片变糊吗？",
+        "answer": "缩小几乎总是干净的。放大超过原始尺寸可能变软，因为浏览器要「脑补」像素——在意清晰度请尽量不超过 100%。"
+      },
+      {
+        "question": "如何缩放不拉伸照片？",
+        "answer": "保持宽高比锁定开启（默认开）。改宽度会自动重算高度，图片保持原始比例。"
+      },
+      {
+        "question": "Instagram 帖子用多大尺寸？",
+        "answer": "1080 x 1080 px 是标准正方形帖子尺寸。快拍和 Reels 用 1080 x 1920 px，工具中都是一键预设。"
+      },
+      {
+        "question": "该下载哪种格式——PNG、JPEG 还是 WebP？",
+        "answer": "照片用 JPEG（文件最小），边缘锐利或带透明的图形用 PNG，网页上要画质体积比最优用 WebP。"
+      },
+      {
+        "question": "图片缩放器真的免费吗？",
+        "answer": "是——无需注册、无水印、没有限制，一切在您的浏览器中运行。"
+      }
+    ]
+  },
+  "imagetool:image-cropper": {
+    "name": "图片裁剪器",
+    "description": "用拖拽框裁剪图片，带宽高比预设与实时尺寸读数。",
+    "title": "免费图片裁剪器——在线裁剪照片 | BeYourTools",
+    "metaDescription": "在线裁剪图片，拖拽框选，宽高比预设（1:1、4:3、16:9），实时尺寸。免费、私密，浏览器内运行。",
+    "tagline": "照片里多余的部分裁掉。在想保留的部分上拖个框——就这么简单，图片永不离开您的设备。",
+    "keywords": [
+      "图片裁剪器",
+      "在线裁剪图片",
+      "裁剪照片",
+      "免费照片裁剪器",
+      "裁成正方形",
+      "16:9 裁剪",
+      "裁剪 PNG",
+      "裁剪 JPG"
+    ],
+    "howTo": {
+      "name": "如何裁剪图片",
+      "description": "用 BeYourTools 裁剪图片的步骤。",
+      "steps": [
+        {
+          "name": "上传图片",
+          "text": "拖放照片或点击浏览。"
+        },
+        {
+          "name": "选择宽高比",
+          "text": "选择自由、1:1、4:3、3:2 或 16:9——保持自由可画任意形状。"
+        },
+        {
+          "name": "画裁剪框",
+          "text": "在图片上点击/触摸并拖动，选择要保留的区域，实时看像素尺寸。"
+        },
+        {
+          "name": "应用裁剪",
+          "text": "点击「应用裁剪」，按所选裁掉图片。"
+        },
+        {
+          "name": "下载",
+          "text": "下载裁剪结果为 PNG 或 JPEG。"
+        }
+      ]
+    },
+    "features": [
+      {
+        "title": "拖拽框选裁剪",
+        "desc": "直接在图片上点击拖动画裁剪框——触屏也行。"
+      },
+      {
+        "title": "宽高比预设",
+        "desc": "自由、1:1、4:3、3:2、16:9，适合头像、缩略图与壁纸。"
+      },
+      {
+        "title": "实时尺寸",
+        "desc": "拖动时实时显示所选区域的像素尺寸。"
+      },
+      {
+        "title": "全分辨率输出",
+        "desc": "裁剪用的是原始像素，不是屏幕预览。"
+      },
+      {
+        "title": "PNG 或 JPEG 下载",
+        "desc": "PNG 保留透明，JPEG 更小。"
+      },
+      {
+        "title": "100% 私密",
+        "desc": "照片在浏览器 Canvas 上裁剪，绝不上传。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "如何把照片裁成完美正方形？",
+        "answer": "选 1:1 预设，在图片上任意拖动。框自动保持正方形——头像和 Instagram 帖子的完美选择。"
+      },
+      {
+        "question": "裁剪会降低画质吗？",
+        "answer": "不会。裁剪只是丢掉所选区域外的像素，保留的像素原样不动，画质和原来一模一样。"
+      },
+      {
+        "question": "应用后还能重新裁吗？",
+        "answer": "能——裁剪后的图片成为新的工作图，可以再画框再裁，想裁几次都行。"
+      },
+      {
+        "question": "图片很大怎么办？",
+        "answer": "预览会缩小图片以适应屏幕方便拖动，但裁剪作用于全分辨率原图。"
+      },
+      {
+        "question": "我的照片会被上传到别处吗？",
+        "answer": "不会。裁剪完全在浏览器中通过 Canvas API 运行，照片永不离开您的设备。"
+      }
+    ]
+  },
+  "imagetool:image-compressor": {
+    "name": "图片压缩器",
+    "description": "用画质滑块、格式选择与最大尺寸缩放来缩小图片体积。",
+    "title": "免费图片压缩器——在线减小文件体积 | BeYourTools",
+    "metaDescription": "在线压缩图片，画质滑块、JPEG/WebP/PNG 输出、最大尺寸缩放，即时看原图与压缩后体积对比。",
+    "tagline": "图片太大拖慢网站？把它们压到几分之一大小，观感依然出色——全离线，在浏览器中完成。",
+    "keywords": [
+      "图片压缩器",
+      "在线压缩图片",
+      "减小图片体积",
+      "压缩 JPG",
+      "压缩 PNG",
+      "WebP 压缩器",
+      "图片优化器",
+      "减小照片文件体积"
+    ],
+    "howTo": {
+      "name": "如何压缩图片",
+      "description": "用 BeYourTools 压缩图片的步骤。",
+      "steps": [
+        {
+          "name": "上传图片",
+          "text": "把 JPEG、PNG 或 WebP 文件放入上传器。"
+        },
+        {
+          "name": "选择输出格式",
+          "text": "照片选 JPEG，最小文件选 WebP，无损图形选 PNG。"
+        },
+        {
+          "name": "移动画质滑块",
+          "text": "在 1 到 100 间拖动滑块，工具即时重编码方便对比。"
+        },
+        {
+          "name": "设置最大尺寸（可选）",
+          "text": "把超大照片缩放到最大宽/高，进一步缩小文件。"
+        },
+        {
+          "name": "下载",
+          "text": "查看原图与压缩后体积及节省百分比，然后下载。"
+        }
+      ]
+    },
+    "features": [
+      {
+        "title": "画质滑块 1–100",
+        "desc": "精细控制——在体积与画质间找到最佳平衡点。"
+      },
+      {
+        "title": "JPEG、WebP 与 PNG 输出",
+        "desc": "重编码为体积最小的格式。"
+      },
+      {
+        "title": "最大尺寸缩放",
+        "desc": "可选在压缩时缩小超大图片。"
+      },
+      {
+        "title": "前后对比数据",
+        "desc": "原体积、压缩后体积与节省百分比并排显示。"
+      },
+      {
+        "title": "可视化预览",
+        "desc": "下载前精确看到压缩后的样子。"
+      },
+      {
+        "title": "100% 私密",
+        "desc": "压缩在本地完成——不发送到服务器。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "不损失画质最多能压多少？",
+        "answer": "照片用 JPEG 画质 75–85 通常能砍掉 60–80% 体积，肉眼几乎看不出差别。WebP 还能更进一步，实时预览方便下载前对比。"
+      },
+      {
+        "question": "为什么 PNG 压缩体积变化不大？",
+        "answer": "PNG 是无损的，画质滑块对它无效。PNG 省体积主要靠最大尺寸缩放选项，或转成 WebP。"
+      },
+      {
+        "question": "JPEG 和 WebP 有什么区别？",
+        "answer": "WebP 在同等视觉画质下通常比 JPEG 小 25–35%。所有现代浏览器都支持，是网页图片的优选。"
+      },
+      {
+        "question": "压缩能让网站加载更快吗？",
+        "answer": "能——图片通常是页面最重的部分。文件更小加载更快，SEO 更好，慢网速的访客更开心。"
+      },
+      {
+        "question": "我的图片会被上传到服务器吗？",
+        "answer": "不会。压缩器用 Canvas API 在您的浏览器中重编码图片，文件永不离开您的设备。"
+      },
+      {
+        "question": "图片压缩器免费吗？需要注册吗？",
+        "answer": "完全免费，无需注册，压缩后的图片无水印。想压多少压多少——没有每日限制。"
+      }
+    ]
+  },
+  "imagetool:youtube-thumbnail-downloader": {
+    "name": "YouTube 缩略图下载器",
+    "description": "下载任意 YouTube 视频的缩略图，各种画质都有。",
+    "title": "YouTube 缩略图下载器——保存视频缩略图 | BeYourTools",
+    "metaDescription": "免费下载 YouTube 缩略图，HD、SD、小尺寸都有。粘贴任意 YouTube 链接——watch、Shorts、youtu.be 或嵌入链接——保存缩略图。",
+    "tagline": "需要 YouTube 视频的缩略图？粘贴链接，拿到各种尺寸的预览图——直接在浏览器中完成。",
+    "keywords": [
+      "YouTube 缩略图下载器",
+      "下载 YouTube 缩略图",
+      "YT 缩略图保存器",
+      "YouTube 缩略图抓取器",
+      "保存 YouTube 预览图"
+    ],
+    "howTo": {
+      "name": "如何下载 YouTube 缩略图",
+      "description": "保存 YouTube 视频缩略图的步骤。",
+      "steps": [
+        {
+          "name": "粘贴视频链接",
+          "text": "复制任意 YouTube URL——watch 页面、Shorts、youtu.be 短链接、嵌入链接都行。"
+        },
+        {
+          "name": "预览画质",
+          "text": "工具提取视频 ID，展示从小到全高清的每种公开缩略图尺寸。"
+        },
+        {
+          "name": "下载",
+          "text": "在想要的尺寸下点下载，图片直接存到您的设备。"
+        }
+      ]
+    },
+    "features": [
+      {
+        "title": "所有 URL 格式",
+        "desc": "youtube.com/watch、youtu.be、/shorts/、/embed/ 链接都能识别。"
+      },
+      {
+        "title": "每种公开画质",
+        "desc": "默认、MQ、HQ、SD、maxres HD 预览并排展示。"
+      },
+      {
+        "title": "一键下载",
+        "desc": "每个尺寸有独立下载按钮——无需右键。"
+      },
+      {
+        "title": "即时校验",
+        "desc": "无效链接会给出清晰报错，而非破图。"
+      },
+      {
+        "title": "100% 私密",
+        "desc": "只拉取公开的缩略图，不上传任何内容。"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "会下载 YouTube 视频本身吗？",
+        "answer": "不会。本工具只下载公开的缩略图——即 YouTube 给视频展示的小预览图。不能下载视频或音频，也碰不到私密或已删除的视频。"
+      },
+      {
+        "question": "哪些 YouTube 链接可用？",
+        "answer": "标准 watch URL（youtube.com/watch?v=…）、短链接（youtu.be/…）、Shorts（/shorts/…）、嵌入（/embed/…）都行。工具从中提取 11 位视频 ID。"
+      },
+      {
+        "question": "为什么有些视频的 HD 缩略图很小？",
+        "answer": "YouTube 只给部分上传生成 maxres 1280x720 缩略图。如果上传者的视频没生成，YouTube 会用小图代替——这是 YouTube 的行为，不是工具的问题。"
+      },
+      {
+        "question": "免费吗？需要账号吗？",
+        "answer": "完全免费，无需账号，没有限制。缩略图是公开图片，拉取无需登录。"
+      },
+      {
+        "question": "下载缩略图合法吗？",
+        "answer": "缩略图归视频所有者，所以只复用您拥有或有权限的缩略图。下载作个人参考一般没问题；把别人的缩略图拿来当自己的发布不行。"
+      },
+      {
+        "question": "粘贴的链接存在哪里吗？",
+        "answer": "不会。链接在浏览器内存中解析，绝不发送到服务器——缩略图直接从 YouTube 图片服务器加载。"
+      }
+    ]
+  },
+  "format:jpg": {
+    "label": "JPG"
+  },
+  "format:png": {
+    "label": "PNG"
+  },
+  "format:webp": {
+    "label": "WebP"
+  },
+  "format:gif": {
+    "label": "GIF"
+  },
+  "format:svg": {
+    "label": "SVG"
+  },
+  "format:avif": {
+    "label": "AVIF"
+  },
+  "format:bmp": {
+    "label": "BMP"
+  },
+  "format:tiff": {
+    "label": "TIFF"
+  },
+  "format:ico": {
+    "label": "ICO"
+  },
+  "format:heic": {
+    "label": "HEIC"
+  },
+  "format:jxl": {
+    "label": "JXL"
+  },
+  "format:psd": {
+    "label": "PSD"
+  },
+  "format:tga": {
+    "label": "TGA"
+  },
+  "format:pdf": {
+    "label": "PDF"
+  },
+  "image:jpg-to-png": {
+    "title": "JPG 转 PNG",
+    "description": "免费在线把 JPG 转成 PNG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "PNG 支持透明，但转换变不出透明：JPG 中不透明的区域依然不透明。",
+      "有损 JPG 转无损 PNG 会逐像素精确保留剩余像素，但无法恢复原压缩已丢掉的细节。"
+    ]
+  },
+  "image:jpg-to-webp": {
+    "title": "JPG 转 WebP",
+    "description": "免费在线把 JPG 转成 WebP。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "WebP 支持透明，但转换变不出透明：JPG 中不透明的区域依然不透明。"
+    ]
+  },
+  "image:jpg-to-gif": {
+    "title": "JPG 转 GIF",
+    "description": "免费在线把 JPG 转成 GIF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "GIF 支持透明，但转换变不出透明：JPG 中不透明的区域依然不透明。",
+      "GIF 只支持 256 色，照片与平滑渐变转换后可能出现可见色带。"
+    ]
+  },
+  "image:jpg-to-svg": {
+    "title": "JPG 转 SVG",
+    "description": "免费在线把 JPG 转成 SVG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "JPG 像素作为位图嵌入 SVG 容器，成品不会获得真正的矢量可缩放性。需要 SVG 容器而非无限清晰度时有用。",
+      "SVG 支持透明，但转换变不出透明：JPG 中不透明的区域依然不透明。"
+    ]
+  },
+  "image:jpg-to-avif": {
+    "title": "JPG 转 AVIF",
+    "description": "免费在线把 JPG 转成 AVIF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "AVIF 支持透明，但转换变不出透明：JPG 中不透明的区域依然不透明。"
+    ]
+  },
+  "image:jpg-to-bmp": {
+    "title": "JPG 转 BMP",
+    "description": "免费在线把 JPG 转成 BMP。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "有损 JPG 转无损 BMP 会逐像素精确保留剩余像素，但无法恢复原压缩已丢掉的细节。"
+    ]
+  },
+  "image:jpg-to-tiff": {
+    "title": "JPG 转 TIFF",
+    "description": "免费在线把 JPG 转成 TIFF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "TIFF 支持透明，但转换变不出透明：JPG 中不透明的区域依然不透明。",
+      "有损 JPG 转无损 TIFF 会逐像素精确保留剩余像素，但无法恢复原压缩已丢掉的细节。"
+    ]
+  },
+  "image:jpg-to-ico": {
+    "title": "JPG 转 ICO",
+    "description": "免费在线把 JPG 转成 ICO。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "ICO 支持透明，但转换变不出透明：JPG 中不透明的区域依然不透明。",
+      "ICO 文件是小巧的图标容器，适合做网站图标，但大照片缩到图标尺寸会丢失细节。"
+    ]
+  },
+  "image:jpg-to-heic": {
+    "title": "JPG 转 HEIC",
+    "description": "免费在线把 JPG 转成 HEIC。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "HEIC 支持透明，但转换变不出透明：JPG 中不透明的区域依然不透明。"
+    ]
+  },
+  "image:jpg-to-pdf": {
+    "title": "JPG 转 PDF",
+    "description": "免费在线把 JPG 转成 PDF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "JPG 图片嵌入固定版式的 PDF 文档，适合打印、邮件发送，或存档不可编辑的副本。"
+    ]
+  },
+  "image:png-to-jpg": {
+    "title": "PNG 转 JPG",
+    "description": "免费在线把 PNG 转成 JPG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "JPG 不支持透明，透明区域会被压到纯白背景上。",
+      "JPG 的高效压缩通常大幅减小体积，视觉差异很小，网页使用很划算。"
+    ]
+  },
+  "image:png-to-webp": {
+    "title": "PNG 转 WebP",
+    "description": "免费在线把 PNG 转成 WebP。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "WebP 的高效压缩通常大幅减小体积，视觉差异很小，网页使用很划算。"
+    ]
+  },
+  "image:png-to-gif": {
+    "title": "PNG 转 GIF",
+    "description": "免费在线把 PNG 转成 GIF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": ["GIF 只支持 256 色，照片与平滑渐变转换后可能出现可见色带。"]
+  },
+  "image:png-to-svg": {
+    "title": "PNG 转 SVG",
+    "description": "免费在线把 PNG 转成 SVG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "PNG 像素作为位图嵌入 SVG 容器，成品不会获得真正的矢量可缩放性。需要 SVG 容器而非无限清晰度时有用。"
+    ]
+  },
+  "image:png-to-avif": {
+    "title": "PNG 转 AVIF",
+    "description": "免费在线把 PNG 转成 AVIF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "AVIF 的高效压缩通常大幅减小体积，视觉差异很小，网页使用很划算。"
+    ]
+  },
+  "image:png-to-bmp": {
+    "title": "PNG 转 BMP",
+    "description": "免费在线把 PNG 转成 BMP。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": ["BMP 不支持透明，透明区域会被压到纯白背景上。"]
+  },
+  "image:png-to-tiff": {
+    "title": "PNG 转 TIFF",
+    "description": "免费在线把 PNG 转成 TIFF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": []
+  },
+  "image:png-to-ico": {
+    "title": "PNG 转 ICO",
+    "description": "免费在线把 PNG 转成 ICO。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "ICO 文件是小巧的图标容器，适合做网站图标，但大照片缩到图标尺寸会丢失细节。"
+    ]
+  },
+  "image:png-to-heic": {
+    "title": "PNG 转 HEIC",
+    "description": "免费在线把 PNG 转成 HEIC。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": []
+  },
+  "image:png-to-pdf": {
+    "title": "PNG 转 PDF",
+    "description": "免费在线把 PNG 转成 PDF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "PNG 图片嵌入固定版式的 PDF 文档，适合打印、邮件发送，或存档不可编辑的副本。",
+      "PDF 不支持透明，透明区域会被压到纯白背景上。"
+    ]
+  },
+  "image:webp-to-jpg": {
+    "title": "WebP 转 JPG",
+    "description": "免费在线把 WebP 转成 JPG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": ["JPG 不支持透明，透明区域会被压到纯白背景上。"]
+  },
+  "image:webp-to-png": {
+    "title": "WebP 转 PNG",
+    "description": "免费在线把 WebP 转成 PNG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": []
+  },
+  "image:webp-to-gif": {
+    "title": "WebP 转 GIF",
+    "description": "免费在线把 WebP 转成 GIF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": ["GIF 只支持 256 色，照片与平滑渐变转换后可能出现可见色带。"]
+  },
+  "image:webp-to-svg": {
+    "title": "WebP 转 SVG",
+    "description": "免费在线把 WebP 转成 SVG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "WebP 像素作为位图嵌入 SVG 容器，成品不会获得真正的矢量可缩放性。需要 SVG 容器而非无限清晰度时有用。"
+    ]
+  },
+  "image:webp-to-avif": {
+    "title": "WebP 转 AVIF",
+    "description": "免费在线把 WebP 转成 AVIF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": []
+  },
+  "image:webp-to-bmp": {
+    "title": "WebP 转 BMP",
+    "description": "免费在线把 WebP 转成 BMP。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": ["BMP 不支持透明，透明区域会被压到纯白背景上。"]
+  },
+  "image:webp-to-tiff": {
+    "title": "WebP 转 TIFF",
+    "description": "免费在线把 WebP 转成 TIFF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": []
+  },
+  "image:webp-to-ico": {
+    "title": "WebP 转 ICO",
+    "description": "免费在线把 WebP 转成 ICO。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "ICO 文件是小巧的图标容器，适合做网站图标，但大照片缩到图标尺寸会丢失细节。"
+    ]
+  },
+  "image:webp-to-heic": {
+    "title": "WebP 转 HEIC",
+    "description": "免费在线把 WebP 转成 HEIC。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": []
+  },
+  "image:webp-to-pdf": {
+    "title": "WebP 转 PDF",
+    "description": "免费在线把 WebP 转成 PDF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "WebP 图片嵌入固定版式的 PDF 文档，适合打印、邮件发送，或存档不可编辑的副本。",
+      "PDF 不支持透明，透明区域会被压到纯白背景上。"
+    ]
+  },
+  "image:gif-to-jpg": {
+    "title": "GIF 转 JPG",
+    "description": "免费在线把 GIF 转成 JPG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": ["JPG 不支持透明，透明区域会被压到纯白背景上。"]
+  },
+  "image:gif-to-png": {
+    "title": "GIF 转 PNG",
+    "description": "免费在线把 GIF 转成 PNG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": []
+  },
+  "image:gif-to-webp": {
+    "title": "GIF 转 WebP",
+    "description": "免费在线把 GIF 转成 WebP。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": ["作为现代格式，WebP 在同等视觉画质下通常比 GIF 小 25–50%。"]
+  },
+  "image:gif-to-svg": {
+    "title": "GIF 转 SVG",
+    "description": "免费在线把 GIF 转成 SVG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "GIF 像素作为位图嵌入 SVG 容器，成品不会获得真正的矢量可缩放性。需要 SVG 容器而非无限清晰度时有用。"
+    ]
+  },
+  "image:gif-to-avif": {
+    "title": "GIF 转 AVIF",
+    "description": "免费在线把 GIF 转成 AVIF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": ["作为现代格式，AVIF 在同等视觉画质下通常比 GIF 小 25–50%。"]
+  },
+  "image:gif-to-bmp": {
+    "title": "GIF 转 BMP",
+    "description": "免费在线把 GIF 转成 BMP。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": ["BMP 不支持透明，透明区域会被压到纯白背景上。"]
+  },
+  "image:gif-to-tiff": {
+    "title": "GIF 转 TIFF",
+    "description": "免费在线把 GIF 转成 TIFF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": []
+  },
+  "image:gif-to-ico": {
+    "title": "GIF 转 ICO",
+    "description": "免费在线把 GIF 转成 ICO。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "ICO 文件是小巧的图标容器，适合做网站图标，但大照片缩到图标尺寸会丢失细节。"
+    ]
+  },
+  "image:gif-to-pdf": {
+    "title": "GIF 转 PDF",
+    "description": "免费在线把 GIF 转成 PDF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "GIF 图片嵌入固定版式的 PDF 文档，适合打印、邮件发送，或存档不可编辑的副本。",
+      "PDF 不支持透明，透明区域会被压到纯白背景上。"
+    ]
+  },
+  "image:svg-to-jpg": {
+    "title": "SVG 转 JPG",
+    "description": "免费在线把 SVG 转成 JPG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "SVG 与分辨率无关，所以 JPG 输出按固定像素尺寸渲染。如需打印请导出大尺寸。",
+      "JPG 不支持透明，透明区域会被压到纯白背景上。"
+    ]
+  },
+  "image:svg-to-png": {
+    "title": "SVG 转 PNG",
+    "description": "免费在线把 SVG 转成 PNG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "SVG 与分辨率无关，所以 PNG 输出按固定像素尺寸渲染。如需打印请导出大尺寸。"
+    ]
+  },
+  "image:svg-to-webp": {
+    "title": "SVG 转 WebP",
+    "description": "免费在线把 SVG 转成 WebP。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "SVG 与分辨率无关，所以 WebP 输出按固定像素尺寸渲染。如需打印请导出大尺寸。",
+      "作为现代格式，WebP 在同等视觉画质下通常比 SVG 小 25–50%。"
+    ]
+  },
+  "image:svg-to-gif": {
+    "title": "SVG 转 GIF",
+    "description": "免费在线把 SVG 转成 GIF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "SVG 与分辨率无关，所以 GIF 输出按固定像素尺寸渲染。如需打印请导出大尺寸。",
+      "GIF 只支持 256 色，照片与平滑渐变转换后可能出现可见色带。"
+    ]
+  },
+  "image:svg-to-avif": {
+    "title": "SVG 转 AVIF",
+    "description": "免费在线把 SVG 转成 AVIF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "SVG 与分辨率无关，所以 AVIF 输出按固定像素尺寸渲染。如需打印请导出大尺寸。",
+      "作为现代格式，AVIF 在同等视觉画质下通常比 SVG 小 25–50%。"
+    ]
+  },
+  "image:svg-to-bmp": {
+    "title": "SVG 转 BMP",
+    "description": "免费在线把 SVG 转成 BMP。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "SVG 与分辨率无关，所以 BMP 输出按固定像素尺寸渲染。如需打印请导出大尺寸。",
+      "BMP 不支持透明，透明区域会被压到纯白背景上。"
+    ]
+  },
+  "image:svg-to-tiff": {
+    "title": "SVG 转 TIFF",
+    "description": "免费在线把 SVG 转成 TIFF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "SVG 与分辨率无关，所以 TIFF 输出按固定像素尺寸渲染。如需打印请导出大尺寸。"
+    ]
+  },
+  "image:svg-to-ico": {
+    "title": "SVG 转 ICO",
+    "description": "免费在线把 SVG 转成 ICO。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "SVG 与分辨率无关，所以 ICO 输出按固定像素尺寸渲染。如需打印请导出大尺寸。",
+      "ICO 文件是小巧的图标容器，适合做网站图标，但大照片缩到图标尺寸会丢失细节。"
+    ]
+  },
+  "image:svg-to-pdf": {
+    "title": "SVG 转 PDF",
+    "description": "免费在线把 SVG 转成 PDF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "SVG 与分辨率无关，所以 PDF 输出按固定像素尺寸渲染。如需打印请导出大尺寸。",
+      "SVG 图片嵌入固定版式的 PDF 文档，适合打印、邮件发送，或存档不可编辑的副本。",
+      "PDF 不支持透明，透明区域会被压到纯白背景上。"
+    ]
+  },
+  "image:avif-to-jpg": {
+    "title": "AVIF 转 JPG",
+    "description": "免费在线把 AVIF 转成 JPG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": ["JPG 不支持透明，透明区域会被压到纯白背景上。"]
+  },
+  "image:avif-to-png": {
+    "title": "AVIF 转 PNG",
+    "description": "免费在线把 AVIF 转成 PNG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": []
+  },
+  "image:avif-to-webp": {
+    "title": "AVIF 转 WebP",
+    "description": "免费在线把 AVIF 转成 WebP。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": []
+  },
+  "image:avif-to-gif": {
+    "title": "AVIF 转 GIF",
+    "description": "免费在线把 AVIF 转成 GIF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": ["GIF 只支持 256 色，照片与平滑渐变转换后可能出现可见色带。"]
+  },
+  "image:avif-to-svg": {
+    "title": "AVIF 转 SVG",
+    "description": "免费在线把 AVIF 转成 SVG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "AVIF 像素作为位图嵌入 SVG 容器，成品不会获得真正的矢量可缩放性。需要 SVG 容器而非无限清晰度时有用。"
+    ]
+  },
+  "image:avif-to-bmp": {
+    "title": "AVIF 转 BMP",
+    "description": "免费在线把 AVIF 转成 BMP。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": ["BMP 不支持透明，透明区域会被压到纯白背景上。"]
+  },
+  "image:avif-to-tiff": {
+    "title": "AVIF 转 TIFF",
+    "description": "免费在线把 AVIF 转成 TIFF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": []
+  },
+  "image:avif-to-ico": {
+    "title": "AVIF 转 ICO",
+    "description": "免费在线把 AVIF 转成 ICO。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "ICO 文件是小巧的图标容器，适合做网站图标，但大照片缩到图标尺寸会丢失细节。"
+    ]
+  },
+  "image:avif-to-pdf": {
+    "title": "AVIF 转 PDF",
+    "description": "免费在线把 AVIF 转成 PDF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "AVIF 图片嵌入固定版式的 PDF 文档，适合打印、邮件发送，或存档不可编辑的副本。",
+      "PDF 不支持透明，透明区域会被压到纯白背景上。"
+    ]
+  },
+  "image:bmp-to-jpg": {
+    "title": "BMP 转 JPG",
+    "description": "免费在线把 BMP 转成 JPG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "JPG 的高效压缩通常大幅减小体积，视觉差异很小，网页使用很划算。"
+    ]
+  },
+  "image:bmp-to-png": {
+    "title": "BMP 转 PNG",
+    "description": "免费在线把 BMP 转成 PNG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "PNG 支持透明，但转换变不出透明：BMP 中不透明的区域依然不透明。"
+    ]
+  },
+  "image:bmp-to-webp": {
+    "title": "BMP 转 WebP",
+    "description": "免费在线把 BMP 转成 WebP。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "WebP 支持透明，但转换变不出透明：BMP 中不透明的区域依然不透明。",
+      "WebP 的高效压缩通常大幅减小体积，视觉差异很小，网页使用很划算。"
+    ]
+  },
+  "image:bmp-to-gif": {
+    "title": "BMP 转 GIF",
+    "description": "免费在线把 BMP 转成 GIF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "GIF 支持透明，但转换变不出透明：BMP 中不透明的区域依然不透明。",
+      "GIF 只支持 256 色，照片与平滑渐变转换后可能出现可见色带。"
+    ]
+  },
+  "image:bmp-to-svg": {
+    "title": "BMP 转 SVG",
+    "description": "免费在线把 BMP 转成 SVG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "BMP 像素作为位图嵌入 SVG 容器，成品不会获得真正的矢量可缩放性。需要 SVG 容器而非无限清晰度时有用。",
+      "SVG 支持透明，但转换变不出透明：BMP 中不透明的区域依然不透明。"
+    ]
+  },
+  "image:bmp-to-avif": {
+    "title": "BMP 转 AVIF",
+    "description": "免费在线把 BMP 转成 AVIF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "AVIF 支持透明，但转换变不出透明：BMP 中不透明的区域依然不透明。",
+      "AVIF 的高效压缩通常大幅减小体积，视觉差异很小，网页使用很划算。"
+    ]
+  },
+  "image:bmp-to-tiff": {
+    "title": "BMP 转 TIFF",
+    "description": "免费在线把 BMP 转成 TIFF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "TIFF 支持透明，但转换变不出透明：BMP 中不透明的区域依然不透明。"
+    ]
+  },
+  "image:bmp-to-ico": {
+    "title": "BMP 转 ICO",
+    "description": "免费在线把 BMP 转成 ICO。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "ICO 支持透明，但转换变不出透明：BMP 中不透明的区域依然不透明。",
+      "ICO 文件是小巧的图标容器，适合做网站图标，但大照片缩到图标尺寸会丢失细节。"
+    ]
+  },
+  "image:bmp-to-pdf": {
+    "title": "BMP 转 PDF",
+    "description": "免费在线把 BMP 转成 PDF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "BMP 图片嵌入固定版式的 PDF 文档，适合打印、邮件发送，或存档不可编辑的副本。"
+    ]
+  },
+  "image:tiff-to-jpg": {
+    "title": "TIFF 转 JPG",
+    "description": "免费在线把 TIFF 转成 JPG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "JPG 不支持透明，透明区域会被压到纯白背景上。",
+      "JPG 的高效压缩通常大幅减小体积，视觉差异很小，网页使用很划算。",
+      "该格式需要我们的扩展浏览器解码器，超大 TIFF 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:tiff-to-png": {
+    "title": "TIFF 转 PNG",
+    "description": "免费在线把 TIFF 转成 PNG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "该格式需要我们的扩展浏览器解码器，超大 TIFF 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:tiff-to-webp": {
+    "title": "TIFF 转 WebP",
+    "description": "免费在线把 TIFF 转成 WebP。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "WebP 的高效压缩通常大幅减小体积，视觉差异很小，网页使用很划算。",
+      "该格式需要我们的扩展浏览器解码器，超大 TIFF 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:tiff-to-gif": {
+    "title": "TIFF 转 GIF",
+    "description": "免费在线把 TIFF 转成 GIF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "GIF 只支持 256 色，照片与平滑渐变转换后可能出现可见色带。",
+      "该格式需要我们的扩展浏览器解码器，超大 TIFF 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:tiff-to-svg": {
+    "title": "TIFF 转 SVG",
+    "description": "免费在线把 TIFF 转成 SVG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "TIFF 像素作为位图嵌入 SVG 容器，成品不会获得真正的矢量可缩放性。需要 SVG 容器而非无限清晰度时有用。",
+      "该格式需要我们的扩展浏览器解码器，超大 TIFF 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:tiff-to-avif": {
+    "title": "TIFF 转 AVIF",
+    "description": "免费在线把 TIFF 转成 AVIF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "AVIF 的高效压缩通常大幅减小体积，视觉差异很小，网页使用很划算。",
+      "该格式需要我们的扩展浏览器解码器，超大 TIFF 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:tiff-to-bmp": {
+    "title": "TIFF 转 BMP",
+    "description": "免费在线把 TIFF 转成 BMP。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "BMP 不支持透明，透明区域会被压到纯白背景上。",
+      "该格式需要我们的扩展浏览器解码器，超大 TIFF 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:tiff-to-ico": {
+    "title": "TIFF 转 ICO",
+    "description": "免费在线把 TIFF 转成 ICO。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "ICO 文件是小巧的图标容器，适合做网站图标，但大照片缩到图标尺寸会丢失细节。",
+      "该格式需要我们的扩展浏览器解码器，超大 TIFF 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:tiff-to-pdf": {
+    "title": "TIFF 转 PDF",
+    "description": "免费在线把 TIFF 转成 PDF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "TIFF 图片嵌入固定版式的 PDF 文档，适合打印、邮件发送，或存档不可编辑的副本。",
+      "PDF 不支持透明，透明区域会被压到纯白背景上。",
+      "该格式需要我们的扩展浏览器解码器，超大 TIFF 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:ico-to-jpg": {
+    "title": "ICO 转 JPG",
+    "description": "免费在线把 ICO 转成 JPG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "JPG 不支持透明，透明区域会被压到纯白背景上。",
+      "该格式需要我们的扩展浏览器解码器，超大 ICO 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:ico-to-png": {
+    "title": "ICO 转 PNG",
+    "description": "免费在线把 ICO 转成 PNG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "该格式需要我们的扩展浏览器解码器，超大 ICO 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:ico-to-webp": {
+    "title": "ICO 转 WebP",
+    "description": "免费在线把 ICO 转成 WebP。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "作为现代格式，WebP 在同等视觉画质下通常比 ICO 小 25–50%。",
+      "该格式需要我们的扩展浏览器解码器，超大 ICO 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:ico-to-gif": {
+    "title": "ICO 转 GIF",
+    "description": "免费在线把 ICO 转成 GIF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "GIF 只支持 256 色，照片与平滑渐变转换后可能出现可见色带。",
+      "该格式需要我们的扩展浏览器解码器，超大 ICO 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:ico-to-svg": {
+    "title": "ICO 转 SVG",
+    "description": "免费在线把 ICO 转成 SVG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "ICO 像素作为位图嵌入 SVG 容器，成品不会获得真正的矢量可缩放性。需要 SVG 容器而非无限清晰度时有用。",
+      "该格式需要我们的扩展浏览器解码器，超大 ICO 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:ico-to-avif": {
+    "title": "ICO 转 AVIF",
+    "description": "免费在线把 ICO 转成 AVIF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "作为现代格式，AVIF 在同等视觉画质下通常比 ICO 小 25–50%。",
+      "该格式需要我们的扩展浏览器解码器，超大 ICO 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:ico-to-bmp": {
+    "title": "ICO 转 BMP",
+    "description": "免费在线把 ICO 转成 BMP。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "BMP 不支持透明，透明区域会被压到纯白背景上。",
+      "该格式需要我们的扩展浏览器解码器，超大 ICO 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:ico-to-tiff": {
+    "title": "ICO 转 TIFF",
+    "description": "免费在线把 ICO 转成 TIFF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "该格式需要我们的扩展浏览器解码器，超大 ICO 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:ico-to-pdf": {
+    "title": "ICO 转 PDF",
+    "description": "免费在线把 ICO 转成 PDF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "ICO 图片嵌入固定版式的 PDF 文档，适合打印、邮件发送，或存档不可编辑的副本。",
+      "PDF 不支持透明，透明区域会被压到纯白背景上。",
+      "该格式需要我们的扩展浏览器解码器，超大 ICO 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:heic-to-jpg": {
+    "title": "HEIC 转 JPG",
+    "description": "免费在线把 HEIC 转成 JPG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "JPG 不支持透明，透明区域会被压到纯白背景上。",
+      "该格式需要我们的扩展浏览器解码器，超大 HEIC 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:heic-to-png": {
+    "title": "HEIC 转 PNG",
+    "description": "免费在线把 HEIC 转成 PNG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "该格式需要我们的扩展浏览器解码器，超大 HEIC 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:heic-to-webp": {
+    "title": "HEIC 转 WebP",
+    "description": "免费在线把 HEIC 转成 WebP。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "作为现代格式，WebP 在同等视觉画质下通常比 HEIC 小 25–50%。",
+      "该格式需要我们的扩展浏览器解码器，超大 HEIC 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:heic-to-gif": {
+    "title": "HEIC 转 GIF",
+    "description": "免费在线把 HEIC 转成 GIF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "GIF 只支持 256 色，照片与平滑渐变转换后可能出现可见色带。",
+      "该格式需要我们的扩展浏览器解码器，超大 HEIC 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:heic-to-svg": {
+    "title": "HEIC 转 SVG",
+    "description": "免费在线把 HEIC 转成 SVG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "HEIC 像素作为位图嵌入 SVG 容器，成品不会获得真正的矢量可缩放性。需要 SVG 容器而非无限清晰度时有用。",
+      "该格式需要我们的扩展浏览器解码器，超大 HEIC 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:heic-to-avif": {
+    "title": "HEIC 转 AVIF",
+    "description": "免费在线把 HEIC 转成 AVIF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "作为现代格式，AVIF 在同等视觉画质下通常比 HEIC 小 25–50%。",
+      "该格式需要我们的扩展浏览器解码器，超大 HEIC 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:heic-to-bmp": {
+    "title": "HEIC 转 BMP",
+    "description": "免费在线把 HEIC 转成 BMP。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "BMP 不支持透明，透明区域会被压到纯白背景上。",
+      "该格式需要我们的扩展浏览器解码器，超大 HEIC 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:heic-to-tiff": {
+    "title": "HEIC 转 TIFF",
+    "description": "免费在线把 HEIC 转成 TIFF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "该格式需要我们的扩展浏览器解码器，超大 HEIC 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:heic-to-pdf": {
+    "title": "HEIC 转 PDF",
+    "description": "免费在线把 HEIC 转成 PDF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "HEIC 图片嵌入固定版式的 PDF 文档，适合打印、邮件发送，或存档不可编辑的副本。",
+      "PDF 不支持透明，透明区域会被压到纯白背景上。",
+      "该格式需要我们的扩展浏览器解码器，超大 HEIC 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:jxl-to-jpg": {
+    "title": "JXL 转 JPG",
+    "description": "免费在线把 JXL 转成 JPG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "JPG 不支持透明，透明区域会被压到纯白背景上。",
+      "该格式需要我们的扩展浏览器解码器，超大 JXL 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:jxl-to-png": {
+    "title": "JXL 转 PNG",
+    "description": "免费在线把 JXL 转成 PNG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "该格式需要我们的扩展浏览器解码器，超大 JXL 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:jxl-to-webp": {
+    "title": "JXL 转 WebP",
+    "description": "免费在线把 JXL 转成 WebP。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "作为现代格式，WebP 在同等视觉画质下通常比 JXL 小 25–50%。",
+      "该格式需要我们的扩展浏览器解码器，超大 JXL 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:jxl-to-gif": {
+    "title": "JXL 转 GIF",
+    "description": "免费在线把 JXL 转成 GIF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "GIF 只支持 256 色，照片与平滑渐变转换后可能出现可见色带。",
+      "该格式需要我们的扩展浏览器解码器，超大 JXL 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:jxl-to-avif": {
+    "title": "JXL 转 AVIF",
+    "description": "免费在线把 JXL 转成 AVIF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "作为现代格式，AVIF 在同等视觉画质下通常比 JXL 小 25–50%。",
+      "该格式需要我们的扩展浏览器解码器，超大 JXL 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:jxl-to-bmp": {
+    "title": "JXL 转 BMP",
+    "description": "免费在线把 JXL 转成 BMP。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "BMP 不支持透明，透明区域会被压到纯白背景上。",
+      "该格式需要我们的扩展浏览器解码器，超大 JXL 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:jxl-to-tiff": {
+    "title": "JXL 转 TIFF",
+    "description": "免费在线把 JXL 转成 TIFF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "该格式需要我们的扩展浏览器解码器，超大 JXL 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:jxl-to-pdf": {
+    "title": "JXL 转 PDF",
+    "description": "免费在线把 JXL 转成 PDF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "JXL 图片嵌入固定版式的 PDF 文档，适合打印、邮件发送，或存档不可编辑的副本。",
+      "PDF 不支持透明，透明区域会被压到纯白背景上。",
+      "该格式需要我们的扩展浏览器解码器，超大 JXL 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:psd-to-jpg": {
+    "title": "PSD 转 JPG",
+    "description": "免费在线把 PSD 转成 JPG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "JPG 不支持透明，透明区域会被压到纯白背景上。",
+      "该格式需要我们的扩展浏览器解码器，超大 PSD 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:psd-to-png": {
+    "title": "PSD 转 PNG",
+    "description": "免费在线把 PSD 转成 PNG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "该格式需要我们的扩展浏览器解码器，超大 PSD 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:psd-to-webp": {
+    "title": "PSD 转 WebP",
+    "description": "免费在线把 PSD 转成 WebP。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "作为现代格式，WebP 在同等视觉画质下通常比 PSD 小 25–50%。",
+      "该格式需要我们的扩展浏览器解码器，超大 PSD 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:psd-to-gif": {
+    "title": "PSD 转 GIF",
+    "description": "免费在线把 PSD 转成 GIF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "GIF 只支持 256 色，照片与平滑渐变转换后可能出现可见色带。",
+      "该格式需要我们的扩展浏览器解码器，超大 PSD 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:psd-to-svg": {
+    "title": "PSD 转 SVG",
+    "description": "免费在线把 PSD 转成 SVG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "PSD 像素作为位图嵌入 SVG 容器，成品不会获得真正的矢量可缩放性。需要 SVG 容器而非无限清晰度时有用。",
+      "该格式需要我们的扩展浏览器解码器，超大 PSD 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:psd-to-avif": {
+    "title": "PSD 转 AVIF",
+    "description": "免费在线把 PSD 转成 AVIF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "作为现代格式，AVIF 在同等视觉画质下通常比 PSD 小 25–50%。",
+      "该格式需要我们的扩展浏览器解码器，超大 PSD 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:psd-to-bmp": {
+    "title": "PSD 转 BMP",
+    "description": "免费在线把 PSD 转成 BMP。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "BMP 不支持透明，透明区域会被压到纯白背景上。",
+      "该格式需要我们的扩展浏览器解码器，超大 PSD 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:psd-to-tiff": {
+    "title": "PSD 转 TIFF",
+    "description": "免费在线把 PSD 转成 TIFF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "该格式需要我们的扩展浏览器解码器，超大 PSD 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:psd-to-pdf": {
+    "title": "PSD 转 PDF",
+    "description": "免费在线把 PSD 转成 PDF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "PSD 图片嵌入固定版式的 PDF 文档，适合打印、邮件发送，或存档不可编辑的副本。",
+      "PDF 不支持透明，透明区域会被压到纯白背景上。",
+      "该格式需要我们的扩展浏览器解码器，超大 PSD 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:tga-to-jpg": {
+    "title": "TGA 转 JPG",
+    "description": "免费在线把 TGA 转成 JPG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "JPG 不支持透明，透明区域会被压到纯白背景上。",
+      "该格式需要我们的扩展浏览器解码器，超大 TGA 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:tga-to-png": {
+    "title": "TGA 转 PNG",
+    "description": "免费在线把 TGA 转成 PNG。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "该格式需要我们的扩展浏览器解码器，超大 TGA 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:tga-to-webp": {
+    "title": "TGA 转 WebP",
+    "description": "免费在线把 TGA 转成 WebP。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "作为现代格式，WebP 在同等视觉画质下通常比 TGA 小 25–50%。",
+      "该格式需要我们的扩展浏览器解码器，超大 TGA 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:tga-to-gif": {
+    "title": "TGA 转 GIF",
+    "description": "免费在线把 TGA 转成 GIF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "GIF 只支持 256 色，照片与平滑渐变转换后可能出现可见色带。",
+      "该格式需要我们的扩展浏览器解码器，超大 TGA 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:tga-to-bmp": {
+    "title": "TGA 转 BMP",
+    "description": "免费在线把 TGA 转成 BMP。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "BMP 不支持透明，透明区域会被压到纯白背景上。",
+      "该格式需要我们的扩展浏览器解码器，超大 TGA 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:tga-to-tiff": {
+    "title": "TGA 转 TIFF",
+    "description": "免费在线把 TGA 转成 TIFF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "该格式需要我们的扩展浏览器解码器，超大 TGA 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:tga-to-avif": {
+    "title": "TGA 转 AVIF",
+    "description": "免费在线把 TGA 转成 AVIF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "作为现代格式，AVIF 在同等视觉画质下通常比 TGA 小 25–50%。",
+      "该格式需要我们的扩展浏览器解码器，超大 TGA 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  },
+  "image:tga-to-pdf": {
+    "title": "TGA 转 PDF",
+    "description": "免费在线把 TGA 转成 PDF。无需上传、无需注册——转换直接在您的浏览器中运行，文件永不离开您的设备。",
+    "insight": [
+      "TGA 图片嵌入固定版式的 PDF 文档，适合打印、邮件发送，或存档不可编辑的副本。",
+      "PDF 不支持透明，透明区域会被压到纯白背景上。",
+      "该格式需要我们的扩展浏览器解码器，超大 TGA 文件可能多花几秒。一切仍在您的设备上完成。"
+    ]
+  }
+}
