@@ -1,4 +1,6 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
+import { contentLocale } from "@/lib/i18n-content";
 
 // ── Social links ──────────────────────────────────────────────────────────────
 
@@ -160,12 +162,12 @@ const COL_BLOG = {
 const ROW1_COLS = [COL_JSON, COL_IMAGE, COL_PDF, COL_AUDIO];
 const ROW2_COLS = [COL_VIDEO, COL_QR, COL_FINANCE, COL_BLOG];
 
-const POLICY_LINKS = [
-  { href: "/privacy-policy", label: "Privacy Policy" },
-  { href: "/terms",          label: "Terms"           },
-  { href: "/cookie-policy",  label: "Cookie Policy"   },
-  { href: "/disclaimer",     label: "Disclaimer"      },
-];
+const POLICY_KEYS = [
+  { href: "/privacy-policy", key: "policies.privacy"    },
+  { href: "/terms",          key: "policies.terms"      },
+  { href: "/cookie-policy",  key: "policies.cookies"    },
+  { href: "/disclaimer",     key: "policies.disclaimer" },
+] as const;
 
 // ── Reusable link column ──────────────────────────────────────────────────────
 
@@ -173,8 +175,8 @@ function LinkColumn({ col }: { col: typeof COL_JSON }) {
   return (
     <div className="flex flex-col items-start">
       <h3
-        className="mb-3 text-[11px] font-semibold uppercase tracking-wide"
-        style={{ color: "var(--text-subtle)" }}
+        className="mb-3 text-xs font-bold uppercase tracking-wider"
+        style={{ color: "var(--text-primary)" }}
       >
         {col.heading}
       </h3>
@@ -197,7 +199,38 @@ function LinkColumn({ col }: { col: typeof COL_JSON }) {
 
 // ── Footer ────────────────────────────────────────────────────────────────────
 
-export default function Footer() {
+export default async function Footer() {
+  const locale = await contentLocale();
+  const t = await getTranslations({ locale, namespace: "footer" });
+  const tr = (key: string, values?: Record<string, string>) =>
+    t(key as never, values as never) as unknown as string;
+  const headings: Record<string, string> = {
+    "JSON Tools": tr("columns.json"),
+    "Image Converter": tr("columns.image"),
+    "PDF Tools": tr("columns.pdf"),
+    "Audio Tools": tr("columns.audio"),
+    "Video Tools": tr("columns.video"),
+    "QR & Barcodes": tr("columns.qr"),
+    "Finance Tools": tr("columns.finance"),
+    "Blog & Pages": tr("columns.blogPages"),
+  };
+  const allLabels: Record<string, string> = {
+    "All JSON Tools": tr("columns.allJson"),
+    "All Converters": tr("columns.allConverters"),
+    "All PDF Tools": tr("columns.allPdf"),
+    "All Audio Tools": tr("columns.allAudio"),
+    "All Video Tools": tr("columns.allVideo"),
+    "All QR & Barcodes": tr("columns.allQr"),
+    "All Finance Tools": tr("columns.allFinance"),
+    "All Design Tools": tr("columns.allDesign"),
+  };
+  const trCol = (col: { heading: string; href: string; links: { href: string; label: string }[] }) => ({
+    ...col,
+    heading: headings[col.heading] ?? col.heading,
+    links: col.links.map((l) => ({ ...l, label: allLabels[l.label] ?? l.label })),
+  });
+  const ROW1 = ROW1_COLS.map(trCol);
+  const ROW2 = ROW2_COLS.map(trCol);
   return (
     <footer
       className="border-t"
@@ -215,12 +248,19 @@ export default function Footer() {
           {/* Brand / info - spans both cols on mobile, single col on desktop */}
           <div className="col-span-2 flex flex-col items-center sm:col-span-1 sm:items-start lg:col-span-1">
             <Link href="/" className="focus-ring inline-flex items-center gap-2 rounded">
-              <span className="font-display text-base font-semibold" style={{ color: "var(--text-primary)" }}>
+              <span
+                className="flex h-7 w-7 items-center justify-center rounded-lg text-sm font-bold shadow"
+                style={{ background: "linear-gradient(135deg, #fcd34d, #d97706)", color: "#1a1207" }}
+                aria-hidden="true"
+              >
+                B
+              </span>
+              <span className="font-display text-base font-bold tracking-tight" style={{ color: "var(--text-primary)" }}>
                 BeYourTools
               </span>
             </Link>
             <p className="mt-3 text-xs leading-relaxed" style={{ color: "var(--text-subtle)" }}>
-              Free, private, browser-based tools for everyone. Nothing is ever uploaded to a server.
+              {t("tagline")}
             </p>
             {/* Social icons */}
             <div className="mt-4 flex items-center justify-center gap-2 sm:justify-start">
@@ -230,7 +270,7 @@ export default function Footer() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`BeYourTools on ${label}`}
+                  aria-label={tr("onLabel", { network: label })}
                   className="focus-ring flex h-7 w-7 items-center justify-center rounded-md border transition hover:opacity-80"
                   style={{
                     borderColor: "var(--border-strong)",
@@ -245,7 +285,7 @@ export default function Footer() {
           </div>
 
           {/* Row 1 tool columns */}
-          {ROW1_COLS.map((col) => (
+          {ROW1.map((col) => (
             <LinkColumn key={col.heading} col={col} />
           ))}
         </div>
@@ -264,7 +304,7 @@ export default function Footer() {
           <div className="hidden lg:block" aria-hidden="true" />
 
           {/* Row 2 tool columns */}
-          {ROW2_COLS.map((col) => (
+          {ROW2.map((col) => (
             <LinkColumn key={col.heading} col={col} />
           ))}
         </div>
@@ -277,22 +317,29 @@ export default function Footer() {
           className="mt-8 flex flex-col items-center gap-4 border-t pt-6 text-center text-xs sm:flex-row sm:items-center sm:justify-between sm:text-left"
           style={{ borderColor: "var(--border)", color: "var(--text-subtle)" }}
         >
-          <span>© {new Date().getFullYear()} BeYourTools. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} BeYourTools. {t("rights")}</span>
 
           <div className="flex flex-col items-center gap-3 sm:flex-row">
             <div className="flex items-center gap-1.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-teal-400" aria-hidden="true" />
-              <span>All tools run 100% in your browser</span>
+              <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: "var(--accent)" }} aria-hidden="true" />
+              <span>{t("browserNote")}</span>
             </div>
             <div className="flex flex-wrap justify-center gap-3 sm:justify-start">
-              {POLICY_LINKS.map(({ href, label }) => (
+              <Link
+                href="/all-tools"
+                className="focus-ring rounded font-semibold hover-text-primary transition"
+                style={{ color: "var(--accent-text)" }}
+              >
+                {t("allTools")}
+              </Link>
+              {POLICY_KEYS.map(({ href, key }) => (
                 <Link
                   key={href}
                   href={href}
                   className="focus-ring rounded hover-text-primary transition"
                   style={{ color: "var(--text-subtle)" }}
                 >
-                  {label}
+                  {tr(key)}
                 </Link>
               ))}
             </div>

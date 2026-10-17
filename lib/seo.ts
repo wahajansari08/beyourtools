@@ -133,6 +133,7 @@ export function articleSchema(opts: {
   url: string;
   publishedAt: string;
   author: string;
+  authorRole?: string;
   image?: string;
   tags?: string[];
 }) {
@@ -146,9 +147,10 @@ export function articleSchema(opts: {
     datePublished: opts.publishedAt,
     dateModified: opts.publishedAt,
     author: {
-      "@type": "Organization",
+      "@type": "Person",
       name: opts.author,
-      url: SITE.url,
+      ...(opts.authorRole ? { jobTitle: opts.authorRole } : {}),
+      url: `${SITE.url}/about`,
     },
     publisher: {
       "@type": "Organization",

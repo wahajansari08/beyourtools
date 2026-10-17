@@ -93,7 +93,7 @@ function statusText(state: State): string {
 }
 
 function statusColor(state: State): string {
-  if (state === "done") return "var(--teal)";
+  if (state === "done") return "var(--accent-text)";
   if (state === "error") return "var(--coral)";
   if (state === "processing") return "var(--accent)";
   return "var(--text-subtle)";
@@ -432,7 +432,7 @@ export default function VideoToolClient({ tool }: { tool: VideoTool }) {
 
         <div className="flex flex-wrap items-center gap-2">
           {outputChangeLabel && (
-            <span className="rounded-md border px-2.5 py-1 text-xs font-medium" style={{ borderColor: "var(--border-strong)", color: outputBlob && upload && outputBlob.size <= upload.file.size ? "var(--teal)" : "var(--coral)" }}>
+            <span className="rounded-md border px-2.5 py-1 text-xs font-medium" style={{ borderColor: "var(--border-strong)", color: outputBlob && upload && outputBlob.size <= upload.file.size ? "var(--accent-text)" : "var(--coral)" }}>
               {outputChangeLabel}
             </span>
           )}

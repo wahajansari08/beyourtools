@@ -355,8 +355,26 @@ export const financeTools: FinanceTool[] = [
     icon: "🚀",
     keywords: ["revenue growth", "growth rate", "yoy", "period", "percentage"],
   },
-];
+  {
+    slug: "invoice-generator",
+    name: "Invoice Generator",
+    description:
+      "Create professional invoices with line items, tax and discounts, then download as PDF.",
+    cluster: "Business Finance",
+    icon: "🧾",
+    keywords: ["invoice generator", "free invoice", "invoice maker", "invoice pdf", "billing", "freelance invoice"],
+  },
 
+  {
+    slug: "sip-calculator",
+    name: "SIP Calculator",
+    description:
+      "Estimate the future value of monthly SIP investments with compound growth, a growth chart and a yearly breakdown.",
+    cluster: "Savings & Interest",
+    icon: "📈",
+    keywords: ["sip calculator", "sip returns", "mutual fund sip", "systematic investment plan", "sip growth", "monthly investment calculator"],
+  },
+];
 // ── Clusters ──────────────────────────────────────────────────────────────────
 
 export const financeClusters: FinanceCluster[] = [

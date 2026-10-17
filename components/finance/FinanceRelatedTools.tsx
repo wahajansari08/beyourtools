@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import Btn from "@/components/Btn";
 import { relatedFinanceTools, clusterSlugs } from "@/lib/finance-tools-config";
 

@@ -7,9 +7,21 @@ import { videoTools, videoCategories } from "@/lib/video-tools-config";
 import { audioTools, audioCategories } from "@/lib/audio-tools-config";
 import { qrBarcodeTools, qrBarcodeCategories } from "@/lib/qr-barcode-config";
 import { financeTools, financeClusters, clusterSlugs } from "@/lib/finance-tools-config";
+import { designTools } from "@/lib/design-tools-config";
+import { imageTools } from "@/lib/image-tools-config";
+import { generalTools, GENERAL_HUBS } from "@/lib/general-tools-config";
+import { locales as ROUTING_LOCALES } from "@/i18n/routing";
 
 const BASE = "https://beyourtools.com";
 const now  = new Date().toISOString();
+
+// Locale variants for hreflang (English has no prefix; x-default -> English)
+// Single source of truth: i18n/routing.ts
+const LOCALES = ROUTING_LOCALES;
+
+function localeUrl(locale: string, path: string): string {
+  return locale === "en" ? `${BASE}${path}` : `${BASE}/${locale}${path}`;
+}
 
 function toSlug(s: string): string {
   return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -19,11 +31,14 @@ function url(
   path: string,
   opts: { freq?: MetadataRoute.Sitemap[number]["changeFrequency"]; priority?: number; lastMod?: string } = {}
 ): MetadataRoute.Sitemap[number] {
+  const languages: Record<string, string> = { "x-default": localeUrl("en", path) };
+  for (const l of LOCALES) languages[l] = localeUrl(l, path);
   return {
     url: `${BASE}${path}`,
     lastModified: opts.lastMod ?? now,
     changeFrequency: opts.freq ?? "monthly",
     priority: opts.priority ?? 0.7,
+    alternates: { languages },
   };
 }
 
@@ -38,7 +53,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url("/audio-tools",           { freq: "weekly",  priority: 0.9 }),
     url("/qr-barcode-tools",      { freq: "weekly",  priority: 0.9 }),
     url("/finance-tools",         { freq: "weekly",  priority: 0.9 }),
+    url("/design-tools",          { freq: "weekly",  priority: 0.9 }),
+    url("/text-tools",            { freq: "weekly",  priority: 0.9 }),
+    url("/developer-tools",       { freq: "weekly",  priority: 0.9 }),
+    url("/calculators",           { freq: "weekly",  priority: 0.9 }),
     url("/blog",                  { freq: "daily",   priority: 0.8 }),
+    url("/all-tools",            { freq: "daily",   priority: 0.85 }),
     url("/about",          { freq: "monthly", priority: 0.5 }),
     url("/contact",        { freq: "monthly", priority: 0.5 }),
     url("/privacy-policy", { freq: "monthly", priority: 0.4 }),
@@ -118,6 +138,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url(`/${t.slug}`, { priority: 0.8 })
   );
 
+  // ── Design tools (individual) ────────────────────────────────────────────
+  const designPages: MetadataRoute.Sitemap = designTools.map((t) =>
+    url(`/${t.slug}`, { priority: 0.8 })
+  );
+
+  // ── Text / Developer / Calculator tools ────────────────────────────────────
+  const generalPages: MetadataRoute.Sitemap = generalTools.map((t) =>
+    url(`/${t.slug}`, { priority: 0.8 })
+  );
+
+  // ── Image editing tools (resizer, cropper, compressor — root URLs) ─────────
+  const imageToolPages: MetadataRoute.Sitemap = imageTools.map((t) =>
+    url(`/${t.slug}`, { priority: 0.8 })
+  );
+
   // ── Blog posts ─────────────────────────────────────────────────────────────
   const blogPages: MetadataRoute.Sitemap = blogPosts.map((p) => ({
     url: `${BASE}/blog/${p.slug}`,
@@ -144,6 +179,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...audioPages,
     ...qrBarcodePages,
     ...financeToolPages,
+    ...designPages,
+    ...imageToolPages,
+    ...generalPages,
     ...blogPages,
   ];
 

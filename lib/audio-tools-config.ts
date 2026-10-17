@@ -26,7 +26,7 @@ export const audioTools: AudioTool[] = [
   { slug: "mp3-compressor",   name: "MP3 Compressor",     description: "Reduce MP3 file size by re-encoding at a lower bitrate.",                   category: "Compressors",             icon: "📦" },
   { slug: "audio-compressor", name: "Audio Compressor",   description: "Compress audio files to reduce size while preserving quality.",             category: "Compressors",             icon: "🗜️" },
   // Mergers
-  { slug: "mp3-merger",       name: "MP3 Merger",         description: "Merge multiple MP3 files into one seamless audio file.",                    category: "Mergers",                 icon: "🔗" },
+  { slug: "mp3-merger",       name: "MP3 Merger",         description: "Merge multiple MP3 files into a single audio file.",                    category: "Mergers",                 icon: "🔗" },
   { slug: "audio-joiner",     name: "Audio Joiner",       description: "Join multiple audio files of any format into a single output.",             category: "Mergers",                 icon: "➕" },
   // Effects & Processing
   { slug: "mp3-volume-booster",         name: "MP3 Volume Booster",        description: "Increase the volume of an MP3 file with gain control.",            category: "Effects & Processing", icon: "🔈" },

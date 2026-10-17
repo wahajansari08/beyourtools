@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { Link } from "@/i18n/navigation";
+import { useRouter } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { search, type SearchResult } from "@/lib/search-index";
 
 const SECTION_LABELS = {
@@ -11,14 +12,22 @@ const SECTION_LABELS = {
   pdf:     "PDF Tools",
   video:   "Video Tools",
   finance: "Finance Tools",
+  design:  "Design Tools",
+  text:    "Text Tools",
+  dev:     "Developer Tools",
+  calc:    "Calculators",
 } as const;
 
 const SECTION_COLORS = {
-  json:    "var(--teal)",
+  json:    "var(--accent)",
   image:   "var(--accent)",
-  pdf:     "var(--coral)",
-  video:   "var(--teal)",
-  finance: "var(--accent-text)",
+  pdf:     "var(--accent)",
+  video:   "var(--accent)",
+  finance: "var(--accent)",
+  design:  "var(--accent)",
+  text:    "var(--accent)",
+  dev:     "var(--accent)",
+  calc:    "var(--accent)",
 } as const;
 
 interface Props {
@@ -26,6 +35,8 @@ interface Props {
 }
 
 export default function SearchOverlay({ onClose }: Props) {
+  const t = useTranslations("search");
+  const tc = useTranslations("common");
   const [query, setQuery]       = useState("");
   const [results, setResults]   = useState<SearchResult[]>([]);
   const [active, setActive]     = useState(0);
@@ -104,7 +115,7 @@ export default function SearchOverlay({ onClose }: Props) {
         style={{ backgroundColor: "var(--bg-surface)", border: "1px solid var(--border-strong)" }}
         role="dialog"
         aria-modal="true"
-        aria-label="Search tools"
+        aria-label={t("placeholder")}
       >
         {/* Search input row */}
         <div
@@ -133,7 +144,7 @@ export default function SearchOverlay({ onClose }: Props) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Search all tools... (JSON, Image, PDF, Video)"
+            placeholder={t("placeholder")}
             className="flex-1 border-0 bg-transparent text-sm outline-none placeholder:opacity-50"
             style={{ color: "var(--text-primary)" }}
             aria-label="Search tools"
@@ -155,7 +166,7 @@ export default function SearchOverlay({ onClose }: Props) {
             onClick={onClose}
             className="focus-ring shrink-0 rounded-md p-1"
             style={{ color: "var(--text-subtle)" }}
-            aria-label="Close search"
+            aria-label={tc("closeDialog")}
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
               <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
@@ -175,14 +186,14 @@ export default function SearchOverlay({ onClose }: Props) {
                 <span style={{ color: "var(--teal)" }}>Video</span> tools.
               </p>
               <p className="mt-1 text-xs" style={{ color: "var(--text-subtle)" }}>
-                ↑ ↓ to navigate · Enter to open · Esc to close
+                {t("hint")}
               </p>
             </div>
           )}
 
           {query.trim() !== "" && results.length === 0 && (
             <div className="px-4 py-8 text-center text-sm" style={{ color: "var(--text-muted)" }}>
-              No tools found for <strong style={{ color: "var(--text-primary)" }}>&ldquo;{query}&rdquo;</strong>
+              {t("noResults", { query })}
             </div>
           )}
 

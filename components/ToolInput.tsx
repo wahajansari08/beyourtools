@@ -21,7 +21,7 @@ export default function ToolInput({
 }) {
   return (
     <div
-      className="flex flex-col overflow-hidden rounded-lg border"
+      className="flex flex-col overflow-hidden rounded-xl border"
       style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}
     >
       <div

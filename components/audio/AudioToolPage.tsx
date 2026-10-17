@@ -1,4 +1,7 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
+import { contentLocale, getTranslatedToolContentAny } from "@/lib/i18n-content";
+import { LockIcon } from "@/components/icons";
 import AudioRelatedTools from "./AudioRelatedTools";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
@@ -19,7 +22,7 @@ interface AudioToolPageProps {
   children: React.ReactNode;
 }
 
-export default function AudioToolPage({
+export default async function AudioToolPage({
   slug,
   title,
   categoryLabel,
@@ -31,19 +34,28 @@ export default function AudioToolPage({
   formats,
   children,
 }: AudioToolPageProps) {
+  const locale = await contentLocale();
+  const t = await getTranslations({ locale, namespace: "common" });
+  const tc = await getTranslatedToolContentAny(locale, slug);
+  const tTitle = tc?.name ?? title;
+  const tTagline = (tc as { tagline?: string } | undefined)?.tagline ?? tagline;
+  const tDescription = tc?.description ?? description;
+  const tHowTo = (tc?.howTo as HowToStep[] | undefined) ?? howTo;
+  const tFaqs = (tc?.faqs as FAQ[] | undefined) ?? faqs;
+  const tFeatures = (tc?.features as string[] | undefined) ?? features;
   const schemas = [
     breadcrumbSchema([
       { name: "BeYourTools", url: SITE.url },
       { name: "Audio Tools",  url: canonical("/audio-tools") },
-      { name: title,          url: canonical(`/${slug}`) },
+      { name: tTitle,          url: canonical(`/${slug}`) },
     ]),
     softwareApplicationSchema({
-      name: title,
-      description,
+      name: tTitle,
+      description: tDescription,
       url: canonical(`/${slug}`),
       category: "MultimediaApplication",
     }),
-    faqSchema(faqs),
+    faqSchema(tFaqs),
   ];
 
   return (
@@ -57,19 +69,19 @@ export default function AudioToolPage({
           <span>/</span>
           <Link href="/audio-tools" className="focus-ring rounded hover:underline" style={{ color: "var(--text-muted)" }}>Audio Tools</Link>
           <span>/</span>
-          <span style={{ color: "var(--text-secondary)" }}>{title}</span>
+          <span style={{ color: "var(--text-secondary)" }}>{tTitle}</span>
         </div>
 
         {/* Header */}
         <div className="mb-8">
-          <p className="mb-1 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--teal)" }}>
+          <p className="mb-1 text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--accent-text)" }}>
             {categoryLabel}
           </p>
           <h1 className="font-display text-2xl font-semibold sm:text-3xl" style={{ color: "var(--text-primary)" }}>
-            {title}
+            {tTitle}
           </h1>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-            {tagline}
+            {tTagline}
           </p>
         </div>
 
@@ -77,17 +89,17 @@ export default function AudioToolPage({
         {children}
 
         {/* Privacy */}
-        <p className="mt-6 text-[11px]" style={{ color: "var(--text-subtle)" }}>
-          🔒 Your audio files are processed locally in your browser and are never uploaded to any server.
+        <p className="mt-6 flex items-center gap-1.5 text-[11px]" style={{ color: "var(--text-subtle)" }}>
+          <LockIcon className="h-3.5 w-3.5 shrink-0" />Your audio files are processed locally in your browser and are never uploaded to any server.
         </p>
 
         {/* How to use */}
         <section className="mt-10 space-y-3">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>How to Use {title}</h2>
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>{t("howToUse")} {tTitle}</h2>
           <ol className="space-y-2 text-sm" style={{ color: "var(--text-muted)" }}>
-            {howTo.map((step, i) => (
+            {tHowTo.map((step, i) => (
               <li key={i} className="flex gap-2">
-                <span className="font-semibold shrink-0" style={{ color: "var(--teal)" }}>{i + 1}.</span>
+                <span className="font-semibold shrink-0" style={{ color: "var(--accent-text)" }}>{i + 1}.</span>
                 <span><strong style={{ color: "var(--text-secondary)" }}>{step.title}</strong> - {step.text}</span>
               </li>
             ))}
@@ -95,14 +107,14 @@ export default function AudioToolPage({
         </section>
 
         {/* Features */}
-        {features && features.length > 0 && (
+        {tFeatures && tFeatures.length > 0 && (
           <section className="mt-10">
-            <h2 className="mb-3 font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>{title} Features</h2>
+            <h2 className="mb-3 font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>{tTitle} {t("features")}</h2>
             <div className="grid gap-2 sm:grid-cols-2">
-              {features.map((f) => (
+              {tFeatures.map((f) => (
                 <div key={f} className="flex items-start gap-2 rounded-lg border p-3"
                   style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
-                  <span style={{ color: "var(--teal)" }} aria-hidden="true">✓</span>
+                  <span style={{ color: "var(--accent-text)" }} aria-hidden="true">✓</span>
                   <span className="text-xs" style={{ color: "var(--text-muted)" }}>{f}</span>
                 </div>
               ))}
@@ -132,7 +144,7 @@ export default function AudioToolPage({
           </h2>
           <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
             Digital audio processing requires balancing bandwidth footprint against dynamic range and psychoacoustic fidelity. 
-            Using <strong style={{ color: "var(--text-primary)" }}>{title}</strong> allows podcasters, music producers, and video editors to prepare pristine sound assets compatible with broadcast requirements, streaming platforms (Spotify, Apple Music, YouTube), and web applications.
+            Using <strong style={{ color: "var(--text-primary)" }}>{tTitle}</strong> allows podcasters, music producers, and video editors to prepare pristine sound assets compatible with broadcast requirements, streaming platforms (Spotify, Apple Music, YouTube), and web applications.
           </p>
           <div className="grid gap-4 sm:grid-cols-2 text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
             <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
@@ -154,8 +166,8 @@ export default function AudioToolPage({
 
         {/* FAQ */}
         <section className="mt-10 space-y-4">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>{title} Frequently Asked Questions</h2>
-          {faqs.map(({ question, answer }) => (
+          <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>{tTitle} {t("faqs")}</h2>
+          {tFaqs.map(({ question, answer }) => (
             <div key={question}>
               <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>{question}</p>
               <p className="mt-1 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{answer}</p>

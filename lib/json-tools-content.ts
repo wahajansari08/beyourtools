@@ -44,6 +44,7 @@ const content: Record<string, JsonToolContent> = {
       { question: "Can I format invalid JSON?", answer: "No. JSON must be syntactically valid before it can be formatted. If your JSON is broken, use the JSON Repair tool first, then format the fixed output." },
       { question: "What is the maximum JSON size I can format?", answer: "The formatter runs entirely in your browser. In practice it handles JSON up to tens of megabytes on modern devices. Very large files may cause a brief delay while the browser processes the text." },
       { question: "Is there a difference between JSON Formatter and JSON Beautifier?", answer: "They do the same thing: add indentation to make JSON readable. The Beautifier tool on this site provides the same core functionality with a slightly different interface layout." },
+      { question: "Is the JSON formatter free? Do I need an account?", answer: "Yes, it's completely free with no account, no sign-up, and no usage limits. Your JSON is processed entirely in your browser, so nothing is ever uploaded or stored." },
     ],
   },
 

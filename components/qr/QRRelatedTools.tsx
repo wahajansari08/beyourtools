@@ -14,7 +14,7 @@ export default function QRRelatedTools({ currentSlug }: { currentSlug: string })
         </h2>
         <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
           {isBarcode
-            ? "Linear 1D barcodes encode alphanumeric data using alternating parallel lines and spaces with standardized width ratios. Choosing the appropriate symbology-such as Code 128 for variable-length logistics labels, EAN-13 for global retail products, or UPC-A for North American point-of-sale systems-ensures seamless optical recognition across laser scanners, CCD readers, and camera-based mobile apps."
+            ? "Linear 1D barcodes encode alphanumeric data using alternating parallel lines and spaces with standardized width ratios. Choosing the appropriate symbology, such as Code 128 for variable-length logistics labels, EAN-13 for global retail products, or UPC-A for North American point-of-sale systems, ensures reliable optical recognition across laser scanners, CCD readers, and camera-based mobile apps."
             : "Quick Response (QR) codes are two-dimensional matrix symbologies standardized under ISO/IEC 18004. Equipped with Reed-Solomon error correction (ranging from Level L at 7% recovery up to Level H at 30% recovery), QR codes allow reliable scanning even if portions of the printed matrix suffer physical abrasion, smudging, or partial obstruction by custom logos."}
         </p>
         <div className="grid gap-4 sm:grid-cols-2 text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>

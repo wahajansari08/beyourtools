@@ -19,7 +19,7 @@ export default function ToolOutput({
 }) {
   return (
     <div
-      className="flex flex-col overflow-hidden rounded-lg border"
+      className="flex flex-col overflow-hidden rounded-xl border"
       style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}
     >
       <div

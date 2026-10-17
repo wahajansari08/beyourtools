@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import ToolHeader from "./ToolHeader";
 import RelatedTools from "./RelatedTools";
 import JsonLd from "@/components/JsonLd";
@@ -12,8 +12,10 @@ import {
 } from "@/lib/seo";
 import type { ToolCategory } from "@/lib/tools-config";
 import type { HowToStep, ToolFAQ } from "@/lib/json-tools-content";
+import { getTranslations } from "next-intl/server";
+import { contentLocale, getTranslatedToolContentAny } from "@/lib/i18n-content";
 
-export default function ToolLayout({
+export default async function ToolLayout({
   eyebrow,
   title,
   description,
@@ -34,20 +36,29 @@ export default function ToolLayout({
   faqs?: ToolFAQ[];
   children: ReactNode;
 }) {
+  const locale = await contentLocale();
+  const t = await getTranslations({ locale, namespace: "common" });
+  // Translated overrides (fall back to the English props when untranslated)
+  const tc = await getTranslatedToolContentAny(locale, currentSlug);
+  const tTitle = tc?.name ?? title;
+  const tDescription = (tc as { tagline?: string } | undefined)?.tagline ?? description;
+  const tHowTo = (tc?.howTo as HowToStep[] | undefined) ?? howTo;
+  const tFaqs = (tc?.faqs as ToolFAQ[] | undefined) ?? faqs;
+
   const toolUrl = canonical(`/${currentSlug}`);
 
   const schemas = [
     breadcrumbSchema([
       { name: "BeYourTools", url: SITE.url },
       { name: "JSON Tools",  url: canonical("/json-tools") },
-      { name: title,         url: toolUrl },
+      { name: tTitle,        url: toolUrl },
     ]),
     webAppSchema({
-      name: title,
-      description,
+      name: tTitle,
+      description: tDescription,
       url: toolUrl,
     }),
-    ...(faqs && faqs.length > 0 ? [faqSchema(faqs)] : []),
+    ...(tFaqs && tFaqs.length > 0 ? [faqSchema(tFaqs)] : []),
   ];
 
   return (
@@ -85,33 +96,33 @@ export default function ToolLayout({
               style={{ color: "var(--text-secondary)" }}
               aria-current="page"
             >
-              {title}
+              {tTitle}
             </li>
           </ol>
         </nav>
 
         {/* Header - H1, eyebrow, description */}
-        <ToolHeader eyebrow={eyebrow} title={title} description={description} />
+        <ToolHeader eyebrow={eyebrow} title={tTitle} description={tDescription} />
 
         {/* Tool UI */}
         {children}
 
         {/* How to use */}
-        {howTo && howTo.length > 0 && (
+        {tHowTo && tHowTo.length > 0 && (
           <section className="mt-10 space-y-3" aria-labelledby="howto-heading">
             <h2
               id="howto-heading"
               className="font-display text-lg font-semibold"
               style={{ color: "var(--text-primary)" }}
             >
-              How to Use {title}
+              {t("howToUse")} {tTitle}
             </h2>
             <ol className="space-y-2 text-sm" style={{ color: "var(--text-muted)" }}>
-              {howTo.map((step, i) => (
+              {tHowTo.map((step, i) => (
                 <li key={i} className="flex gap-2">
                   <span
                     className="shrink-0 font-semibold"
-                    style={{ color: "var(--teal)" }}
+                    style={{ color: "var(--accent-text)" }}
                   >
                     {i + 1}.
                   </span>
@@ -130,18 +141,18 @@ export default function ToolLayout({
         {/* JSON Architecture & Developer Standards */}
         <section className="mt-10 space-y-4 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
           <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
-            {title} &amp; JSON Developer Standards
+            {tTitle} &amp; JSON Developer Standards
           </h2>
           <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
             JSON is the standard format for web APIs and modern applications. Using the{" "}
-            <strong style={{ color: "var(--text-primary)" }}>{title}</strong> helps you check syntax,
+            <strong style={{ color: "var(--text-primary)" }}>{tTitle}</strong> helps you check syntax,
             catch formatting errors, and keep your data clean and readable.
           </p>
           <div className="grid gap-4 sm:grid-cols-2 text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
             <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
               <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Zero-Server Security</h3>
               <p>
-                All data entered into {title} runs directly inside your browser sandbox. Nothing is ever sent across the network or saved on remote servers.
+                All data entered into {tTitle} runs directly inside your browser sandbox. Nothing is ever sent across the network or saved on remote servers.
               </p>
             </div>
             <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
@@ -154,17 +165,17 @@ export default function ToolLayout({
         </section>
 
         {/* FAQ */}
-        {faqs && faqs.length > 0 && (
+        {tFaqs && tFaqs.length > 0 && (
           <section className="mt-10" aria-labelledby="faq-heading">
             <h2
               id="faq-heading"
               className="mb-4 font-display text-lg font-semibold"
               style={{ color: "var(--text-primary)" }}
             >
-              {title} Frequently Asked Questions
+              {tTitle} {t("faqs")}
             </h2>
             <div className="space-y-5">
-              {faqs.map(({ question, answer }) => (
+              {tFaqs.map(({ question, answer }) => (
                 <div key={question}>
                   <p
                     className="text-sm font-semibold"

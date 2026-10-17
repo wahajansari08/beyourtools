@@ -109,7 +109,7 @@ export default function AudioTrimmer({
           style={{ left: `${startPct}%`, width: `${endPct - startPct}%`, backgroundColor: "color-mix(in srgb,var(--accent) 30%,transparent)" }} />
         {/* Playhead */}
         <div className="absolute top-0 h-full w-0.5"
-          style={{ left: `${barProgress}%`, backgroundColor: "var(--teal)" }} />
+          style={{ left: `${barProgress}%`, backgroundColor: "var(--accent-text)" }} />
         {/* Start marker */}
         <div className="absolute top-0 h-full w-0.5"
           style={{ left: `${startPct}%`, backgroundColor: "var(--accent)" }} />
@@ -165,14 +165,14 @@ export default function AudioTrimmer({
       {/* Duration summary */}
       <div className="flex flex-wrap gap-4 text-xs" style={{ color: "var(--text-subtle)" }}>
         <span>Original: <strong style={{ color: "var(--text-secondary)" }}>{fmtTime(duration)}</strong></span>
-        <span>Selected: <strong style={{ color: "var(--teal)" }}>{fmtTime(endSec - startSec)}</strong></span>
+        <span>Selected: <strong style={{ color: "var(--accent-text)" }}>{fmtTime(endSec - startSec)}</strong></span>
       </div>
 
       {/* Preview controls */}
       <div className="flex gap-2">
         <button type="button" onClick={previewSelection}
           className="focus-ring inline-flex items-center gap-1.5 rounded border px-3 py-1.5 text-xs font-medium transition hover:opacity-80"
-          style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--teal)" }}>
+          style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--accent-text)" }}>
           ▶ Preview selection
         </button>
         {playing && (

@@ -44,16 +44,19 @@ export default function FaqAccordion({ faqs, className = "" }: FaqAccordionProps
                 </span>
               </button>
             </dt>
-            <dd
-              id={`faq-answer-${i}`}
-              role="region"
-              aria-labelledby={`faq-question-${i}`}
-              hidden={!isOpen}
-              className="border-t px-4 py-3 text-sm leading-relaxed"
-              style={{ borderColor: "var(--border)", color: "var(--text-muted)", backgroundColor: "var(--bg-elevated)" }}
-            >
-              {faq.answer}
-            </dd>
+            <div className={`acc-panel${isOpen ? " open" : ""}`}>
+              <div>
+                <dd
+                  id={`faq-answer-${i}`}
+                  role="region"
+                  aria-labelledby={`faq-question-${i}`}
+                  className="border-t px-4 py-3 text-sm leading-relaxed"
+                  style={{ borderColor: "var(--border)", color: "var(--text-muted)", backgroundColor: "var(--bg-elevated)" }}
+                >
+                  {faq.answer}
+                </dd>
+              </div>
+            </div>
           </div>
         );
       })}

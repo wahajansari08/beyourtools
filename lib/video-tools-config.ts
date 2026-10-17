@@ -25,7 +25,8 @@ export type VideoToolKind =
   | "thumbnail"
   | "frames"
   | "remove-audio"
-  | "add-audio";
+  | "add-audio"
+  | "social-resize";
 
 export interface VideoFAQ {
   question: string;
@@ -688,6 +689,48 @@ export const videoTools: VideoTool[] = [
       privacyFaq,
     ],
     related: ["remove-audio-from-video", "mp4-to-mp3", "video-merger", "video-converter"],
+    engine: "ffmpeg",
+  },
+  {
+    slug: "social-video-resizer",
+    name: "Social Video Resizer",
+    description: "Resize videos for Reels, Shorts, TikTok and feeds with aspect presets and blur-fill.",
+    category: "Resize & Crop",
+    icon: "9:16",
+    kind: "social-resize",
+    title: "Social Video Resizer - Resize Video for Reels & Shorts | BeYourTools",
+    metaDescription:
+      "Resize videos for social media free: 9:16 for Reels/Shorts, 1:1 square, 4:5 portrait, 16:9 landscape. Crop-to-fill or blur-background, right in your browser.",
+    tagline:
+      "One video, every feed. Reframe any clip for Reels, Shorts, TikTok or square posts without re-shooting anything.",
+    accept: "video/*,.mp4,.mov,.mkv,.webm,.avi,.m4v",
+    acceptLabel: "MP4, MOV, MKV, WebM, AVI, M4V",
+    outputExt: "mp4",
+    outputMime: "video/mp4",
+    processLabel: "Resize video",
+    formats: ["MP4", "MOV", "MKV", "WebM", "AVI", "M4V"],
+    howTo: [
+      { title: "Upload your video", text: "Drop a video file or click to browse - it never leaves your device." },
+      { title: "Pick an aspect ratio", text: "Choose 9:16 for Reels/Shorts, 1:1 for square feeds, 4:5 for portrait posts, or 16:9 for landscape." },
+      { title: "Choose fill or blur", text: "Crop-to-fill zooms and crops to fill the frame; blur-background keeps the whole video over a blurred backdrop." },
+      { title: "Set quality and resize", text: "Pick a quality preset, then process. Compare the output size and download your MP4." },
+    ],
+    features: [
+      "9:16, 1:1, 4:5 and 16:9 presets",
+      "Crop-to-fill or blurred-background fit",
+      "Quality presets from draft to best",
+      "Output file size shown before download",
+      "100% in-browser via ffmpeg",
+    ],
+    faqs: [
+      { question: "What size will my 9:16 video be?", answer: "9:16 exports at 1080x1920, 1:1 at 1080x1080, 4:5 at 1080x1350 and 16:9 at 1920x1080 - the standard full-quality sizes for each platform." },
+      { question: "What's the difference between crop-to-fill and blur-background?", answer: "Crop-to-fill zooms into your video and trims the edges so every pixel of the frame is filled - great for punchy vertical clips. Blur-background scales your whole video to fit and fills the empty space with a blurred copy of itself, so nothing gets cut off." },
+      { question: "Will resizing reduce my video quality?", answer: "Re-encoding always involves some quality trade-off. Choose the High or Best quality preset to keep it minimal. Avoid upscaling a small source to a large preset - pick the preset closest to your source resolution." },
+      { question: "Can I resize a video for TikTok, Reels and Shorts at once?", answer: "All three use the 9:16 vertical format, so one 9:16 export works for TikTok, Instagram Reels and YouTube Shorts." },
+      { question: "Is my video uploaded anywhere?", answer: "No. The resize runs entirely in your browser using ffmpeg compiled to WebAssembly. Your video never leaves your device." },
+      { question: "Does this download videos from YouTube or Instagram?", answer: "No - this tool resizes video files you already have. It cannot download videos from YouTube, Instagram, TikTok or Facebook." },
+    ],
+    related: ["video-resizer", "video-cropper", "video-compressor", "video-converter"],
     engine: "ffmpeg",
   },
 ];

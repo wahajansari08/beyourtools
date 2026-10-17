@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import CategoryIcon, { type CategoryIconName } from "@/components/CategoryIcon";
 
 export const metadata: Metadata = {
   title: "Page Not Found (404) | BeYourTools",
@@ -10,20 +11,20 @@ export const metadata: Metadata = {
   },
 };
 
-const CATEGORIES = [
-  { name: "JSON Tools", href: "/json-tools", icon: "{ }", desc: "Format, validate, diff & convert JSON" },
-  { name: "Image Converter", href: "/image-converter", icon: "🖼", desc: "118 conversion pairs for JPG, PNG, WebP, SVG" },
-  { name: "PDF Tools", href: "/pdf-tools", icon: "📄", desc: "Merge, split, compress & protect PDFs" },
-  { name: "Video Tools", href: "/video-tools", icon: "🎬", desc: "Compress, convert, trim & create GIFs" },
-  { name: "Audio Tools", href: "/audio-tools", icon: "🎵", desc: "Convert, cut, compress & normalize audio" },
-  { name: "QR & Barcode Tools", href: "/qr-barcode-tools", icon: "▦", desc: "Generate & scan QR codes and barcodes" },
-  { name: "Finance Calculators", href: "/finance-tools", icon: "💰", desc: "40 calculators for loans, margins, taxes & savings" },
+const CATEGORIES: { name: string; href: string; icon: CategoryIconName; desc: string }[] = [
+  { name: "JSON Tools", href: "/json-tools", icon: "json", desc: "Format, validate, diff & convert JSON" },
+  { name: "Image Converter", href: "/image-converter", icon: "image", desc: "118 conversion pairs for JPG, PNG, WebP, SVG" },
+  { name: "PDF Tools", href: "/pdf-tools", icon: "pdf", desc: "Merge, split, compress & protect PDFs" },
+  { name: "Video Tools", href: "/video-tools", icon: "video", desc: "Compress, convert, trim & create GIFs" },
+  { name: "Audio Tools", href: "/audio-tools", icon: "audio", desc: "Convert, cut, compress & normalize audio" },
+  { name: "QR & Barcode Tools", href: "/qr-barcode-tools", icon: "qr", desc: "Generate & scan QR codes and barcodes" },
+  { name: "Finance Calculators", href: "/finance-tools", icon: "finance", desc: "40 calculators for loans, margins, taxes & savings" },
 ];
 
 export default function NotFound() {
   return (
     <div className="mx-auto w-full max-w-4xl px-4 py-16 sm:px-6 sm:py-24 text-center">
-      <p className="font-mono text-xs font-semibold uppercase tracking-widest" style={{ color: "var(--teal)" }}>
+      <p className="font-mono text-xs font-semibold uppercase tracking-widest" style={{ color: "var(--accent-text)" }}>
         Error 404
       </p>
       <h1 className="mt-2 font-display text-3xl font-bold tracking-tight sm:text-5xl" style={{ color: "var(--text-primary)" }}>
@@ -56,7 +57,7 @@ export default function NotFound() {
               style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}
             >
               <div className="flex items-center gap-2.5">
-                <span className="text-xl" aria-hidden="true">{cat.icon}</span>
+                <span className="flex h-8 w-8 items-center justify-center rounded-lg" style={{ backgroundColor: "color-mix(in srgb, var(--accent) 12%, transparent)", color: "var(--accent-text)" }} aria-hidden="true"><CategoryIcon name={cat.icon} className="h-4 w-4" /></span>
                 <span className="text-sm font-semibold group-hover:underline" style={{ color: "var(--text-primary)" }}>
                   {cat.name}
                 </span>

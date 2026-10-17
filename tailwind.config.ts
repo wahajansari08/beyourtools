@@ -51,6 +51,9 @@ const config: Config = {
           400: "#ef7d6f",
         },
       },
+      // Single site-wide font: Cabin. All three slots resolve to Cabin via
+      // the --font-* CSS variables (aliased in globals.css) - no other
+      // font families anywhere, including mono/code contexts.
       fontFamily: {
         display: ["var(--font-display)"],
         body:    ["var(--font-body)"],

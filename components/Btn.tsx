@@ -5,7 +5,7 @@
  * Pass href="" to render as Next.js <Link> (or <a> for external URLs).
  *
  * Variants:
- *   primary   - amber accent fill. Used for Calculate, Accept, Download, Send.
+ *   primary   - gold accent fill. Used for Calculate, Accept, Download, Send.
  *   secondary - outline border + elevated bg. Used for Reset, Decline, Try again.
  *   ghost     - no bg or border, text-only. Used for nav links, inline "← Back" links.
  *   danger    - coral text, no bg. Used for destructive inline actions like "Remove".
@@ -24,7 +24,7 @@
 
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from "react";
 
 // ── Types ─────────────────────────────────────────────────────────────────────

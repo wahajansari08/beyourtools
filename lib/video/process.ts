@@ -31,6 +31,10 @@ export interface VideoProcessOptions {
   gifWidth?: number;
   audioBitrate?: string;
   crop?: CropRect;
+  /** Target aspect for the "social-resize" kind, e.g. { w: 1080, h: 1920 }. */
+  aspect?: { w: number; h: number };
+  /** "fill" crops to fill the frame; "blur" fits with a blurred background. */
+  fitMode?: "fill" | "blur";
   audioFile?: File;
   audioMode?: "replace" | "mix";
   videoVolume?: number;
@@ -336,6 +340,23 @@ export async function processVideo(file: File, kind: string, opts: VideoProcessO
     const out = outputName("mp4");
     const filters = [scaleFilter(opts), "fps=30"].filter(Boolean).join(",");
     const args = ["-i", "$INPUT", "-movflags", "faststart", "-pix_fmt", "yuv420p", "-vf", filters || "fps=30", "-c:v", "libx264", "-preset", "ultrafast", "-tune", "fastdecode", "-crf", CRF[opts.quality ?? "balanced"], "-y", out];
+    return runSingle(file, args, out, MIME.mp4, opts);
+  }
+
+  if (kind === "social-resize" && opts.aspect) {
+    const w = Math.round(opts.aspect.w);
+    const h = Math.round(opts.aspect.h);
+    if (w <= 0 || h <= 0) throw new Error("Choose a valid aspect ratio preset.");
+    let vf: string;
+    if (opts.fitMode === "blur") {
+      // Fit the whole video, fill leftover space with a blurred copy of itself.
+      vf = `split[a][b];[a]scale=${w}:${h}:force_original_aspect_ratio=increase,crop=${w}:${h},boxblur=20[bg];[b]scale=${w}:${h}:force_original_aspect_ratio=decrease[fg];[bg][fg]overlay=(W-w)/2:(H-h)/2`;
+    } else {
+      // Crop-to-fill: scale up to cover, then center-crop to the target frame.
+      vf = `scale=${w}:${h}:force_original_aspect_ratio=increase,crop=${w}:${h}`;
+    }
+    const out = outputName("mp4");
+    const args = ["-i", "$INPUT", "-vf", vf, ...videoEncodeArgs("mp4", opts), "-y", out];
     return runSingle(file, args, out, MIME.mp4, opts);
   }
 

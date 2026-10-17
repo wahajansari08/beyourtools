@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import Btn from "@/components/Btn";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -285,7 +285,7 @@ export default function ChatSupport() {
               href="/contact"
               onClick={() => setOpen(false)}
               className="focus-ring text-[11px] hover:underline"
-              style={{ color: "var(--teal)" }}
+              style={{ color: "var(--accent-text)" }}
             >
               Open full contact page →
             </Link>

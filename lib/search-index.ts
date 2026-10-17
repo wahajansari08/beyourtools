@@ -5,9 +5,11 @@
 
 import { tools } from "./tools-config";
 import { pdfTools } from "./pdf-tools-config";
-import { conversionRoutes, getFormat } from "./image-tools-config";
+import { conversionRoutes, getFormat, imageTools } from "./image-tools-config";
 import { videoTools } from "./video-tools-config";
+import { designTools } from "./design-tools-config";
 import { financeTools } from "./finance-tools-config";
+import { generalTools } from "./general-tools-config";
 
 export interface SearchResult {
   slug: string;
@@ -15,7 +17,7 @@ export interface SearchResult {
   description: string;
   href: string;
   category: string;
-  section: "json" | "image" | "pdf" | "video" | "finance";
+  section: "json" | "image" | "pdf" | "video" | "design" | "finance" | "text" | "dev" | "calc";
   icon: string;
   keywords: string[];
 }
@@ -81,6 +83,23 @@ function buildIndex(): SearchResult[] {
     });
   }
 
+  // ── Image editing tools (resizer, cropper, compressor) ─────────────────────
+  for (const t of imageTools) {
+    index.push({
+      slug: t.slug,
+      name: t.name,
+      description: t.description,
+      href: `/${t.slug}`,
+      category: `Image · ${t.category}`,
+      section: "image",
+      icon: "IMG",
+      keywords: [t.name, t.description, t.category, t.slug, ...t.keywords, "image", "tools"]
+        .join(" ")
+        .toLowerCase()
+        .split(/\s+/),
+    });
+  }
+
   // Video tools
   for (const t of videoTools) {
     index.push({
@@ -92,6 +111,41 @@ function buildIndex(): SearchResult[] {
       section: "video",
       icon: t.icon,
       keywords: [t.name, t.description, t.category, t.slug, ...t.formats, "video", "tools"]
+        .join(" ")
+        .toLowerCase()
+        .split(/\s+/),
+    });
+  }
+
+  // ── Design tools ─────────────────────────────────────────────────────────
+  for (const t of designTools) {
+    index.push({
+      slug: t.slug,
+      name: t.name,
+      description: t.description,
+      href: `/${t.slug}`,
+      category: `Design · ${t.category}`,
+      section: "design",
+      icon: t.category === "Color Tools" ? "CLR" : "IMG",
+      keywords: [t.name, t.description, t.category, t.slug, ...t.keywords, "design", "tools", "image"]
+        .join(" ")
+        .toLowerCase()
+        .split(/\s+/),
+    });
+  }
+
+  // ── Text / Developer / Calculator tools ──────────────────────────────────────
+  for (const t of generalTools) {
+    const section = t.category === "Text Tools" ? "text" : t.category === "Developer Tools" ? "dev" : "calc";
+    index.push({
+      slug: t.slug,
+      name: t.name,
+      description: t.description,
+      href: `/${t.slug}`,
+      category: t.category,
+      section,
+      icon: t.category === "Text Tools" ? "TXT" : t.category === "Developer Tools" ? "DEV" : "123",
+      keywords: [t.name, t.description, t.category, t.slug, ...t.keywords]
         .join(" ")
         .toLowerCase()
         .split(/\s+/),

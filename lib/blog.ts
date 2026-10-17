@@ -8,6 +8,7 @@ import { batch7 } from "./blog-posts/batch7";
 import { batch8 } from "./blog-posts/batch8";
 import { batch9 } from "./blog-posts/batch9";
 import { batch10 } from "./blog-posts/batch10";
+import { batch11 } from "./blog-posts/batch11";
 
 export interface BlogPost {
   slug: string;
@@ -22,6 +23,12 @@ export interface BlogPost {
   tags: string[];
 }
 
+/** Site author identity (E-E-A-T byline). All posts are written by the founder. */
+export const SITE_AUTHOR = {
+  name: "Be",
+  role: "Founder & Editor, BeYourTools",
+} as const;
+
 export const blogPosts: BlogPost[] = [
   ...batch1,
   ...batch2,
@@ -33,6 +40,7 @@ export const blogPosts: BlogPost[] = [
   ...batch8,
   ...batch9,
   ...batch10,
+  ...batch11,
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {

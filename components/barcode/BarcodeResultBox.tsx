@@ -28,7 +28,7 @@ export default function BarcodeResultBox({ value, format, onReset, onScanAgain }
       style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}
     >
       <div className="flex items-center gap-2 flex-wrap">
-        <span className="h-2 w-2 rounded-full" style={{ backgroundColor: "var(--teal)" }} aria-hidden="true" />
+        <span className="h-2 w-2 rounded-full" style={{ backgroundColor: "var(--accent-text)" }} aria-hidden="true" />
         <span className="text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--text-subtle)" }}>
           Decoded result
         </span>
@@ -58,7 +58,7 @@ export default function BarcodeResultBox({ value, format, onReset, onScanAgain }
             target="_blank"
             rel="noopener noreferrer"
             className="focus-ring inline-flex items-center gap-1.5 rounded border px-3 py-1.5 text-xs font-medium transition hover:opacity-80"
-            style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--teal)" }}
+            style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--accent-text)" }}
           >
             Open URL
           </a>

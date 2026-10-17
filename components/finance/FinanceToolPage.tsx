@@ -1,4 +1,7 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
+import { contentLocale, getTranslatedToolContentAny } from "@/lib/i18n-content";
+import { LockIcon } from "@/components/icons";
 import JsonLd from "@/components/JsonLd";
 import FinanceRelatedTools from "./FinanceRelatedTools";
 import {
@@ -34,7 +37,7 @@ export interface FinanceToolPageProps {
   children: React.ReactNode;
 }
 
-export default function FinanceToolPage({
+export default async function FinanceToolPage({
   slug,
   title,
   cluster,
@@ -44,6 +47,13 @@ export default function FinanceToolPage({
   faqs,
   children,
 }: FinanceToolPageProps) {
+  const locale = await contentLocale();
+  const t = await getTranslations({ locale, namespace: "common" });
+  const tc = await getTranslatedToolContentAny(locale, slug);
+  const tTitle = tc?.name ?? title;
+  const tTagline = (tc as { tagline?: string } | undefined)?.tagline ?? tagline;
+  const tDescription = tc?.description ?? description;
+  const tFaqs = (tc?.faqs as FinanceFaq[] | undefined) ?? faqs;
   const toolUrl = canonical(`/${slug}`);
   const clusterSlug = clusterSlugs[cluster];
   const clusterUrl = canonical(`/finance-tools/${clusterSlug}`);
@@ -53,14 +63,14 @@ export default function FinanceToolPage({
       { name: "BeYourTools",    url: SITE.url },
       { name: "Finance Tools",  url: canonical("/finance-tools") },
       { name: cluster,          url: clusterUrl },
-      { name: title,            url: toolUrl },
+      { name: tTitle,            url: toolUrl },
     ]),
     financeCalculatorSchema({
-      name: title,
-      description,
+      name: tTitle,
+      description: tDescription,
       url: toolUrl,
     }),
-    faqSchema(faqs),
+    faqSchema(tFaqs),
   ];
 
   return (
@@ -89,7 +99,7 @@ export default function FinanceToolPage({
               </Link>
             </li>
             <li aria-hidden="true">/</li>
-            <li style={{ color: "var(--text-secondary)" }} aria-current="page">{title}</li>
+            <li style={{ color: "var(--text-secondary)" }} aria-current="page">{tTitle}</li>
           </ol>
         </nav>
 
@@ -105,13 +115,13 @@ export default function FinanceToolPage({
             className="font-display text-2xl font-semibold sm:text-3xl"
             style={{ color: "var(--text-primary)" }}
           >
-            {title}
+            {tTitle}
           </h1>
           <p
             className="mt-2 max-w-2xl text-sm leading-relaxed"
             style={{ color: "var(--text-muted)" }}
           >
-            {tagline}
+            {tTagline}
           </p>
         </header>
 
@@ -121,8 +131,8 @@ export default function FinanceToolPage({
         </section>
 
         {/* Privacy note */}
-        <p className="mt-4 text-[11px]" style={{ color: "var(--text-subtle)" }}>
-          🔒 All calculations happen instantly in your browser. No data is sent to any server.
+        <p className="mt-4 flex items-center gap-1.5 text-[11px]" style={{ color: "var(--text-subtle)" }}>
+          <LockIcon className="h-3.5 w-3.5 shrink-0" />All calculations happen instantly in your browser. No data is sent to any server.
         </p>
 
         {/* Formula & explanation */}
@@ -132,7 +142,7 @@ export default function FinanceToolPage({
             className="font-display text-lg font-semibold"
             style={{ color: "var(--text-primary)" }}
           >
-            How the {title} Works
+            {t("howItWorks", { title: tTitle })}
           </h2>
           <div
             className="rounded-lg border p-4 text-sm leading-relaxed space-y-3"
@@ -149,11 +159,11 @@ export default function FinanceToolPage({
         {/* Financial Decision-Making & Planning Framework */}
         <section className="mt-10 space-y-4 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
           <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
-            {title} Insights &amp; Strategic Planning
+            {tTitle} {t("insightsTitle")}
           </h2>
           <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
             Good estimates help you plan your money with confidence. Use the numbers from the{" "}
-            <strong style={{ color: "var(--text-primary)" }}>{title}</strong> to set realistic goals,
+            <strong style={{ color: "var(--text-primary)" }}>{tTitle}</strong> to set realistic goals,
             cut extra costs, and make smart financial decisions.
           </p>
           <div className="grid gap-4 sm:grid-cols-2 text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
@@ -179,10 +189,10 @@ export default function FinanceToolPage({
             className="mb-4 font-display text-lg font-semibold"
             style={{ color: "var(--text-primary)" }}
           >
-            {title} Frequently Asked Questions
+            {tTitle} {t("faqs")}
           </h2>
           <div className="space-y-5">
-            {faqs.map(({ question, answer }) => (
+            {tFaqs.map(({ question, answer }) => (
               <div key={question}>
                 <p className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>
                   {question}
@@ -232,7 +242,7 @@ export default function FinanceToolPage({
               </p>
               <p>
                 BeYourTools is not a bank, lender, or financial advisor. This tool does not provide official tax or legal advice. Real rates and fees depend on your lender and local rules. For major financial decisions, please speak with a qualified professional. Read our complete{" "}
-                <Link href="/disclaimer" className="underline hover-text-primary" style={{ color: "var(--teal)" }}>
+                <Link href="/disclaimer" className="underline hover-text-primary" style={{ color: "var(--accent-text)" }}>
                   Financial &amp; Legal Disclaimer
                 </Link>.
               </p>

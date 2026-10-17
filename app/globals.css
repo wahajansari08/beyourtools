@@ -12,71 +12,97 @@
 .dark {
   color-scheme: dark;
 
-  --bg-page:       #0a0d13;
-  --bg-surface:    #0e1218;
-  --bg-elevated:   #141a24;
-  --border:        #1c2432;
+  --bg-page: #0a0d13;
+  --bg-surface: #0e1218;
+  --bg-elevated: #141a24;
+  --border: #1c2432;
   --border-strong: #2a3548;
 
-  --text-primary:   #f0f3f8;
+  --text-primary: #f0f3f8;
   --text-secondary: #dde2ec;
-  --text-muted:     #8b96ab;
+  --text-muted: #8b96ab;
   /* BUG FIX: #5c6b85 on #0e1218 = 2.8:1 (fails AA). Lightened to #8294ad = 4.6:1 */
-  --text-subtle:    #8294ad;
+  --text-subtle: #8294ad;
 
-  --accent:         #f2b84b;
-  --accent-hover:   #e8a52f;
-  --accent-fg:      #0a0d13;
-  /* In dark mode accent is already high-contrast as text; accent-text = accent */
-  --accent-text:    #f2b84b;
+  --accent: #fbbf24;
+  --accent-hover: #f59e0b;
+  --accent-fg: #1a1207;
+  /* Refined gold accent (evolved from the original brand gold). Single accent + neutrals. */
+  --accent-text: #fcd34d;
 
-  --teal:           #4fd1c5;
-  --coral:          #ef7d6f;
+  --teal: #4fd1c5;
+  --coral: #ef7d6f;
 
   --scrollbar-track: #0e1218;
   --scrollbar-thumb: #2a3548;
   --scrollbar-hover: #3c4a63;
 
-  --focus-ring-color: #f2b84b;
+  --focus-ring-color: #fbbf24;
   --focus-ring-offset: #0a0d13;
 }
 
 .light {
   color-scheme: light;
 
-  --bg-page:       #f8fafc;
-  --bg-surface:    #ffffff;
-  --bg-elevated:   #f1f5f9;
-  --border:        #e2e8f0;
+  --bg-page: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-elevated: #f1f5f9;
+  --border: #e2e8f0;
   --border-strong: #cbd5e1;
 
-  --text-primary:   #0f172a;
+  --text-primary: #0f172a;
   --text-secondary: #1e293b;
-  --text-muted:     #475569;
+  --text-muted: #475569;
   /* --text-subtle must pass AA (4.5:1) on all backgrounds including white (#ffffff).
      #64748b on #ffffff = 5.93:1 ✓. On #f8fafc = 5.7:1 ✓. On #f1f5f9 = 5.16:1 ✓.
      All pass - no change needed for light mode text-subtle. */
-  --text-subtle:    #64748b;
+  --text-subtle: #64748b;
 
-  --accent:         #e8a52f;
-  --accent-hover:   #d48f1a;
-  /* BUG FIX: #e8a52f on #f8fafc = 2.2:1 (fails AA).
-     For text/link usage in light mode, use --accent-text which is AA-compliant.
-     --accent itself is retained for use as a background color with --accent-fg text. */
-  --accent-text:    #92600a;   /* 7.2:1 on white - AA + AAA */
-  --accent-fg:      #ffffff;
+  --accent: #d97706;
+  --accent-hover: #b45309;
+  /* Refined gold accent. accent-text (#92400e) is AAA-compliant on light surfaces.
+     --accent itself is used as a background color with --accent-fg text. */
+  --accent-text: #92400e; /* 7.1:1 on white - AAA */
+  --accent-fg: #1a1207;
 
   /* BUG FIX: #0d9488 on #f8fafc = 4.6:1 (borderline for small text).
      Darkened to #0a7a70 = 5.8:1 on white - safely passes AA for all sizes. */
-  --teal:           #0a7a70;
-  --coral:          #dc2626;
+  --teal: #0a7a70;
+  --coral: #dc2626;
 
   --scrollbar-track: #f1f5f9;
   --scrollbar-thumb: #cbd5e1;
   --scrollbar-hover: #94a3b8;
 
-  --focus-ring-color: #e8a52f;
+  --focus-ring-color: #d97706;
   --focus-ring-offset: #f8fafc;
+}
+
+/* ─── Site font ─────────────────────────────────────────────────────────────
+   Cabin is the ONLY Latin font used anywhere on the site (loaded once via
+   next/font in [locale]/layout.tsx as --font-cabin). The legacy variable
+   names --font-display / --font-body / --font-mono are kept because
+   components and tailwind.config.ts reference them - they all resolve to
+   Cabin for Latin text, including code/mono contexts.
+   Documented exception: Cabin covers Latin only, so the Hindi (Devanagari)
+   and Urdu (Arabic script) locales load Noto Sans Devanagari
+   (--font-devanagari) and Noto Nastaliq Urdu (--font-nastaliq) as script
+   companions. Chinese (zh) loads Noto Sans SC (--font-sans-sc) and Arabic
+   (ar) loads Noto Sans Arabic (--font-sans-arabic), same pattern. They are
+   appended AFTER Cabin in the stack with unicode-range subsets, so Latin
+   text always renders in Cabin and browsers only download the companion
+   fonts when those scripts appear on the page.
+──────────────────────────────────────────────────────────────────────────── */
+:root {
+  --font-display:
+    var(--font-cabin), var(--font-devanagari), var(--font-nastaliq),
+    var(--font-sans-sc), var(--font-sans-arabic);
+  --font-body:
+    var(--font-cabin), var(--font-devanagari), var(--font-nastaliq),
+    var(--font-sans-sc), var(--font-sans-arabic);
+  --font-mono:
+    var(--font-cabin), var(--font-devanagari), var(--font-nastaliq),
+    var(--font-sans-sc), var(--font-sans-arabic);
 }
 
 /* ─── Base ─────────────────────────────────────────────────────────────────── */
@@ -88,7 +114,11 @@ html {
 body {
   background-color: var(--bg-page);
   color: var(--text-secondary);
-  transition: background-color 0.2s ease, color 0.2s ease;
+  /* Smooth theme cross-fade (initial-load flash prevented by the inline theme script in layout.tsx) */
+  transition:
+    background-color 220ms ease,
+    color 220ms ease,
+    border-color 220ms ease;
 }
 
 /* ─── Form placeholders ─────────────────────────────────────────────────────
@@ -111,15 +141,33 @@ textarea:-ms-input-placeholder {
    These map CSS vars → classes so components stay readable.
 ──────────────────────────────────────────────────────────────────────────── */
 
-.bg-page     { background-color: var(--bg-page); }
-.bg-surface  { background-color: var(--bg-surface); }
-.bg-elevated { background-color: var(--bg-elevated); }
-.border-theme       { border-color: var(--border); }
-.border-theme-strong { border-color: var(--border-strong); }
-.text-primary   { color: var(--text-primary); }
-.text-secondary { color: var(--text-secondary); }
-.text-muted     { color: var(--text-muted); }
-.text-subtle    { color: var(--text-subtle); }
+.bg-page {
+  background-color: var(--bg-page);
+}
+.bg-surface {
+  background-color: var(--bg-surface);
+}
+.bg-elevated {
+  background-color: var(--bg-elevated);
+}
+.border-theme {
+  border-color: var(--border);
+}
+.border-theme-strong {
+  border-color: var(--border-strong);
+}
+.text-primary {
+  color: var(--text-primary);
+}
+.text-secondary {
+  color: var(--text-secondary);
+}
+.text-muted {
+  color: var(--text-muted);
+}
+.text-subtle {
+  color: var(--text-subtle);
+}
 
 /* ─── Selection ─────────────────────────────────────────────────────────────── */
 
@@ -130,10 +178,20 @@ textarea:-ms-input-placeholder {
 
 /* ─── Scrollbars ────────────────────────────────────────────────────────────── */
 
-::-webkit-scrollbar        { width: 10px; height: 10px; }
-::-webkit-scrollbar-track  { background: var(--scrollbar-track); }
-::-webkit-scrollbar-thumb  { background: var(--scrollbar-thumb); border-radius: 6px; }
-::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-hover); }
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-hover);
+}
 
 /* ─── Focus ring ────────────────────────────────────────────────────────────── */
 
@@ -150,7 +208,10 @@ textarea:-ms-input-placeholder {
 
 .code-surface {
   background-color: var(--bg-surface);
-  background-image: linear-gradient(rgba(139, 150, 171, 0.04) 1px, transparent 1px);
+  background-image: linear-gradient(
+    rgba(139, 150, 171, 0.04) 1px,
+    transparent 1px
+  );
   background-size: 100% 1.6em;
 }
 
@@ -159,8 +220,20 @@ textarea:-ms-input-placeholder {
 .bg-grid-fade {
   background-image:
     linear-gradient(to bottom, transparent, var(--bg-page)),
-    repeating-linear-gradient(0deg,  rgba(139,150,171,0.06) 0px, rgba(139,150,171,0.06) 1px, transparent 1px, transparent 40px),
-    repeating-linear-gradient(90deg, rgba(139,150,171,0.06) 0px, rgba(139,150,171,0.06) 1px, transparent 1px, transparent 40px);
+    repeating-linear-gradient(
+      0deg,
+      rgba(139, 150, 171, 0.06) 0px,
+      rgba(139, 150, 171, 0.06) 1px,
+      transparent 1px,
+      transparent 40px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(139, 150, 171, 0.06) 0px,
+      rgba(139, 150, 171, 0.06) 1px,
+      transparent 1px,
+      transparent 40px
+    );
 }
 
 /* ─── Prevent FOUC: apply dark before JS hydrates ──────────────────────────── */
@@ -169,9 +242,9 @@ textarea:-ms-input-placeholder {
 /* ─── Hover utility classes (CSS-only, safe for Server Components) ──────────── */
 
 .hover-card:hover {
-  border-color: color-mix(in srgb, var(--teal) 40%, transparent) !important;
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--teal) 15%, transparent);
-  transform: translateY(-2px);
+  border-color: var(--border-strong) !important;
+  box-shadow: 0 16px 44px -12px rgba(251, 191, 36, 0.4);
+  transform: translateY(-4px);
 }
 
 .hover-card-accent:hover {
@@ -186,9 +259,15 @@ textarea:-ms-input-placeholder {
   transform: translateY(-2px);
 }
 
-.hover-text:hover { color: var(--text-primary) !important; }
-.hover-border:hover { border-color: var(--border-strong) !important; }
-.hover-text-primary:hover { color: var(--text-primary) !important; }
+.hover-text:hover {
+  color: var(--text-primary) !important;
+}
+.hover-border:hover {
+  border-color: var(--border-strong) !important;
+}
+.hover-text-primary:hover {
+  color: var(--text-primary) !important;
+}
 
 /* ─── Blog article content ──────────────────────────────────────────────────── */
 
@@ -220,13 +299,14 @@ textarea:-ms-input-placeholder {
 }
 
 .blog-content a {
-  color: var(--teal);
+  color: var(--accent-text);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
 .blog-content a:hover {
-  color: var(--accent);
+  color: var(--accent-text);
+  text-decoration-thickness: 2px;
 }
 
 .blog-content ul,
@@ -237,10 +317,16 @@ textarea:-ms-input-placeholder {
   gap: 0.35rem;
 }
 
-.blog-content ul { list-style-type: disc; }
-.blog-content ol { list-style-type: decimal; }
+.blog-content ul {
+  list-style-type: disc;
+}
+.blog-content ol {
+  list-style-type: decimal;
+}
 
-.blog-content li { color: var(--text-secondary); }
+.blog-content li {
+  color: var(--text-secondary);
+}
 
 .blog-content code {
   font-family: var(--font-mono);
@@ -309,8 +395,14 @@ textarea:-ms-input-placeholder {
 /* ─── Cookie banner slide-up animation ──────────────────────────────────────── */
 
 @keyframes slide-up {
-  from { transform: translateY(100%); opacity: 0; }
-  to   { transform: translateY(0);    opacity: 1; }
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .animate-slide-up {
@@ -325,7 +417,9 @@ textarea:-ms-input-placeholder {
   color: var(--text-secondary);
 }
 
-.policy-content section { padding-top: 0.25rem; }
+.policy-content section {
+  padding-top: 0.25rem;
+}
 
 .policy-content h2 {
   margin-top: 0;
@@ -346,7 +440,9 @@ textarea:-ms-input-placeholder {
   color: var(--text-primary);
 }
 
-.policy-content p { margin-bottom: 0.75rem; }
+.policy-content p {
+  margin-bottom: 0.75rem;
+}
 
 .policy-content ul,
 .policy-content ol {
@@ -356,9 +452,15 @@ textarea:-ms-input-placeholder {
   gap: 0.3rem;
 }
 
-.policy-content ul { list-style-type: disc; }
-.policy-content ol { list-style-type: decimal; }
-.policy-content li { color: var(--text-secondary); }
+.policy-content ul {
+  list-style-type: disc;
+}
+.policy-content ol {
+  list-style-type: decimal;
+}
+.policy-content li {
+  color: var(--text-secondary);
+}
 
 .policy-content a {
   text-decoration: underline;
@@ -408,4 +510,105 @@ textarea:-ms-input-placeholder {
 
 .policy-content tr:nth-child(even) td {
   background-color: color-mix(in srgb, var(--bg-elevated) 50%, transparent);
+}
+
+/* ─── Motion system: smooth, restrained transitions ───────────────────────────
+   150-300ms ease everywhere. Respects prefers-reduced-motion.
+──────────────────────────────────────────────────────────────────────────── */
+
+/* Interactive elements: color / background / border / transform / shadow */
+a,
+button,
+input[type="checkbox"],
+input[type="radio"],
+select {
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 200ms ease,
+    opacity 180ms ease,
+    transform 220ms ease;
+}
+/* Cards: gentle lift + gold glow on hover */
+.lift-hover {
+  transition:
+    transform 240ms ease,
+    box-shadow 240ms ease,
+    border-color 200ms ease;
+}
+.lift-hover:hover {
+  transform: translateY(-3px);
+}
+
+/* ─── Scroll reveal (IntersectionObserver adds .is-visible) ───────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 600ms ease,
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ─── Accordion expand (grid-rows technique) ───────────────────────────────── */
+.acc-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 260ms ease;
+}
+.acc-panel.open {
+  grid-template-rows: 1fr;
+}
+.acc-panel > div {
+  overflow: hidden;
+}
+
+/* ─── Mount animations (mobile menu, dropdowns, search results) ───────────── */
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.anim-menu-in {
+  animation: menu-in 220ms ease both;
+  transform-origin: top center;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.anim-fade-in {
+  animation: fade-in 200ms ease both;
+}
+
+/* ─── Reduced motion: kill all of the above ────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }

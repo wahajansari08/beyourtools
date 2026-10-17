@@ -2,6 +2,7 @@
 
 import { type ReactNode } from "react";
 import StatusBanner from "@/components/StatusBanner";
+import { LockIcon, BoltIcon, BadgeCheckIcon } from "@/components/icons";
 
 export type PdfStatus = "idle" | "processing" | "done" | "error";
 
@@ -71,13 +72,13 @@ export default function PdfToolShell({
       {status === "idle" && (
         <div className="grid gap-3 pt-1 sm:grid-cols-3">
           {[
-            { icon: "🔒", title: "Private",  body: "Files stay in your browser - nothing is uploaded." },
-            { icon: "⚡", title: "Instant",  body: "Processing starts immediately, no waiting."        },
-            { icon: "🆓", title: "Free",     body: "No account, no limits, always free."               },
-          ].map(({ icon, title, body }) => (
-            <div key={title} className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+            { Icon: LockIcon, title: "Private",  body: "Files stay in your browser - nothing is uploaded." },
+            { Icon: BoltIcon, title: "Instant",  body: "Processing starts immediately, no waiting."        },
+            { Icon: BadgeCheckIcon, title: "Free",     body: "No account, no limits, always free."          },
+          ].map(({ Icon, title, body }) => (
+            <div key={title} className="rounded-xl border p-4 transition hover:-translate-y-0.5" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
               <div className="mb-1.5 flex items-center gap-2">
-                <span aria-hidden="true">{icon}</span>
+                <span style={{ color: "var(--accent-text)" }}><Icon className="h-4 w-4" /></span>
                 <span className="text-xs font-semibold" style={{ color: "var(--text-secondary)" }}>{title}</span>
               </div>
               <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>{body}</p>

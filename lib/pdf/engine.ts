@@ -4,33 +4,20 @@
  * All functions accept/return Uint8Array (raw PDF bytes) so they are
  * easily testable in Node and usable in React via File.arrayBuffer().
  *
- * pdf-lib is loaded lazily from a CDN script tag the first time any
- * function is called, avoiding bundle-size impact.
+ * pdf-lib is bundled with the app and loaded lazily via dynamic import
+ * the first time any function is called: zero bundle-size impact on
+ * other pages, and no CDN/network dependency at runtime.
  */
 
-// ─── CDN loader ───────────────────────────────────────────────────────────────
+// ─── Lazy loader (code-split, offline-safe) ───────────────────────────────────
 
-declare global {
-  interface Window {
-    PDFLib: any;
-  }
-}
+let _pdfLibPromise: Promise<typeof import("@cantoo/pdf-lib")> | null = null;
 
-let _pdfLibPromise: Promise<any> | null = null;
-
-export function loadPdfLib(): Promise<any> {
+export function loadPdfLib(): Promise<typeof import("@cantoo/pdf-lib")> {
   if (typeof window === "undefined") return Promise.reject(new Error("Server-side"));
-  if (window.PDFLib) return Promise.resolve(window.PDFLib);
   if (_pdfLibPromise) return _pdfLibPromise;
-  _pdfLibPromise = new Promise((resolve, reject) => {
-    const s = document.createElement("script");
-    s.src = "https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js";
-    s.integrity = "sha512-io/w8gBFUpFQpZiAJkbT9qRm8EFn+5F2uJGlDFDn7GpPGN0FRfBNY9d+HjsqSLRGpeSyEoEBMoH0gAJNQFqg==";
-    s.crossOrigin = "anonymous";
-    s.onload = () => resolve(window.PDFLib);
-    s.onerror = () => reject(new Error("Failed to load pdf-lib"));
-    document.head.appendChild(s);
-  });
+  // @cantoo/pdf-lib is an API-compatible pdf-lib fork with real encryption support
+  _pdfLibPromise = import("@cantoo/pdf-lib");
   return _pdfLibPromise;
 }
 
@@ -298,12 +285,12 @@ export async function addWatermark(
 export async function protectPdf(bytes: Uint8Array, userPassword: string, ownerPassword?: string): Promise<PdfResult> {
   if (!userPassword) return { bytes: null, error: "Password cannot be empty." };
   try {
-    const { PDFDocument, EncryptionAlgorithm } = await loadPdfLib();
+    const { PDFDocument } = await loadPdfLib();
     const doc = await PDFDocument.load(bytes, { ignoreEncryption: true });
-    const out = await doc.save({
+    doc.encrypt({
       userPassword,
       ownerPassword: ownerPassword || userPassword,
-      encryptionAlgorithm: EncryptionAlgorithm.AES_256,
+      algorithm: "AES-256",
       permissions: {
         printing: "lowResolution",
         modifying: false,
@@ -314,6 +301,7 @@ export async function protectPdf(bytes: Uint8Array, userPassword: string, ownerP
         documentAssembly: false,
       },
     });
+    const out = await doc.save();
     return { bytes: out, error: null, info: "PDF protected with AES-256 encryption." };
   } catch (e) {
     return { bytes: null, error: e instanceof Error ? e.message : "Protection failed" };
@@ -341,9 +329,16 @@ export async function unlockPdf(bytes: Uint8Array, password: string): Promise<Pd
 
 // ─── 11. Compressor ──────────────────────────────────────────────────────────
 
-export async function compressPdf(bytes: Uint8Array): Promise<PdfResult & { originalSize: number; compressedSize: number }> {
+export async function compressPdf(
+  bytes: Uint8Array,
+  opts: { stripMetadata?: boolean } = {}
+): Promise<PdfResult & { originalSize: number; compressedSize: number }> {
   try {
     const doc = await loadDoc(bytes);
+    if (opts.stripMetadata) {
+      doc.setTitle(""); doc.setAuthor(""); doc.setSubject("");
+      doc.setKeywords([]); doc.setCreator(""); doc.setProducer("");
+    }
     // pdf-lib's save with objectsPerTick:0 triggers full re-serialisation
     const out = await doc.save({ useObjectStreams: true, addDefaultPage: false });
     const saved = bytes.length - out.length;
