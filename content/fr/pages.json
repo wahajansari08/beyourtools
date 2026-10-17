@@ -1,0 +1,649 @@
+{
+  "json-tools": {
+    "title": "Outils JSON",
+    "intro": "Tout ce qu'il vous faut pour travailler avec JSON — formater, valider, comparer, convertir, transformer et générer. Tous les outils s'exécutent entièrement dans votre navigateur, sans aucun envoi de fichiers.",
+    "faqs": [
+      {
+        "question": "Comment formater du JSON en ligne ?",
+        "answer": "Utilisez notre formateur JSON gratuit — collez votre JSON, choisissez le style d'indentation (2 espaces, 4 espaces ou tabulation) et obtenez instantanément le résultat formaté."
+      },
+      {
+        "question": "Comment valider du JSON ?",
+        "answer": "Notre validateur JSON vérifie la syntaxe et signale la ligne et la colonne exactes de chaque erreur. Il prend en charge les formats JSON et JSONL."
+      },
+      {
+        "question": "Qu'est-ce que JSONPath ?",
+        "answer": "JSONPath est un langage de requête pour JSON, comme XPath pour XML. Utilisez notre testeur JSONPath pour exécuter des expressions comme $.users[*].email sur n'importe quel document JSON."
+      }
+    ]
+  },
+  "image-converter": {
+    "title": "Convertisseur d'images",
+    "intro": "Convertissez des images entre tous les formats — entièrement dans votre navigateur. Rien n'est envoyé vers un serveur. Prise en charge de JPG, PNG, WebP, AVIF, GIF, BMP, SVG, ICO, PDF et bien plus.",
+    "faqs": [
+      {
+        "question": "Comment convertir un JPG en WebP gratuitement ?",
+        "answer": "Utilisez notre convertisseur gratuit JPG vers WebP — glissez-déposez votre JPG et téléchargez le WebP instantanément. Aucun envoi vers un serveur, aucun compte requis."
+      },
+      {
+        "question": "Quels formats d'image puis-je convertir en ligne ?",
+        "answer": "Nous prenons en charge 118 combinaisons de conversion, dont JPG, PNG, WebP, AVIF, GIF, BMP, SVG, ICO, TIFF, HEIC, JXL, PSD, TGA et PDF."
+      },
+      {
+        "question": "La conversion d'images réduit-elle la qualité ?",
+        "answer": "Les conversions sans perte (PNG vers WebP sans perte, PNG vers BMP) préservent chaque pixel. Les conversions avec perte (JPG, WebP avec perte) disposent d'un réglage de qualité — utilisez 80 à 85 % pour une perte de qualité à peine visible."
+      },
+      {
+        "question": "Mes images sont-elles envoyées vers un serveur ?",
+        "answer": "Non — toute la conversion d'images se fait localement dans votre navigateur. Vos images ne quittent jamais votre appareil."
+      },
+      {
+        "question": "Puis-je aussi redimensionner, rogner ou compresser des images ici ?",
+        "answer": "Oui — le redimensionneur, le rognage et le compresseur d'images gratuits figurent dans la section Outils d'édition d'images ci-dessus. Comme les convertisseurs, ils s'exécutent entièrement dans votre navigateur."
+      }
+    ]
+  },
+  "pdf-tools": {
+    "title": "Outils PDF",
+    "intro": "Tout ce qu'il vous faut pour travailler avec les PDF — convertir, modifier, compresser, protéger et bien plus. La plupart des outils s'exécutent entièrement dans votre navigateur, sans envoi de fichiers.",
+    "faqs": [
+      {
+        "question": "Comment fusionner des fichiers PDF gratuitement ?",
+        "answer": "Utilisez notre outil gratuit de fusion PDF — ajoutez plusieurs PDF, réorganisez-les et téléchargez le fichier fusionné. Aucun compte requis et vos fichiers ne quittent jamais votre navigateur."
+      },
+      {
+        "question": "Comment compresser un PDF ?",
+        "answer": "Notre compresseur PDF resérialise les flux d'objets internes du PDF, ce qui réduit généralement sa taille de 10 à 40 % pour les PDF standard, sans perte de qualité."
+      },
+      {
+        "question": "Comment protéger un PDF par mot de passe ?",
+        "answer": "Notre outil de protection PDF ajoute un chiffrement AES-256. Saisissez un mot de passe utilisateur, ajoutez votre PDF et téléchargez instantanément la version protégée."
+      },
+      {
+        "question": "Est-il sûr d'utiliser des outils PDF en ligne ?",
+        "answer": "Avec BeYourTools, vos fichiers PDF ne quittent jamais votre appareil. Tout le traitement se fait localement dans votre navigateur — rien n'est envoyé vers un serveur."
+      }
+    ]
+  },
+  "video-tools": {
+    "title": "Outils vidéo",
+    "intro": "Compressez, découpez, convertissez, redimensionnez, rognez, fusionnez, créez des GIF, extrayez des images et éditez l'audio de vos vidéos localement dans votre navigateur. Les fichiers ne sont ni envoyés ni stockés.",
+    "faqs": [
+      {
+        "question": "Ces outils vidéo sont-ils gratuits ?",
+        "answer": "Oui. Les outils vidéo sont gratuits dans votre navigateur, sans inscription."
+      },
+      {
+        "question": "Mes vidéos sont-elles envoyées vers un serveur ?",
+        "answer": "Non. Tout le traitement vidéo se fait localement dans votre navigateur. Vos fichiers ne quittent jamais votre appareil."
+      },
+      {
+        "question": "Quels outils sont les plus rapides ?",
+        "answer": "Le générateur de miniatures et l'extracteur d'images capturent les images directement depuis l'aperçu vidéo — ils sont quasi instantanés. La conversion, la compression et les outils d'édition prennent un peu plus de temps selon la taille du fichier."
+      }
+    ]
+  },
+  "audio-tools": {
+    "title": "Outils audio",
+    "intro": "Convertissez, découpez, compressez, fusionnez et traitez des fichiers audio — entièrement dans votre navigateur. Aucun envoi de fichiers, aucun compte, aucune limite. Prise en charge de MP3, WAV, FLAC, M4A, OGG et bien plus.",
+    "faqs": [
+      {
+        "question": "Ces outils audio sont-ils vraiment gratuits ?",
+        "answer": "Oui — les 20 outils sont entièrement gratuits, sans inscription, sans filigrane et sans limite d'utilisation."
+      },
+      {
+        "question": "Mes fichiers audio sont-ils envoyés vers un serveur ?",
+        "answer": "Non. Tout le traitement audio se fait entièrement dans votre navigateur. Vos fichiers ne quittent jamais votre appareil."
+      },
+      {
+        "question": "Quels formats sont pris en charge ?",
+        "answer": "MP3, WAV, M4A, AAC, FLAC, OGG, Opus, WebM et MP4 (pour l'extraction audio). Les formats pris en charge dépendent de l'outil utilisé."
+      },
+      {
+        "question": "Dois-je installer quelque chose ?",
+        "answer": "Aucune installation requise. Les outils fonctionnent directement dans votre navigateur, sur ordinateur et sur mobile."
+      }
+    ]
+  },
+  "qr-barcode-tools": {
+    "title": "Outils QR et codes-barres",
+    "intro": "Générez, scannez et décodez des QR codes et des codes-barres — entièrement dans votre navigateur. Aucun envoi de fichiers, aucun compte requis. Prise en charge des QR codes WiFi, EAN-13, UPC-A, Code 128 et de nombreux autres formats.",
+    "faqs": [
+      {
+        "question": "Ces outils QR et codes-barres sont-ils gratuits ?",
+        "answer": "Oui — tous les outils sont entièrement gratuits, sans inscription, sans filigrane et sans limite d'utilisation."
+      },
+      {
+        "question": "Ces outils envoient-ils mes données vers un serveur ?",
+        "answer": "Non. La génération de QR codes, la génération de codes-barres et le décodage d'images se font entièrement dans votre navigateur. Rien n'est jamais envoyé vers un serveur."
+      },
+      {
+        "question": "Puis-je scanner des QR codes et des codes-barres sans application ?",
+        "answer": "Oui. Les outils de scan de QR code et de code-barres utilisent directement la caméra de votre appareil dans le navigateur — aucune application à télécharger."
+      },
+      {
+        "question": "Quels formats de codes-barres sont pris en charge ?",
+        "answer": "Code 128, Code 39, EAN-13, EAN-8, UPC-A, ITF-14, MSI, Codabar et bien plus pour la génération. Le décodeur et le scanner détectent automatiquement le format à partir de n'importe quelle image."
+      }
+    ]
+  },
+  "finance-tools": {
+    "title": "Calculateurs financiers",
+    "intro": "{count} calculateurs gratuits pour la rentabilité des entreprises, les prêts, le remboursement de dettes, la croissance de l'épargne, la planification salariale, les impôts et le ROI marketing — le tout en privé dans votre navigateur, sans aucune donnée envoyée.",
+    "faqs": [
+      {
+        "question": "Ces calculateurs financiers sont-ils gratuits ?",
+        "answer": "Oui — les 40 calculateurs sont entièrement gratuits, sans inscription, sans compte et sans limite d'utilisation."
+      },
+      {
+        "question": "Ces calculateurs envoient-ils mes données quelque part ?",
+        "answer": "Non. Chaque calcul s'exécute entièrement dans votre navigateur en JavaScript. Aucun chiffre, salaire ou détail financier n'est jamais envoyé vers un serveur."
+      },
+      {
+        "question": "Quelle est la fiabilité des résultats ?",
+        "answer": "Les calculateurs utilisent des formules financières standard (par exemple amortissement, intérêts composés, marge). Les résultats sont fiables à des fins de planification, mais ne remplacent pas les conseils d'un professionnel de la finance qualifié."
+      },
+      {
+        "question": "Quels sujets financiers sont couverts ?",
+        "answer": "Finance d'entreprise (marges, majoration, seuil de rentabilité), salaire et revenus (conversions horaire/salaire, heures supplémentaires, fiche de paie), prêts (mensualités, amortissement), dettes et crédit (méthodes boule de neige et avalanche, remboursement de carte de crédit), épargne et intérêts (taux annuel effectif, taux nominal, épargne composée), impôts et prix (TVA, remises), et marketing et ROI (ROI, ROAS, croissance du chiffre d'affaires)."
+      }
+    ]
+  },
+  "design-tools": {
+    "title": "Outils de design",
+    "intro": "Échantillonnez les couleurs de vos photos, créez des palettes de couleurs et générez des favicons — entièrement dans votre navigateur. Aucun envoi, aucun compte, aucune limite.",
+    "faqs": [
+      {
+        "question": "Ces outils de design sont-ils vraiment gratuits ?",
+        "answer": "Oui — les 3 outils sont entièrement gratuits, sans inscription, sans filigrane et sans limite d'utilisation."
+      },
+      {
+        "question": "Mes images sont-elles envoyées vers un serveur ?",
+        "answer": "Non. Tout le traitement se fait entièrement dans votre navigateur via l'API canvas. Vos fichiers ne quittent jamais votre appareil."
+      },
+      {
+        "question": "Quels outils sont inclus ?",
+        "answer": "Pipette à couleurs, générateur de palettes de couleurs et générateur de favicons. Pour redimensionner, rogner et compresser des images, voir la section Outils image."
+      },
+      {
+        "question": "Dois-je installer quelque chose ?",
+        "answer": "Aucune installation requise. Les outils fonctionnent directement dans votre navigateur, sur ordinateur et sur mobile."
+      }
+    ]
+  },
+  "text-tools": {
+    "faqs": [
+      {
+        "question": "Ces outils texte sont-ils gratuits ?",
+        "answer": "Oui — tous les outils texte sont entièrement gratuits, sans inscription et sans limite d'utilisation."
+      },
+      {
+        "question": "Mon texte est-il envoyé vers un serveur ?",
+        "answer": "Non. Tout est traité localement dans votre onglet de navigateur. Votre texte ne quitte jamais votre appareil."
+      },
+      {
+        "question": "Quels outils texte sont disponibles ?",
+        "answer": "Compteur de mots, convertisseur de casse, générateur de lorem ipsum et encodeur/décodeur d'URL."
+      },
+      {
+        "question": "Les outils fonctionnent-ils hors ligne ?",
+        "answer": "Une fois la page chargée, les outils eux-mêmes n'ont plus besoin du réseau — compter, convertir et générer se fait localement."
+      }
+    ],
+    "name": "Outils texte",
+    "tagline": "Utilitaires de texte du quotidien — comptez les mots, convertissez la casse, encodez les URL et générez du texte de remplissage. Gratuits, instantanés et privés.",
+    "description": "Tous les outils texte s'exécutent entièrement dans votre navigateur. Rien de ce que vous tapez n'est envoyé ni stocké."
+  },
+  "developer-tools": {
+    "faqs": [
+      {
+        "question": "Ces outils développeur sont-ils gratuits ?",
+        "answer": "Oui — tous les outils développeur sont entièrement gratuits, sans inscription et sans limite d'utilisation."
+      },
+      {
+        "question": "Les mots de passe et UUID générés sont-ils cryptographiquement sûrs ?",
+        "answer": "Oui. Les deux utilisent l'API Web Crypto (crypto.getRandomValues / crypto.randomUUID), la source aléatoire sécurisée du navigateur — jamais Math.random()."
+      },
+      {
+        "question": "Quels outils développeur sont disponibles ?",
+        "answer": "Générateur de mots de passe, testeur de regex, générateur d'UUID, générateur de hachage et convertisseur d'horodatages."
+      },
+      {
+        "question": "Mes données sont-elles envoyées quelque part ?",
+        "answer": "Non. Le hachage, la génération et les tests se font localement dans votre navigateur."
+      }
+    ],
+    "name": "Outils développeur",
+    "tagline": "Petits utilitaires précis pour développeurs — testez vos regex, générez des UUID et des mots de passe, hachez des données, convertissez des horodatages. Sans compte, sans suivi.",
+    "description": "Tous les outils développeur s'exécutent entièrement dans votre navigateur, y compris les opérations cryptographiques via Web Crypto. Rien n'est envoyé ni stocké."
+  },
+  "calculators": {
+    "faqs": [
+      {
+        "question": "Ces calculateurs sont-ils gratuits ?",
+        "answer": "Oui — tous les calculateurs sont entièrement gratuits, sans inscription et sans limite d'utilisation."
+      },
+      {
+        "question": "Quels calculateurs sont disponibles ?",
+        "answer": "Calculateur de pourcentage, calculateur d'IMC et calculateur d'âge."
+      },
+      {
+        "question": "Mes données sont-elles privées ?",
+        "answer": "Oui. Chaque calcul se fait localement dans votre navigateur — rien n'est envoyé vers un serveur ni stocké."
+      },
+      {
+        "question": "Quelle est la précision des résultats ?",
+        "answer": "Le calcul est exact pour les entrées fournies (y compris un calcul d'âge correct pour les années bissextiles). Les catégories d'IMC suivent les seuils de l'OMS ; ce sont des plages de dépistage, pas des diagnostics médicaux."
+      }
+    ],
+    "name": "Calculateurs",
+    "tagline": "Calculateurs rapides du quotidien — pourcentages, IMC et âge avec des résultats détaillés exacts. Tapez et obtenez la réponse instantanément.",
+    "description": "Tous les calculateurs s'exécutent entièrement dans votre navigateur. Vos chiffres ne sont jamais envoyés ni stockés."
+  },
+  "privacy-policy": {
+    "title": "Politique de confidentialité",
+    "effectiveLabel": "Date d'effet : {date}",
+    "effectiveDate": "1er août 2026",
+    "sections": [
+      {
+        "heading": "1. Aperçu",
+        "html": "<p>BeYourTools (« nous », « notre ») s'engage à protéger votre vie privée. Cette politique explique quelles informations nous collectons, comment nous les utilisons, et quels sont vos droits concernant vos données personnelles.</p><p><strong>Point clé :</strong> tout le traitement des outils (JSON, conversion d'images, opérations PDF) se fait entièrement dans votre navigateur. Les fichiers, données JSON et textes que vous collez dans les outils ne sont <strong>jamais transmis à nos serveurs</strong>.</p>"
+      },
+      {
+        "heading": "2. Informations que nous collectons",
+        "html": "<h3>2.1 Données collectées automatiquement</h3><p>Lorsque vous visitez BeYourTools, notre hébergeur et nos outils d'analyse peuvent collecter automatiquement :</p><ul><li>Adresse IP (anonymisée)</li><li>Type et version du navigateur</li><li>Système d'exploitation</li><li>Pages visitées et temps passé</li><li>Site référent</li><li>Type d'appareil (ordinateur, mobile, tablette)</li></ul><p>Ces données sont collectées de manière agrégée et ne permettent pas de vous identifier individuellement.</p><h3>2.2 Cookies et suivi</h3><p>Nous utilisons des cookies pour : les préférences du site (paramètres du thème), l'analyse et la publicité. Consultez notre <a href=\"/cookie-policy\">politique relative aux cookies</a> pour tous les détails.</p><h3>2.3 Informations que vous fournissez volontairement</h3><p>Si vous nous contactez par e-mail, nous collectons votre adresse e-mail et le contenu de votre message uniquement pour répondre à votre demande.</p>"
+      },
+      {
+        "heading": "3. Comment nous utilisons vos informations",
+        "html": "<ul><li><strong>Analyse :</strong> comprendre quels outils sont les plus utilisés, améliorer les performances et la convivialité</li><li><strong>Publicité :</strong> afficher des annonces pertinentes via notre partenaire publicitaire pour financer le service gratuit</li><li><strong>Stockage des préférences :</strong> mémoriser votre thème (sombre/clair/système) via localStorage</li><li><strong>Assistance :</strong> répondre aux messages du formulaire de contact</li></ul><p>Nous ne vendons, n'échangeons ni ne louons vos informations personnelles à des tiers.</p>"
+      },
+      {
+        "heading": "4. Publicité en ligne",
+        "html": "<p>Nous affichons des publicités pour soutenir le service gratuit. Des fournisseurs tiers, dont Google, utilisent des cookies pour diffuser des annonces en fonction de vos visites précédentes sur notre site ou d'autres sites sur Internet.</p><p>L'utilisation par Google des cookies publicitaires lui permet, ainsi qu'à ses partenaires, de diffuser des annonces aux utilisateurs en fonction de leur visite sur BeYourTools et/ou d'autres sites sur Internet.</p><p>Vous pouvez à tout moment refuser la publicité personnalisée :</p><ul><li><a href=\"https://www.google.com/settings/ads\" target=\"_blank\" rel=\"noopener noreferrer\">Paramètres des annonces Google</a></li><li><a href=\"https://www.aboutads.info/choices\" target=\"_blank\" rel=\"noopener noreferrer\">Digital Advertising Alliance (aboutads.info)</a></li><li><a href=\"https://optout.networkadvertising.org\" target=\"_blank\" rel=\"noopener noreferrer\">Network Advertising Initiative (NAI) — désinscription</a></li></ul><p>Pour plus de détails sur la façon dont Google traite les données, veuillez consulter la <a href=\"https://policies.google.com/technologies/ads\" target=\"_blank\" rel=\"noopener noreferrer\">page Confidentialité et conditions de la publicité Google</a>.</p>"
+      },
+      {
+        "heading": "5. Analyse",
+        "html": "<p>Nous utilisons un service d'analyse pour comprendre l'utilisation du site. Il utilise des cookies et collecte des données d'utilisation anonymisées. L'anonymisation des IP est activée. Vous pouvez vous désinscrire à l'aide du <a href=\"https://tools.google.com/dlpage/gaoptout\" target=\"_blank\" rel=\"noopener noreferrer\">module complémentaire de navigateur pour la désactivation de l'analyse</a>.</p>"
+      },
+      {
+        "heading": "6. Conservation des données",
+        "html": "<p>Les données d'analyse sont conservées pendant 14 mois. Les e-mails de contact sont conservés uniquement le temps nécessaire pour traiter votre demande.</p>"
+      },
+      {
+        "heading": "7. Vos droits",
+        "html": "<p>Selon votre lieu de résidence, vous pouvez disposer des droits suivants :</p><ul><li><strong>Accès :</strong> demander une copie des données personnelles que nous détenons sur vous</li><li><strong>Rectification :</strong> demander la correction de données inexactes</li><li><strong>Effacement :</strong> demander la suppression de vos données personnelles</li><li><strong>Opposition :</strong> vous opposer au traitement à des fins de marketing direct</li><li><strong>Portabilité :</strong> demander le transfert de vos données</li><li><strong>Désinscription (CCPA) :</strong> les résidents de Californie peuvent refuser la vente d'informations personnelles (nous ne vendons pas d'informations personnelles)</li></ul><p>Pour exercer ces droits, veuillez <a href=\"/contact\">nous contacter</a>.</p>"
+      },
+      {
+        "heading": "8. Confidentialité des enfants",
+        "html": "<p>BeYourTools ne s'adresse pas aux enfants de moins de 13 ans. Nous ne collectons pas sciemment d'informations personnelles auprès d'enfants de moins de 13 ans. Si vous pensez qu'un enfant nous a fourni des informations personnelles, veuillez nous contacter immédiatement.</p>"
+      },
+      {
+        "heading": "9. Liens vers des tiers",
+        "html": "<p>Notre site contient des liens vers des sites web tiers. Nous ne sommes pas responsables des pratiques de confidentialité de ces sites. Nous vous encourageons à consulter leurs politiques de confidentialité.</p>"
+      },
+      {
+        "heading": "10. Modifications de cette politique",
+        "html": "<p>Nous pouvons mettre à jour cette politique de confidentialité périodiquement. Les modifications seront publiées sur cette page avec une date d'effet mise à jour. La poursuite de l'utilisation du site vaut acceptation de la politique révisée.</p>"
+      },
+      {
+        "heading": "11. Contact",
+        "html": "<p>Pour toute question relative à la confidentialité, veuillez <a href=\"/contact\">nous contacter</a>.</p>"
+      }
+    ]
+  },
+  "terms": {
+    "title": "Conditions générales",
+    "effectiveLabel": "Date d'effet : {date}",
+    "effectiveDate": "1er août 2026",
+    "sections": [
+      {
+        "heading": "1. Acceptation des conditions",
+        "html": "<p>En accédant à BeYourTools (« le site », « nous », « notre ») ou en l'utilisant à l'adresse <strong>https://beyourtools.com</strong>, vous acceptez d'être lié par les présentes conditions générales. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser le site.</p>"
+      },
+      {
+        "heading": "2. Utilisation du site",
+        "html": "<p>BeYourTools fournit des outils gratuits dans le navigateur pour développeurs et designers, dont des utilitaires JSON, des convertisseurs d'images et des outils PDF. Vous pouvez utiliser le site uniquement à des fins licites. Vous vous engagez à ne pas :</p><ul><li>Utiliser le site à des fins illégales ou non autorisées</li><li>Tenter de perturber, surcharger ou interférer avec l'infrastructure du site</li><li>Extraire ou aspirer systématiquement des données du site</li><li>Usurper votre identité ou votre affiliation</li><li>Téléverser des fichiers ou du code malveillants</li></ul>"
+      },
+      {
+        "heading": "3. Propriété intellectuelle",
+        "html": "<p>Tout le contenu de BeYourTools — y compris les textes, le code, le design, les logos et les articles de blog — appartient à BeYourTools ou est concédé sous licence à BeYourTools, et est protégé par les lois applicables en matière de droits d'auteur et de propriété intellectuelle.</p><p>Vous ne pouvez pas reproduire, distribuer ou créer des œuvres dérivées du contenu du site sans autorisation écrite préalable, sauf citation loyale avec attribution.</p>"
+      },
+      {
+        "heading": "4. Absence de garanties",
+        "html": "<p>BeYourTools est fourni <strong>« tel quel »</strong> et <strong>« selon disponibilité »</strong>, sans aucune garantie, expresse ou implicite. Nous ne garantissons pas que :</p><ul><li>Les outils seront toujours disponibles, sans erreur, ou produiront des résultats exacts</li><li>Les fichiers traités seront exempts de perte ou de corruption</li><li>Le site répondra à vos exigences spécifiques</li></ul><p>Vous utilisez le site entièrement à vos propres risques. Conservez toujours des sauvegardes de vos fichiers importants avant de les traiter.</p>"
+      },
+      {
+        "heading": "5. Limitation de responsabilité",
+        "html": "<p>Dans toute la mesure permise par la loi, BeYourTools et son équipe ne seront pas responsables des dommages indirects, accessoires, spéciaux, consécutifs ou punitifs — y compris la perte de données, de profits ou d'activité — découlant de votre utilisation du site, même si nous avons été informés de la possibilité de tels dommages.</p><p>Notre responsabilité totale pour toute réclamation découlant de votre utilisation du site ne dépassera pas zéro dollar (0 $ US), ce qui reflète que le site est fourni entièrement gratuitement.</p>"
+      },
+      {
+        "heading": "6. Confidentialité",
+        "html": "<p>Votre vie privée est importante pour nous. Tout le traitement des outils sur BeYourTools se fait côté client dans votre navigateur — les fichiers et les textes ne sont jamais envoyés vers nos serveurs. Veuillez consulter notre <a href=\"/privacy-policy\" style=\"color: var(--accent-text)\">politique de confidentialité</a> et notre <a href=\"/cookie-policy\" style=\"color: var(--accent-text)\">politique relative aux cookies</a> pour tous les détails sur le traitement des données.</p>"
+      },
+      {
+        "heading": "7. Services tiers",
+        "html": "<p>Le site peut utiliser des services tiers, notamment des services d'analyse (statistiques d'utilisation) et des réseaux publicitaires. Ces services fonctionnent selon leurs propres politiques de confidentialité et peuvent utiliser des cookies. Consultez notre <a href=\"/cookie-policy\" style=\"color: var(--accent-text)\">politique relative aux cookies</a> pour en savoir plus.</p>"
+      },
+      {
+        "heading": "8. Publicité",
+        "html": "<p>BeYourTools affiche des publicités fournies par des partenaires publicitaires tiers. Ces annonces contribuent à maintenir la gratuité du site. Les annonceurs sont responsables de leur propre contenu. Nous n'approuvons aucun produit ou service annoncé.</p><p>Des fournisseurs tiers utilisent des cookies pour diffuser des annonces en fonction de vos visites précédentes sur ce site et d'autres sites web. Vous pouvez refuser la publicité personnalisée en visitant les <a href=\"https://www.google.com/settings/ads\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: var(--accent-text)\">paramètres des annonces</a> ou <a href=\"https://www.aboutads.info/choices\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: var(--accent-text)\">AboutAds.info</a>.</p>"
+      },
+      {
+        "heading": "9. Liens externes",
+        "html": "<p>Le site contient des liens vers des sites web tiers. Ces liens sont fournis uniquement pour votre commodité. Nous n'avons aucun contrôle sur le contenu tiers et n'en acceptons aucune responsabilité. La visite de liens externes se fait à vos propres risques.</p>"
+      },
+      {
+        "heading": "10. Modifications des présentes conditions",
+        "html": "<p>Nous nous réservons le droit de modifier ces conditions à tout moment. Les modifications prendront effet dès leur publication. La poursuite de l'utilisation du site après les modifications vaut acceptation des conditions révisées. Nous vous encourageons à consulter cette page périodiquement.</p>"
+      },
+      {
+        "heading": "11. Droit applicable",
+        "html": "<p>Ces conditions sont régies et interprétées conformément au droit applicable. Tout litige sera résolu devant les juridictions compétentes appropriées.</p>"
+      },
+      {
+        "heading": "12. Contact",
+        "html": "<p>Si vous avez des questions sur ces conditions, veuillez <a href=\"/contact\" style=\"color: var(--accent-text)\">nous contacter</a>.</p>"
+      }
+    ]
+  },
+  "cookie-policy": {
+    "title": "Politique relative aux cookies",
+    "effectiveLabel": "Date d'effet : {date}",
+    "effectiveDate": "1er août 2026",
+    "sections": [
+      {
+        "heading": "1. Que sont les cookies ?",
+        "html": "<p>Les cookies sont de petits fichiers texte placés sur votre appareil par les sites web que vous visitez. Ils sont largement utilisés pour faire fonctionner les sites web efficacement et pour fournir des informations aux propriétaires de sites. Certains cookies expirent lorsque vous fermez votre navigateur ; d'autres persistent plus longtemps.</p>"
+      },
+      {
+        "heading": "2. Cookies que nous utilisons",
+        "html": "<h3>2.1 Cookies strictement nécessaires</h3><p>Ces cookies sont essentiels au fonctionnement du site. Ils ne peuvent pas être désactivés.</p><table><thead><tr><th>Nom</th><th>Objet</th><th>Durée</th></tr></thead><tbody><tr><td><code>byt-theme</code></td><td>Stocke votre préférence de thème sombre/clair/système (localStorage)</td><td>Persistant</td></tr><tr><td><code>cookie_consent</code></td><td>Mémorise votre choix de consentement aux cookies</td><td>1 an</td></tr></tbody></table><h3>2.2 Cookies d'analyse</h3><p>Ces cookies nous aident à comprendre comment les visiteurs utilisent le site afin de l'améliorer.</p><table><thead><tr><th>Nom</th><th>Fournisseur</th><th>Objet</th><th>Durée</th></tr></thead><tbody><tr><td><code>_ga</code></td><td>Google Analytics</td><td>Distingue les utilisateurs</td><td>2 ans</td></tr><tr><td><code>_ga_*</code></td><td>Google Analytics</td><td>Maintient l'état de la session</td><td>2 ans</td></tr><tr><td><code>_gid</code></td><td>Google Analytics</td><td>Distingue les utilisateurs (session)</td><td>24 heures</td></tr></tbody></table><h3>2.3 Cookies publicitaires</h3><p>Ces cookies sont définis par notre partenaire publicitaire pour diffuser des annonces pertinentes et mesurer les performances publicitaires.</p><table><thead><tr><th>Nom</th><th>Fournisseur</th><th>Objet</th><th>Durée</th></tr></thead><tbody><tr><td><code>IDE</code></td><td>Google DoubleClick</td><td>Ciblage publicitaire personnalisé</td><td>13 mois</td></tr><tr><td><code>test_cookie</code></td><td>Google DoubleClick</td><td>Vérifie si les cookies sont pris en charge</td><td>15 minutes</td></tr><tr><td><code>DSID</code></td><td>Google</td><td>Identifie les utilisateurs Google connectés pour la personnalisation des annonces</td><td>2 semaines</td></tr><tr><td><code>NID</code></td><td>Google</td><td>Personnalisation des annonces pour les utilisateurs non connectés</td><td>6 mois</td></tr></tbody></table>"
+      },
+      {
+        "heading": "3. Comment contrôler les cookies",
+        "html": "<p>Vous pouvez contrôler les cookies de plusieurs façons :</p><ul><li><strong>Paramètres du navigateur :</strong> la plupart des navigateurs vous permettent de bloquer ou de supprimer les cookies. Consultez la documentation d'aide de votre navigateur pour les instructions.</li><li><strong>Publicité :</strong> désinscrivez-vous dans les <a href=\"https://www.google.com/settings/ads\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: var(--accent-text)\">paramètres des annonces</a></li><li><strong>Network Advertising Initiative :</strong> désinscrivez-vous sur <a href=\"https://www.aboutads.info/choices\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: var(--accent-text)\">aboutads.info/choices</a></li><li><strong>Désinscription de l'analyse :</strong> installez le <a href=\"https://tools.google.com/dlpage/gaoptout\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color: var(--accent-text)\">module complémentaire de navigateur pour la désactivation de l'analyse</a></li></ul><p>Remarque : le blocage de certains cookies peut affecter le fonctionnement du site (par exemple, les préférences de thème ne seront pas enregistrées).</p>"
+      },
+      {
+        "heading": "4. Stockage local",
+        "html": "<p>En plus des cookies, nous utilisons le stockage local du navigateur pour conserver votre préférence de thème (<code>byt-theme</code>) et votre statut de consentement aux cookies. Ces données restent sur votre appareil et ne sont jamais transmises à nos serveurs. Vous pouvez les effacer en supprimant les données du site dans votre navigateur.</p>"
+      },
+      {
+        "heading": "5. Modifications de cette politique",
+        "html": "<p>Nous pouvons mettre à jour cette politique relative aux cookies périodiquement. Les modifications seront publiées sur cette page avec une date d'effet mise à jour.</p>"
+      },
+      {
+        "heading": "6. Contact",
+        "html": "<p>Des questions sur notre utilisation des cookies ? <a href=\"/contact\" style=\"color: var(--accent-text)\">Contactez-nous</a>.</p>"
+      }
+    ]
+  },
+  "disclaimer": {
+    "title": "Avertissement",
+    "effectiveLabel": "Dernière mise à jour : {date}",
+    "effectiveDate": "1er août 2026",
+    "sections": [
+      {
+        "heading": "Avertissement du site web",
+        "html": "<p>Les outils et guides de BeYourTools (<strong>https://beyourtools.com</strong>) sont fournis pour l'apprentissage général et les tâches quotidiennes. Nous travaillons dur pour maintenir nos outils précis et rapides. Néanmoins, nous ne pouvons pas garantir que tous les résultats des outils seront toujours complets, sans erreur ou adaptés à tous les usages.</p>"
+      },
+      {
+        "heading": "Exactitude des résultats des outils",
+        "html": "<p>Nos outils formatent le JSON, éditent les PDF et convertissent les images à l'aide d'outils de navigateur standard et de code open source. Veuillez garder les points suivants à l'esprit :</p><ul><li>Vérifiez toujours les résultats avant de les utiliser dans des systèmes en production ou des bases de données réelles.</li><li>Les résultats de comptage de jetons sont des estimations utiles, pas des comptes exacts de modèles d'IA spécifiques.</li><li>La qualité des images dépend de votre fichier source et du format de sortie choisi.</li><li>Les PDF numérisés et les mises en page complexes ne produisent pas toujours du texte brut propre.</li><li>Les extraits de code générés vous donnent une bonne base de départ, mais vous devez les vérifier avant déploiement.</li></ul>"
+      },
+      {
+        "heading": "Aucun conseil professionnel",
+        "html": "<p>Les articles et outils de BeYourTools ne remplacent pas les conseils certifiés en droit, finance, fiscalité ou ingénierie. Nos articles de blog et guides sont rédigés à des fins éducatives uniquement. Pour les décisions à fort enjeu, parlez toujours à un expert agréé.</p>"
+      },
+      {
+        "heading": "Avertissement sur les calculateurs financiers",
+        "html": "<p>BeYourTools propose des calculateurs pour les prêts, les hypothèques, les marges bénéficiaires et les dettes. Veuillez lire ces conditions avant d'utiliser nos outils financiers :</p><ul><li><strong>Usage éducatif uniquement :</strong> tous les calculs sont destinés à la planification personnelle et aux estimations budgétaires. BeYourTools n'est ni une banque, ni un courtier hypothécaire, ni un agent de crédit, ni un comptable agréé.</li><li><strong>Estimations mathématiques standard :</strong> nos calculateurs utilisent des formules mathématiques standard comme les intérêts composés et les tableaux d'amortissement de prêts. Les résultats présentent des chiffres de base calculés strictement à partir des chiffres que vous saisissez.</li><li><strong>Conditions des banques et prêteurs :</strong> les conditions réelles des prêts, les taux d'intérêt, les frais de clôture et les impôts varient. Ils dépendent de votre score de crédit, des lois locales et des règles des prêteurs.</li><li><strong>Aucune relation client :</strong> l'utilisation de nos calculateurs ne crée aucune relation de conseil, de courtage ou de client entre vous et BeYourTools.</li><li><strong>Consultez un professionnel qualifié :</strong> ne signez pas de contrats de prêt et n'investissez pas d'argent sans parler à un planificateur financier indépendant ou à un comptable agréé.</li></ul>"
+      },
+      {
+        "heading": "Sécurité des fichiers et sauvegardes de données",
+        "html": "<p>Toute l'édition de fichiers se fait localement dans votre navigateur web. Vos documents privés ne sont jamais envoyés vers des serveurs externes. Néanmoins, vous devez toujours conserver une sauvegarde sûre de vos fichiers importants avant de les modifier avec n'importe quel logiciel. Nous ne sommes pas responsables des fichiers perdus ou endommagés.</p>"
+      },
+      {
+        "heading": "Publicité et liens vers des tiers",
+        "html": "<p>BeYourTools affiche des annonces de partenaires publicitaires tiers pour maintenir la gratuité de nos outils. Nous n'approuvons pas les produits ou services présentés dans ces annonces. Les annonceurs sont responsables des affirmations contenues dans leurs publicités.</p>"
+      },
+      {
+        "heading": "Divulgations d'affiliation",
+        "html": "<p>Certains articles peuvent inclure des liens de parrainage ou d'affiliation vers des logiciels tiers utiles. Nous signalons clairement ces liens. Nous ne partageons que des produits en lesquels nous avons confiance et que nous trouvons utiles.</p>"
+      },
+      {
+        "heading": "Liens et services externes",
+        "html": "<p>Nos pages peuvent contenir des liens vers des sites web externes pour votre commodité. Nous ne contrôlons pas ces sites tiers ni leurs pratiques de confidentialité. Nous vous encourageons à lire leurs politiques avant de partager des données personnelles.</p>"
+      },
+      {
+        "heading": "Mises à jour de cet avertissement",
+        "html": "<p>Nous pouvons mettre à jour cette page de temps à autre à mesure que nos outils évoluent. En continuant à utiliser BeYourTools, vous acceptez les dernières conditions figurant sur cette page.</p>"
+      },
+      {
+        "heading": "Contacter notre équipe",
+        "html": "<p>Si vous avez des questions sur cet avertissement ou si vous souhaitez signaler un problème, veuillez <a href=\"/contact\" style=\"color: var(--accent-text)\">contacter notre équipe</a>.</p>"
+      }
+    ]
+  },
+  "about": {
+    "breadcrumb": "À propos",
+    "eyebrow": "À propos",
+    "title": "À propos de BeYourTools",
+    "intro": "Je m'appelle Be, et je crée BeYourTools — des outils rapides, privés et dans le navigateur, pour tout le monde. Zéro envoi de fichiers, zéro inscription, zéro paywall.",
+    "who": {
+      "heading": "Qui se cache derrière BeYourTools",
+      "name": "Be — Fondateur et rédacteur",
+      "bio": "Salut, je m'appelle Be. J'ai créé BeYourTools parce que j'en avais assez des outils en ligne « gratuits » qui exigent un compte, un abonnement ou l'envoi de mes fichiers privés sur le serveur de quelqu'un. Alors j'ai construit l'alternative moi-même : chaque outil de ce site s'exécute entièrement dans votre navigateur, et j'écris les guides du blog à partir de tests réels. Si quelque chose casse ou si vous voulez un nouvel outil, vous parlez directement à la personne qui l'a créé — c'est moi."
+    },
+    "why": {
+      "heading": "Pourquoi j'ai créé ce site",
+      "html": "<p>Les tâches quotidiennes comme convertir des images, compresser des PDF ou formater du JSON devraient être rapides et simples. Pourtant, la plupart des sites vous obligent à créer des comptes, à payer des abonnements ou à envoyer vos fichiers privés sur des serveurs distants.</p><p>J'ai créé <strong>BeYourTools</strong> pour supprimer ces obstacles. Je crois que les outils utiles doivent être gratuits, rapides et privés par défaut. Grâce aux technologies modernes des navigateurs, WebAssembly et le traitement local, chaque outil s'exécute directement sur votre appareil. Vos documents, photos, code et finances ne quittent jamais vos mains.</p>"
+    },
+    "what": {
+      "heading": "Ce que nous créons",
+      "introHtml": "<p class=\"mb-4\">BeYourTools propose plus de <strong>320 outils gratuits</strong> répartis en sept catégories, tous conçus pour s'exécuter instantanément dans votre navigateur :</p>",
+      "categories": [
+        {
+          "label": "Outils JSON et développeur",
+          "href": "/json-tools",
+          "count": "30+ utilitaires navigateur",
+          "desc": "Formatez, validez et comparez des données JSON dans votre navigateur. Décodez des jetons JWT et convertissez le JSON en CSV, YAML, Python et SQL sans aucun envoi vers un serveur.",
+          "icon": "{ }",
+          "iconBg": "color-mix(in srgb, var(--accent-text) 15%, transparent)",
+          "iconColor": "var(--accent-text)",
+          "wide": false
+        },
+        {
+          "label": "Suite convertisseur d'images",
+          "href": "/image-converter",
+          "count": "118 paires de conversion",
+          "desc": "Convertissez des images entre JPG, PNG, WebP, AVIF, SVG, ICO et PDF. Convertissez plusieurs fichiers à la fois, prévisualisez les changements instantanément et téléchargez le tout en ZIP.",
+          "icon": "🖼",
+          "iconBg": "color-mix(in srgb, var(--accent) 15%, transparent)",
+          "iconColor": "var(--accent)",
+          "wide": false
+        },
+        {
+          "label": "Suite documents PDF",
+          "href": "/pdf-tools",
+          "count": "30 outils côté client",
+          "desc": "Fusionnez, divisez et compressez des fichiers PDF directement sur votre appareil. Ajoutez des mots de passe, faites pivoter les pages ou extrayez le texte et les images sans envoyer vos fichiers vers un serveur.",
+          "icon": "📄",
+          "iconBg": "color-mix(in srgb, var(--coral) 15%, transparent)",
+          "iconColor": "var(--coral)",
+          "wide": false
+        },
+        {
+          "label": "Suite outils vidéo",
+          "href": "/video-tools",
+          "count": "20 utilitaires multimédia",
+          "desc": "Compressez et découpez des vidéos dans votre navigateur. Convertissez des fichiers MP4, WebM et MKV, créez des GIF animés et capturez des images vidéo nettes.",
+          "icon": "🎬",
+          "iconBg": "color-mix(in srgb, #8b5cf6 15%, transparent)",
+          "iconColor": "#8b5cf6",
+          "wide": false
+        },
+        {
+          "label": "Suite outils audio",
+          "href": "/audio-tools",
+          "count": "20 utilitaires sonores",
+          "desc": "Découpez, assemblez et compressez facilement des fichiers audio. Amplifiez le volume, convertissez des formats comme MP3 et WAV ou enregistrez du son directement dans votre navigateur.",
+          "icon": "🎵",
+          "iconBg": "color-mix(in srgb, var(--accent-text) 15%, transparent)",
+          "iconColor": "var(--accent-text)",
+          "wide": false
+        },
+        {
+          "label": "Suite QR et codes-barres",
+          "href": "/qr-barcode-tools",
+          "count": "12 outils de scan et de génération",
+          "desc": "Créez des QR codes personnalisés avec logos, générez des QR codes WiFi, scannez des codes avec votre caméra et créez des codes-barres commerciaux comme UPC-A et Code 128.",
+          "icon": "▦",
+          "iconBg": "color-mix(in srgb, var(--accent) 15%, transparent)",
+          "iconColor": "var(--accent-text)",
+          "wide": false
+        },
+        {
+          "label": "Calculateurs financiers et d'entreprise",
+          "href": "/finance-tools",
+          "count": "40+ calculatrices financières",
+          "desc": "Calculez les mensualités de prêt, les dates de remboursement, les intérêts et les marges bénéficiaires. Planifiez votre budget, comparez vos dettes et estimez votre salaire net.",
+          "icon": "💰",
+          "iconBg": "color-mix(in srgb, #10b981 15%, transparent)",
+          "iconColor": "#10b981",
+          "wide": true
+        }
+      ]
+    },
+    "tech": {
+      "heading": "Comment fonctionne la technologie (architecture côté client)",
+      "html": "<p>La plupart des outils en ligne envoient vos fichiers vers des serveurs distants, exécutent des scripts et vous renvoient les fichiers. Cela cause des délais et met votre vie privée en danger.</p><p>J'ai conçu BeYourTools pour fonctionner différemment — tout s'exécute directement sur votre appareil :</p><ul><li><strong>Traitement en mémoire :</strong> les outils s'exécutent dans la mémoire de votre navigateur à l'aide de Web Workers locaux et de WebAssembly.</li><li><strong>Zéro stockage externe :</strong> je ne stocke jamais vos fichiers, textes ou résultats. Quand vous fermez l'onglet, tout disparaît.</li><li><strong>Performances rapides :</strong> le traitement local des fichiers utilise la puissance de votre appareil, donc vous n'attendez jamais de lents téléversements.</li></ul>"
+    },
+    "principles": {
+      "heading": "Nos principes fondamentaux",
+      "items": [
+        {
+          "icon": "🔒",
+          "title": "Privé par défaut",
+          "body": "Vos fichiers et textes restent sur votre appareil. Nous n'envoyons jamais vos documents, photos ou code vers un serveur cloud."
+        },
+        {
+          "icon": "🆓",
+          "title": "Gratuit d'utilisation",
+          "body": "Tous les outils principaux sont 100 % gratuits. Profitez-en pleinement sans paywall, abonnement, limite quotidienne ni coût caché."
+        },
+        {
+          "icon": "⚡",
+          "title": "Rapide et simple",
+          "body": "Aucun compte requis. Ouvrez simplement un outil, déposez vos fichiers et téléchargez vos résultats en quelques secondes."
+        },
+        {
+          "icon": "🌍",
+          "title": "Fonctionne partout",
+          "body": "Utilisez nos outils sur téléphones, tablettes et ordinateurs portables. Profitez de mises en page soignées avec prise en charge des modes clair et sombre."
+        }
+      ]
+    },
+    "advertising": {
+      "heading": "Publicité durable et transparente",
+      "html": "<p>BeYourTools est entièrement gratuit grâce à des annonces propres et simples. Les revenus publicitaires financent notre hébergement, notre réseau mondial rapide et les mises à jour continues des outils.</p><p>Nous suivons des règles publicitaires éthiques claires :</p><ul><li>Aucun faux bouton « télécharger » trompeur ni publicité mensongère.</li><li>Aucune fenêtre modale intrusive, aucune publicité audio à lecture automatique, aucun recouvrement bloquant l'écran.</li><li>Conformité totale aux directives de qualité et de placement de Google AdSense.</li></ul><p>Pour en savoir plus sur nos pratiques publicitaires et nos garanties de confidentialité, veuillez consulter notre <a href=\"/privacy-policy\" style=\"color: var(--accent-text)\">politique de confidentialité</a> et notre <a href=\"/cookie-policy\" style=\"color: var(--accent-text)\">politique relative aux cookies</a>.</p>"
+    },
+    "engineering": {
+      "heading": "Normes d'ingénierie et vérification des formules",
+      "html": "<p>Nous construisons chaque outil selon des normes web strictes et des formules mathématiques exactes :</p><ul><li><strong>Formats de données :</strong> nos outils JSON suivent les règles officielles de la RFC 8259. Ils formatent et vérifient le code pour qu'il fonctionne dans toutes les applications modernes.</li><li><strong>Documents PDF :</strong> nos outils PDF suivent les règles ISO 32000. Vos polices, lignes et mise en page restent nettes et propres sur tout appareil.</li><li><strong>Mathématiques financières :</strong> chaque calculateur utilise des formules mathématiques éprouvées. Nous testons nos calculs de prêts, d'intérêts et d'impôts selon les règles bancaires standard.</li><li><strong>Traitement multimédia :</strong> les outils audio et vidéo s'exécutent localement à l'aide du WebAssembly moderne des navigateurs. Vos médias se transforment rapidement sans latence réseau.</li></ul>"
+    },
+    "editorial": {
+      "heading": "Intégrité éditoriale et lignes directrices de qualité",
+      "intro": "J'écris les guides de ce site pour vous apporter une aide claire, honnête et pratique — testée par moi, dans les outils eux-mêmes. Pas de faux texte de remplissage, pas de contenu marketing racoleur.",
+      "items": [
+        {
+          "title": "Précision technique",
+          "body": "Je relis chaque guide et tutoriel moi-même, et je teste les étapes dans les outils réels avant publication."
+        },
+        {
+          "title": "Mises à jour régulières",
+          "body": "Je revérifie régulièrement les outils et les formules des calculateurs. Quand les standards des navigateurs ou les règles fiscales changent, je mets les outils à jour en conséquence."
+        }
+      ]
+    },
+    "contactSection": {
+      "heading": "Contact et commentaires",
+      "html": "<p>Je lis personnellement chaque message. Si vous trouvez un bug, avez une idée de nouvel outil ou avez besoin d'aide avec une formule, faites-le-moi savoir.</p><p>Contactez-moi via la <a href=\"/contact\" style=\"color: var(--accent-text)\">page de contact</a> ou par e-mail à <a href=\"mailto:beyourtools@gmail.com\" style=\"color: var(--accent-text)\">beyourtools@gmail.com</a>. J'examine les commentaires quotidiennement et je corrige rapidement.</p>"
+    }
+  },
+  "contact": {
+    "breadcrumb": "Contact",
+    "title": "Contactez-nous",
+    "intro": "Une question, un bug trouvé, ou envie de suggérer un nouvel outil ? Nous serions ravis d'avoir de vos nouvelles.",
+    "otherWaysHeading": "Autres façons de nous joindre",
+    "emailLabel": "E-mail",
+    "emailNote": "Nous répondons généralement sous 2 à 3 jours ouvrés.",
+    "followLabel": "Suivez-nous",
+    "privacyNoteHtml": "Pour les demandes de confidentialité ou RGPD, veuillez consulter notre <a href=\"/privacy-policy\" class=\"hover:underline\" style=\"color: var(--accent-text)\">politique de confidentialité</a>.",
+    "support": {
+      "heading": "Canaux d'assistance et portée des demandes",
+      "intro": "Que vous signaliez un problème technique ou proposiez une nouvelle idée, voici comment nous pouvons vous aider :",
+      "cards": [
+        {
+          "title": "Rapports de bugs",
+          "body": "Si un outil ne fonctionne pas comme prévu dans votre navigateur, indiquez-nous votre type d'appareil et votre système d'exploitation. Nous préciser quel navigateur vous utilisez nous aide à corriger les problèmes rapidement."
+        },
+        {
+          "title": "Demandes de fonctionnalités",
+          "body": "Nous créons de nouveaux outils à partir des commentaires des utilisateurs. Si vous avez besoin d'un convertisseur de fichiers, d'un outil audio ou d'un calculateur financier spécifique, dites-nous ce qu'il vous faut."
+        },
+        {
+          "title": "Partenariats et médias",
+          "body": "Pour les demandes de presse, l'utilisation éducative ou les demandes de collaboration, contactez-nous via notre adresse e-mail. Nous examinons personnellement chaque message."
+        },
+        {
+          "title": "Confidentialité et sécurité",
+          "body": "Nous prenons la sécurité au sérieux. Si vous trouvez une faille de sécurité ou avez des inquiétudes concernant vos données, écrivez-nous immédiatement pour que notre équipe puisse résoudre le problème rapidement."
+        }
+      ]
+    },
+    "response": {
+      "heading": "Délais de réponse et heures d'assistance",
+      "body": "Notre petite équipe lit chaque message attentivement. Nous répondons du lundi au vendredi pendant les heures ouvrées habituelles. La plupart des demandes reçoivent une réponse sous 2 à 3 jours ouvrés. Les investigations de bugs complexes peuvent prendre un peu plus de temps, le temps de tester différentes versions de navigateurs."
+    },
+    "troubleshooting": {
+      "heading": "Conseils rapides de dépannage",
+      "intro": "Avant d'envoyer une demande d'assistance, essayez ces étapes rapides :",
+      "html": "<li><strong style=\"color: var(--text-secondary)\">Rechargez votre page :</strong> rechargez complètement votre onglet de navigateur en appuyant sur <kbd class=\"rounded border px-1 py-0.5\" style=\"border-color: var(--border-strong); background-color: var(--bg-elevated)\">Ctrl + F5</kbd> ou <kbd class=\"rounded border px-1 py-0.5\" style=\"border-color: var(--border-strong); background-color: var(--bg-elevated)\">Cmd + Shift + R</kbd>.</li><li><strong style=\"color: var(--text-secondary)\">Vérifiez l'intégrité du fichier :</strong> assurez-vous que votre fichier d'entrée s'ouvre normalement sur votre ordinateur et n'est ni protégé par mot de passe ni corrompu.</li><li><strong style=\"color: var(--text-secondary)\">Essayez une fenêtre de navigation privée :</strong> les extensions de navigateur comme les bloqueurs de publicités agressifs peuvent parfois bloquer les scripts WebAssembly nécessaires à l'édition d'images et de vidéos.</li>"
+    },
+    "faqHeading": "Questions fréquentes du support de contact",
+    "faqs": [
+      {
+        "question": "À quelle vitesse l'équipe BeYourTools répond-elle ?",
+        "answer": "Nous nous efforçons de répondre à tous les messages sous 2 à 3 jours ouvrés. Les rapports de sécurité et les signalements d'outils défectueux sont traités en priorité."
+      },
+      {
+        "question": "Comment rédiger un rapport de bug efficace ?",
+        "answer": "Indiquez le nom de l'outil, la marque et la version de votre navigateur, ainsi que tout message d'erreur affiché à l'écran. Décrire les étapes pour reproduire le problème nous aide à corriger les bugs beaucoup plus vite."
+      },
+      {
+        "question": "Puis-je suggérer un nouvel outil de navigateur ou un nouveau format ?",
+        "answer": "Oui, nous accueillons les idées d'outils avec plaisir. Indiquez-nous les formats d'entrée que vous voulez convertir, le format de sortie souhaité et en quoi l'outil aidera votre travail."
+      },
+      {
+        "question": "BeYourTools enregistre-t-il ou stocke-t-il mon message de contact ?",
+        "answer": "Nous utilisons uniquement votre nom et votre e-mail pour répondre à votre demande. Nous ne vendons jamais vos coordonnées et ne les utilisons pas pour des lettres d'information marketing sans votre consentement."
+      },
+      {
+        "question": "Que dois-je faire si un outil ne parvient pas à traiter mon fichier ?",
+        "answer": "Vérifiez d'abord que votre fichier n'est ni protégé par mot de passe ni corrompu. Essayez d'actualiser votre onglet de navigateur ou de désactiver les extensions de navigateur qui bloquent les scripts WebAssembly."
+      },
+      {
+        "question": "Pourquoi BeYourTools exécute-t-il les outils directement dans le navigateur ?",
+        "answer": "Le traitement local des fichiers garantit que vos photos, PDF et documents privés ne quittent jamais votre ordinateur. Cela vous offre une vitesse maximale, zéro attente d'envoi et une confidentialité totale des données."
+      },
+      {
+        "question": "Comment signaler un problème de sécurité ou une préoccupation concernant la confidentialité ?",
+        "answer": "Si vous remarquez une faille de sécurité ou un comportement inattendu des données, écrivez-nous directement avec l'objet « Rapport de sécurité ». Nous enquêtons sur tous les signalements de sécurité sous 24 heures."
+      },
+      {
+        "question": "Puis-je utiliser BeYourTools sans connexion Internet ?",
+        "answer": "La plupart des outils nécessitent une connexion Internet pour charger les ressources initiales de la page. Une fois chargés dans votre onglet de navigateur, les outils traitent vos fichiers localement dans la mémoire de l'appareil, sans nécessiter de connexion réseau continue."
+      }
+    ]
+  }
+}

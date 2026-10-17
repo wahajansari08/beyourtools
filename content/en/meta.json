@@ -1,0 +1,82 @@
+{
+  "home": {
+    "title": "BeYourTools - Free Online Tools for Everyone",
+    "description": "200+ free browser-based developer and utility tools: JSON, image converter, PDF, audio, video, and QR codes. Fast, private, no sign-up."
+  },
+  "blog": {
+    "title": "Blog - Free Developer Guides & Tutorials | BeYourTools",
+    "description": "Practical guides on JSON, image formats, PDF tools, audio, video and developer productivity."
+  },
+  "about": {
+    "title": "About BeYourTools - Free Browser-Based Online Tools",
+    "description": "Learn about BeYourTools: our mission, client-side technology, and 290+ free browser tools for JSON, images, PDFs, audio, video, and finance."
+  },
+  "contact": {
+    "title": "Contact Us - Support & Feedback | BeYourTools",
+    "description": "Get in touch with the BeYourTools team. Report a bug, suggest a tool, or ask a question."
+  },
+  "privacy-policy": {
+    "title": "Privacy Policy - Data Security & Privacy | BeYourTools",
+    "description": "BeYourTools privacy policy. All tool processing happens locally in your browser - files and data are never uploaded to our servers."
+  },
+  "terms": {
+    "title": "Terms and Conditions - BeYourTools",
+    "description": "Read the Terms and Conditions for using BeYourTools. Understand your rights and responsibilities when using our free online tools."
+  },
+  "cookie-policy": {
+    "title": "Cookie Policy & Tracking Preferences | BeYourTools",
+    "description": "BeYourTools Cookie Policy. Learn which cookies we use, why, and how to control them."
+  },
+  "disclaimer": {
+    "title": "Disclaimer & Terms of Service | BeYourTools",
+    "description": "BeYourTools disclaimer. Information about limitations of our tools and accuracy of content."
+  },
+  "json-tools": {
+    "title": "JSON Tools - Free Online Formatter & Validator | BeYourTools",
+    "description": "30+ free browser-based JSON tools. Format, validate, diff, convert, generate, and inspect JSON - no upload, no sign-up, 100% private."
+  },
+  "image-converter": {
+    "title": "Image Converter - Convert JPG, PNG & WebP | BeYourTools",
+    "description": "Free browser-based image converter. Convert between JPG, PNG, WebP, AVIF, SVG, and more across 118 combinations. No upload, no sign-up."
+  },
+  "pdf-tools": {
+    "title": "PDF Tools - Free Online PDF Editor & Tools | BeYourTools",
+    "description": "Free browser-based PDF tools. Merge, split, compress, rotate, watermark, protect, convert PDF to JPG/PNG/text - no upload, no sign-up, no watermark, 100% private."
+  },
+  "video-tools": {
+    "title": "Video Tools - Free Online Editor & Converter | BeYourTools",
+    "description": "20 free browser-based video tools to compress, cut, trim, convert, resize, crop, merge, create GIFs, extract frames, and edit audio locally."
+  },
+  "audio-tools": {
+    "title": "Audio Tools - Free Online Audio Converters | BeYourTools",
+    "description": "20 free browser-based audio tools to convert, cut, compress, merge, boost volume, and record audio. Fast, private, no file upload."
+  },
+  "qr-barcode-tools": {
+    "title": "QR & Barcode Tools - Free Online Generators | BeYourTools",
+    "description": "Free browser-based QR code and barcode tools to generate, scan, and decode Code 128, EAN, UPC, and WiFi codes. 100% private, no sign-up."
+  },
+  "finance-tools": {
+    "title": "Finance Calculators - 40 Free Online Tools | BeYourTools",
+    "description": "40 free browser-based finance calculators for profit margins, loan payments, debt payoff, savings, and taxes. 100% private, no sign-up."
+  },
+  "design-tools": {
+    "title": "Design Tools - Free Color Picker, Palette & Favicon Generator | BeYourTools",
+    "description": "3 free browser-based design tools: pick colors from any image, generate color palettes and create favicons. Fast, private, no file upload."
+  },
+  "text-tools": {
+    "title": "Text Tools - Word Counter, Case Converter & More | BeYourTools",
+    "description": "All text tools run entirely in your browser. Nothing you type is uploaded or stored anywhere."
+  },
+  "developer-tools": {
+    "title": "Developer Tools - Regex, UUID, Password, Hash | BeYourTools",
+    "description": "All developer tools run entirely in your browser, including cryptographic operations via Web Crypto. Nothing is uploaded or stored."
+  },
+  "calculators": {
+    "title": "Calculators - Percentage, BMI, Age | BeYourTools",
+    "description": "All calculators run entirely in your browser. Your numbers are never uploaded or stored."
+  },
+  "allTools": {
+    "title": "All Tools - Browse Every Free Online Tool | BeYourTools",
+    "description": "Browse all 300+ free online tools: JSON, image, PDF, video, audio, QR codes, finance, text, developer tools and calculators. No sign-up, 100% private."
+  }
+}

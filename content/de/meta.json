@@ -1,0 +1,82 @@
+{
+  "about": {
+    "description": "Lerne BeYourTools kennen: unsere Mission, clientseitige Technologie und über 290 kostenlose Browser-Tools für JSON, Bilder, PDFs, Audio, Video und Finanzen.",
+    "title": "Über BeYourTools - Kostenlose browserbasierte Online-Tools"
+  },
+  "allTools": {
+    "description": "Über 300 kostenlose Online-Tools im Überblick: JSON, Bild, PDF, Video, Audio, QR-Codes, Finanzen, Text, Entwickler-Tools und Rechner. Keine Anmeldung, 100 % privat.",
+    "title": "Alle Tools - Alle kostenlosen Online-Tools im Überblick | BeYourTools"
+  },
+  "audio-tools": {
+    "description": "20 kostenlose browserbasierte Audio-Tools zum Konvertieren, Schneiden, Komprimieren, Zusammenführen, Lautstärke erhöhen und Audio aufnehmen. Schnell, privat, kein Datei-Upload.",
+    "title": "Audio-Tools - Kostenlose Online-Audio-Konverter | BeYourTools"
+  },
+  "blog": {
+    "description": "Praktische Anleitungen zu JSON, Bildformaten, PDF-Tools, Audio, Video und Entwicklerproduktivität.",
+    "title": "Blog - Kostenlose Entwickler-Anleitungen & Tutorials | BeYourTools"
+  },
+  "calculators": {
+    "description": "Alle Rechner laufen vollständig in deinem Browser. Deine Zahlen werden niemals hochgeladen oder gespeichert.",
+    "title": "Rechner - Prozent, BMI, Alter | BeYourTools"
+  },
+  "contact": {
+    "description": "Nimm Kontakt zum BeYourTools-Team auf. Melde einen Fehler, schlage ein Tool vor oder stelle eine Frage.",
+    "title": "Kontakt - Support & Feedback | BeYourTools"
+  },
+  "cookie-policy": {
+    "description": "Cookie-Richtlinie von BeYourTools. Erfahre, welche Cookies wir verwenden, warum, und wie du sie steuern kannst.",
+    "title": "Cookie-Richtlinie & Tracking-Einstellungen | BeYourTools"
+  },
+  "design-tools": {
+    "description": "3 kostenlose browserbasierte Design-Tools: Farben aus jedem Bild wählen, Farbpaletten generieren und Favicons erstellen. Schnell, privat, kein Datei-Upload.",
+    "title": "Design-Tools - Kostenlose Farbauswahl, Palette & Favicon-Generator | BeYourTools"
+  },
+  "developer-tools": {
+    "description": "Alle Entwickler-Tools laufen vollständig in deinem Browser, inklusive kryptografischer Operationen via Web Crypto. Nichts wird hochgeladen oder gespeichert.",
+    "title": "Entwickler-Tools - Regex, UUID, Passwort, Hash | BeYourTools"
+  },
+  "disclaimer": {
+    "description": "Haftungsausschluss von BeYourTools. Informationen zu den Grenzen unserer Tools und zur Genauigkeit der Inhalte.",
+    "title": "Haftungsausschluss & Nutzungsbedingungen | BeYourTools"
+  },
+  "finance-tools": {
+    "description": "40 kostenlose browserbasierte Finanzrechner für Gewinnmargen, Kreditraten, Schuldentilgung, Ersparnisse und Steuern. 100 % privat, keine Anmeldung.",
+    "title": "Finanzrechner - 40 kostenlose Online-Tools | BeYourTools"
+  },
+  "home": {
+    "description": "Über 200 kostenlose browserbasierte Entwickler- und Utility-Tools: JSON, Bildkonverter, PDF, Audio, Video und QR-Codes. Schnell, privat, keine Anmeldung.",
+    "title": "BeYourTools - Kostenlose Online-Tools für alle"
+  },
+  "image-converter": {
+    "description": "Kostenloser browserbasierter Bildkonverter. Zwischen JPG, PNG, WebP, AVIF, SVG und mehr konvertieren – über 118 Kombinationen. Kein Upload, keine Anmeldung.",
+    "title": "Bildkonverter - JPG, PNG & WebP konvertieren | BeYourTools"
+  },
+  "json-tools": {
+    "description": "Über 30 kostenlose browserbasierte JSON-Tools. JSON formatieren, validieren, vergleichen, konvertieren, generieren und prüfen – kein Upload, keine Anmeldung, 100 % privat.",
+    "title": "JSON-Tools - Kostenloser Online-Formatierer & Validator | BeYourTools"
+  },
+  "pdf-tools": {
+    "description": "Kostenlose browserbasierte PDF-Tools. PDFs zusammenführen, teilen, komprimieren, drehen, Wasserzeichen, schützen, PDF in JPG/PNG/Text konvertieren – kein Upload, keine Anmeldung, kein Wasserzeichen, 100 % privat.",
+    "title": "PDF-Tools - Kostenloser Online-PDF-Editor & Tools | BeYourTools"
+  },
+  "privacy-policy": {
+    "description": "Datenschutzerklärung von BeYourTools. Die gesamte Tool-Verarbeitung findet lokal in deinem Browser statt – Dateien und Daten werden niemals auf unsere Server hochgeladen.",
+    "title": "Datenschutzerklärung - Datensicherheit & Privatsphäre | BeYourTools"
+  },
+  "qr-barcode-tools": {
+    "description": "Kostenlose browserbasierte QR-Code- und Barcode-Tools zum Erstellen, Scannen und Decodieren von Code 128, EAN, UPC und WLAN-Codes. 100 % privat, keine Anmeldung.",
+    "title": "QR- & Barcode-Tools - Kostenlose Online-Generatoren | BeYourTools"
+  },
+  "terms": {
+    "description": "Lies die Allgemeinen Geschäftsbedingungen für die Nutzung von BeYourTools. Verstehe deine Rechte und Pflichten bei der Nutzung unserer kostenlosen Online-Tools.",
+    "title": "Allgemeine Geschäftsbedingungen - BeYourTools"
+  },
+  "text-tools": {
+    "description": "Alle Text-Tools laufen vollständig in deinem Browser. Nichts, was du tippst, wird hochgeladen oder gespeichert.",
+    "title": "Text-Tools - Wortzähler, Groß-/Kleinschreibung & mehr | BeYourTools"
+  },
+  "video-tools": {
+    "description": "20 kostenlose browserbasierte Video-Tools zum Komprimieren, Schneiden, Trimmen, Konvertieren, Skalieren, Zuschneiden, Zusammenführen, GIFs erstellen, Frames extrahieren und Audio lokal bearbeiten.",
+    "title": "Video-Tools - Kostenloser Online-Editor & Konverter | BeYourTools"
+  }
+}

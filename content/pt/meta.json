@@ -1,0 +1,82 @@
+{
+  "about": {
+    "description": "Conheça o BeYourTools: nossa missão, tecnologia 100% no navegador e mais de 290 ferramentas gratuitas para JSON, imagens, PDFs, áudio, vídeo e finanças.",
+    "title": "Sobre o BeYourTools - Ferramentas Online Gratuitas no Navegador"
+  },
+  "allTools": {
+    "description": "Explore mais de 300 ferramentas online gratuitas: JSON, imagem, PDF, vídeo, áudio, QR codes, finanças, texto, ferramentas para desenvolvedores e calculadoras. Sem cadastro, 100% privadas.",
+    "title": "Todas as Ferramentas - Explore Todas as Ferramentas Online Gratuitas | BeYourTools"
+  },
+  "audio-tools": {
+    "description": "20 ferramentas de áudio gratuitas no navegador para converter, cortar, comprimir, mesclar, aumentar o volume e gravar áudio. Rápido, privado, sem upload de arquivos.",
+    "title": "Ferramentas de Áudio - Conversores de Áudio Online Gratuitos | BeYourTools"
+  },
+  "blog": {
+    "description": "Guias práticos sobre JSON, formatos de imagem, ferramentas PDF, áudio, vídeo e produtividade de desenvolvedores.",
+    "title": "Blog - Guias e Tutoriais Gratuitos para Desenvolvedores | BeYourTools"
+  },
+  "calculators": {
+    "description": "Todas as calculadoras rodam inteiramente no seu navegador. Seus números nunca são enviados ou armazenados.",
+    "title": "Calculadoras - Porcentagem, IMC, Idade | BeYourTools"
+  },
+  "contact": {
+    "description": "Entre em contato com a equipe do BeYourTools. Reporte um bug, sugira uma ferramenta ou faça uma pergunta.",
+    "title": "Fale Conosco - Suporte e Feedback | BeYourTools"
+  },
+  "cookie-policy": {
+    "description": "Política de Cookies do BeYourTools. Saiba quais cookies usamos, por quê e como controlá-los.",
+    "title": "Política de Cookies e Preferências de Rastreamento | BeYourTools"
+  },
+  "design-tools": {
+    "description": "3 ferramentas de design gratuitas no navegador: escolha cores de qualquer imagem, gere paletas de cores e crie favicons. Rápido, privado, sem upload de arquivos.",
+    "title": "Ferramentas de Design - Seletor de Cores, Paleta e Gerador de Favicon Gratuitos | BeYourTools"
+  },
+  "developer-tools": {
+    "description": "Todas as ferramentas de desenvolvedor rodam inteiramente no seu navegador, incluindo operações criptográficas via Web Crypto. Nada é enviado ou armazenado.",
+    "title": "Ferramentas de Desenvolvedor - Regex, UUID, Senha, Hash | BeYourTools"
+  },
+  "disclaimer": {
+    "description": "Aviso legal do BeYourTools. Informações sobre as limitações das nossas ferramentas e a precisão do conteúdo.",
+    "title": "Aviso Legal e Termos de Serviço | BeYourTools"
+  },
+  "finance-tools": {
+    "description": "40 calculadoras financeiras gratuitas no navegador para margens de lucro, parcelas de empréstimo, quitação de dívidas, poupança e impostos. 100% privado, sem cadastro.",
+    "title": "Calculadoras Financeiras - 40 Ferramentas Online Gratuitas | BeYourTools"
+  },
+  "home": {
+    "description": "Mais de 200 ferramentas gratuitas para desenvolvedores e utilitários no navegador: JSON, conversor de imagens, PDF, áudio, vídeo e códigos QR. Rápido, privado, sem cadastro.",
+    "title": "BeYourTools - Ferramentas Online Gratuitas para Todos"
+  },
+  "image-converter": {
+    "description": "Conversor de imagens gratuito no navegador. Converta entre JPG, PNG, WebP, AVIF, SVG e mais em 118 combinações. Sem upload, sem cadastro.",
+    "title": "Conversor de Imagens - Converta JPG, PNG e WebP | BeYourTools"
+  },
+  "json-tools": {
+    "description": "Mais de 30 ferramentas JSON gratuitas no navegador. Formate, valide, compare, converta, gere e inspecione JSON — sem upload, sem cadastro, 100% privado.",
+    "title": "Ferramentas JSON - Formatador e Validador Online Gratuitos | BeYourTools"
+  },
+  "pdf-tools": {
+    "description": "Ferramentas PDF gratuitas no navegador. Mesclar, dividir, comprimir, girar, marca d'água, proteger, converter PDF para JPG/PNG/texto — sem upload, sem cadastro, sem marca d'água, 100% privado.",
+    "title": "Ferramentas PDF - Editor e Ferramentas PDF Online Gratuitos | BeYourTools"
+  },
+  "privacy-policy": {
+    "description": "Política de privacidade do BeYourTools. Todo o processamento das ferramentas acontece localmente no seu navegador — arquivos e dados nunca são enviados para nossos servidores.",
+    "title": "Política de Privacidade - Segurança e Privacidade de Dados | BeYourTools"
+  },
+  "qr-barcode-tools": {
+    "description": "Ferramentas gratuitas de código QR e código de barras no navegador para gerar, escanear e decodificar Code 128, EAN, UPC e códigos WiFi. 100% privado, sem cadastro.",
+    "title": "Ferramentas de QR e Códigos de Barras - Geradores Online Gratuitos | BeYourTools"
+  },
+  "terms": {
+    "description": "Leia os Termos e Condições de uso do BeYourTools. Entenda seus direitos e responsabilidades ao usar nossas ferramentas online gratuitas.",
+    "title": "Termos e Condições - BeYourTools"
+  },
+  "text-tools": {
+    "description": "Todas as ferramentas de texto rodam inteiramente no seu navegador. Nada do que você digita é enviado ou armazenado em qualquer lugar.",
+    "title": "Ferramentas de Texto - Contador de Palavras, Conversor de Caixa e Mais | BeYourTools"
+  },
+  "video-tools": {
+    "description": "20 ferramentas de vídeo gratuitas no navegador para comprimir, cortar, aparar, converter, redimensionar, recortar, mesclar, criar GIFs, extrair quadros e editar áudio localmente.",
+    "title": "Ferramentas de Vídeo - Editor e Conversor Online Gratuitos | BeYourTools"
+  }
+}
