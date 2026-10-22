@@ -42,7 +42,7 @@ const __enMetadata: Metadata = {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  return localizeMetadata(locale, "allTools", __enMetadata);
+  return localizeMetadata(locale, "all-tools", __enMetadata);
 }
 
 type RawTool = { slug: string; href: string };
