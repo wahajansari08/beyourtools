@@ -101,6 +101,7 @@ export default async function BlogPostPage({ params }: Props) {
       publishedAt: post.publishedAt,
       author: post.author,
       authorRole: SITE_AUTHOR.role,
+      authorUrl: SITE_AUTHOR.url,
       tags: view.tags,
     }),
     breadcrumbSchema([
@@ -154,9 +155,9 @@ export default async function BlogPostPage({ params }: Props) {
 
         {/* Author */}
         <div className="mb-10 flex items-center gap-4 rounded-xl border p-5" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-base font-bold" style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }} aria-hidden="true">B</div>
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-base font-bold" style={{ backgroundColor: "var(--accent)", color: "var(--accent-fg)" }} aria-hidden="true">W</div>
           <div>
-            <div className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>{SITE_AUTHOR.name}</div>
+            <div className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}><a href={SITE_AUTHOR.url} target="_blank" rel="noopener noreferrer" className="hover:underline">{SITE_AUTHOR.name}</a></div>
             <div className="text-[11px] font-medium" style={{ color: "var(--text-subtle)" }}>{SITE_AUTHOR.role}</div>
             <div className="mt-1 text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>I build free browser-based tools for developers and designers. Nothing you paste here ever leaves your device.</div>
           </div>

@@ -26,8 +26,9 @@ export interface BlogPost {
 
 /** Site author identity (E-E-A-T byline). All posts are written by the founder. */
 export const SITE_AUTHOR = {
-  name: "Be",
-  role: "Founder & Editor, BeYourTools",
+  name: "Wahaj Ansari",
+  role: "Founder & Editor",
+  url: "https://wahaj.pk",
 } as const;
 
 export const blogPosts: BlogPost[] = [

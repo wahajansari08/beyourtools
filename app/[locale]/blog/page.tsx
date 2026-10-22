@@ -106,7 +106,7 @@ export default async function BlogPage({ params: routeParams, searchParams }: Pr
         headline: p.title,
         url: canonical(`/blog/${p.slug}`),
         datePublished: p.publishedAt,
-        author: { "@type": "Person", name: p.author, jobTitle: SITE_AUTHOR.role, url: `${SITE.url}/about` },
+        author: { "@type": "Person", name: p.author, jobTitle: SITE_AUTHOR.role, url: SITE_AUTHOR.url },
       })),
     },
   ];

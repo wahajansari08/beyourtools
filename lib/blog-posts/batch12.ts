@@ -7,7 +7,7 @@ export const batch12: BlogPost[] = [
     seoTitle: "How to Calculate Percentage — Formulas & Examples",
     excerpt:
       "Percentages run your wallet, your grades, and your salary slips — yet most of us google the formula every single time. Here are the only three formulas you'll ever need, with examples that actually happen in real life.",
-    author: "Be",
+    author: "Wahaj Ansari",
     publishedAt: "2026-10-18",
     readingTime: 7,
     category: "Finance",
