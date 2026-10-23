@@ -25,6 +25,8 @@ export default function TextTransformTool({
   toolbar,
   defaultValue = "",
   acceptUpload,
+  value,
+  onInputChange,
 }: {
   inputLabel: string;
   outputLabel: string;
@@ -36,8 +38,16 @@ export default function TextTransformTool({
   toolbar?: ReactNode;
   defaultValue?: string;
   acceptUpload?: string;
+  /** Optional controlled input. When provided, the component reports edits via onInputChange. */
+  value?: string;
+  onInputChange?: (value: string) => void;
 }) {
-  const [input, setInput] = useState(defaultValue);
+  const [uncontrolled, setUncontrolled] = useState(defaultValue);
+  const input = value !== undefined ? value : uncontrolled;
+  const setInput = (next: string) => {
+    if (value === undefined) setUncontrolled(next);
+    onInputChange?.(next);
+  };
   const result = useMemo(() => transform(input), [input, transform]);
 
   return (

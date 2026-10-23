@@ -19,6 +19,9 @@ export default function UrlEncoderDecoderClient() {
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [recursive, setRecursive] = useState(false);
+  const [plusAsSpace, setPlusAsSpace] = useState(false);
+  const [perLine, setPerLine] = useState(false);
 
   // Live conversion. On failure we keep the last good output and show an error.
   useEffect(() => {
@@ -28,20 +31,36 @@ export default function UrlEncoderDecoderClient() {
       return;
     }
     try {
-      const fn =
-        direction === "encode"
-          ? mode === "component"
-            ? encodeURIComponent
-            : encodeURI
-          : mode === "component"
-            ? decodeURIComponent
-            : decodeURI;
-      setOutput(fn(input));
+      const single = (s: string): string => {
+        const fn =
+          direction === "encode"
+            ? mode === "component"
+              ? encodeURIComponent
+              : encodeURI
+            : mode === "component"
+              ? decodeURIComponent
+              : decodeURI;
+        let value = direction === "decode" && plusAsSpace ? s.replace(/\+/g, " ") : s;
+        let passes = 0;
+        let next = fn(value);
+        if (direction === "decode" && recursive) {
+          // Keep decoding while the output still changes (up to 16 passes)
+          // - handles double/triple-encoded strings.
+          while (next !== value && passes < 16) {
+            value = next;
+            next = fn(value);
+            passes += 1;
+          }
+          return value;
+        }
+        return next;
+      };
+      setOutput(perLine ? input.split("\n").map(single).join("\n") : single(input));
       setError(null);
     } catch {
       setError(direction === "decode" ? DECODE_ERROR : "Could not encode that input.");
     }
-  }, [input, direction, mode]);
+  }, [input, direction, mode, recursive, plusAsSpace, perLine]);
 
   const swap = () => {
     if (!output) return;
@@ -104,6 +123,22 @@ export default function UrlEncoderDecoderClient() {
         </Btn>
       </div>
 
+      <div className="flex flex-wrap items-center gap-2">
+        {direction === "decode" && (
+          <Btn variant="toggle" size="sm" selected={recursive} onClick={() => setRecursive((v) => !v)} aria-pressed={recursive}>
+            Decode recursively
+          </Btn>
+        )}
+        {direction === "decode" && (
+          <Btn variant="toggle" size="sm" selected={plusAsSpace} onClick={() => setPlusAsSpace((v) => !v)} aria-pressed={plusAsSpace}>
+            Treat + as space
+          </Btn>
+        )}
+        <Btn variant="toggle" size="sm" selected={perLine} onClick={() => setPerLine((v) => !v)} aria-pressed={perLine}>
+          Process each line separately
+        </Btn>
+      </div>
+
       <div className="grid gap-4 lg:grid-cols-2">
         <ToolInput
           label={inputLabel}
@@ -136,10 +171,13 @@ export default function UrlEncoderDecoderClient() {
         </div>
       )}
 
-      <p className="text-xs" style={{ color: "var(--text-subtle)" }}>
+      <p className="text-xs leading-relaxed" style={{ color: "var(--text-subtle)" }}>
         {mode === "component"
           ? "Component mode encodes everything except unreserved characters - use it for individual query values."
-          : "Full URI mode leaves : / ? & = # alone so a complete URL stays a valid URL."}
+          : "Full URI mode leaves : / ? & = # alone so a complete URL stays a valid URL."}{" "}
+        {direction === "decode" && recursive && "Recursive decode repeats until the text stops changing (up to 16 passes) - paste double-encoded strings with confidence."}{" "}
+        {direction === "decode" && plusAsSpace && "Plus signs are read as spaces, matching HTML form encoding."}{" "}
+        {perLine && "Each line is converted on its own, so lists of URLs convert in one paste."}
       </p>
     </div>
   );

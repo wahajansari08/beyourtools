@@ -266,12 +266,62 @@ async function buildPdf(canvas: HTMLCanvasElement | OffscreenCanvas): Promise<Bl
   return new Blob([pdfBytes], { type: "application/pdf" });
 }
 
+// ─── Optional pre-processing: resize + background fill ───────────────────────
+
+/** Targets that cannot store transparency - the source must be flattened onto a solid colour. */
+const OPAQUE_TARGETS = new Set(["jpg", "jpeg", "bmp", "pdf"]);
+
+export interface ConvertImageOptions {
+  /** Fit the image inside this box (px), preserving aspect ratio. Never upscales. */
+  maxWidth?: number;
+  maxHeight?: number;
+  /** CSS colour used to flatten transparency for opaque targets. Defaults to white. */
+  background?: string;
+}
+
+function applyResizeAndBackground(
+  canvas: HTMLCanvasElement | OffscreenCanvas,
+  targetExt: string,
+  opts: ConvertImageOptions
+): HTMLCanvasElement {
+  const srcW = canvas.width;
+  const srcH = canvas.height;
+
+  let w = srcW;
+  let h = srcH;
+  const maxW = opts.maxWidth && opts.maxWidth > 0 ? Math.floor(opts.maxWidth) : 0;
+  const maxH = opts.maxHeight && opts.maxHeight > 0 ? Math.floor(opts.maxHeight) : 0;
+  if (maxW > 0 || maxH > 0) {
+    const scale = Math.min(
+      maxW > 0 ? maxW / srcW : 1,
+      maxH > 0 ? maxH / srcH : 1,
+      1 // never upscale
+    );
+    if (scale < 1) {
+      w = Math.max(1, Math.round(srcW * scale));
+      h = Math.max(1, Math.round(srcH * scale));
+    }
+  }
+
+  const out = document.createElement("canvas");
+  out.width = w;
+  out.height = h;
+  const ctx = out.getContext("2d")!;
+  if (OPAQUE_TARGETS.has(targetExt)) {
+    ctx.fillStyle = opts.background || "#ffffff";
+    ctx.fillRect(0, 0, w, h);
+  }
+  ctx.drawImage(canvas as CanvasImageSource, 0, 0, w, h);
+  return out;
+}
+
 // ─── Main conversion entry point ─────────────────────────────────────────────
 
 export async function convertImage(
   file: File,
   targetFormat: string,
-  quality = 0.92
+  quality = 0.92,
+  opts: ConvertImageOptions = {}
 ): Promise<ConvertImageResult> {
 
   const ext = targetFormat.toLowerCase();
@@ -353,6 +403,11 @@ export async function convertImage(
       blob: null, ext, mime, warning: null,
       error: e instanceof Error ? e.message : "Failed to load image.",
     };
+  }
+
+  // ── Optional resize + transparency flattening (browser only) ──
+  if (typeof document !== "undefined") {
+    canvas = applyResizeAndBackground(canvas, ext, opts);
   }
 
   let warning: string | null = null;

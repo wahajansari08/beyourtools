@@ -312,6 +312,9 @@ export default function ConverterClient({
   const [items, setItems] = useState<FileItem[]>([]);
   const [quality, setQuality] = useState(92);
   const [zipping, setZipping] = useState(false);
+  const [maxWidth, setMaxWidth] = useState("");
+  const [maxHeight, setMaxHeight] = useState("");
+  const [background, setBackground] = useState("#ffffff");
 
   // BUG 1 FIX: a single persistent loop flag. True = worker is already running.
   const workerRunning = useRef(false);
@@ -322,6 +325,17 @@ export default function ConverterClient({
   const accept = `${acceptMimes},${acceptExts}`;
   const isRasterOutput = !["svg", "pdf"].includes(toFormat);
   const showQuality = isRasterOutput && ["jpg", "webp", "avif"].includes(toFormat);
+  const showBackground = ["jpg", "jpeg", "bmp", "pdf"].includes(toFormat);
+
+  const convertOpts = useCallback(() => {
+    const w = parseInt(maxWidth, 10);
+    const h = parseInt(maxHeight, 10);
+    return {
+      maxWidth: Number.isFinite(w) && w > 0 ? w : undefined,
+      maxHeight: Number.isFinite(h) && h > 0 ? h : undefined,
+      background,
+    };
+  }, [maxWidth, maxHeight, background]);
 
   // Keep itemsRef in sync with every state update.
   const setItemsSync = useCallback((updater: (prev: FileItem[]) => FileItem[]) => {
@@ -355,7 +369,7 @@ export default function ConverterClient({
       prev.map((it) => (it.id === next.id ? { ...it, status: "converting" } : it))
     );
 
-    const result = await convertImage(next.file, toFormat, quality / 100);
+    const result = await convertImage(next.file, toFormat, quality / 100, convertOpts());
 
     // Check the item still exists (user may have removed it while converting)
     const stillExists = itemsRef.current.some((it) => it.id === next.id);
@@ -395,7 +409,7 @@ export default function ConverterClient({
 
     // Process next queued item if any remain
     await processNext();
-  }, [toFormat, quality, setItemsSync]);
+  }, [toFormat, quality, convertOpts, setItemsSync]);
 
   const startWorker = useCallback(() => {
     const availableSlots = MAX_CONCURRENCY - activeWorkersRef.current;
@@ -535,27 +549,86 @@ export default function ConverterClient({
   return (
     <div className="space-y-4">
 
-      {/* Quality slider */}
-      {showQuality && (
+      {/* Conversion options */}
+      {(showQuality || isRasterOutput || showBackground) && (
         <div
-          className="flex items-center gap-3 rounded-lg border px-4 py-3"
+          className="space-y-3 rounded-lg border px-4 py-3"
           style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}
         >
-          <label htmlFor="quality-slider" className="shrink-0 text-xs font-medium"
-            style={{ color: "var(--text-muted)" }}>
-            Quality
-          </label>
-          <input
-            id="quality-slider"
-            type="range" min={10} max={100} step={1} value={quality}
-            onChange={(e) => setQuality(Number(e.target.value))}
-            className="h-1.5 w-full cursor-pointer accent-amber-400"
-            aria-valuetext={`${quality}%`}
-          />
-          <span className="w-8 shrink-0 text-right font-mono text-xs"
-            style={{ color: "var(--accent)" }}>
-            {quality}%
-          </span>
+          {showQuality && (
+            <div className="flex items-center gap-3">
+              <label htmlFor="quality-slider" className="w-20 shrink-0 text-xs font-medium"
+                style={{ color: "var(--text-muted)" }}>
+                Quality
+              </label>
+              <input
+                id="quality-slider"
+                type="range" min={10} max={100} step={1} value={quality}
+                onChange={(e) => setQuality(Number(e.target.value))}
+                className="h-1.5 w-full cursor-pointer accent-amber-400"
+                aria-valuetext={`${quality}%`}
+              />
+              <span className="w-8 shrink-0 text-right font-mono text-xs"
+                style={{ color: "var(--accent)" }}>
+                {quality}%
+              </span>
+            </div>
+          )}
+          {isRasterOutput && (
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+              <span className="w-20 shrink-0 text-xs font-medium" style={{ color: "var(--text-muted)" }}>
+                Resize
+              </span>
+              <label className="flex items-center gap-1.5 text-xs" style={{ color: "var(--text-muted)" }}>
+                Max width
+                <input
+                  type="number" min={1} max={16000} inputMode="numeric"
+                  value={maxWidth}
+                  onChange={(e) => setMaxWidth(e.target.value)}
+                  placeholder="px"
+                  aria-label="Maximum width in pixels (optional)"
+                  className="focus-ring w-20 rounded-md border px-2 py-1 text-xs"
+                  style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-primary)" }}
+                />
+              </label>
+              <label className="flex items-center gap-1.5 text-xs" style={{ color: "var(--text-muted)" }}>
+                Max height
+                <input
+                  type="number" min={1} max={16000} inputMode="numeric"
+                  value={maxHeight}
+                  onChange={(e) => setMaxHeight(e.target.value)}
+                  placeholder="px"
+                  aria-label="Maximum height in pixels (optional)"
+                  className="focus-ring w-20 rounded-md border px-2 py-1 text-xs"
+                  style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-primary)" }}
+                />
+              </label>
+              <span className="text-[11px]" style={{ color: "var(--text-subtle)" }}>
+                Optional - images are scaled down to fit, keeping the aspect ratio. Never upscaled.
+              </span>
+            </div>
+          )}
+          {showBackground && (
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="w-20 shrink-0 text-xs font-medium" style={{ color: "var(--text-muted)" }}>
+                Background
+              </span>
+              <label className="flex cursor-pointer items-center gap-2 text-xs" style={{ color: "var(--text-muted)" }}>
+                <input
+                  type="color"
+                  value={background}
+                  onChange={(e) => setBackground(e.target.value)}
+                  aria-label="Background colour for transparent areas"
+                  className="focus-ring h-8 w-10 cursor-pointer rounded border"
+                  style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)" }}
+                />
+                <span className="font-mono uppercase">{background}</span>
+              </label>
+              <span className="text-[11px]" style={{ color: "var(--text-subtle)" }}>
+                {toLabel} has no transparency - see-through areas become this colour instead of black.
+              </span>
+            </div>
+          )}
         </div>
       )}
 

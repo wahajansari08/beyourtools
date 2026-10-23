@@ -6,7 +6,7 @@ import CopyButton from "@/components/CopyButton";
 import DownloadButton from "@/components/DownloadButton";
 import SegmentedControl from "@/components/SegmentedControl";
 
-type Mode = "paragraphs" | "sentences" | "words";
+type Mode = "paragraphs" | "sentences" | "words" | "list" | "characters";
 
 const CLASSIC_START =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
@@ -52,13 +52,18 @@ function makeParagraph(): string {
   return sentences.join(" ");
 }
 
-function generate(mode: Mode, count: number, classicStart: boolean): string {
+function escapeHtml(s: string): string {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function generate(mode: Mode, count: number, classicStart: boolean, asHtml: boolean): string {
   if (mode === "paragraphs") {
     const paragraphs: string[] = [];
     for (let i = 0; i < count; i++) paragraphs.push(makeParagraph());
     if (classicStart && paragraphs.length > 0) {
       paragraphs[0] = CLASSIC_START + " " + paragraphs[0].replace(/^[A-Z][^.]+\.\s*/, "");
     }
+    if (asHtml) return paragraphs.map((p) => `<p>${escapeHtml(p)}</p>`).join("\n");
     return paragraphs.join("\n\n");
   }
 
@@ -66,7 +71,31 @@ function generate(mode: Mode, count: number, classicStart: boolean): string {
     const sentences: string[] = [];
     for (let i = 0; i < count; i++) sentences.push(makeSentence(sentenceLength()));
     if (classicStart && sentences.length > 0) sentences[0] = CLASSIC_START;
-    return sentences.join(" ");
+    const joined = sentences.join(" ");
+    return asHtml ? `<p>${escapeHtml(joined)}</p>` : joined;
+  }
+
+  if (mode === "list") {
+    const items: string[] = [];
+    for (let i = 0; i < count; i++) items.push(makeSentence(sentenceLength()));
+    if (classicStart && items.length > 0) items[0] = CLASSIC_START;
+    if (asHtml) return `<ul>\n${items.map((s) => `  <li>${escapeHtml(s)}</li>`).join("\n")}\n</ul>`;
+    return items.map((s) => `• ${s}`).join("\n");
+  }
+
+  if (mode === "characters") {
+    // Generate plenty of words, then trim to exactly `count` characters at a word boundary.
+    const words: string[] = [];
+    if (classicStart) words.push(...CLASSIC_WORDS);
+    while (words.join(" ").length < count + 20) words.push(pickWord());
+    words[0] = words[0].charAt(0).toUpperCase() + words[0].slice(1);
+    let text = words.join(" ");
+    if (text.length > count) {
+      const cut = text.lastIndexOf(" ", count);
+      text = text.slice(0, cut > 0 ? cut : count);
+    }
+    if (!/[.!?…]$/.test(text)) text += ".";
+    return asHtml ? `<p>${escapeHtml(text)}</p>` : text;
   }
 
   // words
@@ -83,25 +112,29 @@ function generate(mode: Mode, count: number, classicStart: boolean): string {
     sentences.push(chunk.join(" ") + ".");
     i += len;
   }
-  return sentences.join(" ");
+  const joined = sentences.join(" ");
+  return asHtml ? `<p>${escapeHtml(joined)}</p>` : joined;
 }
 
-const DEFAULT_COUNT: Record<Mode, number> = { paragraphs: 3, sentences: 5, words: 100 };
+const DEFAULT_COUNT: Record<Mode, number> = { paragraphs: 3, sentences: 5, words: 100, list: 5, characters: 280 };
 const RANGE: Record<Mode, { min: number; max: number; step: number }> = {
   paragraphs: { min: 1, max: 20, step: 1 },
   sentences: { min: 1, max: 50, step: 1 },
   words: { min: 10, max: 1000, step: 10 },
+  list: { min: 2, max: 20, step: 1 },
+  characters: { min: 50, max: 5000, step: 10 },
 };
 
 export default function LoremIpsumGeneratorClient() {
   const [mode, setMode] = useState<Mode>("paragraphs");
   const [count, setCount] = useState(DEFAULT_COUNT.paragraphs);
   const [classicStart, setClassicStart] = useState(true);
+  const [asHtml, setAsHtml] = useState(false);
   const [output, setOutput] = useState("");
 
   const regenerate = useCallback(() => {
-    setOutput(generate(mode, count, classicStart));
-  }, [mode, count, classicStart]);
+    setOutput(generate(mode, count, classicStart, asHtml));
+  }, [mode, count, classicStart, asHtml]);
 
   // Generate immediately so the page never looks empty.
   useEffect(() => {
@@ -127,6 +160,8 @@ export default function LoremIpsumGeneratorClient() {
             { value: "paragraphs", label: "Paragraphs" },
             { value: "sentences", label: "Sentences" },
             { value: "words", label: "Words" },
+            { value: "list", label: "List" },
+            { value: "characters", label: "Characters" },
           ]}
         />
 
@@ -173,6 +208,15 @@ export default function LoremIpsumGeneratorClient() {
         >
           Start with &ldquo;Lorem ipsum dolor sit amet&hellip;&rdquo;
         </Btn>
+        <Btn
+          variant="toggle"
+          size="sm"
+          selected={asHtml}
+          onClick={() => setAsHtml((v) => !v)}
+          aria-pressed={asHtml}
+        >
+          Wrap in HTML tags
+        </Btn>
         <Btn variant="primary" size="sm" onClick={regenerate}>
           Generate
         </Btn>
@@ -188,7 +232,10 @@ export default function LoremIpsumGeneratorClient() {
 
       <div className="flex flex-wrap items-center gap-2">
         <CopyButton text={output} />
-        <DownloadButton text={output} filename="lorem-ipsum.txt" />
+        <DownloadButton text={output} filename={asHtml ? "lorem-ipsum.html" : "lorem-ipsum.txt"} />
+        <span className="text-xs" style={{ color: "var(--text-subtle)" }}>
+          {output.length.toLocaleString("en-US")} characters
+        </span>
       </div>
     </div>
   );

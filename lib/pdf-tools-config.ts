@@ -182,7 +182,7 @@ export const pdfTools: PdfToolDef[] = [
   {
     slug: "merge-pdf",
     name: "Merge PDF",
-    description: "Combine multiple PDF files into one document.",
+    description: "Combine multiple PDF files into one document - pick individual pages per file, reorder files, and sort A-Z before merging.",
     category: "Edit & Organize",
     engine: "pdf-lib",
     accept: ".pdf,application/pdf",

@@ -30,13 +30,14 @@ const content: Record<string, JsonToolContent> = {
   // ─── Format & Validate ────────────────────────────────────────────────────
 
   "json-formatter": {
-    tagline: "Paste minified or messy JSON and get a clean, indented version instantly with 2-space, 4-space, or tab indentation.",
-    keywords: "JSON formatter, JSON pretty print, format JSON online, JSON beautifier, JSON indentation, pretty JSON",
+    tagline: "Paste minified or messy JSON and get a clean, indented version instantly with 2-space, 4-space, or tab indentation. Switch to Tree view to explore nested structures, upload .json files, and pick up where you left off - your input is autosaved in this browser.",
+    keywords: "JSON formatter, JSON pretty print, format JSON online, JSON beautifier, JSON indentation, pretty JSON, JSON tree viewer",
     howTo: [
-      { title: "Paste your JSON", text: "Paste raw, minified, or messy JSON into the input panel on the left." },
-      { title: "Choose indent style", text: "Select 2 spaces, 4 spaces, or tab from the toolbar - or leave the default." },
+      { title: "Paste or upload your JSON", text: "Paste raw, minified, or messy JSON into the input panel, or upload a .json file from your device." },
+      { title: "Choose indent style", text: "Select 2 spaces, 4 spaces, or tab from the toolbar - or leave the default. Toggle key sorting to order keys A-Z." },
       { title: "View the result", text: "The formatted JSON appears instantly in the output panel on the right." },
-      { title: "Copy or download", text: "Click Copy to copy to clipboard, or Download to save as a .json file." },
+      { title: "Explore the tree", text: "Switch to Tree view to collapse and expand nested objects and arrays when the document is too large to scan." },
+      { title: "Copy or download", text: "Click Copy to copy to clipboard, or Download to save as a .json file. Your input is autosaved locally, so a refresh never loses it." },
     ],
     faqs: [
       { question: "What is JSON formatting?", answer: "JSON formatting (pretty-printing) adds consistent indentation and newlines to make JSON human-readable. Minified JSON is identical in data content but has all whitespace removed to reduce file size." },

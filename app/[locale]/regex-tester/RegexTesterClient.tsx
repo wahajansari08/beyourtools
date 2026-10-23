@@ -155,10 +155,50 @@ const CHEATSHEET: { title: string; rows: [string, string][] }[] = [
   },
 ];
 
+function encodeShare(state: { pattern: string; flags: string; test: string; replacement: string }): string {
+  try {
+    const json = JSON.stringify(state);
+    return btoa(unescape(encodeURIComponent(json))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+  } catch {
+    return "";
+  }
+}
+
+function decodeShare(hash: string): { pattern: string; flags: string; test: string; replacement: string } | null {
+  try {
+    const clean = hash.replace(/^#r=/, "").replace(/-/g, "+").replace(/_/g, "/");
+    const json = decodeURIComponent(escape(atob(clean)));
+    const parsed = JSON.parse(json);
+    if (parsed && typeof parsed.pattern === "string") {
+      return {
+        pattern: parsed.pattern,
+        flags: typeof parsed.flags === "string" ? parsed.flags : "g",
+        test: typeof parsed.test === "string" ? parsed.test : "",
+        replacement: typeof parsed.replacement === "string" ? parsed.replacement : "",
+      };
+    }
+  } catch {
+    // not a valid share link
+  }
+  return null;
+}
+
 export default function RegexTesterClient() {
-  const [pattern, setPattern] = useState("");
-  const [flags, setFlags] = useState<Record<string, boolean>>({ g: true });
-  const [test, setTest] = useState("");
+  // Restore from a share link (#r=...) on first load.
+  const shared = useMemo(
+    () => (typeof window !== "undefined" ? decodeShare(window.location.hash) : null),
+    []
+  );
+  const [pattern, setPattern] = useState(shared?.pattern ?? "");
+  const [flags, setFlags] = useState<Record<string, boolean>>(() => {
+    const next: Record<string, boolean> = {};
+    for (const f of FLAG_ORDER) next[f] = shared ? shared.flags.includes(f) : f === "g";
+    return next;
+  });
+  const [test, setTest] = useState(shared?.test ?? "");
+  const [replacement, setReplacement] = useState(shared?.replacement ?? "");
+  const [tab, setTab] = useState<"test" | "replace">("test");
+  const [shareMsg, setShareMsg] = useState("");
 
   const flagStr = useMemo(() => FLAG_ORDER.filter((f) => flags[f]).join(""), [flags]);
 
@@ -170,6 +210,36 @@ export default function RegexTesterClient() {
       return { matches: [] as MatchInfo[], error: e instanceof Error ? e.message : "Invalid pattern" };
     }
   }, [pattern, flagStr, test]);
+
+  const replaced = useMemo(() => {
+    if (!pattern || error) return "";
+    try {
+      const re = new RegExp(pattern, flagStr.includes("g") ? flagStr : flagStr + "g");
+      return test.replace(re, replacement);
+    } catch {
+      return "";
+    }
+  }, [pattern, flagStr, test, replacement, error]);
+
+  const copyShareLink = async () => {
+    const code = encodeShare({ pattern, flags: flagStr, test, replacement });
+    if (!code) return;
+    const url = `${window.location.origin}${window.location.pathname}#r=${code}`;
+    try {
+      await navigator.clipboard.writeText(url);
+    } catch {
+      window.location.hash = `r=${code}`;
+      setShareMsg("Link placed in the address bar - copy it from there.");
+      return;
+    }
+    try {
+      window.history.replaceState(null, "", `#r=${code}`);
+    } catch {
+      // ignore
+    }
+    setShareMsg("Share link copied - it restores this exact pattern, flags and test text.");
+    window.setTimeout(() => setShareMsg(""), 4000);
+  };
 
   const segments = useMemo(() => buildSegments(test, matches), [test, matches]);
 
@@ -247,6 +317,24 @@ export default function RegexTesterClient() {
         </div>
       </div>
 
+      <div className="flex flex-wrap items-center gap-2">
+        <Btn variant="toggle" size="sm" selected={tab === "test"} onClick={() => setTab("test")}>
+          Match
+        </Btn>
+        <Btn variant="toggle" size="sm" selected={tab === "replace"} onClick={() => setTab("replace")}>
+          Replace
+        </Btn>
+        <span className="flex-1" />
+        <Btn variant="secondary" size="sm" onClick={copyShareLink} disabled={!pattern || !!error}>
+          Copy share link
+        </Btn>
+      </div>
+      {shareMsg && (
+        <p className="text-xs" style={{ color: "var(--accent-text)" }} role="status">
+          {shareMsg}
+        </p>
+      )}
+
       {error && (
         <div className="rounded-xl border p-4" style={{ borderColor: "var(--coral)", backgroundColor: "var(--bg-surface)" }}>
           <p className="text-sm font-semibold" style={{ color: "var(--coral)" }}>
@@ -255,6 +343,38 @@ export default function RegexTesterClient() {
           <p className="mt-1 font-mono text-xs" style={{ color: "var(--text-secondary)" }}>
             {error}
           </p>
+        </div>
+      )}
+
+      {tab === "replace" && !error && pattern && (
+        <div className="rounded-xl border p-5 space-y-4" style={cardStyle}>
+          <div>
+            <label htmlFor="regex-replacement" className="mb-1 block text-xs font-medium" style={labelStyle}>
+              Replacement <span className="font-normal">(supports $1, $2 … $&amp; for the whole match, $` and $&apos; for before/after, $&lt;name&gt; for named groups)</span>
+            </label>
+            <input
+              id="regex-replacement"
+              value={replacement}
+              onChange={(e) => setReplacement(e.target.value)}
+              placeholder="e.g. [$1]"
+              spellCheck={false}
+              autoComplete="off"
+              className={monoCls}
+              style={inputStyle}
+            />
+          </div>
+          <div>
+            <p className="mb-1 text-xs font-medium" style={labelStyle}>
+              Result {matches.length > 0 && <span style={{ color: "var(--text-secondary)" }}>({matches.length} replacement{matches.length === 1 ? "" : "s"})</span>}
+            </p>
+            <div
+              className="whitespace-pre-wrap break-words rounded-lg border p-3 font-mono text-sm"
+              style={{ borderColor: "var(--border-strong)", backgroundColor: "var(--bg-elevated)", color: "var(--text-primary)" }}
+              aria-live="polite"
+            >
+              {test ? replaced || <span style={{ color: "var(--text-subtle)" }}>No changes - nothing matched.</span> : <span style={{ color: "var(--text-subtle)" }}>Add a test string above to preview the replacement.</span>}
+            </div>
+          </div>
         </div>
       )}
 

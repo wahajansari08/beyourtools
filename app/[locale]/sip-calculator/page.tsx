@@ -7,8 +7,8 @@ import { createToolMetadata } from "@/lib/seo";
 const __enMetadata: Metadata = createToolMetadata({
   title: "SIP Calculator - Estimate Your Investment Growth | BeYourTools",
   description:
-    "Free SIP calculator: estimate the future value of monthly investments with compound growth, a growth chart and a yearly breakdown. All in your browser.",
-  keywords: "sip calculator, sip returns, mutual fund sip, systematic investment plan, monthly investment calculator, sip growth",
+    "Free SIP calculator: estimate the future value of monthly investments with compound growth, annual step-up SIP mode, USD/EUR/GBP/INR/PKR currencies, a growth chart and a yearly breakdown. All in your browser.",
+  keywords: "sip calculator, sip returns, mutual fund sip, systematic investment plan, monthly investment calculator, sip growth, step up sip calculator, sip calculator india",
   path: "/sip-calculator",
 });
 
@@ -19,7 +19,7 @@ export default function SipCalculatorPage() {
       title="SIP Calculator"
       cluster="Savings & Interest"
       tagline="See what your monthly investments could become. Enter your monthly amount, expected return and time horizon, and watch compounding do the heavy lifting."
-      description="Free online SIP calculator. Enter your monthly investment, expected annual return and investment period to estimate the future value of a Systematic Investment Plan, with the total invested, the growth and a year-by-year breakdown."
+      description="Free online SIP calculator. Enter your monthly investment, expected annual return, investment period and optional annual step-up to estimate the future value of a Systematic Investment Plan - in USD, EUR, GBP, INR or PKR - with the total invested, the growth and a year-by-year breakdown."
       formulaExplanation={
         <>
           <p><strong style={{ color: "var(--text-secondary)" }}>FV</strong> = M × [((1+r)<sup>n</sup> − 1) ÷ r] × (1+r)</p>
@@ -29,6 +29,10 @@ export default function SipCalculatorPage() {
           <p className="text-xs mt-2" style={{ color: "var(--text-subtle)" }}>
             <strong>Example:</strong> $500/month at 12% annual return for 10 years<br />
             r = 0.01, n = 120. FV = 500 × [((1.01)<sup>120</sup> − 1) ÷ 0.01] × 1.01 ≈ <strong>$116,169</strong>
+          </p>
+          <p className="text-xs mt-2" style={{ color: "var(--text-subtle)" }}>
+            <strong>Step-up:</strong> with a 10% annual step-up, year y invests M × 1.10<sup>y−1</sup> per month.
+            Example: ₹5,000/month at 12% for 10 years grows to ≈ <strong>₹11.6 lakh</strong>; with a 10% yearly step-up it reaches ≈ <strong>₹17.4 lakh</strong>.
           </p>
         </>
       }
@@ -50,8 +54,12 @@ export default function SipCalculatorPage() {
           answer: "Yes, over long periods. In the example above, $60,000 invested over 10 years grows to about $116,000, so nearly half the final value is growth. Stretch it to 20 years and the same monthly amount reaches roughly $499,000.",
         },
         {
-          question: "How often should I increase my SIP?",
-          answer: "Many investors raise their SIP by 10% each year as income grows (a step-up SIP). This calculator uses a flat monthly amount; increasing it yearly can add a large amount to the final figure over long horizons.",
+          question: "What is a step-up SIP?",
+          answer: "A step-up SIP raises your monthly investment by a fixed percentage each year, usually 5 to 10%, as your income grows. Enter the annual step-up % in the calculator to model it. Example: ₹5,000/month at 12% for 10 years reaches about ₹11.6 lakh flat, but about ₹17.4 lakh with a 10% yearly step-up.",
+        },
+        {
+          question: "Can I calculate in rupees (INR)?",
+          answer: "Yes. Use the currency selector to switch between USD, EUR, GBP, INR and PKR. Amounts are formatted in the local style, so Indian users see lakh and crore notation on the chart and tables.",
         },
         {
           question: "Is this financial advice?",

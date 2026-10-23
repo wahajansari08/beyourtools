@@ -252,6 +252,7 @@ export default function HashGeneratorClient() {
   const [computing, setComputing] = useState(false);
   const [error, setError] = useState("");
   const [uppercase, setUppercase] = useState(false);
+  const [expected, setExpected] = useState("");
   const [dragOver, setDragOver] = useState(false);
   const runId = useRef(0);
   const fileInput = useRef<HTMLInputElement>(null);
@@ -441,6 +442,40 @@ export default function HashGeneratorClient() {
           </p>
         </div>
       )}
+
+      {/* Verify against an expected checksum */}
+      <div className="rounded-xl border p-5 space-y-3" style={cardStyle}>
+        <div>
+          <label htmlFor="hash-expected" className="mb-1 block text-xs font-medium" style={labelStyle}>
+            Expected hash <span className="font-normal">(optional - paste the checksum you were given to verify a download)</span>
+          </label>
+          <input
+            id="hash-expected"
+            value={expected}
+            onChange={(e) => setExpected(e.target.value)}
+            placeholder="e.g. 5d41402abc4b2a76b9719d911017c592"
+            spellCheck={false}
+            autoComplete="off"
+            className="focus-ring w-full rounded-lg border px-3 py-2 text-sm font-mono"
+            style={inputStyle}
+          />
+        </div>
+        {expected.trim() && shown && !computing && (
+          (() => {
+            const want = expected.trim().toLowerCase();
+            const hit = ALGOS.find((a) => shown[a.key].toLowerCase() === want);
+            return hit ? (
+              <p role="status" className="flex items-center gap-2 rounded-lg border px-3 py-2.5 text-sm font-medium" style={{ borderColor: "var(--accent)", backgroundColor: "color-mix(in srgb, var(--accent) 10%, transparent)", color: "var(--accent-text)" }}>
+                <span aria-hidden="true">✓</span> Match - identical to the computed {hit.label} hash.
+              </p>
+            ) : (
+              <p role="status" className="flex items-center gap-2 rounded-lg border px-3 py-2.5 text-sm font-medium" style={{ borderColor: "var(--coral)", backgroundColor: "color-mix(in srgb, var(--coral) 8%, transparent)", color: "var(--coral)" }}>
+                <span aria-hidden="true">✕</span> No match - none of the five hashes equal the expected value. The input may be corrupted or incomplete.
+              </p>
+            );
+          })()
+        )}
+      </div>
 
       {shown && !computing && (
         <div className="space-y-3">

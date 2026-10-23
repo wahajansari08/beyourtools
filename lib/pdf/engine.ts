@@ -134,6 +134,57 @@ export async function mergePdfs(files: Uint8Array[]): Promise<PdfResult> {
   }
 }
 
+/** Page count of a PDF, used to render the per-file page selector. */
+export async function getPageCount(bytes: Uint8Array): Promise<{ count: number; error: string | null }> {
+  try {
+    const src = await loadDoc(bytes);
+    return { count: src.getPageCount(), error: null };
+  } catch (e) {
+    return { count: 0, error: e instanceof Error ? e.message : "Could not read that PDF." };
+  }
+}
+
+export interface MergePageSpec {
+  bytes: Uint8Array;
+  /** 0-based page indices of this file, in the order they should appear in the merged output. */
+  pages: number[];
+}
+
+/**
+ * Merge with per-file page selection: only the listed pages of each file are
+ * copied, in the given order. This powers "merge only pages 1-3, 7" style flows.
+ */
+export async function mergePdfsWithPages(files: MergePageSpec[]): Promise<PdfResult> {
+  if (files.length < 1) return { bytes: null, error: "Upload at least 1 PDF file to merge." };
+  try {
+    const { PDFDocument } = await loadPdfLib();
+    const merged = await PDFDocument.create();
+    let totalPages = 0;
+    let usedFiles = 0;
+    for (const file of files) {
+      const src = await loadDoc(file.bytes);
+      const max = src.getPageCount();
+      const indices = file.pages.filter((p) => Number.isInteger(p) && p >= 0 && p < max);
+      if (indices.length === 0) continue;
+      const pages = await merged.copyPages(src, indices);
+      pages.forEach((p: any) => merged.addPage(p));
+      totalPages += indices.length;
+      usedFiles += 1;
+    }
+    if (totalPages === 0) {
+      return { bytes: null, error: "No pages selected. Tick at least one page in your files." };
+    }
+    const out = await merged.save({ useObjectStreams: false });
+    return {
+      bytes: out,
+      error: null,
+      info: `Merged ${totalPages} page${totalPages !== 1 ? "s" : ""} from ${usedFiles} file${usedFiles !== 1 ? "s" : ""}.`,
+    };
+  } catch (e) {
+    return { bytes: null, error: e instanceof Error ? e.message : "Merge failed" };
+  }
+}
+
 // ─── 4. Split ────────────────────────────────────────────────────────────────
 
 export interface SplitResult {
