@@ -32,7 +32,7 @@ export default function SipCalculatorPage() {
           </p>
           <p className="text-xs mt-2" style={{ color: "var(--text-subtle)" }}>
             <strong>Step-up:</strong> with a 10% annual step-up, year y invests M × 1.10<sup>y−1</sup> per month.
-            Example: ₹5,000/month at 12% for 10 years grows to ≈ <strong>₹11.6 lakh</strong>; with a 10% yearly step-up it reaches ≈ <strong>₹17.4 lakh</strong>.
+            Example: ₹5,000/month at 12% for 10 years grows to ≈ <strong>₹11.6 lakh</strong>; with a 10% yearly step-up it reaches ≈ <strong>₹16.9 lakh</strong>.
           </p>
         </>
       }
@@ -55,7 +55,7 @@ export default function SipCalculatorPage() {
         },
         {
           question: "What is a step-up SIP?",
-          answer: "A step-up SIP raises your monthly investment by a fixed percentage each year, usually 5 to 10%, as your income grows. Enter the annual step-up % in the calculator to model it. Example: ₹5,000/month at 12% for 10 years reaches about ₹11.6 lakh flat, but about ₹17.4 lakh with a 10% yearly step-up.",
+          answer: "A step-up SIP raises your monthly investment by a fixed percentage each year, usually 5 to 10%, as your income grows. Enter the annual step-up % in the calculator to model it. Example: ₹5,000/month at 12% for 10 years reaches about ₹11.6 lakh flat, but about ₹16.9 lakh with a 10% yearly step-up.",
         },
         {
           question: "Can I calculate in rupees (INR)?",
