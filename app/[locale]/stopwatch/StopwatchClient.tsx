@@ -53,6 +53,7 @@ export default function StopwatchClient() {
   const [running, setRunning] = useState(false);
   const [elapsed, setElapsed] = useState(0); // ms since start (stopwatch) or since countdown start
   const [laps, setLaps] = useState<number[]>([]);
+  const [lapsCopied, setLapsCopied] = useState(false);
   const [timesUp, setTimesUp] = useState(false);
   const [tHours, setTHours] = useState("0");
   const [tMinutes, setTMinutes] = useState("5");
@@ -76,6 +77,11 @@ export default function StopwatchClient() {
   const nowElapsed = useCallback(() => baseRef.current + (Date.now() - startRef.current), []);
 
   const start = useCallback(() => {
+    // Restarting after "Time's up" must start a fresh countdown, not
+    // instantly finish again from the banked full duration.
+    if (timesUp) {
+      baseRef.current = 0;
+    }
     if (mode === "timer") {
       const total =
         (parseInt(tHours, 10) || 0) * 3600000 +
@@ -108,7 +114,7 @@ export default function StopwatchClient() {
       }
       setElapsed(e);
     }, 31);
-  }, [mode, tHours, tMinutes, tSeconds, elapsed, nowElapsed, stopTicker]);
+  }, [mode, tHours, tMinutes, tSeconds, elapsed, timesUp, nowElapsed, stopTicker]);
 
   const pause = useCallback(() => {
     baseRef.current = nowElapsed();
@@ -138,6 +144,66 @@ export default function StopwatchClient() {
     setLaps((prev) => [...prev, current]);
   };
 
+  // Copy laps as tab-separated text, ready to paste into a spreadsheet.
+  const copyLaps = async () => {
+    const lines = [
+      "Lap\tLap time\tTotal",
+      ...lapRows.map((r) => `${r.n}\t${formatMs(r.lapTime)}\t${formatMs(r.total)}`),
+    ].join("\n");
+    try {
+      await navigator.clipboard.writeText(lines);
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = lines;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+    }
+    setLapsCopied(true);
+    window.setTimeout(() => setLapsCopied(false), 2000);
+  };
+
+  // Download laps as a CSV file (lap number, lap time, total time).
+  const downloadLaps = () => {
+    const lines = [
+      "Lap,Lap time,Total",
+      ...lapRows.map((r) => `${r.n},${formatMs(r.lapTime)},${formatMs(r.total)}`),
+    ].join("\n");
+    const blob = new Blob([lines], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "stopwatch-laps.csv";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  // Fullscreen the timer card (F toggles, Esc exits natively).
+  const cardRef = useRef<HTMLDivElement | null>(null);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const toggleFullscreen = useCallback(() => {
+    if (document.fullscreenElement) {
+      document.exitFullscreen().catch(() => {});
+    } else {
+      cardRef.current?.requestFullscreen().catch(() => {});
+    }
+  }, []);
+  useEffect(() => {
+    const onChange = () => setIsFullscreen(document.fullscreenElement === cardRef.current);
+    document.addEventListener("fullscreenchange", onChange);
+    return () => document.removeEventListener("fullscreenchange", onChange);
+  }, []);
+
+  // Quick countdown presets (minutes) — Pomodoro included.
+  const applyPreset = (minutes: number) => {
+    setTHours("0");
+    setTMinutes(String(minutes));
+    setTSeconds("0");
+  };
+
   // Space toggles start/pause, L records a lap - ignored while typing
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -149,6 +215,10 @@ export default function StopwatchClient() {
         else start();
       } else if (e.key.toLowerCase() === "l" && mode === "stopwatch") {
         addLap();
+      } else if (e.key.toLowerCase() === "r") {
+        reset();
+      } else if (e.key.toLowerCase() === "f") {
+        toggleFullscreen();
       }
     };
     window.addEventListener("keydown", onKey);
@@ -163,8 +233,27 @@ export default function StopwatchClient() {
     return { n: i + 1, lapTime, total, delta };
   });
 
+  // Fastest / slowest / average lap, only meaningful with 2+ laps.
+  const lapTimes = lapRows.map((r) => r.lapTime);
+  const fastestLap = lapTimes.length >= 2 ? Math.min(...lapTimes) : null;
+  const slowestLap = lapTimes.length >= 2 ? Math.max(...lapTimes) : null;
+  const averageLap =
+    lapTimes.length > 0 ? lapTimes.reduce((a, b) => a + b, 0) / lapTimes.length : null;
+
   const timerRemaining = mode === "timer" ? Math.max(0, durationRef.current - elapsed) : 0;
   const displayMs = mode === "timer" ? (durationRef.current > 0 || running ? timerRemaining : (parseInt(tHours, 10) || 0) * 3600000 + (parseInt(tMinutes, 10) || 0) * 60000 + (parseInt(tSeconds, 10) || 0) * 1000) : elapsed;
+
+  // Show the live time in the browser tab while running, so the clock is
+  // visible when the tab is in the background.
+  useEffect(() => {
+    const original = document.title;
+    if (running) {
+      document.title = `${formatMs(displayMs)} — Stopwatch | BeYourTools`;
+    }
+    return () => {
+      document.title = original;
+    };
+  }, [running, displayMs]);
 
   const timerInputCls = "focus-ring w-full rounded-lg border px-3 py-2.5 text-center text-sm";
   const timerInputStyle = {
@@ -185,7 +274,7 @@ export default function StopwatchClient() {
         </Btn>
       </div>
 
-      <div className="rounded-xl border p-4 sm:p-8" style={cardStyle}>
+      <div ref={cardRef} className="rounded-xl border p-4 sm:p-8" style={cardStyle}>
         {/* Countdown inputs */}
         {mode === "timer" && !running && elapsed === 0 && (
           <div className="mx-auto mb-6 grid max-w-md grid-cols-3 gap-2">
@@ -209,6 +298,25 @@ export default function StopwatchClient() {
                   aria-label={f.label}
                 />
               </div>
+            ))}
+          </div>
+        )}
+
+        {/* Countdown presets */}
+        {mode === "timer" && !running && elapsed === 0 && (
+          <div className="mx-auto mb-6 flex max-w-md flex-wrap items-center justify-center gap-2">
+            <span className="text-xs font-medium" style={{ color: "var(--text-muted)" }}>
+              Quick set:
+            </span>
+            {[
+              { label: "1 min", minutes: 1 },
+              { label: "5 min", minutes: 5 },
+              { label: "10 min", minutes: 10 },
+              { label: "25 min Pomodoro", minutes: 25 },
+            ].map((p) => (
+              <Btn key={p.label} variant="ghost" size="sm" onClick={() => applyPreset(p.minutes)}>
+                {p.label}
+              </Btn>
             ))}
           </div>
         )}
@@ -247,23 +355,54 @@ export default function StopwatchClient() {
           <Btn variant="secondary" size="lg" onClick={reset} disabled={elapsed === 0 && laps.length === 0 && !timesUp}>
             Reset
           </Btn>
+          <Btn variant="secondary" size="lg" onClick={toggleFullscreen}>
+            {isFullscreen ? "Exit fullscreen" : "Fullscreen"}
+          </Btn>
         </div>
         <p className="mt-3 text-center text-xs" style={{ color: "var(--text-subtle)" }}>
-          Tip: press Space to start/pause{mode === "stopwatch" ? ", L for a lap" : ""}.
+          Tip: press Space to start/pause{mode === "stopwatch" ? ", L for a lap" : ""}, R to reset, F for fullscreen.
+        </p>
+        <p className="mt-1 text-center text-xs" style={{ color: "var(--text-subtle)" }}>
+          Keeps accurate time even if you switch tabs: the clock is recomputed from a start timestamp, not counted ticks.
         </p>
       </div>
 
       {/* Laps */}
       {mode === "stopwatch" && lapRows.length > 0 && (
         <div className="mt-4 rounded-xl border p-4 sm:p-6" style={cardStyle}>
-          <div className="mb-3 flex items-center justify-between">
+          <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
             <h2 className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>
               Laps ({lapRows.length})
             </h2>
-            <Btn variant="ghost" size="sm" onClick={() => setLaps([])}>
-              Clear laps
-            </Btn>
+            <div className="flex items-center gap-2">
+              <Btn variant="ghost" size="sm" onClick={copyLaps}>
+                {lapsCopied ? "Laps copied!" : "Copy laps"}
+              </Btn>
+              <Btn variant="ghost" size="sm" onClick={downloadLaps}>
+                Download laps CSV
+              </Btn>
+              <Btn variant="ghost" size="sm" onClick={() => setLaps([])}>
+                Clear laps
+              </Btn>
+            </div>
           </div>
+          {averageLap !== null && (
+            <p className="mb-3 text-xs sm:text-sm" style={{ color: "var(--text-muted)" }}>
+              Average lap: <strong style={{ color: "var(--text-primary)" }}>{formatMs(averageLap)}</strong>
+              {fastestLap !== null && (
+                <>
+                  {" · "}Fastest lap:{" "}
+                  <strong style={{ color: "var(--teal)" }}>{formatMs(fastestLap)}</strong>
+                </>
+              )}
+              {slowestLap !== null && (
+                <>
+                  {" · "}Slowest lap:{" "}
+                  <strong style={{ color: "var(--coral)" }}>{formatMs(slowestLap)}</strong>
+                </>
+              )}
+            </p>
+          )}
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
@@ -277,7 +416,19 @@ export default function StopwatchClient() {
               <tbody>
                 {[...lapRows].reverse().map((r) => (
                   <tr key={r.n} className="border-t tabular-nums" style={{ borderColor: "var(--border)" }}>
-                    <td className="py-2 pr-4 font-semibold" style={{ color: "var(--text-primary)" }}>#{r.n}</td>
+                    <td className="py-2 pr-4 font-semibold" style={{ color: "var(--text-primary)" }}>
+                      #{r.n}
+                      {fastestLap !== null && r.lapTime === fastestLap && (
+                        <span className="ml-2 rounded-full px-2 py-0.5 text-[10px] font-bold" style={{ backgroundColor: "var(--teal)", color: "#fff" }}>
+                          Fastest
+                        </span>
+                      )}
+                      {slowestLap !== null && r.lapTime === slowestLap && fastestLap !== slowestLap && (
+                        <span className="ml-2 rounded-full px-2 py-0.5 text-[10px] font-bold" style={{ backgroundColor: "var(--coral)", color: "#fff" }}>
+                          Slowest
+                        </span>
+                      )}
+                    </td>
                     <td className="py-2 pr-4" style={{ color: "var(--text-secondary)" }}>{formatMs(r.lapTime)}</td>
                     <td className="py-2 pr-4" style={{ color: "var(--text-secondary)" }}>{formatMs(r.total)}</td>
                     <td

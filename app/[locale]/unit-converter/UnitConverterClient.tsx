@@ -32,6 +32,7 @@ const CATEGORIES: CategoryDef[] = [
       { id: "ft", label: "Feet (ft)", toBase: 0.3048 },
       { id: "yd", label: "Yards (yd)", toBase: 0.9144 },
       { id: "mi", label: "Miles (mi)", toBase: 1609.344 },
+      { id: "nmi", label: "Nautical miles (nmi)", toBase: 1852 },
     ],
   },
   {
@@ -45,6 +46,7 @@ const CATEGORIES: CategoryDef[] = [
       { id: "t", label: "Metric tons (t)", toBase: 1000 },
       { id: "oz", label: "Ounces (oz)", toBase: 0.028349523125 },
       { id: "lb", label: "Pounds (lb)", toBase: 0.45359237 },
+      { id: "st", label: "Stones (st)", toBase: 6.35029318 },
     ],
   },
   {
@@ -101,6 +103,89 @@ const CATEGORIES: CategoryDef[] = [
       { id: "knot", label: "Knots", toBase: 0.514444444 },
     ],
   },
+  {
+    id: "data",
+    label: "Data Storage",
+    common: ["mb", "gb", "kb", "byte"],
+    units: [
+      { id: "bit", label: "Bits (bit)", toBase: 0.125 },
+      { id: "byte", label: "Bytes (B)", toBase: 1 },
+      { id: "kb", label: "Kilobytes (KB)", toBase: 1000 },
+      { id: "mb", label: "Megabytes (MB)", toBase: 1000000 },
+      { id: "gb", label: "Gigabytes (GB)", toBase: 1000000000 },
+      { id: "tb", label: "Terabytes (TB)", toBase: 1000000000000 },
+      { id: "pb", label: "Petabytes (PB)", toBase: 1000000000000000 },
+      { id: "kib", label: "Kibibytes (KiB)", toBase: 1024 },
+      { id: "mib", label: "Mebibytes (MiB)", toBase: 1048576 },
+      { id: "gib", label: "Gibibytes (GiB)", toBase: 1073741824 },
+    ],
+  },
+  {
+    id: "pressure",
+    label: "Pressure",
+    common: ["bar", "psi", "atm", "kpa"],
+    units: [
+      { id: "pa", label: "Pascals (Pa)", toBase: 1 },
+      { id: "kpa", label: "Kilopascals (kPa)", toBase: 1000 },
+      { id: "mbar", label: "Millibars (mbar)", toBase: 100 },
+      { id: "bar", label: "Bars (bar)", toBase: 100000 },
+      { id: "psi", label: "Pounds/sq in (psi)", toBase: 6894.757293168 },
+      { id: "atm", label: "Atmospheres (atm)", toBase: 101325 },
+      { id: "torr", label: "Torr (Torr)", toBase: 133.32236842105263 },
+    ],
+  },
+  {
+    id: "energy",
+    label: "Energy",
+    common: ["kcal", "kj", "kwh", "btu"],
+    units: [
+      { id: "j", label: "Joules (J)", toBase: 1 },
+      { id: "kj", label: "Kilojoules (kJ)", toBase: 1000 },
+      { id: "cal", label: "Calories (cal)", toBase: 4.184 },
+      { id: "kcal", label: "Kilocalories (kcal)", toBase: 4184 },
+      { id: "wh", label: "Watt-hours (Wh)", toBase: 3600 },
+      { id: "kwh", label: "Kilowatt-hours (kWh)", toBase: 3600000 },
+      { id: "btu", label: "British thermal units (BTU)", toBase: 1055.05585262 },
+    ],
+  },
+  {
+    id: "time",
+    label: "Time",
+    common: ["s", "min", "h", "day"],
+    units: [
+      { id: "ms-time", label: "Milliseconds (ms)", toBase: 0.001 },
+      { id: "s", label: "Seconds (s)", toBase: 1 },
+      { id: "min", label: "Minutes (min)", toBase: 60 },
+      { id: "h", label: "Hours (h)", toBase: 3600 },
+      { id: "day", label: "Days", toBase: 86400 },
+      { id: "week", label: "Weeks", toBase: 604800 },
+      { id: "month", label: "Months (30 days)", toBase: 2592000 },
+      { id: "year", label: "Years (365 days)", toBase: 31536000 },
+    ],
+  },
+  {
+    id: "angle",
+    label: "Angle",
+    common: ["deg", "rad", "grad", "turn"],
+    units: [
+      { id: "deg", label: "Degrees (°)", toBase: 1 },
+      { id: "rad", label: "Radians (rad)", toBase: 57.29577951308232 },
+      { id: "grad", label: "Gradians (grad)", toBase: 0.9 },
+      { id: "turn", label: "Turns (revolutions)", toBase: 360 },
+    ],
+  },
+  {
+    id: "power",
+    label: "Power",
+    common: ["w", "kw", "hp", "mw"],
+    units: [
+      { id: "w", label: "Watts (W)", toBase: 1 },
+      { id: "kw", label: "Kilowatts (kW)", toBase: 1000 },
+      { id: "mw", label: "Megawatts (MW)", toBase: 1000000 },
+      { id: "hp", label: "Horsepower (hp)", toBase: 745.699872 },
+      { id: "btuh", label: "BTU/hour (BTU/h)", toBase: 0.29307107 },
+    ],
+  },
 ];
 
 function toCelsius(value: number, from: string): number {
@@ -122,16 +207,45 @@ function convert(value: number, from: string, to: string, category: CategoryDef)
   return (value * fromDef.toBase) / toDef.toBase;
 }
 
-function formatNumber(n: number): string {
+function formatNumber(n: number, decimals = 6): string {
   if (!isFinite(n)) return "n/a";
   if (n !== 0 && Math.abs(n) < 0.000001) return n.toExponential(3);
   if (Math.abs(n) >= 1e12) return n.toExponential(3);
-  const rounded = Math.round(n * 1e6) / 1e6;
-  return rounded.toLocaleString("en-US", { maximumFractionDigits: 6 });
+  const factor = 10 ** decimals;
+  const rounded = Math.round(n * factor) / factor;
+  return rounded.toLocaleString("en-US", { maximumFractionDigits: decimals });
 }
 
 const inputCls =
   "focus-ring w-full rounded-lg border px-3 py-2.5 text-sm";
+
+interface QuickChip {
+  label: string;
+  cat: string;
+  from: string;
+  to: string;
+  value: string;
+}
+
+const QUICK_CHIPS: QuickChip[] = [
+  { label: "1 km → miles", cat: "length", from: "km", to: "mi", value: "1" },
+  { label: "1 kg → pounds", cat: "weight", from: "kg", to: "lb", value: "1" },
+  { label: "100 °C → °F", cat: "temperature", from: "c", to: "f", value: "100" },
+  { label: "1 GB → MB", cat: "data", from: "gb", to: "mb", value: "1" },
+  { label: "1 bar → psi", cat: "pressure", from: "bar", to: "psi", value: "1" },
+  { label: "1,000 kcal → kJ", cat: "energy", from: "kcal", to: "kj", value: "1000" },
+  { label: "1 h → minutes", cat: "time", from: "h", to: "min", value: "1" },
+  { label: "180° → radians", cat: "angle", from: "deg", to: "rad", value: "180" },
+];
+
+const TEMP_FORMULAS: Record<string, string> = {
+  "c-f": "°F = (°C × 9/5) + 32",
+  "c-k": "K = °C + 273.15",
+  "f-c": "°C = (°F − 32) × 5/9",
+  "f-k": "K = (°F − 32) × 5/9 + 273.15",
+  "k-c": "°C = K − 273.15",
+  "k-f": "°F = (K − 273.15) × 9/5 + 32",
+};
 const inputStyle = {
   borderColor: "var(--border-strong)",
   backgroundColor: "var(--bg-elevated)",
@@ -143,6 +257,25 @@ export default function UnitConverterClient() {
   const [value, setValue] = useState("1");
   const [from, setFrom] = useState("km");
   const [to, setTo] = useState("mi");
+  const [precision, setPrecision] = useState(6);
+  const [copied, setCopied] = useState(false);
+
+  const copyResult = async () => {
+    if (!valid || result === null) return;
+    const text = `${formatNumber(parsed, precision)} ${to}`;
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      const el = document.createElement("textarea");
+      el.value = text;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand("copy");
+      el.remove();
+    }
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 2000);
+  };
 
   const category = CATEGORIES.find((c) => c.id === catId)!;
 
@@ -156,6 +289,13 @@ export default function UnitConverterClient() {
   const swap = () => {
     setFrom(to);
     setTo(from);
+  };
+
+  const applyChip = (chip: QuickChip) => {
+    setCatId(chip.cat);
+    setFrom(chip.from);
+    setTo(chip.to);
+    setValue(chip.value);
   };
 
   const parsed = parseFloat(value);
@@ -176,6 +316,16 @@ export default function UnitConverterClient() {
 
   const unitLabel = (id: string) => category.units.find((u) => u.id === id)?.label ?? id;
 
+  const formula = useMemo(() => {
+    if (!valid) return null;
+    if (from === to) return "Same unit — the value stays unchanged.";
+    if (category.id === "temperature") return TEMP_FORMULAS[`${from}-${to}`] ?? null;
+    const fromDef = category.units.find((u) => u.id === from);
+    const toDef = category.units.find((u) => u.id === to);
+    if (!fromDef || !toDef) return null;
+    return `1 ${from} = ${formatNumber(fromDef.toBase / toDef.toBase, precision)} ${to}`;
+  }, [valid, from, to, category, precision]);
+
   return (
     <div>
       {/* Category tabs */}
@@ -191,6 +341,24 @@ export default function UnitConverterClient() {
             aria-selected={c.id === catId}
           >
             {c.label}
+          </Btn>
+        ))}
+      </div>
+
+      {/* Common conversions */}
+      <div className="mb-4 flex flex-wrap items-center gap-2" aria-label="Common conversions">
+        <span className="text-xs font-medium" style={{ color: "var(--text-muted)" }}>
+          Popular:
+        </span>
+        {QUICK_CHIPS.map((chip) => (
+          <Btn
+            key={chip.label}
+            variant="ghost"
+            size="sm"
+            onClick={() => applyChip(chip)}
+            title={`Convert ${chip.label}`}
+          >
+            {chip.label}
           </Btn>
         ))}
       </div>
@@ -253,14 +421,40 @@ export default function UnitConverterClient() {
           {valid && result !== null ? (
             <>
               <p className="text-xs" style={{ color: "var(--text-muted)" }}>
-                {formatNumber(parsed)} {unitLabel(from)} =
+                {formatNumber(parsed, precision)} {unitLabel(from)} =
               </p>
               <p className="mt-1 text-3xl font-bold sm:text-4xl" style={{ color: "var(--accent-text)" }}>
-                {formatNumber(result)}
+                {formatNumber(result, precision)}
               </p>
               <p className="mt-1 text-sm font-medium" style={{ color: "var(--text-secondary)" }}>
                 {unitLabel(to)}
               </p>
+              {formula && (
+                <p className="mt-3 text-xs" style={{ color: "var(--text-muted)" }}>
+                  Formula: {formula}
+                </p>
+              )}
+              <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
+                <label className="flex items-center gap-2 text-xs" style={{ color: "var(--text-muted)" }}>
+                  Decimal places
+                  <select
+                    value={precision}
+                    onChange={(e) => setPrecision(Number(e.target.value))}
+                    className="focus-ring rounded-lg border px-2 py-1.5 text-sm"
+                    style={inputStyle}
+                    aria-label="Decimal places"
+                  >
+                    {[0, 1, 2, 3, 4, 5, 6].map((d) => (
+                      <option key={d} value={d}>
+                        {d}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <Btn variant="ghost" size="sm" onClick={copyResult}>
+                  {copied ? "Copied!" : "Copy result"}
+                </Btn>
+              </div>
             </>
           ) : (
             <p className="text-sm" style={{ color: "var(--text-muted)" }}>
@@ -290,7 +484,7 @@ export default function UnitConverterClient() {
                 title={`Convert to ${unitLabel(e.id)}`}
               >
                 <p className="truncate text-base font-bold" style={{ color: "var(--text-primary)" }}>
-                  {formatNumber(e.value)}
+                  {formatNumber(e.value, precision)}
                 </p>
                 <p className="truncate text-xs" style={{ color: "var(--text-muted)" }}>
                   {unitLabel(e.id)}

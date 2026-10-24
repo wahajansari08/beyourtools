@@ -492,12 +492,12 @@ export const generalTools: GeneralTool[] = [
     slug: "unit-converter",
     name: "Unit Converter",
     description:
-      "Convert length, weight, temperature, area, volume and speed between metric and imperial units.",
+      "Convert length, weight, temperature, area, volume, speed, time, angle, power, data, pressure and energy between metric and imperial units.",
     category: "Calculators",
     hub: "/calculators",
     title: "Unit Converter - Length, Weight, Temperature & More | BeYourTools",
     metaDescription:
-      "Free unit converter: length, weight, temperature, area, volume and speed. Metric to imperial conversions with instant results, all in your browser.",
+      "Free unit converter: length, weight, temperature, area, volume, speed, time, angle, power and data. Metric to imperial conversions with instant results, all in your browser.",
     tagline:
       "Need 5 miles in kilometers or 350°F in Celsius? Pick a category, enter a value, and get the answer instantly.",
     keywords: [
@@ -509,19 +509,22 @@ export const generalTools: GeneralTool[] = [
       "km to miles",
       "celsius to fahrenheit",
       "area converter",
+      "time converter",
+      "angle converter",
     ],
     howTo: [
-      { title: "Pick a category", text: "Choose length, weight, temperature, area, volume or speed." },
+      { title: "Pick a category", text: "Choose length, weight, temperature, area, volume, speed, time, angle, power, data, pressure or energy." },
       { title: "Enter your value", text: "Type the number you want to convert." },
       { title: "Choose the units", text: "Set the unit you are converting from and the unit you want to convert to." },
-      { title: "Read the result", text: "The converted value appears instantly, with common equivalents listed below." },
+      { title: "Read the result", text: "The converted value appears instantly, with common equivalents listed below. Set the decimal places and copy the result in one click." },
     ],
     features: [
-      "6 categories: length, weight, temperature, area, volume and speed",
-      "Metric and imperial units side by side",
+      "12 categories: length, weight, temperature, area, volume, speed, data, pressure, energy, time, angle and power",
+      "Metric and imperial units side by side, including stones and nautical miles",
       "Correct temperature math for °C, °F and Kelvin",
       "Common equivalents shown with every result",
       "Swap units with one click",
+      "Decimal-places control (0-6) and one-click Copy result",
       "Runs fully in your browser - no sign-up",
     ],
     faqs: [
@@ -539,6 +542,16 @@ export const generalTools: GeneralTool[] = [
         question: "Can I convert cooking measurements?",
         answer:
           "Yes. The volume category includes cups, tablespoons, teaspoons, fluid ounces, milliliters and liters, which covers most cooking conversions.",
+      },
+      {
+        question: "Can I control how many decimal places are shown?",
+        answer:
+          "Yes. Use the Decimal places control under the result to show anywhere from 0 to 6 decimal places. The setting only changes how the answer is displayed - the conversion itself is always calculated at full precision.",
+      },
+      {
+        question: "Can I copy the converted result?",
+        answer:
+          "Yes. Press Copy result under the answer to copy the value and unit to your clipboard, ready to paste into a document, spreadsheet or message.",
       },
       {
         question: "Does the converter work offline?",
@@ -734,12 +747,12 @@ export const generalTools: GeneralTool[] = [
       {
         question: "Which Markdown features are supported?",
         answer:
-          "Headings, bold, italic, strikethrough, inline code, fenced code blocks, links, images, unordered and ordered lists, blockquotes, horizontal rules and simple tables. Nested lists and task-list checkboxes are not supported.",
+          "Headings, bold, italic, strikethrough, inline code, fenced code blocks, links, images, unordered and ordered lists (including nested lists and task-list checkboxes), blockquotes, horizontal rules, simple tables and footnotes.",
       },
       {
         question: "Can I export the preview?",
         answer:
-          "You can copy your Markdown source with the toolbar button. To keep the rendered look, print the page to PDF from your browser's print dialog.",
+          "You can copy your Markdown source or the rendered HTML with the toolbar buttons, or download either as a .md or .html file. To keep the rendered look, print the page to PDF from your browser's print dialog.",
       },
     ],
     related: ["json-formatter", "regex-tester", "base64", "url-encoder-decoder"],

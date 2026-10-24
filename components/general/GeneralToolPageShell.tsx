@@ -136,6 +136,20 @@ export default async function GeneralToolPageShell({
           <FaqAccordion faqs={tFaqs} />
         </section>
 
+        {/* Browse the hub (P1-6: in-content inbound link to the category hub) */}
+        <section className="mt-10" aria-labelledby={`${tool.slug}-browse-hub`}>
+          <h2 id={`${tool.slug}-browse-hub`} className="mb-4 font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+            Browse all {tool.category}
+          </h2>
+          <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            {tName} is one of the {tool.category.toLowerCase()} on BeYourTools.{" "}
+            <Link href={tool.hub} className="focus-ring rounded font-medium hover:underline" style={{ color: "var(--accent-text)" }}>
+              Browse all {tool.category}
+            </Link>{" "}
+            to find the next tool for the job — every one of them runs in your browser, free and with no sign-up.
+          </p>
+        </section>
+
         {/* Related */}
         {related.length > 0 && (
           <section className="mt-10" aria-labelledby={`${tool.slug}-related`}>

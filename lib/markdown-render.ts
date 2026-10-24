@@ -31,6 +31,16 @@ export function safeUrl(url: string): string | null {
   return u; // already HTML-escaped by the caller
 }
 
+/* Footnote state, active only while the outermost renderMarkdown call runs.
+   Blockquote recursion reuses the same state, so nested renders never clear it
+   early; the outermost call appends the footnotes section and resets it. */
+let activeFootnotes: Map<string, string> | null = null;
+let footnoteOrder: string[] = [];
+
+function footnoteId(label: string): string {
+  return label.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "fn";
+}
+
 export function renderInline(escaped: string): string {
   const codes: string[] = [];
   // 1. stash inline code spans so * _ ~ inside them are not parsed
@@ -60,6 +70,24 @@ export function renderInline(escaped: string): string {
   s = s.replace(/~~([^~\n]+)~~/g, "<del>$1</del>");
   // 7. restore code spans
   s = s.replace(/@@MDCODE(\d+)@@/g, (_m, i: string) => codes[parseInt(i, 10)] ?? "");
+  // 8. footnote references [^label] — only for labels with a definition.
+  // Code spans are restored by now, so split them out to avoid rewriting
+  // a footnote-looking string inside `code`.
+  if (activeFootnotes) {
+    s = s
+      .split(/(<code>.*?<\/code>)/g)
+      .map((part) => {
+        if (part.startsWith("<code>")) return part;
+        return part.replace(/\[\^([^\]]+)\]/g, (m, label: string) => {
+          if (!activeFootnotes!.has(label)) return m;
+          if (!footnoteOrder.includes(label)) footnoteOrder.push(label);
+          const n = footnoteOrder.indexOf(label) + 1;
+          const id = footnoteId(label);
+          return `<sup id="fnref-${id}"><a href="#fn-${id}">${n}</a></sup>`;
+        });
+      })
+      .join("");
+  }
   return s;
 }
 
@@ -72,12 +100,16 @@ interface ListNode {
 export function renderListNodes(nodes: ListNode[], ordered: boolean): string {
   const tag = ordered ? "ol" : "ul";
   const items = nodes
-    .map(
-      (n) =>
-        `<li>${renderInline(escapeHtml(n.content))}${
-          n.children.length ? renderListNodes(n.children, n.children[0].ordered) : ""
-        }</li>`
-    )
+    .map((n) => {
+      // GitHub-style task list: "- [ ] todo" / "- [x] done"
+      const task = n.content.match(/^\[([ xX])\]\s+(.*)$/);
+      const body = task
+        ? `<input type="checkbox" disabled${task[1] !== " " ? " checked" : ""} /> ${renderInline(escapeHtml(task[2]))}`
+        : renderInline(escapeHtml(n.content));
+      return `<li>${body}${
+        n.children.length ? renderListNodes(n.children, n.children[0].ordered) : ""
+      }</li>`;
+    })
     .join("");
   return `<${tag}>${items}</${tag}>`;
 }
@@ -100,7 +132,19 @@ export function splitRow(line: string): string[] {
 }
 
 export function renderMarkdown(src: string): string {
-  const lines = src.replace(/\r\n?/g, "\n").split("\n");
+  const isOutermost = activeFootnotes === null;
+  // Footnote definitions: "[^label]: text" — collected, then removed so they
+  // never render as paragraph text. Single-line definitions only.
+  const rawLines = src.replace(/\r\n?/g, "\n").split("\n");
+  if (isOutermost) {
+    activeFootnotes = new Map();
+    footnoteOrder = [];
+    for (const line of rawLines) {
+      const def = line.match(/^\[\^([^\]]+)\]:\s*(.+)$/);
+      if (def && !activeFootnotes.has(def[1])) activeFootnotes.set(def[1], def[2]);
+    }
+  }
+  const lines = rawLines.filter((line) => !/^\[\^([^\]]+)\]:\s*(.+)$/.test(line));
   const out: string[] = [];
   let i = 0;
 
@@ -222,5 +266,20 @@ export function renderMarkdown(src: string): string {
     out.push(`<p>${buf.map((l) => renderInline(escapeHtml(l))).join("<br />")}</p>`);
   }
 
-  return out.join("\n");
+  if (isOutermost && activeFootnotes && footnoteOrder.length > 0) {
+    const items = footnoteOrder
+      .map((label) => {
+        const id = footnoteId(label);
+        const body = renderInline(escapeHtml(activeFootnotes!.get(label) ?? ""));
+        return `<li id="fn-${id}">${body} <a href="#fnref-${id}" class="footnote-backref">↩</a></li>`;
+      })
+      .join("");
+    out.push(`<hr class="footnotes-sep" /><section class="footnotes"><ol>${items}</ol></section>`);
+  }
+  const result = out.join("\n");
+  if (isOutermost) {
+    activeFootnotes = null;
+    footnoteOrder = [];
+  }
+  return result;
 }
