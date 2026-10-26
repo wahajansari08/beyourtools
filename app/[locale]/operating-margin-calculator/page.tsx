@@ -5,9 +5,9 @@ import OperatingMarginClient from "./OperatingMarginClient";
 import { createToolMetadata } from "@/lib/seo";
 
 const __enMetadata: Metadata = createToolMetadata({
-  title: "Operating Margin Calculator - EBIT Margin % | BeYourTools",
-  description: "Calculate operating margin (EBIT margin) from revenue, COGS, and operating expenses. See your operating income in dollars and as a percentage of revenue.",
-  keywords: "operating margin calculator, EBIT margin, operating income, operating profit margin, EBIT calculator",
+  title: "Operating Margin Calculator: EBIT Margin & Operating Income | BeYourTools",
+  description: "Free operating margin calculator. Find operating income (EBIT) and operating margin percentage from revenue, COGS, and operating expenses, before interest and taxes.",
+  keywords: "operating margin calculator, EBIT margin, operating income, operating profit margin, EBIT calculator, return on sales",
   path: "/operating-margin-calculator",
 });
 
@@ -17,8 +17,8 @@ export default function OperatingMarginPage() {
       slug="operating-margin-calculator"
       title="Operating Margin Calculator"
       cluster="Business Finance"
-      tagline="Calculate operating income (EBIT) and operating margin percentage from revenue, COGS, and operating expenses, before interest and taxes."
-      description="Free operating margin calculator. Enter revenue, COGS, and operating expenses to calculate EBIT (operating income) and operating margin as a percentage of revenue."
+      tagline="Calculate operating income (EBIT) and operating margin percentage from revenue, COGS, and operating expenses, before interest and taxes, and see why lenders and investors watch this margin first."
+      description="Free operating margin calculator. Enter revenue, COGS, and operating expenses to calculate EBIT (operating income) and operating margin as a percentage of revenue, with a worked example and a comparison against net margin."
       formulaExplanation={
         <>
           <p><strong style={{ color: "var(--text-secondary)" }}>Operating Income (EBIT)</strong> = Revenue − COGS − Operating Costs</p>
@@ -47,6 +47,9 @@ export default function OperatingMarginPage() {
         { question: "How does operating margin differ from EBITDA margin?", answer: "Operating margin uses EBIT, which includes equipment wear and tear over time. EBITDA adds back those non-cash costs to show raw cash flow. As a result, EBITDA margin is usually higher." },
         { question: "How can a business raise its operating margin?", answer: "You can raise your margin by cutting supply costs, lowering overhead expenses, or selling more units without adding new fixed bills. Raising prices also lifts margins immediately." },
         { question: "How often should I check my operating margin?", answer: "Most business owners review their operating margin every month and at the end of each fiscal quarter. Doing so lets you spot rising supply costs or higher rent before they hurt your cash flow." },
+        { question: "Is operating margin the same as EBIT margin?", answer: "Yes. EBIT is the dollar figure (revenue minus COGS minus operating expenses); operating margin is that figure divided by revenue. If EBIT is $150,000 on $500,000 of revenue, the EBIT margin (operating margin) is 30%. The two terms describe the same ratio." },
+        { question: "Why do investors prefer operating margin over net margin for comparisons?", answer: "Operating margin strips out financing and tax differences. Two companies with identical operations can show very different net margins if one carries heavy debt or sits in a high-tax jurisdiction. Operating margin compares the core business on its own, which is what an investor or lender wants to judge first." },
+        { question: "What does a falling operating margin warn about?", answer: "Costs rising faster than revenue. Take a shop at $500,000 revenue, $200,000 COGS, and $150,000 operating expenses: a 30% margin. If revenue grows to $550,000 but COGS rises to $230,000 and operating expenses to $180,000, operating income is $140,000 and margin falls to 25.5%. Revenue grew, but the business got less efficient." },
       ]}
     >
       <OperatingMarginClient />

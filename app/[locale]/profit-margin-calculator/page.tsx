@@ -5,9 +5,9 @@ import ProfitMarginClient from "./ProfitMarginClient";
 import { createToolMetadata } from "@/lib/seo";
 
 const __enMetadata: Metadata = createToolMetadata({
-  title: "Profit Margin Calculator - Gross & Net | BeYourTools",
-  description: "Calculate gross, operating, or net profit margin instantly. Enter revenue and costs to see margin percentages in your browser.",
-  keywords: "profit margin calculator, gross margin calculator, net margin calculator, operating margin, profit percentage",
+  title: "Profit Margin Calculator: Gross, Operating & Net Margin | BeYourTools",
+  description: "Free profit margin calculator. Find gross, operating, and net margin from revenue and costs, with a worked example and margin vs markup explained.",
+  keywords: "profit margin calculator, gross margin calculator, net margin calculator, operating margin, profit percentage, margin vs markup, price from margin",
   path: "/profit-margin-calculator",
 });
 
@@ -17,8 +17,8 @@ export default function ProfitMarginPage() {
       slug="profit-margin-calculator"
       title="Profit Margin Calculator"
       cluster="Business Finance"
-      tagline="Calculate gross, operating, or net profit margin as a percentage of revenue, switch between margin types and see your profit figure instantly."
-      description="Free online profit margin calculator. Enter revenue and costs to calculate gross margin, operating margin (EBIT), or net margin with the profit amount shown alongside."
+      tagline="Calculate gross, operating, or net profit margin as a percentage of revenue, switch between margin types, see your profit figure instantly, and work backwards from a target margin to the price you need."
+      description="Free online profit margin calculator. Enter revenue and costs to calculate gross margin, operating margin (EBIT), or net margin with the profit amount shown alongside, plus a worked example that walks through all three margins."
       formulaExplanation={
         <>
           <p><strong style={{ color: "var(--text-secondary)" }}>Gross Margin</strong> = (Revenue − COGS) ÷ Revenue × 100</p>
@@ -54,6 +54,18 @@ export default function ProfitMarginPage() {
         {
           question: "Is margin the same as markup?",
           answer: "No. Margin is profit ÷ selling price. Markup is profit ÷ cost. A 50% markup on a $10 cost gives a $15 price, but the margin is only 33%. Always clarify which measure you're using when comparing figures.",
+        },
+        {
+          question: "How do I set a price from a target profit margin?",
+          answer: "Work backwards from the margin you want: Price = Cost ÷ (1 − Target Margin). For a 40% margin on a $60 cost, Price = $60 ÷ 0.60 = $100. Check it: profit is $40, and $40 ÷ $100 = 40% margin. Pricing from margin (rather than adding a markup) keeps your reported margin on target.",
+        },
+        {
+          question: "Why is my net margin so much lower than my gross margin?",
+          answer: "Each margin strips away another layer of cost. In the example above, gross margin is 40%, operating margin falls to 25% once $15,000 of operating expenses are deducted, and net margin falls to 20% after $5,000 of taxes and interest. When the gap between gross and net is wide, overhead, debt, or tax is where profit is leaking, not production.",
+        },
+        {
+          question: "Should I compare my margin to competitors or to my own history?",
+          answer: "Do both. Competitor benchmarks in your own industry tell you whether your margin is normal; your own trend tells you whether it is improving. A margin that falls while revenue rises is a warning sign: costs are growing faster than sales, even though the top line looks healthy.",
         },
       ]}
     >

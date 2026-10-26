@@ -5,9 +5,9 @@ import MarkupClient from "./MarkupClient";
 import { createToolMetadata } from "@/lib/seo";
 
 const __enMetadata: Metadata = createToolMetadata({
-  title: "Markup Calculator - Markup & Margin | BeYourTools",
-  description: "Calculate selling price from cost and markup, find markup percentages, or convert margin to markup in your browser.",
-  keywords: "markup calculator, selling price calculator, markup percentage, cost to price, margin vs markup",
+  title: "Markup Calculator: Markup, Margin & Selling Price | BeYourTools",
+  description: "Free markup calculator. Find markup percentage, selling price from cost, or price from a target margin, with markup to margin conversion explained.",
+  keywords: "markup calculator, selling price calculator, markup percentage, cost to price, margin vs markup, markup to margin conversion",
   path: "/markup-calculator",
 });
 
@@ -17,8 +17,8 @@ export default function MarkupPage() {
       slug="markup-calculator"
       title="Markup Calculator"
       cluster="Business Finance"
-      tagline="Convert between cost, markup percentage, selling price, and profit margin, in any direction you need."
-      description="Free online markup calculator. Calculate selling price from cost and markup, find markup percentage from cost and price, or work backwards from a desired profit margin."
+      tagline="Convert between cost, markup percentage, selling price, and profit margin, in any direction you need, and see why a markup and a margin with the same number are not the same result."
+      description="Free online markup calculator. Calculate selling price from cost and markup, find markup percentage from cost and price, work backwards from a desired profit margin, or convert any markup into its equivalent margin."
       formulaExplanation={
         <>
           <p><strong style={{ color: "var(--text-secondary)" }}>Selling Price</strong> = Cost × (1 + Markup% ÷ 100)</p>
@@ -50,6 +50,18 @@ export default function MarkupPage() {
         {
           question: "What markup do I need for a 50% margin?",
           answer: "Using Price = Cost ÷ (1 − 0.50) = Cost × 2. So a 50% margin requires a 100% markup. The relationship is: Required Markup = Desired Margin ÷ (1 − Desired Margin).",
+        },
+        {
+          question: "How do I convert a markup into a margin?",
+          answer: "Margin = Markup ÷ (1 + Markup), using decimals. A 25% markup gives 0.25 ÷ 1.25 = 20% margin. A 50% markup gives 0.50 ÷ 1.50 = 33.3% margin. A 100% markup gives 1 ÷ 2 = 50% margin. As a rule, markup is always the larger number for the same sale, because it divides by the smaller figure (cost).",
+        },
+        {
+          question: "What markup covers my overhead and still hits my target margin?",
+          answer: "Add overhead to the margin you need to keep. If overhead runs 15% of revenue and you want 10% net profit, you need a 25% gross margin. That requires a markup of 0.25 ÷ 0.75 = 33.3%, not 25%. Setting a 25% markup in that case would leave you short.",
+        },
+        {
+          question: "Should I price with markup or with margin?",
+          answer: "Use markup to set prices from cost, it is the quickest way to build a price list. Use margin to report results and compare products or competitors, because margin shows what share of each sales dollar you actually keep. The costly mistake is quoting one and meaning the other.",
         },
       ]}
     >
