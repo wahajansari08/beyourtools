@@ -5,9 +5,9 @@ import FreelanceRateClient from "./FreelanceRateClient";
 import { createToolMetadata } from "@/lib/seo";
 
 const __enMetadata: Metadata = createToolMetadata({
-  title: "Freelance Rate Calculator - Hourly Rate | BeYourTools",
-  description: "Calculate the minimum hourly freelance rate needed to reach your income goal after taxes, expenses, and billable hours in your browser.",
-  keywords: "freelance rate calculator, freelancer hourly rate, self employed rate, minimum hourly rate, freelance pricing, contractor rate",
+  title: "Freelance Rate Calculator - What to Charge Per Hour | BeYourTools",
+  description: "Calculate the minimum hourly freelance rate to reach your income goal after taxes, expenses, and realistic billable hours. Free in your browser.",
+  keywords: "freelance rate calculator, freelancer hourly rate, self employed rate, minimum hourly rate, freelance pricing, contractor rate, effective hourly rate",
   path: "/freelance-rate-calculator",
 });
 
@@ -17,8 +17,8 @@ export default function FreelanceRatePage() {
       slug="freelance-rate-calculator"
       title="Freelance Rate Calculator"
       cluster="Salary & Income"
-      tagline="Find the minimum hourly rate you need to charge to achieve your desired take-home income after taxes, business expenses, and realistic billable hours."
-      description="Free freelance rate calculator for self-employed professionals. Enter desired net income, business expenses, tax rates, and billable hours to find your minimum sustainable hourly rate."
+      tagline="Find the minimum hourly rate you need to charge to achieve your desired take-home income after taxes, business expenses, and realistic billable hours, not the naive salary-divided-by-2080 figure."
+      description="Free freelance rate calculator for self-employed professionals. Enter desired net income, business expenses, tax rates, and billable hours to find your minimum sustainable hourly rate. It works backwards from the income you want to keep, so the rate covers the costs an employer would otherwise absorb."
       formulaExplanation={
         <>
           <p><strong style={{ color: "var(--text-secondary)" }}>Required Annual Gross</strong> = (Desired Net Income + Business Expenses) ÷ (1 − Total Tax Rate)</p>
@@ -37,6 +37,9 @@ export default function FreelanceRatePage() {
         { question: "Should I charge hourly or project-based?", answer: "Project-based pricing is usually more profitable, it rewards efficiency and aligns with client value. Use your hourly rate as a floor when estimating project costs: estimate hours × rate, then add a scope buffer of 20–30%." },
         { question: "What counts as a business expense?", answer: "Deductible freelance expenses: software subscriptions, home office (proportional rent/utilities), professional equipment, health insurance premiums, retirement contributions (SEP-IRA/solo 401k), professional development, and accountant fees." },
         { question: "How does my rate compare to a salaried equivalent?", answer: "To compare fairly, add 25–40% to any salaried offer to account for self-employment taxes, no employer benefits (health insurance, retirement match, paid leave), and income volatility. A $100k salary is roughly equivalent to $125–140k freelance gross." },
+        { question: "What is my effective hourly rate on a finished project?", answer: "Divide what the project actually paid by every hour it took, including unbilled time. A $1,000 project that took 16 hours is $62.50 an hour. After a $100 platform fee and $100 of direct costs, the same project is $50 an hour before tax. Compare that figure with your minimum rate before quoting similar work again." },
+        { question: "Why is dividing my salary goal by 2,080 the wrong rate?", answer: "That shortcut ignores self-employment tax, benefits you must buy yourself, unpaid time off, and hours you cannot bill. An $80,000 goal divided by 2,080 gives $38.46 an hour, yet this calculator's worked example shows about $113 an hour is needed to actually keep $80,000 after tax and expenses on 1,200 billable hours. Price the business, not just the hours." },
+        { question: "How do I turn my hourly rate into a day rate?", answer: "Multiply by the hours in your working day. At $75 an hour, an 8-hour day rate is $600. Quote day rates for work that fills a whole day, and keep the hourly figure as your floor for smaller jobs." },
       ]}
     >
       <FreelanceRateClient />

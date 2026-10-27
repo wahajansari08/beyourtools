@@ -5,9 +5,9 @@ import LoanPaymentClient from "./LoanPaymentClient";
 import { createToolMetadata } from "@/lib/seo";
 
 const __enMetadata: Metadata = createToolMetadata({
-  title: "Loan Payment Calculator - Monthly Payment | BeYourTools",
-  description: "Calculate monthly loan payments, total amount paid, and interest for any loan amount, rate, and term in your browser.",
-  keywords: "loan payment calculator, monthly loan payment, loan calculator, mortgage payment calculator, auto loan calculator, personal loan calculator",
+  title: "Loan Payment Calculator - Monthly Payment & Total Interest | BeYourTools",
+  description: "Calculate monthly loan payments, total amount paid, and total interest for any loan amount, rate, and term. Free in your browser.",
+  keywords: "loan payment calculator, monthly loan payment, loan calculator, mortgage payment calculator, auto loan calculator, personal loan calculator, amortization formula",
   path: "/loan-payment-calculator",
 });
 
@@ -17,8 +17,8 @@ export default function LoanPaymentPage() {
       slug="loan-payment-calculator"
       title="Loan Payment Calculator"
       cluster="Loans"
-      tagline="Enter loan amount, interest rate, and term to instantly see your monthly payment, total amount paid, and total interest cost."
-      description="Free loan payment calculator. Uses the standard amortization formula to calculate monthly payment, total repayment, and total interest for any loan."
+      tagline="Enter loan amount, interest rate, and term to instantly see your monthly payment, total amount paid, and total interest cost, with the amortization formula shown."
+      description="Free loan payment calculator. Uses the standard amortization formula to calculate monthly payment, total repayment, and total interest for any loan. The same formula applies to mortgages, auto loans, and personal loans."
       formulaExplanation={
         <>
           <p><strong style={{ color: "var(--text-secondary)" }}>Monthly Payment (M)</strong> = P × [r(1+r)ⁿ] ÷ [(1+r)ⁿ − 1]</p>
@@ -29,7 +29,7 @@ export default function LoanPaymentPage() {
           <p><strong style={{ color: "var(--text-secondary)" }}>Total Interest</strong> = Total Paid − Principal</p>
           <p className="text-xs mt-2" style={{ color: "var(--text-subtle)" }}>
             <strong>Example:</strong> $25,000 at 6.5% over 5 years (60 months)<br />
-            r = 0.065 ÷ 12 = 0.005417 → M = $488.85 → Total paid = $29,331 → Interest = <strong>$4,331</strong>
+            r = 0.065 ÷ 12 = 0.005417 → M = $489.15 → Total paid = $29,349 → Interest = <strong>$4,349</strong>
           </p>
         </>
       }
@@ -37,9 +37,12 @@ export default function LoanPaymentPage() {
         { question: "What inputs does this calculator need?", answer: "Three: the loan principal (amount borrowed), the annual interest rate as a percentage, and the loan term in years. For a mortgage at 7% over 30 years on $300,000, the monthly payment is $1,996." },
         { question: "Does this work for mortgages, auto loans, and personal loans?", answer: "Yes, the amortization formula is the same for all fixed-rate instalment loans. Just enter the correct principal, rate, and term for your specific loan type." },
         { question: "What is the difference between interest rate and APR?", answer: "The interest rate is used to calculate your payment. APR includes the interest rate plus fees (origination, points, insurance) expressed as an annual rate. For a true cost comparison between lenders, use APR. For payment calculation, use the stated interest rate." },
-        { question: "How does loan term affect total interest paid?", answer: "A longer term reduces monthly payments but dramatically increases total interest. A $20,000 loan at 7% costs $1,277 in interest over 2 years but $7,753 over 5 years. Shorter terms always cost less overall." },
+        { question: "How does loan term affect total interest paid?", answer: "A longer term reduces monthly payments but dramatically increases total interest. A $20,000 loan at 7% costs $1,491 in interest over 2 years but $3,761 over 5 years. Shorter terms always cost less overall." },
         { question: "What happens if I make extra payments?", answer: "Extra payments reduce principal faster, cutting total interest and shortening the loan. Even one extra payment per year can save thousands. Use the Extra Payment Loan Calculator to see the exact savings." },
         { question: "Why is my first payment mostly interest?", answer: "With standard amortization, each payment's interest portion is: remaining balance × monthly rate. At the start the balance is highest, so interest is highest. As principal falls, less goes to interest and more to principal, this reverses near the end of the term." },
+        { question: "How can I check my result by hand?", answer: "Use the sanity-check example: $200,000 at 5% over 30 years gives a monthly payment of $1,073.64, $386,512 in total, and $186,512 in interest. If this calculator shows the same numbers for those inputs, the formula is working as expected." },
+        { question: "What is the most common mistake when calculating by hand?", answer: "Using the annual rate instead of the monthly rate. The formula needs r equal to the annual rate divided by 12, and n equal to years times 12. Plugging 6.5% in as 0.065 per month instead of 0.005417 per month gives a wildly wrong payment." },
+        { question: "Does a lower monthly payment always mean a cheaper loan?", answer: "No. Stretching the term lowers the payment but raises total interest, because interest accrues for longer on a larger balance. Compare total interest, not just the monthly figure, when choosing between two terms." },
       ]}
     >
       <LoanPaymentClient />

@@ -5,9 +5,9 @@ import HourlyRateClient from "./HourlyRateClient";
 import { createToolMetadata } from "@/lib/seo";
 
 const __enMetadata: Metadata = createToolMetadata({
-  title: "Hourly Rate Calculator - Income Goal Rate | BeYourTools",
-  description: "Calculate the minimum hourly rate needed to reach your annual income goal with overhead and profit buffers built in. Free and browser-based.",
-  keywords: "hourly rate calculator, minimum hourly rate, income goal calculator, consultant rate, contractor rate, freelance pricing",
+  title: "Hourly Rate Calculator - Minimum Rate for Your Income Goal | BeYourTools",
+  description: "Calculate the minimum hourly rate to reach your annual income goal, with overhead and profit buffers for a sustainable rate. Free in your browser.",
+  keywords: "hourly rate calculator, minimum hourly rate, income goal calculator, consultant rate, contractor rate, freelance pricing, billable hours",
   path: "/hourly-rate-calculator",
 });
 
@@ -17,8 +17,8 @@ export default function HourlyRatePage() {
       slug="hourly-rate-calculator"
       title="Hourly Rate Calculator"
       cluster="Salary & Income"
-      tagline="Find the minimum hourly rate you must charge to meet your annual income goal, with separate overhead and profit buffers to arrive at a truly sustainable rate."
-      description="Free hourly rate calculator. Enter your annual income goal, hours worked, overhead percentage, and profit margin to see your base rate and recommended sustainable hourly rate."
+      tagline="Find the minimum hourly rate you must charge to meet your annual income goal, with separate overhead and profit buffers to arrive at a truly sustainable rate, and a clear line between your floor and your recommended rate."
+      description="Free hourly rate calculator. Enter your annual income goal, hours worked, overhead percentage, and profit margin to see your base rate and recommended sustainable hourly rate. The base rate is your break-even figure; the recommended rate adds the buffers that keep the rate sustainable."
       formulaExplanation={
         <>
           <p><strong style={{ color: "var(--text-secondary)" }}>Base Rate</strong> = Annual Income Goal ÷ (Hours/Week × Weeks/Year)</p>
@@ -36,6 +36,9 @@ export default function HourlyRatePage() {
         { question: "Why add a profit margin on top of overhead?", answer: "Overhead covers break-even costs; profit is what lets you invest in growth, weather dry spells, save for retirement, and build a buffer. A 10–20% profit margin makes the rate sustainable long-term." },
         { question: "How many hours per year should I plan for?", answer: "A 40-hour week for 50 working weeks = 2,000 hours. But not all are billable, admin, sales, and professional development are real costs. Using 1,500–1,800 billable hours is more realistic for most knowledge workers." },
         { question: "Should I use this rate for every project?", answer: "Use it as a floor. Charge more for specialist expertise, tight deadlines, or complex projects. Never quote below your calculated rate, doing so erodes value and makes the work unprofitable." },
+        { question: "What is the 2x salary rule for freelance rates?", answer: "A quick check: take the equivalent employee salary, divide by 2,080 hours, and double it. A $60,000 salary becomes $28.85 an hour, doubled to $57.69. The doubling roughly covers self-employment tax, benefits, and non-billable time. Use it as a sanity check, then calculate your real rate from your own costs." },
+        { question: "What is the difference between my minimum rate and my recommended rate?", answer: "The minimum rate covers your income goal and nothing else. The recommended rate adds overhead and profit on top. In this calculator's example, a $90,000 goal on 2,000 hours gives a $45 base rate, $54 with 20% overhead, and a $59.40 recommended rate with 10% profit. Quote the recommended rate; treat the base rate as a floor you never go below." },
+        { question: "How many billable hours should I really plan for?", answer: "Fewer than you work. A 40-hour week for 50 weeks is 2,000 hours, but admin, sales, and time off are not billable. At 65% utilization, that is 1,300 billable hours, and a $90,000 goal then needs a $69.23 base rate before overhead and profit, not $45. Enter your honest billable hours for a rate you can actually live on." },
       ]}
     >
       <HourlyRateClient />
