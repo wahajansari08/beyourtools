@@ -5,8 +5,8 @@ import SimpleConvertClient from "@/components/audio/SimpleConvertClient";
 import { createToolMetadata } from "@/lib/seo";
 
 const __enMetadata: Metadata = createToolMetadata({
-  title: "M4A to MP3 Converter - Convert M4A Online | BeYourTools",
-  description: "Convert M4A (Apple audio) files to MP3 online for free. Browser-based, no upload, selectable bitrate.",
+  title: "M4A to MP3 Converter - Convert M4A to MP3 Online Free | BeYourTools",
+  description: "Convert M4A to MP3 online free: turn Apple M4A audio into MP3 that plays everywhere, at up to 320 kbps. Browser-based, no upload.",
   keywords: "m4a to mp3, convert m4a to mp3, m4a to mp3 online, apple audio to mp3, aac to mp3",
   path: "/m4a-to-mp3",
 });

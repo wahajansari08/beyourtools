@@ -2,6 +2,7 @@ import { Link } from "@/i18n/navigation";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, canonical, faqSchema, SITE, softwareApplicationSchema } from "@/lib/seo";
 import type { VideoTool } from "@/lib/video-tools-config";
+import { getVideoPairContent, VIDEO_FORMAT_PROFILES } from "@/lib/video-pair-content";
 import VideoRelatedTools from "./VideoRelatedTools";
 import VideoToolClient from "./VideoToolClient";
 import { getTranslations } from "next-intl/server";
@@ -16,6 +17,10 @@ export default async function VideoToolPage({ tool }: { tool: VideoTool }) {
   const tHowTo = (tc?.howTo as { title: string; text: string }[] | undefined) ?? tool.howTo;
   const tFeatures = (tc?.features as string[] | undefined) ?? tool.features;
   const tFaqs = (tc?.faqs as { question: string; answer: string }[] | undefined) ?? tool.faqs;
+  const pair = getVideoPairContent(tool.slug);
+  const allFaqs = pair ? [...tFaqs, ...pair.faqs] : tFaqs;
+  const fromProfile = pair ? VIDEO_FORMAT_PROFILES[pair.from] : undefined;
+  const toProfile = pair ? VIDEO_FORMAT_PROFILES[pair.to] : undefined;
 
   const schemas = [
     breadcrumbSchema([
@@ -29,7 +34,7 @@ export default async function VideoToolPage({ tool }: { tool: VideoTool }) {
       url: canonical(`/${tool.slug}`),
       category: "MultimediaApplication",
     }),
-    faqSchema(tFaqs),
+    faqSchema(allFaqs),
   ];
 
   return (
@@ -99,7 +104,79 @@ export default async function VideoToolPage({ tool }: { tool: VideoTool }) {
           </p>
         </section>
 
-        {/* Video Standards & Performance Guide */}
+        {/* Pair-specific guide: replaces the generic guide on converter pair pages */}
+        {pair && fromProfile && toProfile ? (
+          <section className="mt-10 space-y-6">
+            <div className="space-y-4 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+              <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+                About {fromProfile.fullName} to {toProfile.fullName}
+              </h2>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{pair.intro}</p>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{pair.consequence}</p>
+            </div>
+
+            <div className="space-y-3">
+              <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+                {fromProfile.fullName} vs {toProfile.fullName}
+              </h2>
+              <div className="overflow-x-auto rounded-xl border" style={{ borderColor: "var(--border)" }}>
+                <table className="w-full min-w-[520px] text-left text-sm" style={{ color: "var(--text-muted)" }}>
+                  <thead>
+                    <tr style={{ backgroundColor: "var(--bg-elevated)" }}>
+                      <th className="px-3 py-2 font-semibold" style={{ color: "var(--text-primary)" }}>Aspect</th>
+                      <th className="px-3 py-2 font-semibold" style={{ color: "var(--text-primary)" }}>{fromProfile.fullName}</th>
+                      <th className="px-3 py-2 font-semibold" style={{ color: "var(--text-primary)" }}>{toProfile.fullName}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {([
+                      ["Kind", fromProfile.kind, toProfile.kind],
+                      ["Video codec", fromProfile.videoCodec, toProfile.videoCodec],
+                      ["Audio", fromProfile.audioCodec, toProfile.audioCodec],
+                      ["Transparency", fromProfile.transparencyNote, toProfile.transparencyNote],
+                      ["Animation", fromProfile.animationNote, toProfile.animationNote],
+                      ["Playback support", fromProfile.support, toProfile.support],
+                      ["Typical size", fromProfile.sizeNote, toProfile.sizeNote],
+                    ] as const).map(([aspect, from, to]) => (
+                      <tr key={aspect} className="border-t" style={{ borderColor: "var(--border)" }}>
+                        <td className="px-3 py-2 font-medium" style={{ color: "var(--text-secondary)" }}>{aspect}</td>
+                        <td className="px-3 py-2">{from}</td>
+                        <td className="px-3 py-2">{to}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div className="space-y-3 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+              <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+                What happens to quality and file size
+              </h2>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{pair.qualitySize}</p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="rounded-xl border p-5" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+                <h3 className="font-semibold text-sm mb-2" style={{ color: "var(--text-primary)" }}>When to convert</h3>
+                <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                  {pair.whenTo.map((item) => (<li key={item}>{item}</li>))}
+                </ul>
+              </div>
+              <div className="rounded-xl border p-5" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+                <h3 className="font-semibold text-sm mb-2" style={{ color: "var(--text-primary)" }}>When to keep the original</h3>
+                <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                  {pair.whenNotTo.map((item) => (<li key={item}>{item}</li>))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="rounded-xl border p-5" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Settings tip</h3>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{pair.settingTip}</p>
+            </div>
+          </section>
+        ) : (
         <section className="mt-10 space-y-4 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
           <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
             Video Standards &amp; Simple Playback Guide
@@ -122,10 +199,11 @@ export default async function VideoToolPage({ tool }: { tool: VideoTool }) {
             </div>
           </div>
         </section>
+        )}
 
         <section className="mt-10 space-y-4">
           <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>{tName} {t("faqs")}</h2>
-          {tFaqs.map((faq) => (
+          {allFaqs.map((faq) => (
             <div key={faq.question}>
               <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>{faq.question}</p>
               <p className="mt-1 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{faq.answer}</p>

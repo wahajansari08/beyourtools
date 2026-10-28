@@ -5,6 +5,7 @@ import { LockIcon } from "@/components/icons";
 import AudioRelatedTools from "./AudioRelatedTools";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, softwareApplicationSchema, faqSchema, SITE, canonical } from "@/lib/seo";
+import { getAudioPairContent, AUDIO_FORMAT_PROFILES } from "@/lib/audio-pair-content";
 
 interface FAQ { question: string; answer: string }
 interface HowToStep { title: string; text: string }
@@ -43,6 +44,10 @@ export default async function AudioToolPage({
   const tHowTo = (tc?.howTo as HowToStep[] | undefined) ?? howTo;
   const tFaqs = (tc?.faqs as FAQ[] | undefined) ?? faqs;
   const tFeatures = (tc?.features as string[] | undefined) ?? features;
+  const pair = getAudioPairContent(slug);
+  const allFaqs = pair ? [...tFaqs, ...pair.faqs] : tFaqs;
+  const fromProfile = pair ? AUDIO_FORMAT_PROFILES[pair.from] : undefined;
+  const toProfile = pair ? AUDIO_FORMAT_PROFILES[pair.to] : undefined;
   const schemas = [
     breadcrumbSchema([
       { name: "BeYourTools", url: SITE.url },
@@ -55,7 +60,7 @@ export default async function AudioToolPage({
       url: canonical(`/${slug}`),
       category: "MultimediaApplication",
     }),
-    faqSchema(tFaqs),
+    faqSchema(allFaqs),
   ];
 
   return (
@@ -137,37 +142,108 @@ export default async function AudioToolPage({
           </section>
         )}
 
-        {/* Audio Standards & Fidelity Guide */}
+        {/* Pair-specific guide: replaces the generic guide on converter pair pages */}
+        {pair && fromProfile && toProfile ? (
+          <section className="mt-10 space-y-6">
+            <div className="space-y-4 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+              <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+                About {fromProfile.fullName} to {toProfile.fullName}
+              </h2>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{pair.intro}</p>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{pair.consequence}</p>
+            </div>
+
+            <div className="space-y-3">
+              <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+                {fromProfile.fullName} vs {toProfile.fullName}
+              </h2>
+              <div className="overflow-x-auto rounded-xl border" style={{ borderColor: "var(--border)" }}>
+                <table className="w-full min-w-[480px] text-left text-sm" style={{ color: "var(--text-muted)" }}>
+                  <thead>
+                    <tr style={{ backgroundColor: "var(--bg-elevated)" }}>
+                      <th className="px-3 py-2 font-semibold" style={{ color: "var(--text-primary)" }}>Aspect</th>
+                      <th className="px-3 py-2 font-semibold" style={{ color: "var(--text-primary)" }}>{fromProfile.fullName}</th>
+                      <th className="px-3 py-2 font-semibold" style={{ color: "var(--text-primary)" }}>{toProfile.fullName}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {([
+                      ["Kind", fromProfile.kind, toProfile.kind],
+                      ["Codec", fromProfile.codecNote, toProfile.codecNote],
+                      ["Quality", fromProfile.qualityNote, toProfile.qualityNote],
+                      ["Playback support", fromProfile.support, toProfile.support],
+                      ["Typical size", fromProfile.sizeNote, toProfile.sizeNote],
+                    ] as const).map(([aspect, from, to]) => (
+                      <tr key={aspect} className="border-t" style={{ borderColor: "var(--border)" }}>
+                        <td className="px-3 py-2 font-medium" style={{ color: "var(--text-secondary)" }}>{aspect}</td>
+                        <td className="px-3 py-2">{from}</td>
+                        <td className="px-3 py-2">{to}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div className="space-y-3 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+              <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+                What happens to quality and file size
+              </h2>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{pair.qualitySize}</p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="rounded-xl border p-5" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+                <h3 className="font-semibold text-sm mb-2" style={{ color: "var(--text-primary)" }}>When to convert</h3>
+                <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                  {pair.whenTo.map((item) => (<li key={item}>{item}</li>))}
+                </ul>
+              </div>
+              <div className="rounded-xl border p-5" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+                <h3 className="font-semibold text-sm mb-2" style={{ color: "var(--text-primary)" }}>When to keep the original</h3>
+                <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                  {pair.whenNotTo.map((item) => (<li key={item}>{item}</li>))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="rounded-xl border p-5" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+              <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Settings tip</h3>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{pair.settingTip}</p>
+            </div>
+          </section>
+        ) : (
         <section className="mt-10 space-y-4 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
           <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
             Audio Engineering Standards &amp; Codec Guide
           </h2>
           <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-            Digital audio processing requires balancing bandwidth footprint against dynamic range and psychoacoustic fidelity. 
+            Digital audio processing requires balancing bandwidth footprint against dynamic range and psychoacoustic fidelity.
             Using <strong style={{ color: "var(--text-primary)" }}>{tTitle}</strong> allows podcasters, music producers, and video editors to prepare pristine sound assets compatible with broadcast requirements, streaming platforms (Spotify, Apple Music, YouTube), and web applications.
           </p>
           <div className="grid gap-4 sm:grid-cols-2 text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
             <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
               <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Lossless vs Lossy Encoding</h3>
               <p>
-                Uncompressed containers like WAV preserve complete 16-bit or 24-bit linear PCM audio dynamics without clipping, ideal for studio editing. 
+                Uncompressed containers like WAV preserve complete 16-bit or 24-bit linear PCM audio dynamics without clipping, ideal for studio editing.
                 Modern lossy codecs (MP3 at 320 kbps, AAC, Opus) discard imperceptible high-frequency bands to slash file sizes by 70% to 90% while sounding pristine to human ears.
               </p>
             </div>
             <div className="rounded-lg border p-4" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}>
               <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Client-Side Privacy &amp; Speed</h3>
               <p>
-                All trimming, normalization, channel merging, and bitrate conversions execute locally in your browser memory via WebAudio and client-side FFmpeg WebAssembly. 
+                All trimming, normalization, channel merging, and bitrate conversions execute locally in your browser memory via WebAudio and client-side FFmpeg WebAssembly.
                 Your private audio recordings, voice notes, and musical projects never travel across external networks or servers.
               </p>
             </div>
           </div>
         </section>
+        )}
 
         {/* FAQ */}
         <section className="mt-10 space-y-4">
           <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>{tTitle} {t("faqs")}</h2>
-          {tFaqs.map(({ question, answer }) => (
+          {allFaqs.map(({ question, answer }) => (
             <div key={question}>
               <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>{question}</p>
               <p className="mt-1 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{answer}</p>
