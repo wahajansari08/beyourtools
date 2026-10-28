@@ -12,6 +12,17 @@ import {
   conversionsTo,
   type ConversionRoute,
 } from "@/lib/image-tools-config";
+import {
+  pairIntro,
+  pairWhenTo,
+  pairWhenNotTo,
+  pairQualitySize,
+  pairTableRows,
+  pairFormatProfiles,
+  pairFaqs,
+  pairSettingTip,
+  pairMetaDescription,
+} from "@/lib/image-pair-content";
 import ConverterClient from "./ConverterClient";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema, faqSchema, webAppSchema, SITE, canonical } from "@/lib/seo";
@@ -42,7 +53,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // Title is templated per locale so grammar is correct in every language
   // (format names like JPG/PNG stay in English).
   const title = t("converterTitle", { from: from.label, to: to.label });
-  const description = tc?.description ?? `Convert ${from.label} images to ${to.label} online for free. No upload, no sign-up - conversion runs directly in your browser and your files never leave your device.`;
+  const description = tc?.description ?? pairMetaDescription(route);
   const url = localeCanonical(locale, `/image-converter/${route.slug}`);
   const image = `${SITE.url}/og-default.png`;
   const path = `/image-converter/${route.slug}`;
@@ -116,22 +127,17 @@ export default async function Page({ params }: Props) {
 
   const from = getFormat(route.from)!;
   const to   = getFormat(route.to)!;
-  const fromNotes = getFormatNotes(route.from);
-  const toNotes   = getFormatNotes(route.to);
   const tc = await getTranslatedToolContent(locale, `image:${route.slug}`);
   const insights  = tc?.insight ?? pairInsight(route.from, route.to);
+  const intro = pairIntro(route);
+  const whenTo = pairWhenTo(route);
+  const whenNotTo = pairWhenNotTo(route);
+  const qualitySize = pairQualitySize(route);
+  const settingTip = pairSettingTip(route);
   const title = conversionTitle(route);
   const url = localeCanonical(locale, `/image-converter/${route.slug}`);
 
-  const faqs = [
-    { question: `How do I convert ${from.label} to ${to.label}?`, answer: `Drop your ${from.label} file onto the upload area or click to browse. The conversion starts automatically. When it finishes, click Download to save your ${to.label} file.` },
-    { question: `Is the ${from.label} to ${to.label} converter free?`, answer: "Yes - completely free, no account required, no file limits, and no watermarks added to your images." },
-    { question: `Are my ${from.label} files uploaded to a server?`, answer: `No. All conversion happens locally in your browser. Your ${from.label} files never leave your device.` },
-    { question: `Can I convert multiple ${from.label} files at once?`, answer: `Yes - drop multiple ${from.label} files at once or add them one by one. Each file is converted automatically and can be downloaded individually or all at once as a ZIP.` },
-    { question: `What is the difference between ${from.label} and ${to.label}?`, answer: `${from.label} and ${to.label} are different image formats with different compression methods and feature support. Use the converter to switch between them based on your needs.` },
-    { question: `Will converting ${from.label} to ${to.label} reduce my file size?`, answer: `File size changes depend on the underlying compression algorithms. Converting uncompressed or lossless formats (such as PNG, BMP, or TIFF) into high-efficiency formats (such as WebP, AVIF, or JPG) frequently achieves a 30% to 80% reduction in storage size while maintaining excellent visual fidelity. Conversely, converting to lossless formats preserves exact pixel values.` },
-    { question: `Is this ${from.label} to ${to.label} converter secure for confidential images?`, answer: `Yes. All processing executes locally inside your web browser using HTML5 Canvas, OffscreenCanvas, and WebAssembly APIs. Your graphics and personal photos never travel over the network, are never stored on external databases, and are immediately cleared from browser memory when you close the tab.` },
-  ];
+  const faqs = pairFaqs(route);
 
   const schemas = [
     breadcrumbSchema([
@@ -166,8 +172,7 @@ export default async function Page({ params }: Props) {
             {from.label} to {to.label} Converter
           </h1>
           <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-            Convert {from.label} images to {to.label} format directly in your browser.
-            No file upload, no account required - files never leave your device.
+            {intro[0]}
           </p>
         </div>
 
@@ -191,6 +196,11 @@ export default async function Page({ params }: Props) {
             <li className="flex gap-2"><span className="font-semibold shrink-0" style={{ color: "var(--accent-text)" }}>2.</span>The converter processes your file locally - no upload needed.</li>
             <li className="flex gap-2"><span className="font-semibold shrink-0" style={{ color: "var(--accent-text)" }}>3.</span>Click <strong>Download</strong> to save your {to.label} file.</li>
           </ol>
+          {settingTip && (
+            <p className="rounded-lg border p-3 text-sm leading-relaxed" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-muted)" }}>
+              <strong style={{ color: "var(--text-secondary)" }}>Good to know:</strong> {settingTip}
+            </p>
+          )}
         </section>
 
         {/* Format guide: {from} vs {to}, built from per-format facts, unique to this pair */}
@@ -199,7 +209,7 @@ export default async function Page({ params }: Props) {
             {from.label} vs {to.label}: format guide
           </h2>
           <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-            {fromNotes.detail} {toNotes.detail} In practice, converting {from.label} to {to.label} is the right move when you need {toNotes.bestFor}.
+            {intro[1]}
           </p>
           {insights.length > 0 && (
             <ul className="space-y-2 text-sm list-disc pl-5" style={{ color: "var(--text-muted)" }}>
@@ -218,13 +228,7 @@ export default async function Page({ params }: Props) {
                 </tr>
               </thead>
               <tbody style={{ color: "var(--text-muted)" }}>
-                {[
-                  ["Format type", fromNotes.kind, toNotes.kind],
-                  ["Compression", fromNotes.compression, toNotes.compression],
-                  ["Transparency", fromNotes.transparency ? "Yes" : "No", toNotes.transparency ? "Yes" : "No"],
-                  ["Animation", fromNotes.animation ? "Yes" : "No", toNotes.animation ? "Yes" : "No"],
-                  ["Best for", fromNotes.bestFor, toNotes.bestFor],
-                ].map(([label, a, b]) => (
+                {pairTableRows(route).map(([label, a, b]) => (
                   <tr key={label}>
                     <td className="border px-3 py-2 font-medium" style={{ borderColor: "var(--border)", color: "var(--text-secondary)" }}>{label}</td>
                     <td className="border px-3 py-2" style={{ borderColor: "var(--border)" }}>{a}</td>
@@ -234,24 +238,47 @@ export default async function Page({ params }: Props) {
               </tbody>
             </table>
           </div>
+          {pairFormatProfiles(route).map((p) => (
+            <p key={p.slice(0, 24)} className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+              {p}
+            </p>
+          ))}
         </section>
 
-        {/* Best Practices Section */}
+        {/* Quality and file size consequences for this pair */}
         <section className="mt-10 space-y-3">
           <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
-            Best Practices for {from.label} to {to.label} Conversion
+            What happens to quality and file size
           </h2>
-          <ul className="space-y-2 text-sm list-disc pl-5" style={{ color: "var(--text-muted)" }}>
-            <li>
-              <strong style={{ color: "var(--text-secondary)" }}>Preserve Aspect Ratio and Detail:</strong> Our in-browser conversion engine retains the original pixel dimensions and aspect ratio of your source {from.label} graphic without introducing unwanted scaling artifacts.
-            </li>
-            <li>
-              <strong style={{ color: "var(--text-secondary)" }}>Transparency Handling:</strong> If converting an image containing transparent pixels into a format that does not support transparency (such as JPEG), transparent backgrounds are cleanly filled with a solid neutral background.
-            </li>
-            <li>
-              <strong style={{ color: "var(--text-secondary)" }}>Web Performance Optimization:</strong> For web deployment, modern formats offer enhanced compression curves that drastically cut byte payload, helping websites score higher on Google PageSpeed Insights and mobile usability benchmarks.
-            </li>
-          </ul>
+          {qualitySize.map((p) => (
+            <p key={p.slice(0, 32)} className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+              {p}
+            </p>
+          ))}
+        </section>
+
+        {/* When to convert / when to skip */}
+        <section className="mt-10 grid gap-6 sm:grid-cols-2">
+          <div className="space-y-3">
+            <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+              When to convert {from.label} to {to.label}
+            </h2>
+            <ul className="space-y-2 text-sm list-disc pl-5" style={{ color: "var(--text-muted)" }}>
+              {whenTo.map((item) => (
+                <li key={item.slice(0, 40)}>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="space-y-3">
+            <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+              When to skip it
+            </h2>
+            <ul className="space-y-2 text-sm list-disc pl-5" style={{ color: "var(--text-muted)" }}>
+              {whenNotTo.map((item) => (
+                <li key={item.slice(0, 40)}>{item}</li>
+              ))}
+            </ul>
+          </div>
         </section>
 
         {/* FAQ */}
