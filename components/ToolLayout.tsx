@@ -11,7 +11,7 @@ import {
   canonical,
 } from "@/lib/seo";
 import type { ToolCategory } from "@/lib/tools-config";
-import type { HowToStep, ToolFAQ } from "@/lib/json-tools-content";
+import type { HowToStep, ToolFAQ, JsonPairGuide } from "@/lib/json-tools-content";
 import { getTranslations } from "next-intl/server";
 import { contentLocale, getTranslatedToolContentAny } from "@/lib/i18n-content";
 
@@ -23,6 +23,7 @@ export default async function ToolLayout({
   currentSlug,
   howTo,
   faqs,
+  pairGuide,
   children,
 }: {
   eyebrow: string;
@@ -34,6 +35,8 @@ export default async function ToolLayout({
   howTo?: HowToStep[];
   /** Optional FAQs shown below the how-to section */
   faqs?: ToolFAQ[];
+  /** Pair-specific conversion guide; replaces the generic standards box when present */
+  pairGuide?: JsonPairGuide;
   children: ReactNode;
 }) {
   const locale = await contentLocale();
@@ -138,7 +141,41 @@ export default async function ToolLayout({
           </section>
         )}
 
-        {/* JSON Architecture & Developer Standards */}
+        {/* Pair-specific conversion guide, or the generic standards box for non-pair tools */}
+        {pairGuide ? (
+        <section className="mt-10 space-y-6">
+          <div className="space-y-4 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+            <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+              About this conversion
+            </h2>
+            <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{pairGuide.intro}</p>
+          </div>
+          <div className="space-y-3 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+            <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+              What changes in structure
+            </h2>
+            <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{pairGuide.structureNote}</p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="rounded-xl border p-5" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+              <h3 className="font-semibold text-sm mb-2" style={{ color: "var(--text-primary)" }}>When to convert</h3>
+              <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                {pairGuide.whenTo.map((item) => (<li key={item}>{item}</li>))}
+              </ul>
+            </div>
+            <div className="rounded-xl border p-5" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+              <h3 className="font-semibold text-sm mb-2" style={{ color: "var(--text-primary)" }}>When to keep the original</h3>
+              <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                {pairGuide.whenNotTo.map((item) => (<li key={item}>{item}</li>))}
+              </ul>
+            </div>
+          </div>
+          <div className="rounded-xl border p-5" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+            <h3 className="font-semibold text-sm mb-1" style={{ color: "var(--text-primary)" }}>Watch out for</h3>
+            <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{pairGuide.gotcha}</p>
+          </div>
+        </section>
+        ) : (
         <section className="mt-10 space-y-4 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
           <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
             {tTitle} &amp; JSON Developer Standards
@@ -163,6 +200,7 @@ export default async function ToolLayout({
             </div>
           </div>
         </section>
+        )}
 
         {/* FAQ */}
         {tFaqs && tFaqs.length > 0 && (

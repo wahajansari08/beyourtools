@@ -5,9 +5,9 @@ import SimpleConvertClient from "@/components/audio/SimpleConvertClient";
 import { createToolMetadata } from "@/lib/seo";
 
 const __enMetadata: Metadata = createToolMetadata({
-  title: "OGG to MP3 Converter - Free Online | BeYourTools",
-  description: "Convert OGG Vorbis audio files to MP3 online for free. Browser-based conversion, no upload, selectable bitrate.",
-  keywords: "ogg to mp3, convert ogg to mp3, ogg vorbis to mp3, ogg mp3 converter online",
+  title: "OGG to MP3 Converter: Play OGG Anywhere | BeYourTools",
+  description: "Convert OGG Vorbis audio files to MP3 online for free, so they play on iPhones, car stereos and every player. Browser-based conversion, no upload, selectable bitrate up to 320 kbps.",
+  keywords: "ogg to mp3, convert ogg to mp3, ogg vorbis to mp3, ogg mp3 converter online, ogg to mp3 for iphone, opus to mp3",
   path: "/ogg-to-mp3",
 });
 
@@ -17,7 +17,7 @@ export default function OggToMp3Page() {
       slug="ogg-to-mp3"
       title="OGG to MP3"
       categoryLabel="Converters"
-      tagline="Convert OGG Vorbis audio files to widely compatible MP3 format - useful for devices that don't support OGG."
+      tagline="Convert OGG Vorbis audio files to widely compatible MP3 format, so recordings from Linux, games and Discord clips play on devices that don't support OGG."
       description="Free online OGG to MP3 converter. Converts OGG Vorbis to MP3 in your browser."
       howTo={[
         { title: "Choose bitrate", text: "Select your MP3 bitrate." },

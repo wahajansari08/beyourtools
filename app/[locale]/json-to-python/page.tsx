@@ -8,7 +8,7 @@ import { getJsonToolContent } from "@/lib/json-tools-content";
 const content = getJsonToolContent("json-to-python");
 
 const __enMetadata: Metadata = {
-  title: "JSON to Python Generator - Free Online | BeYourTools",
+  title: "JSON to Python: Dataclasses & TypedDicts from JSON | BeYourTools",
   description: content?.tagline ?? "Generate Python dataclass or TypedDict definitions from any JSON sample.",
   keywords: content?.keywords,
   alternates: { canonical: `${SITE.url}/json-to-python` },
@@ -16,15 +16,15 @@ const __enMetadata: Metadata = {
   openGraph: {
     type: "website",
     url: `${SITE.url}/json-to-python`,
-    title: "JSON to Python Generator - Free Online | BeYourTools",
-    description: "Generate Python dataclasses and TypedDicts from JSON.",
+    title: "JSON to Python: Dataclasses & TypedDicts from JSON | BeYourTools",
+    description: "Generate Python dataclass or TypedDict definitions from a JSON sample in your browser.",
     siteName: SITE.name,
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "JSON to Python" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "JSON to Python Generator - Free Online | BeYourTools",
-    description: "Generate Python dataclasses and TypedDicts from JSON.",
+    title: "JSON to Python: Dataclasses & TypedDicts from JSON | BeYourTools",
+    description: "Generate Python dataclass or TypedDict definitions from a JSON sample in your browser.",
     site: SITE.twitter,
     images: [`${SITE.url}/og-default.png`],
   },
@@ -40,6 +40,7 @@ export default function Page() {
       currentSlug="json-to-python"
       howTo={content?.howTo}
       faqs={content?.faqs}
+      pairGuide={content?.pairGuide}
     >
       <JsonToPythonClient />
     </ToolLayout>

@@ -53,6 +53,40 @@ export const AUDIO_FORMAT_PROFILES: Record<string, AudioFormatProfile> = {
     ],
     sizeNote: "About 10 MB per minute at 44.1 kHz 16-bit stereo",
   },
+  flac: {
+    fullName: "Free Lossless Audio Codec",
+    kind: "Lossless compressed audio",
+    codecNote: "FLAC, variable bitrate around 700 to 1,000 kbps for CD audio",
+    qualityNote: "Bit-perfect: decodes to exactly the original PCM audio",
+    support: "Most players, Android and Windows; iPhone since iOS 11, weaker on older car stereos",
+    strengths: [
+      "Perfect quality at roughly half the size of WAV",
+      "The standard archival format for CD rips",
+      "Good metadata support for album, artist and track info",
+    ],
+    weaknesses: [
+      "Still 5 to 10 times larger than a high-bitrate MP3",
+      "Not accepted by some older players and car stereos",
+    ],
+    sizeNote: "Roughly 5 MB per minute for CD-quality stereo, versus 10 MB for WAV",
+  },
+  ogg: {
+    fullName: "Ogg Vorbis",
+    kind: "Lossy compressed audio in an Ogg container",
+    codecNote: "Vorbis, typically 96 to 192 kbps",
+    qualityNote: "Very good at 160 to 192 kbps, often slightly better than MP3 at the same bitrate",
+    support: "Strong on Android, Linux and browsers; weak on Apple devices and older car stereos",
+    strengths: [
+      "Open and royalty-free, with good quality per megabyte",
+      "Common for game audio, Discord clips and Linux exports",
+      "Efficient for speech and music at modest bitrates",
+    ],
+    weaknesses: [
+      "Not played by many Apple devices, older stereos and some editors",
+      "The .ogg extension is also used for Opus audio, which is a different codec",
+    ],
+    sizeNote: "Similar to MP3: roughly 1 MB per minute at 128 kbps",
+  },
   m4a: {
     fullName: "MPEG-4 Audio",
     kind: "Usually lossy AAC audio in an MP4 container",
@@ -237,6 +271,106 @@ export const AUDIO_PAIR_CONTENT: Record<string, AudioPairContent> = {
         question: "Does the MP3 keep the M4A metadata and tags?",
         answer:
           "Metadata is preserved where possible, but some Apple-specific tags and chapters may not carry over to MP3. Check the output file's tags if artwork or chapter marks matter to you.",
+      },
+    ],
+  },
+  "flac-to-mp3": {
+    from: "flac",
+    to: "mp3",
+    intro:
+      "FLAC is the format you keep when quality matters: a CD rip stored as FLAC sounds exactly like the original disc, at roughly half the size of WAV. MP3 is the format you use when compatibility and size matter more. Converting FLAC to MP3 is the standard way to take a carefully archived library onto a phone, a car stereo or a streaming upload form that will not accept FLAC.",
+    consequence:
+      "Headline consequence: a bit-perfect archive file becomes a small universal file, and that trade is permanent. MP3 discards audio detail to reach its size, so keep the FLAC as your master and treat the MP3 as the portable copy.",
+    qualitySize:
+      "Use 320 kbps for music. A 30 MB FLAC track typically becomes about 7 MB at 320 kbps, 4 to 5 MB at 192 kbps and 3 MB at 128 kbps. At 320 kbps most listeners cannot tell the MP3 from the FLAC in casual listening, but the difference is real and measurable, which is why archiving in MP3 alone is a mistake. For speech-only FLAC recordings, 128 kbps is plenty and shrinks the file even further.",
+    whenTo: [
+      "Playing a FLAC library on a phone, car stereo or player that does not support FLAC",
+      "Uploading audio to a platform or form that only accepts MP3",
+      "Sharing tracks by email or message where FLAC is too large",
+      "Building a portable listening library while the FLAC archive stays safe",
+    ],
+    whenNotTo: [
+      "When the file is your only copy: keep the FLAC, do not replace it with the MP3",
+      "For professional delivery, mastering or further editing",
+      "When storage is not a problem and the player already supports FLAC",
+    ],
+    settingTip:
+      "Convert from FLAC at 320 kbps, never from an existing MP3. Starting from FLAC gives the encoder the full-quality source, so the MP3 is as good as MP3 can be.",
+    faqs: [
+      {
+        question: "How much smaller is MP3 than FLAC?",
+        answer:
+          "Typically 3 to 10 times smaller depending on bitrate. A 30 MB FLAC track becomes roughly 7 MB at 320 kbps, 4 to 5 MB at 192 kbps and about 3 MB at 128 kbps.",
+      },
+      {
+        question: "Can I convert MP3 back to FLAC to restore quality?",
+        answer:
+          "You can change the container, but you cannot restore quality. Converting MP3 to FLAC produces a large lossless file that still contains only MP3-quality audio, because the detail MP3 discarded is gone permanently.",
+      },
+      {
+        question: "What bitrate should I choose for FLAC to MP3?",
+        answer:
+          "320 kbps for music you care about, 192 kbps for everyday listening and 128 kbps for speech-only recordings. Since FLAC is a perfect source, a high bitrate is the best way to keep the MP3 close to the original.",
+      },
+      {
+        question: "Does FLAC to MP3 conversion keep the tags and artwork?",
+        answer:
+          "Metadata is preserved where possible, including artist, title and album tags. Check the output file if artwork or unusual tags matter to you, since some players read FLAC and MP3 tags differently.",
+      },
+      {
+        question: "Should I delete the FLAC file after converting?",
+        answer:
+          "No. Keep the FLAC as your archive master. Storage is cheap, re-ripping a CD is not, and you can always make a new MP3 from FLAC later, but you can never rebuild FLAC quality from an MP3.",
+      },
+    ],
+  },
+  "ogg-to-mp3": {
+    from: "ogg",
+    to: "mp3",
+    intro:
+      "OGG Vorbis is a capable open format, but it lives outside the mainstream: many Apple devices, older car stereos and some editors simply will not play it. Converting OGG to MP3 solves that in one step, because MP3 plays on virtually every device made in the last twenty years. The price is a second lossy encode, so the bitrate you pick matters more here than in a lossless-to-MP3 conversion.",
+    consequence:
+      "Headline consequence: an open-format file that some devices refuse becomes a universal file every device plays. The cost is a small extra quality loss on top of the lossy Vorbis encoding, which is why 192 kbps or higher is the sensible floor for music.",
+    qualitySize:
+      "The MP3 ends up roughly the same size as the OGG at a comparable bitrate, since both are lossy formats of similar efficiency. A 5 MB OGG at around 160 kbps becomes roughly 4 to 7 MB as MP3 depending on the bitrate you choose. Note the .ogg extension trap: some .ogg files actually contain Opus audio, common in Discord voice clips and game audio, and Opus to MP3 is the same lossy-to-lossy story with the same bitrate advice.",
+    whenTo: [
+      "Playing OGG files from Linux, a game soundtrack or Discord clips on an iPhone or car stereo",
+      "Uploading audio to a platform or form that only accepts MP3",
+      "Sharing a recording with someone whose player does not support OGG",
+      "Editing in a tool that imports MP3 but not OGG Vorbis",
+    ],
+    whenNotTo: [
+      "When the file already plays everywhere you need it: Vorbis is slightly more efficient than MP3",
+      "For further editing or mastering, where a lossless export would be better",
+      "At low bitrates for music: a 64 or 96 kbps MP3 made from OGG will sound noticeably worse",
+    ],
+    settingTip:
+      "Use 192 kbps for everyday listening and 320 kbps for music you care about. This is a lossy-to-lossy conversion, so a low bitrate stacks a second audible loss on top of the first.",
+    faqs: [
+      {
+        question: "What is the difference between OGG Vorbis and Opus?",
+        answer:
+          "Both can use the .ogg container, but they are different codecs. Vorbis is the classic Ogg music codec, while Opus is a newer codec common in Discord voice clips, game chat and WebRTC calls. Both are lossy, so converting either to MP3 follows the same rule: use a high bitrate to keep the extra loss small.",
+      },
+      {
+        question: "Will converting OGG to MP3 improve quality?",
+        answer:
+          "No. Both formats are lossy, and re-encoding discards a little more detail. The MP3 will sound the same at best, and slightly worse at low bitrates. The gain is compatibility, not quality.",
+      },
+      {
+        question: "What bitrate should I choose for OGG to MP3?",
+        answer:
+          "192 kbps for everyday listening, 320 kbps for music, and 128 kbps for speech-only recordings such as voice clips. Avoid going below the bitrate of the original OGG for music.",
+      },
+      {
+        question: "Why does my iPhone or car stereo not play OGG files?",
+        answer:
+          "Apple devices and many older car stereos never added OGG Vorbis support, while MP3 support is universal. Converting to MP3 is the simplest fix, and it avoids installing a separate player app.",
+      },
+      {
+        question: "Will the MP3 be larger or smaller than the OGG?",
+        answer:
+          "Roughly the same at a comparable bitrate. Vorbis and MP3 are similarly efficient, so the file size is decided by the bitrate you choose, not by the format change itself.",
       },
     ],
   },

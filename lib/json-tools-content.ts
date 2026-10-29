@@ -14,6 +14,19 @@ export interface ToolFAQ {
   answer: string;
 }
 
+export interface JsonPairGuide {
+  /** What the conversion is for, in the user's terms */
+  intro: string;
+  /** How the source structure maps onto the target structure */
+  structureNote: string;
+  /** Good reasons to convert */
+  whenTo: string[];
+  /** Cases where converting is the wrong move */
+  whenNotTo: string[];
+  /** The single gotcha most likely to surprise users */
+  gotcha: string;
+}
+
 export interface JsonToolContent {
   /** Short descriptive tagline used in OG and schema description */
   tagline: string;
@@ -23,6 +36,8 @@ export interface JsonToolContent {
   howTo: HowToStep[];
   /** 4-6 unique FAQs specific to this tool */
   faqs: ToolFAQ[];
+  /** Pair-specific conversion guide, rendered by ToolLayout instead of the generic standards box */
+  pairGuide?: JsonPairGuide;
 }
 
 const content: Record<string, JsonToolContent> = {
@@ -278,7 +293,7 @@ const content: Record<string, JsonToolContent> = {
 
   "json-to-csv": {
     tagline: "Convert a JSON array of objects to a CSV file with auto-detected column headers.",
-    keywords: "JSON to CSV, convert JSON to CSV, JSON array to CSV, JSON export CSV, JSON to spreadsheet, JSON to Excel CSV",
+    keywords: "JSON to CSV, convert JSON to CSV, JSON array to CSV, JSON export CSV, JSON to spreadsheet, JSON to Excel CSV, nested JSON to CSV, JSON to CSV for Excel",
     howTo: [
       { title: "Paste a JSON array", text: "Paste a JSON array of objects - each object becomes a row in the CSV." },
       { title: "Review column headers", text: "Column headers are auto-detected from the object keys. You can customise them if needed." },
@@ -290,12 +305,31 @@ const content: Record<string, JsonToolContent> = {
       { question: "What happens with nested objects in the JSON?", answer: "Nested objects are flattened using dot notation. A key like {\"address\":{\"city\":\"London\"}} becomes a column named address.city with the value London." },
       { question: "Are different delimiters supported?", answer: "The tool outputs standard comma-separated values (CSV). If you need tab-separated (TSV) or semicolon-separated output for European locales, a delimiter option is available in the tool settings." },
       { question: "Can I convert a single JSON object instead of an array?", answer: "A single object is converted to a two-column CSV: one column for keys and one for values. For relational CSV output, an array of objects is the expected input format." },
+      { question: "What happens to rows that are missing a key?", answer: "CSV is a flat table, so every row needs the same columns. When one record has a key that another lacks, the missing cell is left empty in that row, and the column still appears because another record has it. If your data is ragged, normalise the keys first or accept empty cells in the output." },
+      { question: "How do I stop Excel garbling special characters in my CSV?", answer: "Save or open the CSV as UTF-8. Excel on Windows sometimes reads a plain CSV as a legacy encoding, which mangles accented characters and symbols. Opening the file through the Text Import wizard and choosing UTF-8, or pasting into Google Sheets, avoids the problem." },
+      { question: "Why do some of my values need quotes in the CSV?", answer: "Under RFC 4180, any value containing a comma, a double quote or a line break must be wrapped in double quotes, with inner quotes doubled. That is how a spreadsheet knows the comma inside \"Smith, John\" is part of the value and not a column separator." },
     ],
+    pairGuide: {
+      intro: "JSON to CSV is the step that turns API data into something a spreadsheet can open. APIs hand you nested objects and arrays; spreadsheets want flat rows and columns. This conversion flattens each object into one row, so a list of users, orders or products becomes a table you can sort, filter and chart without writing a script.",
+      structureNote: "Each object in the JSON array becomes one CSV row, and each key becomes a column header. Nested objects are flattened with dot notation, so address.city becomes its own column, and arrays inside a record are kept as a single cell value rather than split into rows. A single JSON object converts to a two-column key/value table instead, because there is no list of rows to build from.",
+      whenTo: [
+        "Opening API data in Excel or Google Sheets for analysis",
+        "Handing a data export to someone who does not code",
+        "Preparing rows for import into a CRM, email tool or database",
+        "Comparing or charting a list of records quickly",
+      ],
+      whenNotTo: [
+        "When the nesting itself matters: CSV cannot represent deep trees faithfully",
+        "For data with wildly different keys per record, where most cells end up empty",
+        "When you need to round-trip back to identical JSON later",
+      ],
+      gotcha: "Watch for ragged records and quoted values. Rows missing a key get empty cells, and values containing commas must be quoted or the columns shift. Always spot-check the first few rows in a spreadsheet before trusting the whole file.",
+    },
   },
 
   "csv-to-json": {
     tagline: "Convert a CSV file to a JSON array of objects with automatic type detection for numbers and booleans.",
-    keywords: "CSV to JSON, convert CSV to JSON, CSV to JSON array, CSV parser, spreadsheet to JSON, CSV converter",
+    keywords: "CSV to JSON, convert CSV to JSON, CSV to JSON array, CSV parser, spreadsheet to JSON, CSV converter, Excel to JSON, CSV quoted fields to JSON",
     howTo: [
       { title: "Paste your CSV", text: "Paste the CSV content - the first row should contain column headers." },
       { title: "Check delimiter detection", text: "The tool auto-detects commas, tabs, or semicolons as delimiters. Override if needed." },
@@ -307,12 +341,31 @@ const content: Record<string, JsonToolContent> = {
       { question: "Are numbers and booleans auto-converted?", answer: "Yes. Values that look like integers, floats, true, false, or null are automatically converted to their JSON equivalents. Strings remain as strings." },
       { question: "Can I handle CSV with commas inside quoted fields?", answer: "Yes. The parser correctly handles RFC 4180 quoting - values containing commas, newlines, or double quotes are wrapped in double quotes in valid CSV and parsed correctly here." },
       { question: "What encoding does the converter support?", answer: "The converter handles UTF-8 encoded CSV, which covers most spreadsheet exports. For CSV with special characters, ensure your file is saved as UTF-8 before pasting." },
+      { question: "Why do codes like 007 or 01234 change when converted?", answer: "Because automatic type detection turns digit-looking values into numbers, and numbers drop leading zeros. If a column holds postcodes, product codes or phone numbers, treat it as text: the value 007 is a code, not the number 7, and converting it to a number destroys information." },
+      { question: "Why does splitting on commas break my CSV?", answer: "Because valid CSV allows commas inside quoted values, doubled quotes inside quoted values, and even line breaks inside a quoted cell. A naive split on every comma cuts those values in half. A real CSV parser respects the quoting rules in RFC 4180, which is why this converter parses rather than splits." },
+      { question: "Should empty cells become empty strings or null?", answer: "It depends on what consumes the JSON. An empty string means the field was present but blank; null means it was absent or unknown. APIs that distinguish the two will behave differently, so check the target schema before deciding, and be consistent across rows." },
     ],
+    pairGuide: {
+      intro: "CSV to JSON is the step that turns spreadsheet rows back into structured data an API or script can use. Each row becomes one JSON object, the header row becomes the property names, and the whole sheet becomes an array you can paste into code, a test fixture or an API payload.",
+      structureNote: "The first row supplies the keys and every later row supplies the values, one object per row. Numbers, booleans and null are detected automatically, quoted fields are unwrapped according to RFC 4180, and the delimiter is detected from commas, tabs or semicolons. A CSV with no headers uses col1, col2 and so on as fallback keys.",
+      whenTo: [
+        "Feeding spreadsheet data into an API, script or test suite",
+        "Turning an exported report into JSON for a web app",
+        "Converting a data table into a config or seed file",
+        "Cleaning up rows before importing them elsewhere",
+      ],
+      whenNotTo: [
+        "When the CSV has merged cells, formulas or multiple tables: export a clean single table first",
+        "For data where leading-zero codes matter and type detection is left unchecked",
+        "When the sheet is really a document, not a table, with free-form notes mixed into rows",
+      ],
+      gotcha: "Type detection is the trap. Values like 007, 01234 and large numbers can be silently rewritten as numbers, and the word true can become a boolean. Scan the output for code-like columns before using it, and quote or retype any value that must stay a string.",
+    },
   },
 
   "json-to-yaml": {
     tagline: "Convert JSON to clean, readable YAML with correct type handling and proper indentation.",
-    keywords: "JSON to YAML, convert JSON to YAML, JSON YAML converter, JSON to YAML online, JSON2YAML",
+    keywords: "JSON to YAML, convert JSON to YAML, JSON YAML converter, JSON to YAML online, JSON2YAML, JSON to YAML for Kubernetes, JSON to Docker Compose YAML",
     howTo: [
       { title: "Paste your JSON", text: "Enter the JSON object or array you want to convert." },
       { title: "Click Convert", text: "The YAML output appears with proper indentation and human-friendly syntax." },
@@ -324,12 +377,31 @@ const content: Record<string, JsonToolContent> = {
       { question: "Can I convert YAML back to JSON?", answer: "Yes. Use the YAML to JSON converter on this site to convert in the other direction." },
       { question: "What YAML version does the output use?", answer: "The output follows YAML 1.2, which is the most common version and is compatible with tools like Kubernetes, Docker Compose, and Ansible." },
       { question: "Why are some strings quoted in the YAML output?", answer: "YAML has many reserved keywords (yes, no, true, false, on, off, null, ~). Strings that match these keywords are quoted to ensure they are treated as strings and not YAML booleans or null values." },
+      { question: "What does a real config look like in YAML versus JSON?", answer: "Take a small service definition: in JSON it is braces, brackets and quoted keys on every line. In YAML the same data is indented keys with no braces, which is why Docker Compose files, GitHub Actions workflows and Kubernetes manifests are written in YAML: humans edit them far more often than machines do." },
+      { question: "Why does indentation matter so much in YAML?", answer: "Indentation is the structure. Two spaces per level is the convention, and tabs are not allowed as indentation in YAML at all. A single misaligned line either changes which object a key belongs to or breaks the file, so check the nesting after converting before committing a config." },
+      { question: "What happens to a version string like 1.10 in YAML?", answer: "Left unquoted, a value like 1.10 can be read as the number 1.1, losing the trailing zero, and a value like 2026-01-05 can be read as a date. Strings that look like numbers, booleans or dates are quoted in the output for exactly this reason." },
     ],
+    pairGuide: {
+      intro: "JSON to YAML is the step that turns machine-friendly data into human-friendly configuration. JSON is what APIs speak; YAML is what people edit. Converting a JSON payload into YAML makes it readable enough to use as a Kubernetes manifest, a Docker Compose file or a CI pipeline definition.",
+      structureNote: "Objects become indented mappings, arrays become dash-prefixed sequences, and types carry over with one important change: strings that could be misread as numbers, booleans or dates are quoted so they survive as strings. Output follows YAML 1.2 with two-space indentation, and null is written as null rather than the YAML 1.1 tilde.",
+      whenTo: [
+        "Writing a Kubernetes, Docker Compose or Ansible config from API data",
+        "Making a long JSON payload readable for review or editing",
+        "Preparing example configuration for documentation",
+        "Moving data into a tool that only accepts YAML",
+      ],
+      whenNotTo: [
+        "For data exchanged between programs: JSON is safer, since YAML parsing varies by version",
+        "When exact round-tripping matters and comments or key order must be preserved",
+        "For large datasets, where YAML files become slow to parse and hard to scan",
+      ],
+      gotcha: "Quoting is not decoration. An unquoted yes, 1.10 or 2026-01-05 can be parsed as a boolean, a number or a date by the next tool in the chain. If a value must stay a string, keep the quotes the converter adds and do not strip them by hand.",
+    },
   },
 
   "yaml-to-json": {
     tagline: "Convert YAML configuration or data files to valid JSON with correct type handling.",
-    keywords: "YAML to JSON, convert YAML to JSON, YAML JSON converter, YAML to JSON online, YAML2JSON, parse YAML",
+    keywords: "YAML to JSON, convert YAML to JSON, YAML JSON converter, YAML to JSON online, YAML2JSON, parse YAML, Docker Compose YAML to JSON, GitHub Actions YAML to JSON",
     howTo: [
       { title: "Paste your YAML", text: "Paste the YAML content - single document or multi-document with --- separators." },
       { title: "Click Convert", text: "The tool parses the YAML and outputs the equivalent JSON." },
@@ -341,12 +413,31 @@ const content: Record<string, JsonToolContent> = {
       { question: "What happens to YAML comments?", answer: "JSON does not support comments, so all YAML comments are stripped from the output. The data content is not affected." },
       { question: "Are YAML anchors and aliases supported?", answer: "Yes. YAML anchors (&name) and aliases (*name) are resolved before conversion. The resulting JSON contains the full expanded values, not references." },
       { question: "What happens with YAML's yes/no/on/off booleans?", answer: "In YAML 1.1, yes, no, on, off are booleans. In YAML 1.2 only true and false are booleans. The converter uses YAML 1.2 by default, treating yes and no as strings unless quoted." },
+      { question: "What does not survive a YAML to JSON conversion?", answer: "Comments are stripped, because JSON has no comments. Anchors and aliases are expanded into full copies, not preserved as references. Multi-document streams separated by --- become separate JSON values, and custom tags such as !Ref are not carried over as tags." },
+      { question: "Why does the same YAML file parse differently in older tools?", answer: "YAML 1.1 treated yes, no, on and off as booleans; YAML 1.2 treats only true and false as booleans. A config written for one version can therefore change meaning in a parser built for the other, which is why checking boolean-like values after conversion matters." },
+      { question: "Can I convert a GitHub Actions workflow to JSON?", answer: "Yes, for inspection or processing. Paste the workflow YAML and the output is the equivalent JSON structure, with jobs, steps and keys preserved. Comments and anchor shortcuts in the workflow are expanded or dropped as described above, so the JSON is for reading and tooling, not a drop-in replacement for the original file." },
     ],
+    pairGuide: {
+      intro: "YAML to JSON is the step that turns a config file into data a program can process. YAML is written for humans, but most APIs, validators and scripts want JSON. Converting a Docker Compose file, a GitHub Actions workflow or an application config to JSON lets you validate it, query it and feed it into tooling that never learned YAML.",
+      structureNote: "Mappings become JSON objects, sequences become arrays, and scalar types follow YAML 1.2 rules: true and false are booleans, numbers stay numbers, and yes or no stay strings. Anchors and aliases resolve into full expanded values, comments disappear, and a multi-document file with --- separators yields separate JSON values rather than one document.",
+      whenTo: [
+        "Validating or querying a YAML config with JSON tooling",
+        "Feeding a Compose file or workflow into a script or API",
+        "Comparing two configs as structured JSON",
+        "Debugging a config whose YAML parsing you suspect",
+      ],
+      whenNotTo: [
+        "When you plan to edit the result and save it back as YAML: comments and anchors are lost",
+        "For configs that rely on custom tags, which JSON cannot represent",
+        "When the file uses YAML 1.1 boolean words and the consumer expects the old meaning",
+      ],
+      gotcha: "The YAML version trap bites silently. A value like on can be a boolean in a YAML 1.1 parser and a string in a YAML 1.2 parser, so the same file converts differently depending on the tool. Always re-check boolean-like and date-like values in the JSON output.",
+    },
   },
 
   "json-to-xml": {
     tagline: "Convert JSON objects and arrays to well-formed XML markup with configurable root element names.",
-    keywords: "JSON to XML, convert JSON to XML, JSON XML converter, JSON to XML online, JSON2XML",
+    keywords: "JSON to XML, convert JSON to XML, JSON XML converter, JSON to XML online, JSON2XML, JSON array to XML, JSON to XML root element",
     howTo: [
       { title: "Paste your JSON", text: "Enter the JSON object you want to convert to XML." },
       { title: "Set the root element name", text: "Choose a name for the XML root element (defaults to 'root')." },
@@ -358,12 +449,31 @@ const content: Record<string, JsonToolContent> = {
       { question: "What happens with JSON keys that are not valid XML element names?", answer: "XML element names cannot start with numbers or contain spaces. Keys that would produce invalid XML names are sanitised by prefixing an underscore or replacing invalid characters." },
       { question: "Are JSON arrays converted to XML properly?", answer: "JSON arrays are expanded into repeated XML elements with the same tag. For example, {\"item\":[\"a\",\"b\"]} becomes <item>a</item><item>b</item>." },
       { question: "Can I convert XML back to JSON?", answer: "Yes. Use the XML to JSON converter on this site." },
+      { question: "How do I convert a top-level JSON array to XML?", answer: "XML needs a single root element, but a JSON array has no name. The converter wraps the array in the root element you choose, and each item becomes a repeated element inside it, so [\"a\",\"b\"] under root items becomes repeated item elements. Without that wrapper there would be no valid XML document at all." },
+      { question: "What is the difference between an XML attribute and an element?", answer: "JSON has no attributes, so the distinction has to be invented when converting. An element holds content or children, while an attribute holds metadata about its element. Systems such as SOAP services, RSS feeds and sitemaps often require a specific field to be an attribute, so check the target schema before converting rather than assuming elements will do." },
+      { question: "How are special characters handled in XML output?", answer: "Characters that XML reserves, such as & and <, are escaped in text content, and keys that cannot be element names, such as keys starting with a digit or containing spaces, are sanitised. Null values have no natural XML form, so they typically become an empty element rather than a missing one." },
     ],
+    pairGuide: {
+      intro: "JSON to XML is the step that turns modern API data into the older markup format that SOAP services, RSS feeds, sitemaps and many enterprise systems still require. JSON is compact and easy for JavaScript; XML is verbose, self-describing and strict, and some systems will accept nothing else.",
+      structureNote: "Each JSON key becomes an XML element, nested objects become nested elements, and arrays become repeated elements with the same tag name. A top-level array needs the root element you set, since an XML document must have exactly one root. JSON has no attributes, so everything becomes an element unless the target system defines an attribute convention separately.",
+      whenTo: [
+        "Calling a SOAP service or legacy API that only accepts XML",
+        "Generating an RSS feed, sitemap or config file in XML",
+        "Exchanging data with an enterprise system that validates against an XML schema",
+        "Producing a document where element order and markup matter",
+      ],
+      whenNotTo: [
+        "For a JavaScript or web API consumer: JSON is smaller and native there",
+        "When the JSON keys are arbitrary user input, since not every key is a valid element name",
+        "For round-tripping: JSON to XML to JSON can change shapes, especially for arrays",
+      ],
+      gotcha: "Arrays and attributes are where conversions break. A single-item array and a lone object can produce identical XML, so the way back is ambiguous, and a field the target expects as an attribute will be rejected if it arrives as an element. Validate the XML against the target schema, not just for well-formedness.",
+    },
   },
 
   "xml-to-json": {
     tagline: "Parse XML documents and convert them to clean JSON objects with configurable attribute handling.",
-    keywords: "XML to JSON, convert XML to JSON, XML JSON converter, XML parser, XML to JSON online, parse XML",
+    keywords: "XML to JSON, convert XML to JSON, XML JSON converter, XML parser, XML to JSON online, parse XML, SOAP XML to JSON, RSS XML to JSON",
     howTo: [
       { title: "Paste your XML", text: "Enter the XML document in the input panel." },
       { title: "Choose attribute handling", text: "Select whether XML attributes become properties or are prefixed (e.g. @name) in the JSON." },
@@ -375,12 +485,31 @@ const content: Record<string, JsonToolContent> = {
       { question: "What happens with text nodes and element children?", answer: "If an XML element has both text content and child elements, the text content is stored under a special key (usually #text or _) and the child elements are stored as their own keys." },
       { question: "Are XML namespaces preserved?", answer: "Namespace prefixes (e.g. ns:element) are preserved in the JSON key names as-is. Namespace declarations (xmlns:) are included as attributes by default." },
       { question: "Can I convert complex SOAP or API XML responses?", answer: "Yes. The converter handles any well-formed XML including SOAP envelopes, RSS feeds, and API responses. The resulting JSON may be deeply nested depending on the XML structure." },
+      { question: "Why do different tools give different JSON for the same XML?", answer: "Because XML attributes have no single JSON equivalent. Some converters prefix them with @, some put them in an @attributes object, and some drop them entirely. This converter prefixes attributes with @ by default, so an id attribute becomes @id in the JSON. Knowing the convention matters before you write code against the output." },
+      { question: "Can I convert XML to JSON and back without losing anything?", answer: "Not reliably. Comments, CDATA sections, the XML prolog and DOCTYPE, mixed content where text and elements sit side by side, and sometimes element order do not survive a round trip through JSON. Treat XML to JSON as a one-way step for processing, and keep the original XML if you need to reproduce it." },
+      { question: "What happens when an element repeats three times?", answer: "Repeated sibling elements become a JSON array. Three item elements become one item key holding an array of three values, while a single item element stays a single value. That inconsistency is inherent to XML to JSON conversion, and code reading the output should handle both shapes." },
     ],
+    pairGuide: {
+      intro: "XML to JSON is the step that turns a document format into a data format. RSS feeds, SOAP responses, sitemaps and legacy API outputs arrive as XML, but modern JavaScript, Python and validation tooling all want JSON. Converting gives you objects and arrays you can query, filter and validate with ordinary code.",
+      structureNote: "Elements become object keys, text content becomes the value, and repeated elements become arrays. Attributes are prefixed with @ by default, so id becomes @id, and an element that holds both text and children stores its text under a special key while its children become their own keys. Namespace prefixes stay attached to key names.",
+      whenTo: [
+        "Processing an RSS feed, SOAP response or sitemap in JavaScript or Python",
+        "Validating a legacy API response against a JSON schema",
+        "Querying or filtering XML data with ordinary object code",
+        "Storing XML-derived data in a JSON database or config",
+      ],
+      whenNotTo: [
+        "When you must reproduce the original XML byte for byte afterwards",
+        "For documents where comments, CDATA or mixed content carry meaning",
+        "When the consumer expects a different attribute convention than @ prefixing",
+      ],
+      gotcha: "The single-versus-array trap: one item element gives a single value, three give an array, so code that assumes an array will crash on the single case and code that assumes a value will crash on the repeated case. Normalise the shape after converting, or handle both.",
+    },
   },
 
   "json-to-typescript": {
     tagline: "Generate TypeScript interface definitions from any JSON sample with correct types inferred automatically.",
-    keywords: "JSON to TypeScript, JSON to TypeScript interface, generate TypeScript from JSON, JSON types, TypeScript generator, JSON schema to TypeScript",
+    keywords: "JSON to TypeScript, JSON to TypeScript interface, generate TypeScript from JSON, JSON types, TypeScript generator, JSON schema to TypeScript, JSON to TypeScript interface generator, API response to TypeScript",
     howTo: [
       { title: "Paste your JSON", text: "Paste a representative JSON sample - object, array of objects, or nested structure." },
       { title: "Set interface name", text: "Enter a name for the root interface (defaults to 'Root')." },
@@ -392,12 +521,31 @@ const content: Record<string, JsonToolContent> = {
       { question: "What happens with nullable fields?", answer: "Fields that are null in the sample are typed as the inferred type | null. If you want optional fields (property?: Type), there is an option to mark nullable or missing fields as optional." },
       { question: "Can it generate types for arrays of objects?", answer: "Yes. An array of objects generates an item interface and the parent property is typed as ItemInterface[]. Nested arrays and objects of any depth are all handled." },
       { question: "Should I use interface or type?", answer: "The tool generates interface declarations by default. You can switch to type aliases in the options. Interfaces are generally preferred for object shapes in TypeScript as they support declaration merging and produce clearer error messages." },
+      { question: "Why is a sample not a contract?", answer: "Because a sample only shows the fields that happened to be present. A field missing from your sample, such as an optional discount on some orders, will not appear in the generated types at all, and a field that is null in the sample becomes string | null even if it is usually a string. Generate from the fullest, most varied sample you have, then mark genuinely optional fields by hand." },
+      { question: "What happens with an empty array in the sample?", answer: "An empty array carries no information about its element type, so it becomes unknown[] rather than a guessed type. The same applies to mixed arrays, which become union types. Replace empty arrays with a representative item before generating if you want precise types." },
+      { question: "Can I see a real API example?", answer: "Take a nested order response: an order with a customer object, an items array and a total. The generator produces an Order interface, a Customer interface and an OrderItem interface, with items typed as OrderItem[]. Keys present in only some array items become optional, which is the correct behaviour for real API data." },
     ],
+    pairGuide: {
+      intro: "JSON to TypeScript is the step that turns a sample API response into types your editor can check. Paste real JSON and you get interfaces that catch typos, missing fields and wrong types at compile time instead of at runtime, which is the main reason TypeScript projects generate types from their APIs rather than hand-writing them.",
+      structureNote: "Objects become named interfaces, arrays of objects become an item interface plus a typed array, and scalar values become string, number or boolean. Null values become a union with null, fields missing from some array items become optional, and nested objects of any depth each get their own interface referenced by name from the parent.",
+      whenTo: [
+        "Typing a new API response in a TypeScript project",
+        "Generating request and response types from example payloads",
+        "Documenting an API shape for a team",
+        "Replacing hand-written types that drifted from the real payload",
+      ],
+      whenNotTo: [
+        "When the sample is tiny or unrepresentative: the types will be wrong in exactly the places the sample did not cover",
+        "As a substitute for the API schema, if one exists: generate from the schema instead",
+        "For runtime validation: TypeScript types disappear at compile time and check nothing at runtime",
+      ],
+      gotcha: "A sample is not a contract. Optional fields absent from your sample vanish from the types, null fields become unions, and empty arrays become unknown[]. Generate from the fullest sample you can find, then review optional and nullable fields before committing the result.",
+    },
   },
 
   "json-to-python": {
     tagline: "Generate Python dataclass or TypedDict definitions from any JSON sample.",
-    keywords: "JSON to Python, JSON to Python dataclass, JSON to TypedDict, generate Python from JSON, Python type hints, JSON Python types",
+    keywords: "JSON to Python, JSON to Python dataclass, JSON to TypedDict, generate Python from JSON, Python type hints, JSON Python types, JSON to Python class, API JSON to dataclass",
     howTo: [
       { title: "Paste your JSON", text: "Paste a JSON object or array of objects." },
       { title: "Choose output style", text: "Select Python dataclass (@dataclass) or TypedDict based on your use case." },
@@ -409,7 +557,26 @@ const content: Record<string, JsonToolContent> = {
       { question: "Are nested objects handled?", answer: "Yes. Each nested JSON object generates a separate named class or TypedDict. The root class references nested classes by name, and all generated definitions are included in the output." },
       { question: "What Python version is the output compatible with?", answer: "The generated code targets Python 3.7+ for dataclasses and Python 3.8+ for TypedDict. For older Python versions, you would need to add from __future__ import annotations and use typing.TypedDict instead of the built-in version." },
       { question: "Are Optional fields generated?", answer: "Fields with null values in the sample are typed as Optional[type] (or type | None in Python 3.10+ syntax). The optional style can be configured in the output settings." },
+      { question: "What is the difference between parsing JSON and generating Python from JSON?", answer: "They solve different problems. Parsing with json.loads() turns a JSON string into plain dicts and lists at runtime, with no validation and no named fields. Generating dataclass or TypedDict definitions turns a JSON sample into typed Python classes at development time, so your editor and type checker can catch mistakes before the code runs." },
+      { question: "Should I choose a dataclass, a TypedDict or Pydantic?", answer: "A dataclass is best when you want real objects with behaviour and defaults. A TypedDict is best when you keep working with plain dicts, such as raw API data. Pydantic, which this generator does not output, is best when you need runtime validation, as in a FastAPI app: a dict result alone validates nothing, and a bad payload will pass silently until something downstream breaks." },
+      { question: "How are JSON field names handled in Python?", answer: "JSON APIs commonly use camelCase keys such as firstName, while Python convention is snake_case such as first_name. Generated class fields follow the sample keys, so convert camelCase to snake_case yourself, or use aliases if the target framework supports them, before treating the output as finished code." },
     ],
+    pairGuide: {
+      intro: "JSON to Python is the step that turns a sample API response into typed Python code. Instead of passing untyped dicts around and discovering a missing key at runtime, you get dataclasses or TypedDicts with named fields, so mistakes surface while you are writing code rather than while users are running it.",
+      structureNote: "Objects become named classes or TypedDicts, nested objects become their own named definitions referenced from the parent, and arrays become lists of the inferred item type. Null values become Optional fields, and the root class name defaults to Root. The output is type definitions from a sample, not a parser: parsing a JSON string at runtime is a separate step done with json.loads().",
+      whenTo: [
+        "Modelling an API response in a Python project",
+        "Turning example payloads into dataclasses for a script or service",
+        "Adding type hints to code that currently passes dicts around",
+        "Documenting a payload shape for a team",
+      ],
+      whenNotTo: [
+        "When you need runtime validation: use Pydantic instead, since dataclasses and TypedDicts check nothing at runtime",
+        "As a JSON parser: to load a JSON string at runtime, use json.loads()",
+        "When the sample is unrepresentative: missing and null fields will mislead the generated types",
+      ],
+      gotcha: "A dict result has no validation. Parsing JSON with json.loads() happily returns wrong types, missing keys and unexpected values, and nothing complains until later code fails. If bad payloads must be rejected, add Pydantic validation on top of the generated types rather than trusting the parse alone.",
+    },
   },
 
   "json-to-sql": {

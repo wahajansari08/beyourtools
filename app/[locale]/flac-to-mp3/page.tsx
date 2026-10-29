@@ -5,9 +5,9 @@ import SimpleConvertClient from "@/components/audio/SimpleConvertClient";
 import { createToolMetadata } from "@/lib/seo";
 
 const __enMetadata: Metadata = createToolMetadata({
-  title: "FLAC to MP3 Converter - Free Online | BeYourTools",
-  description: "Convert lossless FLAC files to compressed MP3 online for free. Reduce file size while keeping good audio quality. Browser-based, no upload.",
-  keywords: "flac to mp3, convert flac to mp3, flac to mp3 online, lossless to mp3, flac converter",
+  title: "FLAC to MP3 Converter: Free, 320 kbps, No Upload | BeYourTools",
+  description: "Convert lossless FLAC files to MP3 online for free at up to 320 kbps. Shrink an archive track for any player while keeping the FLAC master safe. Browser-based, no upload.",
+  keywords: "flac to mp3, convert flac to mp3, flac to mp3 online, lossless to mp3, flac converter, flac to mp3 320 kbps, flac to mp3 for car stereo",
   path: "/flac-to-mp3",
 });
 
@@ -17,7 +17,7 @@ export default function FlacToMp3Page() {
       slug="flac-to-mp3"
       title="FLAC to MP3"
       categoryLabel="Converters"
-      tagline="Convert lossless FLAC audio to compressed MP3. Dramatically reduces file size for portable playback and sharing."
+      tagline="Convert lossless FLAC audio to compressed MP3 at up to 320 kbps. Dramatically reduces file size for portable playback and sharing, while your FLAC original stays untouched as the archive master."
       description="Free online FLAC to MP3 converter. Converts lossless FLAC to compressed MP3 in your browser."
       howTo={[
         { title: "Choose bitrate", text: "Higher bitrate (320 kbps) preserves more of the original FLAC quality." },

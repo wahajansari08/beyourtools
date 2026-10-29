@@ -8,7 +8,7 @@ import { getJsonToolContent } from "@/lib/json-tools-content";
 const content = getJsonToolContent("json-to-xml");
 
 const __enMetadata: Metadata = {
-  title: "JSON to XML Converter - Free Online | BeYourTools",
+  title: "JSON to XML Converter: JSON to Well-Formed XML | BeYourTools",
   description: content?.tagline ?? "Convert JSON objects and arrays to well-formed XML markup.",
   keywords: content?.keywords,
   alternates: { canonical: `${SITE.url}/json-to-xml` },
@@ -16,15 +16,15 @@ const __enMetadata: Metadata = {
   openGraph: {
     type: "website",
     url: `${SITE.url}/json-to-xml`,
-    title: "JSON to XML Converter - Free Online | BeYourTools",
-    description: "Convert JSON to XML with configurable root element names.",
+    title: "JSON to XML Converter: JSON to Well-Formed XML | BeYourTools",
+    description: "Convert JSON objects and arrays to well-formed XML in your browser, with a root element you choose.",
     siteName: SITE.name,
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "JSON to XML" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "JSON to XML Converter - Free Online | BeYourTools",
-    description: "Convert JSON to XML with configurable root element names.",
+    title: "JSON to XML Converter: JSON to Well-Formed XML | BeYourTools",
+    description: "Convert JSON objects and arrays to well-formed XML in your browser, with a root element you choose.",
     site: SITE.twitter,
     images: [`${SITE.url}/og-default.png`],
   },
@@ -40,6 +40,7 @@ export default function Page() {
       currentSlug="json-to-xml"
       howTo={content?.howTo}
       faqs={content?.faqs}
+      pairGuide={content?.pairGuide}
     >
       <JsonToXmlClient />
     </ToolLayout>

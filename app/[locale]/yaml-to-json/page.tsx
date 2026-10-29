@@ -8,7 +8,7 @@ import { getJsonToolContent } from "@/lib/json-tools-content";
 const content = getJsonToolContent("yaml-to-json");
 
 const __enMetadata: Metadata = {
-  title: "YAML to JSON Converter - Free Online | BeYourTools",
+  title: "YAML to JSON Converter: Configs to Valid JSON | BeYourTools",
   description: content?.tagline ?? "Convert YAML configuration files to valid JSON with full feature support.",
   keywords: content?.keywords,
   alternates: { canonical: `${SITE.url}/yaml-to-json` },
@@ -16,15 +16,15 @@ const __enMetadata: Metadata = {
   openGraph: {
     type: "website",
     url: `${SITE.url}/yaml-to-json`,
-    title: "YAML to JSON Converter - Free Online | BeYourTools",
-    description: "Convert YAML documents to JSON in your browser.",
+    title: "YAML to JSON Converter: Configs to Valid JSON | BeYourTools",
+    description: "Convert YAML configs to valid JSON in your browser, with anchors expanded and types checked.",
     siteName: SITE.name,
     images: [{ url: `${SITE.url}/og-default.png`, width: 1200, height: 630, alt: "YAML to JSON" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "YAML to JSON Converter - Free Online | BeYourTools",
-    description: "Convert YAML documents to JSON in your browser.",
+    title: "YAML to JSON Converter: Configs to Valid JSON | BeYourTools",
+    description: "Convert YAML configs to valid JSON in your browser, with anchors expanded and types checked.",
     site: SITE.twitter,
     images: [`${SITE.url}/og-default.png`],
   },
@@ -40,6 +40,7 @@ export default function Page() {
       currentSlug="yaml-to-json"
       howTo={content?.howTo}
       faqs={content?.faqs}
+      pairGuide={content?.pairGuide}
     >
       <YamlToJsonClient />
     </ToolLayout>
