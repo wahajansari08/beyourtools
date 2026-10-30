@@ -40,6 +40,7 @@ export default function Page() {
       currentSlug="json-to-sql"
       howTo={content?.howTo}
       faqs={content?.faqs}
+      pairGuide={content?.pairGuide}
     >
       <JsonToSqlClient />
     </ToolLayout>
