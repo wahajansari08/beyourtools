@@ -22,6 +22,7 @@ import {
   pairFaqs,
   pairSettingTip,
   pairMetaDescription,
+  pairDeepDive,
 } from "@/lib/image-pair-content";
 import ConverterClient from "./ConverterClient";
 import JsonLd from "@/components/JsonLd";
@@ -137,7 +138,8 @@ export default async function Page({ params }: Props) {
   const title = conversionTitle(route);
   const url = localeCanonical(locale, `/image-converter/${route.slug}`);
 
-  const faqs = pairFaqs(route);
+  const deepDive = pairDeepDive(route);
+  const faqs = [...pairFaqs(route), ...(deepDive?.faqs ?? [])];
 
   const schemas = [
     breadcrumbSchema([
@@ -280,6 +282,36 @@ export default async function Page({ params }: Props) {
             </ul>
           </div>
         </section>
+
+        {/* Going deeper: worked example, edge cases and better-choice note (8 top pairs only) */}
+        {deepDive && (
+          <section className="mt-10 space-y-4 rounded-xl border p-5 sm:p-6" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
+            <h2 className="font-display text-lg font-semibold" style={{ color: "var(--text-primary)" }}>
+              Going deeper: {from.label} to {to.label}
+            </h2>
+            <h3 className="text-sm font-semibold" style={{ color: "var(--text-secondary)" }}>
+              {deepDive.exampleHeading}
+            </h3>
+            {deepDive.example.map((p) => (
+              <p key={p.slice(0, 32)} className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                {p}
+              </p>
+            ))}
+            <h3 className="text-sm font-semibold" style={{ color: "var(--text-secondary)" }}>
+              Edge cases to watch for
+            </h3>
+            <ul className="space-y-2 text-sm list-disc pl-5" style={{ color: "var(--text-muted)" }}>
+              {deepDive.edgeCases.map((edge) => (
+                <li key={edge.title}>
+                  <strong style={{ color: "var(--text-secondary)" }}>{edge.title}:</strong> {edge.body}
+                </li>
+              ))}
+            </ul>
+            <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+              <strong style={{ color: "var(--text-secondary)" }}>When another format is the better choice:</strong> {deepDive.betterChoice}
+            </p>
+          </section>
+        )}
 
         {/* FAQ */}
         <section className="mt-10 space-y-3">

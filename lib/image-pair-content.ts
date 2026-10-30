@@ -825,6 +825,316 @@ export function pairMetaDescription(route: ConversionRoute): string {
   return `Convert ${F} to ${T} online for free. ${hook} No upload and no sign-up: conversion runs in your browser and files never leave your device.`;
 }
 
+/* ── Deep dives for the highest-traffic pair pages ────────────────────────
+ *
+ * A worked size example (typical figures, assumptions stated, never
+ * presented as measured benchmarks), genuine edge cases checked against
+ * the browser converter in lib/converters/image.ts, a better-choice note,
+ * and two extra FAQs that do not duplicate pairFaqs(). Only the pairs
+ * listed here get a deep dive; every other pair page renders unchanged.
+ */
+
+export interface PairDeepDiveEdgeCase {
+  title: string;
+  body: string;
+}
+
+export interface PairDeepDive {
+  /** Marker heading, unique per pair, used to verify the section live. */
+  exampleHeading: string;
+  /** Worked example paragraphs; the first states its assumptions. */
+  example: string[];
+  edgeCases: PairDeepDiveEdgeCase[];
+  /** When a different format is actually the better choice. */
+  betterChoice: string;
+  faqs: PairFaq[];
+}
+
+export const PAIR_DEEP_DIVES: Record<string, PairDeepDive> = {
+  "png-to-jpg": {
+    exampleHeading: "Worked example: a 4000 x 3000 photo from PNG to JPG",
+    example: [
+      "Take a typical 4000 x 3000 phone photo saved as PNG. As a PNG it commonly weighs around 10 to 14 MB, because PNG stores every pixel losslessly and photographs compress poorly that way. Converted to JPG at the tool's default quality of 92, the same photo typically lands around 2 to 4 MB, roughly a quarter of the PNG size, with no visible difference at normal viewing sizes. Drop the quality to 80 and it often falls below 2 MB, which is the range most email and upload limits are happy with. These are typical figures for a detailed photo, not measurements: a noisy low light shot compresses worse, and a simple graphic compresses far better.",
+      "The saving is smaller for graphics. A flat logo or screenshot with large solid areas may only shrink by half, because PNG already compresses those efficiently. If the PNG is mostly flat colour and text, the JPG may even look worse while barely saving space, which is your cue to keep the PNG.",
+    ],
+    edgeCases: [
+      {
+        title: "Transparency is flattened, not kept",
+        body: "JPG has no alpha channel, so see-through areas become the background colour you pick in the tool above (white by default). Soft shadows and feathered edges are blended onto that colour rather than cut out, so a logo placed on a coloured page can end up with a visible white box. Match the background colour to the page the JPG will sit on.",
+      },
+      {
+        title: "Text and sharp edges suffer first",
+        body: "JPG compresses in small blocks tuned for photographs, so small text, thin lines and hard colour boundaries develop fuzzy artefacts before photos do. For screenshots full of text, keep quality at 90 or above, or keep the file as PNG.",
+      },
+      {
+        title: "16-bit colour is narrowed to 8-bit",
+        body: "PNG can hold 16 bits per colour channel; JPG holds 8. For ordinary photos the difference is invisible, but a heavily edited gradient can show faint banding after conversion.",
+      },
+    ],
+    betterChoice:
+      "If the image must stay transparent, or it is a logo, icon or screenshot with text, convert to WebP instead: WebP keeps the alpha channel and is typically 25 to 35 percent smaller than JPG at similar quality. Keep the PNG as your master in every case, because a JPG cannot give transparency back.",
+    faqs: [
+      {
+        question: "Why does my logo look fuzzy after converting PNG to JPG?",
+        answer:
+          "JPG compression is tuned for photographs, not hard edges. It works in small blocks, and sharp boundaries between colours blur and ring, especially at lower quality settings. Logos, icons and text heavy screenshots are the worst cases. Raise the quality slider to 90 or above for a cleaner result, and if the logo must stay crisp or transparent, keep it as PNG or convert to WebP instead.",
+      },
+      {
+        question: "What background colour should I choose for a transparent PNG?",
+        answer:
+          "Pick the colour the JPG will sit on: white for documents and most web pages, black for dark slides, or the exact page colour for a seamless look. The tool fills every transparent pixel with that colour before encoding, and semi-transparent edge pixels are blended onto it, so a mismatched colour leaves a visible halo around the subject.",
+      },
+    ],
+  },
+  "jpg-to-png": {
+    exampleHeading: "Worked example: a 4000 x 3000 photo from JPG to PNG",
+    example: [
+      "Take a typical 4000 x 3000 phone photo that is about 3 MB as JPG. Converted to PNG, the same photo typically grows to around 10 to 16 MB, roughly 3 to 5 times larger, because PNG stores every pixel losslessly instead of discarding fine detail the way JPG does. Nothing about the picture improves in the process: the PNG is a pixel exact copy of the JPG, artefacts included. These are typical figures, not measurements: a noisy photo grows more, a clean studio shot grows less.",
+      "That growth is the price of a format every editor can open and re-save without further loss. It is worth paying when the PNG is a working master for editing, and a waste when the file is only being shared, where the original JPG was already the smaller, compatible choice.",
+    ],
+    edgeCases: [
+      {
+        title: "No quality is gained, only preserved",
+        body: "JPG artefacts baked into the source, such as blockiness in skies or ringing around text, are copied faithfully into the PNG. Converting to PNG stops further loss, but it cannot clean the image up.",
+      },
+      {
+        title: "Transparency cannot be invented",
+        body: "Every pixel of a JPG is opaque, so the PNG is opaque too. Removing a background is an editing job, not a conversion, and needs a background removal tool.",
+      },
+      {
+        title: "Camera data does not carry over",
+        body: "The converter re-encodes pixels only, so EXIF data such as camera settings and location tags, and any embedded colour profile, do not survive in the PNG. Keep the original JPG if that data matters.",
+      },
+    ],
+    betterChoice:
+      "If the goal is a smaller file for sharing, do not convert at all: the JPG is already the compact choice. If the goal is editing, PNG is the right master, but convert from the best original you have, not from an already compressed JPG, whenever that original still exists.",
+    faqs: [
+      {
+        question: "Can I edit the PNG and save it back to JPG without losing quality?",
+        answer:
+          "Almost. Editing the PNG itself is lossless: you can crop, adjust and re-save it as PNG as often as you like with no drift. The loss happens only at the final export back to JPG, and only once, so keep the edited PNG as your master and export a fresh JPG whenever you need a shareable copy.",
+      },
+      {
+        question: "Will the PNG keep my photo's EXIF data and location tags?",
+        answer:
+          "No. The converter decodes the JPG to pixels and encodes a fresh PNG, so camera settings, dates and GPS tags are not copied across. If you need that data, keep the original JPG alongside the PNG, or use a converter that explicitly preserves metadata.",
+      },
+    ],
+  },
+  "avif-to-jpg": {
+    exampleHeading: "Worked example: a 4000 x 3000 photo from AVIF to JPG",
+    example: [
+      "Take a typical 4000 x 3000 photo saved as AVIF at about 1.5 MB. AVIF is the most efficient format browsers support, often around half the size of a JPG at similar quality, so the same photo as JPG at the tool's default quality of 92 typically lands around 3 to 4 MB, roughly twice the AVIF. Resolution does not change: a 4000 x 3000 AVIF comes back as a 4000 x 3000 JPG. These are typical figures, not measurements: a detailed scene grows more, a plain one less.",
+      "That growth buys compatibility. AVIF opens in modern browsers, but many editors, upload forms, printers and older devices still refuse it. The JPG opens everywhere, which is the whole reason for the conversion.",
+    ],
+    edgeCases: [
+      {
+        title: "Transparency is flattened, not kept",
+        body: "AVIF can carry a full alpha channel, but JPG cannot, so see-through areas become the background colour you pick in the tool above (white by default). A logo or cut-out placed on a coloured page can end up with a visible box unless the background colour matches the page.",
+      },
+      {
+        title: "Animated AVIF becomes a single still frame",
+        body: "AVIF can hold an image sequence, but JPG is a still format, so only the first frame survives. If the motion matters, keep the AVIF or convert to a format that supports animation.",
+      },
+      {
+        title: "Wide colour and HDR are narrowed to standard colour",
+        body: "AVIF can hold up to 12-bit colour with HDR; JPG holds 8 bits in standard colour. Vivid HDR highlights and very smooth gradients can flatten or band slightly after conversion, though at quality 90 or above most people cannot see it.",
+      },
+    ],
+    betterChoice:
+      "If the destination accepts AVIF, keep the AVIF: it is smaller and loses nothing in this direction. If the file needs transparency or a lossless master, convert to PNG instead of JPG. For everything headed to editors, upload forms, printers or older devices, JPG is the safe choice.",
+    faqs: [
+      {
+        question: "Does converting AVIF to JPG keep the HDR look?",
+        answer:
+          "No, not fully. JPG stores 8-bit standard colour, while AVIF can hold wider colour and HDR highlights. The converter maps the picture into standard colour, so very bright highlights and deep shadows lose some of their extra range. The result still looks like the same photo at normal viewing, but it is no longer an HDR image.",
+      },
+      {
+        question: "Should I convert my AVIF photos to JPG or PNG?",
+        answer:
+          "Choose JPG for sharing, uploading and printing: it is universally compatible and far smaller than PNG. Choose PNG only when you need a lossless editing master or transparency, since PNG files of photos are several times larger than the JPG of the same image.",
+      },
+    ],
+  },
+  "webp-to-png": {
+    exampleHeading: "Worked example: a web photo from WebP to PNG",
+    example: [
+      "Take a typical 2000 x 1500 photo saved from the web as a lossy WebP of about 500 KB. Converted to PNG, the same picture typically grows to around 2 to 4 MB, several times larger, because PNG stores every decoded pixel losslessly while WebP's efficient compression is left behind. The picture itself does not improve: the PNG is an exact copy of the WebP pixels, including any compression softness already in them. These are typical figures, not measurements.",
+      "Convert for compatibility, not for size. The usual reason is an editor, presentation app or upload form that refuses WebP, while PNG opens everywhere.",
+    ],
+    edgeCases: [
+      {
+        title: "Animated WebP becomes a single still frame",
+        body: "PNG is a still format, so only the first frame of an animated WebP survives. If the motion matters, keep the WebP or convert to a format that supports animation.",
+      },
+      {
+        title: "Lossy WebP artefacts are frozen in",
+        body: "A lossy WebP has already discarded fine detail. The PNG preserves the decoded pixels exactly, so softness or banding from the WebP stays visible, and converting back and forth never recovers it.",
+      },
+      {
+        title: "Transparency survives, but there is no quality slider",
+        body: "WebP and PNG both carry a full alpha channel, so cut-out logos and icons stay cut out. Because PNG is lossless there is no quality setting to tune: the output is simply the decoded pixels, stored exactly.",
+      },
+    ],
+    betterChoice:
+      "If the destination accepts WebP, keep the WebP: it is smaller and loses nothing in this direction. Convert to PNG only when compatibility demands it, and keep the original WebP as your smaller master.",
+    faqs: [
+      {
+        question: "Does the PNG keep my WebP image's transparency?",
+        answer:
+          "Yes. Both formats carry a full alpha channel, so transparent areas stay transparent with no background fill and no halo around cut-out edges. If your WebP is fully opaque, the PNG is opaque too; conversion cannot add transparency that was not there.",
+      },
+      {
+        question: "Will the PNG look sharper than the WebP?",
+        answer:
+          "No. PNG is lossless, so it stores exactly the pixels the WebP decodes to, but it cannot restore detail the lossy WebP already discarded. Any softness, banding or blockiness in the WebP is copied faithfully. Convert to PNG for compatibility or editing, not for a sharper image.",
+      },
+    ],
+  },
+  "png-to-webp": {
+    exampleHeading: "Worked example: a 4000 x 3000 photo from PNG to WebP",
+    example: [
+      "Take a typical 4000 x 3000 phone photo that is about 12 MB as PNG. Converted to WebP at the tool's default quality of 92, the same photo typically lands around 3 to 4 MB, roughly a quarter to a third of the PNG, with quality that is hard to tell apart at normal viewing sizes. A PNG screenshot with large flat areas shrinks less in proportion, because PNG already compresses flat colour efficiently, but it still usually ends up smaller as WebP. These are typical figures, not measurements.",
+    ],
+    edgeCases: [
+      {
+        title: "WebP output here is lossy, even from a lossless PNG",
+        body: "The tool encodes WebP through the browser canvas at the quality you set, so a small amount of fine detail is discarded. At quality 92 photos look clean, but text and line art soften first, so keep quality high for screenshots.",
+      },
+      {
+        title: "Transparency is kept, unlike JPG",
+        body: "WebP carries a full alpha channel, so a PNG logo or icon with see-through areas stays see-through after conversion, with smooth semi-transparent edges intact.",
+      },
+      {
+        title: "Some older software still rejects WebP",
+        body: "All modern browsers open WebP, but a few older editors, upload forms and social platforms still refuse it. If the file is headed somewhere with unknown software, send a JPG or PNG instead.",
+      },
+    ],
+    betterChoice:
+      "For web pages, WebP is usually the best of both worlds: smaller than JPG and PNG with transparency intact. For files you send to other people or open in older software, PNG remains the safest choice, and for maximum compatibility with no transparency needs, JPG is the fallback.",
+    faqs: [
+      {
+        question: "Does WebP keep my PNG's transparent background?",
+        answer:
+          "Yes. WebP supports a full alpha channel, so transparent pixels stay transparent and soft edges such as shadows and glows keep their smooth falloff. That is the key advantage over JPG, which would flatten the same image onto a solid colour.",
+      },
+      {
+        question: "When should I keep the PNG instead of converting to WebP?",
+        answer:
+          "Keep the PNG when the file is a master for further editing, when it is headed to older software or a platform that rejects WebP, or when it contains tiny text that must stay pixel sharp. WebP wins on file size for web use; PNG wins on universal compatibility and lossless editing.",
+      },
+    ],
+  },
+  "jpg-to-webp": {
+    exampleHeading: "Worked example: a 4000 x 3000 photo from JPG to WebP",
+    example: [
+      "Take a typical 4000 x 3000 phone photo that is about 4 MB as JPG. Converted to WebP at the tool's default quality of 92, the same photo typically lands around 2.5 to 3 MB, roughly a quarter to a third smaller, because WebP compresses more efficiently than JPG at similar visual quality. The saving is real but modest, since the JPG was already compressed; the dramatic savings come from PNG to WebP, not from JPG. These are typical figures, not measurements.",
+    ],
+    edgeCases: [
+      {
+        title: "This is a second lossy generation",
+        body: "JPG already discarded detail, and WebP discards a little more. At quality 92 the extra loss is hard to see on photos, but avoid chaining conversions: always convert from the best JPG you have, and never convert back and forth repeatedly.",
+      },
+      {
+        title: "No transparency is invented",
+        body: "JPG pixels are all opaque, so the WebP is opaque too. WebP supports transparency, but conversion cannot create a see-through background from a photo that never had one.",
+      },
+      {
+        title: "Check the destination accepts WebP",
+        body: "Modern browsers all open WebP, but some older editors, print services and upload forms still reject it. For files sent to unknown recipients, the original JPG remains the safer choice.",
+      },
+    ],
+    betterChoice:
+      "Convert to WebP when the image is headed to a website, where the size saving speeds up page loads. Keep the JPG when the file is headed to people, printers or older software, where universal compatibility matters more than a smaller file.",
+    faqs: [
+      {
+        question: "What quality setting should I use when converting JPG to WebP?",
+        answer:
+          "Stay near the tool's default of 92 for photos you will display at full size: it keeps the image visually clean while still cutting roughly a quarter to a third off the JPG. Drop to around 80 for thumbnails or chat sharing, where the smaller file matters more than fine detail, and avoid going below 70 for anything user facing, since blockiness shows up first in skies and skin.",
+      },
+      {
+        question: "Will everyone be able to open the WebP file?",
+        answer:
+          "Almost everyone on a modern browser, but not quite everyone everywhere. WebP support: all modern browsers, while some older editors, print services and upload forms still reject it. For your own website WebP is fine; for files you send to other people, the JPG is still the safer choice.",
+      },
+    ],
+  },
+  "svg-to-png": {
+    exampleHeading: "Worked example: a logo from SVG to PNG",
+    example: [
+      "Take a typical logo SVG declared at 512 x 512 pixels. Rasterised to PNG at that size, the result is usually a few tens of kilobytes for a flat logo with few colours, and a few hundred kilobytes for a detailed illustration with gradients and texture. The PNG size depends on the pixel dimensions you render at and the complexity of the artwork, not on the SVG file size: a tiny 3 KB SVG of a complex illustration can produce a large PNG at print dimensions.",
+      "The key decision is the output size, because the PNG is fixed pixels. Render at the largest size you plan to display: a 512 pixel PNG stretched to 2000 pixels on a banner looks soft, while a 2000 pixel PNG scaled down for a web page still looks sharp.",
+    ],
+    edgeCases: [
+      {
+        title: "The tool renders at the SVG's declared size and never upscales",
+        body: "The PNG comes out at the pixel size the SVG declares, and the Resize fields in the tool can only shrink it, keeping the aspect ratio. If you need a bigger PNG, export the SVG at a bigger size first (or re-save it with larger width and height), because enlarging the PNG afterwards only stretches pixels.",
+      },
+      {
+        title: "Text needs its font, or an outline",
+        body: "SVG text is rendered with the fonts available in the browser doing the conversion. An uncommon or brand font that is not installed may be substituted with a fallback, changing the look. For exact results, convert text to outlines in a design tool before converting.",
+      },
+      {
+        title: "External images and stylesheets are not loaded",
+        body: "Browsers rasterise an SVG in isolation for security, so linked images, external stylesheets and web fonts referenced from inside the file do not load. Embed images and styles in the SVG itself if the PNG comes out missing parts.",
+      },
+    ],
+    betterChoice:
+      "Keep the SVG for anything that must scale, such as website logos and icon sets: it stays sharp at every size and is usually smaller. Export PNG only for platforms that reject SVG, such as social posts, slide decks, email signatures and app stores, and export at the exact pixel size each platform needs.",
+    faqs: [
+      {
+        question: "Does the PNG keep the SVG's transparency?",
+        answer:
+          "Yes. Transparent areas of the SVG stay transparent in the PNG, because PNG carries a full alpha channel. The PNG target has no background fill step, so empty areas of your artwork remain genuinely see-through for overlays, slides and stickers.",
+      },
+      {
+        question: "What size PNG should I export for social media and slides?",
+        answer:
+          "Export at the exact size the platform displays: 1080 x 1080 pixels for square posts, 1080 x 1920 for stories, 1200 x 628 for link previews, and 1920 x 1080 for full slide images. Because the PNG is rendered from the vector at the size you choose, exporting at the final size keeps edges crisp instead of relying on the platform to resize it.",
+      },
+    ],
+  },
+  "webp-to-jpg": {
+    exampleHeading: "Worked example: a 4000 x 3000 photo from WebP to JPG",
+    example: [
+      "Take a typical 4000 x 3000 photo saved as a lossy WebP of about 2.5 MB. Converted to JPG at the tool's default quality of 92, the same photo typically lands around 3 to 4 MB, roughly the same size or a little larger, because JPG compresses less efficiently than WebP. Expect growth, not savings: this conversion is about compatibility, since JPG opens everywhere while WebP still meets resistance in older software. These are typical figures, not measurements.",
+    ],
+    edgeCases: [
+      {
+        title: "Transparency is flattened onto a background you choose",
+        body: "JPG has no alpha channel, so see-through areas of the WebP become the background colour you pick in the tool above (white by default). Semi-transparent shadows blend onto that colour rather than staying soft and see-through.",
+      },
+      {
+        title: "Animated WebP becomes a single still frame",
+        body: "Only the first frame of an animated WebP survives as JPG. If the motion matters, keep the WebP.",
+      },
+      {
+        title: "Colour profiles and camera data do not carry over",
+        body: "The converter re-encodes pixels only, so an embedded colour profile and any EXIF data are not copied into the JPG. Colours are decoded by the browser and written as a standard JPG, which is fine for sharing but not for colour critical print work.",
+      },
+    ],
+    betterChoice:
+      "If the destination accepts WebP, keep the WebP: it is smaller and keeps transparency. Convert to JPG only when compatibility demands it, such as an older editor, a print service or an upload form that rejects WebP. If the image has text or transparency and must stay sharp, PNG is the better target than JPG.",
+    faqs: [
+      {
+        question: "Can I convert a WebP screenshot with text to JPG without blur?",
+        answer:
+          "Mostly, if you keep quality high. JPG compression softens sharp text and line art before it touches photos, so stay at quality 90 or above for screenshots, and check small text at full zoom before downloading. If the text must stay pixel sharp, or the screenshot has transparency, convert to PNG instead: it is lossless and keeps edges exact.",
+      },
+      {
+        question: "Should I convert my WebP logo to JPG or PNG?",
+        answer:
+          "PNG, if the logo has transparency or sharp edges: JPG flattens transparency onto a solid colour and softens edges, while PNG keeps both exactly. Choose JPG only for photographic WebP images headed somewhere that rejects WebP.",
+      },
+    ],
+  },
+};
+
+/** Deep dive for this pair's page, or null when the pair has none. */
+export function pairDeepDive(route: ConversionRoute): PairDeepDive | null {
+  return PAIR_DEEP_DIVES[route.slug] ?? null;
+}
+
 /**
  * Two "formats in depth" paragraphs (strengths, limits, where each format
  * is actually encountered), used in the format-guide section.
