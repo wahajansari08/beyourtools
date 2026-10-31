@@ -11,6 +11,7 @@ import { designTools } from "@/lib/design-tools-config";
 import { imageTools } from "@/lib/image-tools-config";
 import { generalTools, GENERAL_HUBS } from "@/lib/general-tools-config";
 import { locales as ROUTING_LOCALES } from "@/i18n/routing";
+import { BLOG_TRANSLATED_LOCALES } from "@/lib/i18n-content";
 
 const BASE = "https://beyourtools.com";
 const now  = new Date().toISOString();
@@ -29,10 +30,10 @@ function toSlug(s: string): string {
 
 function url(
   path: string,
-  opts: { freq?: MetadataRoute.Sitemap[number]["changeFrequency"]; priority?: number; lastMod?: string } = {}
+  opts: { freq?: MetadataRoute.Sitemap[number]["changeFrequency"]; priority?: number; lastMod?: string; langs?: readonly string[] } = {}
 ): MetadataRoute.Sitemap[number] {
   const languages: Record<string, string> = { "x-default": localeUrl("en", path) };
-  for (const l of LOCALES) languages[l] = localeUrl(l, path);
+  for (const l of opts.langs ?? LOCALES) languages[l] = localeUrl(l, path);
   return {
     url: `${BASE}${path}`,
     lastModified: opts.lastMod ?? now,
@@ -57,7 +58,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url("/text-tools",            { freq: "weekly",  priority: 0.9 }),
     url("/developer-tools",       { freq: "weekly",  priority: 0.9 }),
     url("/calculators",           { freq: "weekly",  priority: 0.9 }),
-    url("/blog",                  { freq: "daily",   priority: 0.8 }),
+    url("/blog",                  { freq: "daily",   priority: 0.8, langs: BLOG_TRANSLATED_LOCALES }),
     url("/all-tools",            { freq: "daily",   priority: 0.85 }),
     url("/about",          { freq: "monthly", priority: 0.5 }),
     url("/contact",        { freq: "monthly", priority: 0.5 }),

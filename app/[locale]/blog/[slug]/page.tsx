@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Link } from "@/i18n/navigation";
 import { getBlogPost, getRecentPosts, formatDate, blogPosts, getPostsByCategory, SITE_AUTHOR } from "@/lib/blog";
-import { getTranslatedBlogPost, localeCanonical, hreflangAlternates } from "@/lib/i18n-content";
+import { getTranslatedBlogPost, localeCanonical, blogHreflangAlternates, getBlogTranslatedLocales } from "@/lib/i18n-content";
 import { setRequestLocale } from "next-intl/server";
 import JsonLd from "@/components/JsonLd";
 import { articleSchema, breadcrumbSchema, faqSchema, SITE, canonical } from "@/lib/seo";
@@ -29,12 +29,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const image = `${SITE.url}/og-default.png`;
   const title = `${tp?.seoTitle || titleText} | BeYourTools`;
   const path = `/blog/${post.slug}`;
+  // Where this post is not genuinely translated (fallback locales, or a
+  // post with no translation yet) the page serves the English post: it
+  // stays live but is noindexed, and hreflang advertises only the variants
+  // that really are translated.
+  const translatedLocales = await getBlogTranslatedLocales(slug);
+  const fallbackBlog = !translatedLocales.includes(locale);
   return {
     title,
     description: excerpt,
     keywords: tags.join(", "),
-    robots: { index: true, follow: true },
-    alternates: { canonical: url, languages: hreflangAlternates(locale, path) },
+    robots: fallbackBlog ? { index: false, follow: true } : { index: true, follow: true },
+    alternates: { canonical: url, languages: blogHreflangAlternates(path, translatedLocales) },
     openGraph: {
       type: "article",
       url,

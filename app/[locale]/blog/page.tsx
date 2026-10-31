@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { localizeMetadata, localeCanonical, getTranslatedBlogPost } from "@/lib/i18n-content";
+import { localizeMetadata, localeCanonical, getTranslatedBlogPost, blogHreflangAlternates, isBlogFallbackLocale } from "@/lib/i18n-content";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { blogPosts, formatDate, SITE_AUTHOR } from "@/lib/blog";
@@ -58,6 +58,14 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
       images: [`${SITE.url}/og-default.png`],
     },
   });
+  // Blog index in a fallback locale lists English posts: keep it live but
+  // noindexed, and advertise only genuinely translated blog variants.
+  if (localized.alternates && typeof localized.alternates === "object") {
+    localized.alternates = { ...localized.alternates, languages: blogHreflangAlternates("/blog") };
+  }
+  if (isBlogFallbackLocale(locale)) {
+    localized.robots = { index: false, follow: true };
+  }
   return localized;
 }
 

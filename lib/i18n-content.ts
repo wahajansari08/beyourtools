@@ -126,6 +126,45 @@ export function hreflangAlternates(locale: string, path: string): Record<string,
   return languages;
 }
 
+/**
+ * Blog translation coverage (locale content audit, 2026-10-31): posts are
+ * genuinely translated only for es/fr/de (content/<locale>/blog.json). In
+ * pt/hi/ur/zh/ar the blog serves the English text, so those blog pages stay
+ * live but are kept out of the search index and out of hreflang/sitemap
+ * alternates until their blog.json is really translated. Fully reversible:
+ * translate the locale's blog.json and add the locale to this list.
+ */
+export const BLOG_TRANSLATED_LOCALES: readonly string[] = ["en", "es", "fr", "de"];
+
+export function isBlogFallbackLocale(locale: string): boolean {
+  return !BLOG_TRANSLATED_LOCALES.includes(locale);
+}
+
+/** hreflang alternates for blog paths: genuinely translated locales only. */
+export function blogHreflangAlternates(
+  path: string,
+  translated: readonly string[] = BLOG_TRANSLATED_LOCALES
+): Record<string, string> {
+  const languages: Record<string, string> = { "x-default": localeCanonical("en", path) };
+  for (const l of translated) languages[l] = localeCanonical(l, path);
+  return languages;
+}
+
+/**
+ * Locales that genuinely serve THIS post translated: en plus every
+ * translated locale whose blog.json actually contains the slug. (Post
+ * how-to-calculate-percentage-guide has no translations yet, so all of its
+ * localized variants serve English and are treated as fallback too.)
+ */
+export async function getBlogTranslatedLocales(slug: string): Promise<string[]> {
+  const out: string[] = ["en"];
+  for (const l of BLOG_TRANSLATED_LOCALES) {
+    if (l === "en") continue;
+    if (await getTranslatedBlogPost(l, slug)) out.push(l);
+  }
+  return out;
+}
+
 export async function localizeMetadata(
   locale: string,
   slug: string,
