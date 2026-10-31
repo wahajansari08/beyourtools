@@ -72,6 +72,8 @@ export const batch7: BlogPost[] = [
 <dt>Is HEIC the same as HEIF?</dt>
 <dd>HEIC is Apple's implementation of the HEIF (High Efficiency Image File Format) standard. They are technically different containers but use the same underlying compression. Our converter handles both.</dd>
 </dl>
-</section>`,
+</section>
+
+<p>One more thing to check before you share a converted photo: its hidden location data. Our guide on <a href="/blog/remove-exif-metadata-photos-before-sharing">how to remove EXIF metadata from photos before sharing</a> walks through stripping it on iPhone, Android, Windows, and Mac.</p>`,
   },
 ];

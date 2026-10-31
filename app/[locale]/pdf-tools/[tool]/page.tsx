@@ -90,6 +90,7 @@ export default async function Page({ params }: Props) {
       question: "Can I use this tool on my phone or tablet?",
       answer: "Yes. BeYourTools is fully responsive and functions on modern mobile and desktop browsers including Chrome, Safari, Firefox, and Edge.",
     },
+    ...(def.faqs ?? []),
     ...(def.slug.includes("metadata")
       ? [
           {
