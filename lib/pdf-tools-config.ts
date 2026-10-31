@@ -23,6 +23,8 @@ export interface PdfToolDef {
   inputLabel: string;
   /** Icon emoji */
   icon: string;
+  /** Optional per-tool FAQs, appended to the generic FAQ list and schema */
+  faqs?: { question: string; answer: string }[];
 }
 
 export const pdfTools: PdfToolDef[] = [
@@ -198,6 +200,11 @@ export const pdfTools: PdfToolDef[] = [
     accept: ".pdf,application/pdf",
     inputLabel: "PDF File",
     icon: "✂️",
+    faqs: [
+      { question: "How do I split a PDF into specific page ranges?", answer: "Type ranges in the Page ranges box using the pattern 1-3, 5, 7-9: each comma-separated group becomes its own file. Leave the box blank and the tool splits every page into its own file instead. Out-of-range numbers are ignored, so 1-3 on a 2-page document simply gives you pages 1 and 2." },
+      { question: "Can I split out just the middle pages of a PDF?", answer: "Yes. Enter only the pages you want, for example 4-6, and the tool returns just that section as a new PDF. The original file is never changed, so you can run several different splits from the same source document." },
+      { question: "Do split pages keep their original quality?", answer: "Yes. Splitting copies whole pages into new documents without re-encoding them, so text, images, and formatting come out exactly as they were. If a split file looks smaller, that is because it contains fewer pages, not because anything was compressed." },
+    ],
   },
   {
     slug: "pdf-editor",
@@ -258,6 +265,11 @@ export const pdfTools: PdfToolDef[] = [
     accept: ".pdf,application/pdf",
     inputLabel: "PDF File",
     icon: "🗜",
+    faqs: [
+      { question: "How much can the PDF Compressor shrink my file?", answer: "It depends on what is inside the PDF. Scanned or image-heavy documents usually shrink the most, because re-serialising the file drops unused objects and tightens the structure. A short text-only PDF may barely shrink at all, and the tool will tell you so instead of pretending: it reports that the file is already optimally compressed when no further reduction is possible." },
+      { question: "Will compressing my PDF lower its quality?", answer: "No. This compressor re-serialises the document structure rather than downsampling images or re-encoding pages, so fonts, images, and layout come out unchanged. Always compare the reported before and after sizes, and keep your original until you have checked the output." },
+      { question: "Does compressing a PDF also remove its metadata?", answer: "Only if you turn on the strip-metadata option in the toolbar. Without it, document properties such as title and author stay in the file. For a dedicated cleanup, use the PDF Metadata Remover, which clears the standard properties (title, author, subject, keywords, creator, producer) and re-saves the file." },
+    ],
   },
 
   // ── Security ───────────────────────────────────────────────────────────────
@@ -312,6 +324,11 @@ export const pdfTools: PdfToolDef[] = [
     accept: ".pdf,application/pdf",
     inputLabel: "PDF File",
     icon: "🧹",
+    faqs: [
+      { question: "Exactly which metadata does the PDF Metadata Remover clear?", answer: "It clears the standard document properties: title, author, subject, keywords, creator, and producer, then re-saves the file. After downloading, open the cleaned file in the PDF Metadata Viewer to confirm the fields are empty before you share it." },
+      { question: "Does it remove hidden XMP metadata too?", answer: "Not explicitly. The remover clears the standard properties listed above, but extended XMP packets are a separate layer that some authoring tools embed. If your document came from a professional publishing workflow, verify the output with the PDF Metadata Viewer and treat any remaining XMP as a reason to re-export from your authoring app with metadata off." },
+      { question: "Photos have metadata too. How do I clean those?", answer: "Phone photos carry EXIF data, including GPS location, which is often more revealing than PDF metadata. Our guide to removing EXIF metadata from photos before sharing covers iPhone, Android, Windows, and Mac step by step, plus the browser re-save shortcut that drops EXIF when an image is re-encoded." },
+    ],
   },
 
   // ── Repair & Compare ──────────────────────────────────────────────────────

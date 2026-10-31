@@ -84,7 +84,9 @@ export const batch11: BlogPost[] = [
 <dt>Is it safe to upload my PDF to check metadata?</dt>
 <dd>With our tools, yes. Everything runs locally in your browser tab. Your file is never uploaded to any server. This is precisely why browser-based tools are the right choice for sensitive documents.</dd>
 </dl>
-</section>`,
+</section>
+
+<p>Photos carry the same kind of hidden data, and usually more of it: read our guide on <a href="/blog/remove-exif-metadata-photos-before-sharing">how to remove EXIF metadata from photos before sharing</a> before your next public post.</p>`,
   },
   {
     slug: "json-vs-yaml-vs-toml-config-formats",
