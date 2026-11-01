@@ -47,7 +47,7 @@ export const batch9: BlogPost[] = [
 <dt>Should I use PNG or WebP for logos?</dt>
 <dd>WebP lossless is around 26% smaller than PNG and supports transparency. It's a better choice for web logos if your workflow supports it. For logos that also need to be used in documents or offline contexts, keep a PNG version as well.</dd>
 <dt>What happened to JPEG XL?</dt>
-<dd>JPEG XL is technically impressive, but major browser support was removed after limited adoption. Stick with WebP and AVIF for new projects - they have solid, stable support across all modern browsers.</dd>
+<dd>JPEG XL is technically impressive, but browser support is still limited: Safari 17+ ships it by default, while Chrome and Firefox keep it behind flags (a Rust based decoder landed in Chrome Canary 145 in late 2025). Stick with AVIF as your primary format and WebP as the fallback for new projects. Our <a href="/blog/avif-vs-jpeg-xl-2026">AVIF vs JPEG XL guide for 2026</a> compares the two formats in full, including file sizes and when JPEG XL is worth using anyway.</dd>
 </dl>
 </section>`,
   },

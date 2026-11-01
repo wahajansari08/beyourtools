@@ -38,6 +38,11 @@ export const pdfTools: PdfToolDef[] = [
     accept: ".pdf,application/pdf",
     inputLabel: "PDF File",
     icon: "🖼",
+    faqs: [
+      { question: "Do I get one JPG per page?", answer: "Yes. Every page of your PDF is rendered as its own JPG, and each one downloads separately, named after the original file with a page number, so a 12 page PDF gives you 12 JPGs you can use individually." },
+      { question: "Can I convert only some pages to JPG?", answer: "The tool renders every page, but you download only the pages you need. Open the PDF, let it render, then download just the page JPGs you want and ignore the rest." },
+      { question: "Will the text in my PDF stay selectable in the JPG?", answer: "No. A JPG is a flat image, so text becomes pixels and is no longer selectable or searchable. If you need the text, keep the original PDF or use a text extraction tool instead." },
+    ],
   },
   {
     slug: "jpg-to-pdf",
@@ -48,6 +53,11 @@ export const pdfTools: PdfToolDef[] = [
     accept: ".jpg,.jpeg,image/jpeg",
     inputLabel: "JPG Image(s)",
     icon: "📄",
+    faqs: [
+      { question: "How many pages will my PDF have?", answer: "One page per image. Drop in five JPGs and you get a five page PDF, ready to download as a single file." },
+      { question: "Can I mix JPG and PNG images in one PDF?", answer: "No, this tool accepts JPG and JPEG files only. For PNG images, use the separate PNG to PDF tool, which works the same way." },
+      { question: "Does converting JPG to PDF change the image quality?", answer: "The images are placed into the PDF rather than recompressed from scratch, so what you see in the JPG is what ends up on the page. Very large photos still make a large PDF, so resize oversized images before converting if file size matters." },
+    ],
   },
   {
     slug: "pdf-to-png",
@@ -58,6 +68,11 @@ export const pdfTools: PdfToolDef[] = [
     accept: ".pdf,application/pdf",
     inputLabel: "PDF File",
     icon: "🖼",
+    faqs: [
+      { question: "Should I choose PDF to PNG or PDF to JPG?", answer: "Choose PNG when you need crisp edges, screenshots, diagrams, or text pages, since PNG is lossless. Choose JPG for photographs, where it gives a much smaller file at visually identical quality." },
+      { question: "Do I get one PNG per page?", answer: "Yes. Every page is rendered as its own PNG and each downloads separately, named after the original file with a page number." },
+      { question: "Will a PNG of a scanned page be searchable text?", answer: "No. Like JPG, PNG is a flat image, so scanned text becomes pixels. The image will look identical to the page, but the words are not selectable until the page goes through OCR." },
+    ],
   },
   {
     slug: "png-to-pdf",
