@@ -18,7 +18,7 @@ export const batch2: BlogPost[] = [
 <p>Long documents are often more useful in smaller pieces. Our <a href="/pdf-tools/split-pdf">PDF Split</a> tool lets you define ranges like <code>1-5</code> or <code>6-10</code> and extract those pages as separate PDF files. You can also split into individual pages with a single click.</p>
 
 <h2>Compressing PDFs</h2>
-<p>Email attachments often have size limits and large PDFs get rejected. Our <a href="/pdf-tools/pdf-compressor">PDF Compressor</a> reduces file size by removing redundant internal data. Results vary depending on the source file - text-heavy PDFs typically compress noticeably; scanned image PDFs less so.</p>
+<p>Email attachments often have size limits and large PDFs get rejected. Our <a href="/pdf-tools/pdf-compressor">PDF Compressor</a> reduces file size by removing redundant internal data. Results vary depending on the source file - text-heavy PDFs typically compress noticeably; scanned image PDFs less so. For the full workflow, including DPI targets and what to do when a lossless pass is not enough, see our guide on <a href="/blog/reduce-pdf-file-size-without-losing-quality">how to reduce PDF file size without losing quality</a>.</p>
 
 <h2>Converting PDFs to images</h2>
 <p>Sometimes you need an image of a PDF page - for a thumbnail, a preview, or a presentation slide. Our <a href="/pdf-tools/pdf-to-jpg">PDF to JPG</a> and <a href="/pdf-tools/pdf-to-png">PDF to PNG</a> tools render each page at high resolution directly in your browser.</p>

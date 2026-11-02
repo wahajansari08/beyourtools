@@ -25,6 +25,8 @@ export const batch5: BlogPost[] = [
 <h2>Remove metadata to trim a few extra bytes</h2>
 <p>PDFs embed creation dates, author names, software details, and other metadata that contributes to file size. Our <a href="/pdf-tools/pdf-metadata-remover">PDF Metadata Remover</a> strips this information while leaving the document content completely intact.</p>
 
+<p>For the full diagnosis, including scanned versus text PDFs, DPI targets, and email limits, see our guide on <a href="/blog/reduce-pdf-file-size-without-losing-quality">how to reduce PDF file size without losing quality</a>.</p>
+
 <section class="faq">
 <h2>Frequently Asked Questions</h2>
 <dl>

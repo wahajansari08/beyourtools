@@ -83,6 +83,11 @@ export const pdfTools: PdfToolDef[] = [
     accept: ".png,image/png",
     inputLabel: "PNG Image(s)",
     icon: "📄",
+    faqs: [
+      { question: "How many pages will my PDF have?", answer: "One page per image. Drop in five PNGs and you get a five page PDF, ready to download as a single file." },
+      { question: "Can I mix PNG and JPG images in one PDF?", answer: "No, this tool accepts PNG files only. For JPG images, use the separate JPG to PDF tool, which works the same way." },
+      { question: "Will my PNG images lose quality in the PDF?", answer: "The images are placed into the PDF rather than recompressed from scratch, so what you see in the PNG is what ends up on the page. Very large screenshots still make a large PDF, so resize oversized images before converting if file size matters." },
+    ],
   },
   {
     slug: "pdf-to-word",
@@ -205,6 +210,11 @@ export const pdfTools: PdfToolDef[] = [
     accept: ".pdf,application/pdf",
     inputLabel: "PDF Files",
     icon: "🔀",
+    faqs: [
+      { question: "Can I merge only some pages from each PDF?", answer: "Yes. Expand a file to pick individual pages, include or exclude them, and merge just the pages you chose. A single file can even be merged on its own, which is a handy way to extract a page selection into a new document." },
+      { question: "Does merging change the order of my files?", answer: "No, files merge in the order you arrange them, and you can reorder them before merging or sort them A to Z. Check the order in the list before you click merge, because the merged document keeps exactly that sequence." },
+      { question: "Will merging reduce the quality of my PDFs?", answer: "No. Merging copies whole pages into a new document without re-encoding them, so text, images, and formatting come out exactly as they were. A merged file is larger because it contains more pages, not because anything was degraded." },
+    ],
   },
   {
     slug: "split-pdf",
@@ -240,6 +250,11 @@ export const pdfTools: PdfToolDef[] = [
     accept: ".pdf,application/pdf",
     inputLabel: "PDF File",
     icon: "📤",
+    faqs: [
+      { question: "Do extracted pages stay in their original order?", answer: "Yes. Pages are copied in the order you list them, so listing pages 5, 2, and 9 gives you a new PDF in that order. If you want the original order, list the pages in increasing order." },
+      { question: "Is the original PDF changed when I extract pages?", answer: "No. Extraction copies the chosen pages into a brand new file and leaves your original untouched, so you can extract several different selections from the same source document." },
+      { question: "What happens if I list a page that does not exist?", answer: "Pages outside the document are ignored. If none of the pages you listed exist, the tool reports that instead of producing an empty file, so check the page count first if you get that message." },
+    ],
   },
   {
     slug: "delete-pdf-pages",
@@ -250,6 +265,11 @@ export const pdfTools: PdfToolDef[] = [
     accept: ".pdf,application/pdf",
     inputLabel: "PDF File",
     icon: "🗑",
+    faqs: [
+      { question: "Can I delete all pages from a PDF?", answer: "No. The tool refuses to delete every page, because a PDF with no pages is not a usable document. Delete all but one page if you need a single page file, or extract the pages you want instead." },
+      { question: "Does deleting pages shrink the file by the same amount each time?", answer: "Not necessarily. Each page contributes a different amount depending on its images and content, so deleting a photo heavy page saves far more than deleting a plain text page. The saving comes from the removed pages, not from any compression." },
+      { question: "Is the original PDF changed when I delete pages?", answer: "No. Deleting produces a new file with the remaining pages, and your original stays exactly as it was, so you can always go back if you removed the wrong page." },
+    ],
   },
   {
     slug: "rotate-pdf",
@@ -260,6 +280,11 @@ export const pdfTools: PdfToolDef[] = [
     accept: ".pdf,application/pdf",
     inputLabel: "PDF File",
     icon: "🔄",
+    faqs: [
+      { question: "Can I rotate only some pages, not the whole PDF?", answer: "Yes. Choose the pages you want to rotate and leave the rest alone. If you list no pages, the rotation applies to every page in the document." },
+      { question: "What rotation angles are available?", answer: "90, 180, and 270 degrees. The rotation adds to a page's existing rotation, so rotating a page that is already sideways by 90 degrees brings it upright rather than flipping it upside down." },
+      { question: "Does rotating a PDF change its quality?", answer: "No. Rotation only changes each page's rotation setting in the document, it does not re-encode text or images, so the content comes out exactly as it was, just turned." },
+    ],
   },
   {
     slug: "pdf-watermark",
