@@ -240,6 +240,11 @@ export const pdfTools: PdfToolDef[] = [
     accept: ".pdf,application/pdf",
     inputLabel: "PDF File",
     icon: "✏️",
+    faqs: [
+      { question: "What does the PDF Editor actually do?", answer: "It renders every page of your PDF as a thumbnail in your browser, so you can inspect the whole document at a glance and click any page for a closer preview. The info bar shows the file name, page count, and file size. Your original file is never changed." },
+      { question: "Can the PDF Editor change existing text in a PDF?", answer: "No. This editor is for viewing and inspecting, not for rewriting text that is already in the document. If you need to change the document itself, use the page tools instead: split, extract, delete, rotate, or watermark pages, or edit the source document and export a fresh PDF." },
+      { question: "Is my PDF uploaded when I inspect it?", answer: "No. Pages are rendered in your browser with pdf.js and the file never leaves your device, which is why the editor is safe for confidential documents. If a file fails to load, check that it is a valid PDF and try again with the original file." },
+    ],
   },
   {
     slug: "extract-pdf-pages",
@@ -295,6 +300,11 @@ export const pdfTools: PdfToolDef[] = [
     accept: ".pdf,application/pdf",
     inputLabel: "PDF File",
     icon: "💧",
+    faqs: [
+      { question: "Where does the watermark appear on each page?", answer: "The text is drawn once per page, centred and rotated at 45 degrees, in grey Helvetica Bold. It sits on the page content itself, not as a removable annotation layer, so it travels with the file when you share it." },
+      { question: "What opacity and size should I use?", answer: "The defaults are 25 percent opacity at size 48, which reads clearly without hiding the page. The tool lets you set opacity from 5 to 80 percent and size from 16 to 96. For a draft mark, keep opacity low; for a confidential stamp, go higher, but check that the underlying text stays readable." },
+      { question: "Does watermarking change my original PDF?", answer: "No. Watermarking builds a new file, downloaded as your file name plus -watermarked, and leaves the original untouched. Keep the original: once a watermark is baked into the page content, removing it cleanly is difficult, which is the point of a watermark." },
+    ],
   },
   {
     slug: "pdf-compressor",

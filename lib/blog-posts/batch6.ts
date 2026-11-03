@@ -85,6 +85,8 @@ export const batch6: BlogPost[] = [
 <dd>Yes - animated WebP is a direct replacement for GIF with much better quality and much smaller file sizes. Social media and chat platforms vary in their animated WebP support, so check compatibility with your specific use case.</dd>
 <dt>Will switching to WebP break anything?</dt>
 <dd>For standard HTML <code>&lt;img&gt;</code> tags and CSS background images, switching to WebP works transparently in all modern browsers. Always verify with your target audience's actual browser distribution if you're concerned.</dd>
+<dt>Should I upload WebP or JPG to social media?</dt>
+<dd>For a photo, upload JPG: every platform accepts it and handles it predictably, while WebP support and preview behaviour still vary. Save WebP for your own website, where it is 25 to 35 percent smaller than JPG. Our <a href="/blog/png-jpg-webp-social-media-uploads">PNG vs JPG vs WebP guide for social uploads</a> covers the platform sizes and the transparency trap in full.</dd>
 <dt>Should I use WebP or AVIF in 2026?</dt>
 <dd>Use both, in order: serve AVIF first, WebP second, and JPEG as the final fallback. AVIF compresses photos about 40 to 60 percent smaller than JPEG and works in about 95 percent of browsers, while WebP covers almost everyone else. Our <a href="/blog/avif-vs-jpeg-xl-2026">AVIF vs JPEG XL guide for 2026</a> explains the full serving stack and where JPEG XL fits in.</dd>
 </dl>

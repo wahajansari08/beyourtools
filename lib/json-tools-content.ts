@@ -61,6 +61,9 @@ const content: Record<string, JsonToolContent> = {
       { question: "What is the maximum JSON size I can format?", answer: "The formatter runs entirely in your browser. In practice it handles JSON up to tens of megabytes on modern devices. Very large files may cause a brief delay while the browser processes the text." },
       { question: "Is there a difference between JSON Formatter and JSON Beautifier?", answer: "They do the same thing: add indentation to make JSON readable. The Beautifier tool on this site provides the same core functionality with a slightly different interface layout." },
       { question: "Is the JSON formatter free? Do I need an account?", answer: "Yes, it's completely free with no account, no sign-up, and no usage limits. Your JSON is processed entirely in your browser, so nothing is ever uploaded or stored." },
+      { question: "Does formatting change the order of my keys?", answer: "No, not by default. Keys stay in their original order. If you want alphabetical order, turn on the key-sorting toggle in the toolbar, which reorders keys A to Z before formatting." },
+      { question: "Can I format JSON with tabs instead of spaces?", answer: "Yes. The toolbar offers 2 spaces, 4 spaces, or tab indentation, so you can match the style of the codebase the JSON came from. Changing indentation only changes whitespace, never the data." },
+      { question: "Why use Tree view on a large JSON file?", answer: "Tree view collapses nested objects and arrays, so you can scan the top-level structure of a large document without scrolling through thousands of lines. Expand only the branch you need, then switch back to the formatted view to copy or download." },
     ],
   },
 

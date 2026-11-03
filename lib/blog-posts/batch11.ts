@@ -38,6 +38,8 @@ export const batch11: BlogPost[] = [
 <dd>Not if you do it right. At WebP quality 80, differences from the original are essentially invisible to the human eye. Problems only appear below quality 60 or when you upscale a small image. Always keep your originals as backup.</dd>
 <dt>Should I compress PNG or convert to WebP instead?</dt>
 <dd>Convert to WebP. A PNG compressed as far as possible is still usually 2-3x larger than a WebP at equivalent visual quality. The only reason to keep PNG is when you need maximum compatibility with very old software.</dd>
+<dt>Should I upload WebP or JPG to social media?</dt>
+<dd>For social photos, JPG at quality 80 to 85 and at the platform's own pixel size survives recompression best, because every platform accepts JPG and handles it predictably. WebP stays the better choice for your own website. Our <a href="/blog/png-jpg-webp-social-media-uploads">PNG vs JPG vs WebP guide for social uploads</a> gives the sizes for Instagram, Facebook, X, and LinkedIn and a worked photo example.</dd>
 <dt>Does image compression affect SEO?</dt>
 <dd>Yes, positively. Google uses page speed (Core Web Vitals) as a ranking factor, and images are typically the largest contributor to slow loads. Compressed images also reduce bandwidth costs.</dd>
 </dl>
