@@ -332,6 +332,11 @@ export const pdfTools: PdfToolDef[] = [
     accept: ".pdf,application/pdf",
     inputLabel: "PDF File",
     icon: "🔒",
+    faqs: [
+      { question: "What is the difference between the user password and the owner password?", answer: "The user password is required to open the PDF at all, and you must set it before dropping a file. The owner password is optional and controls editing and printing: if you leave it blank, it defaults to the same value as the user password. Set a different owner password when you want someone to read the file but not change it." },
+      { question: "How strong is the protection on a protected PDF?", answer: "The tool encrypts with AES-256, the current standard for PDF encryption, and it also turns off modifying, copying, annotating, form filling, and document assembly, while allowing low resolution printing and accessibility access. Password protection still depends on the password itself: a short, guessable password can be brute forced, so use a long passphrase you do not reuse elsewhere." },
+      { question: "Does protecting a PDF change my original file?", answer: "No. Protection builds a new file, downloaded as your file name plus -protected, and leaves the original untouched. Keep the original somewhere safe: if you lose the password, there is no recovery step, because the password is never sent to a server and no copy is kept." },
+    ],
   },
   {
     slug: "unlock-pdf",
@@ -342,6 +347,11 @@ export const pdfTools: PdfToolDef[] = [
     accept: ".pdf,application/pdf",
     inputLabel: "Protected PDF",
     icon: "🔓",
+    faqs: [
+      { question: "Can the Unlock tool open a PDF if I have forgotten the password?", answer: "No. Unlocking requires the current password: enter it first, then drop the file, and the tool re-saves the document without encryption. If the password is wrong, the tool reports an incorrect password instead of producing a file. There is no password recovery here, because the file is processed in your browser and no password is ever stored." },
+      { question: "What does the unlocked file look like afterwards?", answer: "It is the same document, re-saved without encryption, downloaded as your file name plus -unlocked. Text, images, and layout are unchanged, because unlocking re-saves the document rather than re-encoding its pages. The original protected file stays untouched, so you can keep it as the secure copy." },
+      { question: "Why does unlocking fail on some protected PDFs?", answer: "Usually because the password is mistyped, or because the file uses a protection method this browser tool cannot load. Check for caps lock, try the owner password if you set a different one, and confirm the file opens in a desktop reader with the same password. If it opens there but not here, the file's encryption variant is the likely cause." },
+    ],
   },
 
   // ── Extract & Analyze ─────────────────────────────────────────────────────
@@ -364,6 +374,11 @@ export const pdfTools: PdfToolDef[] = [
     accept: ".pdf,application/pdf",
     inputLabel: "PDF File",
     icon: "🔎",
+    faqs: [
+      { question: "Exactly which metadata does the PDF Metadata Viewer show?", answer: "It shows the standard document properties: title, author, subject, keywords, creator, and producer, plus the creation and modification dates, the page count, the file size, and the PDF version header. A blank field means that property was never set in the file, not that it was hidden." },
+      { question: "Can I check a cleaned file with the viewer?", answer: "Yes, and you should. After running the PDF Metadata Remover, drop the cleaned file here and confirm the title, author, subject, keywords, creator, and producer fields are empty before you share it. If a field still shows a value, the source application may have written it as extended XMP data, which needs a re-export with metadata turned off." },
+      { question: "Does the viewer change or upload my PDF?", answer: "No. The viewer reads the file in your browser and never uploads it, and it never modifies the original. That makes it safe for confidential documents: you can inspect what a file reveals about you without sending it anywhere." },
+    ],
   },
   {
     slug: "pdf-metadata-remover",
@@ -391,16 +406,26 @@ export const pdfTools: PdfToolDef[] = [
     accept: ".pdf,application/pdf",
     inputLabel: "Damaged PDF",
     icon: "🔧",
+    faqs: [
+      { question: "What does PDF Repair actually do?", answer: "It loads the document and re-saves it, then reports the page count of the repaired file, which downloads as your file name plus -repaired. Re-saving rebuilds the file structure, which fixes many files that fail to open because of a damaged trailer or inconsistent internal references. It does not reconstruct pages or content that are physically missing from the file." },
+      { question: "When will repair fail?", answer: "When the file is too damaged for the parser to load at all, or when it is not a PDF in the first place. In that case the tool reports that it could not repair the file, and the original stays untouched. Your best next step is the original source: re-export from the application that made the PDF, or recover an earlier copy, because no re-save can invent missing pages." },
+      { question: "Should I try repair before re-exporting?", answer: "Try repair first when the original source is gone, because it costs nothing and takes a minute. If the source still exists, re-exporting is the better first step, because a fresh export is a clean file rather than a salvage. Either way, keep the damaged original until the repaired file opens correctly and its page count matches what you expect." },
+    ],
   },
   {
     slug: "pdf-compare",
     name: "PDF Compare",
-    description: "Compare two PDFs and highlight text differences.",
+    description: "Compare two PDFs by page count, page size, rotation, and metadata.",
     category: "Repair & Compare",
     engine: "pdf-lib",
     accept: ".pdf,application/pdf",
     inputLabel: "PDF Files",
     icon: "⚖️",
+    faqs: [
+      { question: "What exactly does PDF Compare check?", answer: "It checks the structural differences between two PDFs: page count, each page's size and rotation, and the title and author metadata, plus a byte-for-byte identity check. If nothing differs on those checks and the files are byte identical, the tool reports the documents as identical. It does not read the text on each page, so a changed sentence with the same page size will not show up here." },
+      { question: "How do I tell which version of a document I have?", answer: "Compare the suspect file against a known good copy. A different page count is the fastest signal, followed by page size and rotation differences, which often reveal a re-export or a scanned replacement. Title and author differences are useful too, because a file re-saved by another application usually carries a different producer or author value." },
+      { question: "Does comparing change either PDF?", answer: "No. Comparison only reads both files in your browser and reports the differences; neither original is modified or uploaded. That makes it safe for contracts and drafts where you need to confirm two copies match without sending them anywhere." },
+    ],
   },
 ];
 
