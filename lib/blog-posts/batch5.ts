@@ -49,7 +49,7 @@ export const batch5: BlogPost[] = [
     category: "JSON",
     tags: ["JSON", "CSV", "Data", "Conversion", "Spreadsheets"],
     content: `<h2>When to convert JSON to CSV</h2>
-<p>CSV is the universal format for tabular data. Convert to CSV when you need to open data in Excel or Google Sheets, import it into a relational database, send it to someone who isn't comfortable with JSON, or run analysis in a data tool.</p>
+<p>CSV is the universal format for tabular data. Convert to CSV when you need to open data in Excel or Google Sheets, import it into a relational database, send it to someone who isn't comfortable with JSON, or run analysis in a data tool. If you are still deciding between the two formats, our <a href="/blog/json-vs-csv-spreadsheets">JSON vs CSV guide for spreadsheets</a> compares them side by side and lists what breaks in conversion.</p>
 
 <h2>How the conversion works</h2>
 <p>JSON-to-CSV works best on arrays of flat objects. Each object in the array becomes a row. Each unique key across all objects becomes a column header. Values are filled in for each row where the key exists.</p>
