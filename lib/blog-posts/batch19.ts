@@ -1,0 +1,104 @@
+import type { BlogPost } from "@/lib/blog";
+
+export const batch19: BlogPost[] = [
+  {
+    slug: "blur-hide-sensitive-details-photos-before-sharing",
+    title: "How to Blur or Hide Sensitive Details in Photos Before Sharing",
+    seoTitle: "How to Blur or Hide Sensitive Details in Photos Before Sharing",
+    excerpt:
+      "A photo can leak a face, a licence plate, a card number, or a home address in plain sight, and a light blur does not always hide it. This guide shows which method is safe for text and which for faces, how strong the cover has to be, the honest workflow using the free tools on this site, and how to verify the result before you share.",
+    author: "Wahaj Ansari",
+    publishedAt: "2026-11-06",
+    readingTime: 11,
+    category: "Image",
+    tags: ["Photos", "Privacy", "Blur", "Pixelate", "Redaction", "Sharing"],
+    content: `<p>The short answer: crop the sensitive part out of the photo if you can, because data that is not in the file cannot be recovered. If you must keep the area, cover text such as card numbers, names, and addresses with a solid box, and cover faces and licence plates with strong pixelation or strong blur, with a generous margin around the edges. Then zoom in on the saved file and check that nothing is readable or recognisable, and strip the photo's metadata too, because a perfectly hidden house number does not help if the file's GPS data points to the same address.</p>
+<p>This guide explains which hiding method is safe for which kind of detail, how strong the cover has to be in real numbers, and the honest workflow for doing it, including what the free tools on this site can and cannot do. BeYourTools has no dedicated blur or pixelate tool, so the guide is upfront about that: the on-site route is cropping the detail out and re-exporting a clean file, and for covering a detail you need to keep in frame, it names the free tools that do the job properly.</p>
+
+<h2>What to hide before you share</h2>
+<p>Faces are the obvious part. These are the details people forget, and each one appears in ordinary photos all the time.</p>
+<table>
+<tr><th>Where to look</th><th>What to hide</th><th>Why it matters</th></tr>
+<tr><td>People in the frame</td><td>Faces, including bystanders and children in the background</td><td>A recognisable face identifies a person; in the EU and UK it counts as personal data</td></tr>
+<tr><td>Cars and streets</td><td>Licence plates, house numbers, street signs, a dealer name on a plate frame</td><td>A plate or house number narrows a location to one car or one address</td></tr>
+<tr><td>Screenshots</td><td>Names, profile pictures, phone numbers, email addresses, order and tracking numbers</td><td>Screenshots carry account details in the corners people never check</td></tr>
+<tr><td>Documents and cards</td><td>Card numbers, account numbers, ID numbers, signatures, QR codes and barcodes</td><td>A visible code can be copied or scanned straight from the image</td></tr>
+<tr><td>Screens in the background</td><td>Monitor and TV content, open tabs, notifications, chat windows</td><td>A background screen often shows more than the subject of the photo</td></tr>
+<tr><td>Reflections and windows</td><td>Faces and rooms reflected in mirrors, windows, and car paint</td><td>The reflection shows what the photographer was standing in front of</td></tr>
+<tr><td>Clothing and uniforms</td><td>School logos, company badges, name tags</td><td>A logo names a school or workplace and narrows a person down fast</td></tr>
+<tr><td>Parcels and mail</td><td>Shipping labels, envelopes, return addresses</td><td>One label carries a name, phone number, address, and tracking number together</td></tr>
+</table>
+<p>Run through that list on every photo before it leaves your device. The check takes about thirty seconds, and it catches the two most common leaks: a plate in the background of a car photo, and a name or number in the corner of a screenshot.</p>
+
+<h2>Blur, pixelate, or solid box: which one is safe</h2>
+<p>All three methods hide things, but they do not hide them equally well, and the difference matters most for text.</p>
+<table>
+<tr><th>Method</th><th>What it does</th><th>What stays in the saved file</th><th>Safe for</th></tr>
+<tr><td>Solid box</td><td>Replaces the area with one flat colour, usually black</td><td>Nothing of the original: only the shape and size of the box</td><td>Text of any kind: card numbers, names, addresses, passwords, QR codes, licence plates</td></tr>
+<tr><td>Pixelate</td><td>Replaces each block of pixels with one average colour</td><td>An average colour per block, and more remains when the blocks are small</td><td>Faces and figures, when the blocks are large</td></tr>
+<tr><td>Blur</td><td>Mixes each pixel with its neighbours so edges spread out softly</td><td>The outline, and the flow of brightness and colour</td><td>Faces and backgrounds when the blur is strong; never for text</td></tr>
+</table>
+<p>The solid box is the safest method, full stop. It deletes the information instead of smearing it, so there is nothing left to reconstruct. Use it for anything made of letters or numbers: a card number, a name, an address, a password, a QR code, a licence plate. A licence plate is text, so it belongs in the solid box column even though it sits on a car.</p>
+<p>Pixelation and blur are weaker for text, and the weakness is proven, not theoretical. Research published in 2016 showed that text hidden with pixelation or blur could be recovered by matching the pixel blocks against known fonts, and the open source Depix tool does exactly that. A lightly pixelated card number is a puzzle with the answer printed on the box: the block pattern still carries the shape of each digit. Strong pixelation with large blocks defeats that attack, because a digit reduced to two or three blocks has no shape left to match, but a solid box defeats it with certainty, so for text there is no reason to gamble.</p>
+<p>For faces the balance changes. A face is not a small set of known characters, so there is no font to match it against, and strong pixelation or strong blur both work. The key word is strong. A light blur softens the edges and your brain fills in the rest, and a recognisable outline can still identify someone. If a stranger could guess who it is from the shape, the hair, or the clothes, the cover is not strong enough.</p>
+
+<h2>How strong is strong enough</h2>
+<p>Strength is measurable, so here are numbers you can check against your own photo instead of guessing by eye.</p>
+<p>For pixelation, compare the block size with the size of the detail. Take a phone photo at 4000 by 3000 pixels. A licence plate in the frame might be about 300 pixels wide and 60 pixels tall, with letters about 40 pixels tall. Pixelate it with 20 pixel blocks and each letter becomes a stack of two blocks, which is unreadable. Pixelate it with 5 pixel blocks and each letter is eight blocks tall, which is readable. The rule: the block must be at least half the height of the smallest character you are hiding. For a face, use blocks large enough that the whole face is only 5 to 8 blocks across. If you can count eyes, nose, and mouth as separate blocks, the blocks are too small.</p>
+<p>For blur, the usual guidance for desktop editors is a Gaussian blur radius of 10 to 20 pixels for a face and 30 to 50 pixels for a licence plate at full resolution, and more if the detail is large in the frame. The radius has to be comparable to the size of the feature: a 10 pixel blur on a 40 pixel tall letter just softens its edges. When in doubt, double the strength and check again. A blur that looks obviously heavy is the point; a subtle blur is a decoration, not a redaction.</p>
+<p>For margins, cover more than the detail itself. Paint or draw at least 10 to 20 pixels past every edge of the sensitive area at full resolution, and more for text, because a single exposed digit at the edge of a box can be enough. Text runs in lines, so cover the whole line, not just the digits you think matter: a visible name next to a hidden card number still identifies the cardholder. And cover the plate frame too, because it often carries a dealer name or a town.</p>
+<p>One more number to know: QR codes are built to survive damage. The highest error correction level tolerates about 30 percent of the code being unreadable, so a half covered QR code may still scan. Cover a QR code or barcode completely, edge to edge, with a solid box. A partial cover is not a cover.</p>
+
+<h2>The honest workflow on this site</h2>
+<p>BeYourTools does not have a blur or pixelate tool, so this section says plainly what the site can do and where you need another tool.</p>
+<p><strong>Route 1: crop it out.</strong> If the sensitive detail sits near an edge, cropping is the best option on this site, because the detail leaves the file entirely. Open our <a href="/image-cropper">Image Cropper</a>, draw a box around the part you want to keep, and download the result as PNG or JPEG. The cropper works on a canvas in your browser, so the output is a fresh file built from the pixels you kept, and it does not carry the original photo's EXIF block, including GPS location. That also makes cropping the fastest privacy move on the site: one action removes the visible detail and the hidden location data at the same time. It only works when the detail is near an edge and the photo still works without that strip, so check the composition before you commit.</p>
+<p><strong>Route 2: cover it elsewhere, then clean it here.</strong> For a face in the middle of the frame or a plate you must keep in shot, use a tool that actually blurs or pixelates: Google Photos on Android now has a Redact pen in its Markup editor that blurs or pixelates a marked area, and free browser editors such as Canva, Pixlr, and Photopea all have blur and pixelate brushes that run in the browser. Cover the detail with a solid box for text or strong pixelation for faces, save the file, and then run it through our <a href="/image-compressor">Image Compressor</a> or <a href="/image-resizer">Image Resizer</a>. The re-export builds a fresh file from the pixels, which drops the original EXIF block, and it also shrinks the file for sharing. The compressor step is a cleanup, not the hiding step: re-encoding never unhides what you covered, and it never hides what you forgot to cover.</p>
+<p><strong>Route 3: shrink it as a supporting step, never as the hiding step.</strong> Resizing a photo down does destroy fine detail, and that is useful, but it is not reliable hiding on its own. A plate that is 300 pixels wide in a 4000 pixel photo becomes 81 pixels wide in a 1080 pixel Instagram upload, and the letters shrink to about 11 pixels tall, which is borderline, not gone. Treat downscaling as a bonus on top of a real cover, and verify the small version at 100 percent zoom before you trust it.</p>
+<p>Whatever route you take, keep the original somewhere safe and share only the cleaned copy. If you ever need to prove what the photo originally showed, the original is the evidence, and the cleaned copy is the version the internet gets.</p>
+
+<h2>How to do it on your phone and computer</h2>
+<p>On Android, Google Photos added a Redact pen to its Markup editor in a rollout that began in September 2026. Open the photo, tap Edit, open Markup, select the Redact pen, and draw over the area to hide. It offers mosaic and blur styles with adjustable brush thickness. Check that the feature has arrived on your phone by updating Google Photos from the Play Store; it is an Android rollout, and iPhone and web users need a different tool for now.</p>
+<p>On iPhone, the Photos app has no dedicated redact pen, so use the Markup pen tool to draw a solid filled shape over the detail, or use a free editor app that offers pixelation. The markup route works well for text, because a solid shape is the safest cover anyway. For faces, a dedicated blur app gives a softer result with the same protection, as long as the strength is high.</p>
+<p>On a computer, Photopea is a free browser based editor that works like Photoshop without an install: open the image, select the area, and use Filter, then Pixelate, then Mosaic, choosing a block size of at least half the height of the smallest character, or Filter, then Blur, then Gaussian Blur with a radius of 30 pixels or more for a plate. Canva and Pixlr offer the same in a simpler interface: upload, paint over the area with the pixelate or blur brush, adjust the intensity slider until the detail is gone, and export. In all three, export a fresh file and check it at full size before sharing.</p>
+<p>For screenshots, the fastest route is usually the phone itself. Both iPhone and Android let you mark up a screenshot right after taking it, and a solid rectangle over a name or number is a ten second job. Do it before the screenshot reaches a chat or a post, because once it is sent, you cannot take it back.</p>
+
+<h2>Worked example: a car photo for a sale listing</h2>
+<p>Take a real case: you are selling a car and the listing photo shows the plate, a house number on the wall behind it, and your reflection in the window. The photo is 4000 by 3000 pixels, straight from the phone.</p>
+<p>Step 1: open the photo and list what to hide. The plate is about 300 by 60 pixels in the lower centre. The house number is about 120 by 40 pixels on the wall. Your reflection is a soft shape in the glass, recognisable by outline but not by detail.</p>
+<p>Step 2: cover the plate with a solid black box, extending 20 pixels past every edge, so the box is about 340 by 100 pixels. A solid box is the right call because a plate is text.</p>
+<p>Step 3: cover the house number the same way, with a solid box about 160 by 80 pixels. It is also text, so it gets the same treatment.</p>
+<p>Step 4: pixelate the reflection with blocks of at least 30 pixels, so the whole figure is only a handful of blocks wide. Or crop the window out if the composition allows it. Pixelation is fine here because a reflection is a shape, not text.</p>
+<p>Step 5: save the file, then run it through the <a href="/image-compressor">Image Compressor</a> at JPG quality 82 to build a fresh file without the original GPS data. Check the output at 100 percent zoom: the plate area must be flat black with no letter shapes showing through, the house number area the same, and the reflection a few flat blocks. Then check the file properties and confirm the location field is gone.</p>
+<p>The whole job takes about five minutes, and the result is a listing photo that shows the car clearly and leaks nothing else. If any step feels rushed, the check in step 5 is the one to slow down for: zoom in, look at the edges, and confirm the saved file, not the editor preview, because the preview can hide a thin gap at the edge of a box.</p>
+
+<h2>Mistakes that undo the whole job</h2>
+<p><strong>Light blur on text.</strong> The most common mistake, and the most dangerous one, because the photo looks hidden at a glance. A lightly blurred card number is still recoverable, and a lightly pixelated one can be matched against known fonts. If the method is blur or pixelate, it must be strong, and if the detail is text, use a solid box instead.</p>
+<p><strong>Thin margins.</strong> A box that covers 15 of 16 digits leaves the last one visible, and a single visible digit plus a name can be enough. Cover the whole line and add a margin past every edge.</p>
+<p><strong>Hiding it in the app but sharing the original.</strong> Some editors keep the original as a layer or a version you can revert to, and some sharing flows attach the original file by mistake. Always share the exported, flattened file, and check the attachment preview in the app that sends it. If the preview shows the unhidden photo, you attached the wrong file.</p>
+<p><strong>Forgetting the metadata.</strong> Hiding the visible house number means nothing if the file still carries GPS coordinates for the same house. Strip the metadata with the same care as the visible details. Our <a href="/blog/remove-exif-metadata-photos-before-sharing">guide to removing EXIF metadata</a> covers the full process, including the cases where a strip leaves the embedded thumbnail behind.</p>
+<p><strong>Forgetting reflections, screens, and QR codes.</strong> A mirror, a window, a TV in the background, and a QR code on a parcel all carry information past the main subject. A QR code needs a complete cover, not a partial one, because of its error correction.</p>
+<p><strong>Trusting the platform to hide it for you.</strong> Social platforms strip metadata from the displayed image and recompress uploads, but that is not redaction. The platform keeps a copy, the recompression does not reliably hide text, and anyone who receives the original file before upload still has everything. Hide it yourself, before upload, in the file you control.</p>
+
+<h2>Verify before you share</h2>
+<p>Verification is a separate step, not a glance at the editor. Open the saved file, the exported copy you are about to send, and zoom to 100 percent. Check every covered area edge to edge. Check the corners of screenshots for names and numbers. Check the background for plates, signs, and reflections you missed on the first pass. Then check the file properties and confirm the location and device fields are gone.</p>
+<p>Finally, check the preview inside the app that will send it. Messaging apps, email clients, and social upload screens each show their own preview, and that preview is the last chance to catch a wrong attachment. If anything looks off, stop and re-export. A photo shared is a photo you cannot unshare, but a photo checked for thirty seconds is a photo you can trust.</p>
+
+<section class="faq">
+<h2>Frequently Asked Questions</h2>
+<dl>
+<dt>Can blurred or pixelated text be recovered?</dt>
+<dd>Yes, sometimes. Research published in 2016 showed that text hidden with light pixelation or blur could be reconstructed by matching the pixel blocks against known fonts, and the Depix tool does exactly that. A solid black box cannot be recovered, because the pixels are gone, not smeared. For any text, a card number, a name, an address, or a plate, use a solid box. For faces, strong pixelation or strong blur is safe, because a face has no font to match against.</dd>
+<dt>Is pixelate or blur better for hiding a face?</dt>
+<dd>Both work when they are strong. Pixelate turns the face into large flat blocks, which makes it obvious something was hidden; blur keeps a softer look but needs a high radius to be safe. Use pixel blocks large enough that the whole face is only 5 to 8 blocks across, or a blur radius of at least 10 to 20 pixels at full resolution. Check the result zoomed in: if you can still recognise the person from the outline, hair, or clothes, increase the strength.</dd>
+<dt>Does blurring a photo remove its metadata?</dt>
+<dd>No. Blurring changes the visible pixels only. The EXIF block, including GPS location, date, and device model, stays in the file unless you strip it separately. Re-saving the photo through a browser tool that re-encodes from pixels, such as our Image Compressor or Image Resizer, builds a fresh file without the original EXIF block. Our guide to removing EXIF metadata from photos explains the full process and how to verify the result.</dd>
+<dt>Can I blur sensitive details on iPhone or Android?</dt>
+<dd>On Android, Google Photos added a Redact pen to its Markup editor in a rollout that began in September 2026: open the photo, tap Edit, open Markup, select Redact, and draw over the area. On iPhone, use the Markup pen to draw a solid shape over text, or a free editor app with a pixelate brush for faces. For both, check the saved file at full size before sharing, and strip the metadata as a separate step.</dd>
+<dt>How do I hide a QR code or barcode in a photo?</dt>
+<dd>Cover it completely with a solid box, edge to edge. QR codes are designed to survive damage, and the highest error correction level tolerates about 30 percent of the code being unreadable, so a half covered code may still scan. Blur and pixelation are not reliable for codes either, because the block pattern can still carry enough structure. A solid box is the only method that leaves nothing to scan.</dd>
+<dt>Is cropping a photo enough to hide a sensitive detail?</dt>
+<dd>Yes, when the detail is near an edge and the crop removes it completely. Data that is not in the file cannot be recovered, and cropping in the browser also builds a fresh file without the original EXIF block. Use our Image Cropper, draw a box around the part to keep, and download the result. Cropping does not help for a detail in the middle of the frame, and it does not hide anything visible in the part you keep, such as a street sign or a reflection.</dd>
+</dl>
+</section>`,
+  },
+];
