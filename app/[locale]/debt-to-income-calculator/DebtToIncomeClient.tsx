@@ -145,7 +145,7 @@ export default function DebtToIncomeClient() {
             <strong style={{ color: dtiColor(result.dti) }}>{dtiLabel(result.dti)}</strong>
           </div>
           <div className="text-xs space-y-1" style={{ color: "var(--text-subtle)" }}>
-            <p>DTI benchmarks: ≤20% excellent · 21–36% good · 37–43% borderline · 43%+ high</p>
+            <p>DTI benchmarks: ≤20% excellent · 21–28% good · 29–36% acceptable · 37–43% borderline · over 43% high</p>
             <p>Front-end (housing) target: ≤28% of gross income for mortgage qualification.</p>
           </div>
         </div>
