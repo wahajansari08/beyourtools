@@ -35,6 +35,9 @@ export default function PriceAfterDiscountPage() {
         { question: "What is 30% off $85?", answer: "Discount = $85 × 0.30 = $25.50. Sale price = $85 − $25.50 = $59.50. At 8% tax: $59.50 × 1.08 = $64.26 final. Use the quick-select buttons to try common discount percentages instantly." },
         { question: "How do stacked discounts work?", answer: "Stacked discounts are applied sequentially, not added. A 20% off then 10% off deal: $100 → $80 → $72 (not $70). Use the calculator twice, enter $80 as the original price for the second discount." },
         { question: "What is the difference between this and the Discount Calculator?", answer: "The Discount Calculator is a simpler tool that just applies a percentage off. This calculator adds sales tax after the discount, making it more useful for seeing the true final amount you'd pay at checkout." },
+        { question: "How do I find the original price from a sale price?", answer: "Divide the sale price by 1 minus the discount as a decimal. If an item sells for $60 after 25% off, the original price was $60 / (1 - 0.25) = $60 / 0.75 = $80.00. The same trick works for any single discount, just use the discount that was applied." },
+        { question: "How much do I really save when discounts stack?", answer: "Less than the two percentages added together, because the second discount applies to the already reduced price. An $80 item with 20% off, then an extra 15% off, costs $80 x 0.80 x 0.85 = $54.40. You save $25.60, which is 32% off in total, not 35%." },
+        { question: "Does a discount also lower the sales tax I pay?", answer: "Yes, because tax is charged on the discounted price. A $100 item with 25% off and 8% tax costs $75 + $6.00 tax = $81.00 out the door. Without the discount you would pay $100 + $8.00 tax = $108.00, so the discount saves you $2.00 of tax on top of the $25.00 price cut." },
       ]}
     >
       <PriceAfterDiscountClient />

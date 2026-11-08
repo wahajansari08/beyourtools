@@ -17,7 +17,7 @@ export const batch11: BlogPost[] = [
 <h2>The 3-step compression workflow</h2>
 <p><strong>1. Pick the right format first.</strong> Format choice matters more than any quality slider. Photographs should be WebP or AVIF. Graphics with flat colours and text should be PNG (or SVG if they're vector). Never use BMP or TIFF on the web. If you're unsure, convert with our <a href="/image-converter/jpg-to-webp">JPG to WebP converter</a> and compare.</p>
 <p><strong>2. Resize before you compress.</strong> A 4000px photo displayed at 800px wide is carrying 25x more pixels than it needs. Resize to the display size first with our <a href="/image-resizer">Image Resizer</a>. This alone often cuts 80% of the file size.</p>
-<p><strong>3. Dial in quality with our compressor.</strong> Upload the resized image to our <a href="/image-compressor">Image Compressor</a>, set quality to 80, and compare before/after. For most photos, quality 75-85 is visually indistinguishable from 100 at a fraction of the size.</p>
+<p><strong>3. Dial in quality with our compressor.</strong> Upload the resized image to our <a href="/image-compressor">Image Compressor</a>, set quality to 80, and compare before/after. For most photos, quality 75-85 is visually indistinguishable from 100 at a fraction of the size. If your site runs on WordPress, the same three steps work with no plugin at all: our <a href="/blog/compress-images-wordpress-without-plugin">guide to compressing images for WordPress without a plugin</a> adds the WordPress specific parts, including the sizes to aim for and the double compression trap.</p>
 
 <h2>How low can you go?</h2>
 <p>Here's my practical rule of thumb from compressing thousands of images:</p>

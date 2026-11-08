@@ -26,7 +26,7 @@ export default function AprPage() {
           <p>This equation is solved numerically (Newton-Raphson) for r_APR, then annualised: <strong style={{ color: "var(--text-secondary)" }}>APR = r_APR × 12</strong></p>
           <p className="text-xs mt-2" style={{ color: "var(--text-subtle)" }}>
             <strong>Example:</strong> $30,000 loan at 6.5% for 5 years with $900 in fees<br />
-            Monthly payment = $587 · Effective APR ≈ <strong>7.03%</strong> (vs 6.5% stated rate)
+            Monthly payment = $587 · Effective APR ≈ <strong>7.78%</strong> (vs 6.5% stated rate)
           </p>
         </>
       }
@@ -36,6 +36,9 @@ export default function AprPage() {
         { question: "How do I use APR to compare two loan offers?", answer: "Compare APRs directly. Loan A at 6.5% with $1,500 in fees may have a higher APR than Loan B at 6.75% with no fees, especially on a short term. APR levels the playing field by expressing the total cost as a single annual rate." },
         { question: "Does APR assume I hold the loan to full term?", answer: "Yes, APR calculations spread fees across the entire loan term. If you refinance or pay off early, the actual cost is higher because you paid fees for a shorter period. For loans you may pay off early, also calculate the cost at your expected actual term." },
         { question: "Is a lower APR always better?", answer: "Usually yes, but consider the cash flow. A loan with a slightly higher APR but lower monthly payments may suit you if cash flow is tight. Also compare total cost: a lower-rate loan with a longer term can cost more total interest than a higher-rate shorter-term loan." },
+        { question: "How much do fees add to the APR?", answer: "It depends on the fee size and the loan term. Take a $25,000 loan at 6.5% for 5 years: with no fees the APR is 6.50%, with $500 in fees it rises to 7.35%, and with $1,000 in fees it reaches 8.22%. The same fees on a longer loan add less, because they are spread over more years." },
+        { question: "What happens to my APR if I pay the loan off early?", answer: "The effective cost rises, because the fees are spread over fewer months. A $30,000 loan at 6.5% for 5 years with $900 in fees has a true APR of 7.78% if held to term, but 8.46% if paid off after 2 years. You still pay less in total ($33,239.46 vs $35,219.07), the fees just cost more per year of borrowing." },
+        { question: "How can I check my lender's APR is correct?", answer: "Enter the loan amount, stated rate, term, and all upfront fees from your Loan Estimate into this calculator and compare the result with the APR on the disclosure. For regular loans, US rules allow the lender's disclosed APR to differ by up to 0.125 percentage points from the exact figure, so a small gap is normal, but a larger one is worth questioning." },
       ]}
     >
       <AprClient />
