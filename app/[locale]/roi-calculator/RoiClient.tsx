@@ -11,7 +11,7 @@ export default function RoiClient() {
   const [returned, setReturned] = useState("");
   const [years,    setYears]    = useState("");
   const [result, setResult] = useState<{
-    roi: number; netGain: number; annualizedRoi: number | null;
+    roi: number; netGain: number; annualizedRoi: number | null; annualizedUnavailable: boolean;
   } | null>(null);
   const [error, setError] = useState("");
 
@@ -25,10 +25,15 @@ export default function RoiClient() {
     const netGain = value - cost;
     const roi     = (netGain / cost) * 100;
     let annualizedRoi: number | null = null;
+    let annualizedUnavailable = false;
     if (!isNaN(yrs) && yrs > 0) {
-      annualizedRoi = (Math.pow(value / cost, 1 / yrs) - 1) * 100;
+      if (value >= 0) {
+        annualizedRoi = (Math.pow(value / cost, 1 / yrs) - 1) * 100;
+      } else {
+        annualizedUnavailable = true;
+      }
     }
-    setResult({ roi, netGain, annualizedRoi });
+    setResult({ roi, netGain, annualizedRoi, annualizedUnavailable });
   }
 
   function reset() { setInvested(""); setReturned(""); setYears(""); setResult(null); setError(""); }
@@ -99,6 +104,11 @@ export default function RoiClient() {
               </div>
             ))}
           </div>
+          {result.annualizedUnavailable && (
+            <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
+              Annualised ROI is not shown because the end value is negative, so an annualised rate cannot be derived from it. Your ROI and Net Gain / Loss above are still correct.
+            </p>
+          )}
         </div>
       )}
     </div>
