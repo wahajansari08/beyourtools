@@ -54,7 +54,7 @@ export const batch7: BlogPost[] = [
 <p>HEIC is not universally supported. Many Windows applications, web forms, older Android devices, and online services only accept JPG or PNG. Sharing HEIC photos outside the Apple ecosystem often results in files that simply won't open or upload.</p>
 
 <h2>Convert HEIC to JPG</h2>
-<p>Use our <a href="/image-converter/heic-to-jpg">HEIC to JPG converter</a>. The converted JPG will be compatible with virtually every app, website, and device. Note that HEIC support in browsers varies - if conversion fails, try updating your browser to the latest version.</p>
+<p>HEIC files need converting before most apps and websites accept them, and the fastest way is on the iPhone itself: share the photo, tap Options, and choose Most Compatible to get a JPG. Our full <a href="/blog/heic-to-jpg-iphone">HEIC to JPG on iPhone guide</a> walks through every built-in method, what converting does to quality and size, and the two settings that stop the problem coming back. One honest note: our <a href="/image-converter/heic-to-jpg">HEIC to JPG converter</a> cannot decode HEIC files in the browser yet, so use the iPhone routes in that guide for now.</p>
 
 <h2>Stop the problem at the source</h2>
 <p>If you consistently need JPG photos from your iPhone, go to Settings → Camera → Formats and switch to "Most Compatible". This shoots in JPG by default, though your photos will take up more storage space.</p>
@@ -70,7 +70,7 @@ export const batch7: BlogPost[] = [
 <dt>Why can't I open HEIC files on Windows?</dt>
 <dd>Windows 10 and 11 can open HEIC files with the free HEVC Video Extensions from the Microsoft Store. If you'd rather not install anything, converting to JPG first with our tool is the simplest solution.</dd>
 <dt>Is HEIC the same as HEIF?</dt>
-<dd>HEIC is Apple's implementation of the HEIF (High Efficiency Image File Format) standard. They are technically different containers but use the same underlying compression. Our converter handles both.</dd>
+<dd>HEIC is Apple's implementation of the HEIF (High Efficiency Image File Format) standard. They are technically different containers but use the same underlying compression.</dd>
 </dl>
 </section>
 

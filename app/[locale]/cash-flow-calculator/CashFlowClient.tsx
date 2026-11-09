@@ -108,7 +108,7 @@ export default function CashFlowClient() {
   return (
     <div className="space-y-5">
       <p className="text-xs leading-relaxed" style={{ color: "var(--text-subtle)" }}>
-        Enter positive values for inflows and outflows - use the sign indicator to set whether each item is cash in (+) or cash out (−).
+        Enter positive values for each item: operating items count as cash in, and investing and financing items count as cash out.
         Outflows are treated as negative by default for investing and financing activities.
       </p>
 
