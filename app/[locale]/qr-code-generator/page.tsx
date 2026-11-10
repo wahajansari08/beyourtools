@@ -111,6 +111,8 @@ export default async function QRCodeGeneratorPage() {
               ["Adjustable size", "128 px to 512 px output"],
               ["Error correction", "L / M / Q / H levels"],
               ["PNG & SVG download", "Pixel-perfect PNG and infinitely scalable SVG"],
+              ["Print-size PNG", "Download at 1024 px or 2048 px for posters and packaging"],
+              ["Event QR codes", "Create calendar-event codes (ICS) for invites and tickets"],
               ["100% private", "No server upload - generated entirely in your browser"],
             ].map(([title, desc]) => (
               <div key={title} className="rounded-lg border p-3" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)" }}>
@@ -146,6 +148,9 @@ export default async function QRCodeGeneratorPage() {
               </p>
             </div>
           </div>
+          <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            The standards above decide whether a code scans, but the choices around them decide whether it scans the first time: the error correction level, the printed size, the quiet zone, and the colours. Our <Link href="/blog/what-is-a-qr-code-how-to-make-one-that-scans" className="focus-ring rounded hover:underline" style={{ color: "var(--accent-text)" }}>guide to what a QR code is and how to make one that still scans</Link> works through each choice with worked numbers, including the one tenth size rule and the print resolution to use.
+          </p>
         </section>
 
         {/* FAQ */}

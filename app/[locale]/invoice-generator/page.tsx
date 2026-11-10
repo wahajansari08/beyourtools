@@ -56,6 +56,18 @@ export default function InvoiceGeneratorPage() {
           question: "How do I number my invoices?",
           answer: "Use a simple sequential scheme like INV-001, INV-002 so each invoice has a unique number. Sequential numbering also makes your bookkeeping and tax filing much easier at year end.",
         },
+        {
+          question: "Is the discount taken off before tax is calculated?",
+          answer: "Yes. The discount comes off the subtotal first, and tax is calculated on what is left. For example, a $1,000 subtotal with a 10% discount loses $100, leaving $900, and 8% tax on $900 is $72, so the total due is $972. If tax were charged on the full $1,000 instead, the total would be $980, so the order saves your client $8 on this invoice.",
+        },
+        {
+          question: "What payment terms should I put on the invoice?",
+          answer: "Write the terms in the Notes / payment terms field and set the due date on the invoice itself. Common terms are Due on receipt for small jobs and new clients, Net 15 for ongoing work, and Net 30 for larger corporate clients. Put the actual calendar date on the invoice rather than only writing Net 30, so there is no argument about when the 30 days started. Add your bank details or payment link in the notes field so the client can pay without asking.",
+        },
+        {
+          question: "Can I add my company logo to the invoice?",
+          answer: "Not yet. The invoice carries your business name, address, and email at the top, but there is no logo upload in this version. If branding matters for a particular client, put your business name and website in the header fields and your payment details in the notes field, which print on the PDF. The PDF itself has no watermark and no BeYourTools branding on it.",
+        },
       ]}
     >
       <InvoiceGeneratorClient />

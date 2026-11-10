@@ -72,7 +72,7 @@ const content: Record<string, JsonToolContent> = {
     keywords: "JSON beautifier, beautify JSON, JSON pretty printer, format JSON, readable JSON",
     howTo: [
       { title: "Paste or type JSON", text: "Enter your JSON in the input area - minified, partially formatted, or completely raw." },
-      { title: "Select indent size", text: "Choose 2 spaces, 4 spaces, or tab characters for the output indentation." },
+      { title: "Select indent size", text: "Indentation is fixed at 2 spaces, the most common convention and the output of JSON.stringify with an indent of 2. If you need 4 spaces or tabs, use the JSON Formatter, which offers the choice." },
       { title: "Read the output", text: "The beautified JSON appears immediately with every key and value on its own line." },
       { title: "Copy the result", text: "Use the Copy button to copy the output to your clipboard." },
     ],
@@ -81,6 +81,9 @@ const content: Record<string, JsonToolContent> = {
       { question: "Does beautifying affect JSON parsing?", answer: "No. A JSON parser treats whitespace as insignificant. A beautified and a minified version of the same JSON are semantically identical and parse to the same data structure." },
       { question: "Can I paste JSON from a browser network tab?", answer: "Yes. JSON copied directly from browser DevTools network responses is often compact or partially formatted. Paste it here and it becomes fully readable immediately." },
       { question: "Does it work with JSON arrays?", answer: "Yes. Both JSON objects (curly braces) and JSON arrays (square brackets) are formatted correctly, including deeply nested combinations of both." },
+      { question: "What does the Sort keys toggle do?", answer: "It reorders every object's keys from A to Z before beautifying, so two versions of the same data come out in the same order and are easy to diff. It is off by default, so your keys stay in their original order unless you turn it on. Sorting never changes values, only the order keys are written in." },
+      { question: "Can I download the beautified JSON?", answer: "Yes. The Download button saves the output as beautified.json, ready to paste into a config file, a test fixture, or a code editor. The file contains the same 2-space indented JSON shown in the output panel." },
+      { question: "What is the difference between the Beautifier and the JSON Formatter?", answer: "They do the same core job: re-indent JSON so it is readable. The Beautifier is the simpler tool, with a fixed 2-space indent and a Sort keys toggle. The Formatter adds the indent choice (2 spaces, 4 spaces, or tab), a Tree view for exploring large documents, .json file upload, and autosave, so your input survives a refresh. Use the Beautifier for a quick cleanup and the Formatter when you are working with a large file." },
     ],
   },
 
@@ -99,6 +102,9 @@ const content: Record<string, JsonToolContent> = {
       { question: "Can I validate a JSON Schema file?", answer: "A JSON Schema file is just a JSON document. The JSON Validator checks that it is syntactically valid JSON. To validate the schema itself against the JSON Schema specification, use the JSON Schema Validator tool." },
       { question: "Is there a size limit?", answer: "The validator runs in your browser with no upload. You can validate JSON files of any size, though very large files may take a moment to process." },
       { question: "Why does my JSON show as invalid when it looks correct?", answer: "Check for: a trailing comma after the last property in an object or array, a key without quotes, a value using undefined or a JavaScript function, or a BOM (byte order mark) at the start of the text. Copy the error line number to find the exact issue." },
+      { question: "How do I read the line and column in the error message?", answer: "When the browser's parser reports a character position, the error is shown with the matching line and column, for example (line 42, column 17). That is where the parser first noticed something it could not understand, which is not always where the mistake is: a missing closing quote or bracket is often reported a line or two later, at the first character that no longer makes sense. If the flagged line looks fine, check the line immediately above it." },
+      { question: "Can I validate a JSON file instead of pasting text?", answer: "Yes. Use the file upload button above the input to load a .json file from your device. The file is read in your browser and never uploaded, and validation runs on its contents exactly as if you had pasted them." },
+      { question: "What does the valid confirmation tell me about my document?", answer: "As well as confirming the JSON is valid, the banner describes what it found: an object with its key count, an array with its item count, or the type of a bare value. That is a quick sanity check that the file you pasted is the document you expected, and not, for example, a single string or an empty object." },
     ],
   },
 
@@ -115,6 +121,9 @@ const content: Record<string, JsonToolContent> = {
       { question: "How much smaller does minified JSON get?", answer: "Depending on how heavily indented the original is, minification typically reduces JSON size by 20-40%. For deeply nested objects with 4-space indentation, savings can reach 50%." },
       { question: "Does minification remove comments?", answer: "Standard JSON does not allow comments, so a valid JSON file will not have any. If your JSON has comments (JSONC style), they must be stripped first using JSON Repair before minifying." },
       { question: "Will minified JSON still parse correctly?", answer: "Yes. Every JSON parser correctly handles minified JSON. Whitespace outside of string values is always optional in the JSON specification." },
+      { question: "How much does minifying actually save on a real file?", answer: "It depends on the indentation, but the saving is usually large. As a measured example, a 50-order payload with nested customer and line-item data was 18,784 bytes pretty-printed with 2-space indentation and 9,172 bytes minified, a saving of 51 percent. The tool reports the exact saving for your file after each run, as bytes saved and a percentage." },
+      { question: "Does minifying still help if the file is gzipped afterwards?", answer: "Much less than people expect. Gzip already collapses repeated whitespace very efficiently, so on the same 50-order payload, the pretty-printed version gzipped to 718 bytes and the minified version to 595 bytes, only about 17 percent smaller. Minify for the uncompressed size, for parse speed, and for pasting into places with size limits, not because it shrinks a gzipped response much further." },
+      { question: "Can minification change the text inside my strings?", answer: "No. Whitespace inside a string value is part of the data, so it is never touched. Only the whitespace between tokens, the indentation and line breaks outside strings, is removed. A string that contains spaces, newlines, or tabs comes out byte for byte identical." },
     ],
   },
 
@@ -125,13 +134,16 @@ const content: Record<string, JsonToolContent> = {
       { title: "Paste your JSON", text: "Paste any valid JSON - object, array, or primitive - into the input." },
       { title: "Explore the tree", text: "The JSON renders as a collapsible tree. Click any node with children to expand or collapse it." },
       { title: "Inspect values", text: "Leaf values (strings, numbers, booleans, null) are shown with type-coloured labels." },
-      { title: "Search or navigate", text: "Use the search bar to filter visible nodes by key name or value." },
+      { title: "Collapse what you do not need", text: "Click any object or array to collapse it; a collapsed node shows how many items it holds. The first two levels start open, deeper nodes start collapsed." },
     ],
     faqs: [
       { question: "What is a JSON tree viewer?", answer: "A JSON tree viewer renders JSON as a hierarchical tree of expandable nodes, similar to the view you see in browser DevTools. It makes deeply nested structures much easier to navigate than reading raw text." },
       { question: "Can I edit values in the viewer?", answer: "The viewer is read-only for exploration. To edit JSON, use the JSON Editor tool which provides a side-by-side tree editor and text input." },
       { question: "Does it work with very large JSON files?", answer: "The viewer loads the entire JSON into the browser. For very large files (over a few MB), rendering all nodes at once may be slow. Collapsing top-level nodes first and then expanding what you need is the most efficient approach." },
       { question: "Are circular references supported?", answer: "Circular references are not valid JSON (JSON must be serialisable), so any valid JSON file will not contain them. The viewer handles all valid JSON structures." },
+      { question: "How much of the tree is open when I paste JSON?", answer: "The first two levels start open and everything deeper starts collapsed, so a large document opens as a readable outline instead of thousands of lines. Click any object or array to expand or collapse it, and a collapsed node shows its item count so you know what is inside before you open it." },
+      { question: "What do the different colours in the tree mean?", answer: "Leaf values are coloured by type so you can scan a large document at a glance: strings in the accent colour, numbers in teal, booleans in coral, and null in a muted tone. Keys and structure stay in the regular text colour, so the values stand out against the shape of the document." },
+      { question: "What happens if I paste invalid JSON into the viewer?", answer: "No tree is shown. The viewer reports the parse error with its line and column, the same error the JSON Validator produces, so you can fix the problem first. Paste the broken text into JSON Repair if you want it fixed automatically, then bring the repaired output back here to explore it." },
     ],
   },
 
