@@ -138,6 +138,17 @@ export default async function ContactPage() {
                   ),
                 },
                 {
+                  label: "YouTube",
+                  handle: "@beyourtools",
+                  href: "https://www.youtube.com/@beyourtools",
+                  color: "#FF0000",
+                  icon: (
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden="true">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 7.07 0 12.001 0 12.001s0 4.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 16.93 24 12.001 24 12.001s0-4.93-.502-5.815zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                    </svg>
+                  ),
+                },
+                {
                   label: "Reddit",
                   handle: "u/beyourtools",
                   href: "https://www.reddit.com/user/beyourtools/",
