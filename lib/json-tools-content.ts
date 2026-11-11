@@ -152,7 +152,7 @@ const content: Record<string, JsonToolContent> = {
     keywords: "JSON editor, online JSON editor, edit JSON, JSON tree editor, JSON live editor, JSON code editor",
     howTo: [
       { title: "Open or paste JSON", text: "Paste existing JSON into the text panel, or start typing a new JSON document." },
-      { title: "Edit in text or tree view", text: "Edit directly in the text panel. The tree view updates as you type. Click nodes in the tree to navigate to the corresponding text." },
+      { title: "Edit in text or tree view", text: "Edit directly in the text panel. The tree view updates as you type. Expand or collapse nodes in the tree to explore the structure." },
       { title: "Fix errors inline", text: "Syntax errors are highlighted as you type so you can fix them before saving." },
       { title: "Copy the edited JSON", text: "When done, copy the JSON from the text panel or download it as a file." },
     ],
@@ -161,6 +161,9 @@ const content: Record<string, JsonToolContent> = {
       { question: "Can I add or delete keys in the tree view?", answer: "The tree view is primarily for navigation and inspection. For editing, use the text panel. Changes made in text are immediately reflected in the tree." },
       { question: "Does it support JSON Schema validation while editing?", answer: "For schema-based validation as you type, use the JSON Schema Validator tool and provide both the JSON and the schema separately." },
       { question: "Is my JSON saved anywhere?", answer: "No. Everything runs in your browser. Nothing is sent to any server. When you close the tab, the JSON is gone unless you copy or download it first." },
+      { question: "Can I open a JSON file instead of pasting?", answer: "Yes. The upload button in the editor toolbar loads a file from your computer straight into the editor, so you can edit a saved document without copying and pasting its contents." },
+      { question: "What happens when my JSON is invalid?", answer: "The tree preview disappears and an error banner shows the parser's message, including where it noticed the problem. Fix the text in the editor and the tree returns as soon as the JSON parses again." },
+      { question: "How do I save the edited JSON?", answer: "Use the Download button in the Live preview panel. It saves the current text as data.json. The Copy button in the editor toolbar copies the same text to your clipboard instead." },
     ],
   },
 
@@ -174,10 +177,13 @@ const content: Record<string, JsonToolContent> = {
       { title: "Copy the fixed JSON", text: "Copy the repaired JSON and use it in your project." },
     ],
     faqs: [
-      { question: "What types of JSON errors can be repaired?", answer: "JSON Repair handles: trailing commas after the last item in objects or arrays, single-quoted strings (converts to double-quoted), unquoted object keys (adds double quotes), missing commas between items (attempts to insert them), stray quotes, and some truncated JSON structures." },
+      { question: "What types of JSON errors can be repaired?", answer: "JSON Repair handles: trailing commas after the last item in objects or arrays, single-quoted strings (converted to double-quoted), unquoted object keys (double quotes added), // line comments and /* */ block comments (stripped out), and undefined, NaN, and Infinity values (replaced with null). It does not insert missing commas or rebuild truncated JSON, so a document with those problems will still fail after repair." },
       { question: "Can it repair completely garbled JSON?", answer: "The repair tool works best on JSON that has common human or tool-introduced errors. Fundamentally garbled or corrupted text (such as binary data labelled as JSON) cannot be repaired, as there is no correct structure to recover." },
-      { question: "Does repair change my data values?", answer: "No. Repair only fixes structural and syntax issues - punctuation, quote types, and bracket matching. Your key names, string values, numbers, and booleans are not modified." },
-      { question: "Is JSON5 or JavaScript object syntax supported as input?", answer: "JSON Repair can handle several JS-style patterns (unquoted keys, single quotes, trailing commas) that are common when copying from JS source files. Full JSON5 with comments is also handled by stripping comment lines." },
+      { question: "Does repair change my data values?", answer: "No, with one exception. Repair only fixes structural and syntax issues: punctuation, quote types, comments, and bracket matching. Your key names, string values, numbers, and booleans are not modified. The exception is undefined, NaN, and Infinity values, which are not valid JSON and are replaced with null." },
+      { question: "Is JSON5 or JavaScript object syntax supported as input?", answer: "JSON Repair can handle several JS-style patterns (unquoted keys, single quotes, trailing commas, comments) that are common when copying from JS source files. Full JSON5 is not supported: hex numbers, multiline strings, and other JSON5-only features are not handled and will still fail." },
+      { question: "What does the Fixed line tell me?", answer: "After a successful repair the tool lists each fix it applied by name, for example \"Removed trailing commas\" or \"Converted single quotes to double quotes\", so you can see exactly what changed before you trust the output." },
+      { question: "What happens if my JSON was already valid?", answer: "The tool says so plainly: \"This JSON was already valid - no fixes needed.\" It returns the document pretty-printed with a 2-space indent, so you still get a clean formatted copy." },
+      { question: "What happens when repair cannot fix my JSON?", answer: "You get a \"Could not fully repair\" message with the parser's error, and the output panel shows the partially fixed text, so you can see how far the repair got and finish the job by hand instead of starting over." },
     ],
   },
 
@@ -186,15 +192,18 @@ const content: Record<string, JsonToolContent> = {
     keywords: "JSONL formatter, JSON Lines formatter, NDJSON formatter, format JSONL, pretty print JSONL",
     howTo: [
       { title: "Paste your JSONL", text: "Paste a JSONL file where each line is a separate JSON value. Mixed-format files work too." },
-      { title: "Select indent style", text: "Choose 2 spaces, 4 spaces, or tab for the indentation within each formatted JSON block." },
+      { title: "Indentation is fixed at 2 spaces", text: "Each line is formatted with a fixed 2-space indent. There is no indent setting on this tool; use the JSON Formatter if you need 2 spaces, 4 spaces, or tabs." },
       { title: "View formatted output", text: "Each line is formatted into its own indented JSON block, separated by blank lines for readability." },
       { title: "Copy or download", text: "Copy the formatted output or download it as a .jsonl file." },
     ],
     faqs: [
       { question: "What is JSONL (JSON Lines)?", answer: "JSONL (also called NDJSON - Newline Delimited JSON) is a format where each line of a file contains a complete, independent JSON value. It is popular for log files, data streaming, and large datasets because each line can be read and parsed independently without loading the whole file." },
       { question: "Is JSONL the same as a JSON array?", answer: "No. A JSON array is a single JSON document containing multiple values in brackets. JSONL is a sequence of completely separate JSON values, one per line, with no surrounding brackets." },
-      { question: "Can I format only some lines?", answer: "The formatter processes every line. If some lines are invalid JSON they are passed through unchanged (or flagged, depending on the setting). Valid lines are always formatted." },
-      { question: "What happens with empty lines in the input?", answer: "Empty lines are preserved in the output. Lines containing only whitespace are treated as blank and skipped during formatting." },
+      { question: "Can I format only some lines?", answer: "No. The formatter processes every line. A line that is not valid JSON is left out of the output and reported as an error naming its line number, so you can fix it and run the file again. Valid lines are always formatted." },
+      { question: "What happens with empty lines in the input?", answer: "Empty lines are skipped, not preserved: they do not appear in the output. Line numbers in error messages still match the original input, so \"Line 7\" is line 7 of what you pasted, blank lines included." },
+      { question: "What indent does the formatter use?", answer: "A fixed 2-space indent for every line. There is no indent setting on this tool. If you need 4 spaces or tabs, format the document with the JSON Formatter instead, which offers the choice." },
+      { question: "What happens to a line that is not valid JSON?", answer: "It is left out of the output and listed in the error area as \"Line N\" with the parser's message. The valid lines still format normally, so you can fix the broken line and run the file again without losing the rest." },
+      { question: "Can I upload a JSONL file instead of pasting?", answer: "Yes. The upload button accepts .jsonl, .txt, and .json files, and the formatted output downloads as formatted.jsonl." },
     ],
   },
 
@@ -205,13 +214,16 @@ const content: Record<string, JsonToolContent> = {
       { title: "Paste your JSONL", text: "Paste the JSONL content - each line should be a valid, complete JSON value." },
       { title: "Validation runs per line", text: "Every non-empty line is validated as independent JSON. Results appear line by line." },
       { title: "Review errors", text: "Any invalid lines are highlighted with their line number and a specific error message." },
-      { title: "Fix and re-validate", text: "Edit the invalid lines based on the error messages, then re-paste to confirm all lines pass." },
+      { title: "Fix and re-validate", text: "Results update live as you type, so fix an invalid line in the input and its row updates immediately. There is nothing to re-run." },
     ],
     faqs: [
       { question: "How is JSONL validation different from JSON validation?", answer: "A JSON validator checks one document at a time. A JSONL validator checks each line of the file as an independent JSON document. A single invalid line does not invalidate the rest of the file." },
       { question: "What counts as a valid JSONL line?", answer: "Any complete, valid JSON value on a single line: an object, array, string, number, boolean, or null. The line must be syntactically complete - partial JSON is not valid in JSONL format." },
       { question: "Are blank lines allowed in JSONL?", answer: "Blank lines are technically not part of the JSONL specification but most parsers skip them. The validator ignores blank lines and only checks non-empty lines." },
       { question: "Can I use this to validate log files?", answer: "Yes. Application logs in JSONL format can be pasted directly. The validator identifies which log lines have malformed JSON, which is useful for debugging logging pipelines." },
+      { question: "Does a line have to be an object to be valid?", answer: "No. Any complete JSON value counts as a valid line: an object, an array, a string, a number, a boolean, or null. A line holding just 42, or just \"hello\", passes validation." },
+      { question: "Do the line numbers match my file?", answer: "Yes. Blank lines are skipped from the results but the numbering follows the original file, so a row marked \"Line 7\" is line 7 of what you pasted, blank lines included." },
+      { question: "Can I upload a JSONL file instead of pasting?", answer: "Yes. The upload button accepts .jsonl, .txt, and .json files, and the results show one row per non-empty line with a summary of how many lines passed." },
     ],
   },
 
@@ -223,7 +235,7 @@ const content: Record<string, JsonToolContent> = {
     howTo: [
       { title: "Paste the original JSON", text: "Enter the original (base) JSON in the left panel." },
       { title: "Paste the modified JSON", text: "Enter the modified JSON in the right panel." },
-      { title: "Click Compare", text: "The diff runs and highlights additions in green, deletions in red, and changed values in amber." },
+      { title: "Click Compare", text: "The diff runs and lists every difference as its own row with its path, such as $.user.age: + for added, - for removed, and ~ for changed, with a counts header on top." },
       { title: "Review changes", text: "Scroll through the highlighted diff to find every difference between the two documents." },
     ],
     faqs: [
@@ -232,6 +244,9 @@ const content: Record<string, JsonToolContent> = {
       { question: "What does the diff show for array changes?", answer: "Array items are compared positionally - item 0 is compared with item 0, item 1 with item 1, etc. If an item is inserted or removed, all subsequent items will show as changed. For semantic array diffs, key-based comparison on an object property may be more useful." },
       { question: "Can I diff API responses?", answer: "Yes. Copy a JSON response from your browser DevTools Network tab and paste it into each panel. This is a common use case for verifying that a code change did not unexpectedly alter an API response." },
       { question: "Is there a size limit?", answer: "The diff runs entirely in your browser. Large JSON files work but may take a few seconds for the diffing algorithm to complete. For very large files (over a few MB), consider diffing a representative sample first." },
+      { question: "What does the output look like?", answer: "A flat list of differences, one row per difference, each with its JSON path, such as $.user.age or $.tags[2]. Added rows are marked +, removed rows -, and changed rows ~ with the old value and the new value shown side by side. A counts header totals the added, removed, and changed rows. If the two documents are identical, the tool says so plainly instead of showing an empty list." },
+      { question: "What happens if one side is not valid JSON?", answer: "An error banner shows the parser's message and no diff is produced. Fix the JSON in that panel and the diff appears as soon as both sides parse." },
+      { question: "If a whole object is added, do I see one row or many?", answer: "One row. A key that exists on only one side is reported once, with the whole value shown, rather than one row per nested key. You see the added object as a single addition at its path." },
     ],
   },
 
