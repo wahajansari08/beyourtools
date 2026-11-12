@@ -23,7 +23,7 @@ export const batch4: BlogPost[] = [
 <p>You don't have to write schemas by hand. Paste a real JSON response or data sample into our <a href="/json-schema-generator">JSON Schema Generator</a> and it produces a draft-07 schema with correct types and required fields in seconds.</p>
 
 <h2>Validate data against a schema</h2>
-<p>Once you have a schema, use our <a href="/json-schema-validator">JSON Schema Validator</a> to check any JSON document against it. Every violation is reported with its exact path in the document, so you know precisely what needs to be fixed.</p>
+<p>Once you have a schema, use our <a href="/json-schema-validator">JSON Schema Validator</a> to check any JSON document against it. Every violation is reported with its exact path in the document, so you know precisely what needs to be fixed. Schema validation assumes the document already parses, so if the file itself is not valid JSON, fix the syntax first with our guide on <a href="/blog/fix-invalid-json-errors">how to fix invalid JSON errors</a>.</p>
 
 <h2>From schema to TypeScript</h2>
 <p>If you're working with TypeScript, our <a href="/json-to-typescript">JSON to TypeScript</a> tool generates matching interfaces from the same JSON sample, giving you type safety at compile time to complement the schema validation at runtime.</p>

@@ -256,7 +256,7 @@ const content: Record<string, JsonToolContent> = {
     howTo: [
       { title: "Paste your JSON", text: "Paste the JSON object or array you want to sort." },
       { title: "Choose sort direction", text: "Select ascending (A-Z) or descending (Z-A) key ordering." },
-      { title: "Click Sort", text: "All object keys in the document - including deeply nested ones - are sorted." },
+      { title: "See the sorted result", text: "The sorted JSON appears automatically as you type, with every nested object sorted too." },
       { title: "Copy the sorted JSON", text: "Copy the result to use in your project or version control." },
     ],
     faqs: [
@@ -264,6 +264,9 @@ const content: Record<string, JsonToolContent> = {
       { question: "Does sorting change the data?", answer: "No. JSON object keys are semantically unordered, so reordering them does not change what the JSON represents. All values remain associated with their correct keys." },
       { question: "Are arrays sorted?", answer: "Array items are not sorted - their order is meaningful and preserved. Only object keys (property names) are alphabetically reordered. If you need array items sorted, that requires a more specialised tool." },
       { question: "Does it sort nested objects too?", answer: "Yes. The sort is applied recursively throughout the entire document, including objects nested inside arrays or other objects." },
+      { question: "How are uppercase and lowercase keys ordered?", answer: "Letters are grouped together ignoring case, so a sorts before A, and both sort before b. In a test, {\"b\":1,\"A\":2,\"a\":3,\"Z\":4} sorted to a, A, b, Z. That is different from strict code-point order, where all capitals come first, so if you need that order, sort in code instead, for example with jq -S or Python json.dumps with sort_keys." },
+      { question: "Does sorting keep my original formatting?", answer: "No. The tool parses your JSON and prints the sorted result with two-space indentation, so your original line breaks and spacing are replaced. The data itself is unchanged, only the layout. If you need your exact formatting kept, sort the keys in your editor or with a script instead." },
+      { question: "What happens if my JSON is invalid?", answer: "The output stays empty and an error banner shows the parser's message, such as where the JSON broke. Fix the error in the input and the sorted result appears as soon as the JSON parses." },
     ],
   },
 
@@ -273,7 +276,7 @@ const content: Record<string, JsonToolContent> = {
     howTo: [
       { title: "Paste the base JSON", text: "Enter the first (base) JSON object in the left panel." },
       { title: "Paste the override JSON", text: "Enter the second JSON object whose values will take precedence on any key conflict." },
-      { title: "Click Merge", text: "The tool performs a deep merge and shows the combined result." },
+      { title: "See the merged result", text: "The merged JSON updates automatically as you type in either panel." },
       { title: "Copy the merged result", text: "Copy the merged JSON to use in your code or configuration." },
     ],
     faqs: [
@@ -281,6 +284,9 @@ const content: Record<string, JsonToolContent> = {
       { question: "What happens when both objects have the same key?", answer: "The second object's value wins. If both values are objects, they are recursively merged. If either value is a primitive, array, or null, the second value replaces the first." },
       { question: "How are arrays merged?", answer: "Arrays are replaced, not merged element-by-element. If both objects have the same key containing an array, the second object's array completely replaces the first. Array concatenation is not performed automatically." },
       { question: "Can I merge more than two objects?", answer: "The tool merges two objects at a time. To merge three or more objects, merge the first two, then paste the result as the base and merge with the third object." },
+      { question: "What happens if one side sets a value to null?", answer: "Null is treated as a real value, not as an instruction to delete the key. If the override sets a key to null, the merged result has null there, even if the base had an object. If the base has null and the override has an object, the object wins. To remove a key, delete it from the base before merging." },
+      { question: "Can I merge two JSON arrays?", answer: "No. Arrays are replaced, never joined: merging [1,2] with [3] gives [3], and the same applies to arrays under a shared key. If you need the items combined, join the arrays yourself first, or use jq -s add on the command line." },
+      { question: "Does merging with an empty object change anything?", answer: "No. Merging {\"a\":{\"x\":1}} with {\"a\":{}} leaves the base exactly as it was, because there is nothing new to add and no conflict to resolve. That makes it safe to merge a config that may be empty, for example a defaults file with no overrides yet." },
     ],
   },
 
@@ -296,26 +302,32 @@ const content: Record<string, JsonToolContent> = {
     faqs: [
       { question: "What does flattening JSON mean?", answer: 'Flattening converts nested JSON like {"a":{"b":{"c":1}}} into a flat object with dot-path keys like {"a.b.c":1}. Every value in the original, no matter how deeply nested, becomes a key at the top level with its full path as the key name.' },
       { question: "What is unflattening?", answer: "Unflattening is the reverse: it takes a flat object with dot-path keys and rebuilds the nested structure. It is the inverse operation of flattening." },
-      { question: "What separator is used in the flattened keys?", answer: "By default the tool uses a dot (.) as the separator, producing keys like user.address.city. Some variants use forward slashes or underscores. The separator can be configured in the tool options." },
+      { question: "What separator is used in the flattened keys?", answer: "The tool always uses a dot (.) as the separator, producing keys like user.address.city. There is no separator setting in this tool. If you need slashes or underscores, use the flat npm package, which lets you pick the separator, or rename the keys after flattening." },
       { question: "How are arrays handled during flattening?", answer: "Array indices become part of the path. For example, {\"items\":[{\"id\":1}]} flattens to {\"items.0.id\":1}. Unflattening correctly reconstructs arrays from numeric indices in the path." },
+      { question: "What happens to empty objects and arrays when flattening?", answer: "They are kept, but they have no leaf values to turn into paths. A nested empty object keeps its own path, so {\"a\":{}} flattens to {\"a\":{}}. An empty object or array at the top level becomes a single \"$\" key, so {} flattens to {\"$\":{}}." },
+      { question: "What happens to null values when flattening?", answer: "Null is kept as a leaf value, so {\"a\":null} flattens to {\"a\":null}. It is not dropped, and the tool does not try to look inside it. Unflattening restores it as null." },
+      { question: "Can I flatten JSON and get the exact original back?", answer: "Usually yes for ordinary data: flattening then unflattening restores nested objects and arrays, including array order. The exception is keys that already contain dots. {\"a.b\":1} and {\"a\":{\"b\":1}} flatten to the same thing, so unflattening turns both into the nested form. Keep your original JSON if your keys contain dots." },
     ],
   },
 
   "jsonpath-tester": {
-    tagline: "Run JSONPath expressions against any JSON document and see matching results highlighted in real time.",
+    tagline: "Run JSONPath expressions against any JSON document and see every match with its path, live as you type.",
     keywords: "JSONPath tester, JSONPath online, test JSONPath, JSONPath query, JSONPath expression, JSON query tool, JSONPath evaluator",
     howTo: [
       { title: "Paste your JSON", text: "Enter the JSON document you want to query in the input panel." },
       { title: "Type a JSONPath expression", text: "Enter a JSONPath expression in the query field, for example $.users[*].email or $.store.book[?(@.price < 10)]." },
-      { title: "See the results", text: "Matching nodes are shown in the results panel and highlighted in the source JSON." },
+      { title: "See the results", text: "Each match is listed in the results panel with its full path, such as $.store.books[0], above the matched value." },
       { title: "Refine your query", text: "Adjust the expression and results update instantly until you get the data you need." },
     ],
     faqs: [
       { question: "What is JSONPath?", answer: "JSONPath is a query language for JSON, analogous to XPath for XML. It lets you navigate and extract values from JSON using path expressions. It is widely used in APIs, testing tools, and configuration systems." },
-      { question: "What JSONPath syntax is supported?", answer: "This tool supports the standard JSONPath operators: $ (root), . (child), .. (recursive descent), * (wildcard), [n] (array index), [start:end] (slice), [?(expression)] (filter), and @ (current node in filter)." },
+      { question: "What JSONPath syntax is supported?", answer: "This tool uses its own small JSONPath engine, not a library such as jsonpath-plus, and it supports a subset: $ (root), . (child), .. (recursive descent), * (wildcard), [n] (array index, where a negative index counts from the end), ['key'] (quoted key), [start:end] (slice), [a,b] (union of indexes or keys), and filters [?(@.key == \"value\")], !=, > and <, plus an existence check [?(@.key)]. It does not support >=, <=, &&, ||, regular expressions, or function calls such as length()." },
       { question: "What does $..price return?", answer: "The .. operator is the recursive descent operator. $..price returns all values with the key 'price' anywhere in the document, regardless of depth." },
       { question: "Can I use filter expressions?", answer: 'Yes. Filter expressions use the [?(@.property operator value)] syntax. For example, $.books[?(@.price < 20)] returns all book objects where price is less than 20.' },
-      { question: "Are results shown as a JSON array?", answer: "Yes. The results panel shows matching values as a JSON array. If a single value matches, it appears as a one-element array. If no values match, an empty array is returned." },
+      { question: "Are results shown as a JSON array?", answer: "Not exactly. A single match is shown as the bare value, while two or more matches are shown as a JSON array of the matched values. Below the output, every match is also listed on its own with its full path, such as $.store.books[1]. If nothing matches, the panel says no matches were found." },
+      { question: "Why does my filter return no matches?", answer: "The usual causes are an operator this tool does not support, such as >=, <= or &&, which quietly match nothing instead of showing an error, or a filter on a single object instead of an array, since filters only run over array items. String values in filters also need double quotes: [?(@.title == \"B\")] works, single quotes do not. Check the filter against one of the built-in examples to narrow it down." },
+      { question: "How do I get the last item of an array?", answer: "Use a negative index: $.store.books[-1] returns the last book, and $.store.books[-1].title returns its title. Positive indexes count from the start, so [0] is the first item. Slices work the same way, for example $.store.books[0:2] returns the first two items." },
+      { question: "What happens if my expression is wrong?", answer: "Expressions must start with $, and anything else shows an error message instead of results. Invalid JSON shows the parser's error the same way. A valid expression that matches nothing is not an error: the panel simply says no matches were found." },
     ],
   },
 
@@ -705,15 +717,18 @@ const content: Record<string, JsonToolContent> = {
     keywords: "JSON Schema generator, generate JSON Schema, JSON to schema, infer JSON Schema, JSON Schema from JSON, JSON Schema creator",
     howTo: [
       { title: "Paste your JSON sample", text: "Paste a representative JSON object or array. The richer the sample, the more accurate the schema." },
-      { title: "Choose draft version", text: "Select JSON Schema draft (draft-07 is most widely supported)." },
-      { title: "Click Generate", text: "A JSON Schema is inferred from the structure and values of your sample." },
+      { title: "Make the sample representative", text: "Include every field your real data can have, including optional ones. Fields missing from the sample will not appear in the schema." },
+      { title: "See the schema", text: "The schema appears automatically as you type, inferred from the structure and values of your sample." },
       { title: "Copy or refine", text: "Copy the schema and add constraints (minLength, pattern, enum) not inferrable from a single sample." },
     ],
     faqs: [
       { question: "What is JSON Schema?", answer: "JSON Schema is a vocabulary that allows you to annotate and validate JSON documents. It describes the structure, required fields, data types, and constraints of a JSON document. It is widely used for API request/response validation and documentation." },
       { question: "How accurate is the generated schema?", answer: "The generator infers types correctly from the sample. It cannot infer constraints like minimum string length, allowed enum values, or regex patterns - those require manual addition. Use the generated schema as a starting point." },
-      { question: "What JSON Schema draft is supported?", answer: "The generator outputs draft-07 by default, which is the most widely supported version. Draft 2019-09 and 2020-12 options are also available. All three are structurally similar with incremental additions." },
-      { question: "Can I generate a schema from multiple JSON samples?", answer: "Paste multiple samples by wrapping them in an array. The generator will merge type information across all items to produce a schema that validates any of them." },
+      { question: "What JSON Schema draft is supported?", answer: "Only draft-07. Every schema this tool generates carries $schema http://json-schema.org/draft-07/schema#, and there is no draft selector. Draft-07 is the most widely supported version, so the schema works with most validators." },
+      { question: "Can I generate a schema from multiple JSON samples?", answer: "No, not by wrapping samples in an array. Only the first item is used: in a test, [{\"a\":1},{\"a\":\"x\"}] produced a schema saying a is an integer, ignoring the string in the second item, and a key missing from one sample still ended up required. To cover several shapes, generate one schema per shape and combine them by hand, then check each sample against the result with the JSON Schema Validator." },
+      { question: "Does the generator detect formats like email or dates?", answer: "No. A string such as ada@example.com becomes a plain {\"type\":\"string\"} with the value shown as an example, and a date string is treated the same way. No format keyword is ever added. If a field must be an email or a date-time, add \"format\":\"email\" or \"format\":\"date-time\" to that property yourself." },
+      { question: "Why is every field marked required?", answer: "The generator marks every key in your sample as required and sets additionalProperties to false, so a document with a missing or extra field would fail validation against the schema. That is only correct if every field is truly always present. Remove optional fields from the required list by hand, and change additionalProperties if your data can carry extra keys." },
+      { question: "What does the generator do with arrays of mixed types?", answer: "It merges the item schemas. An array such as [1,\"x\",true] produces items with an anyOf list covering integer, string and boolean, while an array of objects merges their properties and only keeps keys present in every item as required. An empty array has no items to learn from, so it becomes {\"type\":\"array\"} with no items schema at all." },
     ],
   },
 

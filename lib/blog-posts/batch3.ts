@@ -22,7 +22,7 @@ export const batch3: BlogPost[] = [
 <p>JSON replaced XML as the dominant web data format because it's more compact and easier to read. YAML is popular for configuration files because it supports comments and has cleaner syntax for deeply nested data, but JSON remains the default for APIs and browser storage.</p>
 
 <h2>Tools to work with JSON</h2>
-<p>Start with our <a href="/json-formatter">JSON Formatter</a> to make raw or minified JSON readable. Use the <a href="/json-validator">JSON Validator</a> to check whether JSON is well-formed. The <a href="/json-viewer">JSON Viewer</a> renders any JSON as a collapsible tree so you can explore its structure without getting lost in brackets.</p>
+<p>Start with our <a href="/json-formatter">JSON Formatter</a> to make raw or minified JSON readable. Use the <a href="/json-validator">JSON Validator</a> to check whether JSON is well-formed. If the validator reports an error, our guide on <a href="/blog/fix-invalid-json-errors">how to fix invalid JSON</a> walks through the seven errors that break a file and how to fix each one. The <a href="/json-viewer">JSON Viewer</a> renders any JSON as a collapsible tree so you can explore its structure without getting lost in brackets.</p>
 
 <h2>Converting JSON to other formats</h2>
 <p>Need your data as a spreadsheet? Use <a href="/json-to-csv">JSON to CSV</a>. Want it as a configuration file? Try <a href="/json-to-yaml">JSON to YAML</a>. Need to generate TypeScript types from a JSON sample? Use <a href="/json-to-typescript">JSON to TypeScript</a>. If you are choosing between formats for a spreadsheet handoff, our <a href="/blog/json-vs-csv-spreadsheets">JSON vs CSV guide</a> explains when to convert and what breaks.</p>
