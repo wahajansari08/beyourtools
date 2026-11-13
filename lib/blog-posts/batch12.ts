@@ -45,6 +45,7 @@ export const batch12: BlogPost[] = [
 
 <h2>The trap everyone falls into: percentage points vs percent</h2>
 <p>If interest rates move from 5% to 7%, that's a <strong>2 percentage point</strong> increase — but a <strong>40% increase</strong> in the rate itself ((7−5) ÷ 5 × 100). News headlines mix these up constantly. When someone says "up 20%", always ask: 20% of what?</p>
+<p>Interest rates have a second pair of confusing twins on top of this one: APR and APY. APR is what borrowing costs per year with fees included, APY is what saving earns per year with compounding included, and comparing the wrong one is a more expensive mistake than the percentage point mix up above. Our <a href="/blog/apr-vs-apy">APR vs APY guide</a> works through both formulas with real numbers, including a loan where the stated rate is 6% but the true APR is 11.74%.</p>
 <p>Related mistake: adding percentages that don't share a base. A 20% discount followed by another 20% discount is not 40% off — it's 36% off (0.8 × 0.8 = 0.64, so you pay 64%). Each discount applies to a smaller number.</p>
 
 <h2>When to just use the calculator</h2>
