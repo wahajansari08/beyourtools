@@ -212,7 +212,7 @@ export default async function VideoToolPage({ tool }: { tool: VideoTool }) {
           <div>
             <p className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>Does processing reduce the quality or resolution of my original video?</p>
             <p className="mt-1 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-              Trimming, cutting, and frame extraction keep your original video resolution and picture clarity. Our compressor tool lets you choose how much file size to shave off while keeping your picture sharp.
+              It depends on the tool. Trimming and cutting keep your original resolution, but the kept section is re-encoded to MP4, so it is not a bit-for-bit copy of the original. The compressor and converter change quality, and optionally resolution, by design.
             </p>
           </div>
           <div>
