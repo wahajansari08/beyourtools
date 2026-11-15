@@ -370,7 +370,7 @@ export default function VideoToolClient({ tool }: { tool: VideoTool }) {
         const result = await processVideo(upload!.file, tool.kind, {
           outputFormat: actualFormat,
           quality,
-          resolution,
+          resolution: tool.kind === "resize" ? "custom" : resolution,
           width,
           height,
           allowUpscale,
@@ -626,7 +626,7 @@ export default function VideoToolClient({ tool }: { tool: VideoTool }) {
 
             {tool.kind === "speed" && (
               <div className="space-y-3 rounded-lg border p-4 text-xs" style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-surface)", color: "var(--text-muted)" }}>
-                <p className="font-medium">Changing speed also changes pitch proportionally. Faster audio sounds higher-pitched, slower audio sounds lower-pitched.</p>
+                <p className="font-medium">The exported video keeps voices at their normal pitch: the speed change only alters timing, not pitch.</p>
                 <div className="flex flex-wrap gap-2">
                   {SPEEDS.map((item) => (
                     <Btn variant="toggle" size="sm" key={item} onClick={() => setSpeed(item)} selected={speed === item}>{item}x</Btn>

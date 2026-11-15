@@ -12,7 +12,7 @@ export const batch2: BlogPost[] = [
     category: "PDF",
     tags: ["PDF", "Productivity", "Documents", "Free Tools"],
     content: `<h2>Merging PDFs</h2>
-<p>When you have several related documents - a cover letter, a resume, and supporting certificates, for example - combining them into one file makes sharing easier. Our <a href="/pdf-tools/merge-pdf">PDF Merge</a> tool lets you drag in multiple PDFs, reorder them, and download a single combined file. Nothing is uploaded to a server.</p>
+<p>When you have several related documents - a cover letter, a resume, and supporting certificates, for example - combining them into one file makes sharing easier. Our <a href="/pdf-tools/merge-pdf">PDF Merge</a> tool lets you drag in multiple PDFs, reorder them, and download a single combined file. Nothing is uploaded to a server. If some of those documents are JPG photos rather than PDFs, our guide on <a href="/blog/merge-pdf-and-jpg-files">how to merge PDF and JPG files into one PDF</a> covers converting the photos first and getting the page order and page size right.</p>
 
 <h2>Splitting PDFs</h2>
 <p>Long documents are often more useful in smaller pieces. Our <a href="/pdf-tools/split-pdf">PDF Split</a> tool lets you define ranges like <code>1-5</code> or <code>6-10</code> and extract those pages as separate PDF files. You can also split into individual pages with a single click. For splitting by chapter rather than by arbitrary page count, see our guide on <a href="/blog/split-pdf-by-chapters-sections">how to split a PDF by chapters or sections</a>, which covers the front-matter page offset that trips up most chapter splits.</p>
