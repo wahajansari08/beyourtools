@@ -160,6 +160,7 @@ export const batch11: BlogPost[] = [
 <li>Only need one part? <a href="/mp3-cutter">Cut the MP3</a> to the exact segment.</li>
 <li>Combining several clips? <a href="/mp3-merger">Merge MP3s</a> into one file.</li>
 <li>Audio too quiet? Try the <a href="/mp3-volume-booster">volume booster</a>.</li>
+<li>Choosing a format for the video itself? Our guide on <a href="/blog/mp4-vs-webm-2026">MP4 versus WebM</a> explains which container to use, when WebM is actually smaller, and how to serve both with one video tag.</li>
 </ul>
 
 <section class="faq">
