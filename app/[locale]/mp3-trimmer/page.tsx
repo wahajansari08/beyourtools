@@ -34,9 +34,11 @@ export default function Mp3TrimmerPage() {
       ]}
       formats={["MP3"]}
       faqs={[
-        { question: "What is the difference between MP3 Trimmer and MP3 Cutter?", answer: "Both tools do the same job - select a region and export it. The Trimmer interface is optimised for precision trimming with exact timestamp inputs, while the Cutter is designed for quickly grabbing a section by dragging handles." },
+        { question: "What is the difference between MP3 Trimmer and MP3 Cutter?", answer: "There is no functional difference. Both tools use the same selection controls and the same trimming engine, so either page gives you the same result. Use whichever page you landed on." },
         { question: "Can I trim from the start only?", answer: "Yes - set the start slider to where you want the audio to begin and leave the end at the file's full duration." },
-        { question: "Will trimming affect audio quality?", answer: "Re-encoding to MP3 at 192 kbps causes minimal perceptible quality loss. If quality is critical, consider saving as WAV using the Audio Cutter tool." },
+        { question: "Will trimming affect audio quality?", answer: "No. Trimming copies the MP3 frames without re-encoding, so the audio stays bit-identical to the original at its original bitrate. There is no 192 kbps re-encode and no quality loss from trimming." },
+        { question: "How much smaller does the file get when I trim it?", answer: "The output size follows the length you keep, because the bitrate stays the same. For example, a 4 minute song at 128 kbps is about 3.8 MB, and trimming it to 1 minute leaves about 0.96 MB. Halving the length roughly halves the file size." },
+        { question: "Can I trim the start and the end off in one pass?", answer: "Yes, if the part you want to keep is one continuous stretch. Set the start where the good audio begins and the end where it finishes, and everything outside that range is dropped in a single run. To remove a section from the middle as well, trim once, then upload the result and trim again." },
       ]}
     >
       <Mp3TrimmerClient />

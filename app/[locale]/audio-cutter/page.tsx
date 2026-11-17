@@ -38,6 +38,9 @@ export default function AudioCutterPage() {
         { question: "What formats are supported?", answer: "MP3, WAV, FLAC, M4A/AAC, OGG, Opus and WebM. The output is in the same format as the input." },
         { question: "Can I cut to an exact millisecond?", answer: "The number inputs accept decimal values (e.g. 10.5 seconds). Sub-100ms accuracy depends on the audio codec keyframe spacing." },
         { question: "Is my audio file uploaded anywhere?", answer: "No. All processing happens locally in your browser. Your files never leave your device." },
+        { question: "Does cutting lower the quality of my audio?", answer: "No, not for MP3, M4A, OGG, FLAC, Opus or WebM files. The tool copies the frames inside your selection without decoding or re-encoding them, so the kept audio is bit-identical to the original. WAV files are the one exception: they are rewritten as 16-bit PCM, so a standard 16-bit WAV comes through unchanged." },
+        { question: "How exact is the cut point?", answer: "The cut lands on the nearest audio frame boundary, not on the exact millisecond. For MP3 that is within about 26 milliseconds of the time you set, and other formats have their own frame sizes. If you need a cut at an exact sample, use a desktop audio editor instead." },
+        { question: "Can I cut several clips from one file in a single run?", answer: "No. Each run exports one continuous region. To make a second clip, click Process another file, upload the same file again and set a new start and end. Your original file is never changed, so you can repeat this as often as you like." },
       ]}
     >
       <AudioCutterClient />
