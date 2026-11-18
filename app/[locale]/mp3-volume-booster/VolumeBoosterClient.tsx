@@ -49,7 +49,7 @@ export default function VolumeBoosterClient() {
             onChange={(e) => { setGain(Number(e.target.value)); setCustom(true); }}
             className="h-1.5 w-full cursor-pointer accent-amber-400" />
           <div className="flex justify-between text-[10px] mt-0.5" style={{ color: "var(--text-subtle)" }}>
-            <span>+5%</span><span>+200%</span>
+            <span>+5%</span><span>+300%</span>
           </div>
         </div>
 

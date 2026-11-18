@@ -76,7 +76,7 @@ export const batch9: BlogPost[] = [
 </ul>
 
 <h2>Where Acrobat is genuinely ahead</h2>
-<p>Adobe Acrobat Pro wins in situations requiring heavy editing: adding, editing, or reformatting text inline; creating fillable form fields from scratch; advanced optical character recognition on scanned documents; PDF/A archival compliance validation; and permanent redaction (black-box removal that cannot be reversed).</p>
+<p>Adobe Acrobat Pro wins in situations requiring heavy editing: adding, editing, or reformatting text inline; creating fillable form fields from scratch; advanced optical character recognition on scanned documents; PDF/A archival compliance validation; and permanent redaction (black-box removal that cannot be reversed). Converting a PDF into an editable Word document is another gap of the same kind: it needs layout reconstruction that browsers cannot do reliably, and our guide on <a href="/blog/convert-pdf-to-word-and-word-to-pdf">how to convert PDF to Word (and Word to PDF)</a> walks through the free methods that do work.</p>
 
 <h2>The privacy advantage of browser tools</h2>
 <p>When you process a PDF with a free browser tool like BeYourTools, your file never leaves your device. With Acrobat Online and many third-party tools, files are uploaded to a server. For sensitive legal, financial, or personal documents, the local processing approach is meaningfully safer.</p>

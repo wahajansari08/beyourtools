@@ -38,6 +38,9 @@ export default function AudioJoinerPage() {
         { question: "Can I mix different audio formats?", answer: "Yes. You can upload MP3, WAV, FLAC, M4A and OGG files in the same batch. All files are decoded and re-encoded to your chosen output format." },
         { question: "Does the order of files matter?", answer: "Yes. Files are joined in the order shown in the list. Use the ▲ / ▼ buttons to rearrange them before joining." },
         { question: "What is the difference between Audio Joiner and MP3 Merger?", answer: "The Audio Joiner supports multiple input formats and lets you choose the output format. The MP3 Merger is dedicated to MP3-only input and output." },
+        { question: "Which output format should I choose: MP3, WAV or OGG?", answer: "Pick MP3 for sharing and playback everywhere: it is encoded at 192 kbps, about 1.4 MB per minute. Pick WAV only if you need lossless quality for editing, since it is uncompressed: about 10.6 MB per minute, roughly 7 times the size of the MP3. Pick OGG for a smaller open format file at about 128 kbps, roughly 1 MB per minute." },
+        { question: "Can I join files recorded at different sample rates, or mix mono and stereo?", answer: "Yes. Every file is decoded first and then re-encoded to one uniform output, so a mono voice memo and a stereo music track join in the same file without failing. Files that are damaged or use an unusual codec can still fail even if the extension looks familiar." },
+        { question: "Is there a pause or a crossfade between the joined files?", answer: "No. Files are joined end to end with no gap and no crossfade. If you need a pause, add a short silent audio file between the clips before joining." },
       ]}
     >
       <AudioJoinerClient />

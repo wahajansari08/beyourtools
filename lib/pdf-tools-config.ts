@@ -92,7 +92,7 @@ export const pdfTools: PdfToolDef[] = [
   {
     slug: "pdf-to-word",
     name: "PDF to Word",
-    description: "Extract PDF content as a .docx document.",
+    description: "Converting a PDF to an editable Word document needs server-side layout reconstruction. Learn the free methods that work.",
     category: "Convert",
     engine: "limited",
     accept: ".pdf,application/pdf",
@@ -102,7 +102,7 @@ export const pdfTools: PdfToolDef[] = [
   {
     slug: "word-to-pdf",
     name: "Word to PDF",
-    description: "Convert a Word document (.docx) to PDF.",
+    description: "Converting Word to PDF needs OS-level document rendering. Learn the free methods that work.",
     category: "Convert",
     engine: "limited",
     accept: ".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document",
