@@ -40,6 +40,9 @@ export default function AudioRecorderPage() {
         { question: "Can I convert the recording to MP3?", answer: "Yes. After downloading, upload the file to the Audio Converter tool on this site to convert it to MP3 or any other format." },
         { question: "Will the microphone stay on after I stop?", answer: "No. The microphone stream is released as soon as you click Stop, cancel, or leave the page." },
         { question: "Does this work on mobile?", answer: "Yes, on modern iOS (Safari) and Android (Chrome) browsers. iOS requires Safari and HTTPS. The recorder uses the standard browser MediaRecorder API." },
+        { question: "Can I record directly to MP3?", answer: "No. The browser records in its own format: WebM with Opus audio in Chrome and Edge, OGG in Firefox, and MP4 in Safari. To get an MP3, download the recording and run it through the Audio Converter tool on this site, which converts it to MP3 or any other format." },
+        { question: "Is there a time limit?", answer: "No built-in time limit. The recording is held in your browser's memory until you download it, so a very long recording is limited by your device's available memory. For a voice memo or an interview that runs an hour or more, download it as soon as you stop, and do not close the tab before downloading." },
+        { question: "Does it record system audio or only the microphone?", answer: "Only the microphone. The tool asks for microphone access only, so it records your voice and the sounds in the room, not audio playing from your computer. To record a call or a video playing on your device, use a screen recorder or your operating system's audio routing instead." },
       ]}
     >
       <AudioRecorderClient />

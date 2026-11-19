@@ -35,7 +35,10 @@ export default function ChangeAudioSpeedPage() {
       ]}
       formats={["MP3", "WAV", "FLAC", "M4A", "OGG", "Opus", "AAC", "WebM"]}
       faqs={[
-        { question: "Does changing speed affect pitch?", answer: "Yes. Changing speed also changes pitch proportionally - faster audio sounds higher-pitched, slower audio sounds lower-pitched. Pitch-preserving time-stretching is not currently supported by this tool." },
+        { question: "Does changing speed affect pitch?", answer: "No. The tool uses FFmpeg's atempo filter, which stretches time without changing pitch, so a voice sped up to 1.5x still sounds like the same person, just faster. The chipmunk effect only happens with varispeed, where speed and pitch move together, and this tool does not do that." },
+        { question: "How much shorter is a 10-minute podcast at 1.5x?", answer: "6 minutes and 40 seconds. Divide the length by the speed: 10 minutes at 1.5x is 6 minutes 40 seconds, at 2x it is 5 minutes, and at 0.5x it is 20 minutes. The file size changes in the same proportion, because the export is re-encoded for the new, shorter duration." },
+        { question: "Does speeding up make the file smaller?", answer: "Yes, roughly in proportion to the speed. The export is an MP3 at 192 kbps, which is about 24 KB per second, so a 10 minute recording is about 14.4 MB. At 2x it becomes a 5 minute file of about 7.2 MB. Slowing down does the opposite: the same 10 minutes at 0.5x becomes 20 minutes and about 28.8 MB." },
+        { question: "Why does 0.25x sound strange?", answer: "Extreme stretches push the time-stretching further from the original, so the processing becomes audible as a fluttery or metallic quality, especially on music. Small changes such as 1.25x or 1.5x usually sound natural. If 0.25x sounds wrong, try 0.5x first and listen before going slower." },
         { question: "What is the maximum speed?", answer: "Up to 4×. Very high speeds may produce unnatural results depending on the source audio." },
         { question: "What is the difference between this and playback speed in the browser?", answer: "The browser audio player's speed control only changes playback in the browser - it does not create a new file. This tool permanently re-encodes the audio at the new tempo so you can download and use it anywhere." },
       ]}

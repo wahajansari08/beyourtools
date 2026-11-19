@@ -172,12 +172,17 @@ export const pdfTools: PdfToolDef[] = [
   {
     slug: "pdf-to-text",
     name: "PDF to Text",
-    description: "Extract all plain text from a PDF file.",
+    description: "Extract the plain text stored in a PDF file.",
     category: "Convert",
     engine: "pdf-lib",
     accept: ".pdf,application/pdf",
     inputLabel: "PDF File",
     icon: "📃",
+    faqs: [
+      { question: "Will it work on a scanned PDF?", answer: "No. A scanned PDF is a set of page images with no text layer, so there is nothing to extract, and the tool reports that no extractable text was found. Scanned pages need OCR first: upload the scan to Google Drive and open it with Google Docs, which reads the words out of the image for free on short files." },
+      { question: "Why does it say no extractable text was found when I can see words on the page?", answer: "The extractor reads plain text stored literally in the file. Most PDFs from Word, Chrome, and LibreOffice compress their page content, which this simple scan cannot read, so the tool reports no extractable text even though the words are visible in a viewer. For those files, use a full PDF parser such as pdftotext or a PDF.js based extractor, which decompresses the content first." },
+      { question: "Does it keep the formatting, tables, or page order?", answer: "No. The result is plain text lines in the order they are stored in the file, with no bold, headings, columns, or tables. Multi-column pages can come out interleaved, with lines from the left and right columns mixed together. If you need the layout, convert to Word instead; if you need the structure as data, try the PDF to JSON tool." },
+    ],
   },
   {
     slug: "pdf-to-json",
@@ -188,6 +193,11 @@ export const pdfTools: PdfToolDef[] = [
     accept: ".pdf,application/pdf",
     inputLabel: "PDF File",
     icon: "{ }",
+    faqs: [
+      { question: "What does the JSON contain?", answer: "One object with three parts: metadata (title, author, page count, and file size in bytes), a pages array with each page's number, width, height in points, and rotation, and the extracted text as a single string. The output is pretty printed with two-space indentation, ready to copy or download as a .json file." },
+      { question: "Why is the text field empty when the metadata and pages are there?", answer: "The text comes from the same plain-text scan as the PDF to Text tool, and it fails on the same files: most PDFs from Word, Chrome, and LibreOffice compress their page content, which the scan cannot read. The metadata and page sizes still come through, because those are read from the document structure, not from the page content." },
+      { question: "Does it split the text by page?", answer: "No. The text is one string for the whole document, not one entry per page. The pages array tells you each page's size and rotation, but not its words. If you need per-page text, use the PDF to Text tool and split the result yourself, or use a PDF.js based extractor that returns text per page." },
+    ],
   },
   {
     slug: "pdf-to-csv",

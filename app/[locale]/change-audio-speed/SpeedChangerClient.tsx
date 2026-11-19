@@ -39,11 +39,10 @@ export default function SpeedChangerClient() {
           </div>
         )}
 
-        {/* Pitch warning */}
+        {/* Pitch note */}
         <p className="rounded-lg border px-3 py-2.5 text-[11px] leading-relaxed"
           style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)", color: "var(--text-subtle)" }}>
-          ⚠️ Changing speed also changes pitch proportionally (faster = higher pitch, slower = lower pitch).
-          This tool does not perform pitch-preserving time-stretching.
+          Pitch stays the same at any speed. The tool stretches time without changing pitch, so voices keep their natural sound.
         </p>
       </div>
 

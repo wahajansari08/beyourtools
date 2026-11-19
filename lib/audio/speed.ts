@@ -4,8 +4,8 @@
  *
  * NOTE: FFmpeg's `atempo` filter accepts values in [0.5, 2.0].
  * For speeds outside this range we chain multiple atempo filters.
- * This also changes pitch proportionally (no pitch preservation).
- * This limitation is clearly communicated in the UI.
+ * atempo is a time-stretch filter: it changes tempo while keeping pitch unchanged.
+ * The UI says so.
  */
 
 import {
