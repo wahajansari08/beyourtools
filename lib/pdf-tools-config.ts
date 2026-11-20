@@ -112,22 +112,32 @@ export const pdfTools: PdfToolDef[] = [
   {
     slug: "pdf-to-excel",
     name: "PDF to Excel",
-    description: "Extract tables from a PDF into an Excel spreadsheet.",
+    description: "Extracting tables from a PDF needs layout analysis that browsers cannot run. Learn the free methods that work.",
     category: "Convert",
     engine: "limited",
     accept: ".pdf,application/pdf",
     inputLabel: "PDF File",
     icon: "📊",
+    faqs: [
+      { question: "Can I extract tables from a PDF here?", answer: "No. Pulling a table out of a PDF means detecting where each cell starts and ends, which needs layout analysis and a full server-side pipeline that cannot run in a browser. This page explains the limit and points to the free tools that do the job: Adobe Acrobat Online and iLovePDF both offer free PDF to Excel conversion. If you only need the words from the document, our PDF to Text tool extracts the plain text in your browser." },
+      { question: "What is the best free way to turn a PDF table into a spreadsheet?", answer: "Upload the PDF to Adobe Acrobat Online or iLovePDF PDF to Excel, both free with limits, and download the .xlsx file. Check the result cell by cell: merged cells, multi-line cells, and tables split across pages are the usual failure points. For a table you already have as text, our PDF to CSV tool gives one row per page with a text excerpt, which is enough for a quick inventory but not a real table." },
+      { question: "Why can a browser not do this when it can merge and split PDFs?", answer: "Merging and splitting copy whole pages, which a browser can do with a PDF library. Table extraction has to understand the layout: which lines are table borders, which words belong in which cell, and how a table continues across pages. That analysis needs a server-side pipeline with layout models, which is why every free PDF to Excel tool uploads the file." },
+    ],
   },
   {
     slug: "excel-to-pdf",
     name: "Excel to PDF",
-    description: "Convert an Excel spreadsheet (.xlsx) to PDF.",
+    description: "Converting Excel to PDF needs OS-level spreadsheet rendering. Learn the free methods that work.",
     category: "Convert",
     engine: "limited",
     accept: ".xls,.xlsx,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     inputLabel: "Excel File",
     icon: "📄",
+    faqs: [
+      { question: "Can I convert an Excel file to PDF here?", answer: "No. Turning a spreadsheet into a PDF means rendering it exactly as it would print, with column widths, page breaks, and formulas resolved, which needs a spreadsheet engine that browsers do not have. This page explains the limit and points to the free methods: Microsoft Excel with File, then Export, LibreOffice Calc with File, then Export as PDF, or Google Sheets with File, then Download, then PDF." },
+      { question: "Which free method keeps my formatting?", answer: "LibreOffice Calc is the most faithful free option: open the .xlsx file, check the print preview and page breaks, then choose File, then Export as PDF. It runs entirely offline and keeps most formatting, including frozen panes and print areas. Google Sheets is free and works in a browser, but it can shift column widths and page breaks on complex sheets, so check the preview before downloading." },
+      { question: "What if I only need the numbers, not a PDF?", answer: "Open the file in LibreOffice Calc or Google Sheets and save it as CSV, or copy the range you need into a new sheet. If the goal is sharing the data rather than the layout, CSV is smaller and opens everywhere. Our PDF to CSV tool works the other way round: it turns a PDF into a CSV file with one row per page." },
+    ],
   },
   {
     slug: "pdf-to-powerpoint",
@@ -158,16 +168,26 @@ export const pdfTools: PdfToolDef[] = [
     accept: ".pdf,application/pdf",
     inputLabel: "PDF File",
     icon: "🌐",
+    faqs: [
+      { question: "What does the HTML file look like?", answer: "A simple standalone page: the document title from the PDF metadata as the heading, a line saying how many pages the PDF has, and all the extracted text inside one preformatted block, in a Georgia serif font up to 800 pixels wide. There are no headings, images, links, or columns, because the tool only carries the plain text across, not the layout." },
+      { question: "Will it keep the formatting, tables, or images from my PDF?", answer: "No. The output is the extracted text only, with no bold, headings, tables, or images. Multi-column pages can come out interleaved, with lines from the left and right columns mixed together. If you need the layout, convert to Word instead; if you need the words with their structure, try the PDF to JSON tool." },
+      { question: "Why is the text block empty when my PDF clearly has words?", answer: "The extractor reads text stored literally in the file. Most PDFs from Word, Chrome, and LibreOffice compress their page content, which this simple scan cannot read, so the tool reports no extractable text even though the words are visible in a viewer. The title and page count still come through, because those are read from the document structure. For those files, use a full PDF parser such as pdftotext or a PDF.js based extractor, which decompresses the content first." },
+    ],
   },
   {
     slug: "html-to-pdf",
     name: "HTML to PDF",
-    description: "Convert an HTML snippet or file to a PDF document.",
+    description: "Convert an HTML snippet to a PDF document.",
     category: "Convert",
     engine: "jspdf",
     accept: ".html,.htm,text/html",
     inputLabel: "HTML File",
     icon: "📄",
+    faqs: [
+      { question: "What HTML can I convert?", answer: "Paste any HTML snippet into the editor, such as headings, paragraphs, lists, and tables, and the tool renders it the way a browser would, then saves it as an A4 PDF. The sample in the editor shows the format. Very heavy pages with large images or complex layout can render incompletely, because the renderer gives up after 5 seconds and saves what it has." },
+      { question: "What page size does the PDF use?", answer: "A4, with 10 mm margins on every side and a layout width of 794 pixels, which is the width of an A4 page at 96 dots per inch. Long content flows onto extra pages automatically. If your HTML is designed for a wider screen, it is scaled to fit the 794-pixel width, so wide tables and images shrink to fit." },
+      { question: "Can I upload an HTML file instead of pasting?", answer: "There is no file upload on this page. Open your .html file in a text editor, copy the contents, and paste them into the editor. The tool renders the pasted markup the same way, including style tags, and saves the result as document.pdf." },
+    ],
   },
   {
     slug: "pdf-to-text",
@@ -202,12 +222,17 @@ export const pdfTools: PdfToolDef[] = [
   {
     slug: "pdf-to-csv",
     name: "PDF to CSV",
-    description: "Extract text from each PDF page into a CSV file.",
+    description: "Turn a PDF into a CSV file with one row per page, listing each page's size, rotation, and a text excerpt.",
     category: "Convert",
     engine: "pdf-lib",
     accept: ".pdf,application/pdf",
     inputLabel: "PDF File",
     icon: "📊",
+    faqs: [
+      { question: "Does this tool extract tables from my PDF?", answer: "No. The CSV has one row per page with the page number, width and height in points, rotation, and a text excerpt, so it is a page inventory with text, not a table extractor. If you need the numbers from a table, use the PDF to Text tool to get the plain text first, or a server-side table extractor such as Adobe Acrobat Online or iLovePDF PDF to Excel, which detect cell boundaries." },
+      { question: "Is the text excerpt the actual text of that page?", answer: "Not always. The tool reads all the text out of the file first, then splits the lines evenly across the pages, so on a document where one page holds most of the words, the excerpts are assigned to the wrong pages. Treat the excerpt as a rough sample of the document, not as a per-page transcript. The page numbers, sizes, and rotations are exact, because those come from the document structure." },
+      { question: "Why does the text column say no extractable text was found when I can see words on the page?", answer: "The extractor reads text stored literally in the file. Most PDFs from Word, Chrome, and LibreOffice compress their page content, which this simple scan cannot read, so the tool reports no extractable text even though the words are visible in a viewer. The page sizes and rotations still come through. For those files, use a full PDF parser such as pdftotext or a PDF.js based extractor, which decompresses the content first." },
+    ],
   },
 
   // ── Edit & Organize ───────────────────────────────────────────────────────

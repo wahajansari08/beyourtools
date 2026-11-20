@@ -23,6 +23,9 @@ export const batch2: BlogPost[] = [
 <h2>Converting PDFs to images</h2>
 <p>Sometimes you need an image of a PDF page - for a thumbnail, a preview, or a presentation slide. Our <a href="/pdf-tools/pdf-to-jpg">PDF to JPG</a> and <a href="/pdf-tools/pdf-to-png">PDF to PNG</a> tools render each page at high resolution directly in your browser. Converting a PDF into an editable Word document is a different job, and our guide on <a href="/blog/convert-pdf-to-word-and-word-to-pdf">how to convert PDF to Word (and Word to PDF)</a> covers the free methods that work, including what to do with scanned pages.</p>
 
+<h2>Editing PDFs</h2>
+<p>Changing the text inside a PDF is a different job from merging or splitting it. Our <a href="/pdf-tools/pdf-editor">PDF Editor</a> lets you inspect every page of a document, but it does not rewrite existing text, and no browser tool can do that job reliably. Our guide on <a href="/blog/how-to-edit-a-pdf-for-free">how to edit a PDF for free</a> covers the free methods that do work, including Sejda for inline text edits, the Word and Google Docs round trip for full rewrites, and what to do with scanned pages.</p>
+
 <h2>Protecting PDFs</h2>
 <p>Before sharing sensitive documents, add password protection. Our <a href="/pdf-tools/protect-pdf">PDF Protect</a> tool encrypts the file so only people with the password can open it. The password is never transmitted anywhere.</p>
 
