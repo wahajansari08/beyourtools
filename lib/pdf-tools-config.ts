@@ -142,22 +142,32 @@ export const pdfTools: PdfToolDef[] = [
   {
     slug: "pdf-to-powerpoint",
     name: "PDF to PowerPoint",
-    description: "Convert a PDF into a PowerPoint presentation.",
+    description: "Turning a PDF into an editable PowerPoint deck needs layout reconstruction that browsers cannot run. Learn the free methods that work.",
     category: "Convert",
     engine: "limited",
     accept: ".pdf,application/pdf",
     inputLabel: "PDF File",
     icon: "📊",
+    faqs: [
+      { question: "Can I convert a PDF to PowerPoint here?", answer: "No. Turning a PDF into an editable deck means rebuilding each slide from the fixed positions on the page, including text boxes, images, and tables, which needs layout parsing that browsers cannot run reliably. This page explains the limit and points to the free methods: Adobe Acrobat Online PDF to PPT, or iLovePDF PDF to PowerPoint, both of which run the conversion on their servers." },
+      { question: "Which free method keeps my slides looking right?", answer: "Adobe Acrobat Online is the most faithful free option for a text PDF: upload the file, convert it, and check every slide before presenting, because fonts and table layouts can shift when the original font is not installed. iLovePDF is a solid alternative with the same check-first advice. Either way, keep the original PDF until you have proofread the deck, because no converter rebuilds a slide perfectly." },
+      { question: "What if I only need the words, not editable slides?", answer: "Use the PDF to Text tool on this site to pull the plain text out of the PDF, or PDF to JSON for the text with the document structure, both entirely in your browser. If you need the pages as pictures inside a deck, PDF to JPG or PDF to PNG turns each page into an image you can drop onto a slide, though the text in the image will not be editable." },
+    ],
   },
   {
     slug: "powerpoint-to-pdf",
     name: "PowerPoint to PDF",
-    description: "Convert a PowerPoint file (.pptx) to PDF.",
+    description: "Converting a PowerPoint deck to PDF needs OS-level rendering. Learn the free methods that work.",
     category: "Convert",
     engine: "limited",
     accept: ".ppt,.pptx,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation",
     inputLabel: "PowerPoint File",
     icon: "📄",
+    faqs: [
+      { question: "Can I convert a PowerPoint file to PDF here?", answer: "No. Turning a deck into a PDF means rendering it exactly as it would print, with fonts, slide sizes, and page breaks resolved, which needs a presentation engine that browsers do not have. This page explains the limit and points to the free methods: Microsoft PowerPoint with File, then Export, LibreOffice Impress with File, then Export as PDF, or Google Slides with File, then Download, then PDF." },
+      { question: "Which free method keeps my formatting?", answer: "LibreOffice Impress is the most faithful free option: open the .pptx file, check the slides and the print preview, then choose File, then Export as PDF. It runs entirely offline and keeps most formatting, including custom slide sizes. Google Slides is free and works in a browser, but it can shift fonts and spacing on complex decks, so check the preview before downloading. PowerPoint itself is exact if you have it." },
+      { question: "Do animations and transitions survive the conversion?", answer: "No. A PDF is a set of static pages, so animations, transitions, and embedded videos do not carry over in any converter. If the motion matters, export the deck as a video from PowerPoint instead, or keep the .pptx file for presenting and use the PDF only as a handout. Speaker notes export as a separate notes-pages layout in PowerPoint, not as part of the slides themselves." },
+    ],
   },
   {
     slug: "pdf-to-html",
@@ -393,12 +403,17 @@ export const pdfTools: PdfToolDef[] = [
   {
     slug: "pdf-ocr",
     name: "PDF OCR",
-    description: "Run OCR on scanned PDFs to extract text.",
+    description: "Reading text from a scanned PDF needs OCR, which browsers cannot run reliably. Learn the free methods that work.",
     category: "Extract & Analyze",
     engine: "limited",
     accept: ".pdf,application/pdf",
     inputLabel: "Scanned PDF",
     icon: "🔍",
+    faqs: [
+      { question: "Can I run OCR on a scanned PDF here?", answer: "No. Reading text out of a page image needs a machine-learning model such as Tesseract, which is too large to run reliably inside a browser page. This page explains the limit and points to the free methods: Google Docs through Google Drive, which runs OCR free on short files, Adobe Acrobat Online OCR, or the PDFgear desktop app, which includes OCR free." },
+      { question: "How do I tell if my PDF is a scan?", answer: "Open it and try to select a sentence with your cursor. If the text highlights and pastes cleanly, the PDF has a text layer and our PDF to Text tool can read it. If nothing highlights, or the whole page selects as one big image, it is a scan, and no text extractor will find words in it until OCR has read the page. Split a long scan into smaller pieces first, since free OCR routes have size caps." },
+      { question: "What can I do with a scanned PDF on this site instead?", answer: "The page tools work on scans because they do not need the text layer: Merge PDF combines files, Split PDF cuts a scan into ranges, Rotate PDF fixes sideways pages, and PDF Compressor shrinks the file for email. Only the text tools are affected. PDF to Text, PDF to JSON, and PDF to CSV read text stored in the file, so they report no extractable text on a scan even though the words are visible in a viewer." },
+    ],
   },
   {
     slug: "pdf-metadata-viewer",

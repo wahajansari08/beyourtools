@@ -2580,7 +2580,21 @@
   "qr:qr-code-generator": {
     "name": "QR Code Generator",
     "description": "Generate QR codes for URLs, text, WiFi, email, phone, vCard, and more.",
-    "category": "QR Tools"
+    "category": "QR Tools",
+    "faqs": [
+      {
+        "question": "What size should I download my QR code at?",
+        "answer": "For screen use, the default 256 px is enough, and the size slider runs from 128 px to 1024 px. For print, use the print-size PNG download at 1024 px or 2048 px: a code printed at 2 cm across needs about 236 px at 300 DPI, so 1024 px covers roughly 8.7 cm and 2048 px covers about 17.3 cm at print resolution. As a rule, print a code at least 2 cm across for close-range scanning, and make it about one tenth of the distance people will scan from."
+      },
+      {
+        "question": "Which error correction level should I choose?",
+        "answer": "The default level M recovers up to 15% of a damaged code and is the right choice for most uses. Level L recovers 7% and makes the smallest, cleanest code, level Q recovers 25%, and level H recovers 30%. Pick H for anything that will be printed, handled, or displayed outdoors, and for any code that will carry a logo. A higher level makes the code denser, so a very long link at level H can become hard to scan at a small size: shorten the link or print it larger."
+      },
+      {
+        "question": "Can I change where a QR code points after I print it?",
+        "answer": "No. A QR code is static: the destination is baked into the pattern when it is generated, and the code cannot be edited afterwards. If you may need to change the destination later, point the code at a short link you control, such as a page on your own site, and change where that link redirects. Otherwise, generate a new code and reprint it. The same rule applies to Wi-Fi codes, which contain the password in plain text, so a changed password needs a new code too."
+      }
+    ]
   },
   "qr:qr-code-generator-with-logo": {
     "name": "QR Code Generator with Logo",

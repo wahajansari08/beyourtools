@@ -108,7 +108,7 @@ export default async function QRCodeGeneratorPage() {
             {[
               ["8 content types", "URL, Text, Email, Phone, SMS, WiFi, vCard, Location"],
               ["Custom colors", "Set foreground and background colors freely"],
-              ["Adjustable size", "128 px to 512 px output"],
+              ["Adjustable size", "128 px to 1024 px output"],
               ["Error correction", "L / M / Q / H levels"],
               ["PNG & SVG download", "Pixel-perfect PNG and infinitely scalable SVG"],
               ["Print-size PNG", "Download at 1024 px or 2048 px for posters and packaging"],

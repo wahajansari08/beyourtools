@@ -64,6 +64,21 @@ const FAQS = [
     answer:
       "Yes. Your uploaded logo is read locally using the browser FileReader API and composited onto a canvas in your browser tab. It is never sent to BeYourTools servers or any third-party service. SVG uploads are sanitized to remove scripts before use.",
   },
+  {
+    question: "My QR code does not scan after adding a logo. What do I check?",
+    answer:
+      "Check three things, in this order. First, the logo size: keep it under 20 to 25 percent of the code, and the tool warns you when it passes 30 percent, because even level H error correction only recovers 30 percent of a damaged code. Second, the contrast: a dark logo on a light code scans, a light logo on a dark code often does not, and low-contrast colour pairs fail on many phone cameras. Third, the margin: keep the quiet zone at 4 modules or more, because a code with no white border around it is hard for a camera to find. Test the finished code with a phone camera before you print it.",
+  },
+  {
+    question: "Can I use my own photo as the logo?",
+    answer:
+      "Yes. Choose Upload logo and pick a PNG, JPG, WebP, or SVG image under 2 MB. A simple shape with clean edges works best: a busy photo with fine detail turns to mush at logo size, and a logo with a transparent background blends into the code better than one with a solid white box. The file is read locally in your browser and never uploaded, and SVG uploads are sanitized to remove scripts before use.",
+  },
+  {
+    question: "What file format should I download for print?",
+    answer:
+      "SVG is the best choice for print, because it is a vector file that scales to any size without getting blurry: a poster and a business card use the same file. If the printer needs a raster image, download the PNG at the largest size the tool offers, and avoid JPG for print, because it is a lossy format that softens the sharp edges a scanner needs to read. Whatever format you pick, print a test copy first and scan it with a phone camera at the distance people will actually use.",
+  },
 ];
 
 
