@@ -64,6 +64,21 @@ const FAQS = [
     answer:
       "Yes. Your uploaded logo is read locally using the browser FileReader API and drawn onto a canvas element in your browser tab. It is never sent to BeYourTools servers or any third-party service.",
   },
+  {
+    question: "Does the tool calculate the check digit for me?",
+    answer:
+      "Yes. Enter 12 digits for EAN-13, 7 digits for EAN-8, or 11 digits for UPC-A and the check digit is added automatically. Enter the full number including the check digit and it is used as given. Code 128 and Code 39 have no retail check digit to calculate: Code 128 computes its own internal checksum automatically, so you just type the text.",
+  },
+  {
+    question: "How big can the logo be?",
+    answer:
+      "The logo size slider runs from 5 to 40 percent of the barcode width, and the tool warns you when the logo passes 20 percent, because larger logos can stop the barcode scanning reliably. Keep the logo small and centred, leave the quiet zone clear on both sides, and test-scan a printed sample before printing a batch.",
+  },
+  {
+    question: "Can I print a barcode with a logo on product packaging?",
+    answer:
+      "You can print it, but check two things first. A valid check digit only proves the number is well formed: a real retail barcode needs a number allocated by GS1 or your retailer, so a number made up on this page is fine for internal labels and drafts, not for a product on a shop shelf. And always test-scan a printed sample at the size you will use, because a logo over the bars can fail on a till scanner even when it scans fine on a phone camera.",
+  },
 ];
 
 

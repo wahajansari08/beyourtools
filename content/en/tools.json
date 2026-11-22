@@ -2604,22 +2604,78 @@
   "qr:qr-code-scanner": {
     "name": "QR Code Scanner",
     "description": "Scan QR codes using your device camera in real time.",
-    "category": "QR Tools"
+    "category": "QR Tools",
+    "faqs": [
+     {
+      "question": "Do I need to install anything to scan a QR code?",
+      "answer": "No. The scanner runs in your browser: click Start Camera Scan and allow camera access when prompted. Camera access needs a secure (HTTPS) connection, and the video frames are processed locally on your device and never sent to a server. It works on phones and on desktops with a webcam."
+     },
+     {
+      "question": "What if my device has no camera?",
+      "answer": "Use the upload option on the same page: upload a photo or screenshot of the QR code and it is decoded the same way, without the camera. On a phone with more than one camera, the rear camera is used by default and you can switch cameras from the dropdown while scanning."
+     },
+     {
+      "question": "What happens after a code is scanned?",
+      "answer": "Scanning stops as soon as a code is read, and the decoded text appears in a result box with Copy and, when the content is a web link, Open URL buttons. Tap Scan again to read another code. The scanner reads one code at a time, so point it at a single code and keep the whole code inside the frame."
+     }
+    ]
   },
   "qr:qr-code-decoder": {
     "name": "QR Code Decoder",
     "description": "Upload a QR code image and decode its content instantly.",
-    "category": "QR Tools"
+    "category": "QR Tools",
+    "faqs": [
+     {
+      "question": "Which image formats can I upload?",
+      "answer": "Any common image format: PNG, JPG, WebP and the rest. Drag and drop the file onto the upload area or click to browse, and the decoder reads the code automatically. The image is processed locally in your browser and never uploaded to a server."
+     },
+     {
+      "question": "Why does it say no QR code was found?",
+      "answer": "The code has to be fully in frame, in focus, and large enough to read. Crop the image closer to the code, use a sharper screenshot, and check the code is not cut off at the edges or washed out by glare. A code printed very small in a photo, or photographed at a steep angle, often fails where a straight, close crop succeeds."
+     },
+     {
+      "question": "Can it decode more than one QR code from an image?",
+      "answer": "No. The decoder reads one code per image and returns its content. If a photo contains several codes, crop the image to one code at a time and upload each crop separately. The result box shows the decoded text with Copy and, when it is a web link, Open URL buttons."
+     }
+    ]
   },
   "qr:wifi-qr-code-generator": {
     "name": "WiFi QR Code Generator",
     "description": "Create a QR code your guests can scan to join your WiFi network.",
-    "category": "QR Tools"
+    "category": "QR Tools",
+    "faqs": [
+     {
+      "question": "Is my Wi-Fi password safe in a QR code?",
+      "answer": "No, not from anyone who can scan it: the password is stored in the code in plain text, so anyone holding the printed code can read it and join your network. Treat a printed Wi-Fi code like a password written on paper, and generate a new code whenever you change the password. The code itself is generated locally in your browser and is never uploaded."
+     },
+     {
+      "question": "What does the Hidden network checkbox do?",
+      "answer": "It marks the network as hidden, so the phone knows the name is not broadcast and still tries to connect. Tick it only if your router hides the network name (SSID). For a normal visible network, leave it off. You still need the exact network name either way: the code cannot find a network whose name is typed wrong."
+     },
+     {
+      "question": "Which phones can scan a Wi-Fi QR code?",
+      "answer": "The iPhone camera app (iOS 11 and later) and most Android cameras show a join prompt when pointed at the code: tap it and the phone joins without typing the password. For an open network, choose None (open network) and no password field is needed. Print the code at least 2 cm across for close-range scanning, and larger if guests will scan it from across a room."
+     }
+    ]
   },
   "qr:barcode-generator": {
     "name": "Barcode Generator",
     "description": "Generate barcodes in CODE128, CODE39, EAN-13, UPC, ITF-14 and more.",
-    "category": "Barcode Tools"
+    "category": "Barcode Tools",
+    "faqs": [
+     {
+      "question": "Do I need to work out the check digit myself?",
+      "answer": "No. Enter 12 digits for EAN-13, 7 for EAN-8, or 11 for UPC-A and the check digit is added automatically. Enter the full number instead and the tool checks it: a wrong check digit is rejected with an error. Code 128 is different: its modulo-103 check digit is always computed by the encoder, so you just type the text. The dedicated EAN and UPC generators offer the same auto check-digit behaviour with a simpler form."
+     },
+     {
+      "question": "Should I download the barcode as PNG or SVG?",
+      "answer": "Use SVG for print: it is vector, so it stays crisp at any size, from a small label to a shipping carton. Use PNG for documents, emails, and web pages, where a raster image is easier to place. Both downloads come from the same render, so they scan identically."
+     },
+     {
+      "question": "How large should I print a barcode?",
+      "answer": "Print at 100 percent scale and test-scan a sample before printing a batch. Keep the quiet zone, the blank margin on both sides, clear: the margin slider runs from 0 to 40 px with 10 px as the default, and bar width runs from 1 to 4 px. Narrow bars print smaller but need a sharper printer and a closer scan, so use wider bars for warehouse labels and smaller ones only for clean retail printing."
+     }
+    ]
   },
   "qr:barcode-generator-with-logo": {
     "name": "Barcode Generator with Logo",

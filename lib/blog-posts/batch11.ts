@@ -159,6 +159,7 @@ export const batch11: BlogPost[] = [
 <li>Long lecture with silence? Run the MP3 through our <a href="/remove-silence-from-audio">silence remover</a> to tighten it up.</li>
 <li>Only need one part? <a href="/mp3-cutter">Cut the MP3</a> to the exact segment.</li>
 <li>Combining several clips? <a href="/mp3-merger">Merge MP3s</a> into one file.</li>
+<li>Audio too large to share? Our guide on <a href="/blog/compress-audio-without-losing-quality">compressing audio without losing quality</a> explains which bitrate to pick, when FLAC is the right answer, and how to fit a podcast episode under an email limit.</li>
 <li>Audio too quiet? Try the <a href="/mp3-volume-booster">volume booster</a>.</li>
 <li>Choosing a format for the video itself? Our guide on <a href="/blog/mp4-vs-webm-2026">MP4 versus WebM</a> explains which container to use, when WebM is actually smaller, and how to serve both with one video tag.</li>
 </ul>
