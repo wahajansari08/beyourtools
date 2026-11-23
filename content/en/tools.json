@@ -2685,27 +2685,97 @@
   "qr:barcode-scanner": {
     "name": "Barcode Scanner",
     "description": "Scan barcodes live using your device camera.",
-    "category": "Barcode Tools"
+    "category": "Barcode Tools",
+    "faqs": [
+      {
+        "question": "Which barcode formats can the scanner read?",
+        "answer": "The scanner detects the format automatically and reads Code 128, Code 39, EAN-13, EAN-8, UPC-A, ITF, and more, using the ZXing reader in your browser. The result box shows both the decoded value and the format it found, so you do not need to pick a format first."
+      },
+      {
+        "question": "Why does the scanner ask for camera permission, and does it need HTTPS?",
+        "answer": "Camera access is a browser permission, and browsers only grant it on secure pages, so the scanner needs HTTPS and your permission before the camera starts. If you deny permission, or the device has no camera, use the image upload on the same page instead: it decodes a barcode photo without the camera."
+      },
+      {
+        "question": "The camera will not read my barcode. What should I try?",
+        "answer": "Hold the code steady and fill the frame with it, in good light, with the whole barcode visible and no glare. The scanner starts with the rear camera on phones and offers a camera switcher when the device has more than one camera. If it still will not read, take a sharp close photo and upload it: the upload route decodes the same image file the camera sees."
+      }
+    ]
   },
   "qr:barcode-decoder": {
     "name": "Barcode Decoder",
     "description": "Upload a barcode image and decode its value automatically.",
-    "category": "Barcode Tools"
+    "category": "Barcode Tools",
+    "faqs": [
+      {
+        "question": "Which image files can I upload to decode a barcode?",
+        "answer": "Any image file: PNG, JPG, and WebP all work. Drop the file onto the page or click to browse, and the decoder reads it locally in your browser. Only one file is decoded at a time, and the result shows the value and the barcode format."
+      },
+      {
+        "question": "What does No barcode detected mean?",
+        "answer": "The decoder could not find a readable barcode in the image. The usual causes are a code that is cut off, too small, blurry, or washed out by glare. Crop closer to the barcode, use a sharper photo, and check the whole code is in the frame, then try again."
+      },
+      {
+        "question": "Can the decoder read more than one barcode from one image?",
+        "answer": "No. It returns a single result: the first barcode it can read, with its value and format. If an image holds several barcodes, crop the image to one code at a time and decode each separately."
+      }
+    ]
   },
   "qr:upc-barcode-generator": {
     "name": "UPC Barcode Generator",
     "description": "Generate valid UPC-A barcodes with automatic check digit calculation.",
-    "category": "Barcode Tools"
+    "category": "Barcode Tools",
+    "faqs": [
+      {
+        "question": "Do I enter 11 or 12 digits for a UPC-A barcode?",
+        "answer": "Enter 11 digits with Auto-calculate check digit on, which is the default, and the tool adds the 12th check digit for you. Uncheck it to enter a full 12 digit code instead, and the tool checks the digit: if it is wrong, the error names the digit it should be."
+      },
+      {
+        "question": "How is the UPC check digit worked out?",
+        "answer": "Add the digits in the odd positions and multiply by 3, add the digits in the even positions, add the two totals, and the check digit is what brings the total up to the next multiple of 10. For example, 03600029145 gives a check digit of 2, so the full code is 036000291452, shown as 0 36000 29145 2."
+      },
+      {
+        "question": "Is a barcode made here a real retail product code?",
+        "answer": "No. A correct check digit only proves the number is well formed, it does not register the product. Real UPC numbers are allocated by GS1, so a code you invent here will scan as a valid barcode but will not match any product in a store system. Always test scan the printed barcode before you use it."
+      }
+    ]
   },
   "qr:ean-barcode-generator": {
     "name": "EAN Barcode Generator",
     "description": "Generate EAN-13 (and EAN-8) barcodes with correct check digit validation.",
-    "category": "Barcode Tools"
+    "category": "Barcode Tools",
+    "faqs": [
+      {
+        "question": "What is the difference between EAN-13 and EAN-8?",
+        "answer": "EAN-13 has 13 digits and is the standard retail barcode outside North America. EAN-8 has 8 digits and is used for small packages where a full EAN-13 will not fit. Pick the type with the toggle: EAN-13 takes 12 digits plus an automatic check digit, EAN-8 takes 7 digits plus an automatic check digit."
+      },
+      {
+        "question": "How is the EAN check digit worked out?",
+        "answer": "For EAN-13, add the digits in the odd positions, add the digits in the even positions multiplied by 3, and the check digit is what brings the total up to the next multiple of 10. For example, 590123412345 gives a check digit of 7, so the full code is 5901234123457. For EAN-8 the weighting is reversed, and 9638507 gives a check digit of 4, so the full code is 96385074."
+      },
+      {
+        "question": "Can I use any digits for an EAN barcode?",
+        "answer": "Yes, the tool only checks the length and the check digit, so any digits work. The first digits of a real EAN-13 are a country prefix, for example 590 for Poland, but the tool does not check the prefix, and a code made here is not a registered product code. Download the result as PNG or SVG, or copy the full number."
+      }
+    ]
   },
   "qr:code-128-barcode-generator": {
     "name": "Code 128 Generator",
     "description": "Generate Code 128 barcodes supporting full ASCII text.",
-    "category": "Barcode Tools"
+    "category": "Barcode Tools",
+    "faqs": [
+      {
+        "question": "Which characters can a Code 128 barcode hold?",
+        "answer": "Printable ASCII characters, from space through tilde: letters, digits, punctuation, and spaces. The tool rejects anything outside that range and names the character, so control characters and non-ASCII letters will not encode. There is no limit on the length of the value."
+      },
+      {
+        "question": "What do the size controls change?",
+        "answer": "Bar width runs from 1 to 4 pixels, height from 40 to 200 pixels, and margin from 0 to 40 pixels, and a toggle shows or hides the value text below the bars. For a long value, keep the bar width low so the barcode stays a sensible width, and leave a margin of at least a few pixels so scanners can find the quiet zone."
+      },
+      {
+        "question": "Should I download the barcode as PNG or SVG?",
+        "answer": "Download SVG for print, because it is a vector and stays sharp at any size, and PNG for documents and web pages. Both come from the same render, and the encoder adds the Code 128 modulo-103 check character automatically, so the printed barcode is complete either way."
+      }
+    ]
   },
   "finance:profit-margin-calculator": {
     "name": "Profit Margin Calculator",
