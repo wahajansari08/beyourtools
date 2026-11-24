@@ -1128,6 +1128,206 @@ export const PAIR_DEEP_DIVES: Record<string, PairDeepDive> = {
       },
     ],
   },
+  "gif-to-png": {
+    exampleHeading: "Worked example: a 480 x 270 GIF still from GIF to PNG",
+    example: [
+      "Take a typical 480 x 270 GIF still, the kind used for a reaction image or a small icon. GIF stores at most 256 colours per frame, and the converter decodes the GIF in the browser, which keeps only the first frame, so an animated GIF becomes one still image. A flat-colour GIF still of this size typically weighs roughly 20 to 60 KB. As PNG, the same still typically lands in a similar range, often a little smaller for flat graphics because PNG compression is more efficient, and the PNG keeps the exact pixels with no further loss. For a photo-like GIF the PNG can be larger, because the GIF's palette already threw away colour detail and PNG stores every pixel losslessly. These are typical figures, not measurements.",
+      "The gain is not size but fidelity going forward. The PNG can be edited and re-saved without another round of loss, and it opens in every editor, while the GIF's 256-colour palette is a dead end for editing. If the still will be edited again, the PNG is the better master to keep.",
+    ],
+    edgeCases: [
+      {
+        title: "Animation is lost; only the first frame survives",
+        body: "The browser decodes a GIF as a single still image, so a 4-second animation at 10 frames a second, 40 frames in total, becomes one frame. If the motion matters, keep the GIF.",
+      },
+      {
+        title: "No colours are recovered",
+        body: "A GIF holds at most 256 colours per frame, and converting to PNG cannot put back the colours the palette dropped. A photo GIF keeps its banding and its flat gradients exactly as they were.",
+      },
+      {
+        title: "Transparency stays, but hard edges stay hard",
+        body: "GIF transparency is on or off per pixel, so the PNG keeps the transparent pixels transparent, but a hard GIF edge stays hard. No new semi-transparency is created, so a feathered edge will not smooth out in the conversion.",
+      },
+    ],
+    betterChoice:
+      "If the still has no transparency and you want the smallest file, convert to JPG instead: at the default quality of 92 it is typically much smaller than either the GIF or the PNG for photo-like images. If the animation matters, keep the GIF, because no conversion on this site preserves it.",
+    faqs: [
+      {
+        question: "Will an animated GIF keep animating after converting to PNG?",
+        answer:
+          "No. PNG has no animation, outside the rarely used APNG variant, and the converter keeps only the first frame of the GIF. If you need the motion, keep the GIF, or pull the frames out with a dedicated GIF tool.",
+      },
+      {
+        question: "Does converting a GIF to PNG improve the quality?",
+        answer:
+          "No. If the GIF used fewer than 256 colours, the pixels are identical, and if the palette already dropped colours, the PNG cannot recover them. What the PNG gives you is a lossless master that will not degrade further when you edit and re-save it.",
+      },
+      {
+        question: "Is the PNG smaller than the GIF?",
+        answer:
+          "For flat graphics, logos, and screenshots, usually yes or about the same, because PNG compression is more efficient than GIF's. For photo-like GIFs the PNG can be larger. Either way the difference is small next to the compatibility gain: PNG opens in every editor.",
+      },
+    ],
+  },
+  "bmp-to-jpg": {
+    exampleHeading: "Worked example: a 4000 x 3000 BMP photo from BMP to JPG",
+    example: [
+      "A 24-bit BMP stores 3 bytes for every pixel and almost no compression, so a 4000 x 3000 photo is 36.0 MB before the header is even counted. Converted to JPG at the tool's default quality of 92, the same photo typically lands around 2 to 4 MB, roughly a tenth of the BMP, with no visible difference at normal viewing sizes. Drop the quality to 80 and it often falls below 2 MB. These are typical figures for a detailed photo, not measurements.",
+      "The saving scales with size: a 1920 x 1080 BMP is 6.22 MB and typically becomes roughly 400 to 800 KB as JPG. That is why BMPs from old Windows software, scanners, and industrial cameras are worth converting before emailing or uploading. The BMP is ten times the file for the same picture.",
+    ],
+    edgeCases: [
+      {
+        title: "JPG is lossy, so keep a master",
+        body: "Every JPG save discards a little detail, and re-saving the JPG again loses a little more. Keep the BMP, or convert to PNG once, as the master if you plan to edit the image again.",
+      },
+      {
+        title: "BMP has no transparency to lose",
+        body: "BMP stores no alpha channel, so nothing about transparency changes in the conversion. The only choice that matters is the JPG quality.",
+      },
+      {
+        title: "Unusual BMPs may not decode",
+        body: "The browser decodes the common 24-bit BMP flavour. Rare variants, such as 32-bit or RLE-compressed BMPs from old software, may fail to load, in which case the tool reports that the image could not be decoded.",
+      },
+    ],
+    betterChoice:
+      "If the image is a screenshot, logo, or anything with text and sharp edges, convert to PNG instead: JPG softens hard edges, while PNG keeps them exact. JPG is the right target for photographs and other smooth images.",
+    faqs: [
+      {
+        question: "Why is my BMP file so big?",
+        answer:
+          "A 24-bit BMP stores 3 bytes per pixel with almost no compression: a 4000 x 3000 photo is 36 MB, and a 1920 x 1080 screenshot is 6.22 MB. JPG compresses the same picture to roughly a tenth of that size.",
+      },
+      {
+        question: "Will the JPG look worse than the BMP?",
+        answer:
+          "At the default quality of 92, no visible difference for photographs at normal viewing sizes. Text and thin lines soften first, so keep quality at 90 or above for screenshots, or use PNG for anything with text.",
+      },
+      {
+        question: "What quality should I pick?",
+        answer:
+          "92, the default, for sharing and archiving; 80 when the file must fit an email or upload limit; 90 or above when the image has text. Below 80, artefacts start to show in skies and gradients.",
+      },
+    ],
+  },
+  "png-to-avif": {
+    exampleHeading: "Worked example: a 4000 x 3000 photo from PNG to AVIF",
+    example: [
+      "Take a 4000 x 3000 phone photo saved as PNG at around 10 to 14 MB. As JPG at the tool's default quality of 92 it typically lands around 2 to 4 MB. As AVIF at the same quality setting it typically lands around 1 to 2 MB, roughly half the JPG and roughly a tenth of the PNG, because AVIF compresses about 40 to 60 percent smaller than JPEG at matched quality. These are typical figures, not measurements: a noisy low light shot compresses worse, and a simple graphic compresses far better.",
+      "AVIF also keeps the PNG's transparency, so a logo or icon with a see-through background converts without the flattening that JPG forces. That combination, smaller than JPG and transparent like PNG, is the reason to pick AVIF for web images.",
+    ],
+    edgeCases: [
+      {
+        title: "AVIF encoding is slow",
+        body: "AVIF compression is compute heavy, roughly 5 to 20 times slower to encode than WebP. A large photo can take several seconds in the browser, which is normal, not a failure.",
+      },
+      {
+        title: "Older browsers and apps may not open AVIF",
+        body: "AVIF support is broad in current browsers but not universal in older software. If the file must open anywhere, WebP or JPG is the safer target.",
+      },
+      {
+        title: "If your browser cannot encode AVIF, you get a WebP",
+        body: "The tool tries AVIF first and falls back to WebP when the browser has no AVIF encoder, and it tells you in a warning. Check the downloaded file's extension before you share it.",
+      },
+    ],
+    betterChoice:
+      "If the image must open in older editors or upload forms that reject AVIF, convert to WebP instead: it is the same idea, smaller than JPG with transparency kept, and it opens almost everywhere. For maximum compatibility of all, JPG is still the safe choice.",
+    faqs: [
+      {
+        question: "Is AVIF smaller than WebP?",
+        answer:
+          "Typically yes, by about a fifth at matched quality. In matched-quality benchmarks AVIF runs about 37 percent smaller than JPEG while WebP runs about 22 percent smaller, so AVIF lands roughly 19 percent smaller than WebP. The gap is worth it for web images and not worth it when compatibility matters.",
+      },
+      {
+        question: "Why does the conversion take so long?",
+        answer:
+          "AVIF encoding is far more compute heavy than JPG or WebP, so a large photo can take several seconds in the browser. The wait is the encoder working, and the file is smaller for it.",
+      },
+      {
+        question: "Does AVIF keep transparency?",
+        answer:
+          "Yes. AVIF supports an alpha channel, so a transparent PNG stays transparent after conversion, unlike JPG, which flattens transparency onto a solid colour.",
+      },
+    ],
+  },
+  "jpg-to-avif": {
+    exampleHeading: "Worked example: a 3 MB JPG photo from JPG to AVIF",
+    example: [
+      "Take a typical 4000 x 3000 phone photo saved as JPG at about 3 MB. Converted to AVIF at the same quality setting it typically lands around 1.2 to 1.8 MB, roughly 40 to 60 percent smaller, because AVIF compresses far more efficiently than JPEG at matched quality. These are typical figures, not measurements: a noisy photo saves less, a clean studio shot saves more.",
+      "The saving comes with a warning. No quality is gained: the AVIF is a re-encode of the JPG's pixels, artefacts included, so a blocky sky stays blocky. What AVIF gives you is the same picture in a smaller file, not a better picture.",
+    ],
+    edgeCases: [
+      {
+        title: "The AVIF carries no EXIF data",
+        body: "The converter re-encodes pixels only, so the location, camera, and date information in the JPG is not copied into the AVIF. That is good for sharing, since location data is gone, but keep the original JPG if you need the metadata.",
+      },
+      {
+        title: "Encoding is slow on large photos",
+        body: "AVIF is compute heavy, so a 4000 x 3000 photo can take several seconds to encode in the browser. That is normal, not a failure.",
+      },
+      {
+        title: "If your browser cannot encode AVIF, you get a WebP",
+        body: "The tool tries AVIF first and falls back to WebP when the browser has no AVIF encoder, and it tells you in a warning. Check the downloaded file's extension before you share it.",
+      },
+    ],
+    betterChoice:
+      "If the file must open everywhere, keep the JPG: AVIF still meets resistance in older software. If it must be as small as possible and stay compatible with current browsers, AVIF is the pick, with WebP as the middle ground.",
+    faqs: [
+      {
+        question: "Will converting JPG to AVIF make my photo sharper?",
+        answer:
+          "No. The AVIF is a re-encode of the same pixels, so JPG artefacts are copied faithfully. It stops further loss and shrinks the file, but it cannot clean the image up.",
+      },
+      {
+        question: "How much smaller is AVIF than JPG?",
+        answer:
+          "Typically 40 to 60 percent smaller at matched quality: a 3 MB JPG usually becomes about 1.2 to 1.8 MB as AVIF. The exact saving depends on the photo.",
+      },
+      {
+        question: "Can I convert AVIF back to JPG?",
+        answer:
+          "Yes, the AVIF to JPG converter works the same way, but each round trip re-encodes and loses a little. Keep the original JPG as the master and convert copies for sharing.",
+      },
+    ],
+  },
+  "gif-to-webp": {
+    exampleHeading: "Worked example: a 480 x 270 GIF still from GIF to WebP",
+    example: [
+      "Take a 480 x 270 GIF still, the kind used for a reaction image or a small icon. A flat-colour GIF of that size typically weighs roughly 20 to 60 KB. Converted to WebP at the tool's default quality of 92, the same still typically lands smaller, often by a fifth to a third, because WebP compresses more efficiently than GIF's palette scheme, and the WebP keeps the transparency. These are typical figures, not measurements: flat graphics save the least, photo-like stills save the most.",
+      "The trade is the animation. The browser decodes the GIF as a single still image, so a 4-second animation at 10 frames a second, 40 frames in total, becomes one frame. If the motion is the point of the file, this conversion is the wrong one.",
+    ],
+    edgeCases: [
+      {
+        title: "Animation is lost; only the first frame survives",
+        body: "The browser decodes a GIF as a single still image, so the WebP is a still image too. Animated WebP needs a dedicated tool that encodes every frame.",
+      },
+      {
+        title: "The 256-colour limit stays",
+        body: "A GIF holds at most 256 colours per frame, and the WebP starts from those colours. Banding in gradients and flat skies survives the conversion.",
+      },
+      {
+        title: "Transparency is kept",
+        body: "GIF transparency is on or off per pixel, and WebP supports an alpha channel, so transparent pixels stay transparent. Hard edges stay hard, because no new semi-transparency is created.",
+      },
+    ],
+    betterChoice:
+      "If the GIF is animated and the motion matters, keep the GIF: no conversion on this site preserves the animation. If you need a lossless still for editing, convert to PNG instead. WebP is the pick when you want the smallest single still that keeps transparency.",
+    faqs: [
+      {
+        question: "Does the WebP keep animating?",
+        answer:
+          "No. The converter keeps only the first frame, so the WebP is a still image. Animated WebP needs a dedicated GIF to WebP tool that encodes every frame with its timing.",
+      },
+      {
+        question: "Is WebP smaller than GIF?",
+        answer:
+          "Usually, for photo-like stills, by roughly a fifth to a third at the default quality of 92. For flat graphics with few colours, the two are close, because GIF's palette is already efficient there.",
+      },
+      {
+        question: "What quality does the tool use for WebP?",
+        answer:
+          "The default quality is 92, the same as for JPG. Lower it toward 80 for a smaller file when the still is only being shared, and keep it at 90 or above when the image has text.",
+      },
+    ],
+  },
 };
 
 /** Deep dive for this pair's page, or null when the pair has none. */
