@@ -35,6 +35,7 @@ import { batch34 } from "./blog-posts/batch34";
 import { batch35 } from "./blog-posts/batch35";
 import { batch36 } from "./blog-posts/batch36";
 import { batch37 } from "./blog-posts/batch37";
+import { batch38 } from "./blog-posts/batch38";
 
 export interface BlogPost {
   slug: string;
@@ -94,6 +95,7 @@ export const blogPosts: BlogPost[] = [
   ...batch35,
   ...batch36,
   ...batch37,
+  ...batch38,
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {

@@ -1328,6 +1328,181 @@ export const PAIR_DEEP_DIVES: Record<string, PairDeepDive> = {
       },
     ],
   },
+  "bmp-to-png": {
+    exampleHeading: "Worked example: a 4000 x 3000 photo from BMP to PNG",
+    example: [
+      "Take a typical 4000 x 3000 photo saved as BMP. A BMP stores every pixel uncompressed at 3 bytes each, so the file weighs 36.0 MB. Converted to PNG, the same photo typically lands around 10 to 14 MB, roughly a third of the BMP, because PNG compresses losslessly instead of storing every pixel raw. Nothing about the picture changes: the PNG holds exactly the same pixels. These are typical figures, not measurements: a noisy photo compresses worse, a clean studio shot better.",
+      "The saving is far bigger for flat graphics. A screenshot or diagram saved as BMP is mostly solid colour, and PNG compresses solid areas extremely well, so a 36 MB BMP of flat graphics can come back as a PNG of only a few megabytes. If the BMP came from a scanner or a paint program, PNG is almost always the better file to keep.",
+    ],
+    edgeCases: [
+      {
+        title: "BMP has no transparency to keep",
+        body: "BMP files are opaque, so the PNG is opaque too. Converting to PNG cannot add a transparent background that was not in the BMP, and removing a background is an editing job, not a conversion.",
+      },
+      {
+        title: "Rare BMP variants may fail to decode",
+        body: "Most BMPs are plain 24-bit files and convert without trouble. Rare 32-bit BMPs with an alpha channel and old run-length encoded BMPs may fail to decode in the browser, in which case the tool reports that the format is not supported. Opening the file in an editor and re-saving it as a plain 24-bit BMP fixes it.",
+      },
+      {
+        title: "No quality setting, because nothing is lost",
+        body: "PNG is lossless, so there is no quality slider to tune: the output is simply the decoded pixels, stored exactly. The only choice that matters is the source file itself, and keeping the BMP as a master is pointless once the PNG exists, since the PNG holds the same pixels in a third of the space.",
+      },
+    ],
+    betterChoice:
+      "If the image is a photo headed for the web or an upload form, convert to JPG instead: it is typically 2 to 4 MB for the same 4000 x 3000 photo, far smaller than the PNG. Keep PNG when the image must stay pixel exact for editing, or when it is a screenshot, diagram, or logo with text.",
+    faqs: [
+      {
+        question: "Why is my BMP file so large compared to the PNG?",
+        answer:
+          "A BMP stores every pixel uncompressed, 3 bytes per pixel, so a 4000 x 3000 photo is 36.0 MB before anything is done to it. PNG compresses the same pixels losslessly, typically to around a third of that size for a photo and far less for flat graphics, with no pixel changed.",
+      },
+      {
+        question: "Does converting BMP to PNG lose quality?",
+        answer:
+          "No. PNG is a lossless format, so the PNG holds exactly the same pixels as the BMP. The file gets smaller purely because PNG compresses the pixel data instead of storing it raw. You can convert back and forth between BMP and PNG as often as you like with no drift.",
+      },
+    ],
+  },
+  "svg-to-jpg": {
+    exampleHeading: "Worked example: a logo SVG rasterised to JPG",
+    example: [
+      "Take a simple two-colour logo saved as SVG, about 8 KB of vector shapes. SVG has no pixels, so the tool first rasterises it at the size you choose, then encodes the result as JPG. Rasterised at 2000 x 2000, that logo typically lands around 50 to 150 KB as a JPG at the tool's default quality of 92, because large flat areas compress very efficiently. A detailed illustration with gradients and fine lines at the same size typically lands around 300 to 600 KB. These are typical figures, not measurements: the output size is set by the raster size you pick and the detail in the artwork, not by the size of the SVG file.",
+      "The key choice is the raster size. Rasterise at the size the JPG will actually be shown, because a 2000-pixel logo shrunk to a 200-pixel thumbnail wastes most of its bytes, and a 500-pixel raster stretched to a poster turns blurry. The tool's resize option sets the output dimensions before encoding, so pick the display size first.",
+    ],
+    edgeCases: [
+      {
+        title: "Text in the SVG becomes pixels",
+        body: "Once rasterised, the text in an SVG is no longer text: it cannot be selected, searched, or edited. If the JPG is headed to a document where the words matter, keep the SVG as well, or rasterise at a high resolution so the text stays readable.",
+      },
+      {
+        title: "Transparency is flattened, not kept",
+        body: "JPG has no alpha channel, so see-through areas become the background colour you pick in the tool above (white by default). A logo on a transparent background needs its background colour matched to the page it will sit on, or it ends up with a visible box.",
+      },
+      {
+        title: "Fonts inside the SVG may fall back",
+        body: "An SVG that names a font your device does not have is rendered with a fallback font, so the JPG can look different from the SVG in its home editor. Converting text to outlines in the editor before exporting the SVG avoids the problem entirely.",
+      },
+    ],
+    betterChoice:
+      "If the destination accepts SVG, keep the SVG: it stays sharp at every size and is usually the smallest file. If the file needs transparency or a lossless master, convert to PNG instead of JPG. For email clients, social media, and upload forms that refuse SVG, JPG is the safe choice.",
+    faqs: [
+      {
+        question: "What size should I rasterise my SVG at?",
+        answer:
+          "Rasterise at the size the JPG will actually be shown. A logo for a website header is usually fine at 1000 to 2000 pixels wide; a social media post wants the platform's exact size, such as 1080 pixels wide for Instagram. Rasterising larger only makes a bigger file, and rasterising smaller then stretching it makes a blurry one.",
+      },
+      {
+        question: "Will the JPG look as sharp as the SVG?",
+        answer:
+          "At the size you rasterise it, yes, for all practical purposes at quality 90 or above. The difference is that the JPG is fixed at that size: zoom past it and it softens, while the SVG stays sharp at any zoom. For text-heavy artwork, keep quality at 90 or above, or use PNG.",
+      },
+    ],
+  },
+  "avif-to-png": {
+    exampleHeading: "Worked example: a 4000 x 3000 photo from AVIF to PNG",
+    example: [
+      "Take a typical 4000 x 3000 photo saved as AVIF at about 1.5 MB. AVIF is the most efficient format browsers support, so the same photo as JPG at the tool's default quality of 92 is typically around 3 to 4 MB. Converted to PNG, it typically grows to around 10 to 16 MB, roughly 3 to 5 times larger than the JPG and about ten times the AVIF, because PNG stores every decoded pixel losslessly instead of discarding fine detail. Nothing about the picture improves: the PNG is a pixel exact copy of the AVIF, artefacts included. These are typical figures, not measurements: a noisy photo grows more, a clean studio shot grows less.",
+      "That growth is the price of a format every editor can open and re-save without further loss. It is worth paying when the PNG is a working master for editing, and a waste when the file is only being shared, where the original AVIF was already the smaller, sharper choice.",
+    ],
+    edgeCases: [
+      {
+        title: "No quality is gained, only preserved",
+        body: "AVIF artefacts baked into the source, such as softness in fine detail, are copied faithfully into the PNG. Converting to PNG stops further loss, but it cannot clean the image up.",
+      },
+      {
+        title: "Animated AVIF becomes a single still frame",
+        body: "AVIF can hold an image sequence, but PNG is a still format, so only the first frame survives. If the motion matters, keep the AVIF or convert to a format that supports animation.",
+      },
+      {
+        title: "Wide colour and HDR are narrowed to standard colour",
+        body: "AVIF can hold up to 12-bit colour with HDR; PNG here holds 8 bits in standard colour. Vivid HDR highlights and very smooth gradients can flatten or band slightly after conversion, though at normal viewing most people cannot see it.",
+      },
+    ],
+    betterChoice:
+      "If the destination accepts AVIF, keep the AVIF: it is smaller and loses nothing in this direction. If the goal is a smaller file for sharing, convert to JPG instead of PNG. Convert to PNG only when you need a lossless editing master, transparency, or compatibility with an editor that refuses AVIF.",
+    faqs: [
+      {
+        question: "Does the PNG keep my AVIF image's transparency?",
+        answer:
+          "Yes. Both formats carry a full alpha channel, so transparent areas stay transparent with no background fill and no halo around cut-out edges. If your AVIF is fully opaque, the PNG is opaque too; conversion cannot add transparency that was not there.",
+      },
+      {
+        question: "Why is the PNG so much bigger than the AVIF?",
+        answer:
+          "AVIF is a modern lossy format that discards fine detail the eye barely notices, while PNG stores every decoded pixel exactly. The same 4000 x 3000 photo that is about 1.5 MB as AVIF is typically 10 to 16 MB as PNG. The PNG is bigger because it refuses to throw anything away, not because it holds a better picture.",
+      },
+    ],
+  },
+  "webp-to-avif": {
+    exampleHeading: "Worked example: a 2400-pixel photo from WebP to AVIF",
+    example: [
+      "Take a typical 2400-pixel-wide photo saved as WebP at about 570 KB, the size our own format comparison measured for that resolution. Converted to AVIF at the tool's default quality of 92, the same photo typically lands around 410 KB, about 28 percent smaller, because AVIF compresses more efficiently than WebP at similar quality. Resolution does not change, and the picture looks the same at normal viewing sizes. These are typical figures, not measurements: a detailed scene saves less, a plain one saves more.",
+      "The saving is real but modest, which is the honest shape of this conversion. WebP is already efficient, so the jump to AVIF is a refinement, not a transformation like PNG to JPG. It is worth doing when every kilobyte counts, such as a hero image on a slow connection, and not worth the effort for a one-off share.",
+    ],
+    edgeCases: [
+      {
+        title: "Encoding is slow, and older browsers fall back to WebP",
+        body: "AVIF encoding is 5 to 20 times slower than WebP, so a large image can take a noticeable moment to convert. If the browser cannot encode AVIF at all, the tool saves a WebP instead and says so in a warning, so check the downloaded file's extension before uploading it somewhere that expects AVIF.",
+      },
+      {
+        title: "Animated WebP becomes a single still frame",
+        body: "The browser decodes a WebP as a single still image, so only the first frame survives. AVIF can hold an image sequence, but this converter does not encode one. If the motion matters, keep the WebP.",
+      },
+      {
+        title: "Transparency survives, but there is no quality slider for it",
+        body: "WebP and AVIF both carry a full alpha channel, so cut-out logos and icons stay cut out. The quality setting still applies to the colour data, so a logo with text wants quality 90 or above, just as it does for JPG.",
+      },
+    ],
+    betterChoice:
+      "If the destination accepts AVIF and the file is served to many people, AVIF is the better choice: it is smaller at the same quality. If the destination is an editor, an upload form, or an older device, keep the WebP, which opens almost everywhere AVIF does not yet. For a one-off share, the saving is rarely worth the slower encode.",
+    faqs: [
+      {
+        question: "How much smaller is AVIF than WebP?",
+        answer:
+          "Typically around a quarter smaller at similar quality. A 2400-pixel photo that is about 570 KB as WebP is typically around 410 KB as AVIF, a saving of about 28 percent. The gap is wider on detailed photos and narrower on flat graphics, where WebP is already efficient.",
+      },
+      {
+        question: "Why did I get a WebP file instead of an AVIF?",
+        answer:
+          "Your browser cannot encode AVIF, so the tool saved a WebP instead and showed a warning saying so. AVIF encoding needs a recent browser version: Chrome 85 or later, Edge 121 or later, Firefox 93 or later, or Safari 16 or later. Try a newer browser, or keep the WebP, which is nearly as small.",
+      },
+    ],
+  },
+  "jpg-to-pdf": {
+    exampleHeading: "Worked example: ten JPG photos into one PDF",
+    example: [
+      "Take ten photos, each a 4000 x 3000 JPG of about 3 MB. Converted to PDF, each photo becomes one page, and the image on that page is the photo re-encoded as a JPEG at quality 92, so the finished PDF typically lands around 25 to 30 MB, close to the size of the JPGs you started with plus a few kilobytes of PDF structure. Nothing is downsampled: the PDF holds the photos at their full pixel size. These are typical figures, not measurements: photos that were already heavily compressed come back slightly smaller, clean high quality ones stay near their original size.",
+      "The page size follows the image, not a paper size. A 4000-pixel-wide photo becomes a page about 1,058 mm wide at the tool's 96 DPI mapping, roughly five A4 widths, so the PDF is a set of very large pages that a printer scales down to fit. That is fine for viewing and sharing, and it is the reason to shrink oversized photos with the image resizer before converting if the PDF is meant to be printed.",
+    ],
+    edgeCases: [
+      {
+        title: "Text in the photos is not selectable",
+        body: "A JPG holds pixels, not text, so words photographed or screenshotted in the image stay as pixels in the PDF. There is no text layer and no OCR, so the PDF cannot be searched and its text cannot be copied. For a document whose words matter, use a real PDF creator instead.",
+      },
+      {
+        title: "Camera data does not carry over",
+        body: "The converter re-encodes pixels only, so EXIF data such as camera settings, dates, and GPS tags does not survive in the PDF. Keep the original JPGs if that data matters.",
+      },
+      {
+        title: "One image means one page, in the order you add them",
+        body: "Each JPG becomes its own page, so ten images make ten pages. Add them in the order you want the pages to appear, because there is no reorder step after conversion. For a different page order, convert again with the images in the right order.",
+      },
+    ],
+    betterChoice:
+      "If the goal is a real document with selectable text, use the PDF tools instead: build the document from text, or convert a Word file. If the goal is sharing photos as a single file, this conversion is the right one, but shrink the photos first when the PDF is meant to be emailed or printed at A4.",
+    faqs: [
+      {
+        question: "How big will the PDF be compared to my JPGs?",
+        answer:
+          "Close to the same size. Each photo is re-encoded as a JPEG at quality 92 and placed on its own page, so ten 3 MB JPGs typically make a PDF of around 25 to 30 MB. The PDF adds only a few kilobytes of structure per page. If the PDF must be smaller, shrink the JPGs with the image resizer before converting.",
+      },
+      {
+        question: "Can I convert PNG images to PDF this way?",
+        answer:
+          "Not on this page: the image converter route takes JPG, PNG, WebP, AVIF, GIF, BMP, and SVG as sources, but the dedicated JPG to PDF tool in the PDF tools section accepts JPG and JPEG files only. For PNG images, use the separate PNG to PDF tool, which works the same way, one page per image.",
+      },
+    ],
+  },
 };
 
 /** Deep dive for this pair's page, or null when the pair has none. */
