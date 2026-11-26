@@ -1503,6 +1503,181 @@ export const PAIR_DEEP_DIVES: Record<string, PairDeepDive> = {
       },
     ],
   },
+  "png-to-bmp": {
+    exampleHeading: "Worked example: a 4000 x 3000 photo from PNG to BMP",
+    example: [
+      "Take a typical 4000 x 3000 photo saved as PNG, around 10 to 14 MB. A BMP stores every pixel uncompressed at 3 bytes each, so the same photo as BMP weighs 36.0 MB, more than twice the PNG and roughly ten times the JPG the same photo would be. Nothing about the picture changes: the BMP holds exactly the same pixels, only stored raw instead of compressed. These are typical figures, not measurements: a noisy photo makes a larger PNG, a clean studio shot a smaller one, but the BMP is always 36.0 MB for this pixel size, because uncompressed means uncompressed.",
+      "The size is set by the pixel dimensions alone. A 1920 x 1080 photo becomes a BMP of 6.22 MB, and a 1080 x 1080 square becomes 3.50 MB, whatever the photo shows. That is why BMP is a format you convert to only when a program demands it, never as a way to store photos.",
+    ],
+    edgeCases: [
+      {
+        title: "Transparency is flattened, not kept",
+        body: "PNG can hold see-through areas, but BMP here is 24-bit with no alpha channel, so transparent pixels are flattened onto the background colour you pick in the tool above (white by default). A logo on a transparent background needs its background colour matched to where it will sit, or it ends up with a visible box.",
+      },
+      {
+        title: "No quality setting, because nothing is lost",
+        body: "BMP is uncompressed, so there is no quality slider to tune: the output is simply the decoded pixels, stored exactly. The only choice that matters is whether the destination really needs BMP, because the file is always far larger than the PNG you started with.",
+      },
+      {
+        title: "The BMP is bigger than the PNG, always",
+        body: "Converting to BMP never saves space. It exists for old software, embedded systems, and a few Windows programs that only read BMP. If the file is headed for the web, an email, or an upload form, keep the PNG or convert to JPG instead.",
+      },
+    ],
+    betterChoice:
+      "If the destination accepts PNG, keep the PNG: it holds the same pixels in a third of the space and keeps transparency. If the file must be small, convert to JPG instead: it is typically 2 to 4 MB for the same 4000 x 3000 photo. Convert to BMP only when a specific program refuses anything else.",
+    faqs: [
+      {
+        question: "Why is the BMP so much bigger than the PNG?",
+        answer:
+          "A BMP stores every pixel uncompressed, 3 bytes per pixel, so a 4000 x 3000 photo is 36.0 MB before anything is done to it. PNG compresses the same pixels losslessly, typically to around a third of that size for a photo and far less for flat graphics, with no pixel changed.",
+      },
+      {
+        question: "Does converting PNG to BMP lose quality?",
+        answer:
+          "No, the pixels are identical: BMP is uncompressed, so nothing is discarded. The only thing lost is transparency, which is flattened onto the background colour you pick. You can convert back and forth between PNG and BMP as often as you like with no drift in the visible pixels.",
+      },
+    ],
+  },
+  "jpg-to-bmp": {
+    exampleHeading: "Worked example: a 4000 x 3000 photo from JPG to BMP",
+    example: [
+      "Take a typical 4000 x 3000 photo saved as JPG at the tool's default quality of 92, around 3 MB. A BMP stores every pixel uncompressed at 3 bytes each, so the same photo as BMP weighs 36.0 MB, about twelve times the JPG. Nothing about the picture improves: the BMP is a pixel exact copy of the JPG, compression artefacts included, only stored raw instead of compressed. These are typical figures, not measurements: a noisy photo makes a larger JPG, a clean studio shot a smaller one, but the BMP is always 36.0 MB for this pixel size.",
+      "The size is set by the pixel dimensions alone. A 1920 x 1080 photo becomes a BMP of 6.22 MB, and a 1080 x 1080 square becomes 3.50 MB, whatever the photo shows. That is why BMP is a format you convert to only when a program demands it, never as a way to store photos.",
+    ],
+    edgeCases: [
+      {
+        title: "No quality is gained, only preserved",
+        body: "JPG artefacts baked into the source, such as softness in fine detail, are copied faithfully into the BMP. Converting to BMP stops further loss, but it cannot clean the image up, and the file is twelve times larger for the privilege.",
+      },
+      {
+        title: "No quality setting, because nothing is lost",
+        body: "BMP is uncompressed, so there is no quality slider to tune: the output is simply the decoded pixels, stored exactly. The only choice that matters is whether the destination really needs BMP.",
+      },
+      {
+        title: "The BMP is far bigger than the JPG, always",
+        body: "Converting to BMP never saves space. It exists for old software, embedded systems, and a few Windows programs that only read BMP. If the file is headed for the web, an email, or an upload form, keep the JPG.",
+      },
+    ],
+    betterChoice:
+      "If the destination accepts JPG, keep the JPG: it holds the same picture in a twelfth of the space. If the file needs transparency or a lossless master, convert to PNG instead of BMP. Convert to BMP only when a specific program refuses anything else.",
+    faqs: [
+      {
+        question: "Why is the BMP so much bigger than the JPG?",
+        answer:
+          "A BMP stores every pixel uncompressed, 3 bytes per pixel, so a 4000 x 3000 photo is 36.0 MB before anything is done to it. JPG compresses the same pixels with a lossy method, typically to around 3 MB at quality 92 for a photo, with artefacts too small to notice at normal viewing.",
+      },
+      {
+        question: "Does converting JPG to BMP lose quality?",
+        answer:
+          "No, the pixels are identical: BMP is uncompressed, so nothing is discarded in this step. The artefacts already in the JPG stay, because they are part of the pixels now, but nothing new is added. Converting back to JPG afterwards would add a second round of compression, so keep the original JPG as well.",
+      },
+    ],
+  },
+  "webp-to-bmp": {
+    exampleHeading: "Worked example: a 4000 x 3000 photo from WebP to BMP",
+    example: [
+      "Take a typical 4000 x 3000 photo saved as WebP, typically around 1.5 to 3 MB. A BMP stores every pixel uncompressed at 3 bytes each, so the same photo as BMP weighs 36.0 MB, about 12 to 24 times the WebP. Nothing about the picture changes: the BMP holds exactly the same pixels, only stored raw instead of compressed. These are typical figures, not measurements: a noisy photo makes a larger WebP, a clean studio shot a smaller one, but the BMP is always 36.0 MB for this pixel size.",
+      "The size is set by the pixel dimensions alone. A 1920 x 1080 photo becomes a BMP of 6.22 MB, and a 1080 x 1080 square becomes 3.50 MB, whatever the photo shows. That is why BMP is a format you convert to only when a program demands it, never as a way to store photos.",
+    ],
+    edgeCases: [
+      {
+        title: "Transparency is flattened, not kept",
+        body: "WebP can hold see-through areas, but BMP here is 24-bit with no alpha channel, so transparent pixels are flattened onto the background colour you pick in the tool above (white by default). A logo on a transparent background needs its background colour matched to where it will sit, or it ends up with a visible box.",
+      },
+      {
+        title: "Animated WebP becomes a single still frame",
+        body: "WebP can hold an image sequence, but BMP is a still format, so only the first frame survives. If the motion matters, keep the WebP or convert to a format that supports animation.",
+      },
+      {
+        title: "No quality is gained, only preserved",
+        body: "WebP artefacts baked into the source are copied faithfully into the BMP. Converting to BMP stops further loss, but it cannot clean the image up, and the file is many times larger for the privilege.",
+      },
+    ],
+    betterChoice:
+      "If the destination accepts WebP, keep the WebP: it holds the same pixels in a fraction of the space and keeps transparency. If the file must be small and widely compatible, convert to JPG instead. Convert to BMP only when a specific program refuses anything else.",
+    faqs: [
+      {
+        question: "Why is the BMP so much bigger than the WebP?",
+        answer:
+          "A BMP stores every pixel uncompressed, 3 bytes per pixel, so a 4000 x 3000 photo is 36.0 MB before anything is done to it. WebP compresses the same pixels efficiently, typically to around 1.5 to 3 MB for a photo of that size, with no visible difference at normal viewing.",
+      },
+      {
+        question: "Does converting WebP to BMP lose quality?",
+        answer:
+          "No, the pixels are identical: BMP is uncompressed, so nothing is discarded in this step. The only thing lost is transparency, which is flattened onto the background colour you pick, and animation, where only the first frame survives.",
+      },
+    ],
+  },
+  "gif-to-bmp": {
+    exampleHeading: "Worked example: a 480 x 270 still from GIF to BMP",
+    example: [
+      "Take a typical 480 x 270 GIF, roughly 20 to 60 KB. A BMP stores every pixel uncompressed at 3 bytes each, so the same still image as BMP weighs 389 KB, about six to nineteen times the GIF. Nothing about the picture changes: the BMP holds exactly the same pixels, only stored raw instead of compressed. These are typical figures, not measurements: a busy GIF with many colours makes a larger file, a simple one a smaller one, but the BMP is always 389 KB for this pixel size.",
+      "The size is set by the pixel dimensions alone. A 1920 x 1080 GIF frame becomes a BMP of 6.22 MB, whatever the picture shows. That is why BMP is a format you convert to only when a program demands it, never as a way to store images.",
+    ],
+    edgeCases: [
+      {
+        title: "Animation is lost: only the first frame survives",
+        body: "A GIF can hold an image sequence, but BMP is a still format, so a 40-frame clip at 10 frames a second becomes a single still image. If the motion matters, keep the GIF or convert to a format that supports animation.",
+      },
+      {
+        title: "No colours are recovered",
+        body: "GIF holds at most 256 colours, and converting to BMP cannot add the colours back. The BMP has the same 256-colour palette look as the GIF, only stored uncompressed. A photo saved as GIF stays flat and banded after conversion.",
+      },
+      {
+        title: "Transparency is flattened, not kept",
+        body: "GIF transparency is a single transparent colour, not a smooth alpha channel, and BMP has no alpha channel at all, so transparent pixels are flattened onto the background colour you pick in the tool above (white by default). A cut-out GIF needs its background colour matched to where it will sit.",
+      },
+    ],
+    betterChoice:
+      "If the GIF is animated, keep the GIF: BMP cannot hold motion. If it is a still image that must stay small, convert to PNG instead: it is lossless, keeps the same pixels, and is typically far smaller than the BMP. Convert to BMP only when a specific program refuses anything else.",
+    faqs: [
+      {
+        question: "Why is the BMP so much bigger than the GIF?",
+        answer:
+          "A BMP stores every pixel uncompressed, 3 bytes per pixel, so a 480 x 270 still is 389 KB before anything is done to it. GIF compresses the same pixels and holds at most 256 colours, so the same still is typically only 20 to 60 KB.",
+      },
+      {
+        question: "Does converting GIF to BMP keep the animation?",
+        answer:
+          "No. BMP is a still format, so only the first frame of an animated GIF survives. The BMP is a single still image at the GIF's pixel size. If the motion matters, keep the GIF.",
+      },
+    ],
+  },
+  "svg-to-webp": {
+    exampleHeading: "Worked example: a logo SVG rasterised to WebP",
+    example: [
+      "Take a simple two-colour logo saved as SVG, about 8 KB of vector shapes. SVG has no pixels, so the tool first rasterises it at the size you choose, then encodes the result as WebP. Rasterised at 2000 x 2000, that logo typically lands around 35 to 100 KB as a WebP at the tool's default quality of 92, because large flat areas compress very efficiently and WebP runs about 25 to 35% smaller than JPG for the same picture. A detailed illustration with gradients and fine lines at the same size typically lands around 200 to 400 KB. These are typical figures, not measurements: the output size is set by the raster size you pick and the detail in the artwork, not by the size of the SVG file.",
+      "The key choice is the raster size. Rasterise at the size the WebP will actually be shown, because a 2000-pixel logo shrunk to a 200-pixel thumbnail wastes most of its bytes, and a 500-pixel raster stretched to a poster turns blurry. The tool's resize option sets the output dimensions before encoding, so pick the display size first.",
+    ],
+    edgeCases: [
+      {
+        title: "Text in the SVG becomes pixels",
+        body: "Once rasterised, the text in an SVG is no longer text: it cannot be selected, searched, or edited. If the WebP is headed to a document where the words matter, keep the SVG as well, or rasterise at a high resolution so the text stays readable.",
+      },
+      {
+        title: "Transparency is kept",
+        body: "Unlike JPG, WebP supports an alpha channel, so see-through areas in the SVG stay see-through in the WebP. A logo on a transparent background converts cleanly, with no background colour to pick.",
+      },
+      {
+        title: "Fonts inside the SVG may fall back",
+        body: "An SVG that names a font your device does not have is rendered with a fallback font, so the WebP can look different from the SVG in its home editor. Converting text to outlines in the editor before exporting the SVG avoids the problem entirely.",
+      },
+    ],
+    betterChoice:
+      "If the destination accepts SVG, keep the SVG: it stays sharp at every size and is usually the smallest file. If the file needs a raster format with transparency, WebP is the right choice over JPG. For email clients, social media, and upload forms that refuse SVG, WebP is the safe choice when they accept it, and JPG when they do not.",
+    faqs: [
+      {
+        question: "What size should I rasterise my SVG at?",
+        answer:
+          "Rasterise at the size the WebP will actually be shown. A logo for a website header is usually fine at 1000 to 2000 pixels wide; a social media post wants the platform's exact size, such as 1080 pixels wide for Instagram. Rasterising larger only makes a bigger file, and rasterising smaller then stretching it makes a blurry one.",
+      },
+      {
+        question: "Will the WebP look as sharp as the SVG?",
+        answer:
+          "At the size you rasterise it, yes, for all practical purposes at quality 90 or above. The difference is that the WebP is fixed at that size: zoom past it and it softens, while the SVG stays sharp at any zoom. For text-heavy artwork, keep quality at 90 or above, or use PNG.",
+      },
+    ],
+  },
 };
 
 /** Deep dive for this pair's page, or null when the pair has none. */
