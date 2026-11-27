@@ -36,7 +36,7 @@ export const batch12: BlogPost[] = [
 <p><strong>Formula:</strong> ((New − Old) ÷ Old) × 100</p>
 <p>This is the salary-hike and price-change question. Your salary goes from $50,000 to $56,000. What's the raise?</p>
 <p>((56000 − 50000) ÷ 50000) × 100 = (6000 ÷ 50000) × 100 = <strong>12% raise</strong>.</p>
-<p>The result is negative for decreases, which is exactly what you want: a stock dropping from $40 to $32 is ((32 − 40) ÷ 40) × 100 = <strong>−20%</strong>. The minus sign tells you the direction.</p>
+<p>The result is negative for decreases, which is exactly what you want: a stock dropping from $40 to $32 is ((32 − 40) ÷ 40) × 100 = <strong>−20%</strong>. The minus sign tells you the direction. Time and a half is the same formula in reverse: an overtime rate of $30 on a $20 regular rate is a 50% increase, and our guide to <a href="/blog/how-to-calculate-overtime-pay">how to calculate overtime pay</a> works through the weekly maths step by step.</p>
 
 <h2>Working backwards: finding the whole</h2>
 <p>Sometimes you know the part and the percent but not the total. "30 is 15% of what number?"</p>

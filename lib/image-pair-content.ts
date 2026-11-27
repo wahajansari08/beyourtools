@@ -1678,6 +1678,181 @@ export const PAIR_DEEP_DIVES: Record<string, PairDeepDive> = {
       },
     ],
   },
+  "svg-to-avif": {
+    exampleHeading: "Worked example: a logo SVG rasterised to AVIF",
+    example: [
+      "Take a simple two-colour logo saved as SVG, about 8 KB of vector shapes. SVG has no pixels, so the tool first rasterises it at the size you choose, then encodes the result as AVIF. Rasterised at 2000 x 2000, that logo typically lands around 25 to 70 KB as an AVIF at the tool's default quality of 92, because large flat areas compress very efficiently and AVIF runs about 40 to 60% smaller than JPG for the same picture, and roughly a quarter smaller than WebP. A detailed illustration with gradients and fine lines at the same size typically lands around 150 to 300 KB. These are typical figures, not measurements: the output size is set by the raster size you pick and the detail in the artwork, not by the size of the SVG file.",
+      "The key choice is the raster size. Rasterise at the size the AVIF will actually be shown, because a 2000-pixel logo shrunk to a 200-pixel thumbnail wastes most of its bytes, and a 500-pixel raster stretched to a poster turns blurry. The tool's resize option sets the output dimensions before encoding, so pick the display size first. AVIF also encodes slowly, roughly 5 to 20 times slower than WebP, so a large raster can take a few seconds where a WebP would be instant.",
+    ],
+    edgeCases: [
+      {
+        title: "Text in the SVG becomes pixels",
+        body: "Once rasterised, the text in an SVG is no longer text: it cannot be selected, searched, or edited. An SVG that names a font your device does not have is also rendered with a fallback font, so the AVIF can look different from the SVG in its home editor. Converting text to outlines in the editor before exporting the SVG avoids the font problem, and rasterising at a high resolution keeps the text readable.",
+      },
+      {
+        title: "Transparency is kept",
+        body: "Unlike JPG, AVIF supports an alpha channel, so see-through areas in the SVG stay see-through in the AVIF. A logo on a transparent background converts cleanly, with no background colour to pick.",
+      },
+      {
+        title: "A browser without an AVIF encoder saves WebP instead",
+        body: "AVIF encoding depends on the browser, and some browsers cannot encode it. When that happens the tool saves the same rasterised image as WebP instead and tells you so in a warning, rather than failing. The WebP is a little larger than the AVIF would have been, but it holds the same pixels at the same quality setting.",
+      },
+    ],
+    betterChoice:
+      "If the destination accepts SVG, keep the SVG: it stays sharp at every size and is usually the smallest file. If the file needs a raster format with transparency, AVIF is the smallest choice, and WebP is the fallback when AVIF is not supported. For email clients, social media, and upload forms that refuse SVG, use AVIF where it is accepted and JPG where it is not.",
+    faqs: [
+      {
+        question: "What size should I rasterise my SVG at?",
+        answer:
+          "Rasterise at the size the AVIF will actually be shown. A logo for a website header is usually fine at 1000 to 2000 pixels wide; a social media post wants the platform's exact size, such as 1080 pixels wide for Instagram. Rasterising larger only makes a bigger file and a slower encode, and rasterising smaller then stretching it makes a blurry one.",
+      },
+      {
+        question: "Will the AVIF look as sharp as the SVG?",
+        answer:
+          "At the size you rasterise it, yes, for all practical purposes at quality 90 or above. The difference is that the AVIF is fixed at that size: zoom past it and it softens, while the SVG stays sharp at any zoom. For text-heavy artwork, keep quality at 90 or above, or use PNG.",
+      },
+    ],
+  },
+  "avif-to-webp": {
+    exampleHeading: "Worked example: a 4000 x 3000 photo from AVIF to WebP",
+    example: [
+      "Take a typical 4000 x 3000 phone photo saved as AVIF, around 1.5 MB. Converted to WebP at the tool's default quality of 92, the same photo typically lands around 2 MB, larger than the AVIF it came from. That is not a fault in the conversion: WebP is simply the older, less efficient codec. For the same picture at matched quality, AVIF runs about 40 to 60% smaller than JPG while WebP runs about 25 to 35% smaller, so a WebP of the same pixels is roughly 1.4 times the AVIF. On a 2400-pixel photo the published figures are about 820 KB as JPG, 570 KB as WebP, and 410 KB as AVIF, the same ratio. These are typical figures, not measurements: a noisy low light shot compresses worse in both formats, and a simple graphic compresses far better.",
+      "The pixels do not change in the conversion, only the packaging. The WebP holds the same 4000 x 3000 image, just stored with a less efficient codec, so the file grows while the picture stays the same. If the file is headed somewhere that accepts AVIF, keep the AVIF: converting to WebP only makes sense when the destination refuses AVIF and accepts WebP.",
+    ],
+    edgeCases: [
+      {
+        title: "No quality is gained, only preserved",
+        body: "WebP is a re-encode, not a copy: the AVIF is decoded to pixels and encoded again at quality 92, so a little detail is lost in the second pass and the compression artefacts from the AVIF are copied faithfully into the WebP. Converting back and forth between the two formats drifts the picture slightly each time, so keep the AVIF as the master and convert only the copy you need.",
+      },
+      {
+        title: "An animated AVIF becomes a single still",
+        body: "The browser decoder reads only the first frame of an animated AVIF, so the WebP is a still image of that frame and the motion is gone. If the animation matters, keep the AVIF, or convert to a video format instead.",
+      },
+      {
+        title: "HDR and wide colour are narrowed to 8-bit standard colour",
+        body: "An AVIF can hold 10-bit HDR and wide colour gamut data, but the browser canvas path decodes to 8-bit standard colour, so the WebP is a standard dynamic range image. Bright highlights and deep colours are clipped to what an 8-bit image can hold, which is fine for a screen but not for re-editing.",
+      },
+    ],
+    betterChoice:
+      "If the destination accepts AVIF, keep the AVIF: it is the smaller file for the same picture. Convert to WebP only when a specific program, upload form, or older device refuses AVIF and accepts WebP. If the destination refuses WebP too, convert to JPG instead, which is typically 2 to 4 MB for the same 4000 x 3000 photo.",
+    faqs: [
+      {
+        question: "Why is the WebP bigger than the AVIF?",
+        answer:
+          "AVIF compresses better than WebP: for the same picture at matched quality, AVIF runs about 40 to 60% smaller than JPG while WebP runs about 25 to 35% smaller, so the WebP is roughly 1.4 times the AVIF. The same 4000 x 3000 photo that weighs about 1.5 MB as AVIF typically becomes about 2 MB as WebP, with identical pixels.",
+      },
+      {
+        question: "Does converting AVIF to WebP lose quality?",
+        answer:
+          "A little, yes. The AVIF is decoded and re-encoded as WebP at quality 92, so the second pass discards a small amount of detail, and any artefacts already in the AVIF are carried over. At quality 90 or above the difference is invisible at normal viewing sizes, but keep the AVIF as your master and convert only the copy you need.",
+      },
+    ],
+  },
+  "png-to-pdf": {
+    exampleHeading: "Worked example: a 4000 x 3000 PNG in a PDF",
+    example: [
+      "Take a typical 4000 x 3000 phone photo saved as PNG, around 10 to 14 MB. Converted to PDF, it becomes a one-page document of about 2 to 4 MB, because the PDF embeds the image as a JPG at quality 92 rather than carrying the PNG data. Ten such photos become a ten-page PDF of about 20 to 40 MB, one image per page in the order you added them. The PDF carries no EXIF data from the PNG: the image is re-encoded from the canvas pixels, so camera settings and location are left behind. These are typical figures, not measurements: a noisy photo makes a larger PDF page, a clean studio shot a smaller one.",
+      "The page is as big as the image. The converter sizes each page to the image pixels at 96 DPI, so a 4000-pixel-wide photo makes a page about 1,058 mm wide and 794 mm tall, roughly five A4 widths. That is fine for viewing on screen, but a PDF that must fit an upload limit or print on A4 needs the image resized first: resize the PNG to 794 x 1123 pixels for an exact A4 page, then convert. A PDF is a wrapper, not a compression choice, so shrinking the PDF means shrinking the pixels that go into it.",
+    ],
+    edgeCases: [
+      {
+        title: "Transparency is flattened, not kept",
+        body: "PDF pages here hold a JPG image, and JPG has no alpha channel, so see-through areas in the PNG become the background colour you pick in the tool above (white by default). A logo on a transparent background needs its background colour matched to where the PDF will be viewed or printed, or it ends up with a visible box.",
+      },
+      {
+        title: "Text in the image is not selectable",
+        body: "The PDF holds a picture of the image, not the image's contents as text, so words in a screenshot or a scanned page cannot be selected, searched, or copied from the PDF. There is no OCR step. If the words matter, keep the PNG as well, or use a text extraction route instead.",
+      },
+      {
+        title: "The page is as big as the image",
+        body: "Each PDF page is sized to the image pixels at 96 DPI, so a phone photo makes a page about 1,058 mm wide. Viewers handle it fine, but printers scale it down to fit the paper, and some upload forms reject oversized pages. Resize the image to the page size you actually want before converting.",
+      },
+    ],
+    betterChoice:
+      "Use PDF when the file must look the same everywhere, for sharing or printing a fixed layout. If the file must be small, resize the PNG first or convert it to JPG, which is typically 2 to 4 MB for the same 4000 x 3000 photo, and then build the PDF from the smaller image. For a document whose text must stay editable, a PDF built from images is the wrong tool: convert the text instead.",
+    faqs: [
+      {
+        question: "How big will the PDF be?",
+        answer:
+          "About the size of the image as a JPG at quality 92, because the PDF embeds the image that way. A 4000 x 3000 PNG of 10 to 14 MB becomes a one-page PDF of about 2 to 4 MB, and ten such pages become about 20 to 40 MB. Resize the image before converting if the PDF must fit an upload limit.",
+      },
+      {
+        question: "Can I make the PDF page A4 size?",
+        answer:
+          "Yes, by resizing the image first: an A4 page at 96 DPI is 794 x 1123 pixels, so resize the PNG to those dimensions and the PDF page comes out at exactly A4. Without resizing, the page is sized to the image pixels, so a 4000-pixel-wide photo makes a page about 1,058 mm wide.",
+      },
+    ],
+  },
+  "webp-to-pdf": {
+    exampleHeading: "Worked example: a 4000 x 3000 WebP in a PDF",
+    example: [
+      "Take a typical 4000 x 3000 phone photo saved as WebP, around 1.5 to 3 MB. Converted to PDF, it becomes a one-page document of about 2 to 4 MB, larger than the WebP it came from. That is not a fault in the conversion: the PDF embeds the image as a JPG at quality 92, and JPG is a less efficient codec than WebP for the same pixels, since WebP runs about 25 to 35% smaller than JPG at matched quality. Ten such photos become a ten-page PDF of about 20 to 40 MB, one image per page in the order you added them. The PDF carries no EXIF data from the WebP: the image is re-encoded from the canvas pixels. These are typical figures, not measurements: a noisy photo makes a larger PDF page, a clean studio shot a smaller one.",
+      "The page is as big as the image. The converter sizes each page to the image pixels at 96 DPI, so a 4000-pixel-wide photo makes a page about 1,058 mm wide and 794 mm tall, roughly five A4 widths. That is fine for viewing on screen, but a PDF that must fit an upload limit or print on A4 needs the image resized first: resize the WebP to 794 x 1123 pixels for an exact A4 page, then convert.",
+    ],
+    edgeCases: [
+      {
+        title: "Transparency is flattened, not kept",
+        body: "WebP can hold see-through areas, but the PDF page holds a JPG image, and JPG has no alpha channel, so transparent pixels become the background colour you pick in the tool above (white by default). A logo on a transparent background needs its background colour matched to where the PDF will be viewed or printed, or it ends up with a visible box.",
+      },
+      {
+        title: "An animated WebP becomes a single still",
+        body: "The browser decoder reads only the first frame of an animated WebP, so the PDF page is a still image of that frame and the motion is gone. If the animation matters, keep the WebP, or convert to a video format instead.",
+      },
+      {
+        title: "Text in the image is not selectable",
+        body: "The PDF holds a picture of the image, not the image's contents as text, so words in a screenshot or a scanned page cannot be selected, searched, or copied from the PDF. There is no OCR step. If the words matter, keep the WebP as well, or use a text extraction route instead.",
+      },
+    ],
+    betterChoice:
+      "Use PDF when the file must look the same everywhere, for sharing or printing a fixed layout. Keep the WebP when the file is headed for the web, where it is the smaller file. If the PDF must be small, resize the WebP first, because the PDF size follows the pixels, not the WebP file size.",
+    faqs: [
+      {
+        question: "Why is the PDF bigger than the WebP?",
+        answer:
+          "The PDF embeds the image as a JPG at quality 92, and JPG is less efficient than WebP for the same pixels: WebP runs about 25 to 35% smaller than JPG at matched quality. A 4000 x 3000 WebP of 1.5 to 3 MB therefore becomes a PDF page of about 2 to 4 MB, with identical pixels.",
+      },
+      {
+        question: "Will the PDF keep the WebP transparency?",
+        answer:
+          "No. The PDF page holds a JPG image, which has no alpha channel, so transparent areas are flattened onto the background colour you pick in the tool above, white by default. Pick the colour of the page the PDF will sit on if the transparency matters to how it looks.",
+      },
+    ],
+  },
+  "bmp-to-webp": {
+    exampleHeading: "Worked example: a 4000 x 3000 BMP to WebP",
+    example: [
+      "Take a typical 4000 x 3000 photo saved as BMP, 36.0 MB, because BMP stores every pixel uncompressed at 3 bytes each. Converted to WebP at the tool's default quality of 92, the same photo typically lands around 1.3 to 3 MB, roughly a tenth of the BMP. The saving comes from WebP's lossy compression: for the same picture, WebP runs about 25 to 35% smaller than JPG, and the JPG of this photo would be about 2 to 4 MB. A 1920 x 1080 photo becomes a BMP of 6.22 MB and a WebP of around 260 to 600 KB. These are typical figures, not measurements: a noisy photo makes a larger WebP, a flat graphic a far smaller one, but the BMP is always 36.0 MB for this pixel size, because uncompressed means uncompressed.",
+      "The size is set by the pixel dimensions and the detail in the picture, not by the BMP file size. A flat screenshot with large solid areas compresses far better than a detailed photograph at the same pixel size, so two BMPs of identical size can become very different WebPs. That is why BMP is a format you convert from, never a format you store photos in.",
+    ],
+    edgeCases: [
+      {
+        title: "WebP is lossy, BMP is not",
+        body: "Converting to WebP at quality 92 discards a small amount of detail that the BMP held exactly, so the WebP is not a pixel exact copy of the BMP. At quality 90 or above the difference is invisible at normal viewing sizes, but keep the BMP as the master if you plan to re-edit or re-encode the image later.",
+      },
+      {
+        title: "BMP has no transparency to keep",
+        body: "The BMP here is 24-bit with no alpha channel, so there are no see-through areas to flatten and no background colour to pick. The WebP simply holds the same opaque pixels, compressed.",
+      },
+      {
+        title: "Rare BMP variants may fail to decode",
+        body: "Most BMPs are plain 24-bit files and decode cleanly, but rare 32-bit or RLE-compressed BMPs may fail in the browser decoder. If a BMP fails to load, open it in an image editor and save it as a plain 24-bit BMP, or export it as PNG first and convert from there.",
+      },
+    ],
+    betterChoice:
+      "If the file is headed for the web, an email, or an upload form, WebP is the right choice: it holds the same picture in roughly a tenth of the space. Keep the BMP only when a specific program demands it. If the destination refuses WebP, convert to JPG instead, which is typically 2 to 4 MB for the same 4000 x 3000 photo.",
+    faqs: [
+      {
+        question: "Why is the WebP so much smaller than the BMP?",
+        answer:
+          "A BMP stores every pixel uncompressed, 3 bytes per pixel, so a 4000 x 3000 photo is 36.0 MB before anything is done to it. WebP compresses the same pixels, discarding detail the eye cannot see at quality 92, typically to around 1.3 to 3 MB for that photo, roughly a tenth of the BMP.",
+      },
+      {
+        question: "Does converting BMP to WebP lose quality?",
+        answer:
+          "A little, yes. BMP is uncompressed, so it holds every pixel exactly, while WebP at quality 92 is lossy and discards a small amount of detail. At quality 90 or above the difference is invisible at normal viewing sizes. Keep the BMP as your master if you plan to re-edit the image, and convert only the copy you need.",
+      },
+    ],
+  },
 };
 
 /** Deep dive for this pair's page, or null when the pair has none. */
