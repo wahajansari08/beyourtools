@@ -1853,6 +1853,181 @@ export const PAIR_DEEP_DIVES: Record<string, PairDeepDive> = {
       },
     ],
   },
+  "svg-to-bmp": {
+    exampleHeading: "Worked example: a logo SVG rasterised to BMP",
+    example: [
+      "Take a simple two-colour logo saved as SVG, about 8 KB of vector shapes. SVG has no pixels, so the tool first rasterises it at the size you choose, then writes the result as a BMP. Rasterised at 2000 x 2000, that logo becomes a BMP of 12.0 MB, because BMP stores every pixel uncompressed at 3 bytes per pixel plus a 54 byte header: 2000 times 2000 times 3 is 12,000,000 bytes, plus the header. At 1000 x 1000 the same logo is 3.0 MB. These are exact figures from the BMP format, not estimates: the output size is set entirely by the raster size you pick and the pixel count, not by the size of the SVG file.",
+      "The key choice is the raster size. Rasterise at the size the BMP will actually be used at, because a 2000-pixel logo shrunk to a 200-pixel thumbnail wastes most of its bytes, and a 500-pixel raster stretched to a poster turns blurry. The tool's resize option sets the output dimensions before encoding, so pick the display size first, and remember that every doubling of the width and height quadruples the BMP file size.",
+    ],
+    edgeCases: [
+      {
+        title: "Transparency is flattened",
+        body: "BMP has no transparency, so see-through areas in the SVG are flattened onto a solid background colour, white by default, which you can pick in the tool. A logo on a transparent background does not stay transparent in BMP, so check the result on a coloured background before using it.",
+      },
+      {
+        title: "Text in the SVG becomes pixels",
+        body: "Once rasterised, the text in an SVG is no longer text: it cannot be selected, searched, or edited. If the BMP is headed to a document where the words matter, keep the SVG as well, or rasterise at a high resolution so the text stays readable.",
+      },
+      {
+        title: "Fonts inside the SVG may fall back",
+        body: "An SVG that names a font your device does not have is rendered with a fallback font, so the BMP can look different from the SVG in its home editor. Converting text to outlines in the editor before exporting the SVG avoids the problem entirely.",
+      },
+    ],
+    betterChoice:
+      "If the destination accepts SVG, keep the SVG: it stays sharp at every size and is usually the smallest file by a wide margin. Convert to BMP only when a specific program demands it, such as an old Windows application or a game engine that reads BMP textures, and rasterise at the exact size that program needs.",
+    faqs: [
+      {
+        question: "Why is the BMP so much bigger than the SVG?",
+        answer:
+          "An SVG stores shapes as instructions, so a logo can be 8 KB, while a BMP stores every pixel uncompressed at 3 bytes per pixel. A 2000 x 2000 BMP is 12.0 MB and a 4000 x 3000 BMP is 36.0 MB, whatever the SVG weighed. The BMP is not holding more detail than the SVG, it is just holding the same picture in the most wasteful possible way.",
+      },
+      {
+        question: "What raster size should I pick for SVG to BMP?",
+        answer:
+          "Pick the size the BMP will actually be shown at. A logo for a website header is usually fine at 1000 to 2000 pixels wide, and a texture for a game wants the exact pixel size the engine expects. Rasterising larger only makes a bigger file, and every doubling of the width and height quadruples it, so do not rasterise at 4000 pixels for a 400-pixel job.",
+      },
+    ],
+  },
+  "avif-to-bmp": {
+    exampleHeading: "Worked example: a photo AVIF expanded to BMP",
+    example: [
+      "Take a 4000 x 3000 photo saved as AVIF, about 1.5 MB, which is typical for an AVIF at good quality. Converting it to BMP gives a file of 36.0 MB: BMP stores every pixel uncompressed at 3 bytes per pixel plus a 54 byte header, so 4000 times 3000 times 3 is 36,000,000 bytes. That is 24 times the size of the AVIF, for the same pixels. A 1920 x 1080 AVIF of about 0.7 MB becomes a BMP of 6.22 MB, about 9 times bigger. These are exact figures from the BMP format: the output size is set by the pixel count alone, never by how small the AVIF was.",
+      "The size jump is the whole story of this conversion. AVIF is one of the most efficient formats in use, and BMP is the least efficient, so the conversion only ever makes the file bigger, by roughly 10 to 25 times for a typical photo. Do it only when a program demands a BMP and cannot read anything else.",
+    ],
+    edgeCases: [
+      {
+        title: "No quality is gained",
+        body: "BMP is lossless, but it can only preserve the pixels it is given. The AVIF artefacts, the small compression errors in the original, are copied faithfully into the BMP, so the result looks exactly like the AVIF and no better. Converting to BMP never repairs a compressed image.",
+      },
+      {
+        title: "Animation is lost",
+        body: "BMP is a still-image format, so only the first frame of an animated AVIF is kept. If the AVIF moves, convert the frame you want, or use a format that keeps animation instead.",
+      },
+      {
+        title: "Wide colour is narrowed",
+        body: "An AVIF can carry HDR or wide-gamut colour, but BMP holds ordinary 8-bit colour, so the extra range is narrowed on conversion. For a photo headed to print or to an editor, keep the AVIF as the master and convert only the copy the destination needs.",
+      },
+    ],
+    betterChoice:
+      "Keep the AVIF whenever you can: it is smaller, sharper for its size, and keeps wide colour. Convert to BMP only when a specific program demands it, such as an old Windows application or a game engine that reads BMP textures, and keep the AVIF as your master, because the BMP will be many times larger for the same picture.",
+    faqs: [
+      {
+        question: "Why would anyone convert AVIF to BMP?",
+        answer:
+          "Almost always because a program demands it. Some older Windows applications, game engines, and specialist tools read BMP and nothing else, so the conversion is a compatibility step, not a quality step. For anything else, AVIF is the better format to keep, and PNG is the better lossless format to convert to.",
+      },
+      {
+        question: "Does the BMP keep the AVIF quality?",
+        answer:
+          "It keeps the AVIF pixels exactly, including their compression artefacts, because BMP is lossless. What it does not keep is the AVIF file size or its wide-colour range: the BMP is roughly 10 to 25 times bigger for the same photo, and HDR or wide-gamut colour is narrowed to ordinary 8-bit colour.",
+      },
+    ],
+  },
+  "bmp-to-pdf": {
+    exampleHeading: "Worked example: a BMP photo wrapped in a PDF",
+    example: [
+      "Take a 4000 x 3000 photo saved as BMP, 36.0 MB of uncompressed pixels. Converting it to PDF gives a one-page PDF of about 2 to 4 MB, because the tool embeds the image as a JPEG at quality 92 rather than carrying the raw pixels: the same photo as a JPG is typically 2 to 4 MB, and the PDF adds only a small amount of page overhead. Ten such photos become a ten-page PDF of about 20 to 40 MB. The PDF is much smaller than the BMP, not because anything was thrown away on purpose, but because JPEG compression replaces 36 MB of raw pixels with a few megabytes of compressed ones.",
+      "The page is as big as the image. The tool places the image at 96 DPI, so a 4000-pixel-wide photo makes a page about 1,058 mm wide, roughly five A4 widths side by side, and a 3000-pixel-tall photo makes a page about 794 mm tall. For a normal A4 page, resize the image to 794 x 1123 pixels first, which is A4 at 96 DPI.",
+    ],
+    edgeCases: [
+      {
+        title: "The PDF is smaller than the BMP, and that is normal",
+        body: "A BMP is uncompressed, so a 4000 x 3000 photo is 36.0 MB, while the PDF embeds a JPEG at quality 92, typically 2 to 4 MB for the same photo. The PDF is not a worse copy: it is the same picture compressed, and the size saving is the point of the conversion.",
+      },
+      {
+        title: "Text in the image is not selectable",
+        body: "The PDF holds a picture of the image, not text, so words in the BMP cannot be selected, searched, or copied from the PDF. If the text matters, it needs OCR or a retyped document, not a conversion.",
+      },
+      {
+        title: "Transparency is flattened",
+        body: "BMP has no transparency, so there is nothing to lose here, but the PDF page itself is opaque: the image sits on a fixed white page, and the result is a document, not a floating image.",
+      },
+    ],
+    betterChoice:
+      "Use BMP to PDF when the picture needs to be a document: printing, emailing, archiving, or sending to someone who will open it in a reader rather than an editor. If the destination expects an image file, convert to JPG or PNG instead, which stay images and are smaller than the BMP too.",
+    faqs: [
+      {
+        question: "Why is the PDF smaller than the BMP?",
+        answer:
+          "Because the PDF does not carry the raw pixels. A 4000 x 3000 BMP is 36.0 MB of uncompressed data, while the PDF embeds the image as a JPEG at quality 92, typically 2 to 4 MB for the same photo, plus a small amount of page overhead. The compression is lossy, but at quality 92 the difference is invisible at normal viewing sizes.",
+      },
+      {
+        question: "Will the PDF page be A4?",
+        answer:
+          "Only if the image is 794 x 1123 pixels, which is A4 at the 96 DPI the tool places images at. A 4000-pixel-wide photo makes a page about 1,058 mm wide, roughly five A4 widths. Resize the image to 794 x 1123 pixels with the Image Resizer before converting if you need a normal A4 page.",
+      },
+    ],
+  },
+  "gif-to-pdf": {
+    exampleHeading: "Worked example: a GIF still wrapped in a PDF",
+    example: [
+      "Take a 480 x 270 GIF, about 20 to 60 KB, which is typical for a short animated clip or a simple graphic at that size. Converting it to PDF gives a one-page PDF of typically 20 to 60 KB, about the same as the GIF, because the tool embeds the single kept frame as a JPEG at quality 92, and a small flat graphic compresses to roughly the same size either way. The page is 127 mm wide, because the tool places the image at 96 DPI and 480 pixels at 96 DPI is 5 inches, which is 127 mm. A larger GIF makes a proportionally larger page: a 1920-pixel-wide GIF makes a page about 508 mm wide.",
+      "Only the first frame survives. A GIF with 40 frames at 10 frames per second becomes one still image, the first frame, and the other 39 frames are dropped. If the motion is the point, keep the GIF, or export the clip as a video instead.",
+    ],
+    edgeCases: [
+      {
+        title: "Animation is lost",
+        body: "PDF is a still-image format, so an animated GIF becomes one still frame, the first one. The 40 frames of a 4-second clip at 10 frames per second are reduced to a single image, and there is no way to keep the motion in a PDF.",
+      },
+      {
+        title: "The 256-colour palette stays",
+        body: "A GIF holds at most 256 colours, and the PDF keeps the same limited palette, because it embeds the same pixels. Colours that were already banded or posterised in the GIF stay banded in the PDF, so converting does not smooth gradients or recover lost colours.",
+      },
+      {
+        title: "Text in the GIF is not selectable",
+        body: "The PDF holds a picture of the GIF frame, not text, so words in the image cannot be selected, searched, or copied from the PDF. If the text matters, it needs OCR or a retyped document, not a conversion.",
+      },
+    ],
+    betterChoice:
+      "Use GIF to PDF when a single frame needs to be a document: printing it, emailing it, or archiving it with other pages. If the animation matters, keep the GIF, and if the destination expects an image, convert to PNG instead, which keeps the still frame without wrapping it in a document.",
+    faqs: [
+      {
+        question: "Does the PDF keep the animation?",
+        answer:
+          "No. A PDF is a still-image format, so only the first frame of the GIF is kept and the rest are dropped. A 4-second GIF with 40 frames at 10 frames per second becomes a single still image in the PDF. If the motion matters, keep the GIF or export the clip as a video.",
+      },
+      {
+        question: "What page size will the PDF be?",
+        answer:
+          "The page is as big as the image, placed at 96 DPI. A 480-pixel-wide GIF makes a page 127 mm wide, and a 1920-pixel-wide GIF makes a page about 508 mm wide. For a normal A4 page, resize the image to 794 x 1123 pixels first, which is A4 at 96 DPI.",
+      },
+    ],
+  },
+  "jpg-to-svg": {
+    exampleHeading: "Worked example: a JPG photo wrapped as an SVG",
+    example: [
+      "Take a 4000 x 3000 photo saved as JPG, about 3 MB. Converting it to SVG gives a file of about 13 to 19 MB, several times bigger than the JPG, because the tool embeds the image as a PNG inside the SVG markup: the same photo as a PNG is typically 10 to 14 MB, and base64 encoding inflates that by a third, to about 13 to 19 MB, plus a small amount of XML wrapper. The SVG is not a smaller or sharper version of the photo. It is the same raster image in a bigger, text-based container.",
+      "The size jump is the honest price of the format. SVG is a vector format, but this conversion does not trace the photo into vectors: it wraps the pixels in an SVG file so that systems which only accept SVG can take the image. If the destination accepts JPG, PNG, or WebP, converting to SVG gains nothing and costs file size.",
+    ],
+    edgeCases: [
+      {
+        title: "The SVG is not a real vector image",
+        body: "The converter embeds the JPG bitmap inside an SVG wrapper, which is useful when a system specifically requires an .svg file, but the picture inside is still pixels and will blur when enlarged. Turning a photo or logo into a true vector requires tracing it in a design tool, and no automatic conversion does that.",
+      },
+      {
+        title: "The file gets bigger, not smaller",
+        body: "A 3 MB JPG becomes a 13 to 19 MB SVG, because the PNG embed is larger than the JPG and base64 encoding adds another third on top. Do not convert to SVG to save space: it is the one direction in which the file reliably grows.",
+      },
+      {
+        title: "Some systems reject the embedded kind of SVG",
+        body: "A few upload forms and design tools accept SVG files but strip or refuse embedded images inside them, because they expect pure vector shapes. If the destination rejects the file, convert to PNG instead, which every image system accepts.",
+      },
+    ],
+    betterChoice:
+      "Convert JPG to SVG only when a destination accepts SVG and refuses JPG, such as an upload form or a design tool that only takes SVG input. For everything else, keep the JPG, or convert to PNG or WebP, which stay smaller and work everywhere an image is expected.",
+    faqs: [
+      {
+        question: "Is the SVG a real vector image?",
+        answer:
+          "No. The converter embeds your JPG bitmap inside an SVG wrapper, so the file opens anywhere an SVG is accepted, but the picture inside is still pixels and will blur when enlarged. A true vector version needs tracing in a design tool such as Illustrator or Inkscape, which redraws the shapes rather than wrapping the pixels.",
+      },
+      {
+        question: "When is JPG to SVG actually useful?",
+        answer:
+          "Almost only when a destination accepts SVG and refuses JPG: some upload forms, content systems, and design tools take SVG input and nothing else. In that case the wrapper gets the photo through the door. For display, sharing, or printing, keep the JPG or convert to PNG or WebP instead, which are smaller and sharper for the same picture.",
+      },
+    ],
+  },
 };
 
 /** Deep dive for this pair's page, or null when the pair has none. */
